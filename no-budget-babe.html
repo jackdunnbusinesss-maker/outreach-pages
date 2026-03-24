@@ -4,380 +4,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>Custom Strategy | No Budget Babe</title>
+    <title>No Budget Babe | Custom Program Strategy</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
     <style>
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg: #0e0e12;
-            --surface: #16161d;
-            --surface-light: #1e1e28;
-            --border: #2a2a36;
-            --accent: #d4959b;
-            --accent-light: #e8b4b8;
-            --accent-glow: rgba(212, 149, 155, 0.15);
-            --white: #f0eff4;
-            --text: #c5c4ce;
-            --text-muted: #7e7d8a;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* ---- LAYOUT ---- */
-        .container {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* ---- TOP BAR ---- */
-        .topbar {
-            padding: 20px 0;
-            border-bottom: 1px solid var(--border);
-        }
-        .topbar-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .topbar-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-muted);
-        }
-        .topbar-for {
-            font-size: 0.8rem;
-            color: var(--accent-light);
-            font-weight: 500;
-        }
-
-        /* ---- HERO ---- */
-        .hero {
-            padding: 80px 0 48px;
-            text-align: center;
-        }
-        .hero-eyebrow {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--accent);
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-        .hero h1 {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(2rem, 5vw, 2.8rem);
-            color: var(--white);
-            line-height: 1.25;
-            margin-bottom: 24px;
-            font-weight: 600;
-        }
-        .hero h1 em {
-            color: var(--accent-light);
-            font-style: italic;
-        }
-        .hero-sub {
-            font-size: 1.05rem;
-            color: var(--text);
-            max-width: 560px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-
-        /* ---- DRIVE CARD ---- */
-        .drive-section {
-            padding: 0 0 64px;
-        }
-        .drive-card {
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            background: var(--surface);
-            box-shadow: 0 24px 80px rgba(0,0,0,0.4);
-            padding: 40px 36px;
-        }
-        .drive-card-heading {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.3rem;
-            color: var(--white);
-            margin-bottom: 24px;
-            font-weight: 600;
-            text-align: center;
-        }
-        .drive-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        .drive-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            font-size: 0.95rem;
-            color: var(--text);
-            line-height: 1.6;
-        }
-        .drive-list li::before {
-            content: "";
-            display: inline-block;
-            width: 6px;
-            height: 6px;
-            min-width: 6px;
-            background: var(--accent);
-            border-radius: 50%;
-            margin-top: 9px;
-        }
-        .drive-caption {
-            text-align: center;
-            margin-top: 16px;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            letter-spacing: 0.5px;
-        }
-
-        /* ---- CONTEXT SECTION ---- */
-        .context {
-            padding: 64px 0;
-            border-top: 1px solid var(--border);
-        }
-        .context p {
-            font-size: 1.05rem;
-            line-height: 1.9;
-            margin-bottom: 20px;
-        }
-        .context p:last-child {
-            margin-bottom: 0;
-        }
-        .highlight-name {
-            color: var(--accent-light);
-            font-weight: 600;
-        }
-
-        /* ---- BULLETS ---- */
-        .bullets {
-            padding: 64px 0;
-            border-top: 1px solid var(--border);
-        }
-        .bullets-heading {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.6rem;
-            color: var(--white);
-            margin-bottom: 40px;
-            text-align: center;
-            font-weight: 600;
-        }
-        .bullet-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .bullet-item {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 28px 32px;
-            transition: border-color 0.3s ease;
-        }
-        .bullet-item:hover {
-            border-color: var(--accent);
-        }
-        .bullet-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        .bullet-text {
-            font-size: 1rem;
-            color: var(--text);
-            line-height: 1.7;
-        }
-
-        /* ---- CTA ---- */
-        .cta-section {
-            padding: 80px 0;
-            border-top: 1px solid var(--border);
-            text-align: center;
-        }
-        .cta-heading {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.8rem;
-            color: var(--white);
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-        .cta-sub {
-            font-size: 1rem;
-            color: var(--text);
-            margin-bottom: 36px;
-            max-width: 480px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .cta-button {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--bg);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 600;
-            padding: 16px 48px;
-            border-radius: 8px;
-            text-decoration: none;
-            letter-spacing: 0.5px;
-            transition: background 0.3s ease, transform 0.2s ease;
-        }
-        .cta-button:hover {
-            background: var(--accent-light);
-            transform: translateY(-1px);
-        }
-        .cta-note {
-            margin-top: 16px;
-            font-size: 0.78rem;
-            color: var(--text-muted);
-        }
-
-        /* ---- FOOTER ---- */
-        .footer {
-            padding: 40px 0;
-            border-top: 1px solid var(--border);
-            text-align: center;
-        }
-        .footer p {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        /* ---- RESPONSIVE ---- */
-        @media (max-width: 600px) {
-            .hero {
-                padding: 56px 0 36px;
-            }
-            .bullet-item {
-                padding: 22px 20px;
-            }
-            .cta-section {
-                padding: 56px 0;
-            }
-            .drive-card {
-                padding: 28px 20px;
-            }
-        }
-    </style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+:root {
+    --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28;
+    --border: #2a2a36; --accent: #d4959b; --accent-light: #e8b4b8;
+    --accent-glow: rgba(212,149,155,0.15); --white: #f0eff4;
+    --text: #c5c4ce; --text-muted: #7e7d8a;
+}
+html { scroll-behavior: smooth; }
+body { font-family:'Inter',-apple-system,sans-serif; background:var(--bg); color:var(--text); line-height:1.7; -webkit-font-smoothing:antialiased; }
+.container { max-width:720px; margin:0 auto; padding:0 24px; }
+.topbar { padding:20px 0; border-bottom:1px solid var(--border); }
+.topbar-inner { display:flex; justify-content:space-between; align-items:center; }
+.topbar-label { font-size:0.75rem; text-transform:uppercase; letter-spacing:2px; color:var(--text-muted); }
+.topbar-for { font-size:0.8rem; color:var(--accent-light); font-weight:500; }
+.hero { padding:80px 0 24px; text-align:center; }
+.hero-eyebrow { font-size:0.8rem; text-transform:uppercase; letter-spacing:3px; color:var(--accent); margin-bottom:20px; font-weight:600; }
+.hero h1 { font-family:'Playfair Display',Georgia,serif; font-size:clamp(2rem,5vw,2.8rem); color:var(--white); line-height:1.25; margin-bottom:24px; font-weight:600; }
+.hero h1 em { color:var(--accent-light); font-style:italic; }
+.hero-sub { font-size:1.05rem; color:var(--text); max-width:560px; margin:0 auto; line-height:1.8; }
+.vsl-placeholder { max-width:720px; margin:40px auto; background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:60px 24px; text-align:center; }
+.vsl-placeholder p { color:var(--text-muted); font-size:0.9rem; letter-spacing:2px; text-transform:uppercase; }
+.context { padding:64px 0; border-top:1px solid var(--border); }
+.context p { font-size:1.05rem; line-height:1.9; margin-bottom:20px; }
+.highlight-name { color:var(--accent-light); font-weight:600; }
+.bullets { padding:64px 0; border-top:1px solid var(--border); }
+.bullets-heading { font-family:'Playfair Display',Georgia,serif; font-size:1.6rem; color:var(--white); margin-bottom:40px; text-align:center; font-weight:600; }
+.bullet-list { list-style:none; display:flex; flex-direction:column; gap:20px; }
+.bullet-item { background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:28px 32px; transition:border-color 0.3s ease; }
+.bullet-item:hover { border-color:var(--accent); }
+.bullet-label { font-size:0.7rem; text-transform:uppercase; letter-spacing:2px; color:var(--accent); margin-bottom:8px; font-weight:600; }
+.bullet-text { font-size:1rem; color:var(--text); line-height:1.7; }
+.cta-section { padding:80px 0; border-top:1px solid var(--border); text-align:center; }
+.cta-heading { font-family:'Playfair Display',Georgia,serif; font-size:1.8rem; color:var(--white); margin-bottom:16px; font-weight:600; }
+.cta-sub { font-size:1rem; color:var(--text); margin-bottom:36px; max-width:480px; margin-left:auto; margin-right:auto; }
+.cta-button { display:inline-block; background:var(--accent); color:var(--bg); font-family:'Inter',sans-serif; font-size:0.95rem; font-weight:600; padding:16px 48px; border-radius:8px; text-decoration:none; letter-spacing:0.5px; transition:background 0.3s ease,transform 0.2s ease; }
+.cta-button:hover { background:var(--accent-light); transform:translateY(-1px); }
+.cta-note { margin-top:16px; font-size:0.78rem; color:var(--text-muted); }
+.footer { padding:40px 0; border-top:1px solid var(--border); text-align:center; }
+.footer p { font-size:0.75rem; color:var(--text-muted); }
+@media(max-width:600px) { .hero{padding:56px 0 20px;} .bullet-item{padding:22px 20px;} .cta-section{padding:56px 0;} }
+</style>
 </head>
 <body>
-
-    <!-- Top Bar -->
     <div class="topbar">
         <div class="container topbar-inner">
-            <span class="topbar-label">Personalized Strategy</span>
-            <span class="topbar-for">Prepared for No Budget Babe</span>
+            <span class="topbar-label">Custom Strategy</span>
+            <span class="topbar-for">Built for No Budget Babe</span>
         </div>
     </div>
 
-    <!-- Hero -->
     <section class="hero">
         <div class="container">
-            <p class="hero-eyebrow">Built Specifically for No Budget Babe</p>
-            <h1>You're on a mission to make <em>financial literacy accessible for women</em>. Here's the infrastructure to turn that mission into a scalable coaching business.</h1>
-            <p class="hero-sub">We built a complete launch-ready system for a women's finance coaching program -- offer strategy, scripts, funnels, and everything in between -- all designed around your brand and your audience.</p>
+            <p class="hero-eyebrow">Designed Specifically for No Budget Babe</p>
+            <h1>Turn your expertise in <em>Personal Finance</em> and <em>Financial Literacy</em> into a program that sells itself.</h1>
+            <p class="hero-sub">A complete system designed for No Budget Babe to convert women into paying members, on autopilot.</p>
         </div>
     </section>
 
-    <!-- Drive Card (replaces video) -->
-    <section class="drive-section">
-        <div class="container">
-            <div class="drive-card">
-                <h3 class="drive-card-heading">What's Inside Your Custom Google Drive</h3>
-                <ul class="drive-list">
-                    <li>Complete Offer Document -- full coaching program strategy for women's finance education</li>
-                    <li>VSL Script -- ready-to-record video sales letter crafted for your audience</li>
-                    <li>Landing Page Copy -- high-converting page designed for your niche</li>
-                    <li>Case Studies -- proof-of-concept frameworks for women's wealth building</li>
-                    <li>Full Market Research -- competitor landscape, audience insights, positioning gaps</li>
-                    <li>Email Sequences -- automated flows for nurture, launch, and re-engagement</li>
-                    <li>Ad Strategy -- paid media plan to scale beyond organic</li>
-                    <li>And more -- everything you need to launch and grow</li>
-                </ul>
-            </div>
-            <p class="drive-caption">Every document custom-built for No Budget Babe</p>
-        </div>
-    </section>
+    <div class="vsl-placeholder">
+        <p>This is where the VSL would go</p>
+    </div>
 
-    <!-- Context -->
     <section class="context">
         <div class="container">
-            <p><span class="highlight-name">No Budget Babe</span>, you've carved out a real space in an area most of the finance world ignores -- making wealth building feel approachable, practical, and relevant for women. With 15,400 subscribers and a growing presence on Kajabi, you've built the kind of trust that most creators spend years chasing.</p>
-            <p>The gap in women's finance education is massive. Most content in this space is either too generic, too intimidating, or built by people who don't understand the audience. You do. What's missing isn't the expertise or the trust -- it's the system that takes the attention you've already earned and converts it into enrolled students, booked calls, and consistent revenue on autopilot.</p>
-            <p>The Google Drive folder below contains the complete infrastructure designed specifically for <span class="highlight-name">No Budget Babe</span>. Not a template. Not a generic funnel. A coaching program launch system built around how your audience already engages with your content.</p>
+            <p><span class="highlight-name">No Budget Babe</span> has built something real. With 15,400 subscribers covering Personal Finance, Financial Literacy, Wealth Building, the audience is already there. The trust is already there. What's missing is the system that turns viewers into enrolled members without requiring more of your time.</p>
+            <p>The women and money coach watching your content are actively looking for a deeper way to learn from you. Right now, most of them watch, learn something, and leave. A structured program changes that. It gives them a reason to stay, a reason to pay, and a reason to tell others.</p>
+            <p>Everything below was built specifically for <span class="highlight-name">No Budget Babe</span>. Not a template. Not a generic funnel. A complete launch system designed around how your audience already engages with your content.</p>
         </div>
     </section>
 
-    <!-- Bullets -->
     <section class="bullets">
         <div class="container">
             <h2 class="bullets-heading">What this system does for your business</h2>
             <ul class="bullet-list">
                 <li class="bullet-item">
                     <p class="bullet-label">Capture</p>
-                    <p class="bullet-text">Turns your YouTube subscribers and Kajabi visitors into leads with a value-first entry point that resonates with women seeking real financial guidance -- not another budgeting spreadsheet.</p>
+                    <p class="bullet-text">A value-first entry point that resonates with women and money coach who are already watching your content. Turns passive viewers into leads without feeling salesy or desperate.</p>
                 </li>
                 <li class="bullet-item">
                     <p class="bullet-label">Nurture</p>
-                    <p class="bullet-text">Automated email sequences that match your approachable, no-shame tone -- warming leads toward your coaching program without you having to manually follow up with every prospect.</p>
+                    <p class="bullet-text">Automated email sequences that match your tone and teaching style. Warms leads toward your program by delivering real value, not hype.</p>
                 </li>
                 <li class="bullet-item">
                     <p class="bullet-label">Convert</p>
-                    <p class="bullet-text">Strategically timed offers and enrollment windows that move qualified women -- aspiring investors, entrepreneurs, money coaches -- into your programs on autopilot.</p>
+                    <p class="bullet-text">Strategically timed offers that move qualified women into your program. Works while you sleep, while you create, while you live your life.</p>
                 </li>
                 <li class="bullet-item">
-                    <p class="bullet-label">Recover</p>
-                    <p class="bullet-text">Re-engages the women who visited your Kajabi page, watched your content, or started checkout but didn't finish. Even at your current scale, this can unlock meaningful monthly revenue that's currently slipping through the cracks.</p>
+                    <p class="bullet-label">Scale</p>
+                    <p class="bullet-text">A system that grows with you. Whether you have 15,400 subscribers or 10x that, the infrastructure handles the volume without breaking.</p>
                 </li>
             </ul>
         </div>
     </section>
 
-    <!-- CTA -->
     <section class="cta-section">
         <div class="container">
             <h2 class="cta-heading">Ready to see the full strategy?</h2>
-            <p class="cta-sub">Everything is inside your custom Google Drive folder -- built specifically for No Budget Babe and ready to review.</p>
-            <a href="https://drive.google.com/drive/folders/1udnLLQrmnCzzG9O-kHAFIjG2B-pE3TAn" class="cta-button" target="_blank">Open Your Custom Google Drive</a>
-            <p class="cta-note">Jack -- J&G Operations</p>
+            <p class="cta-sub">Everything is inside your custom Google Drive folder. Offer doc, VSL script, landing page copy, email sequences, and more.</p>
+            <a href="https://drive.google.com/drive/folders/1ObG56ZgN7eW6zhHeFLQ5zPu4KCgJJN7P" class="cta-button" target="_blank">Open Your Custom Google Drive</a>
+            <p class="cta-note">Jack &mdash; J&amp;G Operations</p>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <p>This page was created exclusively for No Budget Babe. Not indexed. Not public.</p>
         </div>
     </footer>
-
 </body>
 </html>
