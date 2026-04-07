@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're In — Super Geeked Strategy Call</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --border: #1e1e2e;
+    --accent: #7c3aed;
+    --accent2: #06b6d4;
+    --text: #e2e8f0;
+    --muted: #64748b;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .noise {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    opacity: 0.4;
+  }
+  .grid-bg {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image: linear-gradient(rgba(124,58,237,0.04) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(124,58,237,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .wrap { position: relative; z-index: 1; }
+
+  /* HERO */
+  .hero {
+    min-height: 80vh; display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 80px 24px;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(6,182,212,0.1) 0%, transparent 70%);
+  }
+  .hero-inner { max-width: 680px; }
+  .check-icon {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: rgba(6,182,212,0.15); border: 2px solid rgba(6,182,212,0.4);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 28px; font-size: 36px;
+  }
+  .badge {
+    display: inline-block; background: rgba(6,182,212,0.12); border: 1px solid rgba(6,182,212,0.3);
+    color: var(--accent2); font-size: 12px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; padding: 6px 16px; border-radius: 100px; margin-bottom: 28px;
+  }
+  h1 {
+    font-size: clamp(36px, 5vw, 58px); font-weight: 800; line-height: 1.1;
+    letter-spacing: -0.02em; margin-bottom: 20px;
+  }
+  h1 em { font-style: normal; color: var(--accent2); }
+  .hero-sub { font-size: 18px; color: var(--muted); max-width: 500px; margin: 0 auto 40px; }
+
+  /* VIDEO */
+  .video-section { padding: 20px 24px 60px; }
+  .video-wrap {
+    max-width: 680px; margin: 0 auto;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; overflow: hidden;
+    box-shadow: 0 0 60px rgba(6,182,212,0.08);
+  }
+  .video-placeholder {
+    aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 16px; background: #0e0e18; cursor: pointer;
+  }
+  .play-btn {
+    width: 72px; height: 72px; background: var(--accent2); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 40px rgba(6,182,212,0.4);
+  }
+  .play-btn svg { width: 28px; height: 28px; fill: #fff; margin-left: 4px; }
+  .video-label { font-size: 14px; color: var(--muted); letter-spacing: 0.05em; }
+
+  /* NEXT STEPS */
+  .steps-section { padding: 60px 24px 80px; }
+  .steps-inner { max-width: 720px; margin: 0 auto; }
+  .section-tag {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 16px;
+  }
+  h2 {
+    font-size: clamp(26px, 3.5vw, 38px); font-weight: 800; line-height: 1.15;
+    letter-spacing: -0.02em; margin-bottom: 40px;
+  }
+  h2 em { font-style: normal; color: var(--accent); }
+  .steps-list { display: flex; flex-direction: column; gap: 16px; }
+  .step {
+    display: flex; gap: 20px; align-items: flex-start;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 24px 28px;
+    transition: border-color 0.2s;
+  }
+  .step:hover { border-color: rgba(124,58,237,0.3); }
+  .step-num {
+    flex-shrink: 0; width: 38px; height: 38px;
+    background: rgba(124,58,237,0.12); border: 1px solid rgba(124,58,237,0.25);
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 800; color: var(--accent);
+  }
+  .step h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+  .step p { font-size: 14px; color: var(--muted); }
+
+  /* EXPECT */
+  .expect-section { padding: 0 24px 80px; }
+  .expect-inner { max-width: 720px; margin: 0 auto; }
+  .expect-box {
+    background: var(--surface); border: 1px solid rgba(124,58,237,0.25);
+    border-radius: 16px; padding: 40px;
+    box-shadow: 0 0 60px rgba(124,58,237,0.06);
+  }
+  .expect-box h3 { font-size: 20px; font-weight: 700; margin-bottom: 20px; }
+  .expect-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .expect-list li {
+    display: flex; gap: 12px; align-items: flex-start;
+    font-size: 15px; color: var(--muted);
+  }
+  .expect-list li::before {
+    content: '→'; color: var(--accent2); font-weight: 700; flex-shrink: 0; margin-top: 1px;
+  }
+
+  footer {
+    padding: 32px 40px; border-top: 1px solid var(--border);
+    text-align: center; color: var(--muted); font-size: 13px;
+  }
+</style>
+</head>
+<body>
+<div class="noise"></div>
+<div class="grid-bg"></div>
+<div class="wrap">
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="check-icon">✓</div>
+      <div class="badge">Confirmed</div>
+      <h1>You're <em>In.</em></h1>
+      <p class="hero-sub">Your strategy call is booked. Before we connect, take two minutes to watch the video below — it'll make our call twice as useful.</p>
+    </div>
+  </section>
+
+  <section class="video-section">
+    <div class="video-wrap">
+      <div class="video-placeholder">
+        <div class="play-btn">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <span class="video-label">Watch Before Your Call: What to Expect &amp; How to Prepare</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="steps-section">
+    <div class="steps-inner">
+      <div class="section-tag">Next Steps</div>
+      <h2>Here's What<br><em>Happens Next</em></h2>
+      <div class="steps-list">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div>
+            <h3>Check Your Email</h3>
+            <p>You'll have a calendar invite and call link in your inbox. Add it to your calendar now so it doesn't slip through the cracks.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div>
+            <h3>Watch the Video Above</h3>
+            <p>It covers what we look at during the call and walks through a few real examples. It's short. It's worth your time.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div>
+            <h3>Pull Up Your Channel Analytics</h3>
+            <p>Have your YouTube Studio open during the call. Knowing your top-performing videos and current CPM will make the conversation much more specific and actionable.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div>
+            <h3>Come Ready to Talk Numbers</h3>
+            <p>We're not here to pitch. We want to understand where your channel is, where you want it to go, and whether we can actually help. Honest numbers make for a better conversation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="expect-section">
+    <div class="expect-inner">
+      <div class="expect-box">
+        <h3>What to Expect on the Call</h3>
+        <ul class="expect-list">
+          <li>We'll review your channel together — content, positioning, monetization gaps</li>
+          <li>You'll get specific feedback on what's working and what's not (honest, not fluffy)</li>
+          <li>We'll walk through the 2–3 changes that would move the needle fastest for your channel</li>
+          <li>If there's a fit to work together, we'll explain exactly how that looks — no pressure, no urgency tactics</li>
+          <li>The whole thing is 30–45 minutes. You'll leave with clarity regardless of what you decide.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 · Built for the Super Geeked Community</p>
+  </footer>
+</div>
+</body>
+</html>

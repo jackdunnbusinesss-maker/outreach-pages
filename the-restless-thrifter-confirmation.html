@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're Booked | The Restless Thrifter</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0a0f;
+    --accent: #f59e0b;
+    --accent2: #d97706;
+    --accent3: #06b6d4;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --card: #13131f;
+    --border: rgba(245,158,11,0.2);
+    --green: #10b981;
+  }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; overflow-x: hidden; min-height: 100vh; }
+
+  .hero { padding: 5rem 2rem 3rem; text-align: center; max-width: 700px; margin: 0 auto; position: relative; }
+  .hero::before { content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 500px; height: 500px; background: radial-gradient(ellipse, rgba(16,185,129,0.1) 0%, transparent 70%); pointer-events: none; }
+  .badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); color: var(--green); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.4rem 1rem; border-radius: 100px; margin-bottom: 1.75rem; }
+  .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.15; margin-bottom: 1rem; }
+  h1 span { background: linear-gradient(135deg, var(--green), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 540px; margin: 0 auto 2rem; }
+  .brand-bar { display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-bottom: 2.5rem; }
+  .brand-name { font-size: 1rem; font-weight: 700; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+  .video-section { max-width: 680px; margin: 0 auto 4rem; padding: 0 2rem; }
+  .video-label-top { text-align: center; color: var(--muted); font-size: 0.82rem; margin-bottom: 0.75rem; }
+  .video-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 16px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .video-wrap::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(245,158,11,0.04), rgba(6,182,212,0.04)); }
+  .play-btn { width: 64px; height: 64px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; box-shadow: 0 0 35px rgba(245,158,11,0.3); }
+  .play-btn::after { content: ''; border-left: 22px solid #0a0a0f; border-top: 12px solid transparent; border-bottom: 12px solid transparent; margin-left: 4px; }
+  .video-caption { text-align: center; color: var(--muted); font-size: 0.8rem; margin-top: 0.75rem; }
+
+  section { padding: 3rem 2rem; max-width: 700px; margin: 0 auto; }
+  .section-eyebrow { color: var(--accent); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; text-align: center; }
+  h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; text-align: center; margin-bottom: 2rem; }
+  h2 span { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+  .steps { display: grid; gap: 1rem; }
+  .step { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; display: flex; gap: 1.25rem; align-items: flex-start; position: relative; overflow: hidden; }
+  .step::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, var(--accent2), var(--accent3)); }
+  .step-num { width: 36px; height: 36px; min-width: 36px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 800; color: #0a0a0f; }
+  .step-content h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .step-content p { font-size: 0.88rem; color: var(--muted); }
+
+  .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 0 2rem; }
+  .expect-section { padding: 3rem 2rem; max-width: 700px; margin: 0 auto; }
+  .expect-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .expect-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; }
+  .expect-icon { font-size: 1.4rem; margin-bottom: 0.6rem; }
+  .expect-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--accent3); }
+  .expect-card p { font-size: 0.85rem; color: var(--muted); }
+
+  footer { padding: 2.5rem 2rem; text-align: center; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--border); margin-top: 2rem; }
+  footer span { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="badge"><span class="badge-dot"></span> Call Confirmed</div>
+  <h1>You're In, <span>[First Name].</span></h1>
+  <p class="hero-sub">Your call is locked in. What you do between now and then will determine how much you get out of it — here's exactly what to do.</p>
+  <div class="brand-bar">
+    <div class="brand-name">The Restless Thrifter</div>
+  </div>
+</div>
+
+<div class="video-section">
+  <p class="video-label-top">Watch this before the call — a personal message from your closer</p>
+  <div class="video-wrap">
+    <div class="play-btn"></div>
+  </div>
+  <p class="video-caption">(Closer adds their personal video here)</p>
+</div>
+
+<section>
+  <div class="section-eyebrow">Before the Call</div>
+  <h2>Your <span>4 Next Steps</span></h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>Add the event to your calendar immediately</h3>
+        <p>Don't wait. Open the confirmation email, click the calendar link, and block the time right now. Sellers who show up are the ones who get results.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>Show up with your laptop in a quiet space</h3>
+        <p>No driving, no distractions. Find somewhere you can focus for 30 minutes. Bring your laptop — you'll want to pull up your active listings during the call.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>Be active in the pre-call group chat</h3>
+        <p>Your closer will reach out before the call. Respond to them — the more context they have about your current situation, the more targeted and useful the call will be.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h3>Review any materials sent before the call</h3>
+        <p>If pre-call resources are shared, go through them. They're sent for a reason — and showing up informed turns a 30-minute call into something genuinely valuable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<div class="expect-section">
+  <div class="section-eyebrow" style="text-align:center;">On the Call</div>
+  <h2 style="text-align:center; font-size: clamp(1.4rem, 2.5vw, 1.9rem);">What to <span>Expect</span></h2>
+  <div class="expect-grid">
+    <div class="expect-card">
+      <div class="expect-icon">🎯</div>
+      <h4>We look at your actual numbers</h4>
+      <p>Which platforms you're on, what's selling, what's stalling — a real audit of your current situation, not generic advice.</p>
+    </div>
+    <div class="expect-card">
+      <div class="expect-icon">🗺️</div>
+      <h4>You leave with a clear next step</h4>
+      <p>Not "here are 10 things to think about." One specific, actionable priority that will move the needle on your income.</p>
+    </div>
+    <div class="expect-card">
+      <div class="expect-icon">🤝</div>
+      <h4>No pressure, no pitch</h4>
+      <p>This is a strategy conversation. You'll get real value out of the call regardless of what you decide to do next.</p>
+    </div>
+    <div class="expect-card">
+      <div class="expect-icon">⏱️</div>
+      <h4>30 minutes, hard stop</h4>
+      <p>We respect your time. Focused, efficient, useful — in and out with a plan in half an hour.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>Built by <span>J&amp;G Operations</span> for The Restless Thrifter.</p>
+</footer>
+
+</body>
+</html>

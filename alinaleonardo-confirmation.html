@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're In — The Posh Thrifter</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #0f0a14;
+    --bg3: #150e1c;
+    --accent: #e879f9;
+    --accent2: #a21caf;
+    --accent3: #f5d0fe;
+    --text: #fdf4ff;
+    --muted: #9ca3af;
+    --border: rgba(232,121,249,0.15);
+  }
+
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden; min-height: 100vh; }
+
+  nav { padding: 1.25rem 2rem; background: rgba(10,10,15,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: center; }
+  .nav-logo { font-weight: 700; font-size: 1rem; color: var(--accent3); }
+
+  .hero { padding: 6rem 1.5rem 4rem; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -150px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(162,28,175,0.22) 0%, transparent 70%); pointer-events: none; }
+  .confirm-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(232,121,249,0.12); border: 1px solid var(--border); border-radius: 999px; padding: 0.4rem 1.1rem; font-size: 0.8rem; font-weight: 600; color: var(--accent3); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 1.75rem; }
+  .checkmark { width: 80px; height: 80px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; box-shadow: 0 0 50px rgba(162,28,175,0.4); font-size: 2rem; }
+  .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; line-height: 1.15; max-width: 720px; margin: 0 auto 1rem; background: linear-gradient(135deg, #fff 0%, var(--accent3) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero p { font-size: 1.1rem; color: var(--muted); max-width: 540px; margin: 0 auto; }
+
+  .video-section { padding: 2.5rem 1.5rem; display: flex; justify-content: center; }
+  .video-wrap { width: 100%; max-width: 680px; aspect-ratio: 16/9; background: var(--bg3); border: 1px solid var(--border); border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; position: relative; overflow: hidden; }
+  .video-wrap::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(162,28,175,0.06), rgba(232,121,249,0.03)); }
+  .play-btn { width: 68px; height: 68px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 35px rgba(162,28,175,0.4); position: relative; z-index: 1; }
+  .play-btn svg { width: 26px; height: 26px; fill: #fff; margin-left: 4px; }
+  .video-label { color: var(--muted); font-size: 0.9rem; position: relative; z-index: 1; }
+
+  .steps-section { padding: 4rem 1.5rem; }
+  .container { max-width: 820px; margin: 0 auto; }
+  .section-tag { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+  h2 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); font-weight: 800; line-height: 1.2; margin-bottom: 0.75rem; }
+  .sub { color: var(--muted); font-size: 1rem; margin-bottom: 2.5rem; }
+
+  .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; }
+  .step-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem; position: relative; overflow: hidden; }
+  .step-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent2), var(--accent)); }
+  .step-num { font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; color: var(--accent); text-transform: uppercase; margin-bottom: 0.75rem; }
+  .step-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .step-card p { font-size: 0.875rem; color: var(--muted); }
+
+  .expect-section { background: var(--bg2); padding: 4rem 1.5rem; }
+  .expect-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+  .expect-item { display: flex; align-items: flex-start; gap: 1rem; padding: 1.25rem 1.5rem; background: var(--bg3); border: 1px solid var(--border); border-radius: 10px; }
+  .dot { min-width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(135deg, var(--accent2), var(--accent)); margin-top: 5px; }
+  .expect-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; }
+  .expect-item p { font-size: 0.85rem; color: var(--muted); }
+
+  footer { padding: 2.5rem 1.5rem; text-align: center; font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--border); }
+
+  @media (max-width: 600px) { .steps-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">The Posh Thrifter</span>
+</nav>
+
+<section class="hero">
+  <div class="confirm-badge">Call Confirmed</div>
+  <div class="checkmark">✓</div>
+  <h1>You're In. Your Strategy Call Is Booked With The Posh Thrifter.</h1>
+  <p>AlinaLeonardo is ready to dig into your Poshmark closet with you. Here's everything you need to do before the call to make it count.</p>
+</section>
+
+<div class="video-section">
+  <div class="video-wrap">
+    <div class="play-btn">
+      <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    </div>
+    <span class="video-label">A quick message from AlinaLeonardo — The Posh Thrifter</span>
+  </div>
+</div>
+
+<section class="steps-section">
+  <div class="container">
+    <span class="section-tag">Before the Call</span>
+    <h2>4 Things to Do Right Now</h2>
+    <p class="sub">The call will be way more useful if you come prepared. These 4 things take less than 30 minutes total.</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">Step 01</div>
+        <h3>Confirm Your Slot</h3>
+        <p>Check your email for booking confirmation and add it to your calendar now. Don't let the time slip.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">Step 02</div>
+        <h3>Open Your Poshmark Closet</h3>
+        <p>Have your closet ready to share during the call. Alina will want to look at your listings — photos, pricing, descriptions.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">Step 03</div>
+        <h3>Track Your Last 30 Days</h3>
+        <p>Rough numbers: how many items did you list, how many sold, what was the average sale price? Even estimates are helpful.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">Step 04</div>
+        <h3>Watch The Posh Thrifter's Channel</h3>
+        <p>Spend 20 minutes on AlinaLeonardo's YouTube channel before the call so you come in already on the same page.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="expect-section">
+  <div class="container">
+    <span class="section-tag">The Call</span>
+    <h2>What Your 30 Minutes With Alina Looks Like</h2>
+    <p class="sub">Focused, specific, and built around your actual Poshmark closet — not generic advice.</p>
+    <div class="expect-list">
+      <div class="expect-item">
+        <div class="dot"></div>
+        <div>
+          <h4>Closet Overview (5 min)</h4>
+          <p>Quick look at what you're selling, your niche, your price range, and how long things have been sitting.</p>
+        </div>
+      </div>
+      <div class="expect-item">
+        <div class="dot"></div>
+        <div>
+          <h4>Finding the Weak Points (10 min)</h4>
+          <p>Alina identifies what's actually hurting your sell-through — whether it's photos, titles, pricing, sourcing, or platform strategy.</p>
+        </div>
+      </div>
+      <div class="expect-item">
+        <div class="dot"></div>
+        <div>
+          <h4>Poshmark Growth Plan (10 min)</h4>
+          <p>A specific, actionable plan for improving your closet performance — starting with the highest-leverage changes first.</p>
+        </div>
+      </div>
+      <div class="expect-item">
+        <div class="dot"></div>
+        <div>
+          <h4>If There's a Fit (5 min)</h4>
+          <p>Alina will explain what deeper support looks like if you want to keep working together. Totally optional — no pressure.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Built by J&amp;G Operations for AlinaLeonardo.
+</footer>
+
+</body>
+</html>

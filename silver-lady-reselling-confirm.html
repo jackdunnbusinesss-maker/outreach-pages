@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You're In — Silver Lady Reselling</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --border: #1e1e2e;
+      --accent: #ec4899;
+      --accent-glow: rgba(236, 72, 153, 0.2);
+      --accent-light: #f472b6;
+      --text: #e8e8f0;
+      --muted: #7a7a9a;
+      --white: #ffffff;
+      --success: #22c55e;
+      --success-glow: rgba(34, 197, 94, 0.2);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: center;
+      padding: 18px 40px;
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-size: 15px; font-weight: 700; letter-spacing: 0.04em; color: var(--white); text-transform: uppercase; }
+
+    .hero {
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 120px 24px 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -100px; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, var(--success-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .check-icon {
+      width: 80px; height: 80px;
+      background: rgba(34, 197, 94, 0.12);
+      border: 2px solid rgba(34, 197, 94, 0.35);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 28px; font-size: 36px;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(34, 197, 94, 0.12); border: 1px solid rgba(34, 197, 94, 0.3);
+      color: var(--success); font-size: 12px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 100px; margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 64px); font-weight: 800; line-height: 1.15;
+      letter-spacing: -0.02em; max-width: 700px; margin-bottom: 20px; color: var(--white);
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--accent-light), #fbcfe8);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero p { font-size: 18px; color: var(--muted); max-width: 520px; margin-bottom: 0; line-height: 1.7; }
+
+    .video-section { padding: 80px 24px; display: flex; flex-direction: column; align-items: center; }
+    .video-label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 16px; }
+    .video-wrap {
+      width: 100%; max-width: 760px; aspect-ratio: 16 / 9;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .video-wrap::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(236,72,153,0.06), transparent); }
+    .play-btn {
+      width: 72px; height: 72px; background: var(--accent); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 40px var(--accent-glow); position: relative; z-index: 1;
+    }
+    .play-btn svg { margin-left: 4px; }
+
+    section { padding: 80px 24px; }
+    .container { max-width: 840px; margin: 0 auto; }
+    .section-tag { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 14px; }
+    .section-title { font-size: clamp(26px, 3.5vw, 40px); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; color: var(--white); margin-bottom: 16px; }
+    .section-sub { font-size: 17px; color: var(--muted); max-width: 560px; line-height: 1.7; margin-bottom: 48px; }
+
+    .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px; }
+    .step-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+      padding: 28px 24px; display: flex; gap: 18px; align-items: flex-start;
+      transition: border-color 0.2s;
+    }
+    .step-card:hover { border-color: rgba(236,72,153,0.35); }
+    .step-num {
+      flex-shrink: 0; width: 44px; height: 44px;
+      background: rgba(236,72,153,0.12); border: 1px solid rgba(236,72,153,0.3);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 800; color: var(--accent-light);
+    }
+    .step-text h3 { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .step-text p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+    .expect-section { background: var(--surface); }
+    .expect-list { display: flex; flex-direction: column; gap: 16px; margin-top: 40px; }
+    .expect-item {
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 20px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
+    }
+    .expect-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+    .expect-text h4 { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+    .expect-text p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    .final-cta { text-align: center; padding: 80px 24px; border-top: 1px solid var(--border); }
+    .final-cta p { font-size: 17px; color: var(--muted); max-width: 480px; margin: 0 auto 28px; line-height: 1.7; }
+    .cta-btn {
+      display: inline-block; background: var(--accent); color: var(--white);
+      padding: 16px 40px; border-radius: 8px; font-size: 16px; font-weight: 700;
+      text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 30px var(--accent-glow);
+    }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(236,72,153,0.35); }
+
+    footer { border-top: 1px solid var(--border); padding: 30px 24px; text-align: center; font-size: 13px; color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      .hero { padding: 100px 20px 60px; }
+      section { padding: 60px 20px; }
+      .steps-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-logo">Jango Operations</span>
+  </nav>
+
+  <section class="hero">
+    <div class="check-icon">✓</div>
+    <span class="hero-tag">Booking Confirmed</span>
+    <h1>You're In.<br><span>Here's What Happens Next.</span></h1>
+    <p>Your call is confirmed. Watch the short video below first — it covers the system we'll be mapping for your business so we can hit the ground running when we talk.</p>
+  </section>
+
+  <div class="video-section">
+    <p class="video-label">Watch Before Your Call — 3 Minutes</p>
+    <div class="video-wrap">
+      <div class="play-btn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <section id="next-steps">
+    <div class="container">
+      <p class="section-tag">Your Next Steps</p>
+      <h2 class="section-title">Four Things to Do<br>Before We Talk</h2>
+      <p class="section-sub">Quick prep. Everything here takes under 5 minutes and makes the actual call significantly more useful for you.</p>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-text">
+            <h3>Watch the Video Above</h3>
+            <p>It explains the monetization framework we'll be discussing. Watch it once before the call so you understand the approach before we start applying it to your situation.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-text">
+            <h3>Think About Your Dual-Market Setup</h3>
+            <p>Come ready to describe how you currently manage both Poshmark CA and US — where inventory goes, how you price differently, what the biggest cross-border friction points are. This shapes the whole conversation.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-text">
+            <h3>Note What Your Audience Asks Most</h3>
+            <p>Check recent comments and DMs. What questions keep coming up about your process, your sourcing, your dual-market strategy? These are the offers waiting to be built.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <div class="step-text">
+            <h3>Confirm the Calendar Invite</h3>
+            <p>Your confirmation email has the call link. If you can't find it after a few minutes, check spam. If you need to adjust the timing, just reach out directly.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="expect-section">
+    <div class="container">
+      <p class="section-tag">What to Expect</p>
+      <h2 class="section-title">A Real Conversation About<br>Your Specific Business</h2>
+      <p class="section-sub">Running Poshmark across two markets while building an audience is genuinely complex. This call is designed for that complexity — not a cookie-cutter creator call.</p>
+      <div class="expect-list">
+        <div class="expect-item">
+          <div class="expect-icon">🎯</div>
+          <div class="expect-text">
+            <h4>We Map Your Current Operation First</h4>
+            <p>Both closets, your content cadence, your existing offers (if any). We need the full picture before we can see where the revenue gaps are.</p>
+          </div>
+        </div>
+        <div class="expect-item">
+          <div class="expect-icon">🔍</div>
+          <div class="expect-text">
+            <h4>We Identify the Highest-Leverage Opportunity</h4>
+            <p>Dual-market operators have specific advantages — knowledge of cross-border pricing, platform differences, sourcing strategies. We find which of these your audience would pay to learn.</p>
+          </div>
+        </div>
+        <div class="expect-item">
+          <div class="expect-icon">🗺️</div>
+          <div class="expect-text">
+            <h4>You Leave With a Specific Plan</h4>
+            <p>Not a generic funnel template. A specific system built around your CA/US operation, your audience, and your schedule. With real numbers attached to it.</p>
+          </div>
+        </div>
+        <div class="expect-item">
+          <div class="expect-icon">🤝</div>
+          <div class="expect-text">
+            <h4>No Obligation, No Rush</h4>
+            <p>If working together makes sense, we'll talk through it. If not, you'll still leave with a clear picture of what to build and how. Either way it's a productive 30 minutes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="final-cta">
+    <p>Questions before the call, or something specific you want to make sure we cover? Reach out and we'll be back to you same day.</p>
+    <a href="mailto:jack@jangoperations.com" class="cta-btn">Contact Us</a>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Jango Operations. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

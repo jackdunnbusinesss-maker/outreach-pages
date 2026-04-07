@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're Booked | Real life with Ty</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0a0f;
+    --accent: #ec4899;
+    --accent2: #be185d;
+    --accent3: #8b5cf6;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --card: #13131f;
+    --border: rgba(236,72,153,0.2);
+    --green: #10b981;
+  }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; overflow-x: hidden; min-height: 100vh; }
+
+  .hero { padding: 5rem 2rem 3rem; text-align: center; max-width: 700px; margin: 0 auto; position: relative; }
+  .hero::before { content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 500px; height: 500px; background: radial-gradient(ellipse, rgba(16,185,129,0.1) 0%, transparent 70%); pointer-events: none; }
+  .badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); color: var(--green); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.4rem 1rem; border-radius: 100px; margin-bottom: 1.75rem; }
+  .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.15; margin-bottom: 1rem; }
+  h1 span { background: linear-gradient(135deg, var(--green), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 540px; margin: 0 auto 2rem; }
+  .brand-bar { margin-bottom: 2.5rem; }
+  .brand-bar-main { font-size: 1rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .brand-bar-sub { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 0.2rem; }
+
+  .video-section { max-width: 680px; margin: 0 auto 4rem; padding: 0 2rem; }
+  .video-label-top { text-align: center; color: var(--muted); font-size: 0.82rem; margin-bottom: 0.75rem; }
+  .video-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 16px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .video-wrap::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(236,72,153,0.04), rgba(139,92,246,0.04)); }
+  .play-btn { width: 64px; height: 64px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; box-shadow: 0 0 35px rgba(236,72,153,0.35); }
+  .play-btn::after { content: ''; border-left: 22px solid #fff; border-top: 12px solid transparent; border-bottom: 12px solid transparent; margin-left: 4px; }
+  .video-caption { text-align: center; color: var(--muted); font-size: 0.8rem; margin-top: 0.75rem; }
+
+  section { padding: 3rem 2rem; max-width: 700px; margin: 0 auto; }
+  .section-eyebrow { color: var(--accent); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; text-align: center; }
+  h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; text-align: center; margin-bottom: 2rem; }
+  h2 span { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+  .steps { display: grid; gap: 1rem; }
+  .step { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; display: flex; gap: 1.25rem; align-items: flex-start; position: relative; overflow: hidden; }
+  .step::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, var(--accent2), var(--accent3)); }
+  .step-num { width: 36px; height: 36px; min-width: 36px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 800; color: #fff; }
+  .step-content h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .step-content p { font-size: 0.88rem; color: var(--muted); }
+
+  .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 0 2rem; }
+  .expect-section { padding: 3rem 2rem; max-width: 700px; margin: 0 auto; }
+  .expect-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .expect-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; }
+  .expect-icon { font-size: 1.4rem; margin-bottom: 0.6rem; }
+  .expect-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--accent3); }
+  .expect-card p { font-size: 0.85rem; color: var(--muted); }
+
+  footer { padding: 2.5rem 2rem; text-align: center; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--border); margin-top: 2rem; }
+  footer span { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="badge"><span class="badge-dot"></span> Call Confirmed</div>
+  <h1>You're In, <span>[First Name].</span></h1>
+  <p class="hero-sub">Your strategy call is set. This is where the real work starts — here's what to do right now to make sure you get maximum value from the conversation.</p>
+  <div class="brand-bar">
+    <div class="brand-bar-main">Real life with Ty</div>
+    <div class="brand-bar-sub">Lifestyle. Money. Beauty.</div>
+  </div>
+</div>
+
+<div class="video-section">
+  <p class="video-label-top">A personal message from the team — watch before your call</p>
+  <div class="video-wrap">
+    <div class="play-btn"></div>
+  </div>
+  <p class="video-caption">(Closer will add their personal video here)</p>
+</div>
+
+<section>
+  <div class="section-eyebrow">Before the Call</div>
+  <h2>Your <span>4 Next Steps</span></h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>Add the event to your calendar now</h3>
+        <p>Check your inbox for the booking confirmation and click the calendar link immediately. This call is an appointment with your future — treat it like one.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>Show up in a quiet space, ready to focus</h3>
+        <p>30 minutes, no distractions. Have notes ready on what you're working on right now — what's working, what isn't — so the conversation can go deep fast.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>Be active in the pre-call check-in</h3>
+        <p>Your closer will reach out before the call. Respond honestly with your situation — your goals, your obstacles — so they can prepare something specific for you.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h3>Review any resources sent ahead of time</h3>
+        <p>If materials are shared, go through them. Coming in with context means the conversation skips the basics and goes straight to what actually matters.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<div class="expect-section">
+  <div class="section-eyebrow" style="text-align:center;">On the Call</div>
+  <h2 style="text-align:center; font-size: clamp(1.4rem, 2.5vw, 1.9rem);">What to <span>Expect</span></h2>
+  <div class="expect-grid">
+    <div class="expect-card">
+      <div class="expect-icon">🔍</div>
+      <h4>A real audit</h4>
+      <p>We'll look at where you are right now — and identify exactly where the gaps are, not just swap generalities.</p>
+    </div>
+    <div class="expect-card">
+      <div class="expect-icon">🎯</div>
+      <h4>One clear priority</h4>
+      <p>You'll leave knowing the single most important thing to focus on — not a list of ten, one priority that moves the needle.</p>
+    </div>
+    <div class="expect-card">
+      <div class="expect-icon">🤝</div>
+      <h4>Zero pressure</h4>
+      <p>This is a strategy call. You'll get real value out of the 30 minutes regardless of what comes next.</p>
+    </div>
+    <div class="expect-card">
+      <div class="expect-icon">⏱️</div>
+      <h4>30 minutes, focused</h4>
+      <p>Efficient and specific — designed to give you an actionable outcome in one conversation.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>Built by <span>J&amp;G Operations</span> for Real life with Ty.</p>
+</footer>
+
+</body>
+</html>

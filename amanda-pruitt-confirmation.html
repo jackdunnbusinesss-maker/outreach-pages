@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're In — Amanda Pruitt</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #0f130d;
+    --bg3: #141a10;
+    --accent: #86efac;
+    --accent2: #16a34a;
+    --accent3: #bbf7d0;
+    --text: #f0fdf4;
+    --muted: #9ca3af;
+    --border: rgba(134,239,172,0.15);
+  }
+
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden; min-height: 100vh; }
+
+  nav { padding: 1.25rem 2rem; background: rgba(10,10,15,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: center; }
+  .nav-logo { font-weight: 700; font-size: 1rem; color: var(--accent3); }
+
+  .hero { padding: 6rem 1.5rem 4rem; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -150px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(22,163,74,0.2) 0%, transparent 70%); pointer-events: none; }
+  .confirm-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(134,239,172,0.12); border: 1px solid var(--border); border-radius: 999px; padding: 0.4rem 1.1rem; font-size: 0.8rem; font-weight: 600; color: var(--accent3); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 1.75rem; }
+  .checkmark { width: 80px; height: 80px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; box-shadow: 0 0 50px rgba(22,163,74,0.4); font-size: 2rem; color: #000; }
+  .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; line-height: 1.15; max-width: 700px; margin: 0 auto 1rem; background: linear-gradient(135deg, #fff 0%, var(--accent3) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero p { font-size: 1.1rem; color: var(--muted); max-width: 540px; margin: 0 auto; }
+
+  .video-section { padding: 2.5rem 1.5rem; display: flex; justify-content: center; }
+  .video-wrap { width: 100%; max-width: 680px; aspect-ratio: 16/9; background: var(--bg3); border: 1px solid var(--border); border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; position: relative; overflow: hidden; }
+  .video-wrap::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(22,163,74,0.06), rgba(134,239,172,0.03)); }
+  .play-btn { width: 68px; height: 68px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 35px rgba(22,163,74,0.4); position: relative; z-index: 1; }
+  .play-btn svg { width: 26px; height: 26px; fill: #000; margin-left: 4px; }
+  .video-label { color: var(--muted); font-size: 0.9rem; position: relative; z-index: 1; }
+
+  .steps-section { padding: 4rem 1.5rem; }
+  .container { max-width: 820px; margin: 0 auto; }
+  .section-tag { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+  h2 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); font-weight: 800; line-height: 1.2; margin-bottom: 0.75rem; }
+  .sub { color: var(--muted); font-size: 1rem; margin-bottom: 2.5rem; }
+
+  .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; }
+  .step-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem; position: relative; overflow: hidden; }
+  .step-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent2), var(--accent)); }
+  .step-num { font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; color: var(--accent); text-transform: uppercase; margin-bottom: 0.75rem; }
+  .step-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .step-card p { font-size: 0.875rem; color: var(--muted); }
+
+  .expect-section { background: var(--bg2); padding: 4rem 1.5rem; }
+  .expect-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+  .expect-item { display: flex; align-items: flex-start; gap: 1rem; padding: 1.25rem 1.5rem; background: var(--bg3); border: 1px solid var(--border); border-radius: 10px; }
+  .dot { min-width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(135deg, var(--accent2), var(--accent)); margin-top: 5px; }
+  .expect-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; }
+  .expect-item p { font-size: 0.85rem; color: var(--muted); }
+
+  footer { padding: 2.5rem 1.5rem; text-align: center; font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--border); }
+
+  @media (max-width: 600px) { .steps-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">Amanda Pruitt</span>
+</nav>
+
+<section class="hero">
+  <div class="confirm-badge">Call Confirmed</div>
+  <div class="checkmark">✓</div>
+  <h1>You're In. Your Strategy Call Is Locked.</h1>
+  <p>Amanda is ready to help you build a reselling business that actually fits your life. Here's what to do between now and the call.</p>
+</section>
+
+<div class="video-section">
+  <div class="video-wrap">
+    <div class="play-btn">
+      <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    </div>
+    <span class="video-label">A quick message from Amanda Pruitt</span>
+  </div>
+</div>
+
+<section class="steps-section">
+  <div class="container">
+    <span class="section-tag">Action Items</span>
+    <h2>4 Things to Do Before the Call</h2>
+    <p class="sub">A little prep now means we can use every minute of the call on what actually matters for your business.</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">Step 01</div>
+        <h3>Block Your Calendar</h3>
+        <p>Check your email for the confirmation and block your calendar now. Protect the time — this call is for you.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">Step 02</div>
+        <h3>Know Your Weekly Time Budget</h3>
+        <p>How many hours per week can you realistically put into reselling? Be honest. This shapes the entire plan we build for you.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">Step 03</div>
+        <h3>Write Down What's Not Working</h3>
+        <p>Inventory not moving? No time? Social media going nowhere? List out the top 3 things you want to fix — be specific.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">Step 04</div>
+        <h3>Follow Amanda on YouTube</h3>
+        <p>Subscribe to Amanda Pruitt's channel and watch a couple videos. You'll get more out of the call if you're already familiar with how she thinks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="expect-section">
+  <div class="container">
+    <span class="section-tag">On the Call</span>
+    <h2>Here's What Your 30 Minutes Will Look Like</h2>
+    <p class="sub">Amanda runs tight, focused calls. No wasted time.</p>
+    <div class="expect-list">
+      <div class="expect-item">
+        <div class="dot"></div>
+        <div>
+          <h4>Life & Business Snapshot (5 min)</h4>
+          <p>Amanda will ask about your schedule, your household situation, and your current reselling setup to understand the full picture.</p>
+        </div>
+      </div>
+      <div class="expect-item">
+        <div class="dot"></div>
+        <div>
+          <h4>Finding the Bottleneck (10 min)</h4>
+          <p>Together you'll pinpoint exactly what's blocking your growth — whether it's time, systems, social media, or something else entirely.</p>
+        </div>
+      </div>
+      <div class="expect-item">
+        <div class="dot"></div>
+        <div>
+          <h4>Your Personal Game Plan (10 min)</h4>
+          <p>Amanda will give you specific, realistic action steps — built around your actual time and your actual life, not a perfect scenario.</p>
+        </div>
+      </div>
+      <div class="expect-item">
+        <div class="dot"></div>
+        <div>
+          <h4>Next Steps (5 min)</h4>
+          <p>If working together is the right fit, Amanda will walk you through what that looks like. No pressure, no hard sell.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Built by J&amp;G Operations for Amanda Pruitt.
+</footer>
+
+</body>
+</html>
