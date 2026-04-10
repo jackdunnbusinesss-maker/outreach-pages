@@ -1,182 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Master the Looks You Actually Want to Wear | Mrs G Living</title>
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #0a0a0f;
-    --accent: #ec4899;
-    --accent2: #be185d;
-    --accent3: #8b5cf6;
-    --text: #e2e8f0;
-    --muted: #94a3b8;
-    --card: #13131f;
-    --border: rgba(236,72,153,0.2);
-  }
-  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; overflow-x: hidden; }
-  a { color: var(--accent); text-decoration: none; }
-  nav { padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(10,10,15,0.95); backdrop-filter: blur(12px); z-index: 100; }
-  .nav-brand { display: flex; flex-direction: column; }
-  .nav-brand-main { font-size: 1.05rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .nav-brand-sub { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
-  .nav-cta { background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 0.5rem 1.2rem; border-radius: 6px; font-size: 0.85rem; font-weight: 700; transition: opacity 0.2s; }
-  .nav-cta:hover { opacity: 0.85; }
-  .hero { padding: 6rem 2rem 4rem; text-align: center; max-width: 880px; margin: 0 auto; position: relative; }
-  .hero::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(ellipse, rgba(236,72,153,0.1) 0%, transparent 70%); pointer-events: none; }
-  .eyebrow { display: inline-block; background: rgba(236,72,153,0.12); border: 1px solid var(--border); color: var(--accent); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 100px; margin-bottom: 1.5rem; }
-  h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.25rem; }
-  h1 span { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .hero-sub { font-size: 1.15rem; color: var(--muted); max-width: 640px; margin: 0 auto 2.5rem; }
-  .hero-cta { display: inline-block; background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 1rem 2.4rem; border-radius: 8px; font-size: 1.05rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(236,72,153,0.35); }
-  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 0 45px rgba(236,72,153,0.5); }
-  .hero-proof { margin-top: 2rem; color: var(--muted); font-size: 0.85rem; }
-  .hero-proof strong { color: var(--text); }
-  .video-section { max-width: 760px; margin: 3rem auto; padding: 0 2rem; }
-  .video-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 16px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-  .video-wrap::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(236,72,153,0.05), rgba(139,92,246,0.05)); }
-  .play-btn { width: 70px; height: 70px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; box-shadow: 0 0 40px rgba(236,72,153,0.35); }
-  .play-btn::after { content: ''; border-left: 24px solid #fff; border-top: 14px solid transparent; border-bottom: 14px solid transparent; margin-left: 5px; }
-  .video-label { position: absolute; bottom: 1.2rem; color: var(--muted); font-size: 0.8rem; z-index: 1; }
-  section { padding: 5rem 2rem; max-width: 1000px; margin: 0 auto; }
-  .section-eyebrow { color: var(--accent); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
-  h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; margin-bottom: 1rem; }
-  h2 span { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .problems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-  .problem-card { background: var(--card); border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 1.5rem; }
-  .problem-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
-  .problem-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: #f87171; }
-  .problem-card p { font-size: 0.9rem; color: var(--muted); }
-  .solution-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-  .solution-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; position: relative; overflow: hidden; }
-  .solution-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent2), var(--accent3)); }
-  .solution-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent); }
-  .solution-card p { font-size: 0.9rem; color: var(--muted); }
-  .brand-block { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; margin-top: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-  .brand-block-text h3 { font-size: 1.3rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.75rem; }
-  .brand-block-text p { color: var(--muted); font-size: 0.92rem; }
-  .brand-stats { display: grid; gap: 1rem; }
-  .b-stat { text-align: center; }
-  .b-num { font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
-  .b-label { font-size: 0.82rem; color: var(--muted); margin-top: 0.25rem; }
-  .included-list { margin-top: 2.5rem; display: grid; gap: 1rem; }
-  .included-item { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; }
-  .check { width: 22px; height: 22px; min-width: 22px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #fff; font-weight: 800; margin-top: 2px; }
-  .included-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; }
-  .included-item p { font-size: 0.85rem; color: var(--muted); }
-  .cta-section { text-align: center; padding: 6rem 2rem; background: linear-gradient(180deg, transparent, rgba(236,72,153,0.06)); }
-  .cta-box { max-width: 600px; margin: 0 auto; }
-  .cta-box p { color: var(--muted); margin-bottom: 2rem; }
-  .cta-btn { display: inline-block; background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 1.1rem 2.8rem; border-radius: 8px; font-size: 1.1rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(236,72,153,0.35); }
-  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(236,72,153,0.55); }
-  .cta-sub { margin-top: 1rem; font-size: 0.82rem; color: var(--muted); }
-  .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 0 2rem; }
-  footer { padding: 2rem; text-align: center; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--border); }
-  footer span { color: var(--accent); }
-  @media (max-width: 640px) {
-    h1 { font-size: 1.9rem; }
-    .brand-block { grid-template-columns: 1fr; }
-  }
-</style>
-</head>
-<body>
-<nav>
-  <div class="nav-brand">
-    <div class="nav-brand-main">Mrs G Living</div>
-    <div class="nav-brand-sub">Fashion</div>
-  </div>
-  <a href="#cta" class="nav-cta">Book Free Call</a>
-</nav>
-<div class="hero">
-  <div class="eyebrow">For Beauty & Makeup Lovers</div>
-  <h1>Master the Looks You Actually <span>Want to Wear</span></h1>
-  <p class="hero-sub">You've watched hundreds of tutorials and bought half the products in Sephora — but your everyday look still feels off. The problem isn't you. It's that nobody's taught you the fundamentals built around your features.</p>
-  <a href="#cta" class="hero-cta">Book Your Free Strategy Call</a>
-  <p class="hero-proof">Built with <strong>Mrs G Living</strong> — 5.1K subscribers building the fashion space on YouTube.</p>
-</div>
-<div class="video-section">
-  <div class="video-wrap">
-    <div class="play-btn"></div>
-    <div class="video-label">Watch: How This Works (Add Your VSL Here)</div>
-  </div>
-</div>
-<div class="divider"></div>
-<section>
-  <div class="section-eyebrow">The Real Problem</div>
-  <h2>Why Most Fashion Enthusiasts Stay <span>Stuck</span></h2>
-  <p style="color:var(--muted); max-width: 580px;">It's not a willingness problem. It's a structure problem. Without the right framework, effort doesn't compound — it just exhausts you.</p>
-  <div class="problems-grid">
-    <div class="problem-card"><div class="problem-icon">🎨</div><h3>Tutorials made for someone else's face</h3><p>Every tutorial assumes a specific eye shape, skin tone, or feature set. When yours don't match, the look falls flat.</p></div>
-    <div class="problem-card"><div class="problem-icon">💸</div><h3>A graveyard of wrong-shade products</h3><p>Foundations, concealers, blushes — you've bought them all and most of them sit unused because they weren't matched right.</p></div>
-    <div class="problem-card"><div class="problem-icon">⏰</div><h3>Looks that take an hour you don't have</h3><p>Most tutorials are built for content, not for real life. You need a routine that takes 10 minutes and still looks intentional.</p></div>
-    <div class="problem-card"><div class="problem-icon">🪞</div><h3>Skin that doesn't cooperate</h3><p>You can do the makeup, but if the skin underneath isn't right, nothing sits well. Nobody's teaching the prep that actually matters.</p></div>
-    <div class="problem-card"><div class="problem-icon">🔁</div><h3>Following trends that don't suit you</h3><p>Every trend goes viral and you try it — and most of them don't translate to your features or your life.</p></div>
-  </div>
-</section>
-<div class="divider"></div>
-<section>
-  <div class="section-eyebrow">The Solution</div>
-  <h2>What Actually <span>Works</span></h2>
-  <p style="color:var(--muted); max-width: 600px;">A clear system, built for real life — designed to deliver results without burning you out.</p>
-  <div class="solution-grid">
-    <div class="solution-card"><h3>Routines Built for Your Features</h3><p>Stop forcing tutorials made for someone else. Learn the principles and adapt them to your face, your tone, your life.</p></div>
-    <div class="solution-card"><h3>Product Selection That Doesn't Waste Money</h3><p>A clear filter for what to buy and what to skip — based on what actually works on your skin.</p></div>
-    <div class="solution-card"><h3>10-Minute Everyday Looks</h3><p>Effortless makeup that looks intentional and takes the time you actually have on a weekday morning.</p></div>
-    <div class="solution-card"><h3>Skin Prep That Makes Everything Better</h3><p>The base layer most tutorials skip — and why your makeup never sits right without it.</p></div>
-    <div class="solution-card"><h3>Color & Tone Matching</h3><p>Learn to match foundations, blushes, and lipsticks to your actual undertone instead of guessing.</p></div>
-    <div class="solution-card"><h3>Looks for Real Life</h3><p>Going-out, work, casual — a versatile rotation instead of one viral look you can't reuse.</p></div>
-  </div>
-</section>
-<div class="divider"></div>
-<section>
-  <div class="section-eyebrow">About Mrs G Living</div>
-  <h2>The <span>Track Record</span></h2>
-  <div class="brand-block">
-    <div class="brand-block-text">
-      <h3>Mrs G Living</h3>
-      <p>Mrs G Living has built a community of 5.1K subscribers in the fashion,beauty,lifestyle space. The advice on this page comes from real practice with a real audience — not theory pulled from a textbook.</p>
-    </div>
-    <div class="brand-stats">
-      <div class="b-stat">
-        <div class="b-num">5.1K</div>
-        <div class="b-label">YouTube subscribers</div>
-      </div>
-      <div class="b-stat">
-        <div class="b-num">Fashion</div>
-        <div class="b-label">fashion,beauty,lifestyle</div>
-      </div>
-      <div class="b-stat">
-        <div class="b-num">Real</div>
-        <div class="b-label">Built for real women, real life</div>
-      </div>
-    </div>
-  </div>
-</section>
-<div class="divider"></div>
-<section>
-  <div class="section-eyebrow">What's Included</div>
-  <h2>Everything You Need to <span>Actually Do This</span></h2>
-  <div class="included-list">
-    <div class="included-item"><div class="check">✓</div><div><h4>Personalized Routine Builder</h4><p>Walk through your features, skin type, and lifestyle to map the routine that fits you.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Product Selection Guide</h4><p>An honest, current list of what's worth buying — sorted by budget and skin type.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>10-Minute Everyday Look Library</h4><p>Step-by-step looks you can actually do on a weekday morning.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Skin Prep Masterclass</h4><p>The base layer most tutorials skip — and the one that makes everything else work.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Community & Direct Q&A</h4><p>Get product questions answered by people who actually know your situation.</p></div></div>
-  </div>
-</section>
-<div class="cta-section" id="cta">
-  <div class="cta-box">
-    <div class="section-eyebrow">Ready to Start?</div>
-    <h2>Book Your <span>Free Strategy Call</span></h2>
-    <p>We'll look at where you are right now — what's working, what's stalling, and the one change that would have the biggest impact for you. No pressure, no pitch.</p>
-    <a href="#" class="cta-btn">Book Your Free Strategy Call</a>
-    <p class="cta-sub">Limited spots. No credit card required.</p>
-  </div>
-</div>
-<footer>
-  <p>Built by <span>J&amp;G Operations</span> for Mrs G Living. Ready to deploy.</p>
-</footer>
-</body>
-</html>
+# Main Landing Page — Mrs G Living
+
+## Mrs. G's Living Room
+
+**Target:** Black women 45+ who want fashion, beauty, and real conversation — and are done with content that doesn't see them.
+
+---
+
+**HEADLINE:**
+Midlife isn't the end of anything. Pull up a chair.
+
+**SUBHEADLINE:**
+Mrs. G's Living Room is a monthly community for Black women in midlife who want to stay beautiful, stylish, and real — together. Beauty, fashion, Black-owned brand discovery, and the company of women who get it.
+
+**[JOIN NOW — $27/month]**
+
+---
+
+## WHY THIS EXISTS
+
+Most beauty and fashion content ignores women over 45. When it does speak to us, it's usually about "dressing appropriately" or "age-gracefully" — which, respectfully, is not the energy.
+
+I'm Mrs. G. I'm a proud Black woman sharing beauty, fashion, and real-life commentary on YouTube — with a little wisdom. I feature Black-owned brands because I shop with intention. And I wear what I love.
+
+The Living Room is the community I wanted — real conversation, real women, real confidence at every age.
+
+---
+
+## WHAT'S INSIDE
+
+**Monthly video calls** — We get on Zoom, we talk about what we're wearing, what we're loving, what we're thinking. Real conversation. No polish required.
+
+**Style content exclusive to members** — First look at new videos, behind-the-scenes brand reviews, and exclusive styling sessions just for us.
+
+**Black-owned brand discovery** — Every month I bring a new brand to the community's attention. These are brands I personally shop and vouch for.
+
+**Community space** — A private space to post outfits, ask questions, find accountability, and talk to women who are navigating the same season of life.
+
+**"Midlife Wins" challenges** — Monthly style and beauty challenges designed specifically for our demographic.
+
+---
+
+## THIS IS FOR YOU IF:
+
+- You're a Black woman, 45+, who still cares deeply about how you look and feel
+- You want community with women in the same season of life
+- You're interested in Black-owned fashion and beauty brands
+- You're done with content that treats your age as a problem to solve
+
+## THIS IS NOT FOR YOU IF:
+
+- You believe midlife means slowing down your style (different philosophy)
+- You're not interested in community — just content (YouTube is still free)
+
+---
+
+**THE INVESTMENT**
+
+**Mrs. G's Living Room — $27/month**
+
+Cancel anytime. Real value starting from the first call.
+
+**[JOIN NOW — $27/month]**
+
+---
+
+*Questions? DM @mrsgliving on YouTube or email mrsgliving@gmail.com*

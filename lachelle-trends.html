@@ -1,182 +1,124 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Build the Routine That Actually Works for You | Lachelle Trends</title>
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #0a0a0f;
-    --accent: #ec4899;
-    --accent2: #be185d;
-    --accent3: #8b5cf6;
-    --text: #e2e8f0;
-    --muted: #94a3b8;
-    --card: #13131f;
-    --border: rgba(236,72,153,0.2);
-  }
-  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; overflow-x: hidden; }
-  a { color: var(--accent); text-decoration: none; }
-  nav { padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(10,10,15,0.95); backdrop-filter: blur(12px); z-index: 100; }
-  .nav-brand { display: flex; flex-direction: column; }
-  .nav-brand-main { font-size: 1.05rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .nav-brand-sub { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
-  .nav-cta { background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 0.5rem 1.2rem; border-radius: 6px; font-size: 0.85rem; font-weight: 700; transition: opacity 0.2s; }
-  .nav-cta:hover { opacity: 0.85; }
-  .hero { padding: 6rem 2rem 4rem; text-align: center; max-width: 880px; margin: 0 auto; position: relative; }
-  .hero::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(ellipse, rgba(236,72,153,0.1) 0%, transparent 70%); pointer-events: none; }
-  .eyebrow { display: inline-block; background: rgba(236,72,153,0.12); border: 1px solid var(--border); color: var(--accent); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 100px; margin-bottom: 1.5rem; }
-  h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.25rem; }
-  h1 span { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .hero-sub { font-size: 1.15rem; color: var(--muted); max-width: 640px; margin: 0 auto 2.5rem; }
-  .hero-cta { display: inline-block; background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 1rem 2.4rem; border-radius: 8px; font-size: 1.05rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(236,72,153,0.35); }
-  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 0 45px rgba(236,72,153,0.5); }
-  .hero-proof { margin-top: 2rem; color: var(--muted); font-size: 0.85rem; }
-  .hero-proof strong { color: var(--text); }
-  .video-section { max-width: 760px; margin: 3rem auto; padding: 0 2rem; }
-  .video-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 16px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-  .video-wrap::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(236,72,153,0.05), rgba(139,92,246,0.05)); }
-  .play-btn { width: 70px; height: 70px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; box-shadow: 0 0 40px rgba(236,72,153,0.35); }
-  .play-btn::after { content: ''; border-left: 24px solid #fff; border-top: 14px solid transparent; border-bottom: 14px solid transparent; margin-left: 5px; }
-  .video-label { position: absolute; bottom: 1.2rem; color: var(--muted); font-size: 0.8rem; z-index: 1; }
-  section { padding: 5rem 2rem; max-width: 1000px; margin: 0 auto; }
-  .section-eyebrow { color: var(--accent); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
-  h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; margin-bottom: 1rem; }
-  h2 span { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .problems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-  .problem-card { background: var(--card); border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 1.5rem; }
-  .problem-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
-  .problem-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: #f87171; }
-  .problem-card p { font-size: 0.9rem; color: var(--muted); }
-  .solution-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-  .solution-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; position: relative; overflow: hidden; }
-  .solution-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent2), var(--accent3)); }
-  .solution-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent); }
-  .solution-card p { font-size: 0.9rem; color: var(--muted); }
-  .brand-block { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; margin-top: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-  .brand-block-text h3 { font-size: 1.3rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.75rem; }
-  .brand-block-text p { color: var(--muted); font-size: 0.92rem; }
-  .brand-stats { display: grid; gap: 1rem; }
-  .b-stat { text-align: center; }
-  .b-num { font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
-  .b-label { font-size: 0.82rem; color: var(--muted); margin-top: 0.25rem; }
-  .included-list { margin-top: 2.5rem; display: grid; gap: 1rem; }
-  .included-item { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; }
-  .check { width: 22px; height: 22px; min-width: 22px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #fff; font-weight: 800; margin-top: 2px; }
-  .included-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; }
-  .included-item p { font-size: 0.85rem; color: var(--muted); }
-  .cta-section { text-align: center; padding: 6rem 2rem; background: linear-gradient(180deg, transparent, rgba(236,72,153,0.06)); }
-  .cta-box { max-width: 600px; margin: 0 auto; }
-  .cta-box p { color: var(--muted); margin-bottom: 2rem; }
-  .cta-btn { display: inline-block; background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 1.1rem 2.8rem; border-radius: 8px; font-size: 1.1rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(236,72,153,0.35); }
-  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(236,72,153,0.55); }
-  .cta-sub { margin-top: 1rem; font-size: 0.82rem; color: var(--muted); }
-  .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 0 2rem; }
-  footer { padding: 2rem; text-align: center; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--border); }
-  footer span { color: var(--accent); }
-  @media (max-width: 640px) {
-    h1 { font-size: 1.9rem; }
-    .brand-block { grid-template-columns: 1fr; }
-  }
-</style>
-</head>
-<body>
-<nav>
-  <div class="nav-brand">
-    <div class="nav-brand-main">Lachelle Trends</div>
-    <div class="nav-brand-sub">Hair Fashion</div>
-  </div>
-  <a href="#cta" class="nav-cta">Book Free Call</a>
-</nav>
-<div class="hero">
-  <div class="eyebrow">For Beauty & Hair Enthusiasts</div>
-  <h1>Build the Routine That Actually <span>Works for You</span></h1>
-  <p class="hero-sub">Most beauty and hair tutorials online are made for someone else's face, someone else's texture, someone else's lifestyle. Here's how to stop guessing and build a personalized routine that gets real results.</p>
-  <a href="#cta" class="hero-cta">Book Your Free Strategy Call</a>
-  <p class="hero-proof">Built with <strong>Lachelle Trends</strong> — 86.8K subscribers building the hair fashion space on YouTube.</p>
-</div>
-<div class="video-section">
-  <div class="video-wrap">
-    <div class="play-btn"></div>
-    <div class="video-label">Watch: How This Works (Add Your VSL Here)</div>
-  </div>
-</div>
-<div class="divider"></div>
-<section>
-  <div class="section-eyebrow">The Real Problem</div>
-  <h2>Why Most Fashion Enthusiasts Stay <span>Stuck</span></h2>
-  <p style="color:var(--muted); max-width: 580px;">It's not a willingness problem. It's a structure problem. Without the right framework, effort doesn't compound — it just exhausts you.</p>
-  <div class="problems-grid">
-    <div class="problem-card"><div class="problem-icon">🎨</div><h3>Tutorials made for someone else's face</h3><p>Every tutorial assumes a specific eye shape, skin tone, or feature set. When yours don't match, the look falls flat.</p></div>
-    <div class="problem-card"><div class="problem-icon">💸</div><h3>A graveyard of wrong-shade products</h3><p>Foundations, concealers, blushes — you've bought them all and most of them sit unused because they weren't matched right.</p></div>
-    <div class="problem-card"><div class="problem-icon">⏰</div><h3>Looks that take an hour you don't have</h3><p>Most tutorials are built for content, not for real life. You need a routine that takes 10 minutes and still looks intentional.</p></div>
-    <div class="problem-card"><div class="problem-icon">🪞</div><h3>Skin that doesn't cooperate</h3><p>You can do the makeup, but if the skin underneath isn't right, nothing sits well. Nobody's teaching the prep that actually matters.</p></div>
-    <div class="problem-card"><div class="problem-icon">🔁</div><h3>Following trends that don't suit you</h3><p>Every trend goes viral and you try it — and most of them don't translate to your features or your life.</p></div>
-  </div>
-</section>
-<div class="divider"></div>
-<section>
-  <div class="section-eyebrow">The Solution</div>
-  <h2>What Actually <span>Works</span></h2>
-  <p style="color:var(--muted); max-width: 600px;">A clear system, built for real life — designed to deliver results without burning you out.</p>
-  <div class="solution-grid">
-    <div class="solution-card"><h3>Routines Built for Your Features</h3><p>Stop forcing tutorials made for someone else. Learn the principles and adapt them to your face, your tone, your life.</p></div>
-    <div class="solution-card"><h3>Product Selection That Doesn't Waste Money</h3><p>A clear filter for what to buy and what to skip — based on what actually works on your skin.</p></div>
-    <div class="solution-card"><h3>10-Minute Everyday Looks</h3><p>Effortless makeup that looks intentional and takes the time you actually have on a weekday morning.</p></div>
-    <div class="solution-card"><h3>Skin Prep That Makes Everything Better</h3><p>The base layer most tutorials skip — and why your makeup never sits right without it.</p></div>
-    <div class="solution-card"><h3>Color & Tone Matching</h3><p>Learn to match foundations, blushes, and lipsticks to your actual undertone instead of guessing.</p></div>
-    <div class="solution-card"><h3>Looks for Real Life</h3><p>Going-out, work, casual — a versatile rotation instead of one viral look you can't reuse.</p></div>
-  </div>
-</section>
-<div class="divider"></div>
-<section>
-  <div class="section-eyebrow">About Lachelle Trends</div>
-  <h2>The <span>Track Record</span></h2>
-  <div class="brand-block">
-    <div class="brand-block-text">
-      <h3>Lachelle Trends</h3>
-      <p>Lachelle Trends has built a community of 86.8K subscribers in the hair fashion,beauty,shopping space. The advice on this page comes from real practice with a real audience — not theory pulled from a textbook.</p>
-    </div>
-    <div class="brand-stats">
-      <div class="b-stat">
-        <div class="b-num">86.8K</div>
-        <div class="b-label">YouTube subscribers</div>
-      </div>
-      <div class="b-stat">
-        <div class="b-num">Hair Fashion</div>
-        <div class="b-label">hair fashion,beauty,shopping</div>
-      </div>
-      <div class="b-stat">
-        <div class="b-num">Real</div>
-        <div class="b-label">Built for real women, real life</div>
-      </div>
-    </div>
-  </div>
-</section>
-<div class="divider"></div>
-<section>
-  <div class="section-eyebrow">What's Included</div>
-  <h2>Everything You Need to <span>Actually Do This</span></h2>
-  <div class="included-list">
-    <div class="included-item"><div class="check">✓</div><div><h4>Personalized Routine Builder</h4><p>Walk through your features, skin type, and lifestyle to map the routine that fits you.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Product Selection Guide</h4><p>An honest, current list of what's worth buying — sorted by budget and skin type.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>10-Minute Everyday Look Library</h4><p>Step-by-step looks you can actually do on a weekday morning.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Skin Prep Masterclass</h4><p>The base layer most tutorials skip — and the one that makes everything else work.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Community & Direct Q&A</h4><p>Get product questions answered by people who actually know your situation.</p></div></div>
-  </div>
-</section>
-<div class="cta-section" id="cta">
-  <div class="cta-box">
-    <div class="section-eyebrow">Ready to Start?</div>
-    <h2>Book Your <span>Free Strategy Call</span></h2>
-    <p>We'll look at where you are right now — what's working, what's stalling, and the one change that would have the biggest impact for you. No pressure, no pitch.</p>
-    <a href="#" class="cta-btn">Book Your Free Strategy Call</a>
-    <p class="cta-sub">Limited spots. No credit card required.</p>
-  </div>
-</div>
-<footer>
-  <p>Built by <span>J&amp;G Operations</span> for Lachelle Trends. Ready to deploy.</p>
-</footer>
-</body>
-</html>
+# Main Landing Page Copy — Lachelle Trends
+
+## PAGE: Closet Remix Course Sales Page
+
+**Target audience:** Women 22-38 who feel like they have nothing to wear despite a full closet. Budget-conscious. Already watch Lachelle or found her through paid traffic.
+
+---
+
+**HEADLINE:**
+Your closet is full. You still have nothing to wear. Here's why — and how to fix it.
+
+**SUBHEADLINE:**
+Closet Remix is a self-paced course that teaches you how to actually use the wardrobe you already have — so you stop wasting money on clothes you don't wear and start getting dressed in under 10 minutes.
+
+---
+
+**[ENROLL NOW — $297]**
+
+---
+
+## SECTION 1: THE PROBLEM
+
+You've been buying things that don't work. Not because you have bad taste — because you've been shopping for items instead of outfits.
+
+You pick up a top that looks great on the rack. You get home, you try it with three things, and none of them work. It sits in your closet for six months. You donate it. You buy something new. Repeat.
+
+Meanwhile, your closet is full and you still wear the same 10 things in rotation.
+
+This is not a shopping problem. It's a styling problem.
+
+And styling is learnable.
+
+---
+
+## SECTION 2: WHO I AM
+
+I'm Lachelle. 86,000 people watch me style outfits, thrift, and get dressed on YouTube — not because I have some magic wardrobe, but because I developed a system.
+
+I've built complete looks from $15 Goodwill finds. I've done "Wearing My Closet" challenges where I go 30 days without buying anything and still feel put-together. I've styled every occasion a real woman's life actually has — church, brunch, errands, date night, work — on a real woman's budget.
+
+The system works. And I built a course to teach it.
+
+---
+
+## SECTION 3: WHAT'S INSIDE CLOSET REMIX
+
+**Module 1: The Closet Audit**
+Before you style anything, you need to know what you have. Most women don't actually know their own wardrobe. We fix that here — a step-by-step process for going through everything you own, deciding what works, and clearing out what doesn't.
+
+**Module 2: The Outfit Formula**
+I have 4 outfit formulas I use for every occasion. You'll learn to apply them to your wardrobe — so getting dressed stops being a creative exercise and starts being a system.
+
+**Module 3: Occasion Mapping**
+Church. Brunch. Work. Date night. Family photos. Every occasion has a code. We map your actual occasions and build a go-to look for each one from what you already own.
+
+**Module 4: The Thrift Strategy**
+If you've ever left a thrift store empty-handed, this is why. I'll walk you through my exact thrift system — what sections to hit first, how to evaluate a find, how to decide if it fits your existing wardrobe before you buy it.
+
+**Module 5: The Smart Shopping List**
+After you've audited your closet and mapped your occasions, you'll know exactly what (if anything) you actually need. This module walks you through building a targeted shopping list so every future purchase is intentional.
+
+---
+
+## SECTION 4: RESULTS LOOK LIKE
+
+"I went through the audit section and donated 40% of my closet — and I was left with more to wear than before. That sounds crazy but it's true."
+
+"The occasion mapping module alone was worth it. I've been stressing about what to wear to church every Sunday for years. Now I have three go-to options and I don't think about it."
+
+"I came for the thrift strategy and stayed for everything else. I haven't bought anything new in two months and I feel better dressed than I have in years."
+
+---
+
+## SECTION 5: IS THIS FOR YOU?
+
+**Closet Remix is for you if:**
+- You feel like you have nothing to wear despite a full closet
+- You impulse-buy things that don't work with anything else you own
+- You want to thrift but never find anything good
+- You stress about specific occasions — church, events, dates — and wish you had a go-to
+- You're done spending money on clothes that just sit there
+
+**Closet Remix is not for you if:**
+- You love buying new things and have no intention of slowing down (this won't help)
+- You already have a system and it's working
+- You're looking for someone to tell you what's trending (I'm talking about your specific wardrobe, not what's on the runway)
+
+---
+
+## SECTION 6: THE INVESTMENT
+
+**Closet Remix — $297**
+
+One-time payment. Lifetime access. Includes all 5 modules, the audit worksheet, the outfit formula guide, and the thrift checklist.
+
+This is less than most impulse shopping trips that don't work out. If this course stops you from making two bad purchases, it's already paid for itself.
+
+---
+
+**[ENROLL NOW — $297]**
+
+---
+
+## SECTION 7: FREQUENTLY ASKED QUESTIONS
+
+**How long does the course take?**
+You can go through it in a weekend if you want. The modules are designed to build on each other, so I recommend doing them in order. Most people finish within 1-2 weeks.
+
+**Do I need a big wardrobe for this to work?**
+No. This actually works better with a smaller wardrobe. The goal is to work with what you have, not what you wish you had.
+
+**What if I mostly thrift — will this still work?**
+Yes — Module 4 is specifically about thrift strategy. The whole course is built around accessible, real-world fashion.
+
+**Is there a refund policy?**
+If you go through the course and genuinely don't find value, email me within 14 days and I'll refund you. I'm not interested in keeping money from someone it didn't help.
+
+---
+
+**[ENROLL NOW — $297]**
+
+---
+
+*Questions? Email [email] or DM @lachelletrends on Instagram.*

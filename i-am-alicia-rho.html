@@ -1,275 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Build the Beauty Routine and Style That Actually Feels Like You | I AM ALICIA RHO</title>
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #0a0a0f;
-    --accent: #ec4899;
-    --accent2: #be185d;
-    --accent3: #8b5cf6;
-    --text: #e2e8f0;
-    --muted: #94a3b8;
-    --card: #13131f;
-    --border: rgba(236,72,153,0.2);
-  }
-  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; overflow-x: hidden; }
-  a { color: var(--accent); text-decoration: none; }
-
-  nav { padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(10,10,15,0.95); backdrop-filter: blur(12px); z-index: 100; }
-  .nav-brand { display: flex; flex-direction: column; }
-  .nav-brand-main { font-size: 1.05rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .nav-brand-sub { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
-  .nav-cta { background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 0.5rem 1.2rem; border-radius: 6px; font-size: 0.85rem; font-weight: 700; transition: opacity 0.2s; }
-  .nav-cta:hover { opacity: 0.85; }
-
-  .hero { padding: 6rem 2rem 4rem; text-align: center; max-width: 880px; margin: 0 auto; position: relative; }
-  .hero::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(ellipse, rgba(236,72,153,0.1) 0%, transparent 70%); pointer-events: none; }
-  .eyebrow { display: inline-block; background: rgba(236,72,153,0.12); border: 1px solid var(--border); color: var(--accent); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 100px; margin-bottom: 1.5rem; }
-  h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.25rem; }
-  h1 span { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .hero-sub { font-size: 1.15rem; color: var(--muted); max-width: 640px; margin: 0 auto 2.5rem; }
-  .hero-cta { display: inline-block; background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 1rem 2.4rem; border-radius: 8px; font-size: 1.05rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(236,72,153,0.35); }
-  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 0 45px rgba(236,72,153,0.5); }
-  .hero-proof { margin-top: 2rem; color: var(--muted); font-size: 0.85rem; }
-  .hero-proof strong { color: var(--text); }
-
-  .video-section { max-width: 760px; margin: 3rem auto; padding: 0 2rem; }
-  .video-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 16px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-  .video-wrap::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(236,72,153,0.05), rgba(139,92,246,0.05)); }
-  .play-btn { width: 70px; height: 70px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; box-shadow: 0 0 40px rgba(236,72,153,0.35); }
-  .play-btn::after { content: ''; border-left: 24px solid #fff; border-top: 14px solid transparent; border-bottom: 14px solid transparent; margin-left: 5px; }
-  .video-label { position: absolute; bottom: 1.2rem; color: var(--muted); font-size: 0.8rem; z-index: 1; }
-
-  section { padding: 5rem 2rem; max-width: 1000px; margin: 0 auto; }
-  .section-eyebrow { color: var(--accent); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
-  h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; margin-bottom: 1rem; }
-  h2 span { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-
-  .problems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-  .problem-card { background: var(--card); border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 1.5rem; }
-  .problem-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
-  .problem-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: #f87171; }
-  .problem-card p { font-size: 0.9rem; color: var(--muted); }
-
-  .solution-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-  .solution-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; position: relative; overflow: hidden; }
-  .solution-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent2), var(--accent3)); }
-  .solution-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent); }
-  .solution-card p { font-size: 0.9rem; color: var(--muted); }
-
-  .brand-block { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; margin-top: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-  .brand-block-text h3 { font-size: 1.3rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.75rem; }
-  .brand-block-text p { color: var(--muted); font-size: 0.92rem; }
-  .brand-stats { display: grid; gap: 1rem; }
-  .b-stat { text-align: center; }
-  .b-num { font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
-  .b-label { font-size: 0.82rem; color: var(--muted); margin-top: 0.25rem; }
-
-  .included-list { margin-top: 2.5rem; display: grid; gap: 1rem; }
-  .included-item { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; }
-  .check { width: 22px; height: 22px; min-width: 22px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #fff; font-weight: 800; margin-top: 2px; }
-  .included-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; }
-  .included-item p { font-size: 0.85rem; color: var(--muted); }
-
-  .cta-section { text-align: center; padding: 6rem 2rem; background: linear-gradient(180deg, transparent, rgba(236,72,153,0.06)); }
-  .cta-box { max-width: 600px; margin: 0 auto; }
-  .cta-box p { color: var(--muted); margin-bottom: 2rem; }
-  .cta-btn { display: inline-block; background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 1.1rem 2.8rem; border-radius: 8px; font-size: 1.1rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(236,72,153,0.35); }
-  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(236,72,153,0.55); }
-  .cta-sub { margin-top: 1rem; font-size: 0.82rem; color: var(--muted); }
-
-  .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 0 2rem; }
-  footer { padding: 2rem; text-align: center; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--border); }
-  footer span { color: var(--accent); }
-
-  @media (max-width: 640px) {
-    h1 { font-size: 1.9rem; }
-    .brand-block { grid-template-columns: 1fr; }
-  }
-</style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Baby Prep Done Right — I AM ALICIA RHO</title>
+  <style>
+    :root { --bg:#0a0a0a; --surface:#141414; --border:#242424; --accent:#c8a96e; --text:#f0f0f0; --muted:#888; --font:'Inter',sans-serif; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:var(--bg); color:var(--text); font-family:var(--font); line-height:1.7; }
+    .container { max-width:800px; margin:0 auto; padding:0 24px; }
+    section { padding:72px 0; border-bottom:1px solid var(--border); }
+    .hero { text-align:center; padding:100px 0 72px; }
+    .hero .eyebrow { color:var(--accent); font-size:0.85rem; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:20px; }
+    .hero h1 { font-size:clamp(2rem,5vw,3.2rem); font-weight:700; line-height:1.2; margin-bottom:24px; }
+    .hero h1 span { color:var(--accent); }
+    .hero p { font-size:1.1rem; color:#ccc; max-width:600px; margin:0 auto 40px; }
+    .cta-btn { display:inline-block; padding:18px 40px; background:var(--accent); color:#000; font-weight:700; font-size:1rem; border-radius:10px; text-decoration:none; }
+    .cta-sub { font-size:0.85rem; color:var(--muted); margin-top:12px; }
+    .proof-bar { display:flex; justify-content:center; gap:48px; flex-wrap:wrap; padding:32px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .proof-item { text-align:center; }
+    .proof-item .num { font-size:1.8rem; font-weight:700; color:var(--accent); }
+    .proof-item .label { font-size:0.85rem; color:var(--muted); }
+    .video-placeholder { background:var(--surface); border:1px solid var(--border); border-radius:16px; height:360px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; margin:32px 0; }
+    .play-btn { width:80px; height:80px; background:var(--accent); border-radius:50%; display:flex; align-items:center; justify-content:center; }
+    .play-btn svg { margin-left:5px; }
+    .video-label { color:var(--muted); font-size:0.9rem; }
+    .problem-list { list-style:none; margin:32px 0; }
+    .problem-list li { padding:16px 0; border-bottom:1px solid var(--border); color:#ccc; padding-left:24px; position:relative; }
+    .problem-list li::before { content:"—"; position:absolute; left:0; color:var(--accent); }
+    .solution-steps { display:grid; gap:24px; margin:32px 0; }
+    .solution-step { display:flex; gap:20px; background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:24px; }
+    .step-num { font-size:1.4rem; font-weight:700; color:var(--accent); min-width:32px; }
+    .step-content h3 { font-size:1rem; font-weight:600; margin-bottom:6px; }
+    .step-content p { color:var(--muted); font-size:0.95rem; margin:0; }
+    .testimonial-grid { display:grid; gap:20px; margin:32px 0; }
+    .testimonial-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:24px; }
+    .testimonial-card blockquote { color:#ccc; font-style:italic; margin-bottom:12px; }
+    .testimonial-card cite { font-size:0.85rem; color:var(--muted); }
+    .included-grid { display:grid; gap:16px; margin:32px 0; }
+    .included-item { display:flex; gap:16px; align-items:flex-start; padding:20px; background:var(--surface); border:1px solid var(--border); border-radius:12px; }
+    .included-icon { color:var(--accent); font-size:1.2rem; }
+    .included-item h3 { font-size:0.95rem; font-weight:600; margin-bottom:4px; }
+    .included-item p { font-size:0.9rem; color:var(--muted); margin:0; }
+    .cta-section { text-align:center; }
+    .cta-section h2 { font-size:2rem; font-weight:700; margin-bottom:16px; }
+    .cta-section p { color:#ccc; margin-bottom:32px; }
+    footer { text-align:center; padding:48px 0; color:var(--muted); font-size:0.85rem; }
+    h2 { font-size:1.8rem; font-weight:700; margin-bottom:16px; }
+    h2 span { color:var(--accent); }
+    .section-intro { color:#ccc; margin-bottom:32px; max-width:600px; }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
 </head>
 <body>
+<div class="container">
 
-<nav>
-  <div class="nav-brand">
-    <div class="nav-brand-main">I AM ALICIA RHO</div>
-    <div class="nav-brand-sub">Beauty,Fashion,Lifestyle Vlogs</div>
+  <div class="hero">
+    <p class="eyebrow">For Expectant and New Moms on a Real Budget</p>
+    <h1>Stop Guessing.<br/><span>Baby Prep Done Right the First Time.</span></h1>
+    <p>From someone who's been curvy, pregnant, on a budget, and honest about all of it. No sponsored picks. No aspirational budgets. Just what actually works.</p>
+    <a href="#book" class="cta-btn">Get the Free Guide</a>
+    <p class="cta-sub">So you can build your registry and wardrobe without wasting money on things you won't use.</p>
   </div>
-  <a href="#cta" class="nav-cta">Book Free Call</a>
-</nav>
 
-<div class="hero">
-  <div class="eyebrow">For Beauty & Lifestyle Lovers</div>
-  <h1>Build the Beauty Routine and Style That <span>Actually Feels Like You</span></h1>
-  <p class="hero-sub">There's no shortage of products, tutorials, or trends. What's missing is a routine built specifically for your skin, your features, and your real life. Here is how to put that together.</p>
-  <a href="#cta" class="hero-cta">Book Your Free Strategy Call</a>
-  <p class="hero-proof">Built with <strong>I AM ALICIA RHO</strong> — 2.1K subscribers strong on YouTube. Real experience, real results.</p>
+  <div class="proof-bar">
+    <div class="proof-item"><div class="num">2,000+</div><div class="label">Moms Following</div></div>
+    <div class="proof-item"><div class="num">Honest</div><div class="label">No Sponsored Picks</div></div>
+    <div class="proof-item"><div class="num">Curvy</div><div class="label">Specific + Budget-First</div></div>
+  </div>
+
+  <section>
+    <h2>From a Mom Who <span>Tested Everything</span></h2>
+    <p class="section-intro">I'm Alicia — lifestyle creator, curvy woman, new mom, and obsessive product tester. I spent my entire pregnancy finding what's actually worth buying at prices that actually make sense. This guide is everything I learned, organized so you don't have to start from scratch.</p>
+    <div class="video-placeholder">
+      <div class="play-btn"><svg width="28" height="28" fill="#000" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <span class="video-label">Drop your intro video or VSL here</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Does Any of <span>This Sound Familiar?</span></h2>
+    <ul class="problem-list">
+      <li>You're pregnant and curvy and the maternity section has three options that aren't cute</li>
+      <li>You don't know what to actually buy for the baby and everyone has a different opinion</li>
+      <li>You want to order from Temu and Amazon but you don't know what's worth it</li>
+      <li>Your baby registry has $3,000 of stuff on it and you have no idea what you'll actually use</li>
+      <li>You're trying to save for the baby AND feel good about yourself during the process</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Here's <span>What Changes</span></h2>
+    <div class="solution-steps">
+      <div class="solution-step"><div class="step-num">1</div><div class="step-content"><h3>Curvy Maternity Style Sorted</h3><p>Everything that actually works for a curvy body, from Amazon and Temu, organized by trimester.</p></div></div>
+      <div class="solution-step"><div class="step-num">2</div><div class="step-content"><h3>Registry Built Right</h3><p>Honest ratings: need it / nice to have / complete waste. Full registry under $500.</p></div></div>
+      <div class="solution-step"><div class="step-num">3</div><div class="step-content"><h3>Temu and Amazon Vetted</h3><p>What's actually safe and worth it, what to avoid, and where to order what.</p></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What <span>Moms Say</span></h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card"><blockquote>"Built my full registry for $480 using the guide. My mom kept sending me $200 strollers. This was so much better."</blockquote><cite>— Keisha [placeholder]</cite></div>
+      <div class="testimonial-card"><blockquote>"Finally found maternity outfits that fit and didn't cost a fortune. The curvy-specific section was what I'd been looking for."</blockquote><cite>— Simone [placeholder]</cite></div>
+      <div class="testimonial-card"><blockquote>"Even if you're not ready to buy yet — just having the list reduces the overwhelm so much."</blockquote><cite>— Destiny [placeholder]</cite></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What You <span>Get (Free)</span></h2>
+    <div class="included-grid">
+      <div class="included-item"><div class="included-icon">◆</div><div><h3>Curvy Maternity Style Guide</h3><p>What works, where to get it, organized by trimester and budget.</p></div></div>
+      <div class="included-item"><div class="included-icon">◆</div><div><h3>Budget Baby Registry Checklist</h3><p>Honest rankings. Everything rated need/nice/skip with budget alternatives.</p></div></div>
+      <div class="included-item"><div class="included-icon">◆</div><div><h3>Temu and Amazon Verified Picks</h3><p>Personally tested. Safety-checked for baby items. No guessing.</p></div></div>
+    </div>
+  </section>
+
+  <section id="book" class="cta-section">
+    <h2>Ready to <span>Stop Guessing?</span></h2>
+    <p>Get the free guide. Build your registry and wardrobe this weekend.</p>
+    <a href="#" class="cta-btn">Get the Free Guide Now</a>
+    <p class="cta-sub">So your prep is done right without wasting money you don't have.</p>
+  </section>
+
 </div>
-
-<div class="video-section">
-  <div class="video-wrap">
-    <div class="play-btn"></div>
-    <div class="video-label">Watch: How This System Works (Add Your VSL Here)</div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<section>
-  <div class="section-eyebrow">The Real Problem</div>
-  <h2>Why Most People <span>Stay Stuck</span></h2>
-  <p style="color:var(--muted); max-width: 580px;">The effort is there. The desire is there. But without the right framework, the same problems keep showing up month after month.</p>
-  <div class="problems-grid">
-    <div class="problem-card">
-      <div class="problem-icon">🧴</div>
-      <h3>A skincare shelf full of nothing that works</h3>
-      <p>You've tried the viral products. Your skin still isn't where you want it. Something in the routine isn't matching what your skin needs.</p>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">💄</div>
-      <h3>Makeup that never looks like the tutorial</h3>
-      <p>You buy the same products, you watch the same videos, and your face still doesn't look like theirs. The technique is missing pieces.</p>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">👗</div>
-      <h3>Style that doesn't feel cohesive</h3>
-      <p>You like your clothes individually but nothing comes together as an actual look. Getting dressed is exhausting.</p>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">📱</div>
-      <h3>Following advice that wasn't meant for you</h3>
-      <p>Most beauty content is generic. Your skin tone, undertone, features, and lifestyle aren't in the advice you're getting.</p>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">⏰</div>
-      <h3>Routines that take too long</h3>
-      <p>Your morning is forty minutes of beauty steps and you're still rushing out the door. There has to be a smarter way.</p>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section>
-  <div class="section-eyebrow">The Solution</div>
-  <h2>A Real <span>System</span> That Works</h2>
-  <p style="color:var(--muted); max-width: 600px;">This is the framework built for people who are ready to stop guessing and start seeing results.</p>
-  <div class="solution-grid">
-    <div class="solution-card">
-      <h3>Skincare That Matches Your Skin</h3>
-      <p>Build a routine around your actual skin type, concerns, and budget — not whatever's trending.</p>
-    </div>
-    <div class="solution-card">
-      <h3>Makeup Techniques For Your Features</h3>
-      <p>Application methods adapted to your face shape, eye shape, and undertone instead of a one-size-fits-all template.</p>
-    </div>
-    <div class="solution-card">
-      <h3>Personal Style Foundation</h3>
-      <p>Define your look so every purchase and every outfit moves you closer to it.</p>
-    </div>
-    <div class="solution-card">
-      <h3>Product Curation</h3>
-      <p>Stop wasting money on products that don't suit you. Learn to choose what actually works.</p>
-    </div>
-    <div class="solution-card">
-      <h3>Streamlined Routines</h3>
-      <p>Morning and evening routines that fit into a real schedule without skipping the things that matter.</p>
-    </div>
-    <div class="solution-card">
-      <h3>Confidence Built In</h3>
-      <p>The whole point of all of this — feeling like yourself when you walk out the door.</p>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section>
-  <div class="section-eyebrow">About I AM ALICIA RHO</div>
-  <h2>The <span>Track Record</span></h2>
-  <div class="brand-block">
-    <div class="brand-block-text">
-      <h3>I AM ALICIA RHO</h3>
-      <p>I AM ALICIA RHO has built a community of 2.1K subscribers on YouTube around real experience and real results. This isn't theory pulled from a textbook — it's the exact approach refined over years of doing the work and sharing it publicly.</p>
-    </div>
-    <div class="brand-stats">
-      <div class="b-stat">
-        <div class="b-num">2.1K</div>
-        <div class="b-label">YouTube subscribers</div>
-      </div>
-      <div class="b-stat">
-        <div class="b-num">Proven</div>
-        <div class="b-label">Beauty,Fashion,Lifestyle Vlogs</div>
-      </div>
-      <div class="b-stat">
-        <div class="b-num">Real</div>
-        <div class="b-label">Built from lived experience</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section>
-  <div class="section-eyebrow">What's Included</div>
-  <h2>Everything You Need to <span>Get Results</span></h2>
-  <div class="included-list">
-    <div class="included-item">
-      <div class="check">✓</div>
-      <div>
-        <h4>Beauty Routine Blueprint</h4>
-        <p>A skincare and makeup routine built around your specific skin, features, and goals.</p>
-      </div>
-    </div>
-    <div class="included-item">
-      <div class="check">✓</div>
-      <div>
-        <h4>Wardrobe & Style Guide</h4>
-        <p>Define your aesthetic and build a wardrobe that backs it up.</p>
-      </div>
-    </div>
-    <div class="included-item">
-      <div class="check">✓</div>
-      <div>
-        <h4>Product Recommendation List</h4>
-        <p>Specific products curated for your skin type, undertone, and budget.</p>
-      </div>
-    </div>
-    <div class="included-item">
-      <div class="check">✓</div>
-      <div>
-        <h4>Application Walkthrough</h4>
-        <p>Step-by-step techniques for the makeup looks that flatter you most.</p>
-      </div>
-    </div>
-    <div class="included-item">
-      <div class="check">✓</div>
-      <div>
-        <h4>Direct Access</h4>
-        <p>Send pictures, ask questions, and get personal feedback on your routine.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="cta-section" id="cta">
-  <div class="cta-box">
-    <div class="section-eyebrow">Ready to Start?</div>
-    <h2>Book Your <span>Free Strategy Call</span></h2>
-    <p>We'll look at where your beauty and style routines are right now, what isn't working, and what one change would have the biggest impact on how you look and feel every day.</p>
-    <a href="#" class="cta-btn">Book Your Free Strategy Call</a>
-    <p class="cta-sub">Limited spots. No credit card required.</p>
-  </div>
-</div>
-
-<footer>
-  <p>Built by <span>J&amp;G Operations</span> for I AM ALICIA RHO. Ready to deploy.</p>
-</footer>
-
+<footer>Built by J&G Operations for Alicia Rho. Ready to deploy.</footer>
 </body>
 </html>

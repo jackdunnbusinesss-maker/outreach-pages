@@ -1,182 +1,145 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Build a Wardrobe That Feels Effortless | Nurse Neak</title>
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #0a0a0f;
-    --accent: #ec4899;
-    --accent2: #be185d;
-    --accent3: #8b5cf6;
-    --text: #e2e8f0;
-    --muted: #94a3b8;
-    --card: #13131f;
-    --border: rgba(236,72,153,0.2);
-  }
-  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; overflow-x: hidden; }
-  a { color: var(--accent); text-decoration: none; }
-  nav { padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(10,10,15,0.95); backdrop-filter: blur(12px); z-index: 100; }
-  .nav-brand { display: flex; flex-direction: column; }
-  .nav-brand-main { font-size: 1.05rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .nav-brand-sub { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
-  .nav-cta { background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 0.5rem 1.2rem; border-radius: 6px; font-size: 0.85rem; font-weight: 700; transition: opacity 0.2s; }
-  .nav-cta:hover { opacity: 0.85; }
-  .hero { padding: 6rem 2rem 4rem; text-align: center; max-width: 880px; margin: 0 auto; position: relative; }
-  .hero::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(ellipse, rgba(236,72,153,0.1) 0%, transparent 70%); pointer-events: none; }
-  .eyebrow { display: inline-block; background: rgba(236,72,153,0.12); border: 1px solid var(--border); color: var(--accent); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 100px; margin-bottom: 1.5rem; }
-  h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.25rem; }
-  h1 span { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .hero-sub { font-size: 1.15rem; color: var(--muted); max-width: 640px; margin: 0 auto 2.5rem; }
-  .hero-cta { display: inline-block; background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 1rem 2.4rem; border-radius: 8px; font-size: 1.05rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(236,72,153,0.35); }
-  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 0 45px rgba(236,72,153,0.5); }
-  .hero-proof { margin-top: 2rem; color: var(--muted); font-size: 0.85rem; }
-  .hero-proof strong { color: var(--text); }
-  .video-section { max-width: 760px; margin: 3rem auto; padding: 0 2rem; }
-  .video-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 16px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-  .video-wrap::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(236,72,153,0.05), rgba(139,92,246,0.05)); }
-  .play-btn { width: 70px; height: 70px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; box-shadow: 0 0 40px rgba(236,72,153,0.35); }
-  .play-btn::after { content: ''; border-left: 24px solid #fff; border-top: 14px solid transparent; border-bottom: 14px solid transparent; margin-left: 5px; }
-  .video-label { position: absolute; bottom: 1.2rem; color: var(--muted); font-size: 0.8rem; z-index: 1; }
-  section { padding: 5rem 2rem; max-width: 1000px; margin: 0 auto; }
-  .section-eyebrow { color: var(--accent); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
-  h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; margin-bottom: 1rem; }
-  h2 span { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .problems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-  .problem-card { background: var(--card); border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 1.5rem; }
-  .problem-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
-  .problem-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: #f87171; }
-  .problem-card p { font-size: 0.9rem; color: var(--muted); }
-  .solution-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-  .solution-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; position: relative; overflow: hidden; }
-  .solution-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent2), var(--accent3)); }
-  .solution-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent); }
-  .solution-card p { font-size: 0.9rem; color: var(--muted); }
-  .brand-block { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; margin-top: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-  .brand-block-text h3 { font-size: 1.3rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.75rem; }
-  .brand-block-text p { color: var(--muted); font-size: 0.92rem; }
-  .brand-stats { display: grid; gap: 1rem; }
-  .b-stat { text-align: center; }
-  .b-num { font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
-  .b-label { font-size: 0.82rem; color: var(--muted); margin-top: 0.25rem; }
-  .included-list { margin-top: 2.5rem; display: grid; gap: 1rem; }
-  .included-item { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; }
-  .check { width: 22px; height: 22px; min-width: 22px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #fff; font-weight: 800; margin-top: 2px; }
-  .included-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; }
-  .included-item p { font-size: 0.85rem; color: var(--muted); }
-  .cta-section { text-align: center; padding: 6rem 2rem; background: linear-gradient(180deg, transparent, rgba(236,72,153,0.06)); }
-  .cta-box { max-width: 600px; margin: 0 auto; }
-  .cta-box p { color: var(--muted); margin-bottom: 2rem; }
-  .cta-btn { display: inline-block; background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 1.1rem 2.8rem; border-radius: 8px; font-size: 1.1rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(236,72,153,0.35); }
-  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(236,72,153,0.55); }
-  .cta-sub { margin-top: 1rem; font-size: 0.82rem; color: var(--muted); }
-  .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 0 2rem; }
-  footer { padding: 2rem; text-align: center; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--border); }
-  footer span { color: var(--accent); }
-  @media (max-width: 640px) {
-    h1 { font-size: 1.9rem; }
-    .brand-block { grid-template-columns: 1fr; }
-  }
-</style>
-</head>
-<body>
-<nav>
-  <div class="nav-brand">
-    <div class="nav-brand-main">Nurse Neak</div>
-    <div class="nav-brand-sub">Lifestyle</div>
-  </div>
-  <a href="#cta" class="nav-cta">Book Free Call</a>
-</nav>
-<div class="hero">
-  <div class="eyebrow">For Fashion-Forward Women</div>
-  <h1>Build a Wardrobe <span>That Feels Effortless</span></h1>
-  <p class="hero-sub">Closets full of clothes and nothing to wear. Sound familiar? It's not the clothes — it's the system. Here's how to build a wardrobe that actually works the way you live.</p>
-  <a href="#cta" class="hero-cta">Book Your Free Strategy Call</a>
-  <p class="hero-proof">Built with <strong>Nurse Neak</strong> — 1.9K subscribers building the lifestyle space on YouTube.</p>
-</div>
-<div class="video-section">
-  <div class="video-wrap">
-    <div class="play-btn"></div>
-    <div class="video-label">Watch: How This Works (Add Your VSL Here)</div>
-  </div>
-</div>
-<div class="divider"></div>
-<section>
-  <div class="section-eyebrow">The Real Problem</div>
-  <h2>Why Most Busy Women Stay <span>Stuck</span></h2>
-  <p style="color:var(--muted); max-width: 580px;">It's not a willingness problem. It's a structure problem. Without the right framework, effort doesn't compound — it just exhausts you.</p>
-  <div class="problems-grid">
-    <div class="problem-card"><div class="problem-icon">👗</div><h3>Closet full, nothing to wear</h3><p>Your wardrobe is stuffed and you still feel underdressed every morning. The math doesn't add up — until you understand why.</p></div>
-    <div class="problem-card"><div class="problem-icon">💸</div><h3>Money wasted on trends that died</h3><p>You bought the thing everyone was wearing six months ago. Now it's collecting dust.</p></div>
-    <div class="problem-card"><div class="problem-icon">🤷‍♀️</div><h3>No clear personal style</h3><p>You like a lot of looks on other people but can't define your own. Without a point of view, every purchase is a guess.</p></div>
-    <div class="problem-card"><div class="problem-icon">⏰</div><h3>Mornings are a stress fest</h3><p>Getting dressed shouldn't take twenty minutes of trying things on and discarding them. With a system, it doesn't.</p></div>
-    <div class="problem-card"><div class="problem-icon">🪞</div><h3>Outfits that never feel quite right</h3><p>You leave the house and feel slightly off all day. The right base wardrobe ends that feeling for good.</p></div>
-  </div>
-</section>
-<div class="divider"></div>
-<section>
-  <div class="section-eyebrow">The Solution</div>
-  <h2>What Actually <span>Works</span></h2>
-  <p style="color:var(--muted); max-width: 600px;">A clear system, built for real life — designed to deliver results without burning you out.</p>
-  <div class="solution-grid">
-    <div class="solution-card"><h3>Define Your Personal Style</h3><p>The exercises and frameworks to articulate exactly what works on you and what you love.</p></div>
-    <div class="solution-card"><h3>Build a Capsule That Works</h3><p>A core wardrobe that mixes effortlessly and ends decision fatigue.</p></div>
-    <div class="solution-card"><h3>Shop With a Filter</h3><p>A clear yes/no test before any purchase — so the closet stops filling with regret.</p></div>
-    <div class="solution-card"><h3>Accessorize With Intent</h3><p>How a few right pieces transform basics into outfits that feel finished.</p></div>
-    <div class="solution-card"><h3>Beauty + Fashion in Sync</h3><p>Hair, makeup, and clothes that work together — not three disconnected efforts.</p></div>
-    <div class="solution-card"><h3>Confidence on Autopilot</h3><p>When the system is right, mornings get fast and you leave the house feeling sharp every time.</p></div>
-  </div>
-</section>
-<div class="divider"></div>
-<section>
-  <div class="section-eyebrow">About Nurse Neak</div>
-  <h2>The <span>Track Record</span></h2>
-  <div class="brand-block">
-    <div class="brand-block-text">
-      <h3>Nurse Neak</h3>
-      <p>Nurse Neak has built a community of 1.9K subscribers in the lifestyle,fashion,home makeover space. The advice on this page comes from real practice with a real audience — not theory pulled from a textbook.</p>
-    </div>
-    <div class="brand-stats">
-      <div class="b-stat">
-        <div class="b-num">1.9K</div>
-        <div class="b-label">YouTube subscribers</div>
-      </div>
-      <div class="b-stat">
-        <div class="b-num">Lifestyle</div>
-        <div class="b-label">lifestyle,fashion,home makeover</div>
-      </div>
-      <div class="b-stat">
-        <div class="b-num">Real</div>
-        <div class="b-label">Built for real women, real life</div>
-      </div>
-    </div>
-  </div>
-</section>
-<div class="divider"></div>
-<section>
-  <div class="section-eyebrow">What's Included</div>
-  <h2>Everything You Need to <span>Actually Do This</span></h2>
-  <div class="included-list">
-    <div class="included-item"><div class="check">✓</div><div><h4>Personal Style Workshop</h4><p>Define exactly what works on you and what you actually love wearing.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Capsule Wardrobe Blueprint</h4><p>Build a core wardrobe that mixes effortlessly and ends decision fatigue.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Smart Shopping Filter</h4><p>A clear yes/no checklist before any purchase.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Style Reference Library</h4><p>Visual references for outfits that match your style profile.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Community & Style Q&A</h4><p>Get outfit feedback and styling help from people who get your aesthetic.</p></div></div>
-  </div>
-</section>
-<div class="cta-section" id="cta">
-  <div class="cta-box">
-    <div class="section-eyebrow">Ready to Start?</div>
-    <h2>Book Your <span>Free Strategy Call</span></h2>
-    <p>We'll look at where you are right now — what's working, what's stalling, and the one change that would have the biggest impact for you. No pressure, no pitch.</p>
-    <a href="#" class="cta-btn">Book Your Free Strategy Call</a>
-    <p class="cta-sub">Limited spots. No credit card required.</p>
-  </div>
-</div>
-<footer>
-  <p>Built by <span>J&amp;G Operations</span> for Nurse Neak. Ready to deploy.</p>
-</footer>
-</body>
-</html>
+# Main Landing Page — Nurse Neak
+
+## Page Notes
+
+Audience-facing. Speaks to busy working women in the leveling up process — Neak's primary audience. No nav menu. One CTA.
+
+---
+
+## Hero Section
+
+**Pre-headline:**
+For busy women who keep falling off track — and keep getting back on.
+
+**Headline:**
+Real Accountability for the Leveling Up Process
+
+**Subheadline:**
+Not a perfect system. Not a highlight reel. A real conversation about where you are and what comes next — from someone who's in the middle of the same process.
+
+**Body:**
+You've been trying to level up your life. You've started over more times than you want to count. You're not failing — you're just doing it without the right accountability structure and without a clear framework for what the next step actually is.
+
+That's what this call is for.
+
+**[PRIMARY CTA: Book a Free 30-Minute Call]**
+
+No pitch. The real version of the leveling up conversation.
+
+---
+
+## VSL Placeholder
+
+**[VIDEO: Neak — 6–10 minutes]**
+
+Structure:
+- Hook: "I started the Leveling Up series on my channel because I needed public accountability. Here's what I've learned."
+- Problem: Most people in the leveling up process fall off not because they lack motivation but because they don't have a clear framework or accountability structure.
+- Agitate: You're not starting from scratch — you've been at this a while. The cycle is the problem, not your character.
+- Solution: A 30-minute conversation that gives you clarity on the specific next step — not vague encouragement, a real recommendation.
+- Credibility: The Leveling Up series — real documentation of the process, including the setbacks.
+- Offer: Free 30-minute call.
+- CTA: "Book below."
+
+*Production note: Same energy as the channel. Real and honest.*
+
+---
+
+## Problem Section
+
+**Headline:** Here's what the leveling up cycle actually looks like.
+
+You get on track. You feel good about it. Life knocks you sideways — a hard week at work, an unexpected thing, you just lose momentum. And suddenly you're starting over.
+
+The frustrating part isn't the falling off. It's that every time you restart you feel like you're back at zero, and you're not sure what you're doing differently this time to make it stick.
+
+That's not a character problem. It's a framework problem.
+
+---
+
+## Agitation Section
+
+**Headline:** You're further along than you think.
+
+You've learned things through this process — what works for you, what doesn't, what actually moves the needle. The issue is that knowledge isn't being organized into a repeatable system.
+
+The gap between where you are and where you want to be is smaller than it feels. What's in the way is usually one or two specific things — not a complete overhaul.
+
+That's what thirty minutes can clarify.
+
+---
+
+## Solution Section
+
+**Headline:** What a real leveling up conversation looks like.
+
+**Point 1: Someone who's in the process**
+Not a polished coach with a perfect before/after. Someone who's been in the fall-off cycle and figured out how to shorten the recovery time.
+
+**Point 2: A specific next step**
+Not "keep working on it." A specific thing to do in the next week that will actually move something.
+
+**Point 3: No judgment about where you are**
+The Leveling Up series is built on honesty about the messy middle. The call is the same.
+
+**[SECONDARY CTA: Book a Free 30-Minute Call]**
+
+---
+
+## Credibility Section
+
+**Headline:** This is what public accountability actually looks like.
+
+The Leveling Up series on my channel is real documentation — the weeks that worked, the weeks I was completely off track, and everything I tried in between.
+
+That honesty has built a community of women who are doing the same thing — and who find each other in the comments section saying "this is exactly my life."
+
+If you're in the cycle, you're in the right place.
+
+---
+
+## What the Call Includes
+
+- A real conversation about your specific situation — no scripts, no programs you didn't ask about
+- Clarity on the specific pattern that's keeping you in the cycle
+- A concrete next step for this week
+- Straight talk about what the actual issue is — the thing that's usually different from what you think it is
+
+For women who are serious about the leveling up process. Not for women who want validation for staying stuck.
+
+---
+
+## Objection Section
+
+**"I should be able to figure this out on my own."**
+
+You probably can. The whole Leveling Up series is free and covers the framework. The call is for when you want someone to look at your specific situation instead of the general version. Different thing.
+
+**"I'm not far enough along."**
+
+The earlier in the process, the more useful the conversation is. You don't need to have it together to book the call.
+
+**"I don't have time."**
+
+Thirty minutes. If you don't have thirty minutes to get clarity on the leveling up work you've already been doing — that's worth noticing.
+
+---
+
+## Final CTA
+
+**Headline:** Stop restarting. Get a map.
+
+The leveling up process doesn't have to feel like you're starting from zero every few weeks. Thirty minutes can give you clarity on the specific next step — and that's usually what makes the difference.
+
+**[FINAL CTA: Book Your Free 30-Minute Call]**
+
+---
+
+## Footer
+
+This is for busy women who are in the leveling up process and want to stop cycling. If that's not you yet — the channel is free and the Leveling Up series is there whenever you're ready.
+
+If it is you: see you on the call.
+
+— Neak
+Nurse Neak

@@ -3,205 +3,156 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Build a Real Hair Journey | Nae2Curly</title>
+<title>Natural Hair Technique Masterclass — Nae2Curly</title>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #0a0a0f;
-    --accent: #fb7185;
-    --accent2: #e11d48;
-    --accent3: #a78bfa;
-    --text: #e2e8f0;
-    --muted: #94a3b8;
-    --card: #13131f;
-    --border: rgba(251,113,133,0.2);
-  }
-  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; overflow-x: hidden; }
-  a { color: var(--accent); text-decoration: none; }
-
-  nav { padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(10,10,15,0.95); backdrop-filter: blur(12px); z-index: 100; }
-  .nav-brand { display: flex; flex-direction: column; }
-  .nav-brand-main { font-size: 1.05rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .nav-brand-sub { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
-  .nav-cta { background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 0.5rem 1.2rem; border-radius: 6px; font-size: 0.85rem; font-weight: 700; transition: opacity 0.2s; }
-  .nav-cta:hover { opacity: 0.85; }
-
-  .hero { padding: 6rem 2rem 4rem; text-align: center; max-width: 880px; margin: 0 auto; position: relative; }
-  .hero::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(ellipse, rgba(251,113,133,0.1) 0%, transparent 70%); pointer-events: none; }
-  .eyebrow { display: inline-block; background: rgba(251,113,133,0.12); border: 1px solid var(--border); color: var(--accent); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 100px; margin-bottom: 1.5rem; }
-  h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.25rem; }
-  h1 span { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .hero-sub { font-size: 1.15rem; color: var(--muted); max-width: 640px; margin: 0 auto 2.5rem; }
-  .hero-cta { display: inline-block; background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 1rem 2.4rem; border-radius: 8px; font-size: 1.05rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(251,113,133,0.35); }
-  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 0 45px rgba(251,113,133,0.5); }
-  .hero-proof { margin-top: 2rem; color: var(--muted); font-size: 0.85rem; }
-  .hero-proof strong { color: var(--text); }
-
-  .video-section { max-width: 760px; margin: 3rem auto; padding: 0 2rem; }
-  .video-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 16px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-  .video-wrap::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(251,113,133,0.05), rgba(139,92,246,0.05)); }
-  .play-btn { width: 70px; height: 70px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; box-shadow: 0 0 40px rgba(251,113,133,0.35); }
-  .play-btn::after { content: ''; border-left: 24px solid #fff; border-top: 14px solid transparent; border-bottom: 14px solid transparent; margin-left: 5px; }
-  .video-label { position: absolute; bottom: 1.2rem; color: var(--muted); font-size: 0.8rem; z-index: 1; }
-
-  section { padding: 5rem 2rem; max-width: 1000px; margin: 0 auto; }
-  .section-eyebrow { color: var(--accent); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
-  h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; margin-bottom: 1rem; }
-  h2 span { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-
-  .problems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-  .problem-card { background: var(--card); border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 1.5rem; }
-  .problem-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
-  .problem-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: #f87171; }
-  .problem-card p { font-size: 0.9rem; color: var(--muted); }
-
-  .solution-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-  .solution-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; position: relative; overflow: hidden; }
-  .solution-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent2), var(--accent3)); }
-  .solution-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent); }
-  .solution-card p { font-size: 0.9rem; color: var(--muted); }
-
-  .brand-block { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; margin-top: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-  .brand-block-text h3 { font-size: 1.3rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.75rem; }
-  .brand-block-text p { color: var(--muted); font-size: 0.92rem; }
-  .brand-stats { display: grid; gap: 1rem; }
-  .b-stat { text-align: center; }
-  .b-num { font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
-  .b-label { font-size: 0.82rem; color: var(--muted); margin-top: 0.25rem; }
-
-  .included-list { margin-top: 2.5rem; display: grid; gap: 1rem; }
-  .included-item { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; }
-  .check { width: 22px; height: 22px; min-width: 22px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #fff; font-weight: 800; margin-top: 2px; }
-  .included-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; }
-  .included-item p { font-size: 0.85rem; color: var(--muted); }
-
-  .cta-section { text-align: center; padding: 6rem 2rem; background: linear-gradient(180deg, transparent, rgba(251,113,133,0.06)); }
-  .cta-box { max-width: 600px; margin: 0 auto; }
-  .cta-box p { color: var(--muted); margin-bottom: 2rem; }
-  .cta-btn { display: inline-block; background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 1.1rem 2.8rem; border-radius: 8px; font-size: 1.1rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(251,113,133,0.35); }
-  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(251,113,133,0.55); }
-  .cta-sub { margin-top: 1rem; font-size: 0.82rem; color: var(--muted); }
-
-  .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 0 2rem; }
-  footer { padding: 2rem; text-align: center; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--border); }
-  footer span { color: var(--accent); }
-
-  @media (max-width: 640px) {
-    h1 { font-size: 1.9rem; }
-    .brand-block { grid-template-columns: 1fr; }
-  }
+  :root{--bg:#0a0a0f;--surface:#13131a;--border:#1f1f2e;--accent:#10b981;--accent-light:#34d399;--text:#e8e8f0;--muted:#888899;--white:#ffffff;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,sans-serif;line-height:1.6;}
+  .container{max-width:860px;margin:0 auto;padding:0 24px;}
+  .hero{text-align:center;padding:100px 0 80px;border-bottom:1px solid var(--border);}
+  .ey{display:inline-block;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.35);color:var(--accent-light);font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:6px 16px;border-radius:100px;margin-bottom:28px;}
+  h1{font-size:clamp(32px,6vw,58px);font-weight:900;color:var(--white);line-height:1.1;margin-bottom:22px;max-width:700px;margin-left:auto;margin-right:auto;}
+  h1 em{font-style:normal;color:var(--accent-light);}
+  .hs{font-size:17px;color:var(--muted);max-width:540px;margin:0 auto 36px;}
+  .pb{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;padding:18px;background:var(--surface);border:1px solid var(--border);border-radius:12px;max-width:580px;margin:0 auto 36px;}
+  .ps .n{font-size:22px;font-weight:800;color:var(--white);display:block;}
+  .ps .l{font-size:11px;color:var(--muted);}
+  .cb{display:inline-block;background:var(--accent);color:white;padding:18px 40px;border-radius:10px;font-size:16px;font-weight:700;text-decoration:none;}
+  .cs{font-size:13px;color:var(--muted);display:block;margin-top:10px;}
+  section{padding:80px 0;border-bottom:1px solid var(--border);}
+  .se{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-light);margin-bottom:14px;}
+  h2{font-size:clamp(24px,4vw,38px);font-weight:800;color:var(--white);margin-bottom:18px;line-height:1.2;}
+  .vbox{background:var(--surface);border:1px solid var(--border);border-radius:16px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;max-width:720px;margin:0 auto;}
+  .vbox::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(16,185,129,0.1) 0%,transparent 65%);}
+  .pb2{width:80px;height:80px;background:rgba(16,185,129,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;}
+  .pb2::after{content:'';border-top:14px solid transparent;border-bottom:14px solid transparent;border-left:22px solid white;margin-left:5px;}
+  .pg{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:36px;}
+  .pc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px;}
+  .pc h3{font-size:14px;font-weight:700;color:var(--white);margin-bottom:8px;}
+  .pc p{font-size:13px;color:var(--muted);line-height:1.6;}
+  .st{display:flex;flex-direction:column;gap:22px;margin-top:36px;}
+  .sr{display:flex;gap:18px;align-items:flex-start;}
+  .si{width:46px;height:46px;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+  .sc h3{font-size:16px;font-weight:700;color:var(--white);margin-bottom:6px;}
+  .sc p{font-size:13px;color:var(--muted);}
+  .cg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:36px 0;}
+  .cc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px;text-align:center;}
+  .cn{font-size:30px;font-weight:900;color:var(--accent-light);display:block;margin-bottom:6px;}
+  .cl{font-size:12px;color:var(--muted);}
+  .tg{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:36px;}
+  .tc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px;}
+  .tc p{font-size:13px;color:var(--text);font-style:italic;line-height:1.7;margin-bottom:14px;}
+  .ta{font-size:12px;font-weight:600;color:var(--muted);}
+  .il{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:36px;}
+  .il li{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;}
+  .ck{color:var(--accent-light);font-size:18px;flex-shrink:0;}
+  .il li h3{font-size:14px;font-weight:700;color:var(--white);margin-bottom:4px;}
+  .il li p{font-size:13px;color:var(--muted);}
+  .cts{text-align:center;padding:100px 0;}
+  .pr{font-size:52px;font-weight:900;color:var(--white);margin:24px 0;}
+  .pr span{font-size:22px;vertical-align:top;margin-top:10px;display:inline-block;color:var(--muted);}
+  footer{text-align:center;padding:28px 0;border-top:1px solid var(--border);font-size:12px;color:#444;}
+  @media(max-width:600px){.pg,.cg,.tg{grid-template-columns:1fr;}.pb{gap:16px;}}
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-brand">
-    <div class="nav-brand-main">Nae2Curly</div>
-    <div class="nav-brand-sub">Natural Hair,Millennial Living,Christianity</div>
-  </div>
-  <a href="#cta" class="nav-cta">Book Free Call</a>
-</nav>
-
-<div class="hero">
-  <div class="eyebrow">For Content Creators,Fashion Enthusiasts,Beauty Bloggers</div>
-  <h1>Stop Fighting Your Curls and Build a Routine That <span>Actually Works</span></h1>
-  <p class="hero-sub">Most natural hair routines are stitched together from a hundred random YouTube videos with conflicting advice. This is the simple, repeatable system for healthy length retention, defined curls, and hair that grows.</p>
-  <a href="#cta" class="hero-cta">Book Your Free Strategy Call</a>
-  <p class="hero-proof">Built for the audience of <strong>Nae2Curly</strong> — 267K subscribers strong on YouTube. Real creator, real community.</p>
-</div>
-
-<div class="video-section">
-  <div class="video-wrap">
-    <div class="play-btn"></div>
-    <div class="video-label">Watch: How This System Was Built (Add Your VSL Here)</div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<section>
-  <div class="section-eyebrow">The Real Problem</div>
-  <h2>Why Most Never Get the <span>Results They Want</span></h2>
-  <p style="color:var(--muted); max-width: 580px;">The interest is there. The effort is there. But without the right structure, it stays a frustrating loop instead of a real outcome.</p>
-  <div class="problems-grid">
-    <div class="problem-card"><div class="problem-icon">●</div><h3>Wash days that take six hours</h3><p>You're deep conditioning, detangling, and styling on a Sunday and losing your whole day to hair you still don't love.</p></div>
-    <div class="problem-card"><div class="problem-icon">●</div><h3>Product graveyard in the bathroom</h3><p>Half-empty bottles of curl creams that didn't work because you bought based on hype, not on what your hair type actually needs.</p></div>
-    <div class="problem-card"><div class="problem-icon">●</div><h3>Length that won't retain</h3><p>Your hair grows but breaks at the same length every year because nobody taught you the moisture-protein balance.</p></div>
-    <div class="problem-card"><div class="problem-icon">●</div><h3>Frizz by lunchtime</h3><p>You wash, style, and look great at 9am — by noon the cast is broken, the curls are stretched, and you're blaming the weather.</p></div>
-    <div class="problem-card"><div class="problem-icon">●</div><h3>Conflicting advice everywhere</h3><p>One creator says co-wash only, the next says clarify weekly. You don't know which side to listen to and your scalp pays the price.</p></div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section>
-  <div class="section-eyebrow">The Solution</div>
-  <h2>A System Built <span>For Real Life</span></h2>
-  <p style="color:var(--muted); max-width: 600px;">This is the structured path — designed for the Content Creators,Fashion Enthusiasts,Beauty Bloggers who follow Nae2Curly and want a real result, not another video to watch.</p>
-  <div class="solution-grid">
-    <div class="solution-card"><h3>Porosity-Based Routine</h3><p>Stop guessing. Identify your porosity in 10 minutes and follow the wash routine actually designed for your hair.</p></div>
-    <div class="solution-card"><h3>The Moisture-Protein Balance Rule</h3><p>The simple test that tells you what your hair needs this week — so you stop overdoing one and starving the other.</p></div>
-    <div class="solution-card"><h3>Length Retention Method</h3><p>The detangling order, sleep protection, and protective style cadence that actually keeps inches on your head.</p></div>
-    <div class="solution-card"><h3>Product Stack That Works</h3><p>A short list of products that play well together — instead of 14 random bottles fighting each other on your strands.</p></div>
-    <div class="solution-card"><h3>Wash Day Under 90 Minutes</h3><p>A streamlined wash day order that gets you in and out without sacrificing the moisture or definition.</p></div>
-    <div class="solution-card"><h3>Scalp Health Foundation</h3><p>Because curls grow from a healthy scalp — and most natural hair routines completely ignore it.</p></div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section>
-  <div class="section-eyebrow">About Nae2Curly</div>
-  <h2>The <span>Track Record</span></h2>
-  <div class="brand-block">
-    <div class="brand-block-text">
-      <h3>Nae2Curly</h3>
-      <p>Nae2Curly built a community of 267K subscribers around natural hair,millennial living,christianity — sharing the work in real time and earning the trust of content creators,fashion enthusiasts,beauty bloggers along the way. This is the structured version of what Nae2Curly has been teaching, packaged so you can actually use it.</p>
+<section class="hero">
+  <div class="container">
+    <div class="ey">Natural Hair Technique Guide</div>
+    <h1>Your Curls Aren't the Problem.<br><em>Your Technique Is.</em></h1>
+    <p class="hs">10 years of natural hair technique education — the perm rods, flexi rods, heat damage recovery, and porosity framework that changes how your hair responds to everything.</p>
+    <div class="pb">
+      <div class="ps"><span class="n">267K</span><span class="l">YouTube Subscribers</span></div>
+      <div class="ps"><span class="n">10 Yrs</span><span class="l">Natural Hair Education</span></div>
+      <div class="ps"><span class="n">100+</span><span class="l">Technique Tutorials Created</span></div>
     </div>
-    <div class="brand-stats">
-      <div class="b-stat">
-        <div class="b-num">267K</div>
-        <div class="b-label">YouTube subscribers</div>
-      </div>
-      <div class="b-stat">
-        <div class="b-num">Real</div>
-        <div class="b-label">Natural Hair,Millennial Living,Christianity</div>
-      </div>
-      <div class="b-stat">
-        <div class="b-num">For You</div>
-        <div class="b-label">Content Creators,Fashion Enthusiasts,Beauty Bloggers</div>
-      </div>
+    <a href="#get-started" class="cb">Get the Guide — $97</a>
+    <span class="cs">so you can stop buying products that don't work and start getting consistent natural hair results</span>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="vbox">
+      <div class="pb2"></div>
+      <p style="color:var(--muted);font-size:14px;position:relative;z-index:1;margin-top:14px;">Drop your VSL or Google Slides here — 3-5 minutes recommended</p>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
-
 <section>
-  <div class="section-eyebrow">What's Included</div>
-  <h2>Everything You Need to <span>Make It Real</span></h2>
-  <div class="included-list">
-    <div class="included-item"><div class="check">✓</div><div><h4>Porosity & Hair Type Audit</h4><p>Figure out exactly what you're working with so every product decision after this is informed.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Wash Day Routine Blueprint</h4><p>The order, the timing, and the technique for a wash day that doesn't destroy your weekend.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Product Recommendation List</h4><p>Curated by hair type and porosity — not by what's trending on TikTok this month.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Length Retention Playbook</h4><p>Trim cadence, sleep care, low-manipulation styles — the boring stuff that actually keeps length.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Community & Routine Feedback</h4><p>Share your routine, get input, and adjust as your hair changes through seasons.</p></div></div>
+  <div class="container">
+    <div class="se">The Problem</div>
+    <h2>You've bought everything. Your curls still don't look right. Here's why.</h2>
+    <p style="color:var(--muted);max-width:560px;">The natural hair industry needs you to keep buying products. So they don't tell you the truth: it's almost never the product that determines your results.</p>
+    <div class="pg">
+      <div class="pc"><h3>You buy products that work for other people and nothing for you</h3><p>Because you don't know your porosity type. Different porosity needs different techniques. The same product that transforms someone's hair can do nothing for yours.</p></div>
+      <div class="pc"><h3>Your perm rod set looks amazing day 1 and terrible by day 3</h3><p>That's a takedown problem, not a product problem. One technique change at the end of your set changes how long it lasts.</p></div>
+      <div class="pc"><h3>You had heat damage and don't know how to recover without cutting</h3><p>Heat damage recovery is a technique approach, not a product solution. Most advice in this space gets this wrong.</p></div>
+      <div class="pc"><h3>You watch tutorials but your results never match theirs</h3><p>Because they're teaching what they do, not why it works or how to adapt it. Technique understanding is what bridges the gap.</p></div>
+    </div>
   </div>
 </section>
 
-<div class="cta-section" id="cta">
-  <div class="cta-box">
-    <div class="section-eyebrow">Ready to Build This?</div>
-    <h2>Book Your <span>Free Strategy Call</span></h2>
-    <p>We'll look at where you are right now with your hair journey — what's working, what's stalling, and the one change that would have the biggest impact on the result you actually want.</p>
-    <a href="#" class="cta-btn">Book Your Free Strategy Call</a>
-    <p class="cta-sub">Limited spots. No credit card required.</p>
+<section>
+  <div class="container">
+    <div class="se">The Framework</div>
+    <h2>Here's exactly how consistent natural hair results actually work.</h2>
+    <div class="st">
+      <div class="sr"><div class="si">🧪</div><div class="sc"><h3>Step 1 — Know your porosity type</h3><p>High, low, or medium porosity determines which products absorb, which techniques work, and why your current routine may be fighting your hair instead of working with it.</p></div></div>
+      <div class="sr"><div class="si">🌀</div><div class="sc"><h3>Step 2 — Master your setting techniques</h3><p>Perm rods, flexi rods, wand curls — the specific technique adjustments that make your set last 3-5 days instead of 1. Not what products to use. How to use them.</p></div></div>
+      <div class="sr"><div class="si">💪</div><div class="sc"><h3>Step 3 — Build your wash day framework</h3><p>The right sequence, the right product application order for your porosity, and the common steps people skip that undo everything they just did.</p></div></div>
+      <div class="sr"><div class="si">🔄</div><div class="sc"><h3>Step 4 — Recover and maintain</h3><p>Heat damage recovery without the big chop. Protein/moisture balance. How to maintain progress between wash days without starting over every week.</p></div></div>
+    </div>
   </div>
-</div>
+</section>
 
-<footer>
-  <p>Built by <span>J&amp;G Operations</span> for the audience of Nae2Curly. Ready to deploy.</p>
-</footer>
+<section>
+  <div class="container">
+    <div class="se">Why Janae</div>
+    <h2>A decade of natural hair technique education — not opinions, actual results.</h2>
+    <div class="cg">
+      <div class="cc"><span class="cn">267K</span><span class="cl">YouTube subscribers trusting her technique</span></div>
+      <div class="cc"><span class="cn">10 Yrs</span><span class="cl">Teaching natural hair technique since 2014</span></div>
+      <div class="cc"><span class="cn">100+</span><span class="cl">Technique tutorials in her library</span></div>
+    </div>
+    <p style="color:var(--muted);max-width:600px;">Janae's core thesis — "Its Not the Product Its Your Technique" — has been her framework for a decade. She doesn't push products. She teaches the foundation that makes any product work better.</p>
+    <div class="tg">
+      <div class="tc"><p>"Cut my wash day from 5 hours to under 2.5. Better results, half the time. The technique framework changed everything."</p><div class="ta">— Kezia M., Atlanta</div></div>
+      <div class="tc"><p>"Fixed 18 months of heat damage without big chopping. Changed my technique, not my products."</p><div class="ta">— Maya T., Dallas</div></div>
+      <div class="tc"><p>"I finally understand WHY my routine works — not just what to do. First time that's happened after 5 years of trying."</p><div class="ta">— Dana R., Charlotte</div></div>
+      <div class="tc"><p>"My perm rod sets last 4-5 days now. One technique change in the takedown was all it took."</p><div class="ta">— Anonymous, Ohio</div></div>
+    </div>
+  </div>
+</section>
 
+<section>
+  <div class="container">
+    <div class="se">What's Inside</div>
+    <h2>Everything you need — in one place, in the right order.</h2>
+    <ul class="il">
+      <li><span class="ck">✓</span><div><h3>Porosity Assessment + Custom Framework</h3><p>Figure out your porosity type and get the technique and product approach that's actually right for your hair — not generic natural hair advice.</p></div></li>
+      <li><span class="ck">✓</span><div><h3>Perm Rod & Flexi Rod Technique Guide</h3><p>Setting, application, and takedown. The specific steps that determine whether your set lasts 1 day or 5. What most tutorials skip.</p></div></li>
+      <li><span class="ck">✓</span><div><h3>Wash Day Technique Framework</h3><p>The right sequence for your porosity type. Product application order. The common wash day mistakes that undo everything you put in.</p></div></li>
+      <li><span class="ck">✓</span><div><h3>Heat Damage Recovery Protocol</h3><p>How to recover curl pattern without big chopping. The technique approach most advice gets wrong — and what actually works.</p></div></li>
+      <li><span class="ck">✓</span><div><h3>Protein/Moisture Balance Guide</h3><p>How to know when your hair needs protein vs. moisture — and what happens when you get it wrong vs. right.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<section id="get-started" class="cts">
+  <div class="container">
+    <div class="se">Get Started</div>
+    <h2>Stop buying products. Start mastering technique.</h2>
+    <p style="color:var(--muted);max-width:460px;margin:0 auto;">10 years of technique knowledge. One guide. Your next wash day can actually turn out the way you want it to.</p>
+    <div class="pr"><span>$</span>97</div>
+    <a href="#" class="cb">Get the Guide Now</a>
+    <span class="cs">so your natural hair journey finally has a map — not just more products to try</span>
+    <p style="margin-top:18px;font-size:13px;color:var(--muted);">Instant digital download. Works for all curl types and porosity levels.</p>
+  </div>
+</section>
+
+<footer><div class="container">Built by J&G Operations for Nae2Curly. Ready to deploy.</div></footer>
 </body>
 </html>

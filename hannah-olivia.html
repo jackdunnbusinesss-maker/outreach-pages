@@ -1,182 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Build a Life That Lets You Actually Travel | HANNAH OLIVIA</title>
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #0a0a0f;
-    --accent: #ec4899;
-    --accent2: #be185d;
-    --accent3: #8b5cf6;
-    --text: #e2e8f0;
-    --muted: #94a3b8;
-    --card: #13131f;
-    --border: rgba(236,72,153,0.2);
-  }
-  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; overflow-x: hidden; }
-  a { color: var(--accent); text-decoration: none; }
-  nav { padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(10,10,15,0.95); backdrop-filter: blur(12px); z-index: 100; }
-  .nav-brand { display: flex; flex-direction: column; }
-  .nav-brand-main { font-size: 1.05rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .nav-brand-sub { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
-  .nav-cta { background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 0.5rem 1.2rem; border-radius: 6px; font-size: 0.85rem; font-weight: 700; transition: opacity 0.2s; }
-  .nav-cta:hover { opacity: 0.85; }
-  .hero { padding: 6rem 2rem 4rem; text-align: center; max-width: 880px; margin: 0 auto; position: relative; }
-  .hero::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(ellipse, rgba(236,72,153,0.1) 0%, transparent 70%); pointer-events: none; }
-  .eyebrow { display: inline-block; background: rgba(236,72,153,0.12); border: 1px solid var(--border); color: var(--accent); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 100px; margin-bottom: 1.5rem; }
-  h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.25rem; }
-  h1 span { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .hero-sub { font-size: 1.15rem; color: var(--muted); max-width: 640px; margin: 0 auto 2.5rem; }
-  .hero-cta { display: inline-block; background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 1rem 2.4rem; border-radius: 8px; font-size: 1.05rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(236,72,153,0.35); }
-  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 0 45px rgba(236,72,153,0.5); }
-  .hero-proof { margin-top: 2rem; color: var(--muted); font-size: 0.85rem; }
-  .hero-proof strong { color: var(--text); }
-  .video-section { max-width: 760px; margin: 3rem auto; padding: 0 2rem; }
-  .video-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 16px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-  .video-wrap::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(236,72,153,0.05), rgba(139,92,246,0.05)); }
-  .play-btn { width: 70px; height: 70px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; box-shadow: 0 0 40px rgba(236,72,153,0.35); }
-  .play-btn::after { content: ''; border-left: 24px solid #fff; border-top: 14px solid transparent; border-bottom: 14px solid transparent; margin-left: 5px; }
-  .video-label { position: absolute; bottom: 1.2rem; color: var(--muted); font-size: 0.8rem; z-index: 1; }
-  section { padding: 5rem 2rem; max-width: 1000px; margin: 0 auto; }
-  .section-eyebrow { color: var(--accent); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
-  h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; margin-bottom: 1rem; }
-  h2 span { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .problems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-  .problem-card { background: var(--card); border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 1.5rem; }
-  .problem-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
-  .problem-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: #f87171; }
-  .problem-card p { font-size: 0.9rem; color: var(--muted); }
-  .solution-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-  .solution-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; position: relative; overflow: hidden; }
-  .solution-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent2), var(--accent3)); }
-  .solution-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent); }
-  .solution-card p { font-size: 0.9rem; color: var(--muted); }
-  .brand-block { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; margin-top: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-  .brand-block-text h3 { font-size: 1.3rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.75rem; }
-  .brand-block-text p { color: var(--muted); font-size: 0.92rem; }
-  .brand-stats { display: grid; gap: 1rem; }
-  .b-stat { text-align: center; }
-  .b-num { font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
-  .b-label { font-size: 0.82rem; color: var(--muted); margin-top: 0.25rem; }
-  .included-list { margin-top: 2.5rem; display: grid; gap: 1rem; }
-  .included-item { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; }
-  .check { width: 22px; height: 22px; min-width: 22px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #fff; font-weight: 800; margin-top: 2px; }
-  .included-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; }
-  .included-item p { font-size: 0.85rem; color: var(--muted); }
-  .cta-section { text-align: center; padding: 6rem 2rem; background: linear-gradient(180deg, transparent, rgba(236,72,153,0.06)); }
-  .cta-box { max-width: 600px; margin: 0 auto; }
-  .cta-box p { color: var(--muted); margin-bottom: 2rem; }
-  .cta-btn { display: inline-block; background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 1.1rem 2.8rem; border-radius: 8px; font-size: 1.1rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(236,72,153,0.35); }
-  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(236,72,153,0.55); }
-  .cta-sub { margin-top: 1rem; font-size: 0.82rem; color: var(--muted); }
-  .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 0 2rem; }
-  footer { padding: 2rem; text-align: center; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--border); }
-  footer span { color: var(--accent); }
-  @media (max-width: 640px) {
-    h1 { font-size: 1.9rem; }
-    .brand-block { grid-template-columns: 1fr; }
-  }
-</style>
-</head>
-<body>
-<nav>
-  <div class="nav-brand">
-    <div class="nav-brand-main">HANNAH OLIVIA</div>
-    <div class="nav-brand-sub">Vlogs</div>
-  </div>
-  <a href="#cta" class="nav-cta">Book Free Call</a>
-</nav>
-<div class="hero">
-  <div class="eyebrow">For Women Who Want to Travel More</div>
-  <h1>Build a Life That Lets <span>You Actually Travel</span></h1>
-  <p class="hero-sub">You don't need to be rich or quit your job to travel more. You need a system — for budgeting, planning, and prioritizing the trips that matter. Here's how it works.</p>
-  <a href="#cta" class="hero-cta">Book Your Free Strategy Call</a>
-  <p class="hero-proof">Built with <strong>HANNAH OLIVIA</strong> — 32.4K subscribers building the vlogs space on YouTube.</p>
-</div>
-<div class="video-section">
-  <div class="video-wrap">
-    <div class="play-btn"></div>
-    <div class="video-label">Watch: How This Works (Add Your VSL Here)</div>
-  </div>
-</div>
-<div class="divider"></div>
-<section>
-  <div class="section-eyebrow">The Real Problem</div>
-  <h2>Why Most Young Adults Stay <span>Stuck</span></h2>
-  <p style="color:var(--muted); max-width: 580px;">It's not a willingness problem. It's a structure problem. Without the right framework, effort doesn't compound — it just exhausts you.</p>
-  <div class="problems-grid">
-    <div class="problem-card"><div class="problem-icon">💸</div><h3>Travel feels too expensive to plan</h3><p>You assume any real trip will cost thousands — so you don't even start. There's a smarter way.</p></div>
-    <div class="problem-card"><div class="problem-icon">📅</div><h3>No time to actually go anywhere</h3><p>PTO is short, calendars are full. Travel feels impossible without a clear system for fitting it into your real life.</p></div>
-    <div class="problem-card"><div class="problem-icon">🤯</div><h3>Planning is exhausting</h3><p>Researching flights, hotels, itineraries — it eats hours and you give up before you book.</p></div>
-    <div class="problem-card"><div class="problem-icon">😨</div><h3>Nervous about traveling solo</h3><p>You want the freedom but the fear gets loud. You need a framework, not a pep talk.</p></div>
-    <div class="problem-card"><div class="problem-icon">🌍</div><h3>Same boring destinations</h3><p>You keep ending up in the same places because you don't know how to find the better ones.</p></div>
-  </div>
-</section>
-<div class="divider"></div>
-<section>
-  <div class="section-eyebrow">The Solution</div>
-  <h2>What Actually <span>Works</span></h2>
-  <p style="color:var(--muted); max-width: 600px;">A clear system, built for real life — designed to deliver results without burning you out.</p>
-  <div class="solution-grid">
-    <div class="solution-card"><h3>Travel Budgeting That Works</h3><p>Build trips into your real budget without lifestyle inflation or guilt.</p></div>
-    <div class="solution-card"><h3>Planning in Hours, Not Weeks</h3><p>A streamlined planning process that takes the friction out of booking trips.</p></div>
-    <div class="solution-card"><h3>Find Better Destinations</h3><p>Stop ending up at the same overpriced spots. Learn how to find the trips that fit you.</p></div>
-    <div class="solution-card"><h3>Solo Travel Confidence</h3><p>Frameworks for safety, logistics, and mindset so you can finally take the trip alone.</p></div>
-    <div class="solution-card"><h3>Make Time Work</h3><p>Squeeze meaningful trips into limited PTO without feeling rushed.</p></div>
-    <div class="solution-card"><h3>Travel Hacks That Actually Save Money</h3><p>The points, deals, and strategies that move the needle — not the gimmicks.</p></div>
-  </div>
-</section>
-<div class="divider"></div>
-<section>
-  <div class="section-eyebrow">About HANNAH OLIVIA</div>
-  <h2>The <span>Track Record</span></h2>
-  <div class="brand-block">
-    <div class="brand-block-text">
-      <h3>HANNAH OLIVIA</h3>
-      <p>HANNAH OLIVIA has built a community of 32.4K subscribers in the vlogs,lifestyle,travel space. The advice on this page comes from real practice with a real audience — not theory pulled from a textbook.</p>
-    </div>
-    <div class="brand-stats">
-      <div class="b-stat">
-        <div class="b-num">32.4K</div>
-        <div class="b-label">YouTube subscribers</div>
-      </div>
-      <div class="b-stat">
-        <div class="b-num">Vlogs</div>
-        <div class="b-label">vlogs,lifestyle,travel</div>
-      </div>
-      <div class="b-stat">
-        <div class="b-num">Real</div>
-        <div class="b-label">Built for real women, real life</div>
-      </div>
-    </div>
-  </div>
-</section>
-<div class="divider"></div>
-<section>
-  <div class="section-eyebrow">What's Included</div>
-  <h2>Everything You Need to <span>Actually Do This</span></h2>
-  <div class="included-list">
-    <div class="included-item"><div class="check">✓</div><div><h4>Trip Planning Templates</h4><p>Plug-and-play planners so booking trips stops eating your evenings.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Budget Travel Playbook</h4><p>How to fund trips without going into debt or skipping rent.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Solo Travel Safety Guide</h4><p>Frameworks and checklists for confident solo travel.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Destination Library</h4><p>A curated list of trip ideas matched to budget, time, and vibe.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Community & Trip Q&A</h4><p>Get advice from women who've actually been there.</p></div></div>
-  </div>
-</section>
-<div class="cta-section" id="cta">
-  <div class="cta-box">
-    <div class="section-eyebrow">Ready to Start?</div>
-    <h2>Book Your <span>Free Strategy Call</span></h2>
-    <p>We'll look at where you are right now — what's working, what's stalling, and the one change that would have the biggest impact for you. No pressure, no pitch.</p>
-    <a href="#" class="cta-btn">Book Your Free Strategy Call</a>
-    <p class="cta-sub">Limited spots. No credit card required.</p>
-  </div>
-</div>
-<footer>
-  <p>Built by <span>J&amp;G Operations</span> for HANNAH OLIVIA. Ready to deploy.</p>
-</footer>
-</body>
-</html>
+# Main Landing Page — HANNAH OLIVIA
+
+## [Community Name] — Real Talk for Women Navigating Their 30s
+
+**Target:** Black women 27-38 navigating life transitions — moving, career uncertainty, relationship stuff, faith, all of it — without a roadmap.
+
+---
+
+**HEADLINE:**
+Real life, real talk, real women. This is the community for the ones who don't have it figured out yet.
+
+**SUBHEADLINE:**
+[Community name] is a monthly community for women in their 30s navigating life without the perfect plan — the kind of community where you can say "LAWD" and everyone nods.
+
+**[JOIN NOW — $27/month]**
+
+---
+
+## WHAT IS THIS
+
+I'm Hannah Olivia. I vlog about real life every week — moving apartments, heartbreak, 9-5 exhaustion, thinning hair, my Boston Terrier Charlie. Not the polished version. The actual version.
+
+The comment section on every video is full of women saying "this is my life." I wanted to build a space where we can actually talk, not just comment.
+
+That's what this is.
+
+---
+
+## WHAT YOU GET
+
+**Monthly Zoom hangouts** — Real conversation, sometimes about the vlog, sometimes about whatever is actually happening. Charlie may appear. Dress code: whatever you're actually wearing.
+
+**Community space** — A private community where you can post what you're going through, ask questions, share wins, and talk to women who get it.
+
+**Early access to content** — Occasional vlog previews, bonus content, and things that don't make it to YouTube.
+
+**Real talk without performance** — No one here has it figured out. That's the point.
+
+---
+
+## WHO IS THIS FOR
+
+**Women who:**
+- Are in their late 20s or 30s navigating transitions — moving, career, relationships, faith, all of it
+- Watch Hannah's vlogs and feel like these are their people
+- Want a community that's real, not aspirational
+- Have said "LAWD" this week and meant it
+
+**This is not for women who:**
+- Want a professional networking community
+- Are looking for life advice from someone who has it together
+- Can't handle a dog appearing unexpectedly on a Zoom call
+
+---
+
+**THE INVESTMENT**
+
+**$27/month**
+
+Cancel anytime. No long-term commitment. Real value from the first Zoom.
+
+**[JOIN NOW — $27/month]**
+
+---
+
+*Questions? DM @hannaholivia on YouTube or Instagram. I answer.*

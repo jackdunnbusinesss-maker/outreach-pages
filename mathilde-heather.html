@@ -1,275 +1,164 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Get Healthy, Long, Defined Natural Hair | Mathilde Heather</title>
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #0a0a0f;
-    --accent: #ec4899;
-    --accent2: #be185d;
-    --accent3: #8b5cf6;
-    --text: #e2e8f0;
-    --muted: #94a3b8;
-    --card: #13131f;
-    --border: rgba(236,72,153,0.2);
-  }
-  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; overflow-x: hidden; }
-  a { color: var(--accent); text-decoration: none; }
+# Main Landing Page Copy — Mathilde Heather
 
-  nav { padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(10,10,15,0.95); backdrop-filter: blur(12px); z-index: 100; }
-  .nav-brand { display: flex; flex-direction: column; }
-  .nav-brand-main { font-size: 1.05rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .nav-brand-sub { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
-  .nav-cta { background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 0.5rem 1.2rem; border-radius: 6px; font-size: 0.85rem; font-weight: 700; transition: opacity 0.2s; }
-  .nav-cta:hover { opacity: 0.85; }
+**Purpose:** Convert Mathilde's audience into course buyers or consultation clients
+**Audience:** Time-pressed women who want professional hair results at home
+**Design:** Dark web3 aesthetic, no navigation menu
 
-  .hero { padding: 6rem 2rem 4rem; text-align: center; max-width: 880px; margin: 0 auto; position: relative; }
-  .hero::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(ellipse, rgba(236,72,153,0.1) 0%, transparent 70%); pointer-events: none; }
-  .eyebrow { display: inline-block; background: rgba(236,72,153,0.12); border: 1px solid var(--border); color: var(--accent); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 100px; margin-bottom: 1.5rem; }
-  h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.25rem; }
-  h1 span { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .hero-sub { font-size: 1.15rem; color: var(--muted); max-width: 640px; margin: 0 auto 2.5rem; }
-  .hero-cta { display: inline-block; background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 1rem 2.4rem; border-radius: 8px; font-size: 1.05rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(236,72,153,0.35); }
-  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 0 45px rgba(236,72,153,0.5); }
-  .hero-proof { margin-top: 2rem; color: var(--muted); font-size: 0.85rem; }
-  .hero-proof strong { color: var(--text); }
+---
 
-  .video-section { max-width: 760px; margin: 3rem auto; padding: 0 2rem; }
-  .video-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 16px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-  .video-wrap::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(236,72,153,0.05), rgba(139,92,246,0.05)); }
-  .play-btn { width: 70px; height: 70px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; box-shadow: 0 0 40px rgba(236,72,153,0.35); }
-  .play-btn::after { content: ''; border-left: 24px solid #fff; border-top: 14px solid transparent; border-bottom: 14px solid transparent; margin-left: 5px; }
-  .video-label { position: absolute; bottom: 1.2rem; color: var(--muted); font-size: 0.8rem; z-index: 1; }
+## HERO SECTION
 
-  section { padding: 5rem 2rem; max-width: 1000px; margin: 0 auto; }
-  .section-eyebrow { color: var(--accent); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
-  h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; margin-bottom: 1rem; }
-  h2 span { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+**Headline:**
+Stop Spending 30 Minutes on Hair That Falls Flat by Noon.
 
-  .problems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-  .problem-card { background: var(--card); border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 1.5rem; }
-  .problem-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
-  .problem-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: #f87171; }
-  .problem-card p { font-size: 0.9rem; color: var(--muted); }
+**Subheadline:**
+Mathilde Heather — hair stylist, salon owner, and Girl Mum — teaches the techniques your stylist knows but never explains. Under 5 minutes each.
 
-  .solution-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-  .solution-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; position: relative; overflow: hidden; }
-  .solution-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent2), var(--accent3)); }
-  .solution-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent); }
-  .solution-card p { font-size: 0.9rem; color: var(--muted); }
+**Above-Fold Credibility:**
+[X] years as a professional stylist | Active salon owner | 7,600+ women following along
 
-  .brand-block { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; margin-top: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-  .brand-block-text h3 { font-size: 1.3rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.75rem; }
-  .brand-block-text p { color: var(--muted); font-size: 0.92rem; }
-  .brand-stats { display: grid; gap: 1rem; }
-  .b-stat { text-align: center; }
-  .b-num { font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
-  .b-label { font-size: 0.82rem; color: var(--muted); margin-top: 0.25rem; }
+**CTA Button:**
+[Get the 5-Minute Styling System — Start Today]
+*So you can walk out the door every morning looking intentional, without making it a project.*
 
-  .included-list { margin-top: 2.5rem; display: grid; gap: 1rem; }
-  .included-item { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; }
-  .check { width: 22px; height: 22px; min-width: 22px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #fff; font-weight: 800; margin-top: 2px; }
-  .included-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; }
-  .included-item p { font-size: 0.85rem; color: var(--muted); }
+---
 
-  .cta-section { text-align: center; padding: 6rem 2rem; background: linear-gradient(180deg, transparent, rgba(236,72,153,0.06)); }
-  .cta-box { max-width: 600px; margin: 0 auto; }
-  .cta-box p { color: var(--muted); margin-bottom: 2rem; }
-  .cta-btn { display: inline-block; background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 1.1rem 2.8rem; border-radius: 8px; font-size: 1.1rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(236,72,153,0.35); }
-  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(236,72,153,0.55); }
-  .cta-sub { margin-top: 1rem; font-size: 0.82rem; color: var(--muted); }
+## VIDEO PLACEHOLDER (VSL)
 
-  .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 0 2rem; }
-  footer { padding: 2rem; text-align: center; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--border); }
-  footer span { color: var(--accent); }
+*[Dark rounded rectangle with play button — prominent placement]*
 
-  @media (max-width: 640px) {
-    h1 { font-size: 1.9rem; }
-    .brand-block { grid-template-columns: 1fr; }
-  }
-</style>
-</head>
-<body>
+**Label:** "Why I Made This" (3 min)
 
-<nav>
-  <div class="nav-brand">
-    <div class="nav-brand-main">Mathilde Heather</div>
-    <div class="nav-brand-sub">Hair Tutorials,Product Reviews,Style Tips</div>
-  </div>
-  <a href="#cta" class="nav-cta">Book Free Call</a>
-</nav>
+**VSL Guidance:**
+If Mathilde records a VSL, structure as follows:
+1. Hook: "I'm a hair stylist. I've seen exactly why most women can't get salon results at home — and it's not their hair, it's the techniques they were never taught."
+2. Credibility: "[X] years in the salon. Salon owner. This is my actual profession."
+3. Opportunity: "The at-home styling gap is massive. Professional knowledge is being kept inside salons when it doesn't need to be."
+4. Offer: "The 5-Minute Styling System — [price], [number] techniques, all under 5 minutes each."
+5. Objections: "You might think YouTube has everything. Here's the difference between a tutorial and a system."
+6. Qualify: "This is for women who are done guessing and want a clear, tested set of techniques."
+7. CTA: "Enroll below."
+8. Testimonials: Quick clips or screenshots from current students.
+9. Risk Removal: "[X]-day guarantee. If you try the techniques and genuinely don't see improvement, I'll make it right."
 
-<div class="hero">
-  <div class="eyebrow">For Natural Hair Wearers & Hair Care Lovers</div>
-  <h1>Get Healthy, Long, Defined <span>Natural Hair</span></h1>
-  <p class="hero-sub">Most natural hair routines fail because they're built on guesses and trends — not on what your specific hair actually needs. Here is the framework that works.</p>
-  <a href="#cta" class="hero-cta">Book Your Free Strategy Call</a>
-  <p class="hero-proof">Built with <strong>Mathilde Heather</strong> — 7.6K subscribers strong on YouTube. Real experience, real results.</p>
-</div>
+---
 
-<div class="video-section">
-  <div class="video-wrap">
-    <div class="play-btn"></div>
-    <div class="video-label">Watch: How This System Works (Add Your VSL Here)</div>
-  </div>
-</div>
+## PROBLEM / AGITATION SECTION
 
-<div class="divider"></div>
+**Header:** Sound Like Your Morning?
 
-<section>
-  <div class="section-eyebrow">The Real Problem</div>
-  <h2>Why Most People <span>Stay Stuck</span></h2>
-  <p style="color:var(--muted); max-width: 580px;">The effort is there. The desire is there. But without the right framework, the same problems keep showing up month after month.</p>
-  <div class="problems-grid">
-    <div class="problem-card">
-      <div class="problem-icon">💧</div>
-      <h3>Hair that's always dry no matter what</h3>
-      <p>You moisturize daily and it's still parched by lunchtime. Something in the routine is fighting itself.</p>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">✂️</div>
-      <h3>Length that won't stick</h3>
-      <p>You're growing it but breakage is taking it back faster than it grows. The scissors aren't the problem — retention is.</p>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">🌀</div>
-      <h3>Curl pattern that never looks defined</h3>
-      <p>Wash days take hours and the result still looks frizzy and undefined an hour later.</p>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">🛒</div>
-      <h3>A bathroom full of products you don't use</h3>
-      <p>You've spent hundreds chasing the next miracle product. Most of them are sitting half-used under the sink.</p>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">⏰</div>
-      <h3>Routines that eat your whole weekend</h3>
-      <p>Wash day takes six hours. You dread it. There has to be a faster way that still works.</p>
-    </div>
-  </div>
-</section>
+- You follow tutorials but the result never looks like the video
+- Your hair looks great Day 1 and unmanageable by Day 2
+- You leave the salon and have no idea how to recreate what she did
+- You've bought products based on recommendations and half of them are sitting unused
+- You're spending more time on your hair than you want to and getting less than you want back
 
-<div class="divider"></div>
+*There's nothing wrong with your hair. You just haven't been taught the right techniques.*
 
-<section>
-  <div class="section-eyebrow">The Solution</div>
-  <h2>A Real <span>System</span> That Works</h2>
-  <p style="color:var(--muted); max-width: 600px;">This is the framework built for people who are ready to stop guessing and start seeing results.</p>
-  <div class="solution-grid">
-    <div class="solution-card">
-      <h3>Porosity-Based Routine</h3>
-      <p>Stop guessing. Build your routine around what your hair actually does with water and product.</p>
-    </div>
-    <div class="solution-card">
-      <h3>Length Retention System</h3>
-      <p>Protective styling, trimming cadence, and handling techniques that let inches actually stay on your head.</p>
-    </div>
-    <div class="solution-card">
-      <h3>Definition That Lasts</h3>
-      <p>Layering order, product amounts, and drying methods that give you defined curls past day one.</p>
-    </div>
-    <div class="solution-card">
-      <h3>Product Audit</h3>
-      <p>How to figure out which products in your stash actually work for your hair — and which ones to stop buying.</p>
-    </div>
-    <div class="solution-card">
-      <h3>Streamlined Wash Day</h3>
-      <p>Cut wash day in half without sacrificing results. Batching, prep, and the right tools.</p>
-    </div>
-    <div class="solution-card">
-      <h3>Scalp Health First</h3>
-      <p>Healthy hair starts at the scalp. The routine for keeping yours clean, balanced, and growing.</p>
-    </div>
-  </div>
-</section>
+---
 
-<div class="divider"></div>
+## SOLUTION / TRANSFORMATION SECTION
 
-<section>
-  <div class="section-eyebrow">About Mathilde Heather</div>
-  <h2>The <span>Track Record</span></h2>
-  <div class="brand-block">
-    <div class="brand-block-text">
-      <h3>Mathilde Heather</h3>
-      <p>Mathilde Heather has built a community of 7.6K subscribers on YouTube around real experience and real results. This isn't theory pulled from a textbook — it's the exact approach refined over years of doing the work and sharing it publicly.</p>
-    </div>
-    <div class="brand-stats">
-      <div class="b-stat">
-        <div class="b-num">7.6K</div>
-        <div class="b-label">YouTube subscribers</div>
-      </div>
-      <div class="b-stat">
-        <div class="b-num">Proven</div>
-        <div class="b-label">Hair Tutorials,Product Reviews,Style Tips</div>
-      </div>
-      <div class="b-stat">
-        <div class="b-num">Real</div>
-        <div class="b-label">Built from lived experience</div>
-      </div>
-    </div>
-  </div>
-</section>
+**Header:** Professional Techniques. Your Bathroom. Under 5 Minutes.
 
-<div class="divider"></div>
+The 5-Minute Styling System is Mathilde's professional technique library — adapted for real life, real hair, and real time constraints.
 
-<section>
-  <div class="section-eyebrow">What's Included</div>
-  <h2>Everything You Need to <span>Get Results</span></h2>
-  <div class="included-list">
-    <div class="included-item">
-      <div class="check">✓</div>
-      <div>
-        <h4>Hair Type & Porosity Diagnostic</h4>
-        <p>A clear assessment of what your hair actually needs — not what some chart on the internet says.</p>
-      </div>
-    </div>
-    <div class="included-item">
-      <div class="check">✓</div>
-      <div>
-        <h4>Custom Routine Builder</h4>
-        <p>Wash day, mid-week, and styling routines built around your hair, your time, and your goals.</p>
-      </div>
-    </div>
-    <div class="included-item">
-      <div class="check">✓</div>
-      <div>
-        <h4>Product Recommendation List</h4>
-        <p>Specific products that actually work — broken down by porosity, density, and budget.</p>
-      </div>
-    </div>
-    <div class="included-item">
-      <div class="check">✓</div>
-      <div>
-        <h4>Length Retention Playbook</h4>
-        <p>The protective styling rotation and handling habits that retain inches.</p>
-      </div>
-    </div>
-    <div class="included-item">
-      <div class="check">✓</div>
-      <div>
-        <h4>Direct Q&A Access</h4>
-        <p>Send pictures, ask questions, and get answers from someone who has built a routine that works.</p>
-      </div>
-    </div>
-  </div>
-</section>
+**Your Clear Path:**
+1. You pick the technique that solves your most frustrating problem (Day 2 hair, root volume, waves, frizz)
+2. You watch the module — it's under 5 minutes
+3. You try it on your next wash day using products you likely already own
+4. You notice the difference and stop dreading your morning
 
-<div class="cta-section" id="cta">
-  <div class="cta-box">
-    <div class="section-eyebrow">Ready to Start?</div>
-    <h2>Book Your <span>Free Strategy Call</span></h2>
-    <p>We'll look at what your current routine is doing, where the breakage or dryness is coming from, and what one change would have the biggest impact on your hair health and length.</p>
-    <a href="#" class="cta-btn">Book Your Free Strategy Call</a>
-    <p class="cta-sub">Limited spots. No credit card required.</p>
-  </div>
-</div>
+This is not a 50-step routine. It's the 8 things that actually move the needle — from a woman who does this professionally every day.
 
-<footer>
-  <p>Built by <span>J&amp;G Operations</span> for Mathilde Heather. Ready to deploy.</p>
-</footer>
+---
 
-</body>
-</html>
+## CREDIBILITY SECTION
+
+*(Above the fold)*
+
+**Mathilde Heather:**
+- Licensed hair stylist with [X] years of professional experience
+- Salon owner and active practitioner — this is her day job, not just her content
+- Brand ambassador for [brands] — trusted by industry names
+- Girl Mum — she's figuring out how to make this work for busy women because she is one
+
+**Student Results:**
+*[Testimonial Tier 1:]*
+"[Name] — 'My morning went from 40 minutes to 12. I don't know why no one told me this sooner.'"
+
+*[Testimonial Tier 2:]*
+"[Name] — 'The Day 2 fix alone was worth it. My hair actually looked better on Day 3 than it did on Day 1.'"
+
+*[Testimonial Tier 3:]*
+"[Name] — 'It took me a few tries to get the technique right. But now it's automatic.'"
+
+*[Third-party: YouTube comment screenshots, Instagram saves, review mentions — placeholder]*
+
+---
+
+## WHAT'S INCLUDED
+
+**The 5-Minute Styling System:**
+
+**Core — 8 Technique Modules:**
+- Day 2 (and Day 3) Hair Rescue — no rewash required
+- Root Volume That Actually Lasts
+- The Lazy Girl Wave — straightener method (Megan Fox approved)
+- How to Fix Day 2 Hair in 5 Minutes
+- Round Brush Volume Method — salon result at home
+- Extension of Blowout Life — make Day 1 last longer
+- Frizz Control Without Heavy Products
+- Quick Finishing Technique — the one step most people skip
+
+**Implementation:** Mathilde's recommended products for each technique (including budget alternatives for every suggestion)
+
+**Community Access:** [Community/group if applicable — otherwise: "Direct access to Mathilde's Instagram Q&A for technique questions"]
+
+**Bonus:** Printable morning routine card — your personalized 5-step version of the system
+
+**4-Layer Value:**
+- Core: 8 technique modules
+- Implementation: Product guide + tool recommendations
+- Community: Q&A access
+- Bonus: Morning routine card
+
+---
+
+## CTA SECTION
+
+**For Course ($97-$197 — drive to checkout):**
+
+[Enroll in the 5-Minute Styling System — [Price]]
+*So you can have a hair routine that actually works in the time you actually have.*
+
+*[X]-day satisfaction guarantee. You either see results or I make it right.*
+
+**For Consultation ($297 — drive to scheduler):**
+
+[Book a 1-on-1 Styling Consultation]
+*So you can get a plan built specifically for your hair, your routine, and your life.*
+
+**No navigation menu** — this page has one job.
+
+---
+
+## FOOTER
+
+Built by J&G Operations for Mathilde Heather. Ready to deploy.
+
+---
+
+## DESIGN NOTES
+
+- Background: #0a0a0a
+- Text: #f5f5f5 primary, #a0a0a0 secondary
+- Accent: Warm rose gold or deep teal (match Mathilde's aesthetic — warm but professional)
+- CTA buttons: High contrast, pill shape, color-filled
+- No navigation menu
+- Mobile-first
+- Video container: dark rounded rectangle, centered play button
+- Testimonial cards: subtle border, slight elevation
+- Section transitions: clean gradient lines, not heavy dividers
+- Fonts: Inter, DM Sans, or similar — clean and modern
+- This page should feel like a premium salon website, not a generic course platform

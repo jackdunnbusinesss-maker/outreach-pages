@@ -1,207 +1,159 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Build a Real Travel Style | Alyshia Jones</title>
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #0a0a0f;
-    --accent: #14b8a6;
-    --accent2: #0f766e;
-    --accent3: #8b5cf6;
-    --text: #e2e8f0;
-    --muted: #94a3b8;
-    --card: #13131f;
-    --border: rgba(20,184,166,0.2);
-  }
-  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; overflow-x: hidden; }
-  a { color: var(--accent); text-decoration: none; }
+# Main Landing Page — Alyshia Jones
 
-  nav { padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(10,10,15,0.95); backdrop-filter: blur(12px); z-index: 100; }
-  .nav-brand { display: flex; flex-direction: column; }
-  .nav-brand-main { font-size: 1.05rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .nav-brand-sub { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
-  .nav-cta { background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 0.5rem 1.2rem; border-radius: 6px; font-size: 0.85rem; font-weight: 700; transition: opacity 0.2s; }
-  .nav-cta:hover { opacity: 0.85; }
+## Page Notes
 
-  .hero { padding: 6rem 2rem 4rem; text-align: center; max-width: 880px; margin: 0 auto; position: relative; }
-  .hero::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(ellipse, rgba(20,184,166,0.1) 0%, transparent 70%); pointer-events: none; }
-  .eyebrow { display: inline-block; background: rgba(20,184,166,0.12); border: 1px solid var(--border); color: var(--accent); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 100px; margin-bottom: 1.5rem; }
-  h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.25rem; }
-  h1 span { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .hero-sub { font-size: 1.15rem; color: var(--muted); max-width: 640px; margin: 0 auto 2.5rem; }
-  .hero-cta { display: inline-block; background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 1rem 2.4rem; border-radius: 8px; font-size: 1.05rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(20,184,166,0.35); }
-  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 0 45px rgba(20,184,166,0.5); }
-  .hero-proof { margin-top: 2rem; color: var(--muted); font-size: 0.85rem; }
-  .hero-proof strong { color: var(--text); }
+This page is audience-facing. It speaks directly to the women Alyshia's content attracts — the glow up seeker, the rhinoplasty researcher, the ANZ solo traveler. No nav menu. No distractions. One CTA repeated throughout.
 
-  .video-section { max-width: 760px; margin: 3rem auto; padding: 0 2rem; }
-  .video-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 16px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-  .video-wrap::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(20,184,166,0.05), rgba(139,92,246,0.05)); }
-  .play-btn { width: 70px; height: 70px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; box-shadow: 0 0 40px rgba(20,184,166,0.35); }
-  .play-btn::after { content: ''; border-left: 24px solid #fff; border-top: 14px solid transparent; border-bottom: 14px solid transparent; margin-left: 5px; }
-  .video-label { position: absolute; bottom: 1.2rem; color: var(--muted); font-size: 0.8rem; z-index: 1; }
+Primary audience: Glow up seekers and women in personal transformation. Secondary audience threads (rhinoplasty, travel) can be activated as separate landing pages.
 
-  section { padding: 5rem 2rem; max-width: 1000px; margin: 0 auto; }
-  .section-eyebrow { color: var(--accent); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
-  h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; margin-bottom: 1rem; }
-  h2 span { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+---
 
-  .problems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-  .problem-card { background: var(--card); border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 1.5rem; }
-  .problem-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
-  .problem-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: #f87171; }
-  .problem-card p { font-size: 0.9rem; color: var(--muted); }
+## Hero Section
 
-  .solution-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-  .solution-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; position: relative; overflow: hidden; }
-  .solution-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent2), var(--accent3)); }
-  .solution-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent); }
-  .solution-card p { font-size: 0.9rem; color: var(--muted); }
+**Pre-headline:**
+For women who are done with advice that sounds good but doesn't change anything.
 
-  .brand-block { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; margin-top: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-  .brand-block-text h3 { font-size: 1.3rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.75rem; }
-  .brand-block-text p { color: var(--muted); font-size: 0.92rem; }
-  .brand-stats { display: grid; gap: 1rem; }
-  .b-stat { text-align: center; }
-  .b-num { font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
-  .b-label { font-size: 0.82rem; color: var(--muted); margin-top: 0.25rem; }
+**Headline:**
+The Glow Up Framework That Actually Works
 
-  .included-list { margin-top: 2.5rem; display: grid; gap: 1rem; }
-  .included-item { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; }
-  .check { width: 22px; height: 22px; min-width: 22px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #fff; font-weight: 800; margin-top: 2px; }
-  .included-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; }
-  .included-item p { font-size: 0.85rem; color: var(--muted); }
+**Subheadline:**
+Not another tips list. A real sequence — from someone who's done it, documented three years of results, and built a community of women doing the same.
 
-  .cta-section { text-align: center; padding: 6rem 2rem; background: linear-gradient(180deg, transparent, rgba(20,184,166,0.06)); }
-  .cta-box { max-width: 600px; margin: 0 auto; }
-  .cta-box p { color: var(--muted); margin-bottom: 2rem; }
-  .cta-btn { display: inline-block; background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 1.1rem 2.8rem; border-radius: 8px; font-size: 1.1rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(20,184,166,0.35); }
-  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(20,184,166,0.55); }
-  .cta-sub { margin-top: 1rem; font-size: 0.82rem; color: var(--muted); }
+**Body copy:**
+You've watched hundreds of glow up videos. You know what the advice says. And somehow you're still circling the same version of yourself.
 
-  .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 0 2rem; }
-  footer { padding: 2rem; text-align: center; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--border); }
-  footer span { color: var(--accent); }
+It's not a motivation problem. It's a sequence problem.
 
-  @media (max-width: 640px) {
-    h1 { font-size: 1.9rem; }
-    .brand-block { grid-template-columns: 1fr; }
-  }
-</style>
-</head>
-<body>
+The women who actually complete a transformation aren't doing more — they're doing things in a specific order that compounds. Most content gets this completely backwards.
 
-<nav>
-  <div class="nav-brand">
-    <div class="nav-brand-main">Alyshia Jones</div>
-    <div class="nav-brand-sub">Fashion,Travel,Beauty</div>
-  </div>
-  <a href="#cta" class="nav-cta">Book Free Call</a>
-</nav>
+**[PRIMARY CTA: Book a Free 30-Minute Call]**
 
-<div class="hero">
-  <div class="eyebrow">For Students,Travelers,Fashion Enthusiasts</div>
-  <h1>Travel and Look Great <span>Without a Suitcase Full of Regret</span></h1>
-  <p class="hero-sub">Most travel content is either 'pack light' or 'fashion week outfits' — never both. This is the practical system for traveling more, packing less, and actually loving every photo you take on the trip.</p>
-  <a href="#cta" class="hero-cta">Book Your Free Strategy Call</a>
-  <p class="hero-proof">Built for the audience of <strong>Alyshia Jones</strong> — 96.5K subscribers strong on YouTube. Real creator, real community.</p>
-</div>
+No pitch. Just a conversation about where you're at and what would actually move the needle.
 
-<div class="video-section">
-  <div class="video-wrap">
-    <div class="play-btn"></div>
-    <div class="video-label">Watch: How This System Was Built (Add Your VSL Here)</div>
-  </div>
-</div>
+---
 
-<div class="divider"></div>
+## VSL / DSL Placeholder
 
-<section>
-  <div class="section-eyebrow">The Real Problem</div>
-  <h2>Why Most Never Get the <span>Results They Want</span></h2>
-  <p style="color:var(--muted); max-width: 580px;">The interest is there. The effort is there. But without the right structure, it stays a frustrating loop instead of a real outcome.</p>
-  <div class="problems-grid">
-    <div class="problem-card"><div class="problem-icon">●</div><h3>Overpacking every single trip</h3><p>You bring half your closet and wear the same three outfits anyway. The suitcase is heavy, the airline charges, and you swear next time will be different.</p></div>
-    <div class="problem-card"><div class="problem-icon">●</div><h3>Outfits that don't translate</h3><p>What looked great in your hotel room photo looks tired by day three because nothing in your suitcase actually works together.</p></div>
-    <div class="problem-card"><div class="problem-icon">●</div><h3>Wrinkled clothes, no plan</h3><p>No system for what packs flat, what dries fast, or what survives a 12-hour flight.</p></div>
-    <div class="problem-card"><div class="problem-icon">●</div><h3>Trips that drain your savings</h3><p>No travel money system means every trip is a credit card recovery mission for the next three months.</p></div>
-    <div class="problem-card"><div class="problem-icon">●</div><h3>Looking the same as everyone else</h3><p>Following the same Instagram trends as every other traveler means your photos blend into the algorithm noise.</p></div>
-  </div>
-</section>
+**[VIDEO: Alyshia — 8–12 minutes]**
 
-<div class="divider"></div>
+Suggested structure:
+- Hook: "Three years ago I made a decision that felt huge at the time. Looking back, it was just the first domino."
+- Problem: Most glow up advice is vague on purpose. It keeps you engaged but doesn't move you forward.
+- Agitate: You've been at this for a while. You've done the tips. You've started over. You're not starting from zero — but you're not where you wanted to be either.
+- Solution: A framework, not a tips list. The sequence that actually works, in the order it works.
+- Credibility: Nose job journey, glow up transformation, Thailand travel — real documented results over three years. 96,500 subscribers who followed because the content was honest.
+- Offer: Free 30-minute call. Come in with one question. Leave with a clear next step.
+- CTA: "Book below. It takes two minutes."
 
-<section>
-  <div class="section-eyebrow">The Solution</div>
-  <h2>A System Built <span>For Real Life</span></h2>
-  <p style="color:var(--muted); max-width: 600px;">This is the structured path — designed for the Students,Travelers,Fashion Enthusiasts who follow Alyshia and want a real result, not another video to watch.</p>
-  <div class="solution-grid">
-    <div class="solution-card"><h3>Travel Capsule Wardrobe</h3><p>12 pieces that mix into 30+ outfits — built for the climate, the bag, and the photos.</p></div>
-    <div class="solution-card"><h3>Pack-Flat, Dry-Fast Fabric List</h3><p>Exactly which fabrics survive travel and which to leave home, no matter how cute they look.</p></div>
-    <div class="solution-card"><h3>Outfit Plan Per Destination</h3><p>A system for planning outfits before the trip so every day has a look ready to go.</p></div>
-    <div class="solution-card"><h3>Travel Fund System</h3><p>The simple monthly money habit that quietly funds the next trip without sacrificing the rest of your life.</p></div>
-    <div class="solution-card"><h3>Photo & Content Plan</h3><p>Plan the shots, locations, and outfit changes before you arrive — instead of scrambling on the ground.</p></div>
-    <div class="solution-card"><h3>Beauty Travel Kit</h3><p>The exact compact routine that holds up through long flights and humid climates.</p></div>
-  </div>
-</section>
+*Production note: Shoot this like her regular YouTube content — natural light, direct to camera, same energy as the glow up video. Not polished, not scripted. Her audience comes to her because she sounds like a real person.*
 
-<div class="divider"></div>
+---
 
-<section>
-  <div class="section-eyebrow">About Alyshia Jones</div>
-  <h2>The <span>Track Record</span></h2>
-  <div class="brand-block">
-    <div class="brand-block-text">
-      <h3>Alyshia Jones</h3>
-      <p>Alyshia Jones built a community of 96.5K subscribers around fashion,travel,beauty — sharing the work in real time and earning the trust of students,travelers,fashion enthusiasts along the way. This is the structured version of what Alyshia has been teaching, packaged so you can actually use it.</p>
-    </div>
-    <div class="brand-stats">
-      <div class="b-stat">
-        <div class="b-num">96.5K</div>
-        <div class="b-label">YouTube subscribers</div>
-      </div>
-      <div class="b-stat">
-        <div class="b-num">Real</div>
-        <div class="b-label">Fashion,Travel,Beauty</div>
-      </div>
-      <div class="b-stat">
-        <div class="b-num">For You</div>
-        <div class="b-label">Students,Travelers,Fashion Enthusiasts</div>
-      </div>
-    </div>
-  </div>
-</section>
+## Problem Section
 
-<div class="divider"></div>
+**Headline:** Here's what's actually happening.
 
-<section>
-  <div class="section-eyebrow">What's Included</div>
-  <h2>Everything You Need to <span>Make It Real</span></h2>
-  <div class="included-list">
-    <div class="included-item"><div class="check">✓</div><div><h4>Travel Capsule Builder</h4><p>A repeatable formula for packing 12 pieces that work anywhere.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Destination Packing Templates</h4><p>Climate-specific pack lists so you stop reinventing the wheel every trip.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Travel Fund Workbook</h4><p>A monthly plan that funds trips without recovery debt.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Content & Photo Planning Guide</h4><p>How to plan content before you leave so trips feel like trips, not photo shoots.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Community of Travelers</h4><p>Real recommendations, real itineraries, real tips from women actually on the road.</p></div></div>
-  </div>
-</section>
+Most glow up content is designed to keep you watching.
 
-<div class="cta-section" id="cta">
-  <div class="cta-box">
-    <div class="section-eyebrow">Ready to Build This?</div>
-    <h2>Book Your <span>Free Strategy Call</span></h2>
-    <p>We'll look at where you are right now with your travel style — what's working, what's stalling, and the one change that would have the biggest impact on the result you actually want.</p>
-    <a href="#" class="cta-btn">Book Your Free Strategy Call</a>
-    <p class="cta-sub">Limited spots. No credit card required.</p>
-  </div>
-</div>
+The tips are vague enough that you can't really act on them, and specific enough that they feel useful. So you save the video. You watch another one. You make a little progress and then stall.
 
-<footer>
-  <p>Built by <span>J&amp;G Operations</span> for the audience of Alyshia Jones. Ready to deploy.</p>
-</footer>
+This isn't a character flaw. It's the content model — creators get paid by the view, not the result.
 
-</body>
-</html>
+The women who actually get to the other side of a glow up do something different: they find a sequence that works and they run it in order. They don't try to do everything at once. They don't chase aesthetics first.
+
+That's what this is.
+
+---
+
+## Agitation Section
+
+**Headline:** You've been close for a long time.
+
+You're not starting from zero. You know what you want. You've already made changes that matter.
+
+The thing that's frustrating isn't that you haven't tried — it's that you've been trying for a while and the gap between where you are and where you want to be isn't closing fast enough.
+
+That feeling doesn't go away by watching more content. It goes away by getting clarity on what specifically to do next.
+
+---
+
+## Solution / Transformation Section
+
+**Headline:** What the framework gives you.
+
+**Point 1: The sequence, not the list**
+A specific order of changes that compound on each other. What to do first. What to layer in after that. What to cut because it's just noise.
+
+**Point 2: Internal before external**
+The glow up that sticks starts underneath the visible stuff. We go there first. The aesthetic changes feel completely different when there's something real underneath them.
+
+**Point 3: A real conversation about your specific situation**
+You're not the same as the last person who went through this. The sequence is the same. The application is personal.
+
+**[SECONDARY CTA: Book a Free 30-Minute Call]**
+
+---
+
+## Credibility Section
+
+**Headline:** Three years of the real version.
+
+I started documenting my transformation journey before it was finished. Nose job. Lifestyle overhaul. A complete change in how I moved through the world.
+
+The 3-year septorhinoplasty update on my YouTube channel exists because I was sick of six-week recovery content that didn't show the permanent result. The glow up framework exists because I was sick of tips lists that didn't tell me what to actually do first.
+
+96,500 people follow along because the content is honest — not because it makes everything look easy.
+
+If you want the version that comes from actually going through it — that's what this is.
+
+---
+
+## What's Included
+
+**The free 30-minute call includes:**
+
+- A real conversation about your specific situation — not a script
+- Clarity on what the actual gap is (it's usually different from what you think it is)
+- A specific recommended next step — not a vague "keep working on it"
+- Honest assessment: if there's something specific I can help with, I'll tell you. If there isn't, I'll tell you that too.
+
+This call is for women who are serious about actually doing the work — not looking for permission to keep planning.
+
+---
+
+## Objection Section
+
+**"I've tried coaching / guides before and they didn't work."**
+
+So have most of the women who book these calls. Usually what didn't work is either the sequence (starting with the wrong thing) or the generics (advice that doesn't account for their specific situation). That's what this is designed to fix.
+
+**"I'm not sure I'm far enough along to make this worth it."**
+
+The women who get the most out of these calls are usually the ones who are "almost there" — not the ones who are starting from scratch. If you're close, clarity on the next step is worth more, not less.
+
+**"I don't know if I have time for this right now."**
+
+It's 30 minutes. If you don't have 30 minutes for a conversation that could clarify the next six months of effort — that's worth noticing.
+
+---
+
+## Final CTA Section
+
+**Headline:** If you're serious about this — let's talk.
+
+Not next month. Not when everything is sorted. Now, because the version of this you want doesn't get closer while you wait.
+
+**[FINAL CTA: Book Your Free 30-Minute Call]**
+
+Two minutes to book. Zoom link in your email. No pitch.
+
+---
+
+## Footer
+
+This page is for women who are ready to stop circling and start moving. If that's not you right now — no problem. The YouTube channel is free and the content is all there.
+
+If it is you: see you on the call.
+
+— Alyshia Jones
+Bay of Plenty, New Zealand

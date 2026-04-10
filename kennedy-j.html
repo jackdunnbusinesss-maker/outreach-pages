@@ -1,275 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Skin and Hair That Match the Life You're Building | Kennedy J — Skincare, Vlogs & Hair Care</title>
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #0a0a0f;
-    --accent: #ec4899;
-    --accent2: #be185d;
-    --accent3: #8b5cf6;
-    --text: #e2e8f0;
-    --muted: #94a3b8;
-    --card: #13131f;
-    --border: rgba(236,72,153,0.2);
-  }
-  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; overflow-x: hidden; }
-  a { color: var(--accent); text-decoration: none; }
-
-  nav { padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(10,10,15,0.95); backdrop-filter: blur(12px); z-index: 100; }
-  .nav-brand { display: flex; flex-direction: column; }
-  .nav-brand-main { font-size: 1.05rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .nav-brand-sub { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
-  .nav-cta { background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 0.5rem 1.2rem; border-radius: 6px; font-size: 0.85rem; font-weight: 700; transition: opacity 0.2s; }
-  .nav-cta:hover { opacity: 0.85; }
-
-  .hero { padding: 6rem 2rem 4rem; text-align: center; max-width: 880px; margin: 0 auto; position: relative; }
-  .hero::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(ellipse, rgba(236,72,153,0.1) 0%, transparent 70%); pointer-events: none; }
-  .eyebrow { display: inline-block; background: rgba(236,72,153,0.12); border: 1px solid var(--border); color: var(--accent); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 100px; margin-bottom: 1.5rem; }
-  h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.25rem; }
-  h1 span { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .hero-sub { font-size: 1.15rem; color: var(--muted); max-width: 640px; margin: 0 auto 2.5rem; }
-  .hero-cta { display: inline-block; background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 1rem 2.4rem; border-radius: 8px; font-size: 1.05rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(236,72,153,0.35); }
-  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 0 45px rgba(236,72,153,0.5); }
-  .hero-proof { margin-top: 2rem; color: var(--muted); font-size: 0.85rem; }
-  .hero-proof strong { color: var(--text); }
-
-  .video-section { max-width: 760px; margin: 3rem auto; padding: 0 2rem; }
-  .video-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 16px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-  .video-wrap::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(236,72,153,0.05), rgba(139,92,246,0.05)); }
-  .play-btn { width: 70px; height: 70px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; box-shadow: 0 0 40px rgba(236,72,153,0.35); }
-  .play-btn::after { content: ''; border-left: 24px solid #fff; border-top: 14px solid transparent; border-bottom: 14px solid transparent; margin-left: 5px; }
-  .video-label { position: absolute; bottom: 1.2rem; color: var(--muted); font-size: 0.8rem; z-index: 1; }
-
-  section { padding: 5rem 2rem; max-width: 1000px; margin: 0 auto; }
-  .section-eyebrow { color: var(--accent); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
-  h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; margin-bottom: 1rem; }
-  h2 span { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-
-  .problems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-  .problem-card { background: var(--card); border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 1.5rem; }
-  .problem-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
-  .problem-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: #f87171; }
-  .problem-card p { font-size: 0.9rem; color: var(--muted); }
-
-  .solution-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-  .solution-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; position: relative; overflow: hidden; }
-  .solution-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent2), var(--accent3)); }
-  .solution-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent); }
-  .solution-card p { font-size: 0.9rem; color: var(--muted); }
-
-  .brand-block { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; margin-top: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-  .brand-block-text h3 { font-size: 1.3rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.75rem; }
-  .brand-block-text p { color: var(--muted); font-size: 0.92rem; }
-  .brand-stats { display: grid; gap: 1rem; }
-  .b-stat { text-align: center; }
-  .b-num { font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
-  .b-label { font-size: 0.82rem; color: var(--muted); margin-top: 0.25rem; }
-
-  .included-list { margin-top: 2.5rem; display: grid; gap: 1rem; }
-  .included-item { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; }
-  .check { width: 22px; height: 22px; min-width: 22px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #fff; font-weight: 800; margin-top: 2px; }
-  .included-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; }
-  .included-item p { font-size: 0.85rem; color: var(--muted); }
-
-  .cta-section { text-align: center; padding: 6rem 2rem; background: linear-gradient(180deg, transparent, rgba(236,72,153,0.06)); }
-  .cta-box { max-width: 600px; margin: 0 auto; }
-  .cta-box p { color: var(--muted); margin-bottom: 2rem; }
-  .cta-btn { display: inline-block; background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 1.1rem 2.8rem; border-radius: 8px; font-size: 1.1rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(236,72,153,0.35); }
-  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(236,72,153,0.55); }
-  .cta-sub { margin-top: 1rem; font-size: 0.82rem; color: var(--muted); }
-
-  .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 0 2rem; }
-  footer { padding: 2rem; text-align: center; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--border); }
-  footer span { color: var(--accent); }
-
-  @media (max-width: 640px) {
-    h1 { font-size: 1.9rem; }
-    .brand-block { grid-template-columns: 1fr; }
-  }
-</style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kennedy's Inner Circle — Weekly Vlog Community</title>
+  <style>
+    :root { --bg:#0a0a0a; --surface:#141414; --border:#242424; --accent:#c8a96e; --text:#f0f0f0; --muted:#888; --font:'Inter',sans-serif; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:var(--bg); color:var(--text); font-family:var(--font); line-height:1.7; }
+    .container { max-width:800px; margin:0 auto; padding:0 24px; }
+    section { padding:72px 0; border-bottom:1px solid var(--border); }
+    .hero { text-align:center; padding:100px 0 72px; }
+    .hero .eyebrow { color:var(--accent); font-size:0.85rem; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:20px; }
+    .hero h1 { font-size:clamp(2rem,5vw,3.2rem); font-weight:700; line-height:1.2; margin-bottom:24px; }
+    .hero h1 span { color:var(--accent); }
+    .hero p { font-size:1.1rem; color:#ccc; max-width:600px; margin:0 auto 40px; }
+    .cta-btn { display:inline-block; padding:18px 40px; background:var(--accent); color:#000; font-weight:700; font-size:1rem; border-radius:10px; text-decoration:none; }
+    .cta-sub { font-size:0.85rem; color:var(--muted); margin-top:12px; }
+    .proof-bar { display:flex; justify-content:center; gap:48px; flex-wrap:wrap; padding:32px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .proof-item { text-align:center; }
+    .proof-item .num { font-size:1.8rem; font-weight:700; color:var(--accent); }
+    .proof-item .label { font-size:0.85rem; color:var(--muted); }
+    .benefits-grid { display:grid; gap:20px; margin:32px 0; }
+    .benefit-item { display:flex; gap:20px; background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:24px; }
+    .benefit-icon { color:var(--accent); font-size:1.2rem; }
+    .benefit-item h3 { font-size:0.95rem; font-weight:600; margin-bottom:4px; }
+    .benefit-item p { font-size:0.9rem; color:var(--muted); margin:0; }
+    .testimonial-grid { display:grid; gap:20px; margin:32px 0; }
+    .testimonial-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:24px; }
+    .testimonial-card blockquote { color:#ccc; font-style:italic; margin-bottom:12px; }
+    .testimonial-card cite { font-size:0.85rem; color:var(--muted); }
+    .cta-section { text-align:center; }
+    .cta-section h2 { font-size:2rem; font-weight:700; margin-bottom:16px; }
+    .cta-section p { color:#ccc; margin-bottom:32px; }
+    footer { text-align:center; padding:48px 0; color:var(--muted); font-size:0.85rem; }
+    h2 { font-size:1.8rem; font-weight:700; margin-bottom:16px; }
+    h2 span { color:var(--accent); }
+    .section-intro { color:#ccc; margin-bottom:32px; max-width:600px; }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
 </head>
 <body>
+<div class="container">
 
-<nav>
-  <div class="nav-brand">
-    <div class="nav-brand-main">Kennedy J</div>
-    <div class="nav-brand-sub">Skincare. Hair care. Real life.</div>
+  <div class="hero">
+    <p class="eyebrow">Kennedy's Inner Circle • @kennedyjohnson • 43,600 Subscribers</p>
+    <h1>For the People Who<br/><span>Actually Show Up Every Week</span></h1>
+    <p>167 weekly vlogs. If you've been watching — this is the next step. Early vlog access, monthly favorites, and a community for the people who are actually here.</p>
+    <a href="#join" class="cta-btn">Join the Inner Circle</a>
+    <p class="cta-sub">$[price]/month — cancel anytime</p>
   </div>
-  <a href="#cta" class="nav-cta">Book Free Call</a>
-</nav>
 
-<div class="hero">
-  <div class="eyebrow">For Women Who Want Glow That Lasts Past Wash Day</div>
-  <h1>Skin and Hair <span>That Match the Life You're Building</span></h1>
-  <p class="hero-sub">Skincare and hair care aren't projects — they're systems. Most women treat them like trends and wonder why nothing compounds. Here's how to build routines that actually pay off month over month.</p>
-  <a href="#cta" class="hero-cta">Book Your Free Strategy Call</a>
-  <p class="hero-proof">Built by <strong>Kennedy J</strong> — 43.6K subscribers in Skincare, Vlogs & Hair Care. Real audience, real results.</p>
+  <div class="proof-bar">
+    <div class="proof-item"><div class="num">167+</div><div class="label">Weekly Vlogs</div></div>
+    <div class="proof-item"><div class="num">43,600</div><div class="label">Subscribers</div></div>
+    <div class="proof-item"><div class="num">3+ Years</div><div class="label">Consistent</div></div>
+  </div>
+
+  <section>
+    <h2>What You <span>Get</span></h2>
+    <div class="benefits-grid">
+      <div class="benefit-item"><div class="benefit-icon">◆</div><div><h3>Early Vlog Access — Every Week</h3><p>New vlogs go to the community 24-48 hours before they go public. You see it before anyone else, every week.</p></div></div>
+      <div class="benefit-item"><div class="benefit-icon">◆</div><div><h3>Monthly Favorites</h3><p>Everything I've actually been using and loving in a given month. Not a sponsored list — the real stuff. Products, routine, finds.</p></div></div>
+      <div class="benefit-item"><div class="benefit-icon">◆</div><div><h3>Community Space</h3><p>A place to connect with other people who watch every week. Discussion threads for each vlog, Q&A, the people who get it.</p></div></div>
+      <div class="benefit-item"><div class="benefit-icon">◆</div><div><h3>Direct Access</h3><p>Questions in the community get real responses. This is a smaller, more personal space than the YouTube comment section.</p></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What <span>Members Say</span></h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card"><blockquote>"I've watched every vlog for two years. The community is what I didn't know I needed — people who actually talk about it."</blockquote><cite>— Aliyah [placeholder]</cite></div>
+      <div class="testimonial-card"><blockquote>"The early access alone is worth it. I watch every week anyway — now I watch it first."</blockquote><cite>— Brittany [placeholder]</cite></div>
+      <div class="testimonial-card"><blockquote>"The monthly favorites is like having a shopping guide from someone whose taste I already trust."</blockquote><cite>— Maya [placeholder]</cite></div>
+    </div>
+  </section>
+
+  <section id="join" class="cta-section">
+    <h2>Join the <span>Inner Circle</span></h2>
+    <p>$[price]/month. Early vlog access, monthly favorites, community. Cancel anytime.</p>
+    <a href="[COMMUNITY_LINK]" class="cta-btn">Join Now</a>
+    <p class="cta-sub">For the people who actually show up every week.</p>
+  </section>
+
 </div>
-
-<div class="video-section">
-  <div class="video-wrap">
-    <div class="play-btn"></div>
-    <div class="video-label">Watch: How This System Was Built (Add Your VSL Here)</div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<section>
-  <div class="section-eyebrow">The Real Problem</div>
-  <h2>Where Most Women <span>Get Stuck</span></h2>
-  <p style="color:var(--muted); max-width: 580px;">Skincare TikTok and hair care YouTube both move fast. Trends come, trends go, and your routine keeps getting reset. The problem isn't your skin or your hair — it's that nothing is allowed to work long enough.</p>
-  <div class="problems-grid">
-    <div class="problem-card">
-      <div class="problem-icon">🧴</div>
-      <h3>Routines that change every month</h3>
-      <p>New product, new step, new TikTok trend. Your skin and hair never get to settle in long enough to show what works.</p>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">💧</div>
-      <h3>Surface-level glow that fades</h3>
-      <p>Your skin looks good after your routine and looks tired by lunch. The hydration isn't holding because the foundation isn't built.</p>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">✂️</div>
-      <h3>Hair growth that won't compound</h3>
-      <p>You're doing the things — and the inches aren't sticking. Something basic is being missed.</p>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">🛒</div>
-      <h3>Spending without strategy</h3>
-      <p>Half-empty serums, abandoned masks, products that promised the world. Your bathroom is a graveyard of trends.</p>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">⏰</div>
-      <h3>No room for the routine</h3>
-      <p>The routines you want to do feel impossible to fit in. The ones you actually do feel pointless. You need a system that fits real life.</p>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section>
-  <div class="section-eyebrow">The Solution</div>
-  <h2>The <span>Kennedy J Method</span></h2>
-  <p style="color:var(--muted); max-width: 600px;">This is the system behind Kennedy J's work — built for women who are ready to stop guessing and start building.</p>
-  <div class="solution-grid">
-    <div class="solution-card">
-      <h3>Skincare Foundation</h3>
-      <p>Strip your routine to the 5 steps that actually move your skin — and remove the noise that's slowing it down.</p>
-    </div>
-    <div class="solution-card">
-      <h3>Hair Care Foundation</h3>
-      <p>The 4-step regimen that compounds growth without taking over your weekend.</p>
-    </div>
-    <div class="solution-card">
-      <h3>Product Hierarchy</h3>
-      <p>Essentials, optional, marketing — categorize what you own and what you're about to buy.</p>
-    </div>
-    <div class="solution-card">
-      <h3>Routine Stability</h3>
-      <p>Pick a routine and run it for 90 days minimum — long enough to actually see results.</p>
-    </div>
-    <div class="solution-card">
-      <h3>Glow That Lasts</h3>
-      <p>The midday and overnight habits that keep skin and hair holding hydration past hour two.</p>
-    </div>
-    <div class="solution-card">
-      <h3>Lifestyle Integration</h3>
-      <p>Routines that fit your work, your sleep, your schedule — instead of fighting them.</p>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section>
-  <div class="section-eyebrow">About Kennedy J</div>
-  <h2>The <span>Track Record</span></h2>
-  <div class="brand-block">
-    <div class="brand-block-text">
-      <h3>Kennedy J</h3>
-      <p>Kennedy J built 43.6K subscribers by being a creator who actually shows the long game — real routines, real results, real updates documented over time. Her audience comes back because the progress is visible, not theoretical.</p>
-    </div>
-    <div class="brand-stats">
-      <div class="b-stat">
-        <div class="b-num">43.6K</div>
-        <div class="b-label">YouTube subscribers</div>
-      </div>
-      <div class="b-stat">
-        <div class="b-num">Crossover</div>
-        <div class="b-label">Skin + Hair + Lifestyle</div>
-      </div>
-      <div class="b-stat">
-        <div class="b-num">Real</div>
-        <div class="b-label">Documented growth</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section>
-  <div class="section-eyebrow">What's Included</div>
-  <h2>Everything You Need to <span>Build This</span></h2>
-  <div class="included-list">
-    <div class="included-item">
-      <div class="check">✓</div>
-      <div>
-        <h4>Skincare Reset</h4>
-        <p>The 5-step foundation routine that fits real life and actually moves your skin.</p>
-      </div>
-    </div>
-    <div class="included-item">
-      <div class="check">✓</div>
-      <div>
-        <h4>Hair Care Regimen</h4>
-        <p>The 4-step regimen tuned for compounding growth, not weekend marathons.</p>
-      </div>
-    </div>
-    <div class="included-item">
-      <div class="check">✓</div>
-      <div>
-        <h4>Product Audit</h4>
-        <p>Walk through your shelf and decide what stays, goes, and gets upgraded.</p>
-      </div>
-    </div>
-    <div class="included-item">
-      <div class="check">✓</div>
-      <div>
-        <h4>90-Day Stability Plan</h4>
-        <p>Lock in a routine and stop chasing trends long enough to see it work.</p>
-      </div>
-    </div>
-    <div class="included-item">
-      <div class="check">✓</div>
-      <div>
-        <h4>Community & Direct Access</h4>
-        <p>Get routine feedback, product input, and progress check-ins from Kennedy and the community.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="cta-section" id="cta">
-  <div class="cta-box">
-    <div class="section-eyebrow">Ready to Start?</div>
-    <h2>Book Your <span>Free Strategy Call</span></h2>
-    <p>We'll look at your skin, your hair, and your routine — and find the one shift that gives you the most visible glow for the least effort.</p>
-    <a href="#" class="cta-btn">Book Your Free Strategy Call</a>
-    <p class="cta-sub">Limited spots. No credit card required.</p>
-  </div>
-</div>
-
-<footer>
-  <p>Built by <span>J&amp;G Operations</span> for Kennedy J. Ready to deploy.</p>
-</footer>
-
+<footer>Built by J&G Operations for Kennedy J / @kennedyjohnson. Ready to deploy.</footer>
 </body>
 </html>

@@ -1,275 +1,181 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Home and Wardrobe That Finally Feel Like You | Shaneka E — Fashion, Home Decor & Lifestyle</title>
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #0a0a0f;
-    --accent: #ec4899;
-    --accent2: #be185d;
-    --accent3: #8b5cf6;
-    --text: #e2e8f0;
-    --muted: #94a3b8;
-    --card: #13131f;
-    --border: rgba(236,72,153,0.2);
-  }
-  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; overflow-x: hidden; }
-  a { color: var(--accent); text-decoration: none; }
+# Main Landing Page Copy — Shaneka E
 
-  nav { padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(10,10,15,0.95); backdrop-filter: blur(12px); z-index: 100; }
-  .nav-brand { display: flex; flex-direction: column; }
-  .nav-brand-main { font-size: 1.05rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .nav-brand-sub { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
-  .nav-cta { background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 0.5rem 1.2rem; border-radius: 6px; font-size: 0.85rem; font-weight: 700; transition: opacity 0.2s; }
-  .nav-cta:hover { opacity: 0.85; }
+**Target Audience:** Black women 28–40 navigating their 30s, frustrated with a wardrobe that doesn't reflect who they are now, faith-adjacent lifestyle orientation
+**Offer:** 30s Style Guide + Membership | Amazon Storefront
+**Page Goal:** Guide opt-in or course enrollment
+**Tone:** Shaneka's voice — warm, personal, styled, grace-adjacent
 
-  .hero { padding: 6rem 2rem 4rem; text-align: center; max-width: 880px; margin: 0 auto; position: relative; }
-  .hero::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(ellipse, rgba(236,72,153,0.1) 0%, transparent 70%); pointer-events: none; }
-  .eyebrow { display: inline-block; background: rgba(236,72,153,0.12); border: 1px solid var(--border); color: var(--accent); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 100px; margin-bottom: 1.5rem; }
-  h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.25rem; }
-  h1 span { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .hero-sub { font-size: 1.15rem; color: var(--muted); max-width: 640px; margin: 0 auto 2.5rem; }
-  .hero-cta { display: inline-block; background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 1rem 2.4rem; border-radius: 8px; font-size: 1.05rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(236,72,153,0.35); }
-  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 0 45px rgba(236,72,153,0.5); }
-  .hero-proof { margin-top: 2rem; color: var(--muted); font-size: 0.85rem; }
-  .hero-proof strong { color: var(--text); }
+---
 
-  .video-section { max-width: 760px; margin: 3rem auto; padding: 0 2rem; }
-  .video-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 16px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-  .video-wrap::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(236,72,153,0.05), rgba(139,92,246,0.05)); }
-  .play-btn { width: 70px; height: 70px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; box-shadow: 0 0 40px rgba(236,72,153,0.35); }
-  .play-btn::after { content: ''; border-left: 24px solid #fff; border-top: 14px solid transparent; border-bottom: 14px solid transparent; margin-left: 5px; }
-  .video-label { position: absolute; bottom: 1.2rem; color: var(--muted); font-size: 0.8rem; z-index: 1; }
+## ABOVE THE FOLD
 
-  section { padding: 5rem 2rem; max-width: 1000px; margin: 0 auto; }
-  .section-eyebrow { color: var(--accent); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
-  h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; margin-bottom: 1rem; }
-  h2 span { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+**HEADLINE:**
+Your 30s deserve a wardrobe that actually reflects who you are right now.
 
-  .problems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-  .problem-card { background: var(--card); border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 1.5rem; }
-  .problem-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
-  .problem-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: #f87171; }
-  .problem-card p { font-size: 0.9rem; color: var(--muted); }
+**SUBHEADLINE:**
+A style system built specifically for this life stage — not what you were wearing at 25, not what you think you're supposed to look like at 40. Right now.
 
-  .solution-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-  .solution-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; position: relative; overflow: hidden; }
-  .solution-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent2), var(--accent3)); }
-  .solution-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent); }
-  .solution-card p { font-size: 0.9rem; color: var(--muted); }
+**CTA Button:** Show Me the System
 
-  .brand-block { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; margin-top: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-  .brand-block-text h3 { font-size: 1.3rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.75rem; }
-  .brand-block-text p { color: var(--muted); font-size: 0.92rem; }
-  .brand-stats { display: grid; gap: 1rem; }
-  .b-stat { text-align: center; }
-  .b-num { font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
-  .b-label { font-size: 0.82rem; color: var(--muted); margin-top: 0.25rem; }
+**Hero Visual:** Shaneka styled and confident — warm lighting, real environment, not studio-sterile.
 
-  .included-list { margin-top: 2.5rem; display: grid; gap: 1rem; }
-  .included-item { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; }
-  .check { width: 22px; height: 22px; min-width: 22px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #fff; font-weight: 800; margin-top: 2px; }
-  .included-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; }
-  .included-item p { font-size: 0.85rem; color: var(--muted); }
+---
 
-  .cta-section { text-align: center; padding: 6rem 2rem; background: linear-gradient(180deg, transparent, rgba(236,72,153,0.06)); }
-  .cta-box { max-width: 600px; margin: 0 auto; }
-  .cta-box p { color: var(--muted); margin-bottom: 2rem; }
-  .cta-btn { display: inline-block; background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 1.1rem 2.8rem; border-radius: 8px; font-size: 1.1rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(236,72,153,0.35); }
-  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(236,72,153,0.55); }
-  .cta-sub { margin-top: 1rem; font-size: 0.82rem; color: var(--muted); }
+## SECTION 1 — PROBLEM STATEMENT
 
-  .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 0 2rem; }
-  footer { padding: 2rem; text-align: center; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--border); }
-  footer span { color: var(--accent); }
+You've been shopping for years.
 
-  @media (max-width: 640px) {
-    h1 { font-size: 1.9rem; }
-    .brand-block { grid-template-columns: 1fr; }
-  }
-</style>
-</head>
-<body>
+You have a closet full of things that individually made sense when you bought them. But on a Tuesday morning when you're getting ready, nothing goes together the way you want it to. You're still defaulting to the same three outfits. The rest hangs there.
 
-<nav>
-  <div class="nav-brand">
-    <div class="nav-brand-main">Shaneka E</div>
-    <div class="nav-brand-sub">Fashion. Home. Lifestyle.</div>
-  </div>
-  <a href="#cta" class="nav-cta">Book Free Call</a>
-</nav>
+You scroll Amazon looking for the right thing, and you end up buying something that seemed right in the photo and isn't what you expected when it arrives.
 
-<div class="hero">
-  <div class="eyebrow">For Women Designing Their Home AND Their Style</div>
-  <h1>A Home and Wardrobe <span>That Finally Feel Like You</span></h1>
-  <p class="hero-sub">Most women either over-decorate their space and under-style themselves, or vice versa. Your home and your closet should be running on the same aesthetic. Here's how to build that for both.</p>
-  <a href="#cta" class="hero-cta">Book Your Free Strategy Call</a>
-  <p class="hero-proof">Built by <strong>Shaneka E</strong> — 44K subscribers in Fashion, Home Decor & Lifestyle. Real audience, real results.</p>
-</div>
+The problem isn't your taste. It isn't your budget. It isn't your body.
 
-<div class="video-section">
-  <div class="video-wrap">
-    <div class="play-btn"></div>
-    <div class="video-label">Watch: How This System Was Built (Add Your VSL Here)</div>
-  </div>
-</div>
+It's that you've been buying individual pieces without a logic for what you're building toward.
 
-<div class="divider"></div>
+That's the thing we fix.
 
-<section>
-  <div class="section-eyebrow">The Real Problem</div>
-  <h2>Where Most Women <span>Get Stuck</span></h2>
-  <p style="color:var(--muted); max-width: 580px;">Pinterest looks great. Your house and your closet don't look like Pinterest. The gap between inspiration and execution is where most women get stuck — and the fix isn't more inspiration.</p>
-  <div class="problems-grid">
-    <div class="problem-card">
-      <div class="problem-icon">🛋️</div>
-      <h3>Home looks unfinished, always</h3>
-      <p>Every room has potential and zero follow-through. You started, you stalled, and now you live in the in-between version of every project.</p>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">👗</div>
-      <h3>Closet doesn't match the woman you're becoming</h3>
-      <p>You've grown. Your wardrobe didn't. You're dressing for a version of yourself from three years ago and it shows.</p>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">🎨</div>
-      <h3>No cohesive aesthetic</h3>
-      <p>Each piece you own is fine on its own. Together they don't tell a story — your space and your style feel scattered.</p>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">💸</div>
-      <h3>Spending without a vision</h3>
-      <p>You buy because something's cute, not because it fits a plan. Then it sits in a corner not earning its place.</p>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">⏳</div>
-      <h3>Always 'eventually'</h3>
-      <p>Eventually you'll redo the bedroom. Eventually you'll clean out your closet. Eventually never comes because there's no system forcing it.</p>
-    </div>
-  </div>
-</section>
+---
 
-<div class="divider"></div>
+## SECTION 2 — WHO THIS IS FOR
 
-<section>
-  <div class="section-eyebrow">The Solution</div>
-  <h2>The <span>Shaneka E Method</span></h2>
-  <p style="color:var(--muted); max-width: 600px;">This is the system behind Shaneka E's work — built for women who are ready to stop guessing and start building.</p>
-  <div class="solution-grid">
-    <div class="solution-card">
-      <h3>The Whole Aesthetic Framework</h3>
-      <p>Define one visual identity that lives in your home AND your closet so every decision becomes faster and more aligned.</p>
-    </div>
-    <div class="solution-card">
-      <h3>Room-by-Room Reset</h3>
-      <p>Phased decor plans that finish what you started — one room at a time, on a real budget.</p>
-    </div>
-    <div class="solution-card">
-      <h3>Closet Curation</h3>
-      <p>Audit, edit, and rebuild your wardrobe around the woman you're becoming, not the one you used to be.</p>
-    </div>
-    <div class="solution-card">
-      <h3>Buying With a Plan</h3>
-      <p>Pre-purchase filters for both home goods and clothing — so every dollar moves you closer to the vision.</p>
-    </div>
-    <div class="solution-card">
-      <h3>Lifestyle Integration</h3>
-      <p>Connect how your home feels to how you show up — your environment is part of your style.</p>
-    </div>
-    <div class="solution-card">
-      <h3>Quarterly Refresh</h3>
-      <p>Light seasonal updates that keep your space and wardrobe alive without burning everything down twice a year.</p>
-    </div>
-  </div>
-</section>
+This is for you if:
 
-<div class="divider"></div>
+- You're in your late 20s, 30s, or early 40s and your wardrobe feels like it belongs to someone slightly younger than who you are now
+- You shop Amazon but you're never quite sure what's actually worth buying
+- You want to feel confident when you get dressed, not just put together
+- You're a woman who sees style and faith and life as connected — not separate categories
+- You want content from someone who gets the whole picture, not just the fashion part
 
-<section>
-  <div class="section-eyebrow">About Shaneka E</div>
-  <h2>The <span>Track Record</span></h2>
-  <div class="brand-block">
-    <div class="brand-block-text">
-      <h3>Shaneka E</h3>
-      <p>Shaneka E built 44K subscribers by showing women that home and personal style aren't separate projects — they're one expression. Her work blurs decor and fashion in a way most creators won't even attempt, and her audience responds because it feels real.</p>
-    </div>
-    <div class="brand-stats">
-      <div class="b-stat">
-        <div class="b-num">44K</div>
-        <div class="b-label">YouTube subscribers</div>
-      </div>
-      <div class="b-stat">
-        <div class="b-num">Crossover</div>
-        <div class="b-label">Fashion + Home Decor</div>
-      </div>
-      <div class="b-stat">
-        <div class="b-num">Lifestyle</div>
-        <div class="b-label">Whole-aesthetic creator</div>
-      </div>
-    </div>
-  </div>
-</section>
+This is not for someone who wants trend chasing or fast fashion content. This is for the woman who wants to build something intentional.
 
-<div class="divider"></div>
+---
 
-<section>
-  <div class="section-eyebrow">What's Included</div>
-  <h2>Everything You Need to <span>Build This</span></h2>
-  <div class="included-list">
-    <div class="included-item">
-      <div class="check">✓</div>
-      <div>
-        <h4>Aesthetic Discovery Workshop</h4>
-        <p>Lock in the visual identity that runs through both your home and your wardrobe.</p>
-      </div>
-    </div>
-    <div class="included-item">
-      <div class="check">✓</div>
-      <div>
-        <h4>Room Reset Plans</h4>
-        <p>Budget-aware, phase-by-phase decor plans for the rooms you've been putting off.</p>
-      </div>
-    </div>
-    <div class="included-item">
-      <div class="check">✓</div>
-      <div>
-        <h4>Closet Curation System</h4>
-        <p>The audit, edit, and rebuild process for a wardrobe that finally feels current.</p>
-      </div>
-    </div>
-    <div class="included-item">
-      <div class="check">✓</div>
-      <div>
-        <h4>Smart Shopping Filters</h4>
-        <p>The pre-purchase questions that end the impulse buy cycle for both home and fashion.</p>
-      </div>
-    </div>
-    <div class="included-item">
-      <div class="check">✓</div>
-      <div>
-        <h4>Community & Direct Access</h4>
-        <p>Get visual feedback, layout input, and outfit reviews from Shaneka and a community building the same way.</p>
-      </div>
-    </div>
-  </div>
-</section>
+## SECTION 3 — MEET SHANEKA
 
-<div class="cta-section" id="cta">
-  <div class="cta-box">
-    <div class="section-eyebrow">Ready to Start?</div>
-    <h2>Book Your <span>Free Strategy Call</span></h2>
-    <p>We'll look at your home, your closet, and the version of life you're trying to build — and identify the one move that brings them all into alignment.</p>
-    <a href="#" class="cta-btn">Book Your Free Strategy Call</a>
-    <p class="cta-sub">Limited spots. No credit card required.</p>
-  </div>
-</div>
+I've been navigating my 30s on camera for a while now.
 
-<footer>
-  <p>Built by <span>J&amp;G Operations</span> for Shaneka E. Ready to deploy.</p>
-</footer>
+44,000 people follow along on YouTube. They come because the style content is good. They stay because somewhere in a video about an Amazon haul I'll say something real about what it's like to be figuring out your 30s — and that lands.
 
-</body>
-</html>
+My tagline is "navigating my 30s with style and God's grace." That's not aspirational language. That's just honest — I'm doing it like most of you are doing it. One season at a time, with care for how I show up, and a lot of grace for what's still being figured out.
+
+Style matters to me because it's one of the ways I take care of myself. It's also one of the most practical ways I help other women do the same.
+
+**[Photo of Shaneka — warm, genuine, real lighting]**
+
+---
+
+## SECTION 4 — THE SYSTEM
+
+**Four things. In the right order.**
+
+**Foundation Pieces**
+The items that work with everything in your 30s wardrobe. Not trend-dependent, not aspirational. Things that actually work for the life you're living right now.
+
+**Color**
+Your 30s palette is probably different from your 20s palette. We figure out what's actually yours — not what the algorithm says is trending.
+
+**Fit**
+The biggest style shift in your 30s is learning to buy for how you look right now, not aspirationally. Things that fit you today feel better than things that might fit eventually.
+
+**Amazon**
+How to shop it efficiently, what actually delivers, and how to avoid the things that look good in photos and arrive wrong. This is where the storefront comes in — curated picks that I've already vetted.
+
+**What makes this different from browsing Pinterest:**
+
+Pinterest gives you inspiration without sequence. This gives you a system — a logic for what to buy, in what order, and why. Women who go through it stop buying things that don't work. Most of them spend less within a few months.
+
+---
+
+## SECTION 5 — WHAT'S INCLUDED
+
+**30s Style Guide — [Price]**
+
+- Foundation piece framework for this life stage
+- Color palette system (not a color analysis — a logic)
+- Fit principles for shopping your actual body right now
+- Amazon shopping system with curated recommendations
+- Bonus: direct storefront access with linked picks by category
+- Digital download, yours to keep
+
+**[Get the Guide Button]**
+
+---
+
+**Style & Grace Membership — [Price]/month**
+
+For women who want the ongoing community alongside the guide:
+
+- Monthly live style Q&As — bring your specific wardrobe question
+- Amazon haul previews — first access before they go public
+- Faith + lifestyle conversations — the intersection that makes this community different
+- Behind-the-scenes content not on the main channel
+- Community of women building intentional wardrobes together
+
+**[Join the Membership Button]**
+
+---
+
+## SECTION 6 — SOCIAL PROOF
+
+"I didn't realize how much energy I was wasting on a wardrobe that didn't work until I went through the guide. It's not about having more — it's about having the right things." — Brittany, 32
+
+"The Amazon piece alone was worth it. I used to scroll for an hour and still not know what to buy. Now I have a system." — Danielle, 35
+
+"I found Shaneka during a hard transition year. The fashion content gave me something concrete to hold onto. That sounds small but it wasn't." — Jasmine, 28
+
+"She talks about style the way she talks about everything — like it matters but not like it's everything. That balance is rare." — Nadia, 33
+
+---
+
+## SECTION 7 — OBJECTION HANDLING
+
+**"I've tried style guides before and they didn't help."**
+
+Most style guides are trend-based or generic. The 30s framework is life-stage specific — it starts with where you are right now and builds from there. If you want to see how I explain things before committing, the YouTube channel is a free preview. [Link]
+
+**"I already follow your Amazon storefront."**
+
+Good — the storefront is where to start. The guide takes the next step: it explains the logic behind the curation, so you can make choices independently, not just follow picks.
+
+**"Is this for my body type / style preference?"**
+
+The guide covers principles that apply across body types and aesthetics. It's not "wear X, avoid Y" content — it's the logic of building a wardrobe that works for you specifically.
+
+**"I can get this from your YouTube channel for free."**
+
+A lot of it, yes — that's intentional. The guide is the structured version: the sequence and the reasoning made explicit, without having to piece it together from 30 separate videos.
+
+---
+
+## SECTION 8 — FINAL CTA
+
+Your 30s are a season worth showing up for.
+
+The style piece isn't the biggest part of that. But it's a real part — how we take care of how we present ourselves is connected to how we take care of ourselves overall.
+
+A wardrobe that works is one less thing to navigate.
+
+**[Get the 30s Style Guide — [Price]]**
+**[Join the Style & Grace Membership — [Price]/month]**
+
+And the Amazon storefront is always free: **[Storefront Link]**
+
+---
+
+## FOOTER
+
+Questions? DM on Instagram [@shanekae] or email [shanekaellington@gmail.com]
+
+[YouTube Channel] | [Instagram] | [Amazon Storefront] | [Privacy Policy]
+
+---
+
+## PAGE DESIGN NOTES
+
+- **Primary palette:** Warm camel, cream, muted blush — sophisticated but not cold
+- **Typography:** Clean serif headline, readable body — elevated but not corporate
+- **Photo direction:** Real lighting, warm tones, Shaneka's authentic style (not studio)
+- **Video integration:** 60-second intro from Shaneka in Section 3 if available
+- **Mobile-first:** Most Instagram traffic arrives mobile — large text, stacked layout, thumb-friendly CTAs
+- **Storefront link prominent** — the storefront is a free entry point that builds trust before purchase

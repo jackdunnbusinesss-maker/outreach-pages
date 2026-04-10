@@ -1,275 +1,186 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Healthier Hair Without Spending Every Sunday on Wash Day | Tiana Michelle — Hair Care, Lifestyle & Beauty</title>
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #0a0a0f;
-    --accent: #ec4899;
-    --accent2: #be185d;
-    --accent3: #8b5cf6;
-    --text: #e2e8f0;
-    --muted: #94a3b8;
-    --card: #13131f;
-    --border: rgba(236,72,153,0.2);
-  }
-  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; overflow-x: hidden; }
-  a { color: var(--accent); text-decoration: none; }
+# Main Landing Page Copy — Tiana Michelle
 
-  nav { padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(10,10,15,0.95); backdrop-filter: blur(12px); z-index: 100; }
-  .nav-brand { display: flex; flex-direction: column; }
-  .nav-brand-main { font-size: 1.05rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .nav-brand-sub { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
-  .nav-cta { background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 0.5rem 1.2rem; border-radius: 6px; font-size: 0.85rem; font-weight: 700; transition: opacity 0.2s; }
-  .nav-cta:hover { opacity: 0.85; }
+**Target Audience:** Black women 22–38 who are natural or transitioning, frustrated with inconsistent results, and looking for a routine that actually holds — ideally women who also resonate with healing/personal growth content
+**Offer:** Crown & Blossom Natural Hair System (Course + optional Membership)
+**Page Goal:** Drive course enrollment or membership signup
+**Tone:** Tiana's voice — warm, direct, no fluff, healing-adjacent
 
-  .hero { padding: 6rem 2rem 4rem; text-align: center; max-width: 880px; margin: 0 auto; position: relative; }
-  .hero::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(ellipse, rgba(236,72,153,0.1) 0%, transparent 70%); pointer-events: none; }
-  .eyebrow { display: inline-block; background: rgba(236,72,153,0.12); border: 1px solid var(--border); color: var(--accent); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 100px; margin-bottom: 1.5rem; }
-  h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.25rem; }
-  h1 span { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .hero-sub { font-size: 1.15rem; color: var(--muted); max-width: 640px; margin: 0 auto 2.5rem; }
-  .hero-cta { display: inline-block; background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 1rem 2.4rem; border-radius: 8px; font-size: 1.05rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(236,72,153,0.35); }
-  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 0 45px rgba(236,72,153,0.5); }
-  .hero-proof { margin-top: 2rem; color: var(--muted); font-size: 0.85rem; }
-  .hero-proof strong { color: var(--text); }
+---
 
-  .video-section { max-width: 760px; margin: 3rem auto; padding: 0 2rem; }
-  .video-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 16px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-  .video-wrap::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(236,72,153,0.05), rgba(139,92,246,0.05)); }
-  .play-btn { width: 70px; height: 70px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; box-shadow: 0 0 40px rgba(236,72,153,0.35); }
-  .play-btn::after { content: ''; border-left: 24px solid #fff; border-top: 14px solid transparent; border-bottom: 14px solid transparent; margin-left: 5px; }
-  .video-label { position: absolute; bottom: 1.2rem; color: var(--muted); font-size: 0.8rem; z-index: 1; }
+## ABOVE THE FOLD
 
-  section { padding: 5rem 2rem; max-width: 1000px; margin: 0 auto; }
-  .section-eyebrow { color: var(--accent); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
-  h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; margin-bottom: 1rem; }
-  h2 span { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+**HEADLINE:**
+Your wash n go should look the same every Sunday. Here's the system that makes that happen.
 
-  .problems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-  .problem-card { background: var(--card); border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 1.5rem; }
-  .problem-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
-  .problem-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: #f87171; }
-  .problem-card p { font-size: 0.9rem; color: var(--muted); }
+**SUBHEADLINE:**
+Crown & Blossom — a complete natural hair education built for women who've been at this for years and still want the routine to actually click.
 
-  .solution-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-  .solution-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; position: relative; overflow: hidden; }
-  .solution-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent2), var(--accent3)); }
-  .solution-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent); }
-  .solution-card p { font-size: 0.9rem; color: var(--muted); }
+**CTA Button:** Show Me the System
 
-  .brand-block { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; margin-top: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-  .brand-block-text h3 { font-size: 1.3rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.75rem; }
-  .brand-block-text p { color: var(--muted); font-size: 0.92rem; }
-  .brand-stats { display: grid; gap: 1rem; }
-  .b-stat { text-align: center; }
-  .b-num { font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
-  .b-label { font-size: 0.82rem; color: var(--muted); margin-top: 0.25rem; }
+**Hero Visual:** Tiana's wash n go or rod set reveal — clean, beautiful natural hair. Real lighting, not studio-polished.
 
-  .included-list { margin-top: 2.5rem; display: grid; gap: 1rem; }
-  .included-item { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; }
-  .check { width: 22px; height: 22px; min-width: 22px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #fff; font-weight: 800; margin-top: 2px; }
-  .included-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; }
-  .included-item p { font-size: 0.85rem; color: var(--muted); }
+---
 
-  .cta-section { text-align: center; padding: 6rem 2rem; background: linear-gradient(180deg, transparent, rgba(236,72,153,0.06)); }
-  .cta-box { max-width: 600px; margin: 0 auto; }
-  .cta-box p { color: var(--muted); margin-bottom: 2rem; }
-  .cta-btn { display: inline-block; background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 1.1rem 2.8rem; border-radius: 8px; font-size: 1.1rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(236,72,153,0.35); }
-  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(236,72,153,0.55); }
-  .cta-sub { margin-top: 1rem; font-size: 0.82rem; color: var(--muted); }
+## SECTION 1 — PROBLEM STATEMENT
 
-  .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 0 2rem; }
-  footer { padding: 2rem; text-align: center; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--border); }
-  footer span { color: var(--accent); }
+You've been natural for [X] years.
 
-  @media (max-width: 640px) {
-    h1 { font-size: 1.9rem; }
-    .brand-block { grid-template-columns: 1fr; }
-  }
-</style>
-</head>
-<body>
+You've watched more tutorials than you can count. You've tried different products, different techniques, different YouTubers. Some of it helped. None of it made everything consistent.
 
-<nav>
-  <div class="nav-brand">
-    <div class="nav-brand-main">Tiana Michelle</div>
-    <div class="nav-brand-sub">Healthy hair. Real life.</div>
-  </div>
-  <a href="#cta" class="nav-cta">Book Free Call</a>
-</nav>
+Your wash n go looks different every time and you're not sure why. Your rod set frizzes faster than it should. You know length retention is the issue but you can't find the thing that actually fixes it.
 
-<div class="hero">
-  <div class="eyebrow">For Women Building Real Hair Goals — Length, Health, Versatility</div>
-  <h1>Healthier Hair <span>Without Spending Every Sunday on Wash Day</span></h1>
-  <p class="hero-sub">Most hair routines are either too much or not enough. Either you're spending six hours every weekend on a regimen that's still not growing your hair — or you're winging it and your ends are paying for it. Here's the middle.</p>
-  <a href="#cta" class="hero-cta">Book Your Free Strategy Call</a>
-  <p class="hero-proof">Built by <strong>Tiana Michelle</strong> — 89.4K subscribers in Hair Care, Lifestyle & Beauty. Real audience, real results.</p>
-</div>
+You're not doing anything fundamentally wrong.
 
-<div class="video-section">
-  <div class="video-wrap">
-    <div class="play-btn"></div>
-    <div class="video-label">Watch: How This System Was Built (Add Your VSL Here)</div>
-  </div>
-</div>
+You're missing one thing: a system with the steps in the right order and the reasoning explained at every stage.
 
-<div class="divider"></div>
+That's what Crown & Blossom is.
 
-<section>
-  <div class="section-eyebrow">The Real Problem</div>
-  <h2>Where Most Women <span>Get Stuck</span></h2>
-  <p style="color:var(--muted); max-width: 580px;">Hair care online is overwhelming. Every creator says something different. The result is a routine that costs more, takes longer, and still doesn't give you the hair you actually want.</p>
-  <div class="problems-grid">
-    <div class="problem-card">
-      <div class="problem-icon">⏰</div>
-      <h3>Wash day eats your whole weekend</h3>
-      <p>Six hours, twelve products, three loads of laundry — and your edges are still dry by Tuesday.</p>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">🛒</div>
-      <h3>Cabinet full of products that don't work</h3>
-      <p>You bought everything every YouTuber recommended. Now you have a shelf of half-empty bottles and no clear regimen.</p>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">✂️</div>
-      <h3>Length without health</h3>
-      <p>Your hair grows but never retains. You're cutting more than you're keeping, and you can't figure out why.</p>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">🌀</div>
-      <h3>Switching up too much</h3>
-      <p>Every new viral routine resets your progress. Your hair never gets to settle into anything long enough to show results.</p>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">💧</div>
-      <h3>Dry, brittle, won't drink moisture</h3>
-      <p>No matter how many leave-ins you layer, your hair feels straw-dry by midweek. Something's broken in the foundation.</p>
-    </div>
-  </div>
-</section>
+---
 
-<div class="divider"></div>
+## SECTION 2 — WHO THIS IS FOR
 
-<section>
-  <div class="section-eyebrow">The Solution</div>
-  <h2>The <span>Tiana Michelle Method</span></h2>
-  <p style="color:var(--muted); max-width: 600px;">This is the system behind Tiana Michelle's work — built for women who are ready to stop guessing and start building.</p>
-  <div class="solution-grid">
-    <div class="solution-card">
-      <h3>The 90-Minute Wash Day</h3>
-      <p>A streamlined routine that hits every step that matters and skips the busywork — back hours into your weekend.</p>
-    </div>
-    <div class="solution-card">
-      <h3>Product Shelf Audit</h3>
-      <p>Cut your collection by 60% and keep only the products that actually do something for YOUR hair type.</p>
-    </div>
-    <div class="solution-card">
-      <h3>Length Retention Protocol</h3>
-      <p>The protective styling, low-manipulation, and trim-frequency rules that turn growth into actual length on the ruler.</p>
-    </div>
-    <div class="solution-card">
-      <h3>Moisture-Protein Balance</h3>
-      <p>How to read your hair's signals and dose the right side of the equation — without guessing.</p>
-    </div>
-    <div class="solution-card">
-      <h3>Regimen Lock-In</h3>
-      <p>Stop chasing every viral trend. A regimen that earns your loyalty for at least 90 days — long enough to actually see what works.</p>
-    </div>
-    <div class="solution-card">
-      <h3>Versatile Style Library</h3>
-      <p>Quick, low-damage styles that get you out the door without flat irons every morning.</p>
-    </div>
-  </div>
-</section>
+This is built for you if:
 
-<div class="divider"></div>
+- You've been natural for at least one year and still don't have a consistent routine
+- You've spent money on products that promised results and didn't deliver
+- You want your wash day to feel good, not just produce a result eventually
+- You're the kind of woman who wants to understand why something works, not just follow instructions
+- You believe taking care of your hair is connected to taking care of yourself — and you want content that sees both
 
-<section>
-  <div class="section-eyebrow">About Tiana Michelle</div>
-  <h2>The <span>Track Record</span></h2>
-  <div class="brand-block">
-    <div class="brand-block-text">
-      <h3>Tiana Michelle</h3>
-      <p>Tiana Michelle built 89.4K subscribers by being one of the few hair creators who actually shows the long game — real growth, real setbacks, real results documented over years. The system isn't theory; it's the same one she's used to grow her own hair on camera.</p>
-    </div>
-    <div class="brand-stats">
-      <div class="b-stat">
-        <div class="b-num">89.4K</div>
-        <div class="b-label">YouTube subscribers</div>
-      </div>
-      <div class="b-stat">
-        <div class="b-num">Hair</div>
-        <div class="b-label">Care + Length + Versatility</div>
-      </div>
-      <div class="b-stat">
-        <div class="b-num">Years</div>
-        <div class="b-label">Of documented growth</div>
-      </div>
-    </div>
-  </div>
-</section>
+This is **not** for someone looking for their first natural hair tutorial. This is a system for women who've put in real effort and want the specific thing that makes it click.
 
-<div class="divider"></div>
+---
 
-<section>
-  <div class="section-eyebrow">What's Included</div>
-  <h2>Everything You Need to <span>Build This</span></h2>
-  <div class="included-list">
-    <div class="included-item">
-      <div class="check">✓</div>
-      <div>
-        <h4>Wash Day Streamline System</h4>
-        <p>The 90-minute regimen, step-by-step, with the products and tools that actually justify their place.</p>
-      </div>
-    </div>
-    <div class="included-item">
-      <div class="check">✓</div>
-      <div>
-        <h4>Length Retention Playbook</h4>
-        <p>The protective styling calendar, trim schedule, and nightly routines that keep your inches on your head.</p>
-      </div>
-    </div>
-    <div class="included-item">
-      <div class="check">✓</div>
-      <div>
-        <h4>Hair Type Diagnostic</h4>
-        <p>Walk through your porosity, density, and moisture needs so you stop buying for someone else's hair.</p>
-      </div>
-    </div>
-    <div class="included-item">
-      <div class="check">✓</div>
-      <div>
-        <h4>Style Library</h4>
-        <p>Versatile, low-damage style options that work between wash days without setting you back.</p>
-      </div>
-    </div>
-    <div class="included-item">
-      <div class="check">✓</div>
-      <div>
-        <h4>Community & Direct Access</h4>
-        <p>Get regimen feedback, product input, and progress check-ins from Tiana and a community on the same journey.</p>
-      </div>
-    </div>
-  </div>
-</section>
+## SECTION 3 — MEET TIANA
 
-<div class="cta-section" id="cta">
-  <div class="cta-box">
-    <div class="section-eyebrow">Ready to Start?</div>
-    <h2>Book Your <span>Free Strategy Call</span></h2>
-    <p>We'll look at your current routine, your hair goals, and your real schedule — and find the one shift that gets you the most growth for the least time.</p>
-    <a href="#" class="cta-btn">Book Your Free Strategy Call</a>
-    <p class="cta-sub">Limited spots. No credit card required.</p>
-  </div>
-</div>
+I've been making natural hair content for years.
 
-<footer>
-  <p>Built by <span>J&amp;G Operations</span> for Tiana Michelle. Ready to deploy.</p>
-</footer>
+89,000 people follow along on YouTube. They come for the wash n go routines and the rod sets. They stay because somewhere in the middle of a tutorial, I say something honest about a slow season or a hard thing I'm processing — and it lands.
 
-</body>
-</html>
+I didn't plan for that to be my thing. I just started being real on camera.
+
+What I've figured out: the women who struggle most with their natural hair routines aren't struggling because of their curl pattern. They're struggling because their relationship with their hair is complicated — it's wrapped up in how they feel about themselves, how much time they think they deserve, whether the effort seems worth it.
+
+Crown & Blossom exists because technique alone doesn't fix that. But technique plus the right context for why it matters — that does.
+
+**[Photo of Tiana — warm, approachable, natural hair looking great]**
+
+---
+
+## SECTION 4 — THE SYSTEM
+
+**Four routines. One sequence. Everything explained.**
+
+**Wash N Go**
+The foundation. If this doesn't work, nothing else does. We go through application, technique, product order, and the specific details that make the difference between a wash n go that holds and one that's undefined by afternoon.
+
+**Rod Set**
+The style that lasts a week. Step by step from application to set to reveal — including the single step most people skip that causes frizz by day two.
+
+**Straight to Curly**
+How to transition between heat-styled and curly without damage. The routine most creators gloss over because it requires understanding both states of your hair simultaneously.
+
+**Length Retention**
+Why your hair isn't growing the way you want — and it's almost certainly not a growth problem. This is the piece that changes results over months, not just wash days.
+
+**What makes this different from 40 YouTube tutorials:**
+
+The tutorials exist. They're free. What's missing is the sequence — which one comes first, how each routine builds on the last, what order makes everything make sense. Crown & Blossom puts that sequence in place.
+
+---
+
+## SECTION 5 — WHAT'S INCLUDED
+
+**Crown & Blossom Course — [Price]**
+
+- Complete wash n go system (technique-first, not product-first)
+- Complete rod set system (step-by-step, frizz prevention built in)
+- Straight to curly routine
+- Length retention protocol
+- Lifetime access — every update I make is included
+- One-time purchase
+
+**[Enroll Button]**
+
+---
+
+**Crown & Blossom Membership — [Price]/month**
+
+For women who want the ongoing community alongside the course:
+
+- Monthly live hair Q&As with Tiana — bring your specific question
+- Healing chit chat sessions — the intersection of hair and personal growth
+- Behind-the-scenes content not on the main channel
+- Early access to new tutorials
+- Community of women doing this work alongside you
+
+**[Join the Membership Button]**
+
+---
+
+## SECTION 6 — SOCIAL PROOF
+
+**What the community says:**
+
+"My wash n go finally looks the same every time. Four years natural and this is the first routine that actually holds." — Jordan, 27
+
+"I came for the hair tutorials. The healing content made me book a therapy appointment. I didn't expect both things to change my life." — Shanice, 31
+
+"The rod set lasted nine days. I've never gotten more than four before. The difference was the one step she explained that I'd been skipping." — Maya, 23
+
+"She teaches like she actually wants you to understand, not just follow directions. That's rare." — Brianna, 29
+
+---
+
+## SECTION 7 — OBJECTION HANDLING
+
+**"I've bought courses before and they didn't work."**
+
+Most natural hair courses are video libraries — a collection of tutorials organized by topic. Crown & Blossom is a sequence. There's a logic to the order. Each routine builds context for the next. That's the structural difference.
+
+If you want to see how I teach before committing — the rod set tutorial on my YouTube channel is the clearest preview. Same level of detail, same explanation style. Watch it and you'll know.
+
+**"I already watch your YouTube channel."**
+
+Good — the free content is real. I don't gate the useful stuff. The difference with the course is the sequence and the depth. On YouTube I'm teaching individual tutorials. In Crown & Blossom, I'm teaching a system with the logic made explicit. That's worth something to a specific kind of learner.
+
+**"Is this for my curl pattern?"**
+
+It's for women with natural hair — 4a, 4b, 4c, coils, kinks, combinations. The techniques are demonstrated on 4c hair, but the principles apply across curl patterns because they're about technique, not hair typing.
+
+**"What if it doesn't work for me?"**
+
+If you go through the material and apply it and something specific isn't clicking — reach out. I'm reachable. This isn't a buy-and-disappear system.
+
+---
+
+## SECTION 8 — FINAL CTA
+
+Your crown deserves a routine built for it specifically. Not a general tutorial. Not one more product recommendation.
+
+A system. With steps in the right order and the reasoning made clear.
+
+That's what Crown & Blossom is.
+
+**[Enroll in the Course — [Price]]**
+**[Join the Membership — [Price]/month]**
+
+---
+
+## FOOTER
+
+Questions? DM on Instagram [@tianamichelle_] or email [hercrownblossoms@gmail.com]
+
+[YouTube Channel] | [Instagram] | [Privacy Policy] | [Terms]
+
+---
+
+## PAGE DESIGN NOTES
+
+- **Primary CTA color:** Warm gold or deep green — earthy, healing-adjacent
+- **Typography:** Serif headline, readable body — approachable, not corporate
+- **Photo direction:** Natural hair in real lighting. Warm textures. No clinical white backgrounds.
+- **Video integration:** Embed a 60-second Tiana intro video in Section 3 if available
+- **Mobile-first:** Most traffic from Instagram is mobile — stack content vertically, large CTA buttons
+- **No countdown timers** — doesn't fit the brand trust dynamic
+- **Above-fold CTA should scroll users down** to the problem statement, not jump to checkout

@@ -3,205 +3,156 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Build a Real Travel Style | Dria Antionette</title>
+<title>The Self-Dating Lifestyle Guide — Dria Antionette</title>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #0a0a0f;
-    --accent: #14b8a6;
-    --accent2: #0f766e;
-    --accent3: #8b5cf6;
-    --text: #e2e8f0;
-    --muted: #94a3b8;
-    --card: #13131f;
-    --border: rgba(20,184,166,0.2);
-  }
-  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; overflow-x: hidden; }
-  a { color: var(--accent); text-decoration: none; }
-
-  nav { padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(10,10,15,0.95); backdrop-filter: blur(12px); z-index: 100; }
-  .nav-brand { display: flex; flex-direction: column; }
-  .nav-brand-main { font-size: 1.05rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .nav-brand-sub { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
-  .nav-cta { background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 0.5rem 1.2rem; border-radius: 6px; font-size: 0.85rem; font-weight: 700; transition: opacity 0.2s; }
-  .nav-cta:hover { opacity: 0.85; }
-
-  .hero { padding: 6rem 2rem 4rem; text-align: center; max-width: 880px; margin: 0 auto; position: relative; }
-  .hero::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(ellipse, rgba(20,184,166,0.1) 0%, transparent 70%); pointer-events: none; }
-  .eyebrow { display: inline-block; background: rgba(20,184,166,0.12); border: 1px solid var(--border); color: var(--accent); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 100px; margin-bottom: 1.5rem; }
-  h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.25rem; }
-  h1 span { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .hero-sub { font-size: 1.15rem; color: var(--muted); max-width: 640px; margin: 0 auto 2.5rem; }
-  .hero-cta { display: inline-block; background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 1rem 2.4rem; border-radius: 8px; font-size: 1.05rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(20,184,166,0.35); }
-  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 0 45px rgba(20,184,166,0.5); }
-  .hero-proof { margin-top: 2rem; color: var(--muted); font-size: 0.85rem; }
-  .hero-proof strong { color: var(--text); }
-
-  .video-section { max-width: 760px; margin: 3rem auto; padding: 0 2rem; }
-  .video-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 16px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-  .video-wrap::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(20,184,166,0.05), rgba(139,92,246,0.05)); }
-  .play-btn { width: 70px; height: 70px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; box-shadow: 0 0 40px rgba(20,184,166,0.35); }
-  .play-btn::after { content: ''; border-left: 24px solid #fff; border-top: 14px solid transparent; border-bottom: 14px solid transparent; margin-left: 5px; }
-  .video-label { position: absolute; bottom: 1.2rem; color: var(--muted); font-size: 0.8rem; z-index: 1; }
-
-  section { padding: 5rem 2rem; max-width: 1000px; margin: 0 auto; }
-  .section-eyebrow { color: var(--accent); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
-  h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; margin-bottom: 1rem; }
-  h2 span { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-
-  .problems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-  .problem-card { background: var(--card); border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 1.5rem; }
-  .problem-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
-  .problem-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: #f87171; }
-  .problem-card p { font-size: 0.9rem; color: var(--muted); }
-
-  .solution-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-  .solution-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; position: relative; overflow: hidden; }
-  .solution-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent2), var(--accent3)); }
-  .solution-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent); }
-  .solution-card p { font-size: 0.9rem; color: var(--muted); }
-
-  .brand-block { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; margin-top: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-  .brand-block-text h3 { font-size: 1.3rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.75rem; }
-  .brand-block-text p { color: var(--muted); font-size: 0.92rem; }
-  .brand-stats { display: grid; gap: 1rem; }
-  .b-stat { text-align: center; }
-  .b-num { font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
-  .b-label { font-size: 0.82rem; color: var(--muted); margin-top: 0.25rem; }
-
-  .included-list { margin-top: 2.5rem; display: grid; gap: 1rem; }
-  .included-item { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; }
-  .check { width: 22px; height: 22px; min-width: 22px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #fff; font-weight: 800; margin-top: 2px; }
-  .included-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; }
-  .included-item p { font-size: 0.85rem; color: var(--muted); }
-
-  .cta-section { text-align: center; padding: 6rem 2rem; background: linear-gradient(180deg, transparent, rgba(20,184,166,0.06)); }
-  .cta-box { max-width: 600px; margin: 0 auto; }
-  .cta-box p { color: var(--muted); margin-bottom: 2rem; }
-  .cta-btn { display: inline-block; background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 1.1rem 2.8rem; border-radius: 8px; font-size: 1.1rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(20,184,166,0.35); }
-  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(20,184,166,0.55); }
-  .cta-sub { margin-top: 1rem; font-size: 0.82rem; color: var(--muted); }
-
-  .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 0 2rem; }
-  footer { padding: 2rem; text-align: center; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--border); }
-  footer span { color: var(--accent); }
-
-  @media (max-width: 640px) {
-    h1 { font-size: 1.9rem; }
-    .brand-block { grid-template-columns: 1fr; }
-  }
+  :root{--bg:#0a0a0f;--surface:#13131a;--border:#1f1f2e;--accent:#c084fc;--accent-light:#d8b4fe;--text:#e8e8f0;--muted:#888899;--white:#ffffff;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,sans-serif;line-height:1.6;}
+  .container{max-width:860px;margin:0 auto;padding:0 24px;}
+  .hero{text-align:center;padding:100px 0 80px;border-bottom:1px solid var(--border);}
+  .eyebrow{display:inline-block;background:rgba(192,132,252,0.15);border:1px solid rgba(192,132,252,0.35);color:var(--accent-light);font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:6px 16px;border-radius:100px;margin-bottom:28px;}
+  h1{font-size:clamp(32px,6vw,58px);font-weight:900;color:var(--white);line-height:1.1;margin-bottom:22px;max-width:680px;margin-left:auto;margin-right:auto;}
+  h1 em{font-style:normal;color:var(--accent-light);}
+  .hero-sub{font-size:17px;color:var(--muted);max-width:520px;margin:0 auto 36px;}
+  .proof-bar{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;padding:18px;background:var(--surface);border:1px solid var(--border);border-radius:12px;max-width:560px;margin:0 auto 36px;}
+  .ps .num{font-size:22px;font-weight:800;color:var(--white);display:block;}
+  .ps .label{font-size:11px;color:var(--muted);}
+  .cta-btn{display:inline-block;background:var(--accent);color:white;padding:18px 40px;border-radius:10px;font-size:16px;font-weight:700;text-decoration:none;}
+  .cta-sub{font-size:13px;color:var(--muted);display:block;margin-top:10px;}
+  section{padding:80px 0;border-bottom:1px solid var(--border);}
+  .ey{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-light);margin-bottom:14px;}
+  h2{font-size:clamp(24px,4vw,38px);font-weight:800;color:var(--white);margin-bottom:18px;line-height:1.2;}
+  .vsl{background:var(--surface);border:1px solid var(--border);border-radius:16px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;max-width:720px;margin:0 auto;}
+  .vsl::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(192,132,252,0.1) 0%,transparent 65%);}
+  .pbtn{width:80px;height:80px;background:rgba(192,132,252,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;}
+  .pbtn::after{content:'';border-top:14px solid transparent;border-bottom:14px solid transparent;border-left:22px solid white;margin-left:5px;}
+  .pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:36px;}
+  .pc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px;}
+  .pc h3{font-size:14px;font-weight:700;color:var(--white);margin-bottom:8px;}
+  .pc p{font-size:13px;color:var(--muted);line-height:1.6;}
+  .steps{display:flex;flex-direction:column;gap:22px;margin-top:36px;}
+  .sr{display:flex;gap:18px;align-items:flex-start;}
+  .si{width:46px;height:46px;background:rgba(192,132,252,0.15);border:1px solid rgba(192,132,252,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+  .src h3{font-size:16px;font-weight:700;color:var(--white);margin-bottom:6px;}
+  .src p{font-size:13px;color:var(--muted);}
+  .cred-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:36px 0;}
+  .cc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px;text-align:center;}
+  .cn{font-size:30px;font-weight:900;color:var(--accent-light);display:block;margin-bottom:6px;}
+  .cl{font-size:12px;color:var(--muted);}
+  .tg{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:36px;}
+  .tc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px;}
+  .tc p{font-size:13px;color:var(--text);font-style:italic;line-height:1.7;margin-bottom:14px;}
+  .ta{font-size:12px;font-weight:600;color:var(--muted);}
+  .inc{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:36px;}
+  .inc li{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;}
+  .ck{color:var(--accent-light);font-size:18px;flex-shrink:0;}
+  .inc li h3{font-size:14px;font-weight:700;color:var(--white);margin-bottom:4px;}
+  .inc li p{font-size:13px;color:var(--muted);}
+  .cta-sec{text-align:center;padding:100px 0;}
+  .price{font-size:52px;font-weight:900;color:var(--white);margin:24px 0;}
+  .price span{font-size:22px;vertical-align:top;margin-top:10px;display:inline-block;color:var(--muted);}
+  footer{text-align:center;padding:28px 0;border-top:1px solid var(--border);font-size:12px;color:#444;}
+  @media(max-width:600px){.pain-grid,.cred-grid,.tg{grid-template-columns:1fr;}.proof-bar{gap:16px;}}
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-brand">
-    <div class="nav-brand-main">Dria Antionette</div>
-    <div class="nav-brand-sub">Fashion,Lifestyle,Travel</div>
-  </div>
-  <a href="#cta" class="nav-cta">Book Free Call</a>
-</nav>
-
-<div class="hero">
-  <div class="eyebrow">For Fashion Enthusiasts,Travel Bloggers,Lifestyle Influencers</div>
-  <h1>Travel and Look Great <span>Without a Suitcase Full of Regret</span></h1>
-  <p class="hero-sub">Most travel content is either 'pack light' or 'fashion week outfits' — never both. This is the practical system for traveling more, packing less, and actually loving every photo you take on the trip.</p>
-  <a href="#cta" class="hero-cta">Book Your Free Strategy Call</a>
-  <p class="hero-proof">Built for the audience of <strong>Dria Antionette</strong> — 17.5K subscribers strong on YouTube. Real creator, real community.</p>
-</div>
-
-<div class="video-section">
-  <div class="video-wrap">
-    <div class="play-btn"></div>
-    <div class="video-label">Watch: How This System Was Built (Add Your VSL Here)</div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<section>
-  <div class="section-eyebrow">The Real Problem</div>
-  <h2>Why Most Never Get the <span>Results They Want</span></h2>
-  <p style="color:var(--muted); max-width: 580px;">The interest is there. The effort is there. But without the right structure, it stays a frustrating loop instead of a real outcome.</p>
-  <div class="problems-grid">
-    <div class="problem-card"><div class="problem-icon">●</div><h3>Overpacking every single trip</h3><p>You bring half your closet and wear the same three outfits anyway. The suitcase is heavy, the airline charges, and you swear next time will be different.</p></div>
-    <div class="problem-card"><div class="problem-icon">●</div><h3>Outfits that don't translate</h3><p>What looked great in your hotel room photo looks tired by day three because nothing in your suitcase actually works together.</p></div>
-    <div class="problem-card"><div class="problem-icon">●</div><h3>Wrinkled clothes, no plan</h3><p>No system for what packs flat, what dries fast, or what survives a 12-hour flight.</p></div>
-    <div class="problem-card"><div class="problem-icon">●</div><h3>Trips that drain your savings</h3><p>No travel money system means every trip is a credit card recovery mission for the next three months.</p></div>
-    <div class="problem-card"><div class="problem-icon">●</div><h3>Looking the same as everyone else</h3><p>Following the same Instagram trends as every other traveler means your photos blend into the algorithm noise.</p></div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section>
-  <div class="section-eyebrow">The Solution</div>
-  <h2>A System Built <span>For Real Life</span></h2>
-  <p style="color:var(--muted); max-width: 600px;">This is the structured path — designed for the Fashion Enthusiasts,Travel Bloggers,Lifestyle Influencers who follow Dria and want a real result, not another video to watch.</p>
-  <div class="solution-grid">
-    <div class="solution-card"><h3>Travel Capsule Wardrobe</h3><p>12 pieces that mix into 30+ outfits — built for the climate, the bag, and the photos.</p></div>
-    <div class="solution-card"><h3>Pack-Flat, Dry-Fast Fabric List</h3><p>Exactly which fabrics survive travel and which to leave home, no matter how cute they look.</p></div>
-    <div class="solution-card"><h3>Outfit Plan Per Destination</h3><p>A system for planning outfits before the trip so every day has a look ready to go.</p></div>
-    <div class="solution-card"><h3>Travel Fund System</h3><p>The simple monthly money habit that quietly funds the next trip without sacrificing the rest of your life.</p></div>
-    <div class="solution-card"><h3>Photo & Content Plan</h3><p>Plan the shots, locations, and outfit changes before you arrive — instead of scrambling on the ground.</p></div>
-    <div class="solution-card"><h3>Beauty Travel Kit</h3><p>The exact compact routine that holds up through long flights and humid climates.</p></div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section>
-  <div class="section-eyebrow">About Dria Antionette</div>
-  <h2>The <span>Track Record</span></h2>
-  <div class="brand-block">
-    <div class="brand-block-text">
-      <h3>Dria Antionette</h3>
-      <p>Dria Antionette built a community of 17.5K subscribers around fashion,lifestyle,travel — sharing the work in real time and earning the trust of fashion enthusiasts,travel bloggers,lifestyle influencers along the way. This is the structured version of what Dria has been teaching, packaged so you can actually use it.</p>
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">Self-Dating Lifestyle Guide</div>
+    <h1>Stop Waiting.<br>Build the Life You Want <em>Right Now.</em></h1>
+    <p class="hero-sub">The complete guide to the self-dating lifestyle — elevated routines, style that works, and a framework for treating yourself like a priority every single day.</p>
+    <div class="proof-bar">
+      <div class="ps"><span class="num">17.5K</span><span class="label">YouTube Subscribers</span></div>
+      <div class="ps"><span class="num">2+ Yrs</span><span class="label">Living This Lifestyle</span></div>
+      <div class="ps"><span class="num">$57</span><span class="label">Complete Guide</span></div>
     </div>
-    <div class="brand-stats">
-      <div class="b-stat">
-        <div class="b-num">17.5K</div>
-        <div class="b-label">YouTube subscribers</div>
-      </div>
-      <div class="b-stat">
-        <div class="b-num">Real</div>
-        <div class="b-label">Fashion,Lifestyle,Travel</div>
-      </div>
-      <div class="b-stat">
-        <div class="b-num">For You</div>
-        <div class="b-label">Fashion Enthusiasts,Travel Bloggers,Lifestyle Influencers</div>
-      </div>
+    <a href="#get-started" class="cta-btn">Get the Guide — $57</a>
+    <span class="cta-sub">so you can stop planning your self-investment era and actually start it</span>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="vsl">
+      <div class="pbtn"></div>
+      <p style="color:var(--muted);font-size:14px;position:relative;z-index:1;margin-top:14px;">Drop your VSL or Google Slides here — 2-5 minutes recommended</p>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
-
 <section>
-  <div class="section-eyebrow">What's Included</div>
-  <h2>Everything You Need to <span>Make It Real</span></h2>
-  <div class="included-list">
-    <div class="included-item"><div class="check">✓</div><div><h4>Travel Capsule Builder</h4><p>A repeatable formula for packing 12 pieces that work anywhere.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Destination Packing Templates</h4><p>Climate-specific pack lists so you stop reinventing the wheel every trip.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Travel Fund Workbook</h4><p>A monthly plan that funds trips without recovery debt.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Content & Photo Planning Guide</h4><p>How to plan content before you leave so trips feel like trips, not photo shoots.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Community of Travelers</h4><p>Real recommendations, real itineraries, real tips from women actually on the road.</p></div></div>
+  <div class="container">
+    <div class="ey">The Problem</div>
+    <h2>You keep saying "I'll invest in myself when..." and that day never comes.</h2>
+    <p style="color:var(--muted);max-width:560px;">"When I have more money." "When I lose the weight." "When things calm down." Sound familiar? The circumstances never line up. Here's the thing: they never will.</p>
+    <div class="pain-grid">
+      <div class="pc"><h3>You spend money on pieces that don't go with anything</h3><p>Individual purchases that look great alone but never work together. That's not a shopping problem — it's a formula problem.</p></div>
+      <div class="pc"><h3>Self-care happens once and then disappears again</h3><p>A spa day here, a solo dinner there. Never consistent. Because there's no system — just random acts of treating yourself.</p></div>
+      <div class="pc"><h3>You're dressing for who you were, not who you're becoming</h3><p>Your wardrobe is stuck in a season of life you've moved past. It doesn't reflect who you are now — and you feel that every morning.</p></div>
+      <div class="pc"><h3>The solo outing feels weird, so you keep skipping it</h3><p>You want to take yourself to dinner, to a museum, on a trip. But the idea feels awkward and you keep waiting for a reason to go.</p></div>
+    </div>
   </div>
 </section>
 
-<div class="cta-section" id="cta">
-  <div class="cta-box">
-    <div class="section-eyebrow">Ready to Build This?</div>
-    <h2>Book Your <span>Free Strategy Call</span></h2>
-    <p>We'll look at where you are right now with your travel style — what's working, what's stalling, and the one change that would have the biggest impact on the result you actually want.</p>
-    <a href="#" class="cta-btn">Book Your Free Strategy Call</a>
-    <p class="cta-sub">Limited spots. No credit card required.</p>
+<section>
+  <div class="container">
+    <div class="ey">How It Works</div>
+    <h2>A complete system for building the elevated everyday lifestyle.</h2>
+    <div class="steps">
+      <div class="sr"><div class="si">💄</div><div class="src"><h3>Step 1 — Build your style formula</h3><p>A framework for dressing for your actual body and lifestyle. Specific combinations, investment pieces, and what to stop buying.</p></div></div>
+      <div class="sr"><div class="si">🗓️</div><div class="src"><h3>Step 2 — Build your self-care routine</h3><p>Not a one-off reward — a weekly system for showing up for yourself consistently. What to do, when, and how to make it stick.</p></div></div>
+      <div class="sr"><div class="si">🍽️</div><div class="src"><h3>Step 3 — Start your self-dating practice</h3><p>Solo date ideas organized by budget, mood, and city. How to dress for them. How to make them feel like celebrations, not errands.</p></div></div>
+      <div class="sr"><div class="si">✨</div><div class="src"><h3>Step 4 — Make it your lifestyle</h3><p>The mindset framework that makes all of this stick — so treating yourself isn't a sometimes-thing but a non-negotiable.</p></div></div>
+    </div>
   </div>
-</div>
+</section>
 
-<footer>
-  <p>Built by <span>J&amp;G Operations</span> for the audience of Dria Antionette. Ready to deploy.</p>
-</footer>
+<section>
+  <div class="container">
+    <div class="ey">Why Dria</div>
+    <h2>Someone who actually lives this — and built the guide from it.</h2>
+    <div class="cred-grid">
+      <div class="cc"><span class="cn">17.5K</span><span class="cl">YouTube subscribers following her lifestyle</span></div>
+      <div class="cc"><span class="cn">15+</span><span class="cl">Solo dates documented and turned into a framework</span></div>
+      <div class="cc"><span class="cn">2+ Yrs</span><span class="cl">Living and refining the self-dating lifestyle</span></div>
+    </div>
+    <p style="color:var(--muted);max-width:600px;">Dria isn't teaching from a textbook. She documents her actual life — the luxury nail spas, the solo lunch spots, the shapewear that works and the stuff that doesn't. The guide is everything she's learned, organized so you can build the same lifestyle without the trial and error.</p>
+    <div class="tg">
+      <div class="tc"><p>"I finally stopped waiting to invest in myself. My entire daily routine changed in 30 days. I actually look forward to getting dressed now."</p><div class="ta">— Simone K., Atlanta</div></div>
+      <div class="tc"><p>"I've been buying clothes for years and they never worked together. One style formula and suddenly my wardrobe makes sense."</p><div class="ta">— Vanessa T., Houston</div></div>
+      <div class="tc"><p>"Solo dating felt weird until I had a framework. Now it's the part of my week I look forward to most."</p><div class="ta">— Brittany M., Chicago</div></div>
+      <div class="tc"><p>"I only implemented half so far but even half shifted how I feel every day. Working through the rest now."</p><div class="ta">— Anonymous, FL</div></div>
+    </div>
+  </div>
+</section>
 
+<section>
+  <div class="container">
+    <div class="ey">What's Inside</div>
+    <h2>Everything you need to build your self-dating lifestyle.</h2>
+    <ul class="inc">
+      <li><span class="ck">✓</span><div><h3>Style Formula Guide</h3><p>Outfit combinations that work, investment pieces worth the money, and what to stop buying. Built for your actual body and lifestyle.</p></div></li>
+      <li><span class="ck">✓</span><div><h3>Self-Care Routine Framework</h3><p>A weekly system for showing up for yourself consistently. Not a reward — a baseline. What to do and how to make it non-negotiable.</p></div></li>
+      <li><span class="ck">✓</span><div><h3>Solo Date Playbook</h3><p>Ideas organized by budget, vibe, and city type. How to dress for them. How to make them feel like celebrations you plan for instead of things you do out of boredom.</p></div></li>
+      <li><span class="ck">✓</span><div><h3>Shapewear Guide</h3><p>Which brands work, which are overhyped, and exactly which piece to wear for which outfit. Based on real testing.</p></div></li>
+      <li><span class="ck">✓</span><div><h3>The Mindset Framework</h3><p>The thinking shift that makes all of this stick — so treating yourself becomes a lifestyle, not something that disappears after a hard week.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<section id="get-started" class="cta-sec">
+  <div class="container">
+    <div class="ey">Get Started</div>
+    <h2>Your self-dating era starts this weekend.</h2>
+    <p style="color:var(--muted);max-width:440px;margin:0 auto;">Not when things settle down. Not when the money is right. Now — with the life you have today.</p>
+    <div class="price"><span>$</span>57</div>
+    <a href="#" class="cta-btn">Get the Guide Now</a>
+    <span class="cta-sub">so you can stop saying "someday" and actually build the lifestyle you've been watching other women live</span>
+    <p style="margin-top:18px;font-size:13px;color:var(--muted);">Instant digital download.</p>
+  </div>
+</section>
+
+<footer><div class="container">Built by J&G Operations for Dria Antionette. Ready to deploy.</div></footer>
 </body>
 </html>

@@ -1,207 +1,141 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Build a Real Style And Confidence | Melissa Danielle</title>
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #0a0a0f;
-    --accent: #ec4899;
-    --accent2: #be185d;
-    --accent3: #8b5cf6;
-    --text: #e2e8f0;
-    --muted: #94a3b8;
-    --card: #13131f;
-    --border: rgba(236,72,153,0.2);
-  }
-  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; overflow-x: hidden; }
-  a { color: var(--accent); text-decoration: none; }
+# Main Landing Page Copy
+**Lead:** Melissa Danielle
+**Audience:** Plus-size women who want style, beauty, and weight loss guidance from someone who looks like them
+**Prepared by:** J&G Operations
 
-  nav { padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(10,10,15,0.95); backdrop-filter: blur(12px); z-index: 100; }
-  .nav-brand { display: flex; flex-direction: column; }
-  .nav-brand-main { font-size: 1.05rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .nav-brand-sub { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
-  .nav-cta { background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 0.5rem 1.2rem; border-radius: 6px; font-size: 0.85rem; font-weight: 700; transition: opacity 0.2s; }
-  .nav-cta:hover { opacity: 0.85; }
+---
 
-  .hero { padding: 6rem 2rem 4rem; text-align: center; max-width: 880px; margin: 0 auto; position: relative; }
-  .hero::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(ellipse, rgba(236,72,153,0.1) 0%, transparent 70%); pointer-events: none; }
-  .eyebrow { display: inline-block; background: rgba(236,72,153,0.12); border: 1px solid var(--border); color: var(--accent); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 100px; margin-bottom: 1.5rem; }
-  h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.25rem; }
-  h1 span { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .hero-sub { font-size: 1.15rem; color: var(--muted); max-width: 640px; margin: 0 auto 2.5rem; }
-  .hero-cta { display: inline-block; background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 1rem 2.4rem; border-radius: 8px; font-size: 1.05rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(236,72,153,0.35); }
-  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 0 45px rgba(236,72,153,0.5); }
-  .hero-proof { margin-top: 2rem; color: var(--muted); font-size: 0.85rem; }
-  .hero-proof strong { color: var(--text); }
+*Note: This page is designed FOR Melissa's audience — the women watching her channel. The CTA routes to a free lead magnet (style guide) or booking page depending on which offer is active.*
 
-  .video-section { max-width: 760px; margin: 3rem auto; padding: 0 2rem; }
-  .video-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 16px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-  .video-wrap::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(236,72,153,0.05), rgba(139,92,246,0.05)); }
-  .play-btn { width: 70px; height: 70px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; box-shadow: 0 0 40px rgba(236,72,153,0.35); }
-  .play-btn::after { content: ''; border-left: 24px solid #fff; border-top: 14px solid transparent; border-bottom: 14px solid transparent; margin-left: 5px; }
-  .video-label { position: absolute; bottom: 1.2rem; color: var(--muted); font-size: 0.8rem; z-index: 1; }
+---
 
-  section { padding: 5rem 2rem; max-width: 1000px; margin: 0 auto; }
-  .section-eyebrow { color: var(--accent); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
-  h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; margin-bottom: 1rem; }
-  h2 span { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+## HERO SECTION
 
-  .problems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-  .problem-card { background: var(--card); border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 1.5rem; }
-  .problem-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
-  .problem-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: #f87171; }
-  .problem-card p { font-size: 0.9rem; color: var(--muted); }
+**Headline:**
+Stop Spending Money on Wigs, Fashion, and Beauty Products That Weren't Made for Your Body or Your Skin
 
-  .solution-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-  .solution-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; position: relative; overflow: hidden; }
-  .solution-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent2), var(--accent3)); }
-  .solution-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent); }
-  .solution-card p { font-size: 0.9rem; color: var(--muted); }
+**Subheadline:**
+Real recommendations from a plus-size Black woman who's actually tested everything — so you don't have to waste another $80 on a wig that doesn't work on your scalp.
 
-  .brand-block { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; margin-top: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-  .brand-block-text h3 { font-size: 1.3rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.75rem; }
-  .brand-block-text p { color: var(--muted); font-size: 0.92rem; }
-  .brand-stats { display: grid; gap: 1rem; }
-  .b-stat { text-align: center; }
-  .b-num { font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
-  .b-label { font-size: 0.82rem; color: var(--muted); margin-top: 0.25rem; }
+**CTA Button:**
+Get the Free Style Guide →
 
-  .included-list { margin-top: 2.5rem; display: grid; gap: 1rem; }
-  .included-item { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; }
-  .check { width: 22px; height: 22px; min-width: 22px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #fff; font-weight: 800; margin-top: 2px; }
-  .included-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; }
-  .included-item p { font-size: 0.85rem; color: var(--muted); }
+**Social proof line beneath CTA:**
+Join 61,000 women who follow Melissa's honest reviews on YouTube
 
-  .cta-section { text-align: center; padding: 6rem 2rem; background: linear-gradient(180deg, transparent, rgba(236,72,153,0.06)); }
-  .cta-box { max-width: 600px; margin: 0 auto; }
-  .cta-box p { color: var(--muted); margin-bottom: 2rem; }
-  .cta-btn { display: inline-block; background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 1.1rem 2.8rem; border-radius: 8px; font-size: 1.1rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(236,72,153,0.35); }
-  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(236,72,153,0.55); }
-  .cta-sub { margin-top: 1rem; font-size: 0.82rem; color: var(--muted); }
+---
 
-  .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 0 2rem; }
-  footer { padding: 2rem; text-align: center; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--border); }
-  footer span { color: var(--accent); }
+## CREDIBILITY BAR
 
-  @media (max-width: 640px) {
-    h1 { font-size: 1.9rem; }
-    .brand-block { grid-template-columns: 1fr; }
-  }
-</style>
-</head>
-<body>
+*Logo-style row showing:*
+- YouTube: 61K Subscribers
+- Weekly Vlogs Since [Year]
+- Real Reviews, No Paid Placements
 
-<nav>
-  <div class="nav-brand">
-    <div class="nav-brand-main">Melissa Danielle</div>
-    <div class="nav-brand-sub">Fashion,Lifestyle Vlogs,Weight Loss Journey</div>
-  </div>
-  <a href="#cta" class="nav-cta">Book Free Call</a>
-</nav>
+---
 
-<div class="hero">
-  <div class="eyebrow">For Plus Size Women,Fashion Enthusiasts,Vlog Followers</div>
-  <h1>Dress Confidently and Feel Strong in <span>The Body You Have Now</span></h1>
-  <p class="hero-sub">Most plus-size fashion advice is either 'hide it' or 'flaunt it' — and neither helps you actually get dressed in the morning. This is the practical wardrobe and confidence system for women who want to look great today, not 30 pounds from now.</p>
-  <a href="#cta" class="hero-cta">Book Your Free Strategy Call</a>
-  <p class="hero-proof">Built for the audience of <strong>Melissa Danielle</strong> — 61K subscribers strong on YouTube. Real creator, real community.</p>
-</div>
+## PROBLEM SECTION
 
-<div class="video-section">
-  <div class="video-wrap">
-    <div class="play-btn"></div>
-    <div class="video-label">Watch: How This System Was Built (Add Your VSL Here)</div>
-  </div>
-</div>
+**Section headline:**
+You've been burned by beauty advice that wasn't made for you.
 
-<div class="divider"></div>
+**Body:**
+The wig that looked amazing on the model looked completely different on your scalp.
 
-<section>
-  <div class="section-eyebrow">The Real Problem</div>
-  <h2>Why Most Never Get the <span>Results They Want</span></h2>
-  <p style="color:var(--muted); max-width: 580px;">The interest is there. The effort is there. But without the right structure, it stays a frustrating loop instead of a real outcome.</p>
-  <div class="problems-grid">
-    <div class="problem-card"><div class="problem-icon">●</div><h3>A closet full of nothing to wear</h3><p>Pieces that almost work, sizes that don't fit consistently, and zero outfits ready to grab on a Monday morning.</p></div>
-    <div class="problem-card"><div class="problem-icon">●</div><h3>Brands that lie about sizing</h3><p>One brand's 16 is another brand's 20. You've stopped trusting the tag and you've also stopped buying online.</p></div>
-    <div class="problem-card"><div class="problem-icon">●</div><h3>Style advice written for everyone but you</h3><p>'Tuck this, belt that' — none of it accounts for actual proportions or comfort in real plus sizes.</p></div>
-    <div class="problem-card"><div class="problem-icon">●</div><h3>Buying for the body you want</h3><p>You keep purchasing aspirationally and ignoring the body that needs clothes today, this week, this month.</p></div>
-    <div class="problem-card"><div class="problem-icon">●</div><h3>Confidence that comes and goes</h3><p>Some days you feel powerful, other days a single mirror ruins the morning. You want a baseline, not a rollercoaster.</p></div>
-  </div>
-</section>
+The Fashion Nova dress that fit the size tag but not your body.
 
-<div class="divider"></div>
+The prescription contacts that made your dark eyes look washed out.
 
-<section>
-  <div class="section-eyebrow">The Solution</div>
-  <h2>A System Built <span>For Real Life</span></h2>
-  <p style="color:var(--muted); max-width: 600px;">This is the structured path — designed for the Plus Size Women,Fashion Enthusiasts,Vlog Followers who follow Melissa and want a real result, not another video to watch.</p>
-  <div class="solution-grid">
-    <div class="solution-card"><h3>Capsule Wardrobe That Fits</h3><p>The 25 pieces that mix into 60 outfits — chosen for plus-size proportions, real fabrics, and real sizing.</p></div>
-    <div class="solution-card"><h3>Brand Sizing Cheat Sheet</h3><p>Brand-by-brand notes on cuts, fits, and reliability so online shopping stops being a gamble.</p></div>
-    <div class="solution-card"><h3>Proportion Rules That Actually Work</h3><p>Styling principles built for plus-size bodies — not retrofitted from straight-size advice.</p></div>
-    <div class="solution-card"><h3>Confidence Habits</h3><p>Daily practices that build a steady baseline confidence — instead of relying on a 'good day' to feel good.</p></div>
-    <div class="solution-card"><h3>Outfit Formulas for Real Life</h3><p>Work, weekend, dinner, travel — formulas you can run on autopilot without standing in front of the closet.</p></div>
-    <div class="solution-card"><h3>Body Neutrality Framework</h3><p>A grounded relationship with your body that doesn't depend on the scale moving.</p></div>
-  </div>
-</section>
+You keep finding beauty content that almost applies — created by someone close to your size, or close to your skin tone, or close to your budget. But never all three.
 
-<div class="divider"></div>
+That's the gap Melissa Danielle fills.
 
-<section>
-  <div class="section-eyebrow">About Melissa Danielle</div>
-  <h2>The <span>Track Record</span></h2>
-  <div class="brand-block">
-    <div class="brand-block-text">
-      <h3>Melissa Danielle</h3>
-      <p>Melissa Danielle built a community of 61K subscribers around fashion,lifestyle vlogs,weight loss journey — sharing the work in real time and earning the trust of plus size women,fashion enthusiasts,vlog followers along the way. This is the structured version of what Melissa has been teaching, packaged so you can actually use it.</p>
-    </div>
-    <div class="brand-stats">
-      <div class="b-stat">
-        <div class="b-num">61K</div>
-        <div class="b-label">YouTube subscribers</div>
-      </div>
-      <div class="b-stat">
-        <div class="b-num">Real</div>
-        <div class="b-label">Fashion,Lifestyle Vlogs,Weight Loss Journey</div>
-      </div>
-      <div class="b-stat">
-        <div class="b-num">For You</div>
-        <div class="b-label">Plus Size Women,Fashion Enthusiasts,Vlog Followers</div>
-      </div>
-    </div>
-  </div>
-</section>
+She's plus-size. She has dark skin. She works with a real budget — Fashion Nova, not Nordstrom. And she tests everything before she recommends it.
 
-<div class="divider"></div>
+---
 
-<section>
-  <div class="section-eyebrow">What's Included</div>
-  <h2>Everything You Need to <span>Make It Real</span></h2>
-  <div class="included-list">
-    <div class="included-item"><div class="check">✓</div><div><h4>Capsule Wardrobe Builder</h4><p>Step-by-step build for a 25-piece capsule that fits, lasts, and works.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Plus-Size Brand Guide</h4><p>Detailed sizing notes on the brands worth buying and the ones to avoid.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Outfit Formula Library</h4><p>Pre-built formulas for every occasion you actually face.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Confidence Habit Stack</h4><p>The daily practices that compound into baseline self-trust.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Community of Plus-Size Women</h4><p>Real conversation, no toxic positivity, no diet talk.</p></div></div>
-  </div>
-</section>
+## WHO THIS IS FOR SECTION
 
-<div class="cta-section" id="cta">
-  <div class="cta-box">
-    <div class="section-eyebrow">Ready to Build This?</div>
-    <h2>Book Your <span>Free Strategy Call</span></h2>
-    <p>We'll look at where you are right now with your style and confidence — what's working, what's stalling, and the one change that would have the biggest impact on the result you actually want.</p>
-    <a href="#" class="cta-btn">Book Your Free Strategy Call</a>
-    <p class="cta-sub">Limited spots. No credit card required.</p>
-  </div>
-</div>
+**Section headline:**
+This is for you if:
 
-<footer>
-  <p>Built by <span>J&amp;G Operations</span> for the audience of Melissa Danielle. Ready to deploy.</p>
-</footer>
+- You're plus-size (size 14+) and tired of recommendations that don't account for your body type
+- You want wig reviews from someone with a dark scalp and natural hair texture
+- You're on a weight loss journey and don't want to press pause on looking good until you hit a goal
+- You've tried generic beauty advice and kept finding that it didn't translate to your reality
+- You want someone honest — who shows the returns, the mistakes, and the real results alongside the wins
 
-</body>
-</html>
+---
+
+## WHAT YOU GET SECTION
+
+**Section headline:**
+Inside the Free Style Guide:
+
+- Melissa's top 10 plus-size fashion picks under $60 (including which Fashion Nova pieces actually work for curves and which don't)
+- Her top 5 wig recommendations for dark skin tones — with notes on what to look for that most wig reviews skip
+- Her current contacts shortlist after testing 6+ online brands
+- The three shopping mistakes she made that she doesn't want you to repeat
+
+*[Download now — free, no credit card]*
+
+**CTA Button:**
+Yes, Send Me the Guide →
+
+---
+
+## SOCIAL PROOF SECTION
+
+**Section headline:**
+What the Blackchinabear community says:
+
+*[Placeholder testimonial blocks — replace with real comments from YouTube/Instagram]*
+
+"You're the only person who reviews wigs on someone who actually looks like me." — YouTube comment
+
+"I've watched 40 of your videos. Your Fashion Nova reviews are the most useful content on this platform." — YouTube comment
+
+"The weight loss vlog is the only journey content I trust because you actually show the hard weeks." — YouTube comment
+
+---
+
+## ABOUT MELISSA SECTION
+
+**Section headline:**
+Melissa Danielle — The Honest Voice in Plus-Size Beauty
+
+**Body:**
+I'm Melissa Danielle. I've been posting fashion hauls, beauty reviews, and personal vlogs on YouTube for years. 61,000 people subscribe to my channel — not because my content is perfect, but because I tell the truth.
+
+I review what I actually buy. I show you what doesn't work alongside what does. And I create content for the women who are underserved by most beauty platforms: plus-size, dark-skinned, real-budget women who want information they can actually use.
+
+I'm also documenting my own weight loss journey in real time. Every week. The good weeks and the hard ones.
+
+If that's the kind of honesty you've been looking for — you're in the right place.
+
+**CTA:**
+Get the Free Guide and Join the Community →
+
+---
+
+## FINAL CTA SECTION
+
+**Headline:**
+Get the free style guide. No fluff, no upsell, just the recommendations.
+
+**Subheadline:**
+Wigs that work on dark skin. Fashion Nova pieces worth buying. Contacts you can trust. And the mistakes that'll save you money.
+
+**CTA Button:**
+Download Now — It's Free →
+
+**Below CTA:**
+61,000+ women subscribe to Melissa's YouTube channel. The style guide is what she wishes someone had handed her when she started.
+
+---
+
+## PAGE FOOTER
+
+Privacy Policy | Contact | YouTube Channel | Instagram
+
+© Melissa Danielle. All rights reserved.

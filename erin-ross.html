@@ -1,207 +1,111 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Build a Real Hair Journey | Erin Ross</title>
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #0a0a0f;
-    --accent: #fb7185;
-    --accent2: #e11d48;
-    --accent3: #a78bfa;
-    --text: #e2e8f0;
-    --muted: #94a3b8;
-    --card: #13131f;
-    --border: rgba(251,113,133,0.2);
-  }
-  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; overflow-x: hidden; }
-  a { color: var(--accent); text-decoration: none; }
+# Main Landing Page — Erin Ross
 
-  nav { padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(10,10,15,0.95); backdrop-filter: blur(12px); z-index: 100; }
-  .nav-brand { display: flex; flex-direction: column; }
-  .nav-brand-main { font-size: 1.05rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .nav-brand-sub { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
-  .nav-cta { background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 0.5rem 1.2rem; border-radius: 6px; font-size: 0.85rem; font-weight: 700; transition: opacity 0.2s; }
-  .nav-cta:hover { opacity: 0.85; }
+**Target audience:** Women who have had bad hair experiences (extension damage, misleading product reviews), are about to make a major hair decision (K-Tips, wigs, new stylist), or want professional guidance from someone with no financial incentive to mislead them.
 
-  .hero { padding: 6rem 2rem 4rem; text-align: center; max-width: 880px; margin: 0 auto; position: relative; }
-  .hero::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(ellipse, rgba(251,113,133,0.1) 0%, transparent 70%); pointer-events: none; }
-  .eyebrow { display: inline-block; background: rgba(251,113,133,0.12); border: 1px solid var(--border); color: var(--accent); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 100px; margin-bottom: 1.5rem; }
-  h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.25rem; }
-  h1 span { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .hero-sub { font-size: 1.15rem; color: var(--muted); max-width: 640px; margin: 0 auto 2.5rem; }
-  .hero-cta { display: inline-block; background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 1rem 2.4rem; border-radius: 8px; font-size: 1.05rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(251,113,133,0.35); }
-  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 0 45px rgba(251,113,133,0.5); }
-  .hero-proof { margin-top: 2rem; color: var(--muted); font-size: 0.85rem; }
-  .hero-proof strong { color: var(--text); }
+---
 
-  .video-section { max-width: 760px; margin: 3rem auto; padding: 0 2rem; }
-  .video-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 16px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-  .video-wrap::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(251,113,133,0.05), rgba(139,92,246,0.05)); }
-  .play-btn { width: 70px; height: 70px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; box-shadow: 0 0 40px rgba(251,113,133,0.35); }
-  .play-btn::after { content: ''; border-left: 24px solid #fff; border-top: 14px solid transparent; border-bottom: 14px solid transparent; margin-left: 5px; }
-  .video-label { position: absolute; bottom: 1.2rem; color: var(--muted); font-size: 0.8rem; z-index: 1; }
+## HERO SECTION
 
-  section { padding: 5rem 2rem; max-width: 1000px; margin: 0 auto; }
-  .section-eyebrow { color: var(--accent); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
-  h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; margin-bottom: 1rem; }
-  h2 span { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+**Headline:** Finally. Hair Advice From Someone Who's Actually Been in the Industry.
 
-  .problems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-  .problem-card { background: var(--card); border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 1.5rem; }
-  .problem-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
-  .problem-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: #f87171; }
-  .problem-card p { font-size: 0.9rem; color: var(--muted); }
+**Subheadline:** Erin Ross exposes the bad advice, misleading trends, and industry practices that damage clients' hair — and offers the professional consultation that replaces the guesswork with facts.
 
-  .solution-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-  .solution-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; position: relative; overflow: hidden; }
-  .solution-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent2), var(--accent3)); }
-  .solution-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent); }
-  .solution-card p { font-size: 0.9rem; color: var(--muted); }
+**CTA Button:** Book Your Free Consultation Call
+*So you can get professional hair assessment with zero financial incentive to sell you something that isn't right for your situation.*
 
-  .brand-block { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; margin-top: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-  .brand-block-text h3 { font-size: 1.3rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.75rem; }
-  .brand-block-text p { color: var(--muted); font-size: 0.92rem; }
-  .brand-stats { display: grid; gap: 1rem; }
-  .b-stat { text-align: center; }
-  .b-num { font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
-  .b-label { font-size: 0.82rem; color: var(--muted); margin-top: 0.25rem; }
+*(No navigation menu.)*
 
-  .included-list { margin-top: 2.5rem; display: grid; gap: 1rem; }
-  .included-item { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; }
-  .check { width: 22px; height: 22px; min-width: 22px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #fff; font-weight: 800; margin-top: 2px; }
-  .included-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; }
-  .included-item p { font-size: 0.85rem; color: var(--muted); }
+---
 
-  .cta-section { text-align: center; padding: 6rem 2rem; background: linear-gradient(180deg, transparent, rgba(251,113,133,0.06)); }
-  .cta-box { max-width: 600px; margin: 0 auto; }
-  .cta-box p { color: var(--muted); margin-bottom: 2rem; }
-  .cta-btn { display: inline-block; background: linear-gradient(135deg, var(--accent2), var(--accent)); color: #fff; padding: 1.1rem 2.8rem; border-radius: 8px; font-size: 1.1rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(251,113,133,0.35); }
-  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(251,113,133,0.55); }
-  .cta-sub { margin-top: 1rem; font-size: 0.82rem; color: var(--muted); }
+## VIDEO PLACEHOLDER
 
-  .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 0 2rem; }
-  footer { padding: 2rem; text-align: center; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--border); }
-  footer span { color: var(--accent); }
+```
+┌─────────────────────────────────────────────────────────────┐
+│                                                             │
+│                    [VIDEO PLACEHOLDER]                      │
+│                                                             │
+│               ▶  Watch This First                           │
+│                  "What the Hair Industry Doesn't            │
+│                   Want You to Know"                         │
+│                  (~8-10 min)                                │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
 
-  @media (max-width: 640px) {
-    h1 { font-size: 1.9rem; }
-    .brand-block { grid-template-columns: 1fr; }
-  }
-</style>
-</head>
-<body>
+**VSL guidance:** Hook: "Most hair advice you're getting online is from people who are paid to give it." Credibility: Hair industry professional, 66k+ subscribers, K-Tips warning video, Amazon wig honest reviews. Opportunity: The truth about your hair situation is available — you just need a professional with no incentive to lie. Offer: hair consultation. Objections: "Is this going to be a product pitch?" (No.) "What if my damage is really bad?" (That's exactly who needs this.) CTA. Testimonials. Risk removal: call is free.
 
-<nav>
-  <div class="nav-brand">
-    <div class="nav-brand-main">Erin Ross</div>
-    <div class="nav-brand-sub">Hair Care,Beauty Trends,Consumer Advice</div>
-  </div>
-  <a href="#cta" class="nav-cta">Book Free Call</a>
-</nav>
+---
 
-<div class="hero">
-  <div class="eyebrow">For Hair Stylists,Beauty Enthusiasts,Consumers</div>
-  <h1>Stop Fighting Your Curls and Build a Routine That <span>Actually Works</span></h1>
-  <p class="hero-sub">Most natural hair routines are stitched together from a hundred random YouTube videos with conflicting advice. This is the simple, repeatable system for healthy length retention, defined curls, and hair that grows.</p>
-  <a href="#cta" class="hero-cta">Book Your Free Strategy Call</a>
-  <p class="hero-proof">Built for the audience of <strong>Erin Ross</strong> — 66.9K subscribers strong on YouTube. Real creator, real community.</p>
-</div>
+## PROBLEM SECTION
 
-<div class="video-section">
-  <div class="video-wrap">
-    <div class="play-btn"></div>
-    <div class="video-label">Watch: How This System Was Built (Add Your VSL Here)</div>
-  </div>
-</div>
+**Sound familiar?**
 
-<div class="divider"></div>
+- You had an extension service done and your hair isn't the same — and three people have told you "that's normal" and you don't believe them
+- You're about to get K-Tips and you want an honest professional opinion before you sit in the chair
+- You've bought Amazon wigs based on reviews that turned out to be paid or incentivized
+- You've gotten conflicting hair advice from different stylists and you don't know who to trust
+- You're recovering from hair damage and don't know if you're doing the right things
 
-<section>
-  <div class="section-eyebrow">The Real Problem</div>
-  <h2>Why Most Never Get the <span>Results They Want</span></h2>
-  <p style="color:var(--muted); max-width: 580px;">The interest is there. The effort is there. But without the right structure, it stays a frustrating loop instead of a real outcome.</p>
-  <div class="problems-grid">
-    <div class="problem-card"><div class="problem-icon">●</div><h3>Wash days that take six hours</h3><p>You're deep conditioning, detangling, and styling on a Sunday and losing your whole day to hair you still don't love.</p></div>
-    <div class="problem-card"><div class="problem-icon">●</div><h3>Product graveyard in the bathroom</h3><p>Half-empty bottles of curl creams that didn't work because you bought based on hype, not on what your hair type actually needs.</p></div>
-    <div class="problem-card"><div class="problem-icon">●</div><h3>Length that won't retain</h3><p>Your hair grows but breaks at the same length every year because nobody taught you the moisture-protein balance.</p></div>
-    <div class="problem-card"><div class="problem-icon">●</div><h3>Frizz by lunchtime</h3><p>You wash, style, and look great at 9am — by noon the cast is broken, the curls are stretched, and you're blaming the weather.</p></div>
-    <div class="problem-card"><div class="problem-icon">●</div><h3>Conflicting advice everywhere</h3><p>One creator says co-wash only, the next says clarify weekly. You don't know which side to listen to and your scalp pays the price.</p></div>
-  </div>
-</section>
+You're not being paranoid. The hair industry has real problems. And most of the advice you find online isn't coming from people with professional accountability.
 
-<div class="divider"></div>
+---
 
-<section>
-  <div class="section-eyebrow">The Solution</div>
-  <h2>A System Built <span>For Real Life</span></h2>
-  <p style="color:var(--muted); max-width: 600px;">This is the structured path — designed for the Hair Stylists,Beauty Enthusiasts,Consumers who follow Erin and want a real result, not another video to watch.</p>
-  <div class="solution-grid">
-    <div class="solution-card"><h3>Porosity-Based Routine</h3><p>Stop guessing. Identify your porosity in 10 minutes and follow the wash routine actually designed for your hair.</p></div>
-    <div class="solution-card"><h3>The Moisture-Protein Balance Rule</h3><p>The simple test that tells you what your hair needs this week — so you stop overdoing one and starving the other.</p></div>
-    <div class="solution-card"><h3>Length Retention Method</h3><p>The detangling order, sleep protection, and protective style cadence that actually keeps inches on your head.</p></div>
-    <div class="solution-card"><h3>Product Stack That Works</h3><p>A short list of products that play well together — instead of 14 random bottles fighting each other on your strands.</p></div>
-    <div class="solution-card"><h3>Wash Day Under 90 Minutes</h3><p>A streamlined wash day order that gets you in and out without sacrificing the moisture or definition.</p></div>
-    <div class="solution-card"><h3>Scalp Health Foundation</h3><p>Because curls grow from a healthy scalp — and most natural hair routines completely ignore it.</p></div>
-  </div>
-</section>
+## SOLUTION SECTION
 
-<div class="divider"></div>
+**What changes with a professional consultation:**
 
-<section>
-  <div class="section-eyebrow">About Erin Ross</div>
-  <h2>The <span>Track Record</span></h2>
-  <div class="brand-block">
-    <div class="brand-block-text">
-      <h3>Erin Ross</h3>
-      <p>Erin Ross built a community of 66.9K subscribers around hair care,beauty trends,consumer advice — sharing the work in real time and earning the trust of hair stylists,beauty enthusiasts,consumers along the way. This is the structured version of what Erin has been teaching, packaged so you can actually use it.</p>
-    </div>
-    <div class="brand-stats">
-      <div class="b-stat">
-        <div class="b-num">66.9K</div>
-        <div class="b-label">YouTube subscribers</div>
-      </div>
-      <div class="b-stat">
-        <div class="b-num">Real</div>
-        <div class="b-label">Hair Care,Beauty Trends,Consumer Advice</div>
-      </div>
-      <div class="b-stat">
-        <div class="b-num">For You</div>
-        <div class="b-label">Hair Stylists,Beauty Enthusiasts,Consumers</div>
-      </div>
-    </div>
-  </div>
-</section>
+You stop guessing. Someone who's actually been in the industry — not a consumer with an affiliate code, not a stylist who wants to keep you coming back — tells you what's actually going on with your hair and what to do about it.
 
-<div class="divider"></div>
+The K-Tips question gets answered. The Amazon wig decision gets made with real quality criteria. The damage situation gets assessed honestly, not optimistically.
 
-<section>
-  <div class="section-eyebrow">What's Included</div>
-  <h2>Everything You Need to <span>Make It Real</span></h2>
-  <div class="included-list">
-    <div class="included-item"><div class="check">✓</div><div><h4>Porosity & Hair Type Audit</h4><p>Figure out exactly what you're working with so every product decision after this is informed.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Wash Day Routine Blueprint</h4><p>The order, the timing, and the technique for a wash day that doesn't destroy your weekend.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Product Recommendation List</h4><p>Curated by hair type and porosity — not by what's trending on TikTok this month.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Length Retention Playbook</h4><p>Trim cadence, sleep care, low-manipulation styles — the boring stuff that actually keeps length.</p></div></div>
-    <div class="included-item"><div class="check">✓</div><div><h4>Community & Routine Feedback</h4><p>Share your routine, get input, and adjust as your hair changes through seasons.</p></div></div>
-  </div>
-</section>
+**The process:**
+1. 45-minute consultation where Erin assesses your specific hair situation
+2. Honest professional opinion — no product recommendations she benefits from
+3. Clear next steps: what to continue, what to stop, what to change
+4. Follow-up resources and access to Erin's vetted recommendations
 
-<div class="cta-section" id="cta">
-  <div class="cta-box">
-    <div class="section-eyebrow">Ready to Build This?</div>
-    <h2>Book Your <span>Free Strategy Call</span></h2>
-    <p>We'll look at where you are right now with your hair journey — what's working, what's stalling, and the one change that would have the biggest impact on the result you actually want.</p>
-    <a href="#" class="cta-btn">Book Your Free Strategy Call</a>
-    <p class="cta-sub">Limited spots. No credit card required.</p>
-  </div>
-</div>
+---
 
-<footer>
-  <p>Built by <span>J&amp;G Operations</span> for the audience of Erin Ross. Ready to deploy.</p>
-</footer>
+## CREDIBILITY SECTION
 
-</body>
-</html>
+**Why Erin Ross:**
+- 66,900 YouTube subscribers and growing
+- Hair industry professional background — actual in-salon experience, not just content creator
+- Created "K-Tips: The Beauty Trend That Could Ruin Your Hair FOREVER" — one of the most important warning videos in the protective styling space
+- "Amazon Wigs Are Affordable But Are They Worth It?" — the honest review you can't find anywhere else
+- No brand affiliate pressure — her reputation is built on saying what others won't
+
+**What viewers say:**
+*(Placeholder for real YouTube comments and client testimonials)*
+
+---
+
+## WHAT'S INCLUDED
+
+**Free Consultation Call:** 45 minutes with Erin. Your hair situation assessed by a professional with no incentive to mislead you.
+
+**Ongoing access (for those who continue):**
+- Core: Your personal hair health plan based on professional assessment
+- Implementation: Specific product recommendations, stylist evaluation guidance, extension method selection for your hair type
+- Community: Access to others navigating hair decisions with Erin's guidance
+- Bonus: Erin's vetted hair product and stylist selection criteria (the "watchlist")
+
+*For clients ready for ongoing support — investment starts at [price]. The call will tell you everything you need to know to decide.*
+
+---
+
+## CTA
+
+**Book Your Free Consultation Call**
+
+*So you can stop guessing about your hair and get honest professional assessment — from someone who has nothing to gain from misleading you.*
+
+```[BOOK NOW BUTTON]```
+
+*45 minutes. Free. Professional. No agenda except your hair health.*
+
+---
+
+## FOOTER
+
+Built by J&G Operations for Erin Ross. Ready to deploy.
