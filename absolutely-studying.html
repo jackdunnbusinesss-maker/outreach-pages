@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Build a Study System That Runs All Semester | Absolutely Studying</title>
+  <style>
+    :root {
+      --bg-primary: #0a0a0f;
+      --bg-card: #111118;
+      --bg-card-2: #16161f;
+      --accent: #7c6af7;
+      --accent-light: #9d8fff;
+      --text-primary: #f0eff8;
+      --text-secondary: #9896b0;
+      --text-muted: #5a5870;
+      --border: #1e1d2e;
+      --success: #4ade80;
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* HERO */
+    .hero {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 80px 24px 60px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(124, 106, 247, 0.15);
+      border: 1px solid rgba(124, 106, 247, 0.3);
+      color: var(--accent-light);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      color: var(--text-primary);
+    }
+    .hero h1 span { color: var(--accent-light); }
+    .hero p {
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 580px;
+      margin: 0 auto 40px;
+    }
+
+    /* SOCIAL PROOF STRIP — ABOVE THE FOLD */
+    .proof-strip {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 24px;
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .proof-item {
+      text-align: center;
+    }
+    .proof-number {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--accent-light);
+    }
+    .proof-label {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* VSL PLACEHOLDER */
+    .vsl-section {
+      max-width: 720px;
+      margin: 60px auto;
+      padding: 0 24px;
+    }
+    .vsl-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      aspect-ratio: 16/9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      cursor: pointer;
+    }
+    .play-btn {
+      width: 72px;
+      height: 72px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .play-btn::after {
+      content: '';
+      border-left: 24px solid white;
+      border-top: 14px solid transparent;
+      border-bottom: 14px solid transparent;
+      margin-left: 6px;
+    }
+    .vsl-label {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    /* SECTIONS */
+    .section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+    .section-label {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 16px;
+    }
+    .section h2 {
+      font-size: clamp(26px, 3.5vw, 38px);
+      font-weight: 700;
+      margin-bottom: 24px;
+      line-height: 1.2;
+    }
+
+    /* PAIN POINTS */
+    .pain-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .pain-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .pain-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .pain-item p { color: var(--text-secondary); font-size: 15px; }
+    .pain-item strong { color: var(--text-primary); display: block; margin-bottom: 6px; }
+
+    /* TRANSFORMATION */
+    .transform-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 600px) { .transform-grid { grid-template-columns: 1fr; } }
+    .transform-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .transform-card.highlight {
+      border-color: var(--accent);
+      background: rgba(124, 106, 247, 0.06);
+    }
+    .transform-card h4 { font-size: 14px; color: var(--text-muted); margin-bottom: 12px; }
+    .transform-card p { color: var(--text-secondary); font-size: 15px; }
+
+    /* OFFER / WHAT'S INCLUDED */
+    .offer-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .offer-section h2 { margin-bottom: 8px; }
+    .offer-section .subtitle { color: var(--text-secondary); margin-bottom: 32px; }
+    .offer-items {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .offer-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .offer-check {
+      width: 22px;
+      height: 22px;
+      background: rgba(74, 222, 128, 0.15);
+      border: 1px solid rgba(74, 222, 128, 0.4);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--success);
+      font-size: 13px;
+      margin-top: 2px;
+    }
+    .offer-item p { color: var(--text-secondary); font-size: 15px; }
+    .offer-item strong { color: var(--text-primary); }
+
+    /* TESTIMONIALS */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .testimonial-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .testimonial-card.tier-1 { border-color: var(--accent); }
+    .testimonial-card.tier-3 { border-color: #3a3850; }
+    .testimonial-tier {
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .testimonial-card blockquote {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+    .testimonial-author { font-size: 13px; color: var(--text-muted); }
+    .testimonial-author strong { color: var(--text-primary); }
+
+    /* CTA BUTTON */
+    .cta-btn {
+      display: block;
+      width: 100%;
+      max-width: 440px;
+      margin: 0 auto;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 18px 32px;
+      font-size: 17px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .cta-btn:hover { background: var(--accent-light); }
+    .cta-subtext {
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+
+    /* AUTHORITY / CREDIBILITY */
+    .authority-card {
+      background: var(--bg-card-2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+    @media (max-width: 560px) { .authority-card { flex-direction: column; } }
+    .authority-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 2px solid var(--accent);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+    }
+    .authority-text h3 { font-size: 20px; margin-bottom: 8px; }
+    .authority-text p { color: var(--text-secondary); font-size: 15px; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO — NO NAV -->
+<section class="hero">
+  <div class="hero-badge">Study System for Real Students</div>
+  <h1>Stop Starting Over Every Semester. <span>Build a Study System That Actually Runs.</span></h1>
+  <p>You're not lazy and you're not behind because you don't work hard enough. You're behind because the system breaks down. Let's fix that before this semester does it again.</p>
+  <a href="#book" class="cta-btn">Book Your Free Strategy Call</a>
+  <p class="cta-subtext">So you can finish your next exam prepared, not panicked.</p>
+</section>
+
+<!-- SOCIAL PROOF — ABOVE FOLD -->
+<div class="proof-strip">
+  <div class="proof-item">
+    <div class="proof-number">2,600+</div>
+    <div class="proof-label">Students on YouTube</div>
+  </div>
+  <div class="proof-item">
+    <div class="proof-number">4+ years</div>
+    <div class="proof-label">Teaching study systems</div>
+  </div>
+  <div class="proof-item">
+    <div class="proof-number">5 min</div>
+    <div class="proof-label">Setup per week after week one</div>
+  </div>
+</div>
+
+<!-- VSL PLACEHOLDER -->
+<div class="vsl-section">
+  <div class="vsl-container">
+    <div class="play-btn"></div>
+    <p class="vsl-label">Watch: How the Absolutely Studying system works (drop your VSL here)</p>
+  </div>
+  <!-- VSL GUIDANCE: Follow the 9-step framework — Hook (what you can do for them) → Credibility (specific subscriber count, specific results) → Opportunity (why this semester is the right time) → Present Offer (price upfront, no buildup) → Handle Objections → Qualify Audience → Clear CTA → Testimonials → Reiterate Value. For this audience: keep under 10 minutes. Social proof in first 90 seconds. Price disclosed before the CTA slide. -->
+</div>
+
+<!-- PAIN POINTS -->
+<section class="section">
+  <div class="section-label">Sound familiar?</div>
+  <h2>Why Most Study Approaches Fall Apart by Week Four</h2>
+  <div class="pain-list">
+    <div class="pain-item">
+      <div class="pain-icon">📋</div>
+      <div>
+        <strong>You buy a new planner every semester and abandon it within a month</strong>
+        <p>Not because you're disorganized. Because nobody taught you how to set it up in a way that matches how you actually study.</p>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">📚</div>
+      <div>
+        <strong>You study for hours and still blank on the exam</strong>
+        <p>Re-reading notes feels like studying. It isn't. Your brain learns through retrieval, not review — and nobody told you that until it was too late.</p>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">📅</div>
+      <div>
+        <strong>Your grades don't match the effort you're putting in</strong>
+        <p>You're working hard. The method is wrong. That's a fixable problem — but only if you know what to change.</p>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">😰</div>
+      <div>
+        <strong>Every finals week feels like an emergency you didn't see coming</strong>
+        <p>It always sneaks up. Not because you didn't know it was coming — because nothing prepared you for it during the weeks it was quiet.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION / TRANSFORMATION -->
+<section class="section">
+  <div class="section-label">The difference</div>
+  <h2>What Changes When You Have a System</h2>
+  <p style="color: var(--text-secondary); margin-bottom: 32px;">The Absolutely Studying system is built around how studying actually works — not how you plan to study when you're feeling motivated.</p>
+
+  <div class="transform-grid">
+    <div class="transform-card">
+      <h4>Before the system</h4>
+      <p>Cramming the night before. Planner abandoned by week three. Studying 5 hours and walking into the exam uncertain. Rebuilding a schedule every time things fall apart.</p>
+    </div>
+    <div class="transform-card highlight">
+      <h4>After the system</h4>
+      <p>Exam prep started 2 weeks out. 20-minute Sunday planning sessions. Walking into your exam having already tested yourself on every concept. Same planner, working through finals.</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 32px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 24px;">
+    <p style="color: var(--text-secondary); font-size: 15px;">
+      <strong style="color: var(--text-primary);">Here's exactly how it works (CPR — Clear Process to Result):</strong><br><br>
+      <strong style="color: var(--accent-light);">Week 1:</strong> 90-minute semester setup. Your entire term mapped, study blocks locked in, planner configured to your real schedule.<br><br>
+      <strong style="color: var(--accent-light);">Weeks 2-12:</strong> 20-minute Sunday review sessions. Nothing falls through the cracks.<br><br>
+      <strong style="color: var(--accent-light);">2 weeks before each exam:</strong> Exam summary sheet build begins — organized by how the questions are tested, not how the textbook is written.<br><br>
+      <strong style="color: var(--accent-light);">Exam week:</strong> You're reviewing. Not learning for the first time.
+    </p>
+  </div>
+</section>
+
+<!-- CREDIBILITY -->
+<section class="section">
+  <div class="section-label">About Teryl</div>
+  <div class="authority-card">
+    <div class="authority-photo">📖</div>
+    <div class="authority-text">
+      <h3>Teryl — Absolutely Studying</h3>
+      <p>Teryl has been teaching study systems on YouTube to 2,600+ students across multiple years and degree programs. Her channel covers the practical mechanics of studying — not motivational content, but actual systems: how to create a planner you'll use past week two, how to build an exam summary sheet for accounting, how to structure a semester so finals week isn't a surprise.<br><br>
+      The channel exists because studying is hard and the trial-and-error process is avoidable. Everything Teryl teaches is built from personal experience and tested with real students in real courses.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section class="section">
+  <div class="offer-section">
+    <div class="section-label">What you get</div>
+    <h2>The Semester Study System</h2>
+    <p class="subtitle">Everything you need to set up and run a study system through a full semester — without starting over.</p>
+    <div class="offer-items">
+      <div class="offer-item">
+        <div class="offer-check">✓</div>
+        <p><strong>Semester Setup Framework</strong> — the 90-minute setup that maps your entire term in one session</p>
+      </div>
+      <div class="offer-item">
+        <div class="offer-check">✓</div>
+        <p><strong>Weekly Planning System</strong> — the 20-minute Sunday process that keeps nothing falling through the cracks</p>
+      </div>
+      <div class="offer-item">
+        <div class="offer-check">✓</div>
+        <p><strong>Exam Summary Sheet Method</strong> — the active recall framework used in the accounting study video, adapted for any subject</p>
+      </div>
+      <div class="offer-item">
+        <div class="offer-check">✓</div>
+        <p><strong>Template Library</strong> — printable and digital versions of every planner and exam prep sheet in the system</p>
+      </div>
+      <div class="offer-item">
+        <div class="offer-check">✓</div>
+        <p><strong>Implementation Support</strong> — live Q&amp;A access while you're applying the system to your actual semester</p>
+      </div>
+      <div class="offer-item">
+        <div class="offer-check">✓</div>
+        <p><strong>Study Community Access</strong> — accountability, shared study sessions, and students using the same system</p>
+      </div>
+    </div>
+    <a href="#book" class="cta-btn" id="book">Book Your Free Strategy Call</a>
+    <p class="cta-subtext">So you can walk into your next exam knowing you prepared properly.</p>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section">
+  <div class="section-label">What students say</div>
+  <h2>Real Results — and Honest Ones</h2>
+  <p style="color: var(--text-secondary); margin-bottom: 32px;">Big wins, average wins, and what the process actually looks like. Not just the best case.</p>
+  <div class="testimonial-grid">
+    <div class="testimonial-card tier-1">
+      <div class="testimonial-tier">Strong result</div>
+      <blockquote>"I went from a 71 to an 84 on my cost accounting final in one exam cycle. Started the summary sheet two weeks out instead of the night before. Completely different experience."</blockquote>
+      <p class="testimonial-author"><strong>Maya S.</strong> — 2nd year Business, State University</p>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-tier">Average result</div>
+      <blockquote>"I stopped cramming. That's the biggest thing. I'm not getting straight A's but I'm actually finishing exams feeling like I studied for them, which I hadn't in two years."</blockquote>
+      <p class="testimonial-author"><strong>Priya T.</strong> — Accounting Master's Program</p>
+    </div>
+    <div class="testimonial-card tier-3">
+      <div class="testimonial-tier">Honest outcome</div>
+      <blockquote>"The first semester I tried this I kept about 70% of the habits. Not perfect. But it was the first time I didn't cry before finals. I'll take it."</blockquote>
+      <p class="testimonial-author"><strong>Lily C.</strong> — 1st year University, UK</p>
+    </div>
+  </div>
+  <!-- PLACEHOLDER: Add Trustpilot widget, Reddit screenshot testimonials, or video interview clips here for third-party social proof -->
+</section>
+
+<!-- FINAL CTA -->
+<section class="section" style="text-align: center;">
+  <h2>Start This Semester Differently</h2>
+  <p style="color: var(--text-secondary); max-width: 520px; margin: 0 auto 32px;">A 45-minute call. No pressure. Just an honest conversation about whether this system fits where you're at.</p>
+  <a href="#book" class="cta-btn">Book Your Free Strategy Call</a>
+  <p class="cta-subtext">So you can stop rebuilding your study habits every 3 weeks.</p>
+</section>
+
+<footer>
+  Built by J&amp;G Operations for Absolutely Studying. Ready to deploy.
+</footer>
+
+</body>
+</html>

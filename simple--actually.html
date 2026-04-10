@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Simple Protocol | Simple, Actually</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --surface2: #1a1a24;
+      --border: #2a2a3a;
+      --accent: #7c6af7;
+      --accent-light: #9d8fff;
+      --text: #e8e8f0;
+      --text-muted: #8888aa;
+      --text-dim: #555570;
+      --green: #3dd68c;
+      --red: #ff5c5c;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 80px 0; }
+    .section-alt { background: var(--surface); }
+
+    /* HERO */
+    .hero {
+      padding: 100px 0 80px;
+      text-align: center;
+      background: linear-gradient(180deg, #0f0f1a 0%, var(--bg) 100%);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-label {
+      display: inline-block;
+      background: rgba(124, 106, 247, 0.12);
+      border: 1px solid rgba(124, 106, 247, 0.3);
+      color: var(--accent-light);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 32px;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero h1 span { color: var(--accent-light); }
+    .hero p {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    /* SOCIAL PROOF BAR — above fold */
+    .proof-bar {
+      background: var(--surface2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+      text-align: center;
+    }
+    .proof-bar-inner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .proof-stat { text-align: center; }
+    .proof-stat .number {
+      display: block;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--accent-light);
+    }
+    .proof-stat .label {
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* VSL PLACEHOLDER */
+    .vsl-wrap {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .vsl-container {
+      position: relative;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .vsl-container::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(124,106,247,0.08) 0%, transparent 70%);
+    }
+    .vsl-play {
+      width: 72px;
+      height: 72px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+    .vsl-play::after {
+      content: '';
+      border-left: 28px solid white;
+      border-top: 16px solid transparent;
+      border-bottom: 16px solid transparent;
+      margin-left: 6px;
+    }
+    .vsl-label {
+      text-align: center;
+      margin-top: 16px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    /* PROBLEM SECTION */
+    .problem-list { list-style: none; margin-top: 40px; }
+    .problem-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 17px;
+      line-height: 1.6;
+    }
+    .problem-list li:last-child { border-bottom: none; }
+    .problem-icon {
+      width: 24px;
+      height: 24px;
+      background: rgba(255, 92, 92, 0.1);
+      border: 1px solid rgba(255, 92, 92, 0.3);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+
+    /* SOLUTION / TRANSFORMATION */
+    .transform-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 40px;
+    }
+    @media (max-width: 600px) { .transform-grid { grid-template-columns: 1fr; } }
+    .transform-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .transform-card h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--accent-light);
+    }
+    .transform-card p { font-size: 15px; color: var(--text-muted); line-height: 1.6; }
+
+    /* CPR SECTION */
+    .cpr-steps { margin-top: 40px; }
+    .cpr-step {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 32px;
+      align-items: flex-start;
+    }
+    .cpr-number {
+      width: 48px;
+      height: 48px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .cpr-content h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+    .cpr-content p { color: var(--text-muted); font-size: 15px; line-height: 1.6; }
+
+    /* TESTIMONIALS */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .testimonial-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .testimonial-card.tier-1 { border-color: rgba(124, 106, 247, 0.4); }
+    .testimonial-card.tier-2 { }
+    .testimonial-card.tier-3 { border-color: rgba(61, 214, 140, 0.3); }
+    .testimonial-quote {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text);
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+    .testimonial-author { font-size: 13px; color: var(--text-muted); }
+    .testimonial-author strong { color: var(--text); }
+    .tier-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 100px;
+      margin-bottom: 12px;
+    }
+    .tier-badge.big { background: rgba(124,106,247,0.15); color: var(--accent-light); }
+    .tier-badge.average { background: rgba(255,255,255,0.06); color: var(--text-muted); }
+    .tier-badge.honest { background: rgba(61,214,140,0.1); color: var(--green); }
+
+    /* WHAT'S INCLUDED */
+    .included-list { margin-top: 40px; }
+    .included-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .included-item:last-child { border-bottom: none; }
+    .included-check {
+      width: 24px;
+      height: 24px;
+      background: rgba(61, 214, 140, 0.12);
+      border: 1px solid rgba(61, 214, 140, 0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--green);
+      font-size: 13px;
+      margin-top: 2px;
+    }
+    .included-text h4 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+    .included-text p { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+
+    /* CTA SECTION */
+    .cta-section {
+      text-align: center;
+      padding: 100px 0;
+      background: linear-gradient(180deg, var(--bg) 0%, #0f0f1a 100%);
+      border-top: 1px solid var(--border);
+    }
+    .cta-section h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-section p {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto 40px;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      font-size: 17px;
+      font-weight: 600;
+      padding: 18px 40px;
+      border-radius: 10px;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      transition: opacity 0.2s;
+      margin-bottom: 16px;
+    }
+    .btn-primary:hover { opacity: 0.88; }
+    .cta-subtext {
+      display: block;
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-top: 12px;
+    }
+
+    /* FOOTER */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 13px;
+    }
+
+    /* SECTION HEADERS */
+    .section-header { text-align: center; margin-bottom: 16px; }
+    .section-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 16px;
+    }
+    .section-header h2 {
+      font-size: clamp(26px, 3.5vw, 38px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .section-header p { font-size: 17px; color: var(--text-muted); max-width: 560px; margin: 0 auto; }
+
+    .divider { height: 1px; background: var(--border); }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-label">Simple, Actually</div>
+    <h1>Stop Managing Stress.<br><span>Start Fixing the Biology Behind It.</span></h1>
+    <p>A step-by-step protocol for people who are tired of wellness advice that doesn't stick — built around the cortisol, dopamine, and sleep science that actually moves the needle.</p>
+    <a href="#cta" class="btn-primary">Book Your Free Strategy Call →</a>
+    <span class="cta-subtext">Free 30-min call. No pitch before we understand your situation.</span>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF BAR — above fold, per JH +22% conversion guidance -->
+<div class="proof-bar">
+  <div class="container">
+    <div class="proof-bar-inner">
+      <div class="proof-stat">
+        <span class="number">335,000+</span>
+        <span class="label">Subscribers</span>
+      </div>
+      <div class="proof-stat">
+        <span class="number">6 Years</span>
+        <span class="label">Studying stress biology</span>
+      </div>
+      <div class="proof-stat">
+        <span class="number">Week 2-3</span>
+        <span class="label">When most people feel the shift</span>
+      </div>
+      <div class="proof-stat">
+        <span class="number">0</span>
+        <span class="label">Supplements required</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VSL PLACEHOLDER -->
+<section class="section">
+  <div class="container">
+    <div class="vsl-wrap">
+      <!-- VSL guidance: follow JH SOP 3 9-step framework: Hook → Credibility → Opportunity → Offer (price upfront) → Objections → Qualify → CTA → Testimonials → Risk Removal. Length: 5-10 min for this audience. OR use DSL (Google Slides embed, SOP 16) for higher consumption rate. -->
+      <div class="vsl-container">
+        <div class="vsl-play"></div>
+      </div>
+      <p class="vsl-label">Watch this 7-minute video before booking your call</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM SECTION -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Does This Sound Familiar</span>
+      <h2>The Wellness Advice Isn't Wrong.<br>It's Just Incomplete.</h2>
+      <p>Most people dealing with chronic stress, poor sleep, and low energy know what they're supposed to do. The problem is applying it.</p>
+    </div>
+    <ul class="problem-list">
+      <li>
+        <span class="problem-icon">✕</span>
+        <span>You sleep 7-8 hours and still wake up exhausted — your cortisol timing is off, not your bedtime.</span>
+      </li>
+      <li>
+        <span class="problem-icon">✕</span>
+        <span>You've tried meditation, journaling, apps, supplements — and either nothing sticks or it helps briefly before wearing off.</span>
+      </li>
+      <li>
+        <span class="problem-icon">✕</span>
+        <span>Your anxiety doesn't come in waves — it's a constant background hum you can't turn off, even on good days.</span>
+      </li>
+      <li>
+        <span class="problem-icon">✕</span>
+        <span>By Sunday evening you're already bracing for Monday. Your weekends are recovery time, not actual rest.</span>
+      </li>
+      <li>
+        <span class="problem-icon">✕</span>
+        <span>You know the science. You've read the books, watched the deep dives. You just can't get it to work consistently in your actual life.</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- SOLUTION / TRANSFORMATION + CPR (Clear Process to Revenue) -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">The Simple Protocol</span>
+      <h2>Here's What Changes, and Why</h2>
+      <p>Not more habits to add. A biological sequence that makes your existing habits actually work.</p>
+    </div>
+
+    <div class="cpr-steps">
+      <div class="cpr-step">
+        <div class="cpr-number">1</div>
+        <div class="cpr-content">
+          <h3>Establish the Biological Baseline</h3>
+          <p>Week 1. We identify the specific patterns driving your symptoms — cortisol timing, dopamine depletion, sleep stage disruption. This is the step most programs skip. Without it, everything else is guessing.</p>
+        </div>
+      </div>
+      <div class="cpr-step">
+        <div class="cpr-number">2</div>
+        <div class="cpr-content">
+          <h3>Implement the Interventions in Sequence</h3>
+          <p>Weeks 2-4. The order matters as much as the interventions themselves. We start with the upstream driver — usually evening cortisol — and build downstream from there. Most people feel a shift in week two. Not dramatic. Just: different.</p>
+        </div>
+      </div>
+      <div class="cpr-step">
+        <div class="cpr-number">3</div>
+        <div class="cpr-content">
+          <h3>Build the Habits on Corrected Biology</h3>
+          <p>Weeks 4-6. Habits on dysregulated hormones don't stick — that's why everything you've tried has worn off. By week 4, the biological foundation is stable enough that the habits actually hold under real-life pressure.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="transform-grid">
+      <div class="transform-card">
+        <h3>Before</h3>
+        <p>Waking up unrefreshed. Sunday dread. Brain won't quiet down at night. Running on caffeine and cortisol. Managing symptoms.</p>
+      </div>
+      <div class="transform-card">
+        <h3>After</h3>
+        <p>Morning energy that's earned, not borrowed. Evenings that feel like rest. Stress that doesn't follow you home. Habits that hold without white-knuckling them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDIBILITY + TESTIMONIALS — Layered per JH 3-tier framework -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Real Results</span>
+      <h2>What Happens in 4-6 Weeks</h2>
+      <p>Not just the best cases. Here's what the range actually looks like.</p>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card tier-1">
+        <span class="tier-badge big">Big Win</span>
+        <p class="testimonial-quote">"My evenings are quiet now. I genuinely don't know what to do with the quiet. I used to need three glasses of wine to turn my brain off."</p>
+        <p class="testimonial-author"><strong>Maya T.</strong> — Marketing Manager, Chicago</p>
+      </div>
+      <div class="testimonial-card tier-2">
+        <span class="tier-badge average">Typical Result</span>
+        <p class="testimonial-quote">"I was checking my HRV every morning for six months and watching it stay low. Within three weeks of the protocol my scores were the best they'd ever been. I'm a data person — those numbers don't lie."</p>
+        <p class="testimonial-author"><strong>James K.</strong> — Senior Software Engineer, Austin</p>
+      </div>
+      <div class="testimonial-card tier-2">
+        <span class="tier-badge average">Typical Result</span>
+        <p class="testimonial-quote">"I'd tried the apps, the journaling, the 4am routines. Fell off every time. Week two of the protocol I just... didn't fall off. That's the part that surprised me the most."</p>
+        <p class="testimonial-author"><strong>Rachel M.</strong> — Account Coordinator, Brooklyn</p>
+      </div>
+      <div class="testimonial-card tier-3">
+        <span class="tier-badge honest">Honest Outcome</span>
+        <p class="testimonial-quote">"Week one was frustrating — I didn't feel much. By week three something shifted. It wasn't dramatic. But I stopped waking up at 3am, and for me that was everything."</p>
+        <p class="testimonial-author"><strong>David L.</strong> — Operations Manager</p>
+      </div>
+    </div>
+    <p style="text-align:center; color: var(--text-dim); font-size:13px; margin-top:24px;">
+      [Add Trustpilot widget / review screenshots / video testimonials here]
+    </p>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED — 4-Layer Value Stack -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">What You Get</span>
+      <h2>Everything Needed to<br>Run the Protocol</h2>
+    </div>
+    <div class="included-list">
+      <div class="included-item">
+        <div class="included-check">✓</div>
+        <div class="included-text">
+          <h4>The Simple Protocol — Full Program</h4>
+          <p>6-week structured system covering biological baseline, cortisol reset, dopamine optimization, sleep protocol, and habit architecture. Self-paced with week-by-week clarity on what to do and when.</p>
+        </div>
+      </div>
+      <div class="included-item">
+        <div class="included-check">✓</div>
+        <div class="included-text">
+          <h4>Weekly Group Calls</h4>
+          <p>Live Q&A and implementation support. Bring your specific situation — what's working, what isn't, what to adjust. This is where the protocol gets personalized to you.</p>
+        </div>
+      </div>
+      <div class="included-item">
+        <div class="included-check">✓</div>
+        <div class="included-text">
+          <h4>Private Community Access</h4>
+          <p>A group of people working through the same protocol at the same time. Progress check-ins, accountability, and the kind of conversation that doesn't happen in YouTube comments.</p>
+        </div>
+      </div>
+      <div class="included-item">
+        <div class="included-check">✓</div>
+        <div class="included-text">
+          <h4>Done-For-You Tools</h4>
+          <p>Evening cortisol reset protocol. Morning light guide. Dopamine habit tracker. Stress hormone troubleshooting flowchart. Everything needed without building it yourself.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA — no navigation, conversion-focused -->
+<section class="cta-section" id="cta">
+  <div class="container">
+    <h2>Ready to Stop Managing This<br>and Start Fixing It?</h2>
+    <p>Book a free 30-minute strategy call. We'll look at your specific situation and figure out what the protocol would actually address for you — no obligation.</p>
+    <a href="[CALENDAR LINK]" class="btn-primary">Book Your Free Strategy Call →</a>
+    <span class="cta-subtext">so you can finally get your energy back without overhauling your entire life</span>
+    <br>
+    <span class="cta-subtext" style="margin-top:8px;">[Add Trustpilot / trust badges here]</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <p>Built by J&G Operations for Simple, Actually. Ready to deploy.</p>
+  </div>
+</footer>
+
+</body>
+</html>

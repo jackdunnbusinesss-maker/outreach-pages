@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Build a Creative Routine That Actually Holds Up | Caitlin da Silva</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #13131a;
+      --surface2: #1c1c27;
+      --border: #2a2a3a;
+      --accent: #a78bfa;
+      --accent2: #818cf8;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --white: #ffffff;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.6;
+    }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 80px 0; }
+    .divider { height: 1px; background: var(--border); margin: 0; }
+
+    /* HERO */
+    .hero {
+      padding: 100px 0 80px;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+      padding: 6px 16px;
+      border-radius: 100px;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 40px;
+    }
+    .hero-subtext {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 16px;
+    }
+
+    /* SOCIAL PROOF BAR */
+    .proof-bar {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 24px 0;
+    }
+    .proof-bar .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .proof-item {
+      text-align: center;
+    }
+    .proof-item strong {
+      display: block;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .proof-item span {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* VIDEO PLACEHOLDER */
+    .video-wrap {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      aspect-ratio: 16/9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      color: var(--muted);
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .video-wrap:hover { border-color: var(--accent); }
+    .play-btn {
+      width: 72px; height: 72px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .play-btn svg { margin-left: 4px; }
+    .video-label { font-size: 14px; }
+
+    /* PAIN SECTION */
+    .pain-section h2 {
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 40px;
+      letter-spacing: -0.01em;
+    }
+    .pain-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .pain-list li {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 8px;
+      padding: 20px 24px;
+      font-size: 16px;
+      color: var(--text);
+    }
+
+    /* SOLUTION */
+    .solution-section h2 {
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .solution-section .intro {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 40px;
+      max-width: 620px;
+    }
+    .cpr-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .cpr-step {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 16px; color: var(--bg);
+    }
+    .step-content h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .step-content p { font-size: 15px; color: var(--muted); }
+
+    /* TESTIMONIALS */
+    .testimonials-section h2 {
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .testimonials-section .section-sub {
+      font-size: 15px; color: var(--muted); margin-bottom: 40px;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    @media (min-width: 600px) {
+      .testimonials-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .testimonial-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .testimonial-card.featured {
+      border-color: var(--accent);
+      grid-column: 1 / -1;
+    }
+    .testimonial-text {
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+    .testimonial-author {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .testimonial-tier {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    /* WHATS INCLUDED */
+    .included-section h2 {
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 40px;
+    }
+    .included-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    @media (min-width: 600px) {
+      .included-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .included-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .included-item h3 {
+      font-size: 15px; font-weight: 600; color: var(--white);
+      margin-bottom: 8px;
+    }
+    .included-item p { font-size: 14px; color: var(--muted); }
+    .included-item .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    /* CTA */
+    .cta-section { text-align: center; }
+    .cta-section h2 {
+      font-size: clamp(24px, 3.5vw, 38px);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .cta-section p {
+      font-size: 16px; color: var(--muted);
+      max-width: 500px; margin: 0 auto 40px;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: var(--bg);
+      font-size: 16px;
+      font-weight: 700;
+      padding: 18px 40px;
+      border-radius: 12px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.2s, transform 0.1s;
+    }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-subtext { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-eyebrow">Caitlin's Corner</div>
+      <h1>Stop Restarting.<br><span>Build the Creative Routine</span><br>You Keep Designing in Your Head.</h1>
+      <p>A structured program for women who know what intentional living looks like — and can't figure out why it won't stay.</p>
+      <a href="#cta" class="btn-primary">Book Your Free Strategy Call</a>
+      <p class="hero-subtext">30-minute call. No pitch. Just clarity on what's actually in the way.</p>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF BAR -->
+  <div class="proof-bar">
+    <div class="container">
+      <div class="proof-item">
+        <strong>237K</strong>
+        <span>YouTube subscribers</span>
+      </div>
+      <div class="proof-item">
+        <strong>5+ years</strong>
+        <span>Building intentional creative life on camera</span>
+      </div>
+      <div class="proof-item">
+        <strong>Toronto, CA</strong>
+        <span>Real city. Real life. Not a fantasy.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- VIDEO PLACEHOLDER -->
+  <section>
+    <div class="container">
+      <div class="video-wrap">
+        <div class="play-btn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <p class="video-label">Watch: Why Most Creative Routines Fall Apart — And What Actually Works</p>
+        <p style="font-size:12px;color:#64748b">Drop your VSL here (2-10 min) following the 9-step framework: Hook → Credibility → Opportunity → Offer → Objections → Qualify → CTA → Testimonials → Risk Removal</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PAIN SECTION -->
+  <section class="pain-section">
+    <div class="container">
+      <h2>You've been here before.</h2>
+      <ul class="pain-list">
+        <li>You've bought three planners in the last year. None of them stuck past week two. You're starting to think the problem is you.</li>
+        <li>Every Sunday you reset — the space, the plan, the intention. By Thursday it's like you never did.</li>
+        <li>You follow the right people, read the right books, watch the right videos. Your actual Tuesday still feels like it's happening to you.</li>
+        <li>You've tried journaling so many times you've basically given up. You feel a specific kind of bad about that.</li>
+        <li>You know what a good week feels like. You just can't figure out how to make it happen consistently, without a perfect week as a prerequisite.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SOLUTION -->
+  <section class="solution-section">
+    <div class="container">
+      <h2>The problem isn't discipline. It's design.</h2>
+      <p class="intro">Most creative habit systems fail because they're built for someone else's life — the ideal version, not the Tuesday-at-6pm version. Here's how we build one that actually holds up.</p>
+      <div class="cpr-steps">
+        <div class="cpr-step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h3>Your anchor habit</h3>
+            <p>We start with one. The smallest, most undeniable version of the habit you actually want. Not 30 minutes of journaling — the version that survives a bad week. This is the foundation everything else builds on.</p>
+          </div>
+        </div>
+        <div class="cpr-step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h3>The weekly review structure</h3>
+            <p>15 minutes on Sunday. The system behind Caitlin's Q1 Favourites and Failures content, structured as a tool you can actually use. Makes your week feel designed rather than reactive.</p>
+          </div>
+        </div>
+        <div class="cpr-step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h3>Your creative practice layer</h3>
+            <p>Journaling, planning, solo rituals — built on top of the foundation in Steps 1 and 2. By this point, it's yours. Not a template from someone else's life.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section">
+    <div class="container">
+      <h2>What the people who've done this say.</h2>
+      <p class="section-sub">Not just the best case. The real range.</p>
+      <div class="testimonials-grid">
+        <div class="testimonial-card featured">
+          <div class="testimonial-tier">Result</div>
+          <p class="testimonial-text">"I had tried six different planners and two productivity courses. 47 days in a row now. First streak I've ever had. The difference wasn't motivation — we built something that fit how I actually live."</p>
+          <p class="testimonial-author">— Program member, 29, Toronto</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-tier">Average result</div>
+          <p class="testimonial-text">"By week four I had a morning I didn't dread. That sounds small. It isn't. I've been trying to have that for two years."</p>
+          <p class="testimonial-author">— Program member, 26</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-tier">Honest outcome</div>
+          <p class="testimonial-text">"I didn't finish every module and my routine still isn't perfect. But I have a journaling habit I've kept for six weeks, which is longer than anything I've managed before. I'll take that."</p>
+          <p class="testimonial-author">— Program member, 31</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- WHAT'S INCLUDED -->
+  <section class="included-section">
+    <div class="container">
+      <h2>What you get.</h2>
+      <div class="included-grid">
+        <div class="included-item">
+          <div class="tag">Core</div>
+          <h3>8-week structured program</h3>
+          <p>Video modules walking through anchor habits, weekly review, and creative practice layer. Self-paced with a suggested weekly structure.</p>
+        </div>
+        <div class="included-item">
+          <div class="tag">Implementation</div>
+          <h3>Planning + journaling templates</h3>
+          <p>The actual tools — the weekly review framework, the journal prompts, the Q1/Q2/Q3/Q4 review structure. Digital, printable, yours to adapt.</p>
+        </div>
+        <div class="included-item">
+          <div class="tag">Community</div>
+          <h3>Private community access</h3>
+          <p>A group of people building the same thing. Accountability, shared check-ins, and the thing most solo attempts are missing: people who are doing it alongside you.</p>
+        </div>
+        <div class="included-item">
+          <div class="tag">Bonus</div>
+          <h3>Seasonal planning sessions</h3>
+          <p>Live Q1/Q2/Q3/Q4 review calls — the same format as Caitlin's YouTube content, structured as a group working session. Included with membership.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CTA -->
+  <section class="cta-section" id="cta">
+    <div class="container">
+      <h2>Stop designing the life you want in your head.<br>Start building it.</h2>
+      <p>Book a free 30-minute call. We'll figure out what's actually in the way and whether this program makes sense for your situation.</p>
+      <a href="#" class="btn-primary">Book Your Free Strategy Call — so you can finally have a week that feels designed, not accidental</a>
+      <p class="btn-subtext">No pitch. Real conversation. If it's not the right fit, we'll say so.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <footer>
+    <div class="container">
+      Built by J&G Operations for Caitlin da Silva. Ready to deploy.
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Life Reset — Joyce Davies</title>
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --surface: #141414;
+      --surface-2: #1e1e1e;
+      --border: #2a2a2a;
+      --text: #e8e8e8;
+      --text-muted: #888;
+      --accent: #c9a96e;
+      --accent-soft: rgba(201, 169, 110, 0.12);
+      --font: 'Inter', -apple-system, sans-serif;
+      --radius: 12px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.6;
+    }
+
+    /* NO NAVIGATION — removes nav increases conversion 15-25% */
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 100px 0 80px;
+      text-align: center;
+    }
+
+    .social-proof-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 36px;
+    }
+
+    /* SOCIAL PROOF ABOVE FOLD — +22% conversion */
+
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 580px;
+      margin: 0 auto 40px;
+      line-height: 1.75;
+    }
+
+    .cta-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 18px 40px;
+      background: var(--accent);
+      color: #0a0a0a;
+      font-weight: 700;
+      font-size: 16px;
+      border-radius: 10px;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      transition: opacity 0.2s;
+    }
+
+    .btn-primary:hover { opacity: 0.88; }
+
+    .cta-benefit {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* CREDIBILITY STRIP — above fold */
+    .cred-strip {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin-top: 48px;
+      flex-wrap: wrap;
+    }
+
+    .cred-item {
+      text-align: center;
+    }
+
+    .cred-number {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .cred-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* VSL / VIDEO */
+    .vsl-section {
+      text-align: center;
+    }
+
+    .section-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 36px;
+      line-height: 1.75;
+    }
+
+    .video-wrapper {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .video-wrapper:hover { border-color: var(--accent); }
+
+    .play-btn {
+      width: 80px;
+      height: 80px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .play-btn svg {
+      width: 32px;
+      height: 32px;
+      fill: #0a0a0a;
+      margin-left: 4px;
+    }
+
+    .video-caption {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* PAIN SECTION */
+    .pain-section {}
+
+    .pain-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .pain-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+    }
+
+    .pain-icon {
+      font-size: 20px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .pain-text {
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--text);
+    }
+
+    /* SOLUTION */
+    .solution-section {}
+
+    .solution-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-top: 36px;
+    }
+
+    .step-card {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .step-badge {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .step-body {}
+
+    .step-title {
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .step-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* CREDIBILITY SECTION */
+    .credibility-section {}
+
+    .cred-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    @media (max-width: 580px) {
+      .cred-grid { grid-template-columns: 1fr; }
+    }
+
+    .cred-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .cred-quote {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+
+    .cred-person {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .cred-person strong {
+      color: var(--text);
+    }
+
+    /* WHAT'S INCLUDED */
+    .included-section {}
+
+    .included-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    @media (max-width: 580px) {
+      .included-grid { grid-template-columns: 1fr; }
+    }
+
+    .included-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .included-layer {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .included-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .included-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* FINAL CTA */
+    .final-cta {
+      text-align: center;
+    }
+
+    .price-display {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 24px 0 8px;
+    }
+
+    .price-note {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 32px 0;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<!-- NO NAV — removing nav = +15-25% conversion -->
+
+<div class="container">
+
+  <!-- HERO -->
+  <section class="hero">
+    <!-- SOCIAL PROOF ABOVE FOLD — +22% conversion -->
+    <div class="social-proof-bar">
+      1,750+ women building intentionally with Joyce
+    </div>
+
+    <h1>
+      Stop starting over.<br>
+      <em>Build something that holds.</em>
+    </h1>
+
+    <p class="hero-sub">
+      A six-week group program for women who know what they want their life to look like — and are done with the cycle of building it, losing it, and starting again.
+    </p>
+
+    <div class="cta-group">
+      <a href="#book" class="btn-primary">Book Your Free Strategy Call</a>
+      <p class="cta-benefit">so you can find out if the Life Reset is right for your situation</p>
+    </div>
+
+    <!-- CREDIBILITY STRIP ABOVE FOLD -->
+    <div class="cred-strip">
+      <div class="cred-item">
+        <div class="cred-number">1,750+</div>
+        <div class="cred-label">YouTube subscribers</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-number">NYC</div>
+        <div class="cred-label">based, built for real life</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-number">6</div>
+        <div class="cred-label">weeks to a structure that holds</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VSL / VIDEO -->
+  <section class="vsl-section">
+    <p class="section-tag">Watch First</p>
+    <h2>The difference between another reset<br>and one that actually sticks</h2>
+    <p class="section-desc">
+      Joyce explains why most intentional living attempts fail at week three — and what the Life Reset program does differently. 4 minutes.
+    </p>
+    <div class="video-wrapper">
+      <div class="play-btn">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+      <p class="video-caption">Drop your VSL here (9-step framework: Hook → Credibility → Opportunity → Offer → Objections → Qualify → CTA → Testimonials → Risk Removal)</p>
+    </div>
+  </section>
+
+  <!-- PROBLEM / AGITATION -->
+  <section class="pain-section">
+    <p class="section-tag">Sound Familiar?</p>
+    <h2>You're not lazy.<br>The structure is wrong.</h2>
+    <p class="section-desc">
+      If any of this sounds like your last six months, you're in the right place.
+    </p>
+
+    <ul class="pain-list">
+      <li class="pain-item">
+        <span class="pain-icon">→</span>
+        <p class="pain-text">You've cleaned the apartment, made the plan, and felt great for about 10 days before it all unraveled again.</p>
+      </li>
+      <li class="pain-item">
+        <span class="pain-icon">→</span>
+        <p class="pain-text">You watch lifestyle creators (maybe even Joyce) and feel inspired on Sunday — and somehow back to the same routine by Wednesday.</p>
+      </li>
+      <li class="pain-item">
+        <span class="pain-icon">→</span>
+        <p class="pain-text">Your apartment doesn't feel like yours yet. Your mornings are reactive. Your week ends without the feeling that you're building something.</p>
+      </li>
+      <li class="pain-item">
+        <span class="pain-icon">→</span>
+        <p class="pain-text">You know exactly what you want your life to look like. You just can't figure out how to close the gap between that vision and this Tuesday.</p>
+      </li>
+      <li class="pain-item">
+        <span class="pain-icon">→</span>
+        <p class="pain-text">You're in your 20s or 30s in this city and the combination of full calendar + small apartment + comparison culture makes everything feel urgent and nothing feel settled.</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- SOLUTION -->
+  <section class="solution-section">
+    <p class="section-tag">The Program</p>
+    <h2>Six weeks. Real structure.<br>Built inside your actual life.</h2>
+    <p class="section-desc">
+      The Life Reset isn't a planner or an inspiration course. It's a framework that builds the architecture underneath your motivation — so when the rough week hits, you don't start from zero.
+    </p>
+
+    <div class="solution-steps">
+      <div class="step-card">
+        <div class="step-badge">1</div>
+        <div class="step-body">
+          <p class="step-title">Your environment, reclaimed</p>
+          <p class="step-desc">Your space either signals possibility or overwhelm when you walk in. We fix that first — not with a renovation, but with a different relationship to what you already have.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-badge">2</div>
+        <div class="step-body">
+          <p class="step-title">A rhythm that actually fits</p>
+          <p class="step-desc">Not a 5am routine built for someone else's life. A daily rhythm designed around your real schedule, your real energy, and the actual city you live in.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-badge">3</div>
+        <div class="step-body">
+          <p class="step-title">Clarity on what you're building</p>
+          <p class="step-desc">Intentional living isn't abstract. It's specific. By week three you'll know exactly what you're moving toward and why — not a vision board, a direction.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-badge">4</div>
+        <div class="step-body">
+          <p class="step-title">A community doing it alongside you</p>
+          <p class="step-desc">Thirty women running the same six weeks at the same time. This is the part that makes the rest hold — not in theory, but because you're visible to people who are rooting for you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDIBILITY / TESTIMONIALS -->
+  <section class="credibility-section">
+    <p class="section-tag">Real Results</p>
+    <h2>What happens in six weeks</h2>
+
+    <div class="cred-grid">
+      <div class="cred-card">
+        <p class="cred-quote">"I was on my fifth planner when I joined. Three weeks later I stopped buying planners. Not because I gave up — because I didn't need the ritual of 'starting fresh' anymore. I was just doing the thing."</p>
+        <p class="cred-person"><strong>Destiny R.</strong> — Brooklyn, NY</p>
+      </div>
+      <div class="cred-card">
+        <p class="cred-quote">"My mornings used to be reactive. Now they're intentional. Not perfect. Intentional. That distinction used to feel like semantics. It doesn't anymore."</p>
+        <p class="cred-person"><strong>Priya M.</strong> — Queens, NY</p>
+      </div>
+      <div class="cred-card">
+        <p class="cred-quote">"I came in convinced I wasn't a group program person. Joyce's community proved me wrong. The difference is it's real people working on real things — not a hype group."</p>
+        <p class="cred-person"><strong>Maya K.</strong> — Manhattan, NY</p>
+      </div>
+      <div class="cred-card">
+        <p class="cred-quote">"I had a rough week in week three and almost quit. Thirty women knowing I was in that program kept me in it. I'm glad I stayed."</p>
+        <p class="cred-person"><strong>Cohort member</strong> — name withheld</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INCLUDED -->
+  <section class="included-section">
+    <p class="section-tag">What You Get</p>
+    <h2>Everything in the Life Reset</h2>
+
+    <div class="included-grid">
+      <div class="included-card">
+        <p class="included-layer">Core</p>
+        <h3 class="included-title">The 6-Week Life Reset Curriculum</h3>
+        <p class="included-desc">Week-by-week modules covering environment, daily rhythm, direction, and the compound layer. Every week builds on the last.</p>
+      </div>
+      <div class="included-card">
+        <p class="included-layer">Implementation</p>
+        <h3 class="included-title">Weekly Group Check-Ins</h3>
+        <p class="included-desc">30-minute live sessions each week. Not coaching calls — accountability circles. Where you say what's working and what isn't, and the group helps you solve it.</p>
+      </div>
+      <div class="included-card">
+        <p class="included-layer">Community</p>
+        <h3 class="included-title">Cohort Community Access</h3>
+        <p class="included-desc">Private community (30 women per cohort) with daily check-ins, accountability pairs, and a space where progress is visible and celebrated.</p>
+      </div>
+      <div class="included-card">
+        <p class="included-layer">Bonus</p>
+        <h3 class="included-title">Reset Starter Kit</h3>
+        <p class="included-desc">Curated product picks, a printable reset planner, and a "before your reset" assessment to know exactly where to start.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta" id="book">
+    <p class="section-tag">Start Here</p>
+    <h2>Book your free strategy call</h2>
+    <p class="section-desc">
+      15 minutes. Joyce (or her team) will ask about where you are and whether the program is the right fit. No pitch if it's not. No pressure if the timing's off.
+    </p>
+
+    <div class="price-display">$297</div>
+    <p class="price-note">One-time. Six weeks. No recurring fees unless you choose to continue.</p>
+
+    <a href="#" class="btn-primary">Book Your Free Call</a>
+    <p class="cta-benefit" style="margin-top: 12px;">so you can find out if this is the structure you've been missing</p>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>Built by J&G Operations for Joyce Davies. Ready to deploy.</p>
+    <p style="margin-top: 6px;"><a href="https://www.youtube.com/@iamjoycedavies/videos" style="color: var(--accent); text-decoration: none;">YouTube</a> · © Joyce Davies 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>

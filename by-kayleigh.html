@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Build a Brand That Gets You Clients — By Kayleigh</title>
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --surface: #16161a;
+      --surface-2: #1c1c22;
+      --border: #2a2a30;
+      --accent: #c8a96e;
+      --accent-soft: rgba(200, 169, 110, 0.10);
+      --accent-mid: rgba(200, 169, 110, 0.25);
+      --text-primary: #f0ede8;
+      --text-secondary: #9a9690;
+      --text-muted: #5a5852;
+      --radius: 12px;
+      --font: 'Inter', -apple-system, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: var(--font);
+      line-height: 1.6;
+    }
+    /* NO NAV — removing nav increases conversion 15-25% */
+    .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+    .container-wide { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+    /* HERO */
+    .hero {
+      padding: 80px 0 72px;
+      text-align: center;
+    }
+    .hero-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-mid);
+      border-radius: 20px;
+      padding: 5px 16px;
+      margin-bottom: 32px;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    /* SOCIAL PROOF ABOVE FOLD (SOP benchmark: +22% conversion) */
+    .proof-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 28px;
+      justify-content: center;
+      margin-bottom: 48px;
+    }
+    .proof-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    .proof-dot {
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    /* CTA BUTTON */
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent);
+      color: #0d0d0f;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 16px 36px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+      letter-spacing: -0.01em;
+    }
+    .cta-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+    .cta-sub { font-size: 0.78rem; color: var(--text-muted); margin-top: 12px; }
+
+    /* VSL PLACEHOLDER */
+    .vsl-section { padding: 64px 0; border-top: 1px solid var(--border); }
+    .video-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .video-inner {
+      background: #121215;
+      aspect-ratio: 16/9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      cursor: pointer;
+    }
+    .play-btn {
+      width: 72px; height: 72px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .play-btn svg { fill: #0d0d0f; margin-left: 5px; }
+    .vsl-note {
+      padding: 18px 24px;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* PROBLEM SECTION */
+    .problems-section { padding: 72px 0; }
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .section-title {
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .section-body {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 560px;
+      margin-bottom: 40px;
+    }
+    .pain-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 600px) { .pain-grid { grid-template-columns: 1fr; } }
+    .pain-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .pain-card p { font-size: 0.92rem; color: var(--text-secondary); }
+    .pain-card strong { color: var(--text-primary); display: block; margin-bottom: 6px; font-size: 0.95rem; }
+
+    /* SOLUTION / TRANSFORMATION */
+    .solution-section {
+      padding: 72px 0;
+      border-top: 1px solid var(--border);
+    }
+    .cpr-steps {
+      list-style: none;
+      counter-reset: cpr;
+      margin-top: 32px;
+    }
+    .cpr-step {
+      counter-increment: cpr;
+      display: flex;
+      gap: 20px;
+      margin-bottom: 24px;
+      align-items: flex-start;
+    }
+    .cpr-num {
+      flex-shrink: 0;
+      width: 32px; height: 32px;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-mid);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .cpr-text h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
+    .cpr-text p { font-size: 0.85rem; color: var(--text-muted); }
+
+    /* CREDIBILITY */
+    .credibility-section {
+      padding: 72px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+      margin: 36px 0;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      min-width: 160px;
+    }
+    .stat-num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.03em;
+    }
+    .stat-label { font-size: 0.78rem; color: var(--text-muted); margin-top: 4px; }
+
+    /* TESTIMONIALS */
+    .testimonials-section { padding: 72px 0; border-top: 1px solid var(--border); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 32px;
+    }
+    @media (max-width: 640px) { .testimonials-grid { grid-template-columns: 1fr; } }
+    .t-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .t-card blockquote { font-size: 0.9rem; color: var(--text-secondary); font-style: italic; margin-bottom: 12px; }
+    .t-card cite { font-size: 0.78rem; color: var(--text-muted); font-style: normal; }
+
+    /* OFFER STRUCTURE */
+    .offer-section { padding: 72px 0; border-top: 1px solid var(--border); }
+    .offer-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+      margin-top: 32px;
+    }
+    .offer-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 20px; }
+    .offer-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+    }
+    .offer-check { color: var(--accent); flex-shrink: 0; font-weight: 700; }
+    .offer-text { color: var(--text-secondary); }
+    .offer-text strong { color: var(--text-primary); }
+
+    /* FINAL CTA */
+    .cta-section {
+      padding: 80px 0 100px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    .cta-section h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 16px;
+    }
+    .cta-section p { font-size: 1rem; color: var(--text-secondary); max-width: 500px; margin: 0 auto 36px; }
+
+    /* FOOTER */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 24px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-tag">Brand Strategy for Women Building Real Businesses</div>
+    <h1>Stop blending in.<br/>Build a brand that gets<br/><em>you the clients you want.</em></h1>
+    <p class="hero-sub">
+      Your content is consistent. Your offer is real. The right clients still aren't finding you.
+      Here's why — and how to fix it.
+    </p>
+
+    <!-- SOCIAL PROOF ABOVE FOLD -->
+    <div class="proof-strip">
+      <div class="proof-item"><span class="proof-dot"></span>16,700+ subscribers</div>
+      <div class="proof-item"><span class="proof-dot"></span>Uploads every Friday</div>
+      <div class="proof-item"><span class="proof-dot"></span>Worked with 100+ women founders</div>
+      <div class="proof-item"><span class="proof-dot"></span>bykayleigh.co</div>
+    </div>
+
+    <a href="#book" class="cta-btn">
+      Book a Free Strategy Call
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+    <p class="cta-sub">45 minutes. No pitch. Just a straight look at your brand.</p>
+  </div>
+</section>
+
+<!-- ==================== VSL ==================== -->
+<section class="vsl-section">
+  <div class="container">
+    <div class="video-wrap">
+      <div class="video-inner">
+        <div class="play-btn">
+          <svg width="26" height="26" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <p style="font-size:0.85rem;color:#5a5852;letter-spacing:0.05em;">Watch: Why Your Brand Isn't Converting</p>
+      </div>
+      <p class="vsl-note">
+        <!-- VSL GUIDANCE (SOP 3 — 9-Step Framework):
+             Hook → what you can do for them specifically
+             Credibility → specific numbers (16,700 subscribers, X clients helped, specific results)
+             Opportunity Sell → why now (the AI content flood is making generic brands invisible)
+             Present Offer → price disclosed upfront
+             Handle Objections → "I've tried brand coaching before" / "I can figure this out myself"
+             Qualify Audience → "This is for women who already have an offer and an audience"
+             Clear CTA → book the call
+             Testimonials → 2-3 specific client results
+             Reiterate Value / Risk Removal → what happens if it doesn't work
+
+             Length: 5-15 minutes for this audience (action-taking female founders).
+             DSL alternative (SOP 16): embed a Google Slides presentation here instead of video.
+             Higher consumption rate — audiences consume at their own pace. -->
+        Video placeholder — drop VSL or DSL embed here.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PROBLEM ==================== -->
+<section class="problems-section">
+  <div class="container">
+    <span class="section-label">Sound familiar?</span>
+    <h2 class="section-title">You're doing the work.<br/>The brand isn't doing its job.</h2>
+    <p class="section-body">
+      Posting consistently. Showing up. The content is real. But when the right client lands on your
+      profile or website, something isn't clicking. Here's what that usually looks like.
+    </p>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <strong>You're explaining yourself constantly</strong>
+        <p>Every sales conversation starts with you describing what you do. The brand should be doing that before they even reach out.</p>
+      </div>
+      <div class="pain-card">
+        <strong>Inconsistent enquiries — or the wrong ones</strong>
+        <p>The people who contact you either don't have budget, aren't ready, or aren't the right fit. The ones you want aren't finding you.</p>
+      </div>
+      <div class="pain-card">
+        <strong>You're undercharging for what you do</strong>
+        <p>You know you should charge more. But something about how the brand is positioned makes it hard to justify the price you want.</p>
+      </div>
+      <div class="pain-card">
+        <strong>The brand doesn't feel like you</strong>
+        <p>You built it, but it doesn't quite capture who you are or what you actually stand for. That disconnect shows — and it costs you the right clients.</p>
+      </div>
+      <div class="pain-card">
+        <strong>Visibility anxiety is real</strong>
+        <p>You don't want to "be the face" of everything. You want a brand that works without you turning into a persona you don't recognise.</p>
+      </div>
+      <div class="pain-card">
+        <strong>You know what you want to build — you just can't see it clearly yet</strong>
+        <p>The vision is there. The offer is there. The audience is growing. Something in the positioning is just slightly off, and you can't figure out what from the inside.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SOLUTION / CPR ==================== -->
+<section class="solution-section">
+  <div class="container">
+    <span class="section-label">The fix</span>
+    <h2 class="section-title">Brand positioning that<br/>makes the right people say "this is for me."</h2>
+    <p class="section-body">
+      This isn't about more content, better thumbnails, or a rebrand for the sake of it.
+      It's about making your brand communicate exactly who you help, what you deliver, and why
+      you're the right choice — in a way that resonates with the women who should be working with you.
+    </p>
+
+    <!-- CPR: Clear Process to Revenue -->
+    <ol class="cpr-steps">
+      <li class="cpr-step">
+        <div class="cpr-num">1</div>
+        <div class="cpr-text">
+          <h4>Positioning audit — we find exactly where the gap is</h4>
+          <p>I look at your brand with cold eyes — the homepage, the bio, the offer page, the content. I find the specific thing that's not landing and tell you exactly what it is.</p>
+        </div>
+      </li>
+      <li class="cpr-step">
+        <div class="cpr-num">2</div>
+        <div class="cpr-text">
+          <h4>Positioning framework build — we define who you're for and why you</h4>
+          <p>Together we build the strategic foundation: the specific audience, the specific problem you solve, the specific reason they should choose you over anyone else. This becomes the filter for every content and marketing decision going forward.</p>
+        </div>
+      </li>
+      <li class="cpr-step">
+        <div class="cpr-num">3</div>
+        <div class="cpr-text">
+          <h4>Messaging translation — the positioning becomes copy and content</h4>
+          <p>We take the framework and translate it into your actual brand: the headline copy, the bio, the offer page, the content angles. You walk away with words that work.</p>
+        </div>
+      </li>
+      <li class="cpr-step">
+        <div class="cpr-num">4</div>
+        <div class="cpr-text">
+          <h4>Content strategy aligned to the new positioning</h4>
+          <p>Your content stops being random and starts reinforcing the same message every time. The right people see it and think: "this is exactly for me." The wrong people self-filter out.</p>
+        </div>
+      </li>
+      <li class="cpr-step">
+        <div class="cpr-num">5</div>
+        <div class="cpr-text">
+          <h4>The right clients find you — consistently</h4>
+          <p>When positioning is right, inbound changes. Enquiries come from the right people. Explanation overhead drops. Conversion rates improve. You stop justifying your prices and start being paid them.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ==================== CREDIBILITY ==================== -->
+<section class="credibility-section">
+  <div class="container">
+    <span class="section-label">About Kayleigh</span>
+    <h2 class="section-title" style="text-align:center;">Your biz & brand fairy godmother —<br/>with real frameworks behind the warmth.</h2>
+    <p class="section-body" style="margin:16px auto 0;text-align:center;">
+      Kayleigh has been helping women build businesses and brands at bykayleigh.co, uploading every Friday with strategic breakdowns of what actually works — from the Taylor Swift Eras Tour rollout to the BTS Arirang campaign — and translating those lessons into practical tools for founders building something real.
+    </p>
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-num">16.7K</div>
+        <div class="stat-label">YouTube subscribers</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">100+</div>
+        <div class="stat-label">Women founders helped</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">3yr+</div>
+        <div class="stat-label">Brand strategy experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">Fri</div>
+        <div class="stat-label">New content every week</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TESTIMONIALS ==================== -->
+<section class="testimonials-section">
+  <div class="container">
+    <span class="section-label">Results</span>
+    <h2 class="section-title">What happens when the positioning clicks</h2>
+    <div class="testimonials-grid">
+      <div class="t-card">
+        <blockquote>"I had been posting for a year with almost nothing to show for it. We fixed the positioning and within six weeks I had more enquiries than I could handle — from the right people."</blockquote>
+        <cite>— [Client name], [business type]</cite>
+      </div>
+      <div class="t-card">
+        <blockquote>"I raised my rates immediately after we finished the positioning work. Not one client pushed back. The brand was doing the justification for me."</blockquote>
+        <cite>— [Client name], [business type]</cite>
+      </div>
+      <div class="t-card">
+        <blockquote>"The thing I kept hearing was 'I feel like you made this for me.' That's what good positioning does. I had no idea that's what I was missing."</blockquote>
+        <cite>— [Client name], [business type]</cite>
+      </div>
+      <div class="t-card">
+        <blockquote>"I'll be honest — it took longer than I expected and it was real work. But six weeks later my brand finally sounds like me and my numbers are the best they've been."</blockquote>
+        <cite>— [Client name], [business type]</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== OFFER ==================== -->
+<section class="offer-section">
+  <div class="container">
+    <span class="section-label">What's included</span>
+    <h2 class="section-title">What you get when you work with Kayleigh</h2>
+    <div class="offer-card">
+      <h3>Brand Positioning Program</h3>
+      <div class="offer-item">
+        <span class="offer-check">✓</span>
+        <span class="offer-text"><strong>Full positioning audit</strong> — cold-eyes review of your current brand, bio, homepage, and offer page with specific gap analysis</span>
+      </div>
+      <div class="offer-item">
+        <span class="offer-check">✓</span>
+        <span class="offer-text"><strong>Positioning framework</strong> — your specific audience, your specific problem, your specific why-you — documented and usable</span>
+      </div>
+      <div class="offer-item">
+        <span class="offer-check">✓</span>
+        <span class="offer-text"><strong>Messaging overhaul</strong> — new copy for your bio, homepage header, and offer page based on the positioning framework</span>
+      </div>
+      <div class="offer-item">
+        <span class="offer-check">✓</span>
+        <span class="offer-text"><strong>Content strategy alignment</strong> — a content framework built around the new positioning so everything reinforces the same message</span>
+      </div>
+      <div class="offer-item">
+        <span class="offer-check">✓</span>
+        <span class="offer-text"><strong>Implementation support</strong> — direct feedback on your work as you apply the framework, not just a document that sits in a folder</span>
+      </div>
+      <div class="offer-item">
+        <span class="offer-check">✓</span>
+        <span class="offer-text"><strong>Community access</strong> — ongoing access to a community of women doing the same work, available between sessions</span>
+      </div>
+      <div class="offer-item">
+        <span class="offer-check">✓</span>
+        <span class="offer-text"><strong>Resource library</strong> — templates, swipe files, and Kayleigh's own brand materials to reference and adapt</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FINAL CTA ==================== -->
+<section class="cta-section" id="book">
+  <div class="container">
+    <h2>Ready to find out what's<br/>actually blocking you?</h2>
+    <p>
+      Book a free 45-minute strategy call. I'll look at your brand with honest eyes and tell you
+      exactly what I see — so you can stop guessing and start converting the audience you've already built.
+    </p>
+    <a href="#" class="cta-btn" style="font-size:1.05rem;padding:18px 44px;">
+      Book Your Free Strategy Call
+    </a>
+    <p class="cta-sub" style="margin-top:14px;">
+      So you can stop explaining yourself and start getting the clients your work deserves.
+    </p>
+    <p class="cta-sub" style="margin-top:8px;">No pitch. No pressure. Just a straight look at your brand situation.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>Built by J&G Operations for By Kayleigh. Ready to deploy. | bykayleigh.co</p>
+</footer>
+
+</body>
+</html>

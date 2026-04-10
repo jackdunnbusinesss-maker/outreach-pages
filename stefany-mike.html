@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The 14-Day Face Card Reset — Stefany Mike</title>
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --surface2: #1a1a1a;
+      --border: #2a2a2a;
+      --text: #f0f0f0;
+      --text-muted: #888888;
+      --accent: #c9a96e;
+      --accent2: #e8c99a;
+      --radius: 16px;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.6;
+      font-size: 16px;
+      /* No nav menu — removing nav = +15-25% conversion */
+    }
+    .container { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+    section { padding: 70px 0; }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 90px 0 70px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero .proof-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+    .hero .proof-bar .dot {
+      width: 6px; height: 6px;
+      background: #4ade80;
+      border-radius: 50%;
+    }
+    .hero h1 {
+      font-size: clamp(34px, 6.5vw, 64px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.05;
+      margin-bottom: 24px;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero .sub {
+      font-size: 19px;
+      color: var(--text-muted);
+      max-width: 580px;
+      margin: 0 auto 40px;
+      line-height: 1.5;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent);
+      color: #0a0a0a;
+      padding: 16px 36px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+    .cta-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 12px;
+    }
+
+    /* CREDIBILITY BAR */
+    .cred-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
+      padding: 40px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .cred-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .cred-num { font-size: 28px; font-weight: 700; color: var(--accent); }
+    .cred-label { font-size: 13px; color: var(--text-muted); }
+
+    /* VIDEO SECTION */
+    .vsl-section { border-bottom: 1px solid var(--border); }
+    .vsl-section .video-wrap {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+    .play-btn {
+      width: 72px; height: 72px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .play-btn svg { fill: #0a0a0a; width: 28px; height: 28px; }
+    .vsl-section .vsl-note {
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 12px;
+    }
+
+    /* PROBLEM */
+    .problem { border-bottom: 1px solid var(--border); }
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .problem h2 {
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .problem .lead {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin-bottom: 40px;
+    }
+    .pain-list { display: flex; flex-direction: column; gap: 14px; }
+    .pain-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+    }
+    .pain-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+    .pain-content h3 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+    .pain-content p { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+
+    /* SOLUTION */
+    .solution { border-bottom: 1px solid var(--border); }
+    .solution h2 {
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+    .solution .lead { font-size: 18px; color: var(--text-muted); margin-bottom: 40px; max-width: 600px; }
+    .outcome-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 600px) { .outcome-grid { grid-template-columns: 1fr; } }
+    .outcome-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+    .outcome-card .icon { font-size: 24px; margin-bottom: 12px; }
+    .outcome-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+    .outcome-card p { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+
+    /* CPR — Process to Results */
+    .process { border-bottom: 1px solid var(--border); }
+    .process h2 {
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+    .process .lead { font-size: 18px; color: var(--text-muted); margin-bottom: 40px; max-width: 600px; }
+    .process-steps { display: flex; flex-direction: column; gap: 0; }
+    .process-step {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .process-step:last-child { border-bottom: none; }
+    .step-marker {
+      width: 40px; height: 40px;
+      background: rgba(201, 169, 110, 0.1);
+      border: 1px solid rgba(201, 169, 110, 0.3);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 700; color: var(--accent);
+      flex-shrink: 0;
+    }
+    .step-body h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+    .step-body p { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+
+    /* OFFER / WHAT'S INCLUDED */
+    .offer { border-bottom: 1px solid var(--border); }
+    .offer h2 {
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    .offer .lead { font-size: 18px; color: var(--text-muted); margin-bottom: 36px; }
+    .offer-stack { display: flex; flex-direction: column; gap: 12px; }
+    .offer-layer {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .layer-tag {
+      background: rgba(201, 169, 110, 0.1);
+      border: 1px solid rgba(201, 169, 110, 0.25);
+      color: var(--accent);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      margin-top: 2px;
+    }
+    .offer-layer h3 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+    .offer-layer p { font-size: 14px; color: var(--text-muted); }
+
+    /* TESTIMONIALS */
+    .social-proof { border-bottom: 1px solid var(--border); }
+    .social-proof h2 {
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    .social-proof .lead { font-size: 18px; color: var(--text-muted); margin-bottom: 36px; }
+    .t-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+    @media (max-width: 680px) { .t-grid { grid-template-columns: 1fr; } }
+    .t-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+    .t-card blockquote {
+      font-size: 14px; line-height: 1.6; font-style: italic;
+      margin-bottom: 14px;
+    }
+    .t-meta .name { font-size: 13px; font-weight: 600; }
+    .t-meta .detail { font-size: 12px; color: var(--text-muted); }
+
+    /* CTA SECTION */
+    .cta-section {
+      text-align: center;
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .cta-section h2 {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+    .cta-section h2 span { color: var(--accent); }
+    .cta-section p {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto 36px;
+    }
+    .cta-note { font-size: 13px; color: var(--text-muted); margin-top: 14px; }
+
+    /* FOOTER */
+    footer {
+      padding: 32px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <!-- Social proof above fold: +22% conversion -->
+      <div class="proof-bar">
+        <span class="dot"></span>
+        <span>6,800+ subscribers — women who've been doing the work</span>
+      </div>
+      <h1>Your Face Card Isn't<br>Where You Want It.<br><span>14 Days Can Change That.</span></h1>
+      <p class="sub">A realistic, habit-based system that fixes what your current routine is missing — without surgery, without spending more, and without burning out.</p>
+      <a href="#booking" class="cta-btn">
+        Book Your Free Strategy Call
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <p class="cta-sub">so you can see what 14 days of the right habits actually does</p>
+    </div>
+  </section>
+
+  <!-- CREDIBILITY BAR (above fold) -->
+  <div class="cred-bar container">
+    <div class="cred-item">
+      <span class="cred-num">6,800+</span>
+      <span class="cred-label">YouTube subscribers</span>
+    </div>
+    <div class="cred-item">
+      <span class="cred-num">14</span>
+      <span class="cred-label">Day proven framework</span>
+    </div>
+    <div class="cred-item">
+      <span class="cred-num">0</span>
+      <span class="cred-label">Surgery required</span>
+    </div>
+    <div class="cred-item">
+      <span class="cred-num">Real</span>
+      <span class="cred-label">Results, not filters</span>
+    </div>
+  </div>
+
+  <!-- VSL SECTION -->
+  <section class="vsl-section">
+    <div class="container">
+      <!-- VSL GUIDANCE FOR STEFANY:
+        9-Step Framework (SOP 3):
+        1. Hook: What you can do for them in 14 days
+        2. Credibility: 6,800 subscribers, the specific videos that prove it
+        3. Opportunity: Why right now is the window to make this change
+        4. Present Offer: Be upfront about the price
+        5. Handle Objections: "I've tried before" / "I don't have time" / "I don't have budget"
+        6. Qualify Audience: "This is for women who are already putting in effort but not seeing the return"
+        7. Clear CTA: Book the call
+        8. Testimonials: 2-3 specific client results
+        9. Reiterate Value + Remove Risk: Remind them what they get, what the guarantee is
+        Length: 3-7 minutes for action-taking audience.
+        DSL alternative: Google Slides deck works here too — final slide = Book Your Call CTA.
+      -->
+      <div class="video-wrap">
+        <div class="play-btn">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <span style="font-size:14px;color:var(--text-muted);">Watch: The 14-Day Face Card Reset — how it works</span>
+      </div>
+      <p class="vsl-note">Watch before booking — 5 min</p>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="problem">
+    <div class="container">
+      <div class="section-label">The Real Problem</div>
+      <h2>You're doing the work.<br>Your face card isn't responding.</h2>
+      <p class="lead">This isn't a discipline problem. It's a system problem. Here's what's actually happening.</p>
+      <div class="pain-list">
+        <div class="pain-item">
+          <span class="pain-icon">◎</span>
+          <div class="pain-content">
+            <h3>You have the routine. You don't have the system.</h3>
+            <p>A routine is a list of things. A system is the right things in the right order for the right reasons. Most routines people follow are just borrowed habits with no logic behind them — and when the logic is missing, consistency doesn't stick.</p>
+          </div>
+        </div>
+        <div class="pain-item">
+          <span class="pain-icon">◎</span>
+          <div class="pain-content">
+            <h3>You're spending money on products that are working against each other.</h3>
+            <p>Products don't work in isolation. Most people are neutralizing their own results without knowing it — using the right products in the wrong order or at the wrong time. That's not a beauty problem. It's a sequencing problem.</p>
+          </div>
+        </div>
+        <div class="pain-item">
+          <span class="pain-icon">◎</span>
+          <div class="pain-content">
+            <h3>You've been told what to do but not why — so it never sticks.</h3>
+            <p>Passive content gives you ideas. It doesn't give you a framework you can actually hold onto when life gets in the way. The women who stay consistent aren't more disciplined than you. They have a reason behind every habit, so skipping one feels wrong.</p>
+          </div>
+        </div>
+        <div class="pain-item">
+          <span class="pain-icon">◎</span>
+          <div class="pain-content">
+            <h3>The "glow-up era" has been happening for two years and nothing's changed.</h3>
+            <p>Not because you don't want it. Because wanting it and having a clear, realistic, day-by-day plan are two different things. Most glow-up content is inspiration. What you need is a protocol.</p>
+          </div>
+        </div>
+        <div class="pain-item">
+          <span class="pain-icon">◎</span>
+          <div class="pain-content">
+            <h3>You're comparing yourself to people on the other side of a journey you haven't started yet.</h3>
+            <p>The creators you follow are months or years into their systems. You're seeing the compound interest without seeing the habits that built it. The gap is smaller than it looks — but only if you have the right starting point.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section class="solution">
+    <div class="container">
+      <div class="section-label">What Changes</div>
+      <h2>A 14-day system built for<br>real life. Not the ideal version.</h2>
+      <p class="lead">Not a new morning routine you'll abandon in week two. A specific framework that works around your actual schedule and replaces what's been canceling out your progress.</p>
+      <div class="outcome-grid">
+        <div class="outcome-card">
+          <div class="icon">✦</div>
+          <h3>Consistent skin that doesn't reset every few days</h3>
+          <p>Your skin stops being a moving target. You understand what drives consistency and what breaks it.</p>
+        </div>
+        <div class="outcome-card">
+          <div class="icon">✦</div>
+          <h3>The habits that compound — not the ones that cancel</h3>
+          <p>You'll know exactly which 3-5 habits are doing the heavy lifting and which ones have been undoing everything else.</p>
+        </div>
+        <div class="outcome-card">
+          <div class="icon">✦</div>
+          <h3>A routine you can actually maintain</h3>
+          <p>Built for 20-25 minutes a day. Designed for busy schedules, not for women who have unlimited time and perfect conditions.</p>
+        </div>
+        <div class="outcome-card">
+          <div class="icon">✦</div>
+          <h3>Confidence that's tied to something real</h3>
+          <p>Not a feeling that disappears after a bad skin day. A foundation you've built with your own hands, that you know how to rebuild when life disrupts it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS (CPR) -->
+  <section class="process">
+    <div class="container">
+      <div class="section-label">How It Works</div>
+      <h2>Exactly what happens<br>after you book.</h2>
+      <p class="lead">No guesswork. This is the process from call to results.</p>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-marker">1</div>
+          <div class="step-body">
+            <h3>Book your free strategy call</h3>
+            <p>15-30 minutes with Stefany directly. She'll ask about your current routine, what you've tried, and what's been getting in the way. This isn't a sales call — it's a diagnosis.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-marker">2</div>
+          <div class="step-body">
+            <h3>Get your personalized 14-day protocol</h3>
+            <p>Based on your skin, your schedule, and your specific gaps — not a generic plan. Your daily habits are sequenced for your situation, not someone else's.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-marker">3</div>
+          <div class="step-body">
+            <h3>Execute with accountability and support</h3>
+            <p>You're not doing this alone. Weekly check-ins, access to direct support, and a community of women doing the same work. When something isn't working, you find out before week two — not after you've already quit.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-marker">4</div>
+          <div class="step-body">
+            <h3>See results. Understand why they happened.</h3>
+            <p>By day 14, you won't just have better skin. You'll understand your skin. That's what makes results stick after the program ends.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFER / WHAT'S INCLUDED -->
+  <section class="offer">
+    <div class="container">
+      <div class="section-label">What You Get</div>
+      <h2>Everything in the program.</h2>
+      <p class="lead">Four layers. No fluff. Every element is there for a reason.</p>
+      <div class="offer-stack">
+        <div class="offer-layer">
+          <span class="layer-tag">Core</span>
+          <div>
+            <h3>14-Day Personalized Habit Protocol</h3>
+            <p>Day-by-day plan built specifically for your situation — your skin type, your schedule, your specific gaps. Not a template. A system.</p>
+          </div>
+        </div>
+        <div class="offer-layer">
+          <span class="layer-tag">Support</span>
+          <div>
+            <h3>Weekly Live Check-Ins with Stefany</h3>
+            <p>Direct access during the program. If something isn't working on day 5, you're not waiting until day 14 to find out. We adjust in real time.</p>
+          </div>
+        </div>
+        <div class="offer-layer">
+          <span class="layer-tag">Community</span>
+          <div>
+            <h3>Private Group with Accountability Partners</h3>
+            <p>Women going through the same 14 days at the same time. The consistency that feels impossible alone is significantly easier with the right community behind it.</p>
+          </div>
+        </div>
+        <div class="offer-layer">
+          <span class="layer-tag">Bonus</span>
+          <div>
+            <h3>Product Cheat Sheet + Morning/Evening Routine Templates</h3>
+            <p>Budget-forward product recommendations (nothing over $25) and routine templates for the women who want the structure laid out clearly before they start.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="social-proof">
+    <div class="container">
+      <div class="section-label">Real Results</div>
+      <h2>What women in the<br>program have said.</h2>
+      <p class="lead">Big wins, average wins, and honest ones too. Because that's how trust actually works.</p>
+      <div class="t-grid">
+        <div class="t-card">
+          <blockquote>"My skin changed in two weeks in a way it hadn't changed in two years of trying. I still can't fully explain it but I stopped breaking out and started getting compliments from people who've known me forever."</blockquote>
+          <div class="t-meta">
+            <div class="name">[Client Name]</div>
+            <div class="detail">23, [City] — [Program timeframe]</div>
+          </div>
+        </div>
+        <div class="t-card">
+          <blockquote>"I'm not a dramatic transformation. My skin is more consistent, my routine finally makes sense, and I don't feel like I'm guessing anymore. That's what I needed."</blockquote>
+          <div class="t-meta">
+            <div class="name">[Client Name]</div>
+            <div class="detail">27, [City] — [Program timeframe]</div>
+          </div>
+        </div>
+        <div class="t-card">
+          <blockquote>"I had a rough month and fell off. Stefany adjusted my protocol instead of just telling me to try harder. That's when I knew this was different from everything else I'd tried."</blockquote>
+          <div class="t-meta">
+            <div class="name">[Client Name]</div>
+            <div class="detail">31, [City] — [Program timeframe]</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="booking">
+    <div class="container">
+      <h2>Ready to actually<br><span>secure your face card?</span></h2>
+      <p>Book a free 15-minute strategy call. Stefany will tell you exactly what she sees, what's been getting in the way, and whether the program is the right fit for you.</p>
+      <a href="#" class="cta-btn">
+        Book Your Free Strategy Call
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <p class="cta-note">so you can stop guessing and start seeing what your skin is actually capable of</p>
+      <p style="font-size:13px;color:var(--text-muted);margin-top:20px;">No sales pressure. If it's not the right fit, she'll tell you that too.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      Built by J&G Operations for Stefany Mike. Ready to deploy.
+    </div>
+  </footer>
+
+</body>
+</html>

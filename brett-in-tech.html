@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stop Guessing. Get Your Tech Setup Right — Brett In Tech</title>
+  <style>
+    :root {
+      --bg-primary: #0a0a0f;
+      --bg-secondary: #111118;
+      --bg-card: #16161e;
+      --bg-card-hover: #1c1c26;
+      --accent-primary: #4f8ef7;
+      --accent-glow: rgba(79, 142, 247, 0.15);
+      --accent-green: #4ff782;
+      --text-primary: #e8e8f0;
+      --text-secondary: #9090a8;
+      --text-muted: #5a5a72;
+      --border-color: rgba(255,255,255,0.06);
+      --border-accent: rgba(79,142,247,0.3);
+      --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font-main);
+      line-height: 1.6;
+    }
+
+    /* NO NAV — removing navigation increases conversion 15-25% */
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ====== HERO ====== */
+    .hero {
+      padding: 80px 0 72px;
+      text-align: center;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(79,142,247,0.08), transparent);
+    }
+
+    .social-proof-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(79,247,130,0.08);
+      border: 1px solid rgba(79,247,130,0.2);
+      border-radius: 100px;
+      padding: 6px 18px;
+      font-size: 0.82rem;
+      color: var(--accent-green);
+      font-weight: 600;
+      margin-bottom: 32px;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent-green);
+      border-radius: 50%;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 22px;
+      max-width: 780px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    h1 span {
+      color: var(--accent-primary);
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 620px;
+      margin: 0 auto 40px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--accent-primary);
+      color: white;
+      font-size: 1.05rem;
+      font-weight: 700;
+      padding: 16px 36px;
+      border-radius: 10px;
+      text-decoration: none;
+      margin-bottom: 14px;
+      transition: opacity 0.2s;
+    }
+
+    .cta-btn:hover { opacity: 0.9; }
+
+    .cta-subtext {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* Credibility bar — above fold, +22% conversion */
+    .cred-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      padding: 32px 0;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      flex-wrap: wrap;
+    }
+
+    .cred-item {
+      text-align: center;
+    }
+
+    .cred-number {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    .cred-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* ====== VSL PLACEHOLDER ====== */
+    .vsl-section {
+      padding: 72px 0;
+    }
+
+    .video-wrapper {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      aspect-ratio: 16/9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      cursor: pointer;
+      max-width: 780px;
+      margin: 0 auto 24px;
+      transition: border-color 0.2s;
+    }
+
+    .video-wrapper:hover {
+      border-color: var(--border-accent);
+    }
+
+    .play-btn {
+      width: 72px;
+      height: 72px;
+      background: var(--accent-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .play-btn svg {
+      width: 28px;
+      height: 28px;
+      fill: white;
+      margin-left: 5px;
+    }
+
+    .vsl-label {
+      font-size: 1rem;
+      color: var(--text-secondary);
+    }
+
+    /* VSL guidance note (internal) */
+    .vsl-note {
+      background: rgba(79,142,247,0.06);
+      border: 1px solid var(--border-accent);
+      border-radius: 10px;
+      padding: 16px 20px;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    /* ====== PROBLEM SECTION ====== */
+    .problem-section {
+      padding: 80px 0;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-primary);
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      text-align: center;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .section-intro {
+      color: var(--text-secondary);
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto 48px;
+    }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .pain-grid, .solution-grid, .whats-included-grid { grid-template-columns: 1fr; }
+      .cred-bar { gap: 24px; }
+    }
+
+    .pain-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 24px;
+    }
+
+    .pain-card .pain-icon {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+
+    .pain-card .pain-title {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+
+    .pain-card .pain-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* ====== SOLUTION SECTION ====== */
+    .solution-section {
+      padding: 80px 0;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .solution-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 700px) {
+      .solution-grid { grid-template-columns: 1fr; }
+    }
+
+    .solution-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 28px;
+    }
+
+    .solution-step {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-primary);
+      margin-bottom: 8px;
+    }
+
+    .solution-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .solution-card p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* ====== CREDIBILITY ====== */
+    .credibility-section {
+      padding: 80px 0;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      .testimonial-grid { grid-template-columns: 1fr; }
+    }
+
+    .testimonial-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 24px;
+    }
+
+    .testimonial-text {
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+
+    .testimonial-name {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .tier-divider {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-align: center;
+      padding: 24px 0 12px;
+    }
+
+    /* ====== WHAT'S INCLUDED ====== */
+    .included-section {
+      padding: 80px 0;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .whats-included-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .included-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 28px;
+    }
+
+    .included-card .card-icon {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+    }
+
+    .included-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .included-card p {
+      font-size: 0.87rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .value-tag {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent-green);
+    }
+
+    /* ====== CTA SECTION ====== */
+    .cta-section {
+      padding: 96px 0;
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .price-display {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin: 24px 0 8px;
+    }
+
+    .price-sub {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    .guarantee-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(79,247,130,0.07);
+      border: 1px solid rgba(79,247,130,0.2);
+      border-radius: 100px;
+      padding: 8px 20px;
+      font-size: 0.82rem;
+      color: var(--accent-green);
+      margin-top: 20px;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO — speaks to audience's pain, not Brett's credentials -->
+  <section class="hero">
+    <div class="container">
+
+      <!-- Social proof ABOVE fold: +22% conversion -->
+      <div class="social-proof-bar">
+        <span class="dot"></span>
+        Trusted by 1.4 million subscribers on YouTube
+      </div>
+
+      <h1>Your tech setup is <span>fighting you</span> every day.<br>Here's how to fix it — once.</h1>
+
+      <p class="hero-sub">
+        A complete, step-by-step system to clean your PC, replace the software you're overpaying for, and set up your streaming the right way. No tech degree required.
+      </p>
+
+      <a href="#checkout" class="cta-btn">Get the Complete Tech Setup Course — $297</a><br>
+      <span class="cta-subtext">One-time payment. Refund guarantee. Lifetime access.</span>
+
+    </div>
+  </section>
+
+  <!-- CREDIBILITY BAR — stays above the fold on most screens -->
+  <div class="container">
+    <div class="cred-bar">
+      <div class="cred-item">
+        <div class="cred-number">1.4M</div>
+        <div class="cred-label">YouTube subscribers</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-number">1,000+</div>
+        <div class="cred-label">Videos published</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-number">$297</div>
+        <div class="cred-label">One-time, no subscription</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-number">100%</div>
+        <div class="cred-label">Refund guarantee</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VSL PLACEHOLDER -->
+  <section class="vsl-section">
+    <div class="container">
+      <div class="video-wrapper">
+        <div class="play-btn">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <span class="vsl-label">Watch: Why your setup isn't working — and what actually fixes it (3 min)</span>
+      </div>
+      <div class="vsl-note">
+        <strong>VSL guidance (SOP 3 — 9-Step Framework):</strong> Hook (what I can do for you) → Credibility (1.4M subscribers, years of testing) → Opportunity (most people are one structured system away from having this right) → Present Offer (price upfront: $297) → Handle Objections (free videos vs. structured course; I've tried to fix this before) → Qualify Audience (this is for people who want to implement, not just learn) → Clear CTA (go to checkout, get access today) → Testimonials → Reiterate Value / Risk Removal (refund guarantee). Target length: 3-5 minutes for this audience.
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM SECTION — written in audience's language -->
+  <section class="problem-section">
+    <div class="container">
+      <div class="section-label">Sound familiar?</div>
+      <h2>The tech problems most people just... live with</h2>
+      <p class="section-intro">If any of these sound like your situation, you're in the right place.</p>
+
+      <div class="pain-grid">
+        <div class="pain-card">
+          <div class="pain-icon">🐌</div>
+          <div class="pain-title">Your PC starts up like it's loading Windows 95</div>
+          <div class="pain-desc">It takes 3-5 minutes just to get to your desktop. You've tried cleaning it up but it always slows back down within a few weeks.</div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">💸</div>
+          <div class="pain-title">You're paying for software subscriptions you barely use</div>
+          <div class="pain-desc">Microsoft 365, antivirus software, PDF editors — the bill adds up. And you're not entirely sure which ones you actually need or if there are free alternatives that work just as well.</div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">📺</div>
+          <div class="pain-title">You cancelled cable but your streaming setup is still a mess</div>
+          <div class="pain-desc">You have 4 streaming services, half the apps on your Roku look low-quality, and you're spending almost as much as you were on cable.</div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">🔍</div>
+          <div class="pain-title">You've watched videos about fixing this, but nothing sticks</div>
+          <div class="pain-desc">Individual tips help temporarily but the underlying setup is still wrong. You need the whole system done right, not just one more thing to try.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION — CPR (Clear Process to Revenue / Results) -->
+  <section class="solution-section">
+    <div class="container">
+      <div class="section-label">The solution</div>
+      <h2>The complete setup — done right, built to last</h2>
+      <p class="section-intro">
+        Three focused modules. Every step in the right order. Built for people who are not tech professionals.
+      </p>
+
+      <div class="solution-grid">
+        <div class="solution-card">
+          <div class="solution-step">Module 1</div>
+          <h3>Clean your PC the right way</h3>
+          <p>Remove the programs slowing your machine down, disable the startup processes that don't need to run, and configure the settings that actually matter. Most people see measurable startup time improvements after this section alone.</p>
+        </div>
+        <div class="solution-card">
+          <div class="solution-step">Module 2</div>
+          <h3>Build your free software stack</h3>
+          <p>Replace the paid tools you're overpaying for with the free alternatives that actually work. Every tool recommended has been personally tested — no trial software, no ad-supported junk. You'll audit your current subscriptions and cut what you don't need.</p>
+        </div>
+        <div class="solution-card">
+          <div class="solution-step">Module 3</div>
+          <h3>Optimize your streaming setup</h3>
+          <p>Configure your Roku or streaming device with the apps actually worth having. Cut the services that are costing you without delivering value. Build a home streaming setup you'll actually use — and stop paying for the ones you don't.</p>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top: 40px;">
+        <p style="color: var(--text-secondary); max-width: 580px; margin: 0 auto 8px;">Plus: a maintenance system that keeps everything running right with about 30 minutes a month — so you're not back here doing this again in 6 months.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDIBILITY SECTION -->
+  <section class="credibility-section">
+    <div class="container">
+      <div class="section-label">Real people, real results</div>
+      <h2>What people say after going through it</h2>
+      <p class="section-intro">Not just the best cases. All three tiers.</p>
+
+      <!-- Tier 1 — Big wins -->
+      <div class="tier-divider">Big wins</div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-text">"[Placeholder — strong, specific result. E.g.: Startup time from 4 minutes to under a minute. Cut $340 in subscriptions. First time PC has felt new since purchase.]"</div>
+          <div class="testimonial-name">— [Name], [state]</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-text">"[Placeholder — streaming savings result. E.g.: Cut streaming bill from $90 to $28/month by following module 3. Wish I'd done this when I cancelled cable.]"</div>
+          <div class="testimonial-name">— [Name], retired</div>
+        </div>
+      </div>
+
+      <!-- Tier 2 — Average/relatable -->
+      <div class="tier-divider">Typical results</div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-text">"[Placeholder — relatable outcome. Not dramatic, but real improvement. Language should sound like a normal person talking, not a polished review.]"</div>
+          <div class="testimonial-name">— [Name], small business owner</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-text">"[Placeholder — non-technical person who succeeded. The 'I'm not tech-savvy but I got through it' testimonial that Karen avatar needs to see.]"</div>
+          <div class="testimonial-name">— [Name], 61, not a tech person</div>
+        </div>
+      </div>
+
+      <!-- Tier 3 — Honest outcomes -->
+      <div class="tier-divider">Honest outcomes</div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-text">"[Placeholder — modest but real result. E.g.: 'My older PC still has limits but I understand it better and stopped paying for things I didn't need. Worth the $297 for that.']"</div>
+          <div class="testimonial-name">— [Name]</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-text">"[Placeholder — third-party proof. Reddit mention, Trustpilot review, or YouTube comment screenshot with permission.]"</div>
+          <div class="testimonial-name">— via [platform]</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INCLUDED — 4-layer value stack -->
+  <section class="included-section">
+    <div class="container">
+      <div class="section-label">What you get</div>
+      <h2>Everything in the Complete Tech Setup Course</h2>
+
+      <div class="whats-included-grid">
+        <div class="included-card">
+          <div class="card-icon">🖥️</div>
+          <h3>PC Cleanup & Optimization (Core)</h3>
+          <p>Full walkthrough of removing bloat, disabling startup programs, and configuring the settings that actually affect performance. Step-by-step, no technical knowledge required.</p>
+          <span class="value-tag">+ Cleanup checklist included</span>
+        </div>
+        <div class="included-card">
+          <div class="card-icon">🛠️</div>
+          <h3>Free Software Stack</h3>
+          <p>Brett's complete tested list of free alternatives to paid tools — organized by category. Office, security, PDF, image editing, video playback, and more. Replaces $100-400/year in typical subscriptions.</p>
+          <span class="value-tag">+ Downloadable resource list</span>
+        </div>
+        <div class="included-card">
+          <div class="card-icon">📺</div>
+          <h3>Streaming Setup Optimization</h3>
+          <p>Configure your Roku or streaming device properly. Which free apps are worth installing, which paid services are worth keeping, and how to cut the ones that aren't earning their cost.</p>
+          <span class="value-tag">+ Updated for 2026</span>
+        </div>
+        <div class="included-card">
+          <div class="card-icon">🔄</div>
+          <h3>Maintenance System</h3>
+          <p>The 30-minute monthly routine that keeps your setup running well without needing to redo the whole thing every six months. The part most courses skip — Brett includes it because it's why results last.</p>
+          <span class="value-tag">+ Monthly checklist</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="cta-section" id="checkout">
+    <div class="container">
+      <div class="section-label">Get started</div>
+      <h2>Your tech setup can be right by this weekend.</h2>
+      <p style="color: var(--text-secondary); max-width: 560px; margin: 16px auto 0;">
+        Self-paced. Lifetime access. No subscriptions. If it doesn't deliver what Brett described, you get your money back — no questions asked.
+      </p>
+
+      <div class="price-display">$297</div>
+      <p class="price-sub">One-time payment. Instant access. Refund guarantee.</p>
+
+      <a href="#" class="cta-btn">Get the Complete Tech Setup Course</a><br>
+      <span class="cta-subtext">so you can stop fighting your own devices and actually use your tech the way it was supposed to work</span>
+
+      <div class="guarantee-badge">
+        ✓ &nbsp; Refund guarantee — if it doesn't work for your situation, you get the money back
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Built by J&G Operations for Brett In Tech. Ready to deploy.</p>
+  </footer>
+
+</body>
+</html>

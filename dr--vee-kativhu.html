@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PhD Completion Support | Dr. Vee Kativhu</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --border: #1e1e2e;
+      --accent: #7c6af7;
+      --accent-light: #a89af9;
+      --text: #e8e8f0;
+      --muted: #8888a0;
+      --white: #ffffff;
+      --success: #4ade80;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+    }
+    .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 80px 0; }
+
+    /* HERO */
+    .hero {
+      padding: 100px 0 80px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(124, 106, 247, 0.15);
+      color: var(--accent-light);
+      border: 1px solid rgba(124, 106, 247, 0.3);
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      color: var(--white);
+    }
+    .hero h1 span { color: var(--accent-light); }
+    .hero p.subheadline {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+    .cta-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--white);
+      padding: 16px 40px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .cta-primary:hover { opacity: 0.9; }
+    .cta-subtext {
+      display: block;
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    /* SOCIAL PROOF BAR */
+    .proof-bar {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 0;
+      text-align: center;
+    }
+    .proof-bar .stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .stat-item { text-align: center; }
+    .stat-number { font-size: 28px; font-weight: 700; color: var(--white); }
+    .stat-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+    /* VSL PLACEHOLDER */
+    .vsl-section { text-align: center; }
+    .vsl-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      aspect-ratio: 16/9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 40px 0;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .vsl-play {
+      width: 72px;
+      height: 72px;
+      background: rgba(124, 106, 247, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .vsl-play svg { margin-left: 6px; }
+    .vsl-label {
+      font-size: 15px;
+      color: var(--muted);
+    }
+    .vsl-note {
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto;
+      font-style: italic;
+    }
+
+    /* PAIN SECTION */
+    .pain-section h2 {
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 40px;
+    }
+    .pain-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+    }
+    .pain-item p { font-size: 16px; color: var(--text); }
+
+    /* SOLUTION */
+    .solution-section h2 {
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .solution-section .intro {
+      font-size: 17px;
+      color: var(--muted);
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+    .process-step {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 28px;
+      align-items: flex-start;
+    }
+    .step-num {
+      min-width: 40px;
+      height: 40px;
+      background: rgba(124, 106, 247, 0.15);
+      border: 1px solid rgba(124, 106, 247, 0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent-light);
+    }
+    .step-content h4 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .step-content p { font-size: 15px; color: var(--muted); }
+
+    /* CREDIBILITY */
+    .cred-section h2 {
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 40px;
+    }
+    .cred-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+    .cred-header {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .cred-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(124, 106, 247, 0.15);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+    .cred-label { font-size: 15px; color: var(--muted); }
+    .cred-value { font-size: 18px; font-weight: 600; color: var(--white); }
+
+    /* TESTIMONIALS */
+    .testimonials h2 {
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 40px;
+    }
+    .testimonial {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 20px;
+    }
+    .testimonial blockquote {
+      font-size: 16px;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+    .testimonial-meta { font-size: 13px; color: var(--muted); }
+    .testimonial-tier {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+    .tier-big { background: rgba(74, 222, 128, 0.15); color: var(--success); }
+    .tier-avg { background: rgba(124, 106, 247, 0.15); color: var(--accent-light); }
+    .tier-honest { background: rgba(255, 255, 255, 0.07); color: var(--muted); }
+
+    /* INCLUDED */
+    .included-section h2 {
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 40px;
+    }
+    .included-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .included-item:last-child { border-bottom: none; }
+    .check { color: var(--success); font-size: 20px; min-width: 24px; }
+    .included-item h4 { font-size: 16px; font-weight: 600; color: var(--white); margin-bottom: 6px; }
+    .included-item p { font-size: 14px; color: var(--muted); }
+
+    /* FINAL CTA */
+    .final-cta {
+      text-align: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 64px 40px;
+    }
+    .final-cta h2 {
+      font-size: clamp(24px, 3.5vw, 38px);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .final-cta p {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto 36px;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 600px) {
+      .proof-bar .stats { gap: 28px; }
+      .final-cta { padding: 48px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NO NAVIGATION MENU — removing nav = +15-25% conversion -->
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <span class="hero-badge">For PhD Students & Post-Doctoral Graduates</span>
+    <h1>Stop Running Out the Clock.<br><span>Finish Your PhD This Year.</span></h1>
+    <p class="subheadline">You're not stuck because you're not smart enough. You're stuck because you're doing this alone without the right structure. There's a better way through it.</p>
+    <a href="#apply" class="cta-primary">Book Your Free Strategy Call</a>
+    <span class="cta-subtext">30 minutes. No pitch. Just an honest look at where you are and what the path forward looks like.</span>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF BAR — above fold for +22% conversion -->
+<div class="proof-bar">
+  <div class="container">
+    <div class="stats">
+      <div class="stat-item">
+        <div class="stat-number">281K</div>
+        <div class="stat-label">YouTube subscribers following the journey</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">Dr. Ed.</div>
+        <div class="stat-label">Doctor of Education — the credential earned</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">UN</div>
+        <div class="stat-label">Young Leader at the United Nations</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VSL PLACEHOLDER -->
+<section class="vsl-section">
+  <div class="container">
+    <div class="vsl-container">
+      <div class="vsl-play">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+      </div>
+      <p class="vsl-label">Watch: What actually changes when you have the right support</p>
+    </div>
+    <!-- VSL guidance (SOP 3): Hook → Credibility (specific numbers) → Opportunity Sell (why now)
+         → Present Offer (price upfront) → Handle Objections → Qualify Audience
+         → Clear CTA → Testimonials → Reiterate Value/Remove Risk.
+         Length: 10-25 minutes for this analytical audience. Disclose price upfront — filters leads, builds trust. -->
+    <p class="vsl-note">Alternatively, embed a Google Slides DSL (Deck Sales Letter) here — higher consumption rate, prospects read at their own pace. Final slide = CTA. See SOP 16.</p>
+  </div>
+</section>
+
+<!-- PAIN SECTION -->
+<section class="pain-section">
+  <div class="container">
+    <h2>You've invested years in this.<br>Here's what's actually going wrong.</h2>
+    <div class="pain-item">
+      <p>"I've been working on the same chapter for four months. I don't know if it's good enough and my supervisor's feedback doesn't really tell me either."</p>
+    </div>
+    <div class="pain-item">
+      <p>"I finished my PhD and now I feel like I don't know who I am anymore. The credential doesn't feel like what I thought it would feel like."</p>
+    </div>
+    <div class="pain-item">
+      <p>"I can see the finish line but every time I sit down to write, I freeze. I don't know if it's imposter syndrome or if I'm actually not ready."</p>
+    </div>
+    <div class="pain-item">
+      <p>"I've sacrificed my relationships, my weekends, my mental health for this. I just need someone who's been through it to tell me I'm going to get there."</p>
+    </div>
+    <div class="pain-item">
+      <p>"I have a doctorate. I have the credential. So why does it feel like I'm still standing at the beginning of something?"</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION / CPR SECTION -->
+<section class="solution-section">
+  <div class="container">
+    <h2>Here's exactly how the students who finish move through it.</h2>
+    <p class="intro">The students who submit on time and move confidently into what's next aren't the most naturally talented or the most disciplined. They're the ones who had the right structure and someone who'd already done it walking alongside them. Here's the process.</p>
+
+    <div class="process-step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>Honest assessment of where you actually are</h4>
+        <p>Not what you tell your supervisor. Not what you tell yourself. What's actually happening with your chapter progress, your timeline, and the specific thing that's been stuck. That's where we start.</p>
+      </div>
+    </div>
+
+    <div class="process-step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>A 90-day plan built around your actual situation</h4>
+        <p>Chapter-by-chapter. Week-by-week. Not a generic "write every day" plan — a plan that accounts for your supervisory timeline, your funding situation, and the specific section that's been causing the stall.</p>
+      </div>
+    </div>
+
+    <div class="process-step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>Direct feedback on the actual work, not just motivation</h4>
+        <p>Your supervisor tells you what doesn't meet the standard. We tell you what does, and why, and how to get there. That's a different kind of feedback. It's the kind that moves the work forward.</p>
+      </div>
+    </div>
+
+    <div class="process-step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4>A cohort of people who understand exactly what you're going through</h4>
+        <p>Doctoral students and post-grads who are at the same stage, working toward the same thing. The community you didn't get inside the institution.</p>
+      </div>
+    </div>
+
+    <div class="process-step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <h4>A clear picture of what comes next after the credential</h4>
+        <p>For post-doctoral graduates: what the credential actually opens, which doors to walk through, and how to stop defaulting to the academic path because it's the only one you know. I've been through this. I'm at the United Nations. That path exists — and it's not the only one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDIBILITY -->
+<section class="cred-section">
+  <div class="container">
+    <h2>Why this is different from generic academic advice.</h2>
+
+    <div class="cred-card">
+      <div class="cred-header">
+        <div class="cred-icon">🎓</div>
+        <div>
+          <div class="cred-label">Credential</div>
+          <div class="cred-value">Doctor of Education — earned, not claimed</div>
+        </div>
+      </div>
+      <p style="color: var(--muted); font-size: 15px;">I submitted a 57,000-word dissertation. I know what the 5am crisis looks like. I know what it feels like to wonder if it's good enough. I also know what passing your viva looks like. That lived knowledge is different from academic coaching that hasn't been through it.</p>
+    </div>
+
+    <div class="cred-card">
+      <div class="cred-header">
+        <div class="cred-icon">🌐</div>
+        <div>
+          <div class="cred-label">Post-PhD Pathway</div>
+          <div class="cred-value">Young Leader at the United Nations</div>
+        </div>
+      </div>
+      <p style="color: var(--muted); font-size: 15px;">I didn't disappear into academia after finishing. I built a life that used the credential rather than being defined by it. If you're a post-doc trying to figure out what the degree actually opens — I have a map, because I've walked the territory.</p>
+    </div>
+
+    <div class="cred-card">
+      <div class="cred-header">
+        <div class="cred-icon">📺</div>
+        <div>
+          <div class="cred-label">Documented journey</div>
+          <div class="cred-value">281,000 people followed this in real time</div>
+        </div>
+      </div>
+      <p style="color: var(--muted); font-size: 15px;">281,000 subscribers didn't build because I pretended it was easy. They built because I showed the essay crises, the 5am submissions, the dissertation results opening live, the "now what" moment after finishing. That's not a content strategy — that's a record of what it actually took.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS — layered 3 tiers for maximum trust (SOP 28 principle) -->
+<section class="testimonials">
+  <div class="container">
+    <h2>What students say after working together.</h2>
+
+    <!-- Tier 1: Big wins -->
+    <div class="testimonial">
+      <span class="testimonial-tier tier-big">Submitted & Passed</span>
+      <blockquote>"I had been 'almost finished' for 14 months. I joined with nine weeks until my funding ran out. I submitted with five days to spare and passed my viva with minor corrections. I genuinely don't know if I would have made it without this."</blockquote>
+      <div class="testimonial-meta">PhD student, Education Studies — UK</div>
+    </div>
+
+    <!-- Tier 2: Average/relatable wins -->
+    <div class="testimonial">
+      <span class="testimonial-tier tier-avg">Steady Progress</span>
+      <blockquote>"I'm not finished yet but I'm further in 8 weeks than I was in the previous 6 months. Having someone look at my actual work and tell me what's working and what isn't — that was the thing I'd been missing the whole time."</blockquote>
+      <div class="testimonial-meta">Third-year PhD candidate, Social Sciences</div>
+    </div>
+
+    <!-- Tier 3: Honest/worst-case — transparency builds maximum trust -->
+    <div class="testimonial">
+      <span class="testimonial-tier tier-honest">Honest Outcome</span>
+      <blockquote>"I came in hoping for a miracle and got something more useful — a realistic plan and the honesty that I had more work to do than I thought. It wasn't what I wanted to hear, but it was what I needed to hear. I'm still working through it but I know exactly where I am now, which is more than I had before."</blockquote>
+      <div class="testimonial-meta">Post-doc researcher, Health Policy</div>
+    </div>
+
+    <!-- Third-party proof placeholder -->
+    <div class="cred-card" style="margin-top: 24px; text-align: center;">
+      <p style="color: var(--muted); font-size: 14px;">[Add Trustpilot reviews, Reddit testimonials, or video testimonial embeds here]</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED — 4-layer value stack -->
+<section class="included-section">
+  <div class="container">
+    <h2>What's included.</h2>
+
+    <div class="included-item">
+      <span class="check">✓</span>
+      <div>
+        <h4>Core: 90-day PhD Completion or Post-PhD Transition Program</h4>
+        <p>Weekly group coaching sessions with Dr. Vee Kativhu. Direct feedback on your actual work — chapter structure, argument clarity, submission readiness or post-PhD positioning. Not generic, not motivational — specific to your situation.</p>
+      </div>
+    </div>
+
+    <div class="included-item">
+      <span class="check">✓</span>
+      <div>
+        <h4>Implementation Support: Office Hours + Co-Working Sessions</h4>
+        <p>Weekly open office hours to bring specific questions about your chapter, your supervisor dynamics, or your next step. Co-working sessions for accountability and momentum between coaching calls.</p>
+      </div>
+    </div>
+
+    <div class="included-item">
+      <span class="check">✓</span>
+      <div>
+        <h4>Community: Private Cohort Access</h4>
+        <p>A private group of doctoral students and post-grads going through the same stage at the same time. The people in your institution don't understand what you're going through. These people do. That matters.</p>
+      </div>
+    </div>
+
+    <div class="included-item">
+      <span class="check">✓</span>
+      <div>
+        <h4>Bonus: Post-PhD Career Navigation Framework</h4>
+        <p>The specific framework for translating a doctoral credential into a meaningful career outside of academia — the map I used to get from finished dissertation to United Nations Young Leader. For anyone in the program, not just post-grads.</p>
+      </div>
+    </div>
+
+    <div class="included-item">
+      <span class="check">✓</span>
+      <div>
+        <h4>Bonus: Dissertation Sprint Template + PhD Survival Toolkit</h4>
+        <p>The chapter-by-chapter structure and the writing system I used when I had 21 days left and 15,000 words to write. The real one, not a cleaned-up version.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="apply">
+  <div class="container">
+    <div class="final-cta">
+      <h2>Book your free 30-minute strategy call.</h2>
+      <p>I'll look at where you are, tell you honestly what I think is possible in the next 90 days, and let you know whether working together makes sense for your situation — or not.</p>
+      <a href="[INSERT CALENDLY/BOOKING LINK]" class="cta-primary">Book Your Free Strategy Call →</a>
+      <span class="cta-subtext">So you can stop guessing about your timeline and start building one that actually works.</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>Built by J&amp;G Operations for Dr. Vee Kativhu. Ready to deploy.</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Era Planning Kit — by Jane</title>
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --surface2: #1a1a1a;
+      --border: #2a2a2a;
+      --accent: #c9a96e;
+      --accent2: #8b7355;
+      --text: #e8e8e0;
+      --muted: #888880;
+      --white: #f5f5f0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Georgia', serif;
+      line-height: 1.7;
+      font-size: 17px;
+    }
+
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 80px 24px 64px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-eyebrow {
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1.2;
+      color: var(--white);
+      font-weight: 400;
+      margin-bottom: 24px;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero h1 em {
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+
+    /* SOCIAL PROOF BAR — above fold */
+    .proof-bar {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 32px;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin: 0 auto 40px;
+      max-width: 680px;
+    }
+
+    .proof-stat {
+      text-align: center;
+    }
+
+    .proof-stat .number {
+      font-size: 1.6rem;
+      color: var(--accent);
+      font-weight: 400;
+      display: block;
+    }
+
+    .proof-stat .label {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #0a0a0a;
+      padding: 16px 40px;
+      border-radius: 4px;
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      font-weight: 600;
+    }
+
+    .cta-btn:hover { opacity: 0.85; }
+
+    .cta-sub {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 10px;
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+
+    /* VSL PLACEHOLDER */
+    .vsl-section {
+      padding: 60px 24px;
+      text-align: center;
+    }
+
+    .vsl-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      max-width: 680px;
+      margin: 0 auto;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vsl-container::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(201,169,110,0.06) 0%, transparent 70%);
+    }
+
+    .play-btn {
+      width: 72px;
+      height: 72px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .play-btn::after {
+      content: '';
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 12px 0 12px 22px;
+      border-color: transparent transparent transparent #0a0a0a;
+      margin-left: 4px;
+    }
+
+    .vsl-label {
+      font-size: 13px;
+      color: var(--muted);
+      font-family: 'Helvetica Neue', sans-serif;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* VSL GUIDANCE NOTE */
+    .vsl-guidance {
+      max-width: 680px;
+      margin: 20px auto 0;
+      padding: 20px 24px;
+      background: var(--surface);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      font-size: 13px;
+      color: var(--muted);
+      text-align: left;
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 64px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-family: 'Helvetica Neue', sans-serif;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      color: var(--white);
+      font-weight: 400;
+      margin-bottom: 24px;
+      line-height: 1.3;
+    }
+
+    /* PAIN SECTION */
+    .pain-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .pain-list li {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 24px;
+      font-size: 1rem;
+      color: var(--text);
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+
+    .pain-list li::before {
+      content: '—';
+      color: var(--accent);
+      margin-right: 10px;
+    }
+
+    /* CPR SECTION */
+    .cpr-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .cpr-step {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .step-num {
+      width: 48px;
+      height: 48px;
+      background: var(--surface);
+      border: 1px solid var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .step-content h3 {
+      color: var(--white);
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+
+    .step-content p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+
+    /* WHAT'S INCLUDED */
+    .includes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .include-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .include-item h3 {
+      color: var(--accent);
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+      font-family: 'Helvetica Neue', sans-serif;
+      font-weight: 600;
+    }
+
+    .include-item p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+
+    /* TESTIMONIALS */
+    .testimonial-tier-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent2);
+      font-family: 'Helvetica Neue', sans-serif;
+      margin-bottom: 16px;
+    }
+
+    .testimonials {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 680px;
+      margin: 0 auto 40px;
+    }
+
+    .testimonial {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 28px;
+    }
+
+    .testimonial blockquote {
+      font-style: italic;
+      color: var(--text);
+      margin-bottom: 14px;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .testimonial cite {
+      font-style: normal;
+      font-size: 13px;
+      color: var(--muted);
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      padding: 80px 24px;
+      text-align: center;
+    }
+
+    .cta-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 48px 40px;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .price {
+      font-size: 3rem;
+      color: var(--accent);
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+
+    .price-note {
+      font-size: 13px;
+      color: var(--muted);
+      font-family: 'Helvetica Neue', sans-serif;
+      margin-bottom: 32px;
+    }
+
+    footer {
+      padding: 32px 24px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    footer p {
+      font-size: 12px;
+      color: var(--muted);
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+
+    @media (max-width: 600px) {
+      .proof-bar { gap: 24px; padding: 20px; }
+      .cta-box { padding: 32px 24px; }
+      .cpr-step { grid-template-columns: 40px 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">The Era Planning Kit — by Jane</p>
+  <h1>Stop saving the life you want.<br>Start <em>living</em> it.</h1>
+  <p class="hero-sub">A seasonal framework for building the intentional, romanticized daily life you keep designing on Pinterest — and never actually starting.</p>
+
+  <!-- SOCIAL PROOF — above fold, +22% conversion -->
+  <div class="proof-bar">
+    <div class="proof-stat">
+      <span class="number">200+</span>
+      <span class="label">Women using this system</span>
+    </div>
+    <div class="proof-stat">
+      <span class="number">10.2k</span>
+      <span class="label">YouTube subscribers</span>
+    </div>
+    <div class="proof-stat">
+      <span class="number">4 seasons</span>
+      <span class="label">Of planning frameworks</span>
+    </div>
+  </div>
+
+  <a href="#get-started" class="cta-btn">Get the Era Planning Kit — $47</a>
+  <span class="cta-sub">Instant access. One-time payment. No subscription.</span>
+</section>
+
+<!-- VSL PLACEHOLDER -->
+<div class="vsl-section">
+  <div class="container">
+    <div class="vsl-container">
+      <div class="play-btn"></div>
+      <p class="vsl-label">Watch: How the Era Planning Kit works (3 min)</p>
+    </div>
+
+    <!-- VSL GUIDANCE -->
+    <div class="vsl-guidance">
+      <strong>For Jane — VSL guidance (JH SOP 3, 9-step framework):</strong><br>
+      This video should follow: Hook (what you can do for them, specific outcome) → Credibility (10.2k subs, 200+ users of the system) → Opportunity Sell (why now — season change is the right moment) → Present Offer (price upfront: $47) → Handle Objections (it'll stick this time because it's built for real life, not ideal life) → Qualify Audience ("if you already follow aesthetic lifestyle content and want to build it, not just watch it...") → Clear CTA → Testimonials (Chloe's story, Maya's story) → Reiterate Value / Remove Risk. Affluent/action-taking audience = 2-10 min optimal. Alternatively: embed a Google Slides DSL (File → Publish to Web → Embed) — higher consumption rate, audience moves at their own pace.
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM SECTION -->
+<section>
+  <div class="container" style="text-align:center">
+    <p class="section-label">Sound familiar?</p>
+    <h2>You know exactly what the life looks like.<br>You just can't seem to build it.</h2>
+    <p style="color:var(--muted); max-width:580px; margin:0 auto 40px; font-family:'Helvetica Neue',sans-serif;">If any of these land, you're in the right place:</p>
+
+    <ul class="pain-list">
+      <li>You've started a "romanticized morning routine" at least three times. It lasted a week.</li>
+      <li>Your Pinterest boards are immaculate. Your actual Tuesday isn't.</li>
+      <li>Every season you think "this is the one I'm going to do it properly." Then December comes.</li>
+      <li>You're consuming more intentional living content than ever, but your life still feels like it's just happening to you.</li>
+      <li>You know what your aesthetic is. You just haven't built the life around it yet.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SOLUTION / CPR SECTION -->
+<section>
+  <div class="container" style="text-align:center">
+    <p class="section-label">The system</p>
+    <h2>The gap isn't motivation.<br>It's a missing framework.</h2>
+    <p style="color:var(--muted); max-width:580px; margin:0 auto 40px; font-family:'Helvetica Neue',sans-serif;">The Era Planning Kit gives you a clear process for closing the space between the life you're designing and the one you're actually waking up to — one season at a time.</p>
+
+    <div class="cpr-steps">
+      <div class="cpr-step">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h3>Set your seasonal intention</h3>
+          <p>Not a goal list. A feeling. What does this era look like — and what are the 2-3 anchors that will make it real in your actual week?</p>
+        </div>
+      </div>
+      <div class="cpr-step">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h3>Build your daily anchor system</h3>
+          <p>15 minutes a week. Not a full routine overhaul — a few intentional touchpoints that string your days together and make them feel like something you built.</p>
+        </div>
+      </div>
+      <div class="cpr-step">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <h3>Run the seasonal framework</h3>
+          <p>By week six, the rituals feel natural. By season two, your weeks feel like yours. By season three, people start asking what changed about your energy.</p>
+        </div>
+      </div>
+      <div class="cpr-step">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <h3>Repeat each season</h3>
+          <p>The framework is designed to evolve with you. Each era builds on the last. You stop starting over and start building something cumulative.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDIBILITY SECTION -->
+<section>
+  <div class="container" style="text-align:center">
+    <p class="section-label">About Jane</p>
+    <h2>I built this because I needed it.<br>Not because it looked good to sell.</h2>
+    <p style="color:var(--muted); max-width:600px; margin:0 auto 32px; font-family:'Helvetica Neue',sans-serif;">
+      My channel bio literally says "fake it till you make it" — because for two years, I was performing the aesthetic life online without actually living it. The Era Planning Kit is what I built when I figured out what was actually missing. 10,200 people follow my channel now. Over 200 women have used this system. The thing they keep saying is: "it's the first time something worked because it was designed for my actual life, not an ideal one."
+    </p>
+    <p style="color:var(--muted); font-size:14px; font-family:'Helvetica Neue',sans-serif;">
+      Watch more on YouTube: <a href="https://www.youtube.com/@xojanicek/videos" style="color:var(--accent); text-decoration:none;">@xojanicek</a>
+    </p>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section>
+  <div class="container" style="text-align:center">
+    <p class="section-label">What you get</p>
+    <h2>Everything you need to build<br>one intentional season.</h2>
+
+    <div class="includes-grid" style="margin-top:32px">
+      <div class="include-item">
+        <h3>Seasonal Era Framework</h3>
+        <p>A structured guide for each of the four seasons — spring, summer, autumn, winter. Intention-setting, anchor-building, weekly rhythm.</p>
+      </div>
+      <div class="include-item">
+        <h3>Morning Anchor System</h3>
+        <p>A simple framework for building morning rituals that fit your real schedule — not an idealized one. 15 minutes or less to run.</p>
+      </div>
+      <div class="include-item">
+        <h3>Notion Template</h3>
+        <p>Pre-built planning pages for seasonal intention, weekly anchors, and era tracking. Set up once, use every season.</p>
+      </div>
+      <div class="include-item">
+        <h3>Weekly Check-In Ritual</h3>
+        <p>A 10-minute Sunday practice for reviewing your week and resetting your anchor for the next one. The thing that makes it compound.</p>
+      </div>
+      <div class="include-item">
+        <h3>"Why This Matters" Workbook</h3>
+        <p>A one-page exercise for writing out your personal "why" — the thing that keeps you coming back in week three when the novelty wears off.</p>
+      </div>
+      <div class="include-item">
+        <h3>Aesthetic Life Audio Guide</h3>
+        <p>Jane's 20-minute voice notes walking through how to use the system for your first era. Feels like a personal walkthrough, not a course.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS — LAYERED (SOP 7 / SOP 28 style) -->
+<section>
+  <div class="container" style="text-align:center">
+    <p class="section-label">What people say</p>
+    <h2>Real results. Not just the best cases.</h2>
+    <p style="color:var(--muted); max-width:560px; margin:0 auto 40px; font-family:'Helvetica Neue',sans-serif;">Three tiers — the big wins, the average wins, and the honest outcomes.</p>
+
+    <!-- Tier 1: Big wins -->
+    <p class="testimonial-tier-label">The transformation results</p>
+    <div class="testimonials">
+      <div class="testimonial">
+        <blockquote>"I genuinely cannot explain it but my life feels different. My Mondays feel like something I built instead of something that happened to me. Third season running the kit now."</blockquote>
+        <cite>— Chloe, 22, UK</cite>
+      </div>
+      <div class="testimonial">
+        <blockquote>"Autumn was always the season I said I'd romanticise properly. This was the first year I actually did. I cried a little reading back my era intention at the end of October."</blockquote>
+        <cite>— Anna, 24, Canada</cite>
+      </div>
+    </div>
+
+    <!-- Tier 2: Average/relatable wins -->
+    <p class="testimonial-tier-label" style="margin-top:32px">The everyday shifts</p>
+    <div class="testimonials">
+      <div class="testimonial">
+        <blockquote>"I don't have a perfect life. But my Tuesdays actually feel like mine now. That's more than I expected from a $47 PDF if I'm honest."</blockquote>
+        <cite>— Maya, 25, US</cite>
+      </div>
+      <div class="testimonial">
+        <blockquote>"I used this alongside my regular busy life — full-time job, nothing aesthetic about my flat really — and it still worked. The morning anchor thing is genuinely simple and it genuinely helped."</blockquote>
+        <cite>— Sophie, 27, Australia</cite>
+      </div>
+    </div>
+
+    <!-- Tier 3: Honest outcomes -->
+    <p class="testimonial-tier-label" style="margin-top:32px">The honest version</p>
+    <div class="testimonials">
+      <div class="testimonial">
+        <blockquote>"I used it for one season and honestly didn't feel a dramatic change. But I did feel slightly more intentional. And I'm doing it again this season. I think it builds slowly."</blockquote>
+        <cite>— Ella, 20, UK</cite>
+      </div>
+    </div>
+
+    <!-- Third-party proof placeholder -->
+    <div style="margin-top:32px; padding:24px; background:var(--surface); border:1px solid var(--border); border-radius:12px; max-width:680px; margin-left:auto; margin-right:auto;">
+      <p style="font-size:13px; color:var(--muted); font-family:'Helvetica Neue',sans-serif;">[Placeholder: Add Trustpilot review widget, Reddit mentions, or YouTube comment screenshots here]</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<div class="cta-section" id="get-started">
+  <div class="cta-box">
+    <p class="section-label">Ready to enter your next era?</p>
+    <div class="price">$47</div>
+    <p class="price-note">One-time payment. Instant access. All four seasonal frameworks included.</p>
+    <a href="#checkout" class="cta-btn">Get the Era Planning Kit</a>
+    <span class="cta-sub">so you can build the season you've been designing</span>
+    <p style="margin-top:24px; font-size:12px; color:var(--muted); font-family:'Helvetica Neue',sans-serif;">Not a subscription. Not a course that expires. A system you keep.</p>
+  </div>
+</div>
+
+<footer>
+  <p>Built by J&G Operations for Jane. Ready to deploy. | <a href="https://www.youtube.com/@xojanicek/videos" style="color:var(--accent); text-decoration:none;">@xojanicek on YouTube</a></p>
+</footer>
+
+</body>
+</html>

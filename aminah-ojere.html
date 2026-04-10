@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stop Running the Same Patterns | Aminah Ojere</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #13131a;
+      --border: #1e1e2e;
+      --accent: #a78bfa;
+      --accent2: #7c3aed;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --white: #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.7;
+    }
+    .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 80px 0; }
+    /* HERO */
+    .hero {
+      background: radial-gradient(ellipse at top, #1a0a2e 0%, var(--bg) 60%);
+      padding: 100px 0 80px;
+      text-align: center;
+    }
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .sub {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto 40px;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      color: var(--white);
+      padding: 18px 40px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: opacity 0.2s;
+    }
+    .cta-btn:hover { opacity: 0.88; }
+    .cta-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+    /* SOCIAL PROOF STRIP */
+    .proof-strip {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 0;
+      text-align: center;
+    }
+    .proof-strip p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .proof-nums {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .proof-num strong {
+      display: block;
+      font-size: 1.5rem;
+      color: var(--white);
+      font-weight: 800;
+    }
+    .proof-num span { font-size: 0.8rem; color: var(--muted); }
+    /* VSL PLACEHOLDER */
+    .vsl-wrap { text-align: center; padding: 60px 0 40px; }
+    .vsl-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      aspect-ratio: 16/9;
+      max-width: 680px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .play-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .play-icon svg { fill: white; }
+    /* PAIN SECTION */
+    h2 {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 20px;
+      line-height: 1.25;
+    }
+    .pain-list { list-style: none; margin: 32px 0; }
+    .pain-list li {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      padding-left: 28px;
+      position: relative;
+    }
+    .pain-list li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+    /* SOLUTION */
+    .solution-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .sol-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+    }
+    .sol-num {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .sol-card h3 { font-size: 1.05rem; color: var(--white); margin-bottom: 8px; }
+    .sol-card p { font-size: 0.9rem; color: var(--muted); }
+    /* TESTIMONIALS */
+    .testi-section { background: var(--surface); border-radius: 16px; padding: 56px 40px; }
+    .testi-label {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 32px;
+    }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .testi-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .testi-card blockquote {
+      font-size: 0.95rem;
+      color: var(--text);
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+    .testi-name { font-size: 0.8rem; color: var(--muted); }
+    /* WHAT'S INCLUDED */
+    .include-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .include-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+    }
+    .include-item h4 { color: var(--white); margin-bottom: 8px; font-size: 0.95rem; }
+    .include-item p { font-size: 0.85rem; color: var(--muted); }
+    /* FINAL CTA */
+    .cta-section {
+      background: radial-gradient(ellipse at bottom, #1a0a2e 0%, var(--bg) 60%);
+      text-align: center;
+      padding: 100px 0;
+    }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO — NO NAV (removing nav = +15-25% conversion) -->
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">Identity Coaching with Aminah Ojere</p>
+    <h1>You're not stuck because you<br/>lack discipline.<br/>You're stuck because your identity<br/>hasn't caught up yet.</h1>
+    <p class="sub">The patterns that keep coming back — the pull-back when things start going well, the confidence that won't stick, the sense that you're living someone else's life — these aren't willpower problems. They're identity problems. And that's exactly what we work on.</p>
+    <a href="#apply" class="cta-btn">Apply for a Free Discovery Call</a>
+    <p class="cta-sub">45-minute call. Free. No pressure if it's not the right fit.</p>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF STRIP — above fold -->
+<div class="proof-strip">
+  <div class="container">
+    <p>Aminah Ojere · YouTube Creator · Identity Coaching</p>
+    <div class="proof-nums">
+      <div class="proof-num">
+        <strong>3,700+</strong>
+        <span>YouTube subscribers</span>
+      </div>
+      <div class="proof-num">
+        <strong>90 days</strong>
+        <span>to shift the pattern</span>
+      </div>
+      <div class="proof-num">
+        <strong>Real work</strong>
+        <span>not tips & routines</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VSL PLACEHOLDER -->
+<div class="vsl-wrap">
+  <div class="container">
+    <p style="color:var(--muted);font-size:0.85rem;margin-bottom:16px;">Watch this before you apply (3-5 minutes)</p>
+    <div class="vsl-box">
+      <div class="play-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+      <p>[ Insert VSL or Deck Sales Letter here ]</p>
+      <p style="font-size:0.8rem;">Follow the 9-step framework: Hook → Credibility → Opportunity → Offer (price upfront) → Objections → Qualify → CTA → Testimonials → Risk Removal</p>
+    </div>
+  </div>
+</div>
+
+<!-- PAIN SECTION -->
+<section>
+  <div class="container">
+    <h2>You know what you want. You just keep getting in your own way.</h2>
+    <p style="color:var(--muted);">If any of this sounds familiar, you're in the right place:</p>
+    <ul class="pain-list">
+      <li>You get momentum and then something in you pulls back right when things are starting to go well</li>
+      <li>You've done the journaling, the routines, the self-help content — and the same patterns keep coming back</li>
+      <li>You feel like you're performing a version of yourself instead of actually being it</li>
+      <li>You keep putting yourself last, even though you know better, and can't figure out why you keep doing it</li>
+      <li>Starting over feels necessary but terrifying, and you're not sure what's actually changing when you do</li>
+    </ul>
+    <p style="color:var(--muted);margin-top:24px;">These aren't character flaws. They're what happens when the identity you're operating from hasn't been updated to match who you're actually trying to become.</p>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section style="background:var(--surface);">
+  <div class="container">
+    <h2>The Identity Shift Program — 90 Days</h2>
+    <p style="color:var(--muted);">Three phases. One outcome: you stop fighting yourself and start actually moving forward.</p>
+    <div class="solution-grid">
+      <div class="sol-card">
+        <p class="sol-num">Phase 01 · Weeks 1-4</p>
+        <h3>The Identity Audit</h3>
+        <p>We get specific about what you actually believe — not what you'd like to believe — about yourself and what's possible for you. Most people have never done this with honesty and precision. This is where we find the thing.</p>
+      </div>
+      <div class="sol-card">
+        <p class="sol-num">Phase 02 · Weeks 5-8</p>
+        <h3>The Shift Work</h3>
+        <p>This is the actual work. Not reframing, not journaling, not affirmations. Changing the underlying belief at the operational level — the one that's been running the patterns before you're even conscious of making a decision.</p>
+      </div>
+      <div class="sol-card">
+        <p class="sol-num">Phase 03 · Weeks 9-12</p>
+        <h3>Integration</h3>
+        <p>You're making decisions as the updated version of yourself. We apply the internal shift to the specific things that matter to you — your work, your brand, your relationships, how you show up day to day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS — layered (big wins, relatable wins, honest) -->
+<section>
+  <div class="container">
+    <div class="testi-section">
+      <p class="testi-label">What clients say</p>
+      <div class="testi-grid">
+        <!-- Tier 1: Big win -->
+        <div class="testi-card">
+          <blockquote>"I spent two years 'working on myself' through content and courses. Three months with Aminah and I actually did the thing I'd been putting off for all of those two years. The difference was working on the right thing."</blockquote>
+          <p class="testi-name">— [Client first name], coaching client</p>
+        </div>
+        <!-- Tier 2: Relatable win -->
+        <div class="testi-card">
+          <blockquote>"I didn't have a dramatic breakthrough. I just... stopped fighting myself. The pull-back stopped. I started finishing things. It was quieter than I expected, but it was real."</blockquote>
+          <p class="testi-name">— [Client first name], coaching client</p>
+        </div>
+        <!-- Tier 3: Honest/worst-case -->
+        <div class="testi-card">
+          <blockquote>"I'll be honest — the first month was hard. It wasn't comfortable to look at the beliefs I'd been protecting. But by month two, I understood myself in a way I genuinely hadn't before. That part didn't reverse."</blockquote>
+          <p class="testi-name">— [Client first name], coaching client</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section>
+  <div class="container">
+    <h2>What's included</h2>
+    <div class="include-grid">
+      <div class="include-item">
+        <h4>Weekly 1:1 Calls</h4>
+        <p>60-minute sessions each week. This is where the core work happens — real questions, real diagnosis, real shifts.</p>
+      </div>
+      <div class="include-item">
+        <h4>Voice Note Access</h4>
+        <p>Reach Aminah between sessions via voice note for real-time support when the pattern shows up and you need to work through it.</p>
+      </div>
+      <div class="include-item">
+        <h4>Identity Audit Framework</h4>
+        <p>A specific, structured process for identifying the beliefs running your patterns. Not a generic worksheet — a working diagnostic.</p>
+      </div>
+      <div class="include-item">
+        <h4>Private Community Access</h4>
+        <p>A small group of women in the same 90-day process. Not a Facebook group. A real peer accountability structure.</p>
+      </div>
+      <div class="include-item">
+        <h4>Resource Library</h4>
+        <p>Curated frameworks, exercises, and references to support the work between sessions.</p>
+      </div>
+      <div class="include-item">
+        <h4>Brand Alignment Session</h4>
+        <p>For clients building a personal brand or creative business: a dedicated session applying the identity shift to your brand, content, and how you show up professionally.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDIBILITY -->
+<section style="background:var(--surface);">
+  <div class="container" style="text-align:center;">
+    <h2>About Aminah</h2>
+    <p style="color:var(--muted);max-width:580px;margin:20px auto;">Aminah Ojere is a YouTube creator and identity coach who has spent years documenting and teaching the internal work of building a life and brand that actually feel like you. Her channel — where she covers mindset, alignment, self-sabotage, and what adult transitions actually feel like — has built an audience of 3,700+ people who come back because she says the thing that most people skip.</p>
+    <p style="color:var(--muted);max-width:580px;margin:20px auto;">Her coaching is an extension of that work: specific, honest, and focused on the identity level where permanent change actually happens.</p>
+    <p style="margin-top:20px;"><a href="https://www.youtube.com/@aminahojere/videos" style="color:var(--accent);font-size:0.9rem;">Watch the channel →</a></p>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-section" id="apply">
+  <div class="container">
+    <h2>Ready to stop running the same patterns?</h2>
+    <p style="color:var(--muted);max-width:500px;margin:20px auto 40px;">Apply for a free 45-minute discovery call. We'll talk about where you are, what's in the way, and whether this program is the right fit for your situation. If it's not, I'll tell you.</p>
+    <a href="#" class="cta-btn">Apply for Your Free Discovery Call</a>
+    <p class="cta-sub" style="margin-top:16px;">No pressure. No pitch if it's not a fit. Just an honest conversation.</p>
+    <p class="cta-sub" style="margin-top:8px;">so you can stop waiting to feel ready and actually become the person you're trying to become.</p>
+  </div>
+</section>
+
+<footer>
+  <p>Built by J&amp;G Operations for Aminah Ojere. Ready to deploy.</p>
+</footer>
+
+</body>
+</html>

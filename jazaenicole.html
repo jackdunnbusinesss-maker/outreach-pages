@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lock In — Personal Development Coaching with JazaeNicole</title>
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --surface-2: #1a1a1a;
+      --border: #222222;
+      --text: #e8e8e8;
+      --text-muted: #888888;
+      --accent: #c8a96e;
+      --accent-2: #7c6fcd;
+      --radius: 12px;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+
+    .hero .eyebrow {
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 58px);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero .subhead {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 580px;
+      margin: 0 auto 40px;
+    }
+
+    /* SOCIAL PROOF BAR — ABOVE FOLD */
+    .proof-bar {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 32px;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 60px;
+    }
+
+    .proof-stat {
+      text-align: center;
+    }
+
+    .proof-stat .number {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .proof-stat .label {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* VIDEO PLACEHOLDER */
+    .video-container {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      aspect-ratio: 16/9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .play-button {
+      width: 72px;
+      height: 72px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .play-button svg {
+      margin-left: 4px;
+    }
+
+    .video-label {
+      font-size: 15px;
+      color: var(--text-muted);
+    }
+
+    /* SECTION TITLES */
+    .section-title {
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .section-heading {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    section {
+      padding: 60px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    /* PROBLEM SECTION */
+    .pain-list {
+      list-style: none;
+      margin-top: 32px;
+    }
+
+    .pain-list li {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 17px;
+      color: var(--text);
+      padding-left: 28px;
+      position: relative;
+    }
+
+    .pain-list li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    /* TRANSFORMATION SECTION */
+    .transformation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 32px;
+    }
+
+    .transform-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .transform-card h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--accent);
+    }
+
+    .transform-card p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* CPR — PROCESS SECTION */
+    .process-steps {
+      margin-top: 32px;
+    }
+
+    .process-step {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 28px;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      background: var(--surface);
+      border: 1px solid var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .step-content h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .step-content p {
+      font-size: 15px;
+      color: var(--text-muted);
+    }
+
+    /* TESTIMONIALS */
+    .testimonial-tier {
+      margin-bottom: 40px;
+    }
+
+    .tier-label {
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .testimonial-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .testimonial-card .quote {
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+
+    .testimonial-card .author {
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* WHAT'S INCLUDED */
+    .offer-stack {
+      margin-top: 32px;
+    }
+
+    .offer-item {
+      display: flex;
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+
+    .offer-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 16px;
+    }
+
+    .offer-text h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .offer-text p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* CTA */
+    .cta-section {
+      text-align: center;
+      padding: 80px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .cta-section h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .cta-section p {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto 40px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      font-size: 17px;
+      padding: 18px 48px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: opacity 0.2s;
+    }
+
+    .cta-button:hover { opacity: 0.88; }
+
+    .cta-so-you-can {
+      margin-top: 14px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 32px;
+      font-size: 13px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <p class="eyebrow">Faith-Based Personal Development Coaching</p>
+    <h1>You know what needs to change.<br>You just haven't <span>locked in</span> yet.</h1>
+    <p class="subhead">
+      JazaeNicole coaches women who are serious about becoming who they're called to be — with the accountability, structure, and faith-rooted framework to actually get there.
+    </p>
+
+    <!-- SOCIAL PROOF ABOVE FOLD -->
+    <div class="proof-bar">
+      <div class="proof-stat">
+        <div class="number">33,900+</div>
+        <div class="label">Community Members</div>
+      </div>
+      <div class="proof-stat">
+        <div class="number">90</div>
+        <div class="label">Days to Real Change</div>
+      </div>
+      <div class="proof-stat">
+        <div class="number">5+ yrs</div>
+        <div class="label">Documented Journey</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VSL / VIDEO PLACEHOLDER -->
+<div class="container">
+  <div class="video-container">
+    <div class="play-button">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="#000">
+        <polygon points="5,3 19,12 5,21"/>
+      </svg>
+    </div>
+    <p class="video-label">Watch: Why most women stay stuck despite doing everything right</p>
+  </div>
+  <!-- VSL GUIDANCE: Follow 9-step framework (SOP 3): Hook (what you can do for them in 10 sec) → Credibility (33,900 community, your transformation story) → Opportunity Sell (why internal work is the real work) → Present Offer (price upfront) → Handle Objections → Qualify Audience → Clear CTA → Testimonials → Reiterate Value/Remove Risk. Target 3-5 minutes for this audience. -->
+</div>
+
+<!-- PROBLEM SECTION -->
+<section>
+  <div class="container">
+    <p class="section-title">Does this sound familiar</p>
+    <h2 class="section-heading">You're doing the work. It's still not moving.</h2>
+    <ul class="pain-list">
+      <li>You've been "working on yourself" for years but you keep starting over from the same place</li>
+      <li>You feel called to something specific but there's a gap between that version of you and who you are right now</li>
+      <li>You know what you should be doing — consistency, discipline, showing up — and you still can't make it stick</li>
+      <li>You've tried the journaling, the reading, the prayer, the content, and something is still missing</li>
+      <li>The people around you are moving and you feel like you're watching it happen instead of being in it</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SOLUTION / TRANSFORMATION -->
+<section>
+  <div class="container">
+    <p class="section-title">The real problem</p>
+    <h2 class="section-heading">You don't need more content.<br>You need a container.</h2>
+    <p style="font-size: 17px; color: var(--text-muted); margin-bottom: 40px;">
+      External circumstances don't change until internal ones do. You already know this. What's missing isn't information — it's the accountability structure and framework to actually do the inner work consistently. That's what coaching provides.
+    </p>
+    <div class="transformation-grid">
+      <div class="transform-card">
+        <h4>From stuck to in motion</h4>
+        <p>Stop spinning on the same decisions and start building real momentum on the things you've been delaying.</p>
+      </div>
+      <div class="transform-card">
+        <h4>From consuming to becoming</h4>
+        <p>Turn the content you've been watching into actual changes in how you show up every day.</p>
+      </div>
+      <div class="transform-card">
+        <h4>From alone to supported</h4>
+        <p>Do this work inside a container where you're held accountable by someone who's been through it and won't let you off the hook.</p>
+      </div>
+      <div class="transform-card">
+        <h4>From knowing to living</h4>
+        <p>Stop knowing who you're supposed to be and start actually walking in it — through Christ, through the work, through this program.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CPR — HOW IT WORKS -->
+<section>
+  <div class="container">
+    <p class="section-title">Clear Process to Results</p>
+    <h2 class="section-heading">Here's exactly how you get there</h2>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-number">01</div>
+        <div class="step-content">
+          <h4>Identify the real block</h4>
+          <p>Week 1 is about getting underneath the surface. Not what you think the problem is — the actual pattern that's been running the show. Most women are surprised by this step.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-number">02</div>
+        <div class="step-content">
+          <h4>Build the internal foundation</h4>
+          <p>Weeks 2-4. The outer work rests on the inner work. This is where JazaeNicole's faith-rooted, accountability-first framework does what passive content never can.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-number">03</div>
+        <div class="step-content">
+          <h4>Lock in through daily practice</h4>
+          <p>Weeks 5-8. The structure is in place. Now you execute inside a container that holds you accountable when your own motivation won't.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-number">04</div>
+        <div class="step-content">
+          <h4>Consolidate and sustain</h4>
+          <p>Weeks 9-12. Cement what's shifted. Build the habits and identity that hold the change past the 90 days. This is what makes it permanent, not temporary.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDIBILITY / JAZAENICOLE BIO -->
+<section>
+  <div class="container">
+    <p class="section-title">About JazaeNicole</p>
+    <h2 class="section-heading">She's been where you are.</h2>
+    <p style="font-size: 17px; color: var(--text-muted); margin-bottom: 24px;">
+      JazaeNicole built a community of 33,900 people documenting a real journey — not a highlight reel. Her most-watched content includes "LOCK TF IN," "Quantum leap does work | how I quantum leaped in 2020," and "finding your inner compass" — because her audience comes for the honesty, not the performance.
+    </p>
+    <p style="font-size: 17px; color: var(--text-muted);">
+      She's not coaching from a place of having it all figured out. She's coaching from a place of having done the actual work — through Christ, through real discipline, through years of documented becoming. And she will hold you to the same standard she holds herself.
+    </p>
+  </div>
+</section>
+
+<!-- TESTIMONIALS — LAYERED -->
+<section>
+  <div class="container">
+    <p class="section-title">What women say</p>
+    <h2 class="section-heading">Results from people who were exactly where you are</h2>
+
+    <div class="testimonial-tier">
+      <p class="tier-label">Big Wins</p>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <p class="quote">"I made a decision in 90 days that I'd been sitting on for two years. I don't know what I was waiting for."</p>
+          <p class="author">— [Client Name], [City]</p>
+        </div>
+        <div class="testimonial-card">
+          <p class="quote">"I finally understand why I keep self-sabotaging. And more importantly — I know how to stop."</p>
+          <p class="author">— [Client Name], [City]</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-tier">
+      <p class="tier-label">Real, Everyday Wins</p>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <p class="quote">"I started showing up to things I always bailed on. My consistency actually changed. That's real."</p>
+          <p class="author">— [Client Name], [City]</p>
+        </div>
+        <div class="testimonial-card">
+          <p class="quote">"I spent the first two weeks just getting clear on what was actually blocking me. That alone was worth it."</p>
+          <p class="author">— [Client Name], [City]</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-tier">
+      <p class="tier-label">Honest Outcomes</p>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <p class="quote">"It wasn't a magic transformation. It was a lot of honest reflection and accountability. And I'm genuinely in a different place."</p>
+          <p class="author">— [Client Name], [City]</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section>
+  <div class="container">
+    <p class="section-title">The Program</p>
+    <h2 class="section-heading">What you get when you're in</h2>
+    <div class="offer-stack">
+      <div class="offer-item">
+        <div class="offer-icon">01</div>
+        <div class="offer-text">
+          <h4>90-Day Coaching Program</h4>
+          <p>The core container — structured weeks, clear framework, defined milestones. Not self-paced guesswork.</p>
+        </div>
+      </div>
+      <div class="offer-item">
+        <div class="offer-icon">02</div>
+        <div class="offer-text">
+          <h4>Weekly Coaching Calls</h4>
+          <p>Regular access to JazaeNicole — working through your specific situation, not a generic curriculum.</p>
+        </div>
+      </div>
+      <div class="offer-item">
+        <div class="offer-icon">03</div>
+        <div class="offer-text">
+          <h4>Accountability Between Sessions</h4>
+          <p>Check-ins, messaging support, and real-time accountability so you don't drift between calls.</p>
+        </div>
+      </div>
+      <div class="offer-item">
+        <div class="offer-icon">04</div>
+        <div class="offer-text">
+          <h4>The Quantum Leap Framework</h4>
+          <p>JazaeNicole's documented personal transformation methodology — the exact process she used and that drives the program.</p>
+        </div>
+      </div>
+      <div class="offer-item">
+        <div class="offer-icon">05</div>
+        <div class="offer-text">
+          <h4>Community Access</h4>
+          <p>A group of women in the same process. The "we are becoming" isn't just a tagline — it's built into the structure.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="container">
+    <h2>Stop watching other people's quantum leaps.<br>Book yours.</h2>
+    <p>This is a 45-minute strategy call. No pressure. Just an honest conversation about where you are and whether coaching is the right next step.</p>
+    <a href="#" class="cta-button">Book Your Free Strategy Call</a>
+    <p class="cta-so-you-can">So you can stop knowing what needs to change and start actually changing it.</p>
+  </div>
+</div>
+
+<footer class="footer">
+  Built by J&G Operations for JazaeNicole. Ready to deploy.
+</footer>
+
+</body>
+</html>

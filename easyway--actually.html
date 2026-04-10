@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Japanese Method — Stop Carrying Fat Your Body Was Never Meant to Store</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --border: #1e1e2e;
+      --accent: #7c6af7;
+      --accent-glow: rgba(124, 106, 247, 0.15);
+      --text: #e8e8f0;
+      --muted: #7a7a90;
+      --white: #ffffff;
+      --success: #4ade80;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+    }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+
+    /* HERO */
+    .hero {
+      padding: 80px 24px 60px;
+      text-align: center;
+      background: radial-gradient(ellipse at 50% 0%, rgba(124,106,247,0.12) 0%, transparent 70%);
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(124,106,247,0.3);
+      border-radius: 20px;
+      padding: 6px 16px;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 6vw, 56px);
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 24px;
+      letter-spacing: -1px;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero-sub {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    /* VSL PLACEHOLDER */
+    .vsl-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      aspect-ratio: 16/9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin: 40px auto;
+      max-width: 700px;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .vsl-container:hover { border-color: var(--accent); }
+    .play-btn {
+      width: 72px; height: 72px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 40px var(--accent-glow);
+    }
+    .play-btn svg { margin-left: 4px; }
+    .vsl-label { font-size: 14px; color: var(--muted); }
+
+    /* SOCIAL PROOF ABOVE FOLD */
+    .social-proof-bar {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+    }
+    .proof-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .proof-stat .number {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--white);
+    }
+    .proof-stat .label {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* SECTIONS */
+    section { padding: 80px 24px; }
+    section h2 {
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    .section-intro {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 640px;
+      margin: 0 auto 48px;
+      line-height: 1.7;
+    }
+
+    /* PAIN SECTION */
+    .pain-section { background: var(--surface); }
+    .pain-list {
+      list-style: none;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .pain-list li {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 17px;
+      color: var(--text);
+      padding-left: 32px;
+      position: relative;
+    }
+    .pain-list li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    /* SOLUTION SECTION */
+    .solution-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .solution-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+    }
+    .solution-card .icon { font-size: 28px; margin-bottom: 12px; }
+    .solution-card h3 { font-size: 17px; color: var(--white); margin-bottom: 8px; }
+    .solution-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+    /* CREDIBILITY */
+    .cred-section { background: var(--surface); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .testimonial {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .testimonial .quote {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+    .testimonial .attribution {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .testimonial.featured {
+      border-color: var(--accent);
+      background: rgba(124,106,247,0.05);
+    }
+
+    /* WHAT'S INCLUDED */
+    .includes-list {
+      list-style: none;
+      max-width: 580px;
+      margin: 40px auto 0;
+    }
+    .includes-list li {
+      display: flex;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+    .includes-list .check {
+      color: var(--success);
+      font-size: 18px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .includes-list .item-content h4 { color: var(--white); font-size: 16px; }
+    .includes-list .item-content p { color: var(--muted); font-size: 14px; margin-top: 4px; }
+
+    /* CTA */
+    .cta-section {
+      text-align: center;
+      padding: 80px 24px;
+      background: radial-gradient(ellipse at 50% 100%, rgba(124,106,247,0.1) 0%, transparent 70%);
+    }
+    .cta-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--white);
+      font-size: 18px;
+      font-weight: 700;
+      padding: 20px 48px;
+      border-radius: 12px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 0 40px var(--accent-glow);
+      transition: opacity 0.2s;
+      margin-bottom: 12px;
+    }
+    .cta-btn:hover { opacity: 0.9; }
+    .cta-sub { font-size: 14px; color: var(--muted); margin-top: 12px; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 600px) {
+      .proof-stats { gap: 24px; }
+      .hero h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NO NAVIGATION — removes 15-25% conversion friction -->
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">The Japanese Method</div>
+    <h1>Your belly fat isn't a<br><span>willpower problem.</span><br>It's a mechanism problem.</h1>
+    <p class="hero-sub">You've been trying to eat less. Your body's been storing fat anyway. Here's the one thing that actually changes it — and why most Western diet advice was built for a completely different problem.</p>
+
+    <!-- VSL PLACEHOLDER -->
+    <div class="vsl-container">
+      <div class="play-btn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+          <polygon points="5,3 19,12 5,21"/>
+        </svg>
+      </div>
+      <p class="vsl-label">Watch: Why the insulin mechanism is what nobody's told you (7 min)</p>
+    </div>
+    <!-- VSL guidance: 9-step framework — Hook (what you can do for them) → Credibility (155K subscribers, specific results) → Opportunity Sell (why now, why insulin) → Present Offer (price upfront) → Handle Objections → Qualify → CTA → Testimonials → Risk Removal. Length: 5-10 min for this audience. -->
+  </div>
+</section>
+
+<!-- SOCIAL PROOF ABOVE FOLD -->
+<div class="social-proof-bar">
+  <div class="container">
+    <div class="proof-stats">
+      <div class="proof-stat">
+        <div class="number">155,000</div>
+        <div class="label">Subscribers</div>
+      </div>
+      <div class="proof-stat">
+        <div class="number">30 Days</div>
+        <div class="label">Average result timeline</div>
+      </div>
+      <div class="proof-stat">
+        <div class="number">5 Foods</div>
+        <div class="label">Is all it takes to start</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAIN SECTION -->
+<section class="pain-section">
+  <div class="container" style="text-align:center;">
+    <h2>Sound familiar?</h2>
+    <p class="section-intro">If any of these describe you, the mechanism — not your effort — is the problem.</p>
+    <ul class="pain-list">
+      <li>You're eating reasonably well but the midsection weight isn't moving, and hasn't for years</li>
+      <li>You've tried calorie restriction, keto, intermittent fasting — each one worked briefly then stopped</li>
+      <li>Your doctor says "eat less, move more" and you want a more specific answer than that</li>
+      <li>You feel like your body changed after 40 or 50 and none of the old approaches apply anymore</li>
+      <li>You're budgeting every month but there's still a gap you can't account for</li>
+      <li>You want the honest, simple version of what actually works — without a 12-step protocol</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SOLUTION SECTION -->
+<section>
+  <div class="container" style="text-align:center;">
+    <h2>The Japanese Method targets the right mechanism</h2>
+    <p class="section-intro">Japanese eating habits keep insulin low for extended windows. When insulin is low, your body burns visceral fat by default. This isn't new science. It's old practice that most Western nutrition advice ignores.</p>
+    <div class="solution-grid">
+      <div class="solution-card">
+        <div class="icon">🍱</div>
+        <h3>5 specific foods</h3>
+        <p>Chosen for their effect on insulin response — not generic "eat healthy" advice. These are the mechanism, not the garnish.</p>
+      </div>
+      <div class="solution-card">
+        <div class="icon">⏱</div>
+        <h3>Timing over restriction</h3>
+        <p>The same food eaten at a different time produces a different insulin response. Timing is the variable most diets ignore.</p>
+      </div>
+      <div class="solution-card">
+        <div class="icon">📉</div>
+        <h3>30-day protocol</h3>
+        <p>Not a lifestyle overhaul. Five specific changes to your existing routine. No calorie counting. No gym required.</p>
+      </div>
+      <div class="solution-card">
+        <div class="icon">¥</div>
+        <h3>Frugal eating built in</h3>
+        <p>The Japanese foods that work best for insulin management are also among the least expensive. Health and savings compound together.</p>
+      </div>
+    </div>
+
+    <!-- CPR — Clear Process to Revenue / Results -->
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 40px; margin-top: 48px; text-align: left;">
+      <h3 style="color: var(--white); font-size: 20px; margin-bottom: 20px;">How results actually happen — step by step</h3>
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div style="display:flex; gap:16px; align-items:flex-start;">
+          <span style="background: var(--accent); color: white; border-radius:50%; width:28px; height:28px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; flex-shrink:0;">1</span>
+          <p style="color: var(--muted);">You learn the five foods that keep insulin low for 3–4 hours after eating (Week 1)</p>
+        </div>
+        <div style="display:flex; gap:16px; align-items:flex-start;">
+          <span style="background: var(--accent); color: white; border-radius:50%; width:28px; height:28px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; flex-shrink:0;">2</span>
+          <p style="color: var(--muted);">You change breakfast — the highest-leverage single meal for insulin management (Week 1–2)</p>
+        </div>
+        <div style="display:flex; gap:16px; align-items:flex-start;">
+          <span style="background: var(--accent); color: white; border-radius:50%; width:28px; height:28px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; flex-shrink:0;">3</span>
+          <p style="color: var(--muted);">Your body has a 4-hour fat-burning window every morning that it didn't have before (Week 2+)</p>
+        </div>
+        <div style="display:flex; gap:16px; align-items:flex-start;">
+          <span style="background: var(--accent); color: white; border-radius:50%; width:28px; height:28px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; flex-shrink:0;">4</span>
+          <p style="color: var(--muted);">Apply the remaining four habit shifts. Visceral fat responds to the extended low-insulin window. (Week 2–4)</p>
+        </div>
+        <div style="display:flex; gap:16px; align-items:flex-start;">
+          <span style="background: var(--accent); color: white; border-radius:50%; width:28px; height:28px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; flex-shrink:0;">5</span>
+          <p style="color: var(--muted);">Average result at Day 30: measurable reduction in midsection size, improved energy, no dietary deprivation</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDIBILITY SECTION -->
+<section class="cred-section">
+  <div class="container" style="text-align:center;">
+    <h2>What people are saying</h2>
+    <p class="section-intro">These are real results — average outcomes, not best cases. If you follow the protocol, this is what the first 30 days typically looks like.</p>
+    <div class="testimonials-grid">
+      <div class="testimonial featured">
+        <p class="quote">"I'd been trying to lose midsection weight for three years. I tried calorie restriction, keto, everything. Within 30 days of applying this protocol I lost 11 lbs — specifically from my midsection. I finally understood what was actually happening."</p>
+        <p class="attribution">Lisa, Registered Nurse — Ohio</p>
+      </div>
+      <div class="testimonial">
+        <p class="quote">"I thought frugal living meant giving things up. The nine Japanese habits found me $580/month in spending I couldn't see. I didn't cut a single thing I cared about."</p>
+        <p class="attribution">Sarah, 44 — Austin</p>
+      </div>
+      <div class="testimonial">
+        <p class="quote">"After 52 my body just changed. The doctor said eat less, move more. This channel was the first place that explained what had actually changed and what to do about it. 8 lbs in the first month."</p>
+        <p class="attribution">Janet, Teacher — Michigan</p>
+      </div>
+    </div>
+
+    <!-- Honest worst-case (builds maximum trust) -->
+    <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-top: 24px; max-width: 580px; margin-left: auto; margin-right: auto; text-align: left;">
+      <p style="font-size: 14px; color: var(--muted);">
+        <strong style="color: var(--text);">Honest note:</strong> Not everyone sees 10+ lbs in 30 days. People who change one thing at a time and are consistent with the protocol see the best results. People who try to implement everything at once, or who have additional underlying health conditions, tend to see slower results. If you want to know if this applies to your specific situation, the 45-minute call is exactly for that.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section>
+  <div class="container" style="text-align:center;">
+    <h2>What you get</h2>
+    <p class="section-intro">Using the JH 4-layer value stack — core offer, implementation support, community, and bonuses — so you have everything you need to actually complete this.</p>
+    <ul class="includes-list">
+      <li>
+        <span class="check">✓</span>
+        <div class="item-content">
+          <h4>30-Day Japanese Visceral Fat Protocol</h4>
+          <p>The complete 30-day system — five food habits, insulin timing framework, daily checklist. The core transformation.</p>
+        </div>
+      </li>
+      <li>
+        <span class="check">✓</span>
+        <div class="item-content">
+          <h4>Japanese Frugal Eating Guide</h4>
+          <p>The same foods that reduce insulin response are among the most affordable. This guide maps both outcomes simultaneously.</p>
+        </div>
+      </li>
+      <li>
+        <span class="check">✓</span>
+        <div class="item-content">
+          <h4>Weekly Check-in System</h4>
+          <p>Four structured check-ins to keep you on track and adjust based on what you're seeing. Not a generic accountability email.</p>
+        </div>
+      </li>
+      <li>
+        <span class="check">✓</span>
+        <div class="item-content">
+          <h4>Private Community Access</h4>
+          <p>A small group of people working through the same protocol. Progress sharing, questions, accountability — without the noise of a public forum.</p>
+        </div>
+      </li>
+      <li>
+        <span class="check">✓</span>
+        <div class="item-content">
+          <h4>Supplement Reference Sheet (Bonus)</h4>
+          <p>The three evidence-backed supplements that support the insulin management protocol — and the five that don't, despite what ads claim.</p>
+        </div>
+      </li>
+      <li>
+        <span class="check">✓</span>
+        <div class="item-content">
+          <h4>Japanese Minimalism Lifestyle Guide (Bonus)</h4>
+          <p>The broader philosophy behind mottainai — how Japanese households achieve more with less, applied to modern Western life.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Start the 30-day protocol</h2>
+    <p class="section-intro">Book a free strategy call. We'll look at your specific situation and figure out exactly what needs to change — so you stop targeting the wrong mechanism and start getting results.</p>
+    <a href="#" class="cta-btn">Book Your Free Strategy Call</a>
+    <p class="cta-sub">So you can stop guessing what's holding you back and start the 30 days that actually change it.</p>
+    <p style="font-size: 13px; color: var(--muted); margin-top: 20px;">45 minutes. No pressure. If it's not the right fit, you'll know within 10 minutes and I'll tell you so.</p>
+  </div>
+</section>
+
+<footer>
+  <p>Built by J&G Operations for easyway, actually. Ready to deploy.</p>
+</footer>
+
+</body>
+</html>

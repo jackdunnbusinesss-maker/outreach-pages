@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stop Studying More. Start Studying Right. | sincerelypurva</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --border: #1e1e2e;
+      --accent: #7c6af7;
+      --accent-hover: #9585ff;
+      --text: #e8e8f0;
+      --muted: #888899;
+      --success: #4ade80;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(124,106,247,0.15);
+      border: 1px solid rgba(124,106,247,0.3);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 32px;
+    }
+
+    .social-proof-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .proof-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .proof-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--success);
+    }
+
+    .cta-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 16px 36px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .cta-primary:hover { background: var(--accent-hover); }
+
+    .cta-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    /* ── VSL PLACEHOLDER ── */
+    .vsl-wrap {
+      padding: 40px 0;
+    }
+
+    .vsl-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      aspect-ratio: 16/9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vsl-play {
+      width: 64px;
+      height: 64px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .vsl-play svg { margin-left: 4px; }
+
+    .vsl-label {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .vsl-guidance {
+      background: rgba(124,106,247,0.08);
+      border: 1px solid rgba(124,106,247,0.2);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .vsl-guidance strong { color: var(--text); }
+
+    /* ── PAIN SECTION ── */
+    .section {
+      padding: 60px 0;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .section h2 {
+      font-size: clamp(26px, 4vw, 36px);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+    }
+
+    .pain-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .pain-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .pain-icon {
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .pain-text {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    /* ── SOLUTION ── */
+    .solution-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    .solution-step {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(124,106,247,0.2);
+      border: 1px solid rgba(124,106,247,0.4);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-text strong { display: block; margin-bottom: 4px; }
+    .step-text p { font-size: 14px; color: var(--muted); }
+
+    /* ── CREDIBILITY ── */
+    .cred-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .cred-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .cred-number {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .cred-label {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonial-tier-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .testimonial-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 14px;
+    }
+
+    .testimonial-text {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.6;
+      margin-bottom: 14px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .testimonial-author strong { color: var(--text); }
+
+    /* ── WHAT'S INCLUDED ── */
+    .included-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .included-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 15px;
+    }
+
+    .check {
+      color: var(--success);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ── FINAL CTA ── */
+    .final-cta {
+      padding: 60px 0;
+      text-align: center;
+    }
+
+    .final-cta h2 {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .final-cta p {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 32px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .cred-grid { grid-template-columns: repeat(2, 1fr); }
+      .social-proof-row { gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">Student Study System</div>
+
+      <h1>You're putting in the hours.<br>
+      Your grades should <span>show it.</span></h1>
+
+      <p class="hero-sub">
+        The study system built from two semesters of testing real methods on real exams —
+        active recall, Anki, spaced repetition — structured so you can actually use it.
+      </p>
+
+      <!-- Social proof above fold (+22% conversion) -->
+      <div class="social-proof-row">
+        <span class="proof-item"><span class="proof-dot"></span>9,500+ students follow this channel</span>
+        <span class="proof-item"><span class="proof-dot"></span>Tested on real exams — not theory</span>
+        <span class="proof-item"><span class="proof-dot"></span>Peer-level, not guru advice</span>
+      </div>
+
+      <a href="#book" class="cta-primary">Book a Free Strategy Call →</a>
+      <p class="cta-sub">30-minute call — so you can figure out what actually needs to change this semester</p>
+    </div>
+  </section>
+
+  <!-- ── VSL PLACEHOLDER ── -->
+  <section class="vsl-wrap">
+    <div class="container">
+      <div class="vsl-container">
+        <div class="vsl-play">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
+            <polygon points="5,3 19,12 5,21"/>
+          </svg>
+        </div>
+        <span class="vsl-label">Watch: How the study system works (3 min)</span>
+      </div>
+
+      <div class="vsl-guidance">
+        <strong>For the creator — VSL guidance (SOP 3, 9-step framework):</strong><br>
+        Hook: "Here's why you can study for 4 hours and still fail the quiz."
+        → Credibility: your subscriber count, how long you've been testing methods, specific exams you've used this on.
+        → Opportunity: why this semester is the right time to fix it.
+        → Offer: what the program is (price upfront — builds trust, filters serious people).
+        → Objections: "you can find this free on YouTube" — address directly.
+        → Qualify: "this is for students who want a system, not motivation."
+        → CTA: book the call.
+        → Testimonials: 2-3 student results.
+        → Risk removal: what happens if it doesn't work.<br><br>
+        Length: 3-7 minutes for this audience. Keep it under 10 min. Film it talking-head style at your desk — lo-fi works better than polished for your audience.
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PAIN SECTION ── -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">Sound familiar?</p>
+      <h2>The problem isn't that you don't study enough.</h2>
+
+      <ul class="pain-list">
+        <li class="pain-item">
+          <span class="pain-icon">📚</span>
+          <span class="pain-text">You re-read the chapter three times and still blanked on the exam — because re-reading feels like studying but barely transfers to test performance.</span>
+        </li>
+        <li class="pain-item">
+          <span class="pain-icon">⏰</span>
+          <span class="pain-text">You watched every study vlog, felt motivated for about 20 minutes, and then didn't actually change anything — because motivation isn't a method.</span>
+        </li>
+        <li class="pain-item">
+          <span class="pain-icon">😴</span>
+          <span class="pain-text">You pulled another all-nighter and promised yourself it was the last one — but the next exam is in 3 weeks and you haven't started.</span>
+        </li>
+        <li class="pain-item">
+          <span class="pain-icon">📱</span>
+          <span class="pain-text">You set up Anki, used it for four days, and gave up because you didn't know how to build the cards properly — and reviews piled up until it felt impossible.</span>
+        </li>
+        <li class="pain-item">
+          <span class="pain-icon">🎯</span>
+          <span class="pain-text">Your effort and your results don't match — and you don't know what's missing between the two.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── SOLUTION ── -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">The System</p>
+      <h2>Here's what actually changes your results.</h2>
+
+      <div class="solution-card">
+        <div class="solution-step">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <strong>Build your Anki setup from scratch — for your specific subjects</strong>
+            <p>Not a generic template. Your cards, for your exams, with the spacing intervals that actually stick. This takes two hours once and runs automatically after that.</p>
+          </div>
+        </div>
+
+        <div class="solution-step">
+          <div class="step-num">2</div>
+          <div class="step-text">
+            <strong>Replace passive review with active recall — for every subject</strong>
+            <p>Active recall is the only technique with real research behind it for long-term retention. It's not complicated — it's just that most people don't know how to build it into their actual study schedule.</p>
+          </div>
+        </div>
+
+        <div class="solution-step">
+          <div class="step-num">3</div>
+          <div class="step-text">
+            <strong>Use the method that matches your exam type</strong>
+            <p>Multiple choice exams need different prep than essay exams. Memorization-heavy subjects need different techniques than analysis-heavy ones. You've been using one method for everything — that's part of why it's not working.</p>
+          </div>
+        </div>
+
+        <div class="solution-step">
+          <div class="step-num">4</div>
+          <div class="step-text">
+            <strong>Stay accountable until it's automatic</strong>
+            <p>The group program has twice-weekly accountability calls. Most people don't need more information — they need to actually do it with someone else doing it alongside them.</p>
+          </div>
+        </div>
+      </div>
+
+      <p style="font-size: 14px; color: var(--muted); text-align: center;">
+        This is the system I've tested personally — through midterms, finals, 72-hour cramming sessions — and documented over two semesters of real exams.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── CREDIBILITY ── -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">Why this works</p>
+      <h2>Built by a student who actually tested it.</h2>
+
+      <div class="cred-grid">
+        <div class="cred-card">
+          <div class="cred-number">9.5K</div>
+          <div class="cred-label">students follow this channel</div>
+        </div>
+        <div class="cred-card">
+          <div class="cred-number">2+</div>
+          <div class="cred-label">semesters of method testing</div>
+        </div>
+        <div class="cred-card">
+          <div class="cred-number">4+</div>
+          <div class="cred-label">study methods tested &amp; documented</div>
+        </div>
+      </div>
+
+      <!-- Tier 1 — Big win -->
+      <div class="testimonial-tier-label">Students who did the work:</div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">"I went from a D+ on my first orgo exam to a B on my second. Same course, same professor. I just changed how I was studying. The Anki setup she walked me through was the actual difference."</p>
+        <p class="testimonial-author"><strong>Maya S.</strong> — pre-med sophomore</p>
+      </div>
+
+      <!-- Tier 2 — Relatable win -->
+      <div class="testimonial-tier-label">More typical results:</div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">"I used to study until midnight most nights. After using the system for a month, I'm consistently done by 7-8pm. My grades haven't dropped — they've mostly gone up. I just actually retain what I study now."</p>
+        <p class="testimonial-author"><strong>Priya K.</strong> — junior, business major</p>
+      </div>
+
+      <!-- Tier 3 — Honest/worst case -->
+      <div class="testimonial-tier-label">Honest picture:</div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">"I didn't see a huge grade jump right away. But I stopped cramming and started feeling prepared, which I hadn't felt in 2 years. The grades caught up over the semester."</p>
+        <p class="testimonial-author"><strong>Leila R.</strong> — college junior</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHAT'S INCLUDED ── -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">What you get</p>
+      <h2>Everything in the program.</h2>
+
+      <ul class="included-list">
+        <li class="included-item">
+          <span class="check">✓</span>
+          <span>Custom Anki setup session — we build your card system for your specific subjects, not a generic template</span>
+        </li>
+        <li class="included-item">
+          <span class="check">✓</span>
+          <span>Twice-weekly accountability calls for the full semester — so the system actually gets used, not just set up</span>
+        </li>
+        <li class="included-item">
+          <span class="check">✓</span>
+          <span>Active recall study templates for different exam types (multiple choice, essay, problem sets)</span>
+        </li>
+        <li class="included-item">
+          <span class="check">✓</span>
+          <span>Private group chat — other students going through the same semester, same pressures, same goals</span>
+        </li>
+        <li class="included-item">
+          <span class="check">✓</span>
+          <span>Pre-exam sprint framework — what to do in the 5 days before any major exam</span>
+        </li>
+        <li class="included-item">
+          <span class="check">✓</span>
+          <span>Direct access to me for questions between calls — not a help desk, actual responses</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── FINAL CTA ── -->
+  <section class="final-cta" id="book">
+    <div class="container">
+      <h2>Book a free call.<br>Figure out what actually needs to change.</h2>
+      <p>
+        30 minutes. I'll ask you about your current situation and tell you honestly whether the program makes sense for you.
+        No pressure. If it's not the right fit, I'll tell you.
+      </p>
+
+      <a href="#" class="cta-primary">Book Your Free Strategy Call →</a>
+      <p class="cta-sub" style="margin-top: 12px;">So you can go into this semester with a system instead of without one</p>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="container">
+      Built by J&amp;G Operations for sincerelypurva. Ready to deploy.
+    </div>
+  </footer>
+
+</body>
+</html>

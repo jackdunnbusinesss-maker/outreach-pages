@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stop Managing Your Tools. Start Living Your Day. — Reysu</title>
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --card: #181818;
+      --border: #2a2a2a;
+      --accent: #e8e8e8;
+      --muted: #888888;
+      --text: #f0f0f0;
+      --cta: #ffffff;
+      --cta-text: #0a0a0a;
+      --radius: 12px;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* No navigation menu — removes nav for +15-25% conversion */
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 80px 0 72px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 7px 16px;
+      border-radius: 100px;
+      margin-bottom: 32px;
+    }
+
+    .hero-tag::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      background: #88ff88;
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-size: clamp(34px, 7vw, 62px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      margin-bottom: 24px;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 32px;
+      line-height: 1.5;
+    }
+
+    /* Credibility bar — ABOVE THE FOLD */
+    .cred-bar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .cred-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .cred-number {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .cred-label {
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* CTA button */
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--cta);
+      color: var(--cta-text);
+      font-size: 16px;
+      font-weight: 600;
+      padding: 16px 32px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      margin-bottom: 12px;
+    }
+
+    .cta-note {
+      display: block;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* VSL placeholder */
+    .vsl-section {
+      padding: 64px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .vsl-container {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      aspect-ratio: 16/9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .play-btn {
+      width: 72px;
+      height: 72px;
+      background: var(--cta);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .play-btn::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 12px 0 12px 22px;
+      border-color: transparent transparent transparent var(--cta-text);
+      margin-left: 5px;
+    }
+
+    .vsl-label {
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    /* Section base */
+    .section {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section:last-child { border-bottom: none; }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .section h2 {
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      color: var(--accent);
+    }
+
+    .section p {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 620px;
+      line-height: 1.6;
+    }
+
+    /* Pain points */
+    .pain-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .pain-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .pain-icon {
+      color: #ff6666;
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .pain-item p {
+      font-size: 15px;
+      color: var(--text);
+      max-width: none;
+    }
+
+    /* Transformation section */
+    .transform-grid {
+      display: grid;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    @media (min-width: 600px) {
+      .transform-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .transform-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .transform-card h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .transform-card p {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: none;
+    }
+
+    /* What's included */
+    .included-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .included-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .check {
+      color: #88ff88;
+      font-size: 16px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .included-item-content h4 {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .included-item-content p {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: none;
+    }
+
+    /* CPR — Clear Path to Results */
+    .process-steps {
+      display: grid;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .process-step {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      width: 36px;
+      height: 36px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .step-body h4 {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .step-body p {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: none;
+    }
+
+    /* Testimonials */
+    .testimonials-grid {
+      display: grid;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    @media (min-width: 600px) {
+      .testimonials-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .testimonial {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .testimonial-text {
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 16px;
+      font-style: italic;
+      line-height: 1.55;
+    }
+
+    .testimonial-author {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* Final CTA */
+    .cta-section {
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .cta-section p {
+      font-size: 17px;
+      color: var(--muted);
+      margin-bottom: 36px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-tag">Free Strategy Session — 45 minutes</div>
+      <h1>Stop Managing Your Tools.<br>Start Living Your Day.</h1>
+      <p class="hero-sub">
+        A framework for knowledge workers who are exhausted by their own systems — and ready to design days they'd actually choose.
+      </p>
+
+      <!-- Credibility above fold -->
+      <div class="cred-bar">
+        <div class="cred-item">
+          <span class="cred-number">235K</span>
+          <span class="cred-label">YouTube subscribers</span>
+        </div>
+        <div class="cred-item">
+          <span class="cred-number">4 yrs</span>
+          <span class="cred-label">testing this in practice</span>
+        </div>
+        <div class="cred-item">
+          <span class="cred-number">30+</span>
+          <span class="cred-label">professionals simplified</span>
+        </div>
+        <div class="cred-item">
+          <span class="cred-number">Tokyo</span>
+          <span class="cred-label">-based, formerly Big-4</span>
+        </div>
+      </div>
+
+      <a href="#" class="cta-btn">Book Your Free Strategy Session →</a>
+      <span class="cta-note">45 minutes. No pitch until you ask. Clear recommendation regardless.</span>
+    </div>
+  </section>
+
+  <!-- VSL PLACEHOLDER -->
+  <section class="vsl-section">
+    <div class="container">
+      <div class="vsl-container">
+        <div class="play-btn"></div>
+        <span class="vsl-label">Watch: The framework in 8 minutes</span>
+      </div>
+      <!-- VSL guidance (internal — remove before deploy):
+        Follow the 9-step framework: Hook (what you can do for them) → Credibility (235K subscribers, Big-4 quit, Tokyo life) → Opportunity (why now — remote work era, tool overwhelm is at peak) → Present Offer ($997, 8 weeks, 4 sessions) → Handle Objections (I've tried this before / I don't have time / I can figure it out myself) → Qualify Audience (this is for professionals who earn $80K+, are already doing well, and want their digital life to match their actual life) → CTA (book a free session) → Testimonials → Reiterate Value / Remove Risk.
+        Keep to 8 minutes max for this audience. They're action-takers. Under 3 minutes: +34-86% completion rate.
+      -->
+    </div>
+  </section>
+
+  <!-- PAIN POINTS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">If this is you</div>
+      <h2>You're good at your work. Your setup doesn't feel like it.</h2>
+      <p>The problem isn't discipline or motivation. It's a digital environment built up over years that no longer serves you — and a productivity content ecosystem that keeps suggesting you add more.</p>
+
+      <ul class="pain-list">
+        <li class="pain-item">
+          <span class="pain-icon">✕</span>
+          <p>You have more productivity apps than ever and you're more distracted than you've ever been</p>
+        </li>
+        <li class="pain-item">
+          <span class="pain-icon">✕</span>
+          <p>You open your phone to do one thing and 30 minutes disappear — every single day</p>
+        </li>
+        <li class="pain-item">
+          <span class="pain-icon">✕</span>
+          <p>You've tried building a morning routine 3 or 4 times and it collapses every time life gets hard</p>
+        </li>
+        <li class="pain-item">
+          <span class="pain-icon">✕</span>
+          <p>You're managing your productivity system more than you're using it</p>
+        </li>
+        <li class="pain-item">
+          <span class="pain-icon">✕</span>
+          <p>Your job looks good on paper and you're quietly exhausted by it</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">What changes</div>
+      <h2>Fewer tools. Clearer days. Work that ends when it should.</h2>
+      <p>This is an 8-week implementation program for professionals who want to simplify their digital setup, install sustainable daily structure, and stop spending mental energy on things that shouldn't require it.</p>
+
+      <div class="transform-grid">
+        <div class="transform-card">
+          <h3>From → To</h3>
+          <p>From 6 apps to 2. From managing a system to using one. From Sunday dread to a week you've actually designed.</p>
+        </div>
+        <div class="transform-card">
+          <h3>What gets simplified</h3>
+          <p>Your capture system. Your daily structure. Your morning routine. Your relationship with your phone. The decisions you make before 9am.</p>
+        </div>
+        <div class="transform-card">
+          <h3>What stays the same</h3>
+          <p>Your output. Your income. Your job — if you want it to. Simplification doesn't mean doing less. It means doing what matters without the overhead.</p>
+        </div>
+        <div class="transform-card">
+          <h3>How long it takes</h3>
+          <p>Most people notice a difference in week 2. The habits are stable by week 6. The maintenance overhead drops by week 3.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CPR — CLEAR PATH TO RESULTS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">How it works</div>
+      <h2>Exactly what happens across 8 weeks</h2>
+      <p>Not vague "guidance." A specific process for your specific situation.</p>
+
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>Week 1–2: Audit</h4>
+            <p>We map your current setup — every tool, every capture point, every system you're maintaining. You'll see clearly what's costing you time vs. what's earning it back.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>Week 3–4: Rebuild</h4>
+            <p>We design a minimal, functional setup tailored to your actual work requirements. Not the YouTube version — the one that holds when you're tired, traveling, or having a hard week.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>Week 5–8: Install</h4>
+            <p>We build the habits. Morning practice, daily structure, weekly review. Weekly check-ins to adjust in real time. By week 8 these aren't habits you're trying to keep — they're just what you do.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>After: Self-sustaining</h4>
+            <p>You have the complete playbook. You know how to maintain it, adjust it when life changes, and rebuild if something breaks. You don't need another program.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INCLUDED -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">What you get</div>
+      <h2>Everything in the program</h2>
+
+      <ul class="included-list">
+        <li class="included-item">
+          <span class="check">✓</span>
+          <div class="included-item-content">
+            <h4>4 working sessions with Reysu directly</h4>
+            <p>Each session is 60 minutes via Zoom. These are working sessions — not coaching calls. We're building something in each one.</p>
+          </div>
+        </li>
+        <li class="included-item">
+          <span class="check">✓</span>
+          <div class="included-item-content">
+            <h4>Weekly async check-ins</h4>
+            <p>Between sessions, you share progress and questions. Adjustments happen in real time, not at the next scheduled call.</p>
+          </div>
+        </li>
+        <li class="included-item">
+          <span class="check">✓</span>
+          <div class="included-item-content">
+            <h4>Complete toolkit</h4>
+            <p>Every template, Notion setup, journaling format, and app configuration used in the program. Yours to keep and modify.</p>
+          </div>
+        </li>
+        <li class="included-item">
+          <span class="check">✓</span>
+          <div class="included-item-content">
+            <h4>The Simplification Playbook</h4>
+            <p>The full framework for auditing and rebuilding any digital setup — so you can apply it again in 2 years when things have drifted.</p>
+          </div>
+        </li>
+        <li class="included-item">
+          <span class="check">✓</span>
+          <div class="included-item-content">
+            <h4>Community access</h4>
+            <p>Access to the program community — professionals working through the same process. Peer accountability and shared setup resources.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">From people who've done this</div>
+      <h2>What it actually looks like in practice</h2>
+
+      <div class="testimonials-grid">
+        <div class="testimonial">
+          <p class="testimonial-text">"Went from 6 apps to 2. Got 3 hours back a week. I wasn't working less — I just stopped maintaining a system that was working against me."</p>
+          <span class="testimonial-author">Marcus, Consultant — London</span>
+        </div>
+        <div class="testimonial">
+          <p class="testimonial-text">"I'd tried journaling 4 times and never made it past 2 weeks. The format here is completely different. Been running for 11 months."</p>
+          <span class="testimonial-author">Priya, UX Designer — Berlin</span>
+        </div>
+        <div class="testimonial">
+          <p class="testimonial-text">"Built a SaaS, made good money, hadn't actually lived in 3 years. Rebuilt my daily operating system. Made more progress this quarter than the prior two combined."</p>
+          <span class="testimonial-author">James, Founder — Toronto</span>
+        </div>
+        <div class="testimonial">
+          <p class="testimonial-text">"It took me 3 months, not 8 weeks. I kept slipping. The check-ins helped me restart instead of quit. Eventually it stuck."</p>
+          <span class="testimonial-author">Alex, Analyst — New York</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ready to stop managing your life and start living it?</h2>
+      <p>Book a free 45-minute strategy session. We'll map what's costing you the most time — and what to do about it — so you can start simplifying this week.</p>
+      <a href="#" class="cta-btn">Book Your Free Strategy Session →</a>
+      <span class="cta-note">Free session. No obligation. You'll leave with a specific action plan regardless.</span>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Built by J&G Operations for Reysu. Ready to deploy.</p>
+  </footer>
+
+</body>
+</html>

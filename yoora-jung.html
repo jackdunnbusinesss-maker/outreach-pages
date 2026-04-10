@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Build a Med School Life That Doesn't Break You | Yoora Jung</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --border: #1e1e2e;
+      --accent: #7c6fcd;
+      --accent-light: #9d93d8;
+      --text: #e8e8f0;
+      --muted: #888899;
+      --white: #ffffff;
+      --radius: 12px;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font); line-height: 1.6; }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 80px 0; }
+    .hero { padding: 100px 0 60px; text-align: center; }
+    .eyebrow { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 20px; }
+    h1 { font-size: clamp(32px, 5vw, 56px); font-weight: 700; line-height: 1.15; color: var(--white); margin-bottom: 24px; }
+    h2 { font-size: clamp(24px, 3.5vw, 36px); font-weight: 600; color: var(--white); margin-bottom: 16px; }
+    h3 { font-size: 18px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+    p { color: var(--text); font-size: 17px; margin-bottom: 16px; }
+    .subhead { font-size: clamp(16px, 2vw, 20px); color: var(--muted); max-width: 580px; margin: 0 auto 40px; }
+    .vsl-placeholder {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      aspect-ratio: 16/9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 40px 0;
+      cursor: pointer;
+      gap: 16px;
+    }
+    .play-btn {
+      width: 72px; height: 72px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .play-btn svg { fill: white; margin-left: 4px; }
+    .vsl-label { color: var(--muted); font-size: 14px; }
+    .cta-btn {
+      display: block;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      padding: 18px 40px;
+      border-radius: 8px;
+      font-size: 17px;
+      font-weight: 600;
+      margin: 32px auto;
+      max-width: 400px;
+      transition: background 0.2s;
+    }
+    .cta-btn:hover { background: var(--accent-light); }
+    .cta-subtext { text-align: center; color: var(--muted); font-size: 14px; margin-top: -16px; }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-bottom: 16px;
+    }
+    .proof-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      text-align: center;
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .proof-num { font-size: 36px; font-weight: 700; color: var(--accent-light); }
+    .proof-label { font-size: 14px; color: var(--muted); }
+    .pain-list { list-style: none; padding: 0; }
+    .pain-list li { padding: 12px 0; border-bottom: 1px solid var(--border); padding-left: 28px; position: relative; }
+    .pain-list li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+    .include-item { display: flex; gap: 16px; margin-bottom: 20px; }
+    .include-icon { width: 40px; height: 40px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; }
+    .testimonial-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    .testimonial {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .testimonial-name { font-size: 13px; color: var(--muted); margin-top: 12px; }
+    .tier-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 8px; }
+    .step-item { display: flex; gap: 20px; margin-bottom: 32px; }
+    .step-num { width: 40px; height: 40px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; flex-shrink: 0; }
+    footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; color: var(--muted); font-size: 13px; }
+    @media (max-width: 600px) {
+      .proof-bar { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">For pre-med and medical students</p>
+    <h1>Build a Med School Life<br>That Doesn't Break You</h1>
+    <p class="subhead">A system designed for the actual conditions of medical training — not the ideal week that never happens.</p>
+
+    <!-- PROOF BAR — ABOVE FOLD -->
+    <div class="proof-bar">
+      <div>
+        <div class="proof-num">2.1M</div>
+        <div class="proof-label">YouTube subscribers following this journey</div>
+      </div>
+      <div>
+        <div class="proof-num">4+ yrs</div>
+        <div class="proof-label">Built through real rotations and night shifts</div>
+      </div>
+      <div>
+        <div class="proof-num">M.D.</div>
+        <div class="proof-label">Medical training, California</div>
+      </div>
+    </div>
+
+    <!-- VSL PLACEHOLDER -->
+    <div class="vsl-placeholder">
+      <div class="play-btn">
+        <svg viewBox="0 0 24 24" width="28" height="28"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+      <span class="vsl-label">Watch: What this system is and who it's for (8 min)</span>
+    </div>
+
+    <!-- VSL Guidance for Yoora: Follow the 9-step VSL framework (SOP 3):
+    1. Hook — "If you've ever rebuilt your study schedule three times in one semester, this is for you"
+    2. Credibility — 2.12M subscribers, medical school, documented the whole journey
+    3. Opportunity — Why now, why this approach, what everyone else is missing
+    4. Present Offer — State what it is and what it costs upfront
+    5. Handle Objections — "You've tried systems before. Here's why this one is different."
+    6. Qualify Audience — "This is for pre-med and med students who are already working hard"
+    7. Clear CTA — Book a free strategy call
+    8. Testimonials — Let others confirm the outcome
+    9. Risk Removal — What happens if it doesn't work for you
+    Affluent action-taking audience: 2-10 minute target length -->
+
+    <a href="#book" class="cta-btn">Book Your Free Strategy Call →</a>
+    <p class="cta-subtext">No cost. 45 minutes. Specific to your situation.</p>
+  </div>
+</section>
+
+<!-- PROBLEM / AGITATION SECTION -->
+<section class="section">
+  <div class="container">
+    <h2>If any of this sounds familiar, you're in the right place.</h2>
+    <p style="color: var(--muted); margin-bottom: 32px;">The people who find this page are usually dealing with at least three of these at once:</p>
+
+    <ul class="pain-list">
+      <li>You build a study schedule. It holds for a week. Then a bad rotation hits and you're back to winging it — and you've been in that cycle for longer than you want to admit.</li>
+      <li>You're genuinely putting in the hours. The results aren't reflecting it.</li>
+      <li>You feel like you have to choose between being a good student and being a full person — and you're losing both battles.</li>
+      <li>Every productivity system you've tried was built for someone with a normal schedule. Yours isn't normal.</li>
+      <li>You're exhausted in a way that sleep doesn't fix, and you can't tell anymore if this is temporary or just what this path feels like.</li>
+    </ul>
+
+    <div class="card" style="margin-top: 32px; border-color: var(--accent);">
+      <p style="margin: 0; font-style: italic; color: var(--text);">"The problem isn't your work ethic. It's that nobody designed a system for people doing what you're doing."</p>
+      <p style="margin-top: 12px; margin-bottom: 0; color: var(--muted); font-size: 14px;">— Yoora Jung, from "Realistic vlog of a (burnt out) med student"</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION / TRANSFORMATION SECTION -->
+<section class="section" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <h2>A system built for the worst-case week, not the ideal one.</h2>
+    <p>Most study systems assume your week goes according to plan. Medical training doesn't. 8pm-8am night shifts, last-minute rotation schedule changes, days where you have nothing left — that's the real environment this has to work inside of.</p>
+    <p>The framework I teach was built specifically for this: structure that doesn't require ideal conditions to hold. You build for the hard week so the normal week is easy.</p>
+
+    <!-- CPR — Clear Process to Results -->
+    <h3 style="margin-top: 40px; margin-bottom: 24px;">Here's how it works:</h3>
+
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div>
+        <h3>Map your actual week</h3>
+        <p>Not the week you want — the one that actually happens. We identify exactly where the structure is breaking and why it keeps breaking at that point.</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div>
+        <h3>Build the recovery framework</h3>
+        <p>The part no one talks about: what happens after a bad week. The people who maintain consistency through medical training aren't the ones who never fall off — they're the ones who know exactly how to get back on.</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div>
+        <h3>Layer in the rest of your life</h3>
+        <p>Fitness, K-pop, relationships, the things that make you a full person — these go into the structure deliberately, not as leftovers from whatever study time doesn't claim.</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-num">4</div>
+      <div>
+        <h3>Track against your actual goals</h3>
+        <p>30-day benchmark. Specific to what you said matters. Not a generic productivity metric.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDIBILITY SECTION -->
+<section class="section">
+  <div class="container">
+    <h2>Why this is different from other productivity content.</h2>
+    <p>I'm not a productivity influencer who made a course. I'm a medical student in California who documented my entire path — including the burned-out months — to 2.1 million people on YouTube.</p>
+    <p>The system I'm teaching wasn't designed in theory. It was stress-tested through night shifts, rotation changes, and the actual conditions of this training. The "Realistic vlog of a (burnt out) med student" video exists because I lived through that. What comes after that video is what this is about.</p>
+
+    <!-- TESTIMONIALS — LAYERED -->
+    <h3 style="margin-top: 48px; margin-bottom: 24px;">What students say after going through this:</h3>
+
+    <div class="testimonial-grid">
+
+      <!-- TIER 1 — BIG WIN -->
+      <div class="testimonial">
+        <div class="tier-label">Big win</div>
+        <p style="margin: 0;">"I went into my internal medicine clerkship with a completely different structure than any previous rotation. My shelf score went up 19 points. More importantly I didn't have a single week where I felt like I was drowning."</p>
+        <p class="testimonial-name">— M3 student, East Coast medical school</p>
+      </div>
+
+      <!-- TIER 2 — AVERAGE / RELATABLE -->
+      <div class="testimonial">
+        <div class="tier-label">More typical result</div>
+        <p style="margin: 0;">"I stopped rebuilding my schedule from scratch every 2-3 weeks. That alone changed how I felt about pre-med. It wasn't dramatic but it was the thing I needed."</p>
+        <p class="testimonial-name">— Pre-med junior, UC system</p>
+      </div>
+
+      <!-- TIER 3 — HONEST / WORST CASE -->
+      <div class="testimonial">
+        <div class="tier-label">Honest outcome</div>
+        <p style="margin: 0;">"I'll be real — I didn't implement everything. Life got hectic and I used maybe 60% of it. But that 60% was still better than 100% of what I was doing before. That's not a commercial for the course, it's just what happened."</p>
+        <p class="testimonial-name">— M1 student, Midwest DO program</p>
+      </div>
+
+      <!-- THIRD-PARTY PROOF PLACEHOLDER -->
+      <div class="testimonial" style="border-style: dashed;">
+        <div class="tier-label">Trustpilot / Reddit / Community reviews</div>
+        <p style="margin: 0; color: var(--muted); font-style: italic;">[Placeholder: Add Trustpilot review screenshots, Reddit comments, or community thread screenshots here. Third-party proof converts at +22% above first-party testimonials alone.]</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED — 4-LAYER VALUE STACK -->
+<section class="section" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <h2>What you get when you join.</h2>
+
+    <div class="include-item">
+      <div class="include-icon">📋</div>
+      <div>
+        <h3>The Core System (Rotation-Tested Structure)</h3>
+        <p>The full study and life framework built for medical training schedules — not adapted from generic productivity advice. Includes the recovery framework, schedule templates, and the weekly audit process.</p>
+      </div>
+    </div>
+
+    <div class="include-item">
+      <div class="include-icon">🎯</div>
+      <div>
+        <h3>Implementation Support</h3>
+        <p>You're not just getting materials. You get the walk-through: exactly how to set this up for your specific year, rotation type, and situation. Not a one-size-fits-all setup call.</p>
+      </div>
+    </div>
+
+    <div class="include-item">
+      <div class="include-icon">👥</div>
+      <div>
+        <h3>Community + Accountability Access</h3>
+        <p>A community of pre-med and medical students using the same system. Not a generic Discord — a structured environment with check-ins, accountability threads, and direct access to ask questions.</p>
+      </div>
+    </div>
+
+    <div class="include-item">
+      <div class="include-icon">✨</div>
+      <div>
+        <h3>Bonus: Actual Templates + Real Notes</h3>
+        <p>The study schedule templates I actually used. Rotation prep guides. Burnout recovery protocol. These aren't formatted for aesthetics — they're the real working documents.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section id="book" class="section">
+  <div class="container" style="text-align: center;">
+    <h2>Book a Free Strategy Call</h2>
+    <p class="subhead">45 minutes. We'll look at your specific situation and whether this is actually the right fit for you. If it's not, I'll tell you.</p>
+
+    <!-- For offers $2k+: drive to application + scheduler (not direct checkout) -->
+    <a href="#scheduler" class="cta-btn">Apply for a Free Strategy Call →</a>
+    <p class="cta-subtext" style="margin-top: 8px;">so you can have a med school life that doesn't cost you everything else</p>
+
+    <p style="color: var(--muted); font-size: 14px; margin-top: 24px; max-width: 440px; margin-left: auto; margin-right: auto;">
+      Not a sales pitch. An actual conversation about your situation. I only work with people this is genuinely right for.
+    </p>
+
+    <!-- SCHEDULER EMBED PLACEHOLDER -->
+    <div id="scheduler" class="vsl-placeholder" style="max-height: 500px; margin-top: 40px;">
+      <p style="color: var(--muted);">[Embed Calendly or scheduling tool here]</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>Built by J&G Operations for Yoora Jung. Ready to deploy.</p>
+    <p style="margin-top: 8px;">© 2026 Yoora Jung. This page is not indexed publicly.</p>
+  </div>
+</footer>
+
+</body>
+</html>

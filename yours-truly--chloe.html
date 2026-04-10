@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stop Guessing. Start Planning. | yours truly, chloe</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #13131a;
+      --border: #1e1e2e;
+      --accent: #c8a96e;
+      --accent-light: #e8c98e;
+      --text: #e8e8f0;
+      --text-muted: #8888a8;
+      --font: 'Inter', system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.6;
+    }
+    .container { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+
+    /* HERO */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-eyebrow {
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 em {
+      color: var(--accent);
+      font-style: normal;
+    }
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 36px;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #0a0a0f;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 16px 36px;
+      border-radius: 8px;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+    .cta-sub {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 12px;
+    }
+
+    /* SOCIAL PROOF BAR (above fold) */
+    .proof-bar {
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+    .proof-bar p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .proof-numbers {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .proof-num { text-align: center; }
+    .proof-num strong {
+      display: block;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .proof-num span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* VSL PLACEHOLDER */
+    .vsl-section {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .vsl-placeholder {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    .play-btn {
+      width: 64px;
+      height: 64px;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .play-btn::after {
+      content: '';
+      width: 0;
+      height: 0;
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid transparent;
+      border-left: 20px solid var(--accent);
+      margin-left: 4px;
+    }
+    .vsl-note {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    /* PROBLEM SECTION */
+    .problem-section {
+      padding: 70px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-label {
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .problem-section h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 700;
+      margin-bottom: 40px;
+      letter-spacing: -0.015em;
+    }
+    .pain-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .pain-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+    .pain-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .pain-item p {
+      font-size: 0.97rem;
+      color: var(--text);
+    }
+
+    /* SOLUTION SECTION */
+    .solution-section {
+      padding: 70px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .solution-section h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: -0.015em;
+    }
+    .solution-section .intro {
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      font-size: 1rem;
+    }
+    .process-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .process-step {
+      display: flex;
+      gap: 24px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .step-num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent);
+      opacity: 0.3;
+      flex-shrink: 0;
+      width: 48px;
+    }
+    .step-content h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .step-content p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* CREDIBILITY */
+    .credibility-section {
+      padding: 70px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .credibility-section h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      margin-bottom: 32px;
+      letter-spacing: -0.015em;
+    }
+    .cred-bio {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+    .testimonials {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .testimonial {
+      padding: 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+    .testimonial-tier {
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+    }
+    .testimonial blockquote {
+      font-size: 0.95rem;
+      font-style: italic;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+    .testimonial cite {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-style: normal;
+    }
+
+    /* WHAT'S INCLUDED */
+    .included-section {
+      padding: 70px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .included-section h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      margin-bottom: 36px;
+      letter-spacing: -0.015em;
+    }
+    .include-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 580px) { .include-grid { grid-template-columns: 1fr; } }
+    .include-card {
+      padding: 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+    .include-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .include-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .include-card.bonus {
+      border-color: var(--accent);
+    }
+    .bonus-tag {
+      font-size: 0.7rem;
+      background: var(--accent);
+      color: #0a0a0f;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    /* FINAL CTA */
+    .final-cta {
+      padding: 80px 0;
+      text-align: center;
+    }
+    .final-cta h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: -0.015em;
+    }
+    .final-cta p {
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      font-size: 1rem;
+    }
+    .price-tag {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+    .price-tag span {
+      font-size: 1rem;
+      color: var(--text-muted);
+      font-weight: 400;
+      margin-left: 8px;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">yours truly, chloe</p>
+    <h1>Stop Researching.<br/>Start <em>Actually Going</em>.</h1>
+    <p class="hero-sub">
+      Whether you're planning a semester at University of Melbourne or a proper autumn trip through Kyoto —
+      the guide covers what 40 browser tabs couldn't tell you.
+    </p>
+    <a href="#get-started" class="cta-btn">Get the Guide — So You Can Stop Planning and Start Going</a>
+    <p class="cta-sub">One-time. Instant access. No fluff.</p>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF BAR (above fold) -->
+<section class="proof-bar">
+  <div class="container">
+    <p>Trusted by 380,000 subscribers who followed the journey from Melbourne to Kyoto</p>
+    <div class="proof-numbers">
+      <div class="proof-num">
+        <strong>380K</strong>
+        <span>Subscribers</span>
+      </div>
+      <div class="proof-num">
+        <strong>3 Years</strong>
+        <span>University of Melbourne</span>
+      </div>
+      <div class="proof-num">
+        <strong>1 Guide</strong>
+        <span>The full picture</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VSL PLACEHOLDER -->
+<section class="vsl-section">
+  <div class="container">
+    <div class="vsl-placeholder">
+      <div class="play-btn"></div>
+      <p>Watch: What the guide covers and why I made it (6 min)</p>
+    </div>
+    <p class="vsl-note">
+      [VSL guidance: Follow the 9-step framework — Hook (what you can do for them) → Credibility (380K subs, 3 years at Melbourne, Kyoto trip) →
+      Opportunity (why this info is hard to find and why now) → Offer (guide price, upfront) →
+      Handle Objections (I can find this on Google / I'll figure it out myself) →
+      Qualify (this is for people who are actually planning, not just watching) →
+      Clear CTA → Testimonials → Reiterate value + risk removal. Target: under 10 minutes.]
+    </p>
+  </div>
+</section>
+
+<!-- PROBLEM SECTION -->
+<section class="problem-section">
+  <div class="container">
+    <p class="section-label">The Problem</p>
+    <h2>You've been watching the content.<br/>You still don't have a plan.</h2>
+    <ul class="pain-list">
+      <li class="pain-item">
+        <span class="pain-icon">—</span>
+        <p>You've watched every Melbourne vlog you can find and you still don't know what the application process actually looks like step by step.</p>
+      </li>
+      <li class="pain-item">
+        <span class="pain-icon">—</span>
+        <p>The cost of living numbers you're finding online don't account for what you'll actually spend — rent, food, transport, the social life that's part of the experience.</p>
+      </li>
+      <li class="pain-item">
+        <span class="pain-icon">—</span>
+        <p>You want to do Japan the right way — the autumn foliage, the kimono rental, the temple districts — but every guide is either too generic or assumes you've already been three times.</p>
+      </li>
+      <li class="pain-item">
+        <span class="pain-icon">—</span>
+        <p>You keep saying you'll plan this properly when you have more time. You've been saying that for over a year.</p>
+      </li>
+      <li class="pain-item">
+        <span class="pain-icon">—</span>
+        <p>The version of this trip or this semester that you actually want — not the tourist version, the real version — feels just out of reach because you don't know what you don't know yet.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- SOLUTION SECTION -->
+<section class="solution-section">
+  <div class="container">
+    <p class="section-label">How It Works</p>
+    <h2>The guide that makes the next step obvious.</h2>
+    <p class="intro">
+      Not generic advice. Not another video. The practical, honest, logistics-first resource built from actually doing it — three years in Melbourne, an autumn week in Kyoto, all documented.
+    </p>
+    <div class="process-steps">
+      <div class="process-step">
+        <span class="step-num">01</span>
+        <div class="step-content">
+          <h3>Get the full picture before you commit</h3>
+          <p>Honest cost breakdown. What Melbourne or Kyoto actually costs — not the optimistic version, the real one. So you can make an informed decision without the spreadsheet anxiety.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <span class="step-num">02</span>
+        <div class="step-content">
+          <h3>Follow the step-by-step logistics</h3>
+          <p>Application timeline, housing search, visa steps, booking sequence for Japan — everything laid out in the order it needs to happen so you stop second-guessing what to do next.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <span class="step-num">03</span>
+        <div class="step-content">
+          <h3>Arrive knowing what you're walking into</h3>
+          <p>What the first week actually feels like. What to do about the social anxiety of arriving alone. How the culture works at a Go8 university or in Gion at peak foliage season. The stuff that's hard to Google.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <span class="step-num">04</span>
+        <div class="step-content">
+          <h3>Have the version you actually wanted</h3>
+          <p>Not the rushed tourist version. Not the stressed-out logistics nightmare. The version where you're present for it because you're not scrambling to figure out what you forgot to plan.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDIBILITY SECTION -->
+<section class="credibility-section">
+  <div class="container">
+    <p class="section-label">Why Chloe</p>
+    <h2>This isn't travel content. It's the part after the camera stopped.</h2>
+    <p class="cred-bio">
+      380,000 people followed along while Chloe documented three years at University of Melbourne — the productive days, the difficult ones, the aespa concerts and mellow art markets and mooncake study sessions. Then came the graduation video, and then Japan: autumn in Kyoto, kimono rental in Gion, Nara in the morning before the tourists arrived, Kiyomizu-dera at peak foliage.
+      <br/><br/>
+      The guide is the stuff that didn't make the vlogs. The monthly budgets. The admin steps. The mistakes. The things she'd do differently and the things she'd do exactly the same way.
+    </p>
+
+    <div class="testimonials">
+      <div class="testimonial">
+        <p class="testimonial-tier">Result</p>
+        <blockquote>"I finally applied to Melbourne after two years of watching and second-guessing. Your vlogs were what made me decide it was actually possible. Got my enrollment confirmed for next February."</blockquote>
+        <cite>— YouTube viewer, North America</cite>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-tier">Average experience</p>
+        <blockquote>"Used the itinerary framework for our Kyoto trip this autumn. We hit Kiyomizu-dera at the right time, got the kimono rental sorted without the last-minute scramble. It wasn't flashy — it was just exactly what the trip was supposed to be."</blockquote>
+        <cite>— Comment section, Instagram</cite>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-tier">Honest outcome</p>
+        <blockquote>"I'll be honest — the first month in Melbourne was harder than I expected even with the guide. But I knew it was going to be hard because Chloe said so, and I knew it was worth it for the same reason."</blockquote>
+        <cite>— DM, anonymous</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section class="included-section">
+  <div class="container">
+    <p class="section-label">What's Inside</p>
+    <h2>Everything in one place.</h2>
+    <div class="include-grid">
+      <div class="include-card">
+        <h3>Full logistics walkthrough</h3>
+        <p>Application steps, enrollment timeline, visa process overview — in plain language, in order.</p>
+      </div>
+      <div class="include-card">
+        <h3>Real cost breakdown</h3>
+        <p>Chloe's actual monthly spending in Melbourne. Rent, food, transport, social. Not an estimate.</p>
+      </div>
+      <div class="include-card">
+        <h3>Housing search guide</h3>
+        <p>Which neighborhoods to look in, which ones to skip, the timeline for starting your search.</p>
+      </div>
+      <div class="include-card">
+        <h3>Japan itinerary framework</h3>
+        <p>Kyoto autumn timing, Nara morning logistics, kimono rental in Gion, Kiyomizu-dera visit. What to book in advance and what's fine day-of.</p>
+      </div>
+      <div class="include-card">
+        <h3>First month social guide</h3>
+        <p>The honest version of arriving somewhere new alone — what the social landscape looks like at Melbourne and how to actually meet people.</p>
+      </div>
+      <div class="include-card">
+        <h3>What I'd do differently</h3>
+        <p>The mistakes, the unnecessary stress, and a few specific things Chloe wishes she'd known before semester one.</p>
+      </div>
+      <div class="include-card bonus">
+        <span class="bonus-tag">Bonus</span>
+        <h3>Japan cost breakdown</h3>
+        <p>Exactly what the Kyoto trip cost, line by line — flights, accommodation, food, activities, kimono rental.</p>
+      </div>
+      <div class="include-card bonus">
+        <span class="bonus-tag">Bonus</span>
+        <h3>Melbourne student resources list</h3>
+        <p>The actual apps, services, and platforms that made Melbourne manageable as an international student.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="get-started">
+  <div class="container">
+    <h2>Stop watching. Start going.</h2>
+    <p>The guide is the logistics layer that lets you have the experience you've been planning, without the six months of scattered research.</p>
+    <div class="price-tag">$97 <span>one-time, instant access</span></div>
+    <a href="#checkout" class="cta-btn">Get the Guide — So You Can Stop Planning and Start Going</a>
+    <p class="cta-sub">Instant download. No subscription. No upsell.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    Built by J&G Operations for yours truly, chloe. Ready to deploy.
+  </div>
+</footer>
+
+</body>
+</html>

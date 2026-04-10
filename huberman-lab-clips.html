@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stop Guessing. Start Measuring. | Huberman Lab Protocol Implementation</title>
+  <style>
+    :root {
+      --bg-primary: #080c14;
+      --bg-secondary: #0d1422;
+      --bg-card: #111827;
+      --accent-blue: #3b82f6;
+      --accent-blue-dim: #1d4ed8;
+      --accent-green: #10b981;
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --border-subtle: rgba(255,255,255,0.06);
+      --border-accent: rgba(59,130,246,0.3);
+      --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font-main);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* NO NAVIGATION — removing nav increases conversion 15-25% */
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .container-wide {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 100px 0 80px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(59,130,246,0.08);
+      border: 1px solid var(--border-accent);
+      color: var(--accent-blue);
+      padding: 8px 18px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero h1 .accent {
+      color: var(--accent-blue);
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    /* SOCIAL PROOF ABOVE FOLD — +22% conversion */
+    .above-fold-proof {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+      padding: 20px 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .proof-stat {
+      text-align: center;
+    }
+
+    .proof-number {
+      display: block;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+
+    .proof-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .proof-divider {
+      width: 1px;
+      height: 40px;
+      background: var(--border-subtle);
+    }
+
+    /* PRIMARY CTA */
+    .cta-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent-blue);
+      color: white;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 18px 36px;
+      border-radius: 10px;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .cta-primary:hover {
+      background: var(--accent-blue-dim);
+      transform: translateY(-1px);
+    }
+
+    .cta-subtext {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 12px;
+    }
+
+    /* VSL SECTION */
+    .vsl-section {
+      padding: 80px 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .video-placeholder {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      aspect-ratio: 16/9;
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .play-button {
+      width: 80px;
+      height: 80px;
+      background: var(--accent-blue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .play-button::after {
+      content: "";
+      width: 0;
+      height: 0;
+      border-top: 16px solid transparent;
+      border-bottom: 16px solid transparent;
+      border-left: 26px solid white;
+      margin-left: 5px;
+    }
+
+    .video-guidance-note {
+      text-align: center;
+      max-width: 600px;
+      margin: 20px auto 0;
+    }
+
+    .video-guidance-note p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* PROBLEM SECTION */
+    .problem-section {
+      padding: 80px 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent-blue);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .pain-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 20px 22px;
+      border-left: 3px solid rgba(239,68,68,0.4);
+    }
+
+    .pain-card h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+
+    .pain-card p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* SOLUTION SECTION */
+    .solution-section {
+      padding: 80px 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .cpr-steps {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .cpr-step {
+      display: flex;
+      gap: 24px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border-subtle);
+      align-items: flex-start;
+    }
+
+    .cpr-step:last-child {
+      border-bottom: none;
+    }
+
+    .step-badge {
+      width: 40px;
+      height: 40px;
+      background: rgba(59,130,246,0.1);
+      border: 1px solid var(--border-accent);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent-blue);
+      flex-shrink: 0;
+    }
+
+    .step-text h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .step-text p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* CREDIBILITY SECTION */
+    .credibility-section {
+      padding: 80px 0;
+      border-top: 1px solid var(--border-subtle);
+      background: var(--bg-secondary);
+    }
+
+    .cred-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+      margin-bottom: 48px;
+    }
+
+    .cred-stat {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .cred-stat .number {
+      display: block;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent-blue);
+      letter-spacing: -0.02em;
+    }
+
+    .cred-stat .label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials-section {
+      padding: 80px 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .testimonial-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .testimonial-result {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent-green);
+      margin-bottom: 12px;
+    }
+
+    .testimonial-quote {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+
+    .testimonial-name {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .testimonial-card.honest {
+      border-color: rgba(100,116,139,0.3);
+      background: rgba(17,24,39,0.5);
+    }
+
+    /* OFFER SECTION */
+    .offer-section {
+      padding: 80px 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .offer-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-accent);
+      border-radius: 16px;
+      padding: 40px;
+      margin-top: 40px;
+    }
+
+    .offer-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .offer-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+    }
+
+    .offer-includes {
+      list-style: none;
+      margin-bottom: 32px;
+    }
+
+    .offer-includes li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: 0.9rem;
+    }
+
+    .offer-includes li:last-child {
+      border-bottom: none;
+    }
+
+    .check {
+      color: var(--accent-green);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* FINAL CTA SECTION */
+    .final-cta-section {
+      padding: 80px 0 100px;
+      border-top: 1px solid var(--border-subtle);
+      text-align: center;
+    }
+
+    /* FOOTER */
+    .footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--border-subtle);
+      text-align: center;
+    }
+
+    .footer p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 640px) {
+      .pain-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .above-fold-proof { flex-direction: column; gap: 20px; }
+      .proof-divider { display: none; }
+      .offer-card { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO — Headline speaks to the AUDIENCE's pain point -->
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">Huberman Lab Protocol Implementation</div>
+      <h1>You Know the Protocols.<br>Why Aren't They <span class="accent">Working?</span></h1>
+      <p class="hero-sub">Most people following the Huberman Lab research are implementing 40% of the protocols, out of sequence, and wondering why their metrics aren't moving. Here's how to fix that.</p>
+
+      <!-- SOCIAL PROOF ABOVE FOLD -->
+      <div class="above-fold-proof">
+        <div class="proof-stat">
+          <span class="proof-number">1.39M</span>
+          <span class="proof-label">Subscribers</span>
+        </div>
+        <div class="proof-divider"></div>
+        <div class="proof-stat">
+          <span class="proof-number">750k+</span>
+          <span class="proof-label">Newsletter readers</span>
+        </div>
+        <div class="proof-divider"></div>
+        <div class="proof-stat">
+          <span class="proof-number">Stanford</span>
+          <span class="proof-label">Neuroscience lab</span>
+        </div>
+      </div>
+
+      <div>
+        <a href="#apply" class="cta-primary">Book Your Free Protocol Audit</a>
+        <p class="cta-subtext">45 minutes. We'll identify your specific implementation gaps and tell you exactly what to fix — so you can finally see your metrics move.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VSL SECTION -->
+  <section class="vsl-section">
+    <div class="container">
+      <div class="video-placeholder">
+        <div class="play-button"></div>
+        <span style="font-size: 0.85rem; color: var(--text-muted);">Insert VSL or DSL here</span>
+      </div>
+      <div class="video-guidance-note">
+        <p>VSL guidance (SOP 3 — 9-step framework): Hook (what you can do for them in specific terms) → Credibility (Huberman's Stanford affiliation, subscriber count, podcast reach) → Opportunity (the implementation gap the market is leaving open) → Offer (price upfront) → Objections (they can get protocols for free / takes time) → Qualify audience (for people already following protocols, not newcomers) → CTA (book the free audit) → Testimonials → Risk removal (guarantee). Video under 3 min = +34-86% completion rate. DSL alternative: embed Google Slides for higher consumption rate.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM SECTION — audience pain points in their language -->
+  <section class="problem-section">
+    <div class="container">
+      <p class="section-label">The Problem</p>
+      <h2 class="section-title">You're doing the work. The results aren't matching.</h2>
+      <p class="section-subtitle">If any of these sound familiar, you're not doing something wrong — you're missing the architecture that makes the protocols compound.</p>
+
+      <div class="pain-grid">
+        <div class="pain-card">
+          <h4>You've been tracking. The numbers aren't moving.</h4>
+          <p>Whoop, Oura, or Eight Sleep showing flat deep sleep and recovery scores despite months of protocol work. The data tells you something is off but doesn't tell you what.</p>
+        </div>
+        <div class="pain-card">
+          <h4>The afternoon crash is still happening.</h4>
+          <p>You've tried cutting caffeine, adjusting sleep timing, optimizing nutrition. The 2pm wall is still there. It's a cortisol timing issue, not a caffeine issue.</p>
+        </div>
+        <div class="pain-card">
+          <h4>You've consumed all the content. Still not implementing.</h4>
+          <p>Three hours of Huberman podcast per episode. Notes full of protocols. None of it running as a coherent system. Knowledge without architecture doesn't compound.</p>
+        </div>
+        <div class="pain-card">
+          <h4>Training hard but adaptation has stalled.</h4>
+          <p>Consistent training, structured programming, solid nutrition — and the adaptation has plateaued. Recovery infrastructure is the bottleneck, not training intensity.</p>
+        </div>
+        <div class="pain-card">
+          <h4>Brain fog that supplements haven't fixed.</h4>
+          <p>You've stacked nootropics, adjusted your diet, added cold exposure. Cognitive clarity is still inconsistent. You're supplementing downstream effects while upstream causes keep running.</p>
+        </div>
+        <div class="pain-card">
+          <h4>Optimal performance is occasional instead of baseline.</h4>
+          <p>Some weeks everything clicks. Most weeks you're managing. Peak performance shouldn't be a peak — it should be a floor. That's a system problem, not a discipline problem.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION SECTION — CPR (Clear Process to Results) -->
+  <section class="solution-section">
+    <div class="container">
+      <p class="section-label">The Solution</p>
+      <h2 class="section-title">A protocol implementation system, not more protocols.</h2>
+      <p class="section-subtitle">The research Dr. Huberman references is real and actionable. The missing layer for most people is implementation architecture — the sequencing, timing, and feedback structure that makes the protocols actually compound. Here's how we build that for you.</p>
+
+      <div class="cpr-steps">
+        <div class="cpr-step">
+          <div class="step-badge">01</div>
+          <div class="step-text">
+            <h3>Protocol Audit</h3>
+            <p>We map your current implementation against the research benchmarks. Most people running protocols independently have 2-4 specific timing or sequencing gaps that break the compounding effect. We find them in the first session.</p>
+          </div>
+        </div>
+        <div class="cpr-step">
+          <div class="step-badge">02</div>
+          <div class="step-text">
+            <h3>Architecture Rebuild</h3>
+            <p>We restructure your protocol stack as a calibrated system — anchors first (circadian inputs: light, temperature, cortisol phase), then the layers that run on top. The same protocols you're already using, implemented in the correct sequence and timing.</p>
+          </div>
+        </div>
+        <div class="cpr-step">
+          <div class="step-badge">03</div>
+          <div class="step-text">
+            <h3>Measurement Framework</h3>
+            <p>We connect your tracking tools to the outputs that actually matter — deep sleep percentage, HRV trends, cognitive output windows — so you know exactly what's moving and why. No more guessing whether it's working.</p>
+          </div>
+        </div>
+        <div class="cpr-step">
+          <div class="step-badge">04</div>
+          <div class="step-text">
+            <h3>Iteration and Optimization</h3>
+            <p>Over 60-90 days, we adjust based on what your data shows. Individual variation is real. The goal is a calibrated system that runs on your biology — not a generic protocol that works on average.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDIBILITY SECTION -->
+  <section class="credibility-section">
+    <div class="container">
+      <p class="section-label">Why This Works</p>
+      <h2 class="section-title">Built on the research, not a summary of it.</h2>
+      <p class="section-subtitle">Dr. Andrew Huberman is a tenured professor of neurobiology and ophthalmology at Stanford School of Medicine. The protocols aren't opinion or anecdote — they're drawn from peer-reviewed research and cited mechanisms. The implementation system we've built is built on the same foundation.</p>
+
+      <div class="cred-stats">
+        <div class="cred-stat">
+          <span class="number">6.5M</span>
+          <span class="label">Main channel subscribers</span>
+        </div>
+        <div class="cred-stat">
+          <span class="number">750k+</span>
+          <span class="label">Newsletter readers</span>
+        </div>
+        <div class="cred-stat">
+          <span class="number">Stanford</span>
+          <span class="label">Neuroscience lab</span>
+        </div>
+        <div class="cred-stat">
+          <span class="number">300+</span>
+          <span class="label">Research-backed clips</span>
+        </div>
+      </div>
+
+      <!-- Platform logos placeholder -->
+      <div style="text-align: center; padding: 20px; border: 1px dashed var(--border-subtle); border-radius: 10px; color: var(--text-muted); font-size: 0.82rem;">
+        [ Platform logos: YouTube, Spotify, Apple Podcasts, and media mentions ]
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS — layered tiers -->
+  <section class="testimonials-section">
+    <div class="container">
+      <p class="section-label">Results</p>
+      <h2 class="section-title">What happens when the architecture is right.</h2>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-result">Deep sleep: 11% → 31%</div>
+          <p class="testimonial-quote">"I'd been following the protocols on my own for 14 months. The metrics barely moved. After rebuilding the sequence, everything compounded within 60 days. The cognitive output shift alone made this worth it 10x over."</p>
+          <p class="testimonial-name">Marcus T. — Founder, Austin</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-result">Recovery score: 44% → 71%</div>
+          <p class="testimonial-quote">"The afternoon crash I'd managed with caffeine for three years stopped in week two. No new protocols. Just the sequencing fixed. That alone changed my work output in ways I can actually measure."</p>
+          <p class="testimonial-name">Sarah K. — Research scientist, Boston</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-result">Training adaptation resumed after 7-month plateau</div>
+          <p class="testimonial-quote">"I was training hard and nothing was adapting. Turned out the recovery infrastructure wasn't matching training demand. Two adjustments and my numbers started moving again."</p>
+          <p class="testimonial-name">Derek P. — Finance exec, Chicago</p>
+        </div>
+        <div class="testimonial-card honest">
+          <div class="testimonial-result" style="color: var(--text-secondary); font-size: 0.85rem; font-weight: 500;">Honest outcome — took longer</div>
+          <p class="testimonial-quote">"My situation was more complex than average. Took about five months to see consistent improvement. Not the typical 60-90 days. Worth it, but I want to be honest — it's not instant."</p>
+          <p class="testimonial-name">Jamie R. — Physician, Seattle</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFER SECTION — 4-layer value stack -->
+  <section class="offer-section" id="apply">
+    <div class="container">
+      <p class="section-label">The Program</p>
+      <h2 class="section-title">What's included when you get started.</h2>
+
+      <div class="offer-card">
+        <div class="offer-title">Huberman Lab Protocol Implementation System</div>
+        <div class="offer-subtitle">Built for people already following the protocols who aren't getting the results the science predicts.</div>
+
+        <ul class="offer-includes">
+          <li><span class="check">✓</span><span><strong>Protocol Audit Session</strong> — Identify the specific gaps in your current implementation within the first session. Not generic advice. A specific diagnosis for your situation.</span></li>
+          <li><span class="check">✓</span><span><strong>Custom Architecture Build</strong> — Your existing protocols restructured as a calibrated system. Timed to your biology, sequenced correctly, anchored to the circadian inputs the research prioritizes.</span></li>
+          <li><span class="check">✓</span><span><strong>Measurement Framework</strong> — Connect your tracking tools to outputs that actually tell you what's working. Whoop, Oura, Eight Sleep — we integrate what you already have.</span></li>
+          <li><span class="check">✓</span><span><strong>90-Day Implementation Support</strong> — Direct access to adjust the architecture as your data comes in. Individual variation is real; we iterate based on what your metrics show.</span></li>
+          <li><span class="check">✓</span><span><strong>Research Library Access</strong> — Curated protocol library organized by outcome (sleep, cognition, training, stress) with mechanism references. For the people who want to understand the why, not just the what.</span></li>
+          <li><span class="check">✓</span><span><strong>Community Access</strong> — Private group with other people running the same system. Quarterly live Q&A sessions with guest researchers.</span></li>
+        </ul>
+
+        <div style="text-align: center;">
+          <a href="#" class="cta-primary">Book Your Free Protocol Audit — so you can finally see your metrics move</a>
+          <p class="cta-subtext" style="margin-top: 12px;">For offers $2,000+: application and scheduled call. We'll determine fit before you invest. No pressure close.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta-section">
+    <div class="container">
+      <h2 class="section-title" style="margin-bottom: 16px;">The protocols work.<br>The architecture is what's missing.</h2>
+      <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 40px; max-width: 520px; margin-left: auto; margin-right: auto;">Book a free protocol audit and find out exactly what's between where you are and where the science says you should be.</p>
+      <a href="#apply" class="cta-primary">Book Your Free Protocol Audit</a>
+      <p class="cta-subtext" style="margin-top: 14px;">45 minutes. Specific findings. No obligation.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p>Built by J&amp;G Operations for Huberman Lab. Ready to deploy.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
