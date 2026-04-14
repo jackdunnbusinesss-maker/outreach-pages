@@ -3,138 +3,1075 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jacx Property</title>
+    <title>JACX Property — Independent Commercial Property Advisory</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
         :root {
             --bg: #0e0e12;
             --surface: #16161d;
-            --surface-light: #1e1e28;
-            --border: #2a2a36;
-            --accent: #d4959b;
-            --accent-light: #d4959b;
-            --accent-glow: rgba(100, 140, 200, 0.15);
-            --white: #f0eff4;
-            --text: #c5c4ce;
-            --text-muted: #7e7d8a;
+            --surface-2: #1c1c26;
+            --border: rgba(255,255,255,0.07);
+            --accent: #5e8fc2;
+            --accent-light: #7aaad4;
+            --accent-dim: rgba(94,143,194,0.12);
+            --text: #e8e8ef;
+            --text-muted: #8a8a9a;
+            --text-dim: #5a5a6e;
+            --white: #ffffff;
         }
+
         html { scroll-behavior: smooth; }
+
         body {
-            font-family: 'Inter', -apple-system, sans-serif;
             background: var(--bg);
             color: var(--text);
-            line-height: 1.7;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            line-height: 1.65;
             -webkit-font-smoothing: antialiased;
-            margin: 0;
         }
-        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
-        a { color: var(--accent); }
-        .cta-btn {
-            display: inline-block;
-            padding: 16px 36px;
-            background: var(--accent);
-            color: #0e0e12;
-            font-weight: 700;
-            font-size: 0.95rem;
-            border-radius: 8px;
+
+        .container {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* NAV */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(14,14,18,0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--white);
             text-decoration: none;
-            letter-spacing: 0.5px;
-            transition: opacity 0.2s;
+            letter-spacing: 0.02em;
         }
-        .cta-btn:hover { opacity: 0.9; }
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 1.8rem; }
+
+        .nav-logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-decoration: none;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--white); }
+
+        .nav-cta {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--white) !important;
+            background: var(--accent);
+            padding: 8px 18px;
+            border-radius: 4px;
+            text-transform: none !important;
+            letter-spacing: 0.01em !important;
+            transition: background 0.2s !important;
+        }
+
+        .nav-cta:hover { background: var(--accent-light) !important; color: var(--white) !important; }
+
+        /* HERO */
+        .hero {
+            padding: 96px 0 80px;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(94,143,194,0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 24px;
+        }
+
+        .eyebrow::before {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 600;
+            line-height: 1.18;
+            color: var(--white);
+            max-width: 700px;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--accent-light);
+        }
+
+        .hero-sub {
+            font-size: 17px;
+            color: var(--text-muted);
+            max-width: 560px;
+            line-height: 1.75;
+            margin-bottom: 40px;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 14px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .btn-primary:hover { background: var(--accent-light); }
+
+        .btn-secondary {
+            display: inline-block;
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid var(--text-dim);
+            padding-bottom: 2px;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .btn-secondary:hover { color: var(--white); border-color: var(--white); }
+
+        /* STATS STRIP */
+        .stats-strip {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 40px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--border);
+        }
+
+        .stat-item {
+            background: var(--surface);
+            padding: 32px 40px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 600;
+            color: var(--white);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-number sup {
+            font-size: 22px;
+            vertical-align: super;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        /* POSITIONING */
+        .section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .section-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(26px, 3.5vw, 36px);
+            font-weight: 600;
+            color: var(--white);
+            line-height: 1.25;
+            margin-bottom: 20px;
+        }
+
+        .section-body {
+            font-size: 16px;
+            color: var(--text-muted);
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        /* INDEPENDENCE CALLOUT */
+        .independence {
+            background: var(--surface);
+        }
+
+        .independence-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .independence-pillars {
+            margin-top: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .pillar {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .pillar-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            background: var(--accent-dim);
+            border: 1px solid rgba(94,143,194,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--accent);
+            font-size: 15px;
+        }
+
+        .pillar-text strong {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+
+        .pillar-text p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .independence-quote {
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            border-radius: 6px;
+            padding: 36px 32px;
+        }
+
+        .independence-quote blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-style: italic;
+            color: var(--white);
+            line-height: 1.55;
+            margin-bottom: 24px;
+        }
+
+        .quote-attribution {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .quote-attribution strong {
+            display: block;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* SERVICES */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2px;
+            background: var(--border);
+            margin-top: 48px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .service-card {
+            background: var(--surface);
+            padding: 36px 32px;
+            text-decoration: none;
+            transition: background 0.2s;
+            position: relative;
+        }
+
+        .service-card:hover { background: var(--surface-2); }
+
+        .service-number {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
+            opacity: 0.7;
+        }
+
+        .service-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .service-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .service-link {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--accent);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .service-link::after { content: '→'; }
+
+        /* EXPERIENCE */
+        .experience-section { background: var(--surface); }
+
+        .transactions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .transaction-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 24px 24px;
+            transition: border-color 0.2s;
+        }
+
+        .transaction-card:hover { border-color: rgba(94,143,194,0.3); }
+
+        .transaction-tag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        .transaction-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .transaction-detail {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .client-types {
+            margin-top: 48px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+        }
+
+        .client-types-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .client-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .client-tag {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-muted);
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 6px 14px;
+        }
+
+        /* TEAM */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2px;
+            background: var(--border);
+            margin-top: 48px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .team-card {
+            background: var(--surface);
+            padding: 32px 28px;
+            position: relative;
+        }
+
+        .team-card.featured {
+            grid-column: span 2;
+            background: var(--surface-2);
+            padding: 36px 40px;
+        }
+
+        .team-card.featured .team-inner {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        .team-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--accent-dim);
+            border: 2px solid rgba(94,143,194,0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .team-name {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+
+        .team-title {
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+            opacity: 0.85;
+        }
+
+        .team-bio {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 14px;
+        }
+
+        .team-links {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .team-links a {
+            font-size: 12px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .team-links a:hover { color: var(--accent-light); }
+
+        .team-links .separator {
+            color: var(--text-dim);
+            font-size: 12px;
+        }
+
+        /* CONTACT */
+        .contact-section {
+            padding: 80px 0;
+        }
+
+        .contact-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        .contact-details {
+            margin-top: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            background: var(--accent-dim);
+            border: 1px solid rgba(94,143,194,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--accent);
+            font-size: 16px;
+        }
+
+        .contact-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            margin-bottom: 4px;
+        }
+
+        .contact-value {
+            font-size: 15px;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .contact-value:hover { color: var(--accent-light); }
+
+        .contact-value-sub {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .contact-map {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        .contact-map-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .contact-map-address {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            color: var(--white);
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .map-link {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 40px 0;
+        }
+
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .footer-logo span { color: var(--accent); }
+
+        .footer-notice {
+            font-size: 12px;
+            color: var(--text-dim);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            font-size: 12px;
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover { color: var(--text-muted); }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .independence-inner { grid-template-columns: 1fr; gap: 40px; }
+            .services-grid { grid-template-columns: 1fr; }
+            .team-grid { grid-template-columns: 1fr; }
+            .team-card.featured { grid-column: span 1; }
+            .team-card.featured .team-inner { grid-template-columns: 1fr; }
+            .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+            .transactions-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .footer-inner { flex-direction: column; align-items: flex-start; }
         }
     </style>
 </head>
 <body>
-    <!-- Top Bar -->
-    <div style="padding: 20px 0; border-bottom: 1px solid var(--border);">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-            <span style="font-weight: 700; font-size: 1.1rem; color: var(--white);">Jacx Property</span>
-            <a href="tel:1300478889" class="cta-btn" style="padding: 10px 24px; font-size: 0.85rem;">1300 478 889</a>
+
+<!-- NAV -->
+<nav>
+    <div class="container">
+        <div class="nav-inner">
+            <a href="https://jacx.com.au" class="nav-logo">JACX<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="https://jacx.com.au/services/">Services</a></li>
+                <li><a href="https://jacx.com.au/our-experience/">Our Experience</a></li>
+                <li><a href="https://jacx.com.au/about/">Key Members</a></li>
+                <li><a href="https://www.linkedin.com/company/jacx-property/" target="_blank" rel="noopener">LinkedIn</a></li>
+                <li><a href="https://jacx.com.au/contact/" class="nav-cta">Contact Us</a></li>
+            </ul>
         </div>
     </div>
+</nav>
 
-    <!-- Hero -->
-    <section style="padding: 80px 0 48px; text-align: center;">
-        <div class="container">
-            <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600;">Trusted Local Real Estate Experts</p>
-            <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600;">
-                Jacx Property
-            </h1>
-            <p style="font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto 32px; line-height: 1.8;">
-                Your trusted local partner for transaction management, tenant advisory, property valuations.
-            </p>
-            <a href="tel:1300478889" class="cta-btn">Get a Free Appraisal</a>
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <div class="eyebrow">Corporate property strategy &amp; transaction advisory services</div>
+        <h1>A leading <em>independent</em> property advisory firm.</h1>
+        <p class="hero-sub">JACX Property advises corporate occupiers, institutional clients, and private owners on commercial transactions, acquisitions, tenant representation, and valuations — nationally, without conflict.</p>
+        <div class="hero-actions">
+            <a href="https://jacx.com.au/contact/" class="btn-primary">Speak to our team</a>
+            <a href="https://jacx.com.au/our-experience/" class="btn-secondary">View our experience</a>
         </div>
-    </section>
+    </div>
+</section>
 
-    
-        <section style="padding: 64px 0;">
-            <div class="container">
-                <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; text-align: center; font-weight: 600;">What We Do</p>
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); text-align: center; margin-bottom: 48px;">Our Services</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-                    
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Transaction Management</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Tenant Advisory</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Property Valuations</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Acquisition Services</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">A leading independent property advisory firm</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Our Experience</h3>
-                </div>
-                </div>
+<!-- STATS STRIP -->
+<div class="stats-strip">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number"><sup>$</sup>5B<sup>+</sup></div>
+                <div class="stat-label">In Australian real estate advised</div>
             </div>
-        </section>
-
-    
-        <section style="padding: 64px 0; border-top: 1px solid var(--border);">
-            <div class="container">
-                <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; font-weight: 600;">About Us</p>
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 20px;">Jacx Property</h2>
-                <p style="color: var(--text); line-height: 1.8; max-width: 600px;">For more information on JACX Property or to discuss your next property requirement please contact us.</p>
+            <div class="stat-item">
+                <div class="stat-number">250k</div>
+                <div class="stat-label">m² of leases negotiated</div>
             </div>
-        </section>
-
-    <!-- Contact -->
-    <section style="padding: 64px 0; border-top: 1px solid var(--border);">
-        <div class="container">
-            <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; font-weight: 600;">Contact</p>
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 24px;">Get in Touch</h2>
-            <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px;">
-                <div>
-                    <p style="margin-bottom: 12px;"><strong style="color: var(--white);">Phone:</strong> <a href="tel:1300478889" style="color: var(--accent); text-decoration: none;">1300 478 889</a></p>
-                    <p style="margin-bottom: 12px;"><strong style="color: var(--white);">Email:</strong> <a href="mailto:jwald@jacx.com.au" style="color: var(--accent); text-decoration: none;">jwald@jacx.com.au</a></p>
-                </div>
-                <div style="margin-top: 24px;">
-                    <a href="tel:1300478889" class="cta-btn">Get a Free Appraisal</a>
-                </div>
+            <div class="stat-item">
+                <div class="stat-number">20<sup>+</sup></div>
+                <div class="stat-label">Years of market experience</div>
             </div>
         </div>
-    </section>
+    </div>
+</div>
 
-    <!-- Footer -->
-    <footer style="padding: 32px 0; border-top: 1px solid var(--border); text-align: center;">
-        <div class="container">
-            <p style="font-size: 0.8rem; color: var(--text-muted);">
-                Rebuilt by J&amp;G Operations as a preview. Not yet live on jacx.com.au.
-            </p>
+<!-- INDEPENDENCE POSITIONING -->
+<section class="section independence" id="about">
+    <div class="container">
+        <div class="independence-inner">
+            <div>
+                <div class="section-label">Why JACX</div>
+                <h2 class="section-heading">Independent advice. No hidden agency agenda.</h2>
+                <p class="section-body">Large commercial agencies serve landlords and developers first. Their incentives don't always align with yours. JACX Property was founded on a different model — one where professional independence means you receive advice based on your objectives, not the deal we're trying to close on the other side.</p>
+                <div class="independence-pillars">
+                    <div class="pillar">
+                        <div class="pillar-icon">✦</div>
+                        <div class="pillar-text">
+                            <strong>No institutional conflicts</strong>
+                            <p>We don't act for landlords, developers, or financial institutions on the other side of your transaction.</p>
+                        </div>
+                    </div>
+                    <div class="pillar">
+                        <div class="pillar-icon">✦</div>
+                        <div class="pillar-text">
+                            <strong>National coverage, boutique discipline</strong>
+                            <p>We advise across Australia with the rigour of a national firm and the accountability of a senior-led practice.</p>
+                        </div>
+                    </div>
+                    <div class="pillar">
+                        <div class="pillar-icon">✦</div>
+                        <div class="pillar-text">
+                            <strong>Certified Practising Valuers</strong>
+                            <p>Our principals hold CPV accreditation and Chartered Surveyor status — the benchmark for commercial property expertise.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="independence-quote">
+                <blockquote>"Our purpose is to create a firm where clients experience a seamless, collaborative approach — grounded in professionalism, integrity, and detailed market knowledge."</blockquote>
+                <div class="quote-attribution">
+                    <strong>Michael Jackson</strong>
+                    Managing Director, JACX Property
+                </div>
+            </div>
         </div>
-    </footer>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+    <div class="container">
+        <div class="section-label">What We Do</div>
+        <h2 class="section-heading">Advisory services across the full property cycle</h2>
+        <p class="section-body">From initial acquisition strategy through to divestment, lease negotiation, and independent valuation — JACX Property operates across every stage of a commercial property lifecycle.</p>
+        <div class="services-grid">
+            <a href="https://jacx.com.au/services/" class="service-card">
+                <div class="service-number">01</div>
+                <div class="service-title">Transaction Management</div>
+                <p class="service-desc">Tailored divestment services for vendor clients seeking to exit commercial holdings in Australia. We manage the entire sale process — from strategy and positioning through to settlement — protecting your outcome at every stage.</p>
+                <span class="service-link">Learn more</span>
+            </a>
+            <a href="https://jacx.com.au/services/" class="service-card">
+                <div class="service-number">02</div>
+                <div class="service-title">Tenant Advisory</div>
+                <p class="service-desc">Adaptable and reliable tenant representation for corporate occupiers navigating lease renewals, relocations, and negotiations. We represent your interests exclusively — not the landlord's.</p>
+                <span class="service-link">Learn more</span>
+            </a>
+            <a href="https://jacx.com.au/services/" class="service-card">
+                <div class="service-number">03</div>
+                <div class="service-title">Property Valuations</div>
+                <p class="service-desc">Independent expert valuations across commercial, retail, industrial, and residential sectors. Certified Practising Valuers providing assessments for acquisition, disposal, financial reporting, and litigation purposes.</p>
+                <span class="service-link">Learn more</span>
+            </a>
+            <a href="https://jacx.com.au/services/" class="service-card">
+                <div class="service-number">04</div>
+                <div class="service-title">Acquisition Services</div>
+                <p class="service-desc">Bespoke property advisory for buyers and investors entering the commercial market. We identify, assess, and secure the right assets — with rigorous due diligence and no conflict of interest.</p>
+                <span class="service-link">Learn more</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section experience-section" id="experience">
+    <div class="container">
+        <div class="section-label">Our Experience</div>
+        <h2 class="section-heading">A track record built on institutional-grade mandates</h2>
+        <p class="section-body">JACX Property has advised on complex commercial transactions across Australia — from major institutional divestments to strategic occupier relocations. No two mandates are the same.</p>
+        <div class="transactions-grid">
+            <div class="transaction-card">
+                <div class="transaction-tag">Transaction Management</div>
+                <div class="transaction-title">88 Langridge Street, Collingwood</div>
+                <p class="transaction-detail">$77.5 million institutional sale executed during a period of rising borrowing costs. Full transaction management to institutional purchaser.</p>
+            </div>
+            <div class="transaction-card">
+                <div class="transaction-tag">Tenant Advisory</div>
+                <div class="transaction-title">Save The Children — Longstanding Client</div>
+                <p class="transaction-detail">Ongoing tenant representation across multiple lease cycles. Strategic occupier advisory for a major national non-profit organisation.</p>
+            </div>
+            <div class="transaction-card">
+                <div class="transaction-tag">Acquisition Services</div>
+                <div class="transaction-title">16–18 Cato Street, Hawthorn East</div>
+                <p class="transaction-detail">Premium office acquisition for an owner-occupied business headquarters. Full advisory across site identification, due diligence and settlement.</p>
+            </div>
+            <div class="transaction-card">
+                <div class="transaction-tag">Transaction Management</div>
+                <div class="transaction-title">Tupperware HQ Divestment</div>
+                <p class="transaction-detail">Strategic management of a "super site" headquarters divestment after nearly 60 years of occupancy — coordinating complex stakeholder interests through to successful sale.</p>
+            </div>
+        </div>
+        <div class="client-types">
+            <div class="client-types-label">Client sectors served</div>
+            <div class="client-tags">
+                <span class="client-tag">Superannuation Funds</span>
+                <span class="client-tag">Major Retailers</span>
+                <span class="client-tag">Non-Profit Organisations</span>
+                <span class="client-tag">Industrial & Manufacturing</span>
+                <span class="client-tag">Industry Associations</span>
+                <span class="client-tag">International Landlords</span>
+                <span class="client-tag">Owner-Occupied Business</span>
+                <span class="client-tag">Corporate Occupiers</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TEAM -->
+<section class="section" id="team">
+    <div class="container">
+        <div class="section-label">Key Members</div>
+        <h2 class="section-heading">Senior-led. CPV-accredited. Conflict-free.</h2>
+        <p class="section-body">Every mandate at JACX Property is led by a senior principal with decades of commercial property experience. You work with the people whose names are on the door.</p>
+        <div class="team-grid">
+            <!-- Michael Jackson - featured -->
+            <div class="team-card featured">
+                <div class="team-inner">
+                    <div class="team-avatar">MJ</div>
+                    <div>
+                        <div class="team-name">Michael Jackson</div>
+                        <div class="team-title">Managing Director</div>
+                        <p class="team-bio">Over 20 years in Australian commercial property since 2001. Certified Practising Valuer and Licensed Real Estate Agent. Founded JACX Property to build a firm grounded in professionalism, integrity, and independent client advocacy — offering corporate clients a genuine alternative to the institutional agency model.</p>
+                        <div class="team-links">
+                            <a href="https://www.linkedin.com/in/michael-jackson-3b572058/" target="_blank" rel="noopener">LinkedIn</a>
+                            <span class="separator">·</span>
+                            <a href="mailto:michaelj@jacx.com.au">michaelj@jacx.com.au</a>
+                            <span class="separator">·</span>
+                            <a href="tel:0411040666">0411 040 666</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Chris Holroyd -->
+            <div class="team-card">
+                <div class="team-avatar">CH</div>
+                <div style="margin-top:16px;">
+                    <div class="team-name">Chris Holroyd</div>
+                    <div class="team-title">Senior Director</div>
+                    <p class="team-bio">Certified Practising Valuer and Chartered Surveyor. Previously led commercial valuations at a national firm; brings international experience from London and Athens across commercial, retail, and industrial sectors.</p>
+                    <div class="team-links">
+                        <a href="https://www.linkedin.com/in/chris-holroyd-98204182/" target="_blank" rel="noopener">LinkedIn</a>
+                        <span class="separator">·</span>
+                        <a href="mailto:chrish@jacx.com.au">chrish@jacx.com.au</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Jeremy Wald -->
+            <div class="team-card">
+                <div class="team-avatar">JW</div>
+                <div style="margin-top:16px;">
+                    <div class="team-name">Jeremy Wald</div>
+                    <div class="team-title">Executive Property Advisory</div>
+                    <p class="team-bio">Certified Practising Valuer with deep commercial market expertise. Provides executive-level advisory across transactions and valuations mandates nationally.</p>
+                    <div class="team-links">
+                        <a href="mailto:jeremyw@jacx.com.au">jeremyw@jacx.com.au</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Olivia Triandos -->
+            <div class="team-card">
+                <div class="team-avatar">OT</div>
+                <div style="margin-top:16px;">
+                    <div class="team-name">Olivia Triandos</div>
+                    <div class="team-title">Director</div>
+                    <p class="team-bio">25+ years of commercial property experience. API and REIV member. Brings a broad transactional and valuation background across Victorian and national property markets.</p>
+                    <div class="team-links">
+                        <a href="mailto:oliviat@jacx.com.au">oliviat@jacx.com.au</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Grant Pickford -->
+            <div class="team-card">
+                <div class="team-avatar">GP</div>
+                <div style="margin-top:16px;">
+                    <div class="team-name">Grant Pickford</div>
+                    <div class="team-title">Director</div>
+                    <p class="team-bio">20+ years of commercial property experience across Australia and New Zealand. Transaction management and advisory across diverse commercial asset classes.</p>
+                    <div class="team-links">
+                        <a href="mailto:grantp@jacx.com.au">grantp@jacx.com.au</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Steve Bennett -->
+            <div class="team-card">
+                <div class="team-avatar">SB</div>
+                <div style="margin-top:16px;">
+                    <div class="team-name">Steve Bennett</div>
+                    <div class="team-title">Director</div>
+                    <p class="team-bio">Specialist across valuations and transaction management. Combines technical valuation rigour with deep transactional experience across commercial and industrial property.</p>
+                    <div class="team-links">
+                        <a href="mailto:steveb@jacx.com.au">steveb@jacx.com.au</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+    <div class="container">
+        <div class="contact-inner">
+            <div>
+                <div class="section-label">Get in Touch</div>
+                <h2 class="section-heading">Speak directly with our advisory team</h2>
+                <p class="section-body">Whether you have an active mandate, an upcoming lease decision, or a complex property question — our principals are accessible and responsive.</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">☎</div>
+                        <div>
+                            <div class="contact-label">Phone</div>
+                            <a href="tel:1300478889" class="contact-value">1300 478 889</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉</div>
+                        <div>
+                            <div class="contact-label">Email</div>
+                            <a href="mailto:info@jacx.com.au" class="contact-value">info@jacx.com.au</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">⚲</div>
+                        <div>
+                            <div class="contact-label">Melbourne Office</div>
+                            <span class="contact-value">Level 16, 41 Exhibition Street</span>
+                            <div class="contact-value-sub">Melbourne VIC 3000</div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">in</div>
+                        <div>
+                            <div class="contact-label">LinkedIn</div>
+                            <a href="https://www.linkedin.com/company/jacx-property/" target="_blank" rel="noopener" class="contact-value">JACX Property</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="contact-map">
+                    <div class="contact-map-label">Melbourne Head Office</div>
+                    <div class="contact-map-address">Level 16, 41 Exhibition Street<br>Melbourne VIC 3000</div>
+                    <a href="https://maps.google.com/?q=41+Exhibition+Street+Melbourne+VIC+3000" target="_blank" rel="noopener" class="map-link">View on Google Maps →</a>
+                </div>
+                <div style="margin-top:20px;">
+                    <a href="https://jacx.com.au/contact/" class="btn-primary" style="display:block;text-align:center;padding:16px 0;">Send an Enquiry via jacx.com.au</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-inner">
+            <a href="https://jacx.com.au" class="footer-logo">JACX<span>.</span>Property</a>
+            <p class="footer-notice">Rebuilt by J&amp;G Operations as a preview. Not yet live on jacx.com.au.</p>
+            <div class="footer-links">
+                <a href="https://jacx.com.au/services/">Services</a>
+                <a href="https://jacx.com.au/about/">About</a>
+                <a href="https://jacx.com.au/contact/">Contact</a>
+                <a href="https://www.linkedin.com/company/jacx-property/" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
 </body>
 </html>

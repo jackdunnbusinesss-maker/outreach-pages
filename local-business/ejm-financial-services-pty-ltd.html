@@ -3,137 +3,937 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejm Financial Services Pty Ltd</title>
+    <title>EJM Advice — Boutique Australian Financial Planning</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
     <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --bg: #0e0e12;
-            --surface: #16161d;
-            --surface-light: #1e1e28;
-            --border: #2a2a36;
-            --accent: #ff751b;
-            --accent-light: #ff751b;
-            --accent-glow: rgba(100, 140, 200, 0.15);
-            --white: #f0eff4;
-            --text: #c5c4ce;
-            --text-muted: #7e7d8a;
+            --bg2: #13131a;
+            --bg3: #1a1a24;
+            --accent: #8a7ec2;
+            --accent-light: #a799d4;
+            --accent-dim: rgba(138, 126, 194, 0.15);
+            --text: #e8e6f0;
+            --text-muted: #9a96b0;
+            --text-dim: #6b6880;
+            --border: rgba(138, 126, 194, 0.18);
+            --white: #ffffff;
+            --container: 1040px;
         }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
         html { scroll-behavior: smooth; }
+
         body {
-            font-family: 'Inter', -apple-system, sans-serif;
             background: var(--bg);
             color: var(--text);
-            line-height: 1.7;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.65;
             -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(14, 14, 18, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .nav-logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--accent-light); }
+
+        .nav-cta {
+            background: var(--accent);
+            color: var(--white) !important;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-weight: 600 !important;
+            transition: background 0.2s !important;
+        }
+
+        .nav-cta:hover { background: var(--accent-light) !important; color: var(--white) !important; }
+
+        /* ── HERO ── */
+        .hero {
+            padding: 96px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 700px;
+            height: 500px;
+            background: radial-gradient(ellipse, rgba(138, 126, 194, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: var(--accent-dim);
+            border: 1px solid var(--border);
+            padding: 5px 14px;
+            border-radius: 100px;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.4rem, 5vw, 3.8rem);
+            font-weight: 700;
+            line-height: 1.18;
+            color: var(--white);
+            letter-spacing: -0.02em;
+            max-width: 780px;
+            margin: 0 auto 20px;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--accent-light);
+        }
+
+        .hero-sub {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 560px;
+            margin: 0 auto 40px;
+            font-weight: 400;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 14px 28px;
+            border-radius: 8px;
+            transition: background 0.2s, transform 0.15s;
+            display: inline-block;
+        }
+
+        .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
+
+        .btn-secondary {
+            color: var(--accent-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 14px 24px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: border-color 0.2s, color 0.2s;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover { border-color: var(--accent); color: var(--white); }
+
+        .hero-meta {
+            margin-top: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 36px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat strong {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .hero-stat span {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .hero-divider {
+            width: 1px;
+            height: 40px;
+            background: var(--border);
+        }
+
+        /* ── SECTION HEADERS ── */
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.7rem, 3vw, 2.4rem);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.25;
+            letter-spacing: -0.015em;
+        }
+
+        .section-sub {
+            color: var(--text-muted);
+            margin-top: 12px;
+            max-width: 560px;
+            font-size: 1rem;
+        }
+
+        section { padding: 80px 0; }
+
+        section + section { border-top: 1px solid var(--border); }
+
+        /* ── LEAD MAGNET ── */
+        .lead-magnet-section { background: var(--bg2); }
+
+        .lead-magnet-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 56px 52px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lead-magnet-card::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(138, 126, 194, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .lm-badge {
+            display: inline-block;
+            background: var(--accent-dim);
+            border: 1px solid var(--border);
+            color: var(--accent-light);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 100px;
+            margin-bottom: 16px;
+        }
+
+        .lead-magnet-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.25;
+            margin-bottom: 16px;
+        }
+
+        .lead-magnet-card p {
+            color: var(--text-muted);
+            margin-bottom: 28px;
+            line-height: 1.7;
+        }
+
+        .lm-visual {
+            background: linear-gradient(135deg, rgba(138, 126, 194, 0.2) 0%, rgba(138, 126, 194, 0.05) 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 40px 32px;
+            text-align: center;
+        }
+
+        .lm-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .lm-visual h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .lm-visual p {
+            font-size: 0.875rem;
+            color: var(--text-dim);
             margin: 0;
         }
-        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
-        a { color: var(--accent); }
-        .cta-btn {
-            display: inline-block;
-            padding: 16px 36px;
-            background: var(--accent);
-            color: #0e0e12;
-            font-weight: 700;
-            font-size: 0.95rem;
-            border-radius: 8px;
-            text-decoration: none;
-            letter-spacing: 0.5px;
-            transition: opacity 0.2s;
+
+        /* ── SERVICES ── */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 48px;
         }
-        .cta-btn:hover { opacity: 0.9; }
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 1.8rem; }
+
+        .service-card {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px 28px;
+            transition: border-color 0.2s, transform 0.15s;
+            text-decoration: none;
+            display: block;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .service-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--accent-dim);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+            font-size: 1.3rem;
+        }
+
+        .service-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 10px;
+            line-height: 1.35;
+        }
+
+        .service-card p {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 16px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+        }
+
+        .service-link:hover { color: var(--accent-light); }
+
+        /* ── TEAM ── */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .team-card {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px 24px;
+        }
+
+        .team-avatar {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, var(--accent) 0%, #6b5fa8 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .team-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+
+        .team-card .role {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .team-card .location {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+
+        .team-card .team-email {
+            display: block;
+            margin-top: 12px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .team-card .team-email:hover { color: var(--accent-light); }
+
+        /* ── CREDIBILITY ── */
+        .cred-section { background: var(--bg2); }
+
+        .cred-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .cred-card {
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px 24px;
+            text-align: center;
+        }
+
+        .cred-card .cred-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-light);
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .cred-card p {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .afsl-note {
+            margin-top: 32px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px 24px;
+            display: inline-block;
+        }
+
+        .afsl-note strong { color: var(--text-muted); }
+
+        .afsl-wrapper { text-align: center; }
+
+        /* ── LOCATIONS ── */
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            margin-top: 48px;
+        }
+
+        .location-card {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 24px 16px;
+            text-align: center;
+        }
+
+        .location-card .loc-city {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--white);
+            margin-bottom: 6px;
+        }
+
+        .location-card .loc-addr {
+            font-size: 0.78rem;
+            color: var(--text-dim);
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .location-card .loc-phone {
+            font-size: 0.82rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .location-card .loc-phone:hover { color: var(--accent-light); }
+
+        /* ── CONTACT ── */
+        .contact-section { background: var(--bg2); }
+
+        .contact-card {
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 56px 52px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 300px;
+            background: radial-gradient(ellipse, rgba(138, 126, 194, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .contact-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+
+        .contact-card p {
+            color: var(--text-muted);
+            max-width: 480px;
+            margin: 0 auto 32px;
+        }
+
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            padding: 32px 0;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+
+        footer a {
+            color: var(--text-dim);
+            text-decoration: none;
+        }
+
+        footer a:hover { color: var(--accent); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .team-grid { grid-template-columns: repeat(2, 1fr); }
+            .cred-grid { grid-template-columns: repeat(2, 1fr); }
+            .locations-grid { grid-template-columns: repeat(3, 1fr); }
+            .lead-magnet-card { grid-template-columns: 1fr; padding: 40px 32px; }
+        }
+
+        @media (max-width: 640px) {
+            .nav-links { display: none; }
+            .services-grid { grid-template-columns: 1fr; }
+            .team-grid { grid-template-columns: 1fr; }
+            .cred-grid { grid-template-columns: 1fr; }
+            .locations-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-divider { display: none; }
+            .contact-card { padding: 40px 24px; }
         }
     </style>
 </head>
 <body>
-    <!-- Top Bar -->
-    <div style="padding: 20px 0; border-bottom: 1px solid var(--border);">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-            <img src="https://www.ejmadvice.com.au/wp-content/uploads/2025/12/cropped-Logo-no-background.png" alt="Ejm Financial Services Pty Ltd" style="max-height: 40px; max-width: 180px; object-fit: contain;">
-            
-        </div>
-    </div>
 
-    <!-- Hero -->
-    <section style="padding: 80px 0 48px; text-align: center;">
+    <!-- NAV -->
+    <nav>
         <div class="container">
-            <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600;">Trusted Local Real Estate Experts</p>
-            <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600;">
-                Ejm Financial Services Pty Ltd
-            </h1>
-            <p style="font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto 32px; line-height: 1.8;">
-                Your trusted local partner for our financial advice services, financial planning and wealth creation, superannuation and smsfs.
-            </p>
-            <a href="#contact" class="cta-btn">Get a Free Appraisal</a>
+            <a href="https://www.ejmadvice.com.au/" class="nav-logo">EJM<span>Advice</span></a>
+            <ul class="nav-links">
+                <li><a href="https://www.ejmadvice.com.au/#services">Services</a></li>
+                <li><a href="https://www.ejmadvice.com.au/about">Our Advice Approach</a></li>
+                <li><a href="https://www.ejmadvice.com.au/#7-fatal-mistakes">The 7 Fatal Mistakes</a></li>
+                <li><a href="https://www.ejmadvice.com.au/our-team">About</a></li>
+                <li><a href="https://www.ejmadvice.com.au/contact" class="nav-cta">Book a Call</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <div class="eyebrow">Boutique Australian Financial Planning Firm</div>
+            <h1>Creating <em>happiness</em>, one financial<br>decision at a time.</h1>
+            <p class="hero-sub">EJM Advice delivers practical, transparent financial advice to individuals, families, and businesses — built on trust, not volume. Serving clients across Melbourne, Geelong, Albury, Wangaratta, and Bendigo since 2011.</p>
+            <div class="hero-actions">
+                <a href="https://www.ejmadvice.com.au/contact" class="btn-primary">Book Your Free Call</a>
+                <a href="#7-fatal-mistakes" class="btn-secondary">Download: 7 Fatal Mistakes Guide</a>
+            </div>
+            <div class="hero-meta">
+                <div class="hero-stat">
+                    <strong>2011</strong>
+                    <span>Est. in Wangaratta</span>
+                </div>
+                <div class="hero-divider"></div>
+                <div class="hero-stat">
+                    <strong>5</strong>
+                    <span>Office Locations</span>
+                </div>
+                <div class="hero-divider"></div>
+                <div class="hero-stat">
+                    <strong>9</strong>
+                    <span>Specialist Advisers</span>
+                </div>
+                <div class="hero-divider"></div>
+                <div class="hero-stat">
+                    <strong>AFSL</strong>
+                    <span>232706</span>
+                </div>
+            </div>
         </div>
     </section>
 
-    
-        <section style="padding: 64px 0;">
-            <div class="container">
-                <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; text-align: center; font-weight: 600;">What We Do</p>
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); text-align: center; margin-bottom: 48px;">Our Services</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-                    
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Our Financial Advice Services</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Financial planning and wealth creation</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Superannuation and SMSFs</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Retirement planning & income strategies</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Personal insurances</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Aged care advice & funding decisions</h3>
-                </div>
-                </div>
-            </div>
-        </section>
-
-    
-        <section style="padding: 64px 0; border-top: 1px solid var(--border);">
-            <div class="container">
-                <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; font-weight: 600;">About Us</p>
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 20px;">Ejm Financial Services Pty Ltd</h2>
-                <p style="color: var(--text); line-height: 1.8; max-width: 600px;">We’ll help you make smart choices in super, retirement, wealth, insurance, and aged care, so life feels lighter and aligned with your goals.</p>
-            </div>
-        </section>
-
-    <!-- Contact -->
-    <section style="padding: 64px 0; border-top: 1px solid var(--border);">
+    <!-- LEAD MAGNET -->
+    <section id="7-fatal-mistakes" class="lead-magnet-section">
         <div class="container">
-            <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; font-weight: 600;">Contact</p>
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 24px;">Get in Touch</h2>
-            <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px;">
+            <div class="lead-magnet-card">
                 <div>
-                    <p style="margin-bottom: 12px;"><strong style="color: var(--white);">Email:</strong> <a href="mailto:jac.holmes@findex.com.au" style="color: var(--accent); text-decoration: none;">jac.holmes@findex.com.au</a></p>
+                    <div class="lm-badge">Free Resource</div>
+                    <h3>The 7 Fatal Financial Planning Mistakes</h3>
+                    <p>Written specifically for Australian baby boomers who are approaching or already in retirement — this free guide reveals the seven planning errors that can quietly erode your wealth, your super, and your income security. Straight talk, no jargon.</p>
+                    <a href="https://www.ejmadvice.com.au/" class="btn-primary">Download the Free Guide</a>
                 </div>
-                <div style="margin-top: 24px;">
-                    <a href="#contact" class="cta-btn">Get a Free Appraisal</a>
+                <div class="lm-visual">
+                    <span class="lm-icon">📋</span>
+                    <h4>7 Fatal Financial Planning Mistakes</h4>
+                    <p>A free guide for Australian baby boomers — retirement, super, income strategies, and the traps most advisers won't warn you about.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer style="padding: 32px 0; border-top: 1px solid var(--border); text-align: center;">
+    <!-- SERVICES -->
+    <section id="services">
         <div class="container">
-            <p style="font-size: 0.8rem; color: var(--text-muted);">
-                Rebuilt by J&amp;G Operations as a preview. Not yet live on ejm.com.au.
-            </p>
+            <div class="section-label">What We Do</div>
+            <h2 class="section-title">Advice that covers every<br>stage of your financial life</h2>
+            <p class="section-sub">From building wealth in your forties to navigating aged care decisions for a parent — EJM Advice brings specialist knowledge to every conversation.</p>
+
+            <div class="services-grid">
+
+                <a href="https://www.ejmadvice.com.au/" class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3>Financial Planning &amp; Wealth Creation</h3>
+                    <p>Structured strategies to build and protect your wealth over time — investment selection, portfolio construction, and long-term planning that accounts for your life, not just your assets.</p>
+                    <span class="service-link">Learn more →</span>
+                </a>
+
+                <a href="https://www.ejmadvice.com.au/" class="service-card">
+                    <div class="service-icon">🏦</div>
+                    <h3>Superannuation &amp; SMSFs</h3>
+                    <p>Superannuation strategy, contribution optimisation, and Self-Managed Super Fund (SMSF) setup and ongoing management — ensuring your super works harder for the retirement you want.</p>
+                    <span class="service-link">Learn more →</span>
+                </a>
+
+                <a href="https://www.ejmadvice.com.au/" class="service-card">
+                    <div class="service-icon">🌅</div>
+                    <h3>Retirement Planning &amp; Income Strategies</h3>
+                    <p>Retirement is not a single event — it's a 20-to-30-year financial phase. We build income strategies that sustain your lifestyle, manage sequence-of-returns risk, and keep your options open.</p>
+                    <span class="service-link">Learn more →</span>
+                </a>
+
+                <a href="https://www.ejmadvice.com.au/" class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Personal Insurances</h3>
+                    <p>Life, TPD, income protection, and trauma cover — reviewed against your actual circumstances and structured to deliver real protection without unnecessary cost. Insurance that works when you need it.</p>
+                    <span class="service-link">Learn more →</span>
+                </a>
+
+                <a href="https://www.ejmadvice.com.au/" class="service-card">
+                    <div class="service-icon">🏥</div>
+                    <h3>Aged Care Advice &amp; Funding</h3>
+                    <p>Navigating aged care decisions is complex, emotional, and expensive if you get it wrong. We provide clear advice on residential care costs, the means test, asset structuring, and family decision-making.</p>
+                    <span class="service-link">Learn more →</span>
+                </a>
+
+                <a href="https://www.ejmadvice.com.au/" class="service-card">
+                    <div class="service-icon">💰</div>
+                    <h3>Cash Flow &amp; Budgeting</h3>
+                    <p>Sustainable wealth starts with cash flow. We work through the numbers with you — income, spending, debt, and savings — to build a plan you can actually live on, not just live with.</p>
+                    <span class="service-link">Learn more →</span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section id="about">
+        <div class="container">
+            <div class="section-label">Our Advisers</div>
+            <h2 class="section-title">Real advisers, real relationships</h2>
+            <p class="section-sub">EJM Advice operates across five offices with a team of nine specialist advisers — each based locally, serving clients face-to-face and remotely across regional and metro Victoria, and southern NSW.</p>
+
+            <div class="team-grid">
+
+                <div class="team-card">
+                    <div class="team-avatar">JH</div>
+                    <h3>Jac Holmes</h3>
+                    <div class="role">Adviser</div>
+                    <div class="location">Wangaratta &amp; Albury</div>
+                    <a href="mailto:j.holmes@ejmadvice.com.au" class="team-email">j.holmes@ejmadvice.com.au</a>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-avatar">BC</div>
+                    <h3>Brendan Cairns</h3>
+                    <div class="role">Adviser &amp; Head of Advice</div>
+                    <div class="location">Wangaratta &amp; Albury</div>
+                    <a href="mailto:b.cairns@ejmadvice.com.au" class="team-email">b.cairns@ejmadvice.com.au</a>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-avatar">LS</div>
+                    <h3>Leon Staropoli</h3>
+                    <div class="role">Adviser</div>
+                    <div class="location">West Melbourne</div>
+                    <a href="mailto:l.staropoli@ejmadvice.com.au" class="team-email">l.staropoli@ejmadvice.com.au</a>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-avatar">LT</div>
+                    <h3>Lucy Thompson</h3>
+                    <div class="role">Adviser</div>
+                    <div class="location">Wangaratta &amp; Albury</div>
+                    <a href="mailto:l.thompson@ejm.com.au" class="team-email">l.thompson@ejm.com.au</a>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-avatar">CH</div>
+                    <h3>Callum Howard</h3>
+                    <div class="role">Adviser</div>
+                    <div class="location">Geelong</div>
+                    <a href="mailto:c.howard@ejmadvice.com.au" class="team-email">c.howard@ejmadvice.com.au</a>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-avatar">DC</div>
+                    <h3>David Clark</h3>
+                    <div class="role">Adviser</div>
+                    <div class="location">Geelong</div>
+                    <a href="mailto:d.clark@ejmadvice.com.au" class="team-email">d.clark@ejmadvice.com.au</a>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-avatar">EB</div>
+                    <h3>Elli Bagg</h3>
+                    <div class="role">Adviser</div>
+                    <div class="location">Geelong</div>
+                    <a href="mailto:e.bagg@ejmadvice.com.au" class="team-email">e.bagg@ejmadvice.com.au</a>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-avatar">DR</div>
+                    <h3>Diana Rogers</h3>
+                    <div class="role">Adviser</div>
+                    <div class="location">Bendigo</div>
+                    <a href="mailto:d.rogers@ejmadvice.com.au" class="team-email">d.rogers@ejmadvice.com.au</a>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-avatar">DF</div>
+                    <h3>Daniel Fawcett</h3>
+                    <div class="role">Adviser</div>
+                    <div class="location">Bendigo</div>
+                    <a href="mailto:d.fawcett@ejmadvice.com.au" class="team-email">d.fawcett@ejmadvice.com.au</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CREDIBILITY -->
+    <section class="cred-section">
+        <div class="container">
+            <div class="section-label">Why EJM Advice</div>
+            <h2 class="section-title">Built on reputation,<br>not volume</h2>
+            <p class="section-sub">EJM Advice was founded in Wangaratta in 2011 with a deliberate philosophy: grow by doing great work, not by chasing scale. That approach has built a firm with genuine depth across regional and metropolitan Australia.</p>
+
+            <div class="cred-grid">
+                <div class="cred-card">
+                    <span class="cred-num">13+</span>
+                    <p>Years delivering financial advice across Victoria and NSW</p>
+                </div>
+                <div class="cred-card">
+                    <span class="cred-num">5</span>
+                    <p>Offices — Melbourne CBD, Geelong, Albury, Wangaratta, Bendigo</p>
+                </div>
+                <div class="cred-card">
+                    <span class="cred-num">6</span>
+                    <p>Specialist advice areas, from wealth creation to aged care</p>
+                </div>
+            </div>
+
+            <div class="afsl-wrapper">
+                <div class="afsl-note">
+                    <strong>Regulatory:</strong> EJM Advice is an authorised representative of Akumin Pty Limited &nbsp;|&nbsp; AFSL No. 232706 &nbsp;|&nbsp; ABN registered in Australia
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATIONS -->
+    <section id="locations">
+        <div class="container">
+            <div class="section-label">Where We Work</div>
+            <h2 class="section-title">Five offices across<br>Victoria and NSW</h2>
+            <p class="section-sub">Local expertise in each region — walk in for a meeting or connect remotely. EJM advisers are based in the communities they serve.</p>
+
+            <div class="locations-grid">
+                <div class="location-card">
+                    <div class="loc-city">Melbourne</div>
+                    <div class="loc-addr">443 King St West,<br>Melbourne VIC 3003</div>
+                    <a href="tel:0393207600" class="loc-phone">(03) 9320 7600</a>
+                </div>
+                <div class="location-card">
+                    <div class="loc-city">Geelong</div>
+                    <div class="loc-addr">Level 5, 65 Brougham St,<br>Geelong VIC 3220</div>
+                    <a href="tel:0352255900" class="loc-phone">(03) 5225 5900</a>
+                </div>
+                <div class="location-card">
+                    <div class="loc-city">Wangaratta</div>
+                    <div class="loc-addr">7 Ely St,<br>Wangaratta VIC 3677</div>
+                    <a href="tel:0357212020" class="loc-phone">(03) 5721 2020</a>
+                </div>
+                <div class="location-card">
+                    <div class="loc-city">Albury</div>
+                    <div class="loc-addr">1/601 Dean Street,<br>Albury NSW 2640</div>
+                    <a href="tel:0260241944" class="loc-phone">(02) 6024 1944</a>
+                </div>
+                <div class="location-card">
+                    <div class="loc-city">Bendigo</div>
+                    <div class="loc-addr">126 Queen Street,<br>Bendigo VIC 3550</div>
+                    <a href="tel:0354463463" class="loc-phone">(03) 5446 3463</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="contact-card">
+                <div class="section-label">Get Started</div>
+                <h2>Ready to make better financial decisions?</h2>
+                <p>Book a free initial call with an EJM adviser in your region. No obligation, no pressure — just a straight conversation about where you are and where you want to get to.</p>
+                <div class="contact-methods">
+                    <a href="https://www.ejmadvice.com.au/contact" class="btn-primary">Book Your Free Call</a>
+                    <a href="mailto:j.holmes@ejmadvice.com.au" class="btn-secondary">Email Jac Holmes</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>EJM Advice &nbsp;|&nbsp; <a href="https://www.ejmadvice.com.au/">www.ejmadvice.com.au</a> &nbsp;|&nbsp; Authorised Representative of Akumin Pty Limited AFSL 232706</p>
+            <p style="margin-top: 8px;">Rebuilt by J&amp;G Operations as a preview. Not yet live on ejm.com.au.</p>
         </div>
     </footer>
+
 </body>
 </html>

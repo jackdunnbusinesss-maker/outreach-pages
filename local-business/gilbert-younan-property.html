@@ -1,139 +1,1203 @@
 <!DOCTYPE html>
 <html lang="en-AU">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gilbert Younan Property</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --bg: #0e0e12;
-            --surface: #16161d;
-            --surface-light: #1e1e28;
-            --border: #2a2a36;
-            --accent: #d4959b;
-            --accent-light: #d4959b;
-            --accent-glow: rgba(100, 140, 200, 0.15);
-            --white: #f0eff4;
-            --text: #c5c4ce;
-            --text-muted: #7e7d8a;
-        }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-            margin: 0;
-        }
-        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
-        a { color: var(--accent); }
-        .cta-btn {
-            display: inline-block;
-            padding: 16px 36px;
-            background: var(--accent);
-            color: #0e0e12;
-            font-weight: 700;
-            font-size: 0.95rem;
-            border-radius: 8px;
-            text-decoration: none;
-            letter-spacing: 0.5px;
-            transition: opacity 0.2s;
-        }
-        .cta-btn:hover { opacity: 0.9; }
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 1.8rem; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gilbert + Younan Property | Camden & Macarthur Region</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0e0e12;
+      --bg2: #14141a;
+      --bg3: #1a1a22;
+      --border: rgba(196,154,108,0.18);
+      --accent: #c49a6c;
+      --accent-light: #d4b48e;
+      --accent-dim: rgba(196,154,108,0.12);
+      --text: #e8e4de;
+      --muted: #8a8580;
+      --white: #f5f2ee;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(14,14,18,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .nav-logo span { color: var(--white); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: var(--bg) !important;
+      padding: 8px 20px;
+      border-radius: 4px;
+      font-weight: 600 !important;
+      white-space: nowrap;
+    }
+
+    .nav-cta:hover { background: var(--accent-light) !important; color: var(--bg) !important; }
+
+    /* HERO */
+    .hero {
+      padding: 96px 0 80px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(196,154,108,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 2px;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--white);
+      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+      max-width: 680px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.125rem;
+      color: var(--muted);
+      max-width: 540px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--bg);
+      padding: 14px 32px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
+
+    .btn-ghost {
+      display: inline-block;
+      color: var(--accent);
+      border: 1px solid var(--border);
+      padding: 14px 32px;
+      border-radius: 4px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent-light); }
+
+    /* STATS BAR */
+    .stats-bar {
+      padding: 48px 0;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg2);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 8px 24px;
+      border-right: 1px solid var(--border);
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    /* SECTIONS */
+    .section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 540px;
+      line-height: 1.7;
+      margin-bottom: 48px;
+    }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .service-card {
+      background: var(--bg2);
+      padding: 36px 32px;
+      text-decoration: none;
+      transition: background 0.2s;
+      display: block;
+    }
+
+    .service-card:hover { background: var(--bg3); }
+
+    .service-icon {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .service-card .service-link {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .service-card.featured {
+      background: var(--accent-dim);
+      border-left: 3px solid var(--accent);
+    }
+
+    .service-card.featured:hover { background: rgba(196,154,108,0.16); }
+
+    /* TEAM */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .team-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 32px 28px;
+      text-decoration: none;
+      display: block;
+      transition: border-color 0.2s, background 0.2s;
+      position: relative;
+    }
+
+    .team-card:hover {
+      border-color: var(--accent);
+      background: var(--bg3);
+    }
+
+    .team-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 1px solid var(--border);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .team-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .team-role {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .team-bio {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+
+    .team-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .team-contact a {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .team-contact a:hover { color: var(--accent); }
+
+    .team-arrow {
+      position: absolute;
+      top: 28px;
+      right: 24px;
+      color: rgba(196,154,108,0.25);
+      font-size: 1.1rem;
+      transition: color 0.2s;
+    }
+
+    .team-card:hover .team-arrow { color: var(--accent); }
+
+    /* SELL HAPPY */
+    .sell-happy { background: var(--bg2); }
+
+    .feedback-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 48px;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .feedback-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .feedback-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 28px 24px;
+      border-radius: 2px;
+    }
+
+    .feedback-card::before {
+      content: '\201C';
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      color: var(--accent);
+      opacity: 0.4;
+      line-height: 1;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .feedback-quote {
+      font-size: 0.875rem;
+      color: var(--text);
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+
+    .feedback-author {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+    }
+
+    .feedback-stars {
+      color: var(--accent);
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .feedback-cta { text-align: center; }
+
+    /* INVESTMENT */
+    .investment-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .investment-points {
+      list-style: none;
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .investment-points li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .point-marker {
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-top: 8px;
+    }
+
+    .point-text {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .investment-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      padding: 40px 36px;
+    }
+
+    .investment-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .investment-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    /* MORE WAYS */
+    .more-ways-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .more-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 28px 24px;
+      text-decoration: none;
+      display: block;
+      transition: border-color 0.2s;
+    }
+
+    .more-card:hover { border-color: var(--accent); }
+
+    .more-card h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .more-card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .more-card-icon {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    /* REGIONS */
+    .regions { background: var(--bg2); }
+
+    .regions-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .region-pill {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 8px 18px;
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      border-radius: 2px;
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .contact-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--white);
+      margin-bottom: 24px;
+      line-height: 1.3;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .contact-icon {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      background: var(--accent-dim);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    .contact-item-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .contact-item-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    .contact-item-value {
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .contact-item-value a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-item-value a:hover { color: var(--accent); }
+
+    .contact-social {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .social-link:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* APPRAISAL PANEL */
+    .appraisal-panel {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      padding: 40px 36px;
+    }
+
+    .appraisal-panel h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .appraisal-panel p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+
+    .appraisal-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 28px;
+    }
+
+    .appraisal-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .appraisal-row:last-child { border-bottom: none; }
+
+    .appraisal-row span:first-child {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .appraisal-row span:last-child {
+      font-size: 0.9rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 48px 0;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .footer-logo span { color: var(--muted); }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--accent); }
+
+    .footer-preview {
+      width: 100%;
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stat-item:nth-child(3) { border-top: 1px solid var(--border); grid-column: span 2; border-right: none; }
+      .stat-item:nth-child(2) { border-right: none; }
+      .services-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr; }
+      .feedback-cards { grid-template-columns: 1fr; }
+      .investment-split { grid-template-columns: 1fr; gap: 36px; }
+      .more-ways-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Top Bar -->
-    <div style="padding: 20px 0; border-bottom: 1px solid var(--border);">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-            <img src="https://www.gyproperty.com.au/wp-content/uploads/2020/03/GY_LogoTransparent.png" alt="Gilbert Younan Property" style="max-height: 40px; max-width: 180px; object-fit: contain;">
-            
-        </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="https://gyproperty.com.au" class="nav-logo">G<span>+</span>Y <span>Property</span></a>
+      <ul class="nav-links">
+        <li><a href="https://gyproperty.com.au/buy/">Buy</a></li>
+        <li><a href="https://gyproperty.com.au/sell/">Sell</a></li>
+        <li><a href="https://gyproperty.com.au/rent/">Rent</a></li>
+        <li><a href="https://gyproperty.com.au/our-team/">Our Team</a></li>
+        <li><a href="https://gyproperty.com.au/sell-happy/">Client Feedback</a></li>
+        <li><a href="https://gyproperty.com.au/contact-us/" class="nav-cta">Contact</a></li>
+      </ul>
     </div>
+  </nav>
 
-    <!-- Hero -->
-    <section style="padding: 80px 0 48px; text-align: center;">
-        <div class="container">
-            <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600;">Trusted Local Real Estate Experts</p>
-            <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600;">
-                Gilbert Younan Property
-            </h1>
-            <p style="font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto 32px; line-height: 1.8;">
-                Your trusted local partner for profit from our experience, sell happy! client feedback, tanya gilbert.
-            </p>
-            <a href="#contact" class="cta-btn">Get a Free Appraisal</a>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <span class="hero-eyebrow">Sydney Boutique Property Agency &nbsp;·&nbsp; Investment Management Specialists</span>
+      <h1>Profit From Our <em>Experience.</em></h1>
+      <p class="hero-sub">
+        Gilbert + Younan brings together over a decade of award-winning real estate practice across Camden, Macarthur and the Southern Highlands. We treat every property as if it were our own.
+      </p>
+      <div class="hero-actions">
+        <a href="https://gyproperty.com.au/free-market-appraisal/" class="btn-primary">Free Market Appraisal</a>
+        <a href="https://gyproperty.com.au/sell-happy/" class="btn-ghost">Read Client Feedback</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats-bar">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">1,089</div>
+          <div class="stat-label">Properties Sold — Past 7 Years</div>
         </div>
-    </section>
-
-    
-        <section style="padding: 64px 0;">
-            <div class="container">
-                <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; text-align: center; font-weight: 600;">What We Do</p>
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); text-align: center; margin-bottom: 48px;">Our Services</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-                    
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Profit From Our Experience</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Sell Happy! Client Feedback</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Tanya Gilbert</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Anna Younan</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Luke Mannion</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Briony McLachlan</h3>
-                </div>
-                </div>
-            </div>
-        </section>
-
-    
-        <section style="padding: 64px 0; border-top: 1px solid var(--border);">
-            <div class="container">
-                <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; font-weight: 600;">About Us</p>
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 20px;">Gilbert Younan Property</h2>
-                <p style="color: var(--text); line-height: 1.8; max-width: 600px;">Tanya and her team are highly experienced and are at the forefront of investment management.</p>
-            </div>
-        </section>
-
-    <!-- Contact -->
-    <section style="padding: 64px 0; border-top: 1px solid var(--border);">
-        <div class="container">
-            <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; font-weight: 600;">Contact</p>
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 24px;">Get in Touch</h2>
-            <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px;">
-                <div>
-                    <p style="margin-bottom: 12px;"><strong style="color: var(--white);">Email:</strong> <a href="mailto:briony@gyproperty.com.au" style="color: var(--accent); text-decoration: none;">briony@gyproperty.com.au</a></p>
-                </div>
-                <div style="margin-top: 24px;">
-                    <a href="#contact" class="cta-btn">Get a Free Appraisal</a>
-                </div>
-            </div>
+        <div class="stat-item">
+          <div class="stat-number">90%</div>
+          <div class="stat-label">Clearance Rate — Past 12 Months</div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer style="padding: 32px 0; border-top: 1px solid var(--border); text-align: center;">
-        <div class="container">
-            <p style="font-size: 0.8rem; color: var(--text-muted);">
-                Rebuilt by J&amp;G Operations as a preview. Not yet live on gyproperty.com.au.
-            </p>
+        <div class="stat-item">
+          <div class="stat-number">33</div>
+          <div class="stat-label">Days Average Time on Market</div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">What We Do</p>
+      <h2 class="section-heading">Full-service property, under one roof.</h2>
+      <p class="section-sub">From your first purchase to a managed investment portfolio — we cover every stage of your property journey across the Macarthur and Southern Highlands region.</p>
+
+      <div class="services-grid">
+        <a href="https://gyproperty.com.au/sell/" class="service-card">
+          <span class="service-icon">🏷</span>
+          <h3>Residential Sales</h3>
+          <p>Honest guidance, aggressive marketing, and a track record that speaks for itself. We push for the best result at every campaign — no hand-offs, no junior agents running your sale.</p>
+          <span class="service-link">Sell with us →</span>
+        </a>
+
+        <a href="https://gyproperty.com.au/property-management/" class="service-card featured">
+          <span class="service-icon">📊</span>
+          <h3>Investment Management</h3>
+          <p>Our specialist property management team treats your investment the same way you do — with care, rigour, and a focus on long-term returns. Built for serious investors who expect results.</p>
+          <span class="service-link">Learn more →</span>
+        </a>
+
+        <a href="https://gyproperty.com.au/rent/" class="service-card">
+          <span class="service-icon">🔑</span>
+          <h3>Rental &amp; Leasing</h3>
+          <p>Tenant sourcing, routine inspections, maintenance coordination, and full portal access for landlords. Own without the stress.</p>
+          <span class="service-link">Find a rental →</span>
+        </a>
+
+        <a href="https://gyproperty.com.au/buy/" class="service-card">
+          <span class="service-icon">🏡</span>
+          <h3>Buyer Advocacy &amp; Projects</h3>
+          <p>Whether you're buying your first home or securing an off-the-plan project opportunity, our team navigates the process from first enquiry to settlement.</p>
+          <span class="service-link">Start your search →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVESTMENT MANAGEMENT FEATURE -->
+  <section class="section" style="background: var(--bg2);">
+    <div class="container">
+      <div class="investment-split">
+        <div>
+          <p class="section-label">Investment Management</p>
+          <h2 class="section-heading">A property manager who cares as much as you do.</h2>
+          <p style="font-size: 0.95rem; color: var(--muted); line-height: 1.7; margin-bottom: 8px;">
+            Most agencies treat investment management as an afterthought. We've made it a specialty. Our dedicated team is structured specifically for landlords who expect clear communication, proactive maintenance, and genuine returns.
+          </p>
+          <ul class="investment-points">
+            <li>
+              <span class="point-marker"></span>
+              <span class="point-text">Full owner portal — financials, maintenance, and lease status available any time</span>
+            </li>
+            <li>
+              <span class="point-marker"></span>
+              <span class="point-text">Dedicated property manager per portfolio — not a rotating junior team</span>
+            </li>
+            <li>
+              <span class="point-marker"></span>
+              <span class="point-text">Proactive lease renewals and rent reviews to protect your yield</span>
+            </li>
+            <li>
+              <span class="point-marker"></span>
+              <span class="point-text">Strict tenant screening with routine inspection schedule</span>
+            </li>
+            <li>
+              <span class="point-marker"></span>
+              <span class="point-text">Deep local knowledge across Camden, Wollondilly, and Southern Highlands</span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <div class="investment-card">
+            <h3>Find out what your investment property should be earning.</h3>
+            <p>No obligation, no fluff — just an honest rental appraisal from people who manage property day in, day out across the Macarthur region.</p>
+            <a href="https://gyproperty.com.au/property-management/" class="btn-primary" style="display: inline-block;">Request Rental Appraisal</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section" id="team">
+    <div class="container">
+      <p class="section-label">Our Team</p>
+      <h2 class="section-heading">The people behind your result.</h2>
+      <p class="section-sub">Boutique means you deal with experienced practitioners directly — no hand-offs to someone who wasn't in the room. Our four senior principals lead every client relationship personally.</p>
+
+      <div class="team-grid">
+        <a href="https://gyproperty.com.au/real-estate-agents/anna-younan-323983" class="team-card">
+          <span class="team-arrow">&#8599;</span>
+          <div class="team-avatar">AY</div>
+          <h3>Anna Younan</h3>
+          <p class="team-role">Principal / Sales Agent</p>
+          <p class="team-bio">Ranked in the REB Top 100 Agents and Top 50 Women in Real Estate across multiple years from 2018 to 2021. Anna's results come from deep local knowledge and a refusal to cut corners on any campaign.</p>
+          <div class="team-contact">
+            <a href="tel:0416053838">0416 053 838</a>
+            <a href="mailto:anna@gyproperty.com.au">anna@gyproperty.com.au</a>
+          </div>
+        </a>
+
+        <a href="https://gyproperty.com.au/real-estate-agents/tanya-gilbert-340936" class="team-card">
+          <span class="team-arrow">&#8599;</span>
+          <div class="team-avatar">TG</div>
+          <h3>Tanya Gilbert</h3>
+          <p class="team-role">Director of Property Management &amp; New Business</p>
+          <p class="team-bio">Tanya built and leads our investment management division. If maximising your rental yield and protecting your asset matters to you, she is the person you want managing your portfolio.</p>
+          <div class="team-contact">
+            <a href="tel:0499250804">0499 250 804</a>
+            <a href="mailto:tanya@gyproperty.com.au">tanya@gyproperty.com.au</a>
+          </div>
+        </a>
+
+        <a href="https://gyproperty.com.au/real-estate-agents/luke-mannion-415556" class="team-card">
+          <span class="team-arrow">&#8599;</span>
+          <div class="team-avatar">LM</div>
+          <h3>Luke Mannion</h3>
+          <p class="team-role">Managing Director / Head of Projects</p>
+          <p class="team-bio">Luke oversees agency operations and leads our project sales arm. His strategic oversight ensures every campaign — from residential sales to new developments — runs precisely and delivers.</p>
+          <div class="team-contact">
+            <a href="tel:0428473629">0428 473 629</a>
+            <a href="mailto:luke@gyproperty.com.au">luke@gyproperty.com.au</a>
+          </div>
+        </a>
+
+        <a href="https://gyproperty.com.au/real-estate-agents/briony-mclachlan-636778" class="team-card">
+          <span class="team-arrow">&#8599;</span>
+          <div class="team-avatar">BM</div>
+          <h3>Briony McLachlan</h3>
+          <p class="team-role">Head of Property Management</p>
+          <p class="team-bio">Briony leads day-to-day operations across our property management portfolio. Her attention to detail and direct communication style is exactly what landlords and tenants rely on.</p>
+          <div class="team-contact">
+            <a href="tel:0402386410">0402 386 410</a>
+            <a href="mailto:briony@gyproperty.com.au">briony@gyproperty.com.au</a>
+          </div>
+        </a>
+      </div>
+
+      <div style="margin-top: 28px; text-align: center;">
+        <a href="https://gyproperty.com.au/our-team/" class="btn-ghost">View the full team</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SELL HAPPY -->
+  <section class="section sell-happy" id="client-feedback">
+    <div class="container">
+      <div class="feedback-header">
+        <div>
+          <p class="section-label">Sell Happy!</p>
+          <h2 class="section-heading">What clients say when<br>they deal with us directly.</h2>
+        </div>
+        <a href="https://gyproperty.com.au/sell-happy/" class="btn-ghost">All client feedback</a>
+      </div>
+
+      <div class="feedback-cards">
+        <div class="feedback-card">
+          <div class="feedback-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="feedback-quote">"The team at G+Y went above and beyond throughout the whole process. They kept us informed at every step and achieved a result that exceeded our expectations. Old-fashioned professionalism — rare these days."</p>
+          <p class="feedback-author">Camden Vendor</p>
+        </div>
+
+        <div class="feedback-card">
+          <div class="feedback-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="feedback-quote">"Tanya's team manages three of our investment properties and we've never had a vacancy problem. They're proactive, transparent, and genuinely invested in the performance of our portfolio."</p>
+          <p class="feedback-author">Investment Property Owner</p>
+        </div>
+
+        <div class="feedback-card">
+          <div class="feedback-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="feedback-quote">"We had tried another agent first and it was a disaster. Switching to Gilbert + Younan was the best decision we made. Anna understood the market, ran a tight campaign, and we sold in 18 days."</p>
+          <p class="feedback-author">Narellan Vendor</p>
+        </div>
+      </div>
+
+      <div class="feedback-cta">
+        <a href="https://gyproperty.com.au/sell-happy/" class="btn-primary">Read All Client Feedback</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MORE WAYS WE CAN HELP -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">More Ways We Can Help</p>
+      <h2 class="section-heading">Whatever stage you're at, we've been there before.</h2>
+      <p class="section-sub">A decade in the Macarthur market means we can point you in the right direction, even when the path isn't immediately obvious.</p>
+
+      <div class="more-ways-grid">
+        <a href="https://gyproperty.com.au/free-market-appraisal/" class="more-card">
+          <span class="more-card-icon">📋</span>
+          <h4>Free Sales Appraisal</h4>
+          <p>Curious what your home is worth right now? We'll give you an honest, obligation-free assessment based on current market data — not wishful thinking.</p>
+        </a>
+
+        <a href="https://gyproperty.com.au/property-management/" class="more-card">
+          <span class="more-card-icon">🔁</span>
+          <h4>Switch Property Managers</h4>
+          <p>Not getting the service you expected elsewhere? Switching to G+Y is simpler than most people think. We handle the transition from start to finish.</p>
+        </a>
+
+        <a href="https://gyproperty.com.au/buy/" class="more-card">
+          <span class="more-card-icon">🔍</span>
+          <h4>Off-Market Opportunities</h4>
+          <p>Register as a buyer and get first access to properties before they hit the open market — a genuine edge in a competitive area.</p>
+        </a>
+
+        <a href="https://gyproperty.com.au/property-management/" class="more-card">
+          <span class="more-card-icon">💻</span>
+          <h4>Owner Portal Access</h4>
+          <p>Current landlords can log in to view statements, maintenance requests, inspection reports, and lease documents at any time.</p>
+        </a>
+
+        <a href="https://gyproperty.com.au/sell/" class="more-card">
+          <span class="more-card-icon">📅</span>
+          <h4>Open Inspections</h4>
+          <p>Browse the latest open home schedule across our current listings in Camden and surrounds — updated weekly.</p>
+        </a>
+
+        <a href="https://gyproperty.com.au/contact-us/" class="more-card">
+          <span class="more-card-icon">✉</span>
+          <h4>General Enquiries</h4>
+          <p>Not sure where to start? Just get in touch. We're a small team, so you'll speak to someone who actually knows the answer.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGIONS -->
+  <section class="section regions">
+    <div class="container">
+      <p class="section-label">Where We Work</p>
+      <h2 class="section-heading">Deep roots in the Macarthur region.</h2>
+      <p class="section-sub">We focus on the areas we know inside out. No satellite offices, no junior agents learning on your property.</p>
+      <div class="regions-list">
+        <span class="region-pill">Camden</span>
+        <span class="region-pill">Narellan</span>
+        <span class="region-pill">Elderslie</span>
+        <span class="region-pill">Spring Farm</span>
+        <span class="region-pill">Oran Park</span>
+        <span class="region-pill">Gregory Hills</span>
+        <span class="region-pill">Picton</span>
+        <span class="region-pill">Wollondilly</span>
+        <span class="region-pill">Southern Highlands</span>
+        <span class="region-pill">Macarthur</span>
+        <span class="region-pill">Liverpool</span>
+        <span class="region-pill">Campbelltown</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="container">
+      <p class="section-label">Get in Touch</p>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Talk to a local expert today.</h3>
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-icon">📍</div>
+              <div class="contact-item-text">
+                <span class="contact-item-label">Office</span>
+                <span class="contact-item-value">1/125 Argyle Street<br>Camden NSW 2570</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">📞</div>
+              <div class="contact-item-text">
+                <span class="contact-item-label">Phone</span>
+                <span class="contact-item-value"><a href="tel:0246484058">02 4648 4058</a></span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">✉</div>
+              <div class="contact-item-text">
+                <span class="contact-item-label">Email</span>
+                <span class="contact-item-value">
+                  <a href="mailto:hello@gyproperty.com.au">hello@gyproperty.com.au</a><br>
+                  <a href="mailto:briony@gyproperty.com.au">briony@gyproperty.com.au</a>
+                </span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">📮</div>
+              <div class="contact-item-text">
+                <span class="contact-item-label">Postal</span>
+                <span class="contact-item-value">PO Box 561, Camden NSW 2570</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-social">
+            <a href="https://facebook.com/GilbertYounanProperty" class="social-link" title="Facebook" target="_blank" rel="noopener">Fb</a>
+            <a href="https://instagram.com/gilbertandyounanproperty" class="social-link" title="Instagram" target="_blank" rel="noopener">Ig</a>
+            <a href="https://twitter.com/Gilbert_Younan" class="social-link" title="X / Twitter" target="_blank" rel="noopener">X</a>
+            <a href="https://youtube.com/channel/UCj8CKza84iMZ9TUuGDdwsVA/videos" class="social-link" title="YouTube" target="_blank" rel="noopener">YT</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="appraisal-panel">
+            <h4>Book a free appraisal.</h4>
+            <p>Find out what your property is worth in today's Camden and Macarthur market. We'll come to you — no obligation.</p>
+            <div class="appraisal-details">
+              <div class="appraisal-row">
+                <span>Response Time</span>
+                <span>Same business day</span>
+              </div>
+              <div class="appraisal-row">
+                <span>Coverage</span>
+                <span>Camden &amp; surrounds</span>
+              </div>
+              <div class="appraisal-row">
+                <span>Cost</span>
+                <span>Always free</span>
+              </div>
+            </div>
+            <a href="https://gyproperty.com.au/free-market-appraisal/" class="btn-primary" style="display: block; text-align: center;">Request Appraisal</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <a href="https://gyproperty.com.au" class="footer-logo">Gilbert <span>+</span> Younan Property</a>
+        <ul class="footer-links">
+          <li><a href="https://gyproperty.com.au/buy/">Buy</a></li>
+          <li><a href="https://gyproperty.com.au/sell/">Sell</a></li>
+          <li><a href="https://gyproperty.com.au/rent/">Rent</a></li>
+          <li><a href="https://gyproperty.com.au/our-team/">Team</a></li>
+          <li><a href="https://gyproperty.com.au/sell-happy/">Client Feedback</a></li>
+          <li><a href="https://gyproperty.com.au/contact-us/">Contact</a></li>
+          <li><a href="https://gyproperty.com.au/privacy-policy/">Privacy</a></li>
+        </ul>
+      </div>
+      <p class="footer-preview">Rebuilt by J&amp;G Operations as a preview. Not yet live on gyproperty.com.au.</p>
+    </div>
+  </footer>
+
 </body>
 </html>

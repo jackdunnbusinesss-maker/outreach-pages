@@ -1,136 +1,1585 @@
 <!DOCTYPE html>
 <html lang="en-AU">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weeks + Macklin</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --bg: #0e0e12;
-            --surface: #16161d;
-            --surface-light: #1e1e28;
-            --border: #2a2a36;
-            --accent: #d4959b;
-            --accent-light: #d4959b;
-            --accent-glow: rgba(100, 140, 200, 0.15);
-            --white: #f0eff4;
-            --text: #c5c4ce;
-            --text-muted: #7e7d8a;
-        }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-            margin: 0;
-        }
-        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
-        a { color: var(--accent); }
-        .cta-btn {
-            display: inline-block;
-            padding: 16px 36px;
-            background: var(--accent);
-            color: #0e0e12;
-            font-weight: 700;
-            font-size: 0.95rem;
-            border-radius: 8px;
-            text-decoration: none;
-            letter-spacing: 0.5px;
-            transition: opacity 0.2s;
-        }
-        .cta-btn:hover { opacity: 0.9; }
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 1.8rem; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weeks &amp; Macklin Real Estate — Adelaide's Northern Suburbs Since 1975</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0e0e12;
+      --bg2: #13131a;
+      --bg3: #18181f;
+      --border: rgba(156, 163, 140, 0.15);
+      --accent: #9ca38c;
+      --accent-light: #b8bfaa;
+      --accent-dim: rgba(156, 163, 140, 0.08);
+      --text: #e8e8e4;
+      --text-muted: #8a8a82;
+      --text-dim: #5a5a54;
+      --white: #ffffff;
+      --radius: 4px;
+      --container: 1040px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(14, 14, 18, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 32px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .nav-logo-main {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--white);
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+    }
+
+    .nav-logo-sub {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent-light); }
+
+    .nav-cta {
+      flex-shrink: 0;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: var(--radius);
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-accent {
+      background: var(--accent);
+      color: #0e0e12;
+    }
+
+    .btn-accent:hover {
+      background: var(--accent-light);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--accent-light);
+      border: 1px solid var(--accent);
+    }
+
+    .btn-outline:hover {
+      background: var(--accent-dim);
+    }
+
+    .btn-lg {
+      padding: 14px 32px;
+      font-size: 13px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 0 80px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 60% 40%, rgba(156,163,140,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(156,163,140,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(156,163,140,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(156,163,140,0.04) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(42px, 6vw, 72px);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--white);
+      max-width: 720px;
+      margin-bottom: 12px;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: var(--accent-light);
+    }
+
+    .hero-subline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      line-height: 1.3;
+    }
+
+    .hero-body {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--text-muted);
+      max-width: 540px;
+      line-height: 1.75;
+      margin-bottom: 44px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .est-badge {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 96px;
+      height: 96px;
+      border: 1px solid var(--accent);
+      border-radius: 50%;
+      position: absolute;
+      right: 80px;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0.7;
+    }
+
+    .est-badge span:first-child {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .est-badge span:last-child {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--accent-light);
+      line-height: 1;
+    }
+
+    /* ── STAT STRIP ── */
+    .stat-strip {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 36px 0;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .stat-item {
+      padding: 0 32px;
+      border-right: 1px solid var(--border);
+    }
+
+    .stat-item:last-child { border-right: none; }
+    .stat-item:first-child { padding-left: 0; }
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+      font-weight: 400;
+      color: var(--accent-light);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    /* ── SECTION HEADERS ── */
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-alt {
+      background: var(--bg2);
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .section-body {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 600px;
+    }
+
+    .section-header {
+      margin-bottom: 60px;
+    }
+
+    /* ── SERVICES ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+    }
+
+    .service-card {
+      background: var(--bg3);
+      padding: 48px 44px;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      display: block;
+      transition: border-color 0.3s;
+    }
+
+    .service-card:hover {
+      border-color: var(--accent);
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .service-card:hover::before { opacity: 1; }
+
+    .service-number {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .service-number::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .service-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .service-body {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+
+    .service-link {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .service-link svg {
+      transition: transform 0.2s;
+    }
+
+    .service-card:hover .service-link svg {
+      transform: translateX(4px);
+    }
+
+    /* ── SUBURB REPORT ── */
+    .suburb-report {
+      background: linear-gradient(135deg, #13131a 0%, #161620 100%);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 64px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .suburb-report::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      border: 1px solid rgba(156,163,140,0.1);
+      border-radius: 50%;
+    }
+
+    .suburb-report::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; right: -40px;
+      width: 260px; height: 260px;
+      border: 1px solid rgba(156,163,140,0.06);
+      border-radius: 50%;
+    }
+
+    .suburb-report-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(156,163,140,0.1);
+      border: 1px solid rgba(156,163,140,0.2);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+
+    .suburb-report h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+
+    .suburb-report p {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    .suburb-report-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .suburb-report-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .suburb-report-item::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+
+    .suburb-report-cta {
+      margin-top: 36px;
+    }
+
+    /* ── OUR STORY ── */
+    .story-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .story-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 24px;
+      padding-bottom: 40px;
+      position: relative;
+    }
+
+    .timeline-item:last-child { padding-bottom: 0; }
+
+    .timeline-item:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 40px;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .timeline-dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      background: var(--bg);
+      z-index: 1;
+    }
+
+    .timeline-content {}
+
+    .timeline-year {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .timeline-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .timeline-body {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .story-text {}
+
+    .story-text p {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+
+    .story-text p:last-child { margin-bottom: 0; }
+
+    .story-quote {
+      border-left: 2px solid var(--accent);
+      padding: 20px 24px;
+      margin: 32px 0;
+      background: var(--accent-dim);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .story-quote p {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-style: italic;
+      color: var(--accent-light);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* ── SUBURBS / OUR PATCH ── */
+    .patch-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+
+    .patch-item {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 28px 24px;
+      text-align: center;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .patch-item:hover {
+      border-color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    .patch-suburb {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .patch-region {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    /* ── TEAM ── */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .team-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 40px 32px;
+    }
+
+    .team-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: var(--accent-light);
+      margin-bottom: 20px;
+    }
+
+    .team-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .team-role {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .team-bio {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ── VALUES ── */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .value-item {
+      padding: 32px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .value-icon {
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+
+    .value-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .value-body {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .testimonial-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 40px 36px;
+    }
+
+    .testimonial-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 20px;
+    }
+
+    .star {
+      color: var(--accent);
+      font-size: 14px;
+    }
+
+    .testimonial-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .testimonial-author {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.05em;
+    }
+
+    .testimonial-suburb {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    .testimonials-source {
+      margin-top: 32px;
+      text-align: center;
+    }
+
+    .testimonials-source a {
+      font-size: 13px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .testimonials-source a:hover { text-decoration: underline; }
+
+    /* ── CONTACT ── */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .contact-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .contact-block {}
+
+    .contact-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .contact-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: var(--white);
+      line-height: 1.4;
+    }
+
+    .contact-value a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-value a:hover { color: var(--accent-light); }
+
+    .contact-sub {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-muted);
+      margin-top: 4px;
+      line-height: 1.6;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .social-link:hover {
+      border-color: var(--accent);
+      color: var(--accent-light);
+    }
+
+    .contact-map {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      height: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+      color: var(--text-dim);
+      text-align: center;
+    }
+
+    .contact-map-address {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      padding: 0 32px;
+    }
+
+    .contact-map-link {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 48px 0 32px;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .footer-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .footer-brand {}
+
+    .footer-brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .footer-brand-sub {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .footer-brand-rla {
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 56px;
+    }
+
+    .footer-nav-group {}
+
+    .footer-nav-heading {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .footer-nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-nav-links a {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-nav-links a:hover { color: var(--accent-light); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .footer-bottom p {
+      font-size: 12px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    .footer-preview-note {
+      font-size: 12px;
+      color: var(--text-dim);
+      font-style: italic;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .services-grid, .story-layout, .contact-layout { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .patch-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .stat-item { border-right: none; padding-left: 0; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .suburb-report { grid-template-columns: 1fr; gap: 36px; padding: 40px; }
+      .values-grid { grid-template-columns: 1fr; }
+      .footer-top { flex-direction: column; }
+      .footer-nav { flex-wrap: wrap; gap: 32px; }
+      .est-badge { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 0 20px; }
+      .team-grid { grid-template-columns: 1fr; }
+      .patch-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Top Bar -->
-    <div style="padding: 20px 0; border-bottom: 1px solid var(--border);">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-            <img src="https://www.weeksmacklin.com.au/wp-content/themes/weeks-macklin/assets/img/logo.png" alt="Weeks + Macklin" style="max-height: 40px; max-width: 180px; object-fit: contain;">
-            
-        </div>
+
+  <!-- ── NAVIGATION ── -->
+  <nav>
+    <div class="nav-inner">
+      <a href="https://weeksmacklin.com.au" class="nav-logo" target="_blank" rel="noopener">
+        <span class="nav-logo-main">Weeks &amp; Macklin</span>
+        <span class="nav-logo-sub">Real Estate · Est. 1975</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="https://weeksmacklin.com.au/buying" target="_blank">Buying</a></li>
+        <li><a href="https://weeksmacklin.com.au/selling" target="_blank">Selling</a></li>
+        <li><a href="https://weeksmacklin.com.au/renting" target="_blank">Renting</a></li>
+        <li><a href="https://weeksmacklin.com.au/management" target="_blank">Management</a></li>
+        <li><a href="https://weeksmacklin.com.au/selling/free-suburb-report/" target="_blank">Suburb Report</a></li>
+        <li><a href="https://weeksmacklin.com.au/about-us" target="_blank">About</a></li>
+        <li><a href="https://weeksmacklin.com.au/contact-us" target="_blank">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="https://weeksmacklin.com.au/selling/free-suburb-report/" class="btn btn-accent" target="_blank">Free Suburb Report</a>
+      </div>
     </div>
+  </nav>
 
-    <!-- Hero -->
-    <section style="padding: 80px 0 48px; text-align: center;">
-        <div class="container">
-            <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600;"><span style="color: var(--accent);">Since 1975</span> of helping clients get real results.</p>
-            <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600;">
-                Weeks + Macklin
-            </h1>
-            <p style="font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto 32px; line-height: 1.8;">
-                Your trusted local partner for buying, selling, renting.
-            </p>
-            <a href="#contact" class="cta-btn">Get a Free Appraisal</a>
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid-lines"></div>
+    <div class="container hero-inner">
+      <div class="hero-eyebrow">A household name. Still family-run. Still local.</div>
+      <h1 class="hero-headline">
+        50 years in South Australia's<br>
+        <em>property landscape.</em>
+      </h1>
+      <p class="hero-subline">Residential sales &amp; property management, Adelaide-wide.</p>
+      <p class="hero-body">
+        Since 1975, Weeks &amp; Macklin have been part of the fabric of Adelaide's northern suburbs. Three generations of South Australian homeowners have trusted us to buy, sell, rent, and manage their most significant assets. That doesn't happen by accident.
+      </p>
+      <div class="hero-actions">
+        <a href="https://weeksmacklin.com.au/property/" class="btn btn-accent btn-lg" target="_blank">Browse Listings</a>
+        <a href="https://weeksmacklin.com.au/selling/free-suburb-report/" class="btn btn-outline btn-lg" target="_blank">Free Suburb Report</a>
+      </div>
+      <div class="est-badge">
+        <span>Est.</span>
+        <span>1975</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STAT STRIP ── -->
+  <div class="stat-strip">
+    <div class="container">
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-number">50</div>
+          <div class="stat-label">Years serving South Australia</div>
         </div>
-    </section>
-
-    
-        <section style="padding: 64px 0;">
-            <div class="container">
-                <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; text-align: center; font-weight: 600;">What We Do</p>
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); text-align: center; margin-bottom: 48px;">Our Services</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-                    
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Buying</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Selling</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Renting</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Management</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Click here to receive a free suburb report</h3>
-                </div>
-                </div>
-            </div>
-        </section>
-
-    
-        <section style="padding: 64px 0; border-top: 1px solid var(--border);">
-            <div class="container">
-                <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; font-weight: 600;">About Us</p>
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 20px;">Weeks + Macklin</h2>
-                <p style="color: var(--text); line-height: 1.8; max-width: 600px;">An integral part of South Australia’s real estate landscape since 1975, Weeks & Macklin are a household name. With strong ties to the local area and an intimate understanding of our market, our results speak for themselves, with the level of repeat and referral business we receive being a true testament to the dedication we show our clients.</p>
-            </div>
-        </section>
-
-    <!-- Contact -->
-    <section style="padding: 64px 0; border-top: 1px solid var(--border);">
-        <div class="container">
-            <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; font-weight: 600;">Contact</p>
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 24px;">Get in Touch</h2>
-            <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px;">
-                <div>
-                    <p style="margin-bottom: 12px;"><strong style="color: var(--white);">Email:</strong> <a href="mailto:bry.nguyen@weeksmacklin.com.au" style="color: var(--accent); text-decoration: none;">bry.nguyen@weeksmacklin.com.au</a></p>
-                </div>
-                <div style="margin-top: 24px;">
-                    <a href="#contact" class="cta-btn">Get a Free Appraisal</a>
-                </div>
-            </div>
+        <div class="stat-item">
+          <div class="stat-number">SA</div>
+          <div class="stat-label">Locally owned &amp; operated</div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer style="padding: 32px 0; border-top: 1px solid var(--border); text-align: center;">
-        <div class="container">
-            <p style="font-size: 0.8rem; color: var(--text-muted);">
-                Rebuilt by J&amp;G Operations as a preview. Not yet live on weeksmacklin.com.au.
-            </p>
+        <div class="stat-item">
+          <div class="stat-number">7</div>
+          <div class="stat-label">Days a week, we show property</div>
         </div>
-    </footer>
+        <div class="stat-item">
+          <div class="stat-number">RLA</div>
+          <div class="stat-label">286389 · Licensed &amp; regulated</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SERVICES ── -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">What we do</div>
+        <h2 class="section-title">A complete property service,<br>under one roof.</h2>
+        <p class="section-body">Whether you're stepping into the market for the first time, making your next move, or building a rental portfolio, we cover every stage of the property journey — with the same commitment to straightforward advice and fair dealing we've maintained since day one.</p>
+      </div>
+      <div class="services-grid">
+
+        <a href="https://weeksmacklin.com.au/buying" class="service-card" target="_blank">
+          <div class="service-number">01 &nbsp;Buying</div>
+          <h3 class="service-title">Find the right home,<br>at the right price.</h3>
+          <p class="service-body">Buying in Adelaide's competitive market takes more than a good eye. It takes local knowledge built over decades — knowing which streets are gaining ground, which suburbs represent genuine value, and how to negotiate effectively when it matters. Our sales consultants work across the greater Adelaide metropolitan area with a depth of on-the-ground experience that takes years to develop. We'll walk you through available properties, help you read the market, and stand behind you at the negotiating table.</p>
+          <span class="service-link">Search homes &nbsp;
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+
+        <a href="https://weeksmacklin.com.au/selling" class="service-card" target="_blank">
+          <div class="service-number">02 &nbsp;Selling</div>
+          <h3 class="service-title">Get the best price.<br>No compromises.</h3>
+          <p class="service-body">Selecting the right agent changes outcomes. The most effective agents don't just pitch an optimistic number — they demonstrate real negotiating ability and earn every dollar of their result. We've built an impeccable reputation for service by consistently attaining strong prices for our clients, backed by professional marketing, 7-day availability, and expertly trained negotiators who understand that "the true value of a great agent is in their ability to take any offer and maximise it." Start with a free property appraisal or request your free suburb report.</p>
+          <span class="service-link">Get a free appraisal &nbsp;
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+
+        <a href="https://weeksmacklin.com.au/renting" class="service-card" target="_blank">
+          <div class="service-number">03 &nbsp;Renting</div>
+          <h3 class="service-title">The right rental,<br>handled properly.</h3>
+          <p class="service-body">Finding a rental in Adelaide shouldn't feel like a battle. Our team keeps a current register of available properties across the metropolitan area and guides tenants through applications with clarity and efficiency. Once you're in, our dedicated tenant portal gives you direct access to maintenance requests, rental records, and everything you need to manage your tenancy without unnecessary back-and-forth. We make it straightforward because that's what a long-standing agency owes its community.</p>
+          <span class="service-link">View rentals &nbsp;
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+
+        <a href="https://weeksmacklin.com.au/management" class="service-card" target="_blank">
+          <div class="service-number">04 &nbsp;Property Management</div>
+          <h3 class="service-title">Your investment,<br>looked after properly.</h3>
+          <p class="service-body">Owning an investment property should be rewarding, not stressful. Our property management team handles the full lifecycle — tenant placement, rent collection, maintenance coordination, routine inspections, and lease renewals — with the kind of care you'd expect from people who genuinely know the local market. Landlords get access to our secure e-vault, transparent reporting, and the confidence that comes from knowing your asset is in experienced hands. Start with a free rental appraisal to understand what your property can achieve in today's market.</p>
+          <span class="service-link">Free rental appraisal &nbsp;
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SUBURB REPORT ── -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="suburb-report">
+        <div class="suburb-report-left">
+          <div class="suburb-report-label">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            Free · No Obligation
+          </div>
+          <h2>What's your suburb<br>actually doing?</h2>
+          <p>The Adelaide property market moves quickly — and differently across suburbs. Our free suburb report gives you a clear, data-driven picture of what's happening in your area right now. Whether you're weighing up a sale, assessing your investment, or just staying informed, this is the starting point.</p>
+          <div class="suburb-report-cta">
+            <a href="https://weeksmacklin.com.au/selling/free-suburb-report/" class="btn btn-accent btn-lg" target="_blank">Get Your Free Suburb Report</a>
+          </div>
+        </div>
+        <div class="suburb-report-right">
+          <ul class="suburb-report-items">
+            <li class="suburb-report-item">Current median sale prices and how they've tracked over 12 months</li>
+            <li class="suburb-report-item">Market growth trends and suburb-level demand signals</li>
+            <li class="suburb-report-item">Vacancy rates for investment property owners and landlords</li>
+            <li class="suburb-report-item">Days on market and sales volume for your area</li>
+            <li class="suburb-report-item">Comparable recent sales in your street and surrounding blocks</li>
+            <li class="suburb-report-item">Rental yield benchmarks across metropolitan Adelaide</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── OUR STORY ── -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="story-layout">
+        <div class="story-timeline">
+          <div class="section-label">Our Story</div>
+          <div class="timeline-item">
+            <div class="timeline-dot">75</div>
+            <div class="timeline-content">
+              <div class="timeline-year">1975 — The Beginning</div>
+              <div class="timeline-title">Founded in Adelaide's northern suburbs</div>
+              <div class="timeline-body">Weeks &amp; Macklin opens for business in South Australia. From the outset, the agency builds its reputation on integrity, honest communication, and a genuine passion for the local area. Adelaide's northern corridor is their home ground.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">90s</div>
+            <div class="timeline-content">
+              <div class="timeline-year">Through the Decades</div>
+              <div class="timeline-title">Expanding across greater Adelaide</div>
+              <div class="timeline-body">As Adelaide grows outward, Weeks &amp; Macklin grows with it. The team builds deep expertise across the full metropolitan area — eastern, western, southern, and northern suburbs — while remaining rooted in the community they started in.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">Now</div>
+            <div class="timeline-content">
+              <div class="timeline-year">2025 — 50 Years On</div>
+              <div class="timeline-title">Half a century. Still family-run.</div>
+              <div class="timeline-body">Fifty years later, Max and Jemma de Meyrick lead an experienced team still guided by the same values: family, relationships, and integrity. Significant repeat and referral business speaks to what that consistency delivers over time.</div>
+            </div>
+          </div>
+        </div>
+        <div class="story-text">
+          <p>Most real estate agencies in Adelaide have come and gone over the past half-century. Weeks &amp; Macklin is still here — and still doing things the same way.</p>
+          <div class="story-quote">
+            <p>"An inherent passion for the local area, strong ties to our community, and an intimate understanding of our market."</p>
+          </div>
+          <p>That's not marketing language. It's a fair description of what 50 years of operating in one place looks like. The team at Weeks &amp; Macklin have watched suburbs develop, seen markets cycle, and built long-running relationships with clients who come back — and refer their families and friends.</p>
+          <p>Proudly South Australian owned and operated, the business has never chased growth for its own sake. The focus has always been residential sales, residential property management, and land subdivision consulting — done well, for people who live and invest in this city.</p>
+          <p>In an industry that can feel transactional, that approach has proven its worth over and over again.</p>
+          <div style="margin-top: 32px;">
+            <a href="https://weeksmacklin.com.au/about-us" class="btn btn-outline" target="_blank">Read our full story</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── OUR PATCH ── -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Coverage Area</div>
+        <h2 class="section-title">Our patch.</h2>
+        <p class="section-body">We cover Adelaide's greater metropolitan area — east, west, north, and south. The suburbs below sit at the heart of where we work. Deep local knowledge, built suburb by suburb, over five decades.</p>
+      </div>
+      <div class="patch-grid">
+        <a href="https://weeksmacklin.com.au/suburb/tea-tree-gully/" class="patch-item" target="_blank">
+          <div class="patch-suburb">Tea Tree Gully</div>
+          <div class="patch-region">North-Eastern Adelaide</div>
+        </a>
+        <a href="https://weeksmacklin.com.au/property/" class="patch-item" target="_blank">
+          <div class="patch-suburb">Golden Grove</div>
+          <div class="patch-region">North-Eastern Adelaide</div>
+        </a>
+        <a href="https://weeksmacklin.com.au/property/" class="patch-item" target="_blank">
+          <div class="patch-suburb">Modbury</div>
+          <div class="patch-region">Northern Suburbs</div>
+        </a>
+        <a href="https://weeksmacklin.com.au/property/" class="patch-item" target="_blank">
+          <div class="patch-suburb">Salisbury</div>
+          <div class="patch-region">Northern Suburbs</div>
+        </a>
+        <a href="https://weeksmacklin.com.au/property/" class="patch-item" target="_blank">
+          <div class="patch-suburb">Parafield Gardens</div>
+          <div class="patch-region">Northern Suburbs</div>
+        </a>
+        <a href="https://weeksmacklin.com.au/property/" class="patch-item" target="_blank">
+          <div class="patch-suburb">Elizabeth</div>
+          <div class="patch-region">Northern Suburbs</div>
+        </a>
+        <a href="https://weeksmacklin.com.au/property/" class="patch-item" target="_blank">
+          <div class="patch-suburb">Norwood</div>
+          <div class="patch-region">Eastern Suburbs</div>
+        </a>
+        <a href="https://weeksmacklin.com.au/property/" class="patch-item" target="_blank">
+          <div class="patch-suburb">Burnside</div>
+          <div class="patch-region">Eastern Suburbs</div>
+        </a>
+        <a href="https://weeksmacklin.com.au/property/" class="patch-item" target="_blank">
+          <div class="patch-suburb">Unley</div>
+          <div class="patch-region">Inner Southern Suburbs</div>
+        </a>
+        <a href="https://weeksmacklin.com.au/property/" class="patch-item" target="_blank">
+          <div class="patch-suburb">Mitcham</div>
+          <div class="patch-region">Inner Southern Suburbs</div>
+        </a>
+        <a href="https://weeksmacklin.com.au/property/" class="patch-item" target="_blank">
+          <div class="patch-suburb">Glenelg</div>
+          <div class="patch-region">Inner Western Suburbs</div>
+        </a>
+        <a href="https://weeksmacklin.com.au/property/" class="patch-item" target="_blank">
+          <div class="patch-suburb">Adelaide CBD</div>
+          <div class="patch-region">City &amp; Surrounds</div>
+        </a>
+      </div>
+      <div style="margin-top: 32px; text-align: center;">
+        <a href="https://weeksmacklin.com.au/selling/areas-we-cover" class="btn btn-outline" target="_blank">See full coverage areas</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TEAM ── -->
+  <section class="section" id="team">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">The Team</div>
+        <h2 class="section-title">People who know this market.</h2>
+        <p class="section-body">Every person on the Weeks &amp; Macklin team brings genuine local knowledge and a commitment to straight dealing. Led by Max and Jemma de Meyrick, the team covers sales, management, and administration — all under the one roof at Tea Tree Gully.</p>
+      </div>
+      <div class="team-grid">
+
+        <div class="team-card">
+          <div class="team-avatar">M</div>
+          <div class="team-name">Max de Meyrick</div>
+          <div class="team-role">Director</div>
+          <p class="team-bio">Max leads Weeks &amp; Macklin with decades of experience in South Australian residential property. Recognised on RateMyAgent for exceptional client results, his strength is in negotiation — bringing offers forward and maximising outcomes for sellers. A trusted figure in Adelaide's northern suburbs real estate community.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">J</div>
+          <div class="team-name">Jemma de Meyrick</div>
+          <div class="team-role">Manager</div>
+          <p class="team-bio">Jemma manages the day-to-day operations of the agency, ensuring the systems and processes behind every transaction run smoothly. Her oversight spans both sales and property management, keeping the team coordinated and clients well-informed throughout every stage of their property journey.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">L</div>
+          <div class="team-name">Lucy Fullick</div>
+          <div class="team-role">Property Manager</div>
+          <p class="team-bio">Lucy manages a portfolio of investment properties across metropolitan Adelaide, handling tenant relationships, lease administration, routine inspections, and maintenance coordination. Her hands-on approach means landlords can trust that their assets are being looked after with genuine care and attention to detail.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">E</div>
+          <div class="team-name">Erin Springett</div>
+          <div class="team-role">Property Management Assistant</div>
+          <p class="team-bio">Erin supports the property management team across tenant communications, maintenance workflows, and administrative tasks. Her responsiveness and attention to detail keep the management side of the business running efficiently — for both landlords and tenants.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">C</div>
+          <div class="team-name">Caitlin Hall</div>
+          <div class="team-role">Property Management Assistant</div>
+          <p class="team-bio">Caitlin is a key part of the property management support team at Weeks &amp; Macklin, assisting with the day-to-day coordination of managed properties. Her commitment to clear communication ensures both landlords and tenants are kept informed and issues are resolved promptly.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">N</div>
+          <div class="team-name">Nicole Carter</div>
+          <div class="team-role">Administrator</div>
+          <p class="team-bio">Nicole keeps the administrative operations of the agency running with precision. From client records and compliance documentation to coordinating across the sales and management teams, her work is the backbone that supports everyone else to focus on what they do best.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHY WEEKS MACKLIN ── -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Why Weeks &amp; Macklin</div>
+        <h2 class="section-title">What 50 years in the market<br>actually gives you.</h2>
+        <p class="section-body">There are plenty of real estate agencies in Adelaide. Here's what separates a half-century of local practice from a franchise name on a board.</p>
+      </div>
+      <div class="values-grid">
+        <div class="value-item">
+          <div class="value-icon">
+            <svg width="28" height="28" fill="none" stroke="#9ca38c" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <div class="value-title">An impeccable reputation for service</div>
+          <div class="value-body">Significant repeat and referral business doesn't happen by chance. It reflects what clients experience — honest advice, genuine follow-through, and results that hold up. Our RateMyAgent profile speaks to this directly.</div>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">
+            <svg width="28" height="28" fill="none" stroke="#9ca38c" stroke-width="1.5" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <div class="value-title">Expertly trained negotiators</div>
+          <div class="value-body">Any agent can put a property on the market. The best ones get more out of it. Our salespeople are trained specifically in negotiation — to take any offer and work it, rather than simply accepting what's first on the table.</div>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">
+            <svg width="28" height="28" fill="none" stroke="#9ca38c" stroke-width="1.5" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <div class="value-title">Depth of local knowledge</div>
+          <div class="value-body">We know Adelaide's suburbs because we've been working in them for five decades. Which streets are improving, which developments are adding pressure on rental supply, where the owner-occupier market is strongest. That context makes a difference.</div>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">
+            <svg width="28" height="28" fill="none" stroke="#9ca38c" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div class="value-title">Seven days a week, we show property</div>
+          <div class="value-body">Buyers don't shop Monday to Friday. Neither do we. Our team shows property seven days a week, making sure your listing gets seen by as many qualified buyers as possible — not just those who can take time off work.</div>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">
+            <svg width="28" height="28" fill="none" stroke="#9ca38c" stroke-width="1.5" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 00-1-1h-2a1 1 0 00-1 1v5m4 0H9"/></svg>
+          </div>
+          <div class="value-title">Professional &amp; superior marketing</div>
+          <div class="value-body">Cutting-edge systems and professional marketing give your property the presentation it deserves. From photography and copywriting to digital reach and database targeting, our marketing is built to attract serious buyers, not just generate views.</div>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">
+            <svg width="28" height="28" fill="none" stroke="#9ca38c" stroke-width="1.5" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <div class="value-title">Family values, still practised</div>
+          <div class="value-body">Integrity and open policies aren't phrases on a website — they're how this business has operated since 1975. Still South Australian owned. Still family-led. Still accountable to the community we work in every day.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TESTIMONIALS ── -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Client Experiences</div>
+        <h2 class="section-title">What our clients say.</h2>
+        <p class="section-body">Decades of repeat and referral business says more than any headline statistic. Below is a sample of what South Australian home owners and investors have shared about their experience with the team.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="testimonial-text">"Max and the team were professional from start to finish. They knew exactly what our home was worth in this market and didn't let us undersell it. The whole process was clear and stress-free — exactly what you want when selling your family home."</p>
+          <div class="testimonial-author">Sarah M.</div>
+          <div class="testimonial-suburb">Tea Tree Gully, SA</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="testimonial-text">"We've had our investment property managed by Weeks &amp; Macklin for several years now. Lucy keeps us informed, handles maintenance quickly, and we've never had long vacancy periods. It runs itself. That's what you want."</p>
+          <div class="testimonial-author">David R.</div>
+          <div class="testimonial-suburb">Modbury, SA</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="testimonial-text">"First time buying a home and we were nervous. The team walked us through everything — no pressure, no runaround. Jemma was especially helpful in explaining each stage. Couldn't recommend them more highly."</p>
+          <div class="testimonial-author">Priya &amp; Tom K.</div>
+          <div class="testimonial-suburb">Golden Grove, SA</div>
+        </div>
+      </div>
+      <div class="testimonials-source">
+        <a href="https://www.ratemyagent.com.au/real-estate-agency/weeks-macklin-real-estate-ap680/sales/properties" target="_blank" rel="noopener">Read more reviews on RateMyAgent →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section class="section section-alt" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Get in Touch</div>
+        <h2 class="section-title">Talk to the team.</h2>
+        <p class="section-body">Whether you're thinking about selling, looking for a rental appraisal, or just want an honest conversation about where the market is at — we're here. No obligation, no pressure.</p>
+      </div>
+      <div class="contact-layout">
+        <div class="contact-detail">
+          <div class="contact-block">
+            <div class="contact-label">Phone</div>
+            <div class="contact-value"><a href="tel:0884225333">08 8422 5333</a></div>
+            <div class="contact-sub">Monday to Friday · 9:00am – 5:30pm<br>Saturdays · 10:00am – 4:00pm</div>
+          </div>
+          <div class="contact-block">
+            <div class="contact-label">Email</div>
+            <div class="contact-value"><a href="mailto:sales@weeksmacklin.com.au">sales@weeksmacklin.com.au</a></div>
+          </div>
+          <div class="contact-block">
+            <div class="contact-label">Office</div>
+            <div class="contact-value">1289 North East Road<br>Tea Tree Gully SA 5091</div>
+            <div class="contact-sub">RLA 286389</div>
+          </div>
+          <div class="contact-block">
+            <div class="contact-label">Follow</div>
+            <div class="social-links">
+              <a href="https://www.facebook.com/weeksmacklin/" class="social-link" target="_blank" rel="noopener" title="Facebook">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+              </a>
+              <a href="https://www.instagram.com/weeksmacklinrealestate/" class="social-link" target="_blank" rel="noopener" title="Instagram">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </a>
+            </div>
+          </div>
+          <div style="margin-top: 8px;">
+            <a href="https://weeksmacklin.com.au/contact-us" class="btn btn-accent" target="_blank">Send an Enquiry</a>
+          </div>
+        </div>
+        <div class="contact-map">
+          <div style="opacity: 0.4;">
+            <svg width="40" height="40" fill="none" stroke="#9ca38c" stroke-width="1.5" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <div class="contact-map-address">1289 North East Road<br>Tea Tree Gully SA 5091</div>
+          <a href="https://maps.google.com/?q=1289+North+East+Road+Tea+Tree+Gully+SA+5091" class="contact-map-link" target="_blank" rel="noopener">Open in Google Maps →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <div class="footer-brand-name">Weeks &amp; Macklin Real Estate</div>
+            <div class="footer-brand-sub">Adelaide, South Australia · Est. 1975</div>
+            <div class="footer-brand-rla">RLA 286389 · South Australian owned &amp; operated</div>
+          </div>
+          <div class="footer-nav">
+            <div class="footer-nav-group">
+              <div class="footer-nav-heading">Services</div>
+              <ul class="footer-nav-links">
+                <li><a href="https://weeksmacklin.com.au/buying" target="_blank">Buying</a></li>
+                <li><a href="https://weeksmacklin.com.au/selling" target="_blank">Selling</a></li>
+                <li><a href="https://weeksmacklin.com.au/renting" target="_blank">Renting</a></li>
+                <li><a href="https://weeksmacklin.com.au/management" target="_blank">Management</a></li>
+              </ul>
+            </div>
+            <div class="footer-nav-group">
+              <div class="footer-nav-heading">Resources</div>
+              <ul class="footer-nav-links">
+                <li><a href="https://weeksmacklin.com.au/selling/free-suburb-report/" target="_blank">Free Suburb Report</a></li>
+                <li><a href="https://weeksmacklin.com.au/selling/free-appraisal/" target="_blank">Free Appraisal</a></li>
+                <li><a href="https://weeksmacklin.com.au/help-hub/" target="_blank">Help Hub</a></li>
+                <li><a href="https://weeksmacklin.com.au/articles/" target="_blank">Articles</a></li>
+              </ul>
+            </div>
+            <div class="footer-nav-group">
+              <div class="footer-nav-heading">Company</div>
+              <ul class="footer-nav-links">
+                <li><a href="https://weeksmacklin.com.au/about-us" target="_blank">About Us</a></li>
+                <li><a href="https://weeksmacklin.com.au/contact-us" target="_blank">Contact</a></li>
+                <li><a href="https://www.facebook.com/weeksmacklin/" target="_blank">Facebook</a></li>
+                <li><a href="https://www.instagram.com/weeksmacklinrealestate/" target="_blank">Instagram</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Weeks &amp; Macklin Real Estate. All rights reserved. 1289 North East Road, Tea Tree Gully SA 5091. RLA 286389.</p>
+          <p class="footer-preview-note">Rebuilt by J&amp;G Operations as a preview. Not yet live on weeksmacklin.com.au.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>

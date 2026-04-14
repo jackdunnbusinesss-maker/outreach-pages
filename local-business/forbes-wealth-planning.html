@@ -1,141 +1,934 @@
 <!DOCTYPE html>
 <html lang="en-AU">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forbes Wealth Planning</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --bg: #0e0e12;
-            --surface: #16161d;
-            --surface-light: #1e1e28;
-            --border: #2a2a36;
-            --accent: #82c341;
-            --accent-light: #82c341;
-            --accent-glow: rgba(100, 140, 200, 0.15);
-            --white: #f0eff4;
-            --text: #c5c4ce;
-            --text-muted: #7e7d8a;
-        }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-            margin: 0;
-        }
-        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
-        a { color: var(--accent); }
-        .cta-btn {
-            display: inline-block;
-            padding: 16px 36px;
-            background: var(--accent);
-            color: #0e0e12;
-            font-weight: 700;
-            font-size: 0.95rem;
-            border-radius: 8px;
-            text-decoration: none;
-            letter-spacing: 0.5px;
-            transition: opacity 0.2s;
-        }
-        .cta-btn:hover { opacity: 0.9; }
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 1.8rem; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forbes Wealth Planning — Adelaide Financial Planners</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0e0e12;
+      --surface: #16161c;
+      --surface-2: #1e1e26;
+      --accent: #7ab8a0;
+      --accent-dim: #5a9882;
+      --accent-muted: rgba(122, 184, 160, 0.12);
+      --text: #e8e8ee;
+      --text-muted: #8888a0;
+      --text-dim: #b0b0c4;
+      --border: rgba(122, 184, 160, 0.18);
+      --radius: 10px;
+      --container: 1040px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: #9dd0bb; }
+
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(14, 14, 18, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      gap: 24px;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--text-dim);
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+      background: var(--accent-muted);
+    }
+
+    .nav-cta {
+      background: var(--accent);
+      color: #0e0e12 !important;
+      font-weight: 600 !important;
+      border-radius: 6px;
+      padding: 7px 14px !important;
+    }
+
+    .nav-cta:hover { background: #9dd0bb !important; color: #0e0e12 !important; }
+
+    /* HERO */
+    .hero {
+      padding: 96px 0 80px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-muted);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 5px 14px;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.18;
+      color: var(--text);
+      max-width: 720px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-dim);
+      max-width: 580px;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0e0e12;
+      font-weight: 700;
+      font-size: 0.92rem;
+      padding: 14px 28px;
+      border-radius: var(--radius);
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: #9dd0bb;
+      color: #0e0e12;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      font-size: 0.92rem;
+      font-weight: 500;
+      padding: 13px 24px;
+      border-radius: var(--radius);
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero-trust {
+      margin-top: 48px;
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .trust-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 0.83rem;
+    }
+
+    .trust-pill .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* SECTION SHARED */
+    section { padding: 80px 0; border-bottom: 1px solid rgba(122, 184, 160, 0.08); }
+
+    .section-label {
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--text-dim);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    /* SERVICES GRID */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 20px;
+      margin-top: 52px;
+    }
+
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px 28px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .service-card:hover {
+      border-color: var(--accent-dim);
+      transform: translateY(-3px);
+    }
+
+    .service-icon {
+      font-size: 1.8rem;
+      margin-bottom: 18px;
+      display: block;
+    }
+
+    .service-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+
+    .service-link {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .service-link::after { content: ' \2192'; }
+
+    /* HOW WE HELP */
+    .help-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 52px;
+      align-items: start;
+    }
+
+    @media (max-width: 680px) {
+      .help-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    .help-steps { display: flex; flex-direction: column; gap: 28px; }
+
+    .help-step {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--accent-muted);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .help-step-content h4 {
+      font-size: 0.97rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 5px;
+    }
+
+    .help-step-content p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .help-aside {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 36px 32px;
+    }
+
+    .help-aside h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .help-aside p {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .fee-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 12px 0;
+      border-top: 1px solid rgba(122, 184, 160, 0.1);
+      font-size: 0.88rem;
+    }
+
+    .fee-row:first-of-type { border-top: none; }
+    .fee-label { color: var(--text-dim); }
+    .fee-val { font-weight: 700; color: var(--accent); }
+
+    /* TEAM */
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 52px;
+    }
+
+    @media (max-width: 600px) {
+      .team-grid { grid-template-columns: 1fr; }
+    }
+
+    .team-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px 28px;
+    }
+
+    .team-initial {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--accent-muted);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      font-size: 1.15rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .team-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .team-role {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .team-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+
+    .team-quals {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .qual-tag {
+      font-size: 0.76rem;
+      font-weight: 500;
+      color: var(--text-dim);
+      background: var(--surface-2);
+      border: 1px solid rgba(122, 184, 160, 0.1);
+      border-radius: 4px;
+      padding: 3px 9px;
+    }
+
+    /* CREDIBILITY BAR */
+    .cred-bar {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 36px 0;
+    }
+
+    .cred-items {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cred-item {
+      text-align: center;
+    }
+
+    .cred-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+
+    .cred-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 52px;
+    }
+
+    @media (max-width: 680px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    .contact-details { display: flex; flex-direction: column; gap: 20px; }
+
+    .contact-row {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .contact-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      background: var(--accent-muted);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-info strong {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .contact-info a, .contact-info span {
+      font-size: 0.95rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .contact-info a:hover { color: var(--accent); }
+
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 36px 32px;
+    }
+
+    .contact-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .contact-card p {
+      font-size: 0.92rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.87rem;
+      padding: 8px 0;
+      border-top: 1px solid rgba(122, 184, 160, 0.1);
+    }
+
+    .hours-row:first-of-type { border-top: none; }
+    .hours-row span:first-child { color: var(--text-dim); }
+    .hours-row span:last-child { color: var(--text); font-weight: 500; }
+
+    /* FOOTER */
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-left {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .footer-left strong {
+      display: block;
+      color: var(--text-dim);
+      margin-bottom: 4px;
+    }
+
+    .footer-preview {
+      font-size: 0.78rem;
+      color: #555568;
+      border: 1px dashed #2a2a38;
+      border-radius: 6px;
+      padding: 8px 16px;
+      text-align: center;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .services-grid { grid-template-columns: 1fr; }
+      .hero { padding: 64px 0 56px; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Top Bar -->
-    <div style="padding: 20px 0; border-bottom: 1px solid var(--border);">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-            <span style="font-weight: 700; font-size: 1.1rem; color: var(--white);">Forbes Wealth Planning</span>
-            <a href="tel:0883954124" class="cta-btn" style="padding: 10px 24px; font-size: 0.85rem;">08 8395 4124</a>
-        </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container nav-inner">
+      <a href="https://www.forbeswp.com.au" class="nav-logo">Forbes <span>Wealth</span> Planning</a>
+      <ul class="nav-links">
+        <li><a href="https://www.forbeswp.com.au/health-insurance">Health Insurance</a></li>
+        <li><a href="https://www.forbeswp.com.au/wealth-management">Wealth Management</a></li>
+        <li><a href="https://www.forbeswp.com.au/retirement-planning">Retirement</a></li>
+        <li><a href="https://www.forbeswp.com.au/family-protection">Family Protection</a></li>
+        <li><a href="https://www.forbeswp.com.au/financial-coaching">Coaching</a></li>
+        <li><a href="https://www.forbeswp.com.au/about-us">About</a></li>
+        <li><a href="https://www.forbeswp.com.au/initial-consultations" class="nav-cta">Book a Call</a></li>
+      </ul>
     </div>
+  </nav>
 
-    <!-- Hero -->
-    <section style="padding: 80px 0 48px; text-align: center;">
-        <div class="container">
-            <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600;">Trusted Local Financial Advisors</p>
-            <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600;">
-                Forbes Wealth Planning
-            </h1>
-            <p style="font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto 32px; line-height: 1.8;">
-                Forbes Wealth Planning is a privately owned financial advisory firm. We are trusted advisers based in the Adelaide Northern Suburbs. Book online.
-            </p>
-            <a href="tel:0883954124" class="cta-btn">Book a Free Consultation</a>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-eyebrow">Adelaide-based financial planners &nbsp;&middot;&nbsp; Health &amp; wealth integrated</div>
+      <h1>Wealth planning that covers your <em>whole life.</em></h1>
+      <p class="hero-sub">
+        Most financial planners handle one slice of your picture. Forbes Wealth Planning covers health insurance, protection, retirement, and long-term wealth — all from one team, built around your life.
+      </p>
+      <div class="hero-actions">
+        <a href="https://www.forbeswp.com.au/initial-consultations" class="btn-primary">Book your initial consultation</a>
+        <a href="tel:0883954124" class="btn-secondary">08 8395 4124</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-pill"><span class="dot"></span>Founded 1997 — 25+ years in Adelaide</div>
+        <div class="trust-pill"><span class="dot"></span>Adviser of the Year 2024</div>
+        <div class="trust-pill"><span class="dot"></span>AFSL 342880 via Advice Evolution</div>
+        <div class="trust-pill"><span class="dot"></span>Modbury SA 5092</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDIBILITY BAR -->
+  <div class="cred-bar">
+    <div class="container">
+      <div class="cred-items">
+        <div class="cred-item">
+          <div class="cred-num">30+</div>
+          <div class="cred-label">Years combined experience</div>
         </div>
-    </section>
-
-    
-        <section style="padding: 64px 0;">
-            <div class="container">
-                <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; text-align: center; font-weight: 600;">What We Do</p>
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); text-align: center; margin-bottom: 48px;">Our Services</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-                    
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Online Health Insurance</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">How we can help you</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Wealth Management</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Retirement Planning</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Family Protection</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Financial Coaching</h3>
-                </div>
-                </div>
-            </div>
-        </section>
-
-    
-        <section style="padding: 64px 0; border-top: 1px solid var(--border);">
-            <div class="container">
-                <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; font-weight: 600;">About Us</p>
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 20px;">Forbes Wealth Planning</h2>
-                <p style="color: var(--text); line-height: 1.8; max-width: 600px;">Forbes Wealth Planning is a privately owned financial advisory firm. Through the ebb and flow of life, Forbes are trusted advisers, providing clients with peace of mind and confidence in the fact that they have the plans in place to live their best life. We are passionate about supporting our clients to achieve life-long aspirations and dreams. We do not take this responsibility lightly. In fact, </p>
-            </div>
-        </section>
-
-    <!-- Contact -->
-    <section style="padding: 64px 0; border-top: 1px solid var(--border);">
-        <div class="container">
-            <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; font-weight: 600;">Contact</p>
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 24px;">Get in Touch</h2>
-            <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px;">
-                <div>
-                    <p style="margin-bottom: 12px;"><strong style="color: var(--white);">Phone:</strong> <a href="tel:0883954124" style="color: var(--accent); text-decoration: none;">08 8395 4124</a></p>
-                    <p style="margin-bottom: 12px;"><strong style="color: var(--white);">Email:</strong> <a href="mailto:corey@forbeswp.com.au" style="color: var(--accent); text-decoration: none;">corey@forbeswp.com.au</a></p>
-                    <p style="margin-bottom: 12px;"><strong style="color: var(--white);">Address:</strong> East Road, Modbury SA 5092 Email: contactus@forbeswp.com.au Telephone: 08 8395 4124 Mond</p>
-                </div>
-                <div style="margin-top: 24px;">
-                    <a href="tel:0883954124" class="cta-btn">Book a Free Consultation</a>
-                </div>
-            </div>
+        <div class="cred-item">
+          <div class="cred-num">5</div>
+          <div class="cred-label">Integrated service areas</div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer style="padding: 32px 0; border-top: 1px solid var(--border); text-align: center;">
-        <div class="container">
-            <p style="font-size: 0.8rem; color: var(--text-muted);">
-                Rebuilt by J&amp;G Operations as a preview. Not yet live on forbeswp.com.au.
-            </p>
+        <div class="cred-item">
+          <div class="cred-num">1997</div>
+          <div class="cred-label">Established in SA</div>
         </div>
-    </footer>
+        <div class="cred-item">
+          <div class="cred-num">4.8&#9733;</div>
+          <div class="cred-label">Adviser Ratings score</div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-num">342880</div>
+          <div class="cred-label">AFSL (Advice Evolution)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="section-label">What we do</div>
+      <h2 class="section-heading">Five areas. One conversation.</h2>
+      <p class="section-sub">
+        Your health, your income, your family, your retirement, your goals — they're all connected. We bring them into one cohesive plan rather than treating each as a separate problem.
+      </p>
+
+      <div class="services-grid">
+
+        <div class="service-card">
+          <span class="service-icon">&#127973;</span>
+          <h3>Online Health Insurance</h3>
+          <p>
+            Compare and apply for private health cover entirely online — hospital, extras, and combined policies assessed against your actual needs and budget. No call centres, no generic quotes.
+          </p>
+          <a href="https://www.forbeswp.com.au/health-insurance" class="service-link">Learn more</a>
+        </div>
+
+        <div class="service-card">
+          <span class="service-icon">&#128200;</span>
+          <h3>Wealth Management</h3>
+          <p>
+            Investment strategy, superannuation growth, tax planning, and cashflow management structured around where you want to be — not a generic portfolio allocation.
+          </p>
+          <a href="https://www.forbeswp.com.au/wealth-management" class="service-link">Learn more</a>
+        </div>
+
+        <div class="service-card">
+          <span class="service-icon">&#127749;</span>
+          <h3>Retirement Planning</h3>
+          <p>
+            Transition-to-retirement strategies, Age Pension assistance, and superannuation drawdown planning to make sure your money outlasts you — not the other way around.
+          </p>
+          <a href="https://www.forbeswp.com.au/retirement-planning" class="service-link">Learn more</a>
+        </div>
+
+        <div class="service-card">
+          <span class="service-icon">&#128737;</span>
+          <h3>Family Protection</h3>
+          <p>
+            Life insurance, income protection, and TPD cover reviewed and structured properly — so your family isn't making financial decisions in the middle of a crisis.
+          </p>
+          <a href="https://www.forbeswp.com.au/family-protection" class="service-link">Learn more</a>
+        </div>
+
+        <div class="service-card">
+          <span class="service-icon">&#128172;</span>
+          <h3>Financial Coaching</h3>
+          <p>
+            Hands-on guidance for clients building confidence in their finances — budgeting, debt management, savings strategies, and the fundamentals that compound over time.
+          </p>
+          <a href="https://www.forbeswp.com.au/financial-coaching" class="service-link">Learn more</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE CAN HELP YOU -->
+  <section id="how-we-help">
+    <div class="container">
+      <div class="section-label">Our approach</div>
+      <h2 class="section-heading">How we can help you</h2>
+      <p class="section-sub">
+        Forbes Wealth Planning works with Adelaide families, pre-retirees, and professionals who want a planner who actually knows their whole picture — not just their super balance.
+      </p>
+
+      <div class="help-grid">
+        <div class="help-steps">
+          <div class="help-step">
+            <div class="step-num">1</div>
+            <div class="help-step-content">
+              <h4>Initial consultation</h4>
+              <p>A focused $275 session to understand your situation, your goals, and whether we're the right fit. Refundable when you proceed with a full advice engagement.</p>
+            </div>
+          </div>
+          <div class="help-step">
+            <div class="step-num">2</div>
+            <div class="help-step-content">
+              <h4>Personalised strategy</h4>
+              <p>We build a comprehensive Statement of Advice that covers every area relevant to you — health, protection, retirement, and investment — in one coordinated plan.</p>
+            </div>
+          </div>
+          <div class="help-step">
+            <div class="step-num">3</div>
+            <div class="help-step-content">
+              <h4>Implementation &amp; review</h4>
+              <p>We handle the setup, then check in regularly as your life changes. The plan adapts with you, not against you.</p>
+            </div>
+          </div>
+          <div class="help-step">
+            <div class="step-num">4</div>
+            <div class="help-step-content">
+              <h4>Ongoing partnership</h4>
+              <p>"We share a strong sense of mutual commitment that creates a synergy our clients can feel." Long-term relationships, not one-off transactions.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="help-aside">
+          <h4>What does it cost?</h4>
+          <p>
+            We believe in being upfront. Here's what our service looks like in practice:
+          </p>
+          <div class="fee-row"><span class="fee-label">Initial consultation</span><span class="fee-val">$275</span></div>
+          <div class="fee-row"><span class="fee-label">Comprehensive advice</span><span class="fee-val">$3,800 &#8211; $6,600</span></div>
+          <div class="fee-row"><span class="fee-label">Age Pension assistance</span><span class="fee-val">$880 once-off</span></div>
+          <div class="fee-row"><span class="fee-label">General information session</span><span class="fee-val">Complimentary</span></div>
+          <div style="margin-top: 28px;">
+            <a href="https://www.forbeswp.com.au/initial-consultations" class="btn-primary" style="width: 100%; display: block; text-align: center;">Book a consultation</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR PEOPLE -->
+  <section id="our-people">
+    <div class="container">
+      <div class="section-label">Our people</div>
+      <h2 class="section-heading">The team behind your plan</h2>
+      <p class="section-sub">
+        Two advisers. Complementary skill sets. A shared commitment to putting clients in a position where their financial plans enable them to lead their best lives.
+      </p>
+
+      <div class="team-grid">
+
+        <div class="team-card">
+          <div class="team-initial">N</div>
+          <h3>Neale Forbes</h3>
+          <div class="team-role">CEO &amp; Financial Adviser</div>
+          <p>
+            Neale started his career in banking before founding Australia's first Credit Union franchise on the Yorke Peninsula. Over the following 20 years he grew a multi-division financial services business, eventually separating out the planning arm to create Forbes Wealth Planning in its current form. He brings 30 years of industry experience to every client relationship.
+          </p>
+          <div class="team-quals">
+            <span class="qual-tag">Diploma of Financial Planning &#8212; Deakin</span>
+            <span class="qual-tag">30 yrs experience</span>
+            <span class="qual-tag">AFSL 342880</span>
+          </div>
+          <div style="margin-top: 16px;">
+            <a href="mailto:neale@forbeswp.com.au" style="font-size: 0.83rem; color: var(--accent);">neale@forbeswp.com.au</a>
+            &nbsp;&nbsp;
+            <a href="https://www.linkedin.com/in/neale-forbes-59069743/" target="_blank" rel="noopener" style="font-size: 0.83rem; color: var(--accent);">LinkedIn</a>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-initial">C</div>
+          <h3>Corey Kovac</h3>
+          <div class="team-role">Partner &amp; Financial Adviser</div>
+          <p>
+            Corey joined Forbes Wealth Planning in August 2022, completed his Professional Year in December 2023, and has since become a Partner and equity holder. His approach: "I readily anticipate the opportunity to offer our clients a sense of security and assurance, knowing that their financial plans will enable them to lead their best lives."
+          </p>
+          <div class="team-quals">
+            <span class="qual-tag">Bachelor of Business (Financial Planning)</span>
+            <span class="qual-tag">Partner</span>
+            <span class="qual-tag">Adviser Ratings: Silver</span>
+          </div>
+          <div style="margin-top: 16px;">
+            <a href="mailto:corey@forbeswp.com.au" style="font-size: 0.83rem; color: var(--accent);">corey@forbeswp.com.au</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-label">Get in touch</div>
+      <h2 class="section-heading">Talk to a planner in Adelaide</h2>
+      <p class="section-sub">
+        In-person at our Modbury office, over the phone, or via video call — whatever works best for you.
+      </p>
+
+      <div class="contact-grid">
+        <div class="contact-details">
+          <div class="contact-row">
+            <div class="contact-icon">&#128222;</div>
+            <div class="contact-info">
+              <strong>Phone</strong>
+              <a href="tel:0883954124">08 8395 4124</a>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-icon">&#9993;</div>
+            <div class="contact-info">
+              <strong>General enquiries</strong>
+              <a href="mailto:contactus@forbeswp.com.au">contactus@forbeswp.com.au</a>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-icon">&#9993;</div>
+            <div class="contact-info">
+              <strong>Corey Kovac direct</strong>
+              <a href="mailto:corey@forbeswp.com.au">corey@forbeswp.com.au</a>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-icon">&#128205;</div>
+            <div class="contact-info">
+              <strong>Office</strong>
+              <span>Suite 4, 977 North East Road<br>Modbury SA 5092</span>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-icon">&#128279;</div>
+            <div class="contact-info">
+              <strong>LinkedIn</strong>
+              <a href="https://www.linkedin.com/in/neale-forbes-59069743/" target="_blank" rel="noopener">Neale Forbes &#8212; LinkedIn</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <h3>Opening hours</h3>
+          <p>We're available for in-person, phone, and video consultations. Book online or call us directly.</p>
+          <div class="hours-row"><span>Monday</span><span>9:00am &#8211; 5:00pm</span></div>
+          <div class="hours-row"><span>Tuesday</span><span>9:00am &#8211; 5:00pm</span></div>
+          <div class="hours-row"><span>Wednesday</span><span>9:00am &#8211; 5:00pm</span></div>
+          <div class="hours-row"><span>Thursday</span><span>9:00am &#8211; 5:00pm</span></div>
+          <div class="hours-row"><span>Friday</span><span>9:00am &#8211; 5:00pm</span></div>
+          <div class="hours-row"><span>Weekends</span><span>Closed</span></div>
+          <div style="margin-top: 28px;">
+            <a href="https://www.forbeswp.com.au/initial-consultations" class="btn-primary" style="width: 100%; display: block; text-align: center;">Book a consultation</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <strong>Forbes Wealth Planning Pty Ltd</strong>
+          ABN 97 679 935 974 &nbsp;&middot;&nbsp; AFSL 342880 (Corporate Authorised Representative of Advice Evolution Pty Ltd ABN 66 137 858 023)
+          <br>Suite 4, 977 North East Road, Modbury SA 5092 &nbsp;&middot;&nbsp; <a href="https://www.forbeswp.com.au">forbeswp.com.au</a>
+        </div>
+        <div class="footer-preview">
+          <p>Rebuilt by J&amp;G Operations as a preview. Not yet live on forbeswp.com.au.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>

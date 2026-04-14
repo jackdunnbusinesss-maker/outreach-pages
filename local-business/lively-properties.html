@@ -1,140 +1,1180 @@
 <!DOCTYPE html>
 <html lang="en-AU">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lively Properties</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --bg: #0e0e12;
-            --surface: #16161d;
-            --surface-light: #1e1e28;
-            --border: #2a2a36;
-            --accent: #d4959b;
-            --accent-light: #d4959b;
-            --accent-glow: rgba(100, 140, 200, 0.15);
-            --white: #f0eff4;
-            --text: #c5c4ce;
-            --text-muted: #7e7d8a;
-        }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-            margin: 0;
-        }
-        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
-        a { color: var(--accent); }
-        .cta-btn {
-            display: inline-block;
-            padding: 16px 36px;
-            background: var(--accent);
-            color: #0e0e12;
-            font-weight: 700;
-            font-size: 0.95rem;
-            border-radius: 8px;
-            text-decoration: none;
-            letter-spacing: 0.5px;
-            transition: opacity 0.2s;
-        }
-        .cta-btn:hover { opacity: 0.9; }
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 1.8rem; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lively Properties — Mornington Peninsula Holiday Homes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0e0e12;
+      --surface: #161620;
+      --surface-2: #1e1e2a;
+      --accent: #e89f71;
+      --accent-soft: rgba(232,159,113,0.12);
+      --accent-mid: rgba(232,159,113,0.25);
+      --text: #f0ede8;
+      --text-muted: #9b9490;
+      --text-dim: #6a6560;
+      --border: rgba(232,159,113,0.15);
+      --radius: 12px;
+      --radius-lg: 20px;
+      --max: 1040px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(14,14,18,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--accent);
+      color: #0e0e12 !important;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-weight: 600 !important;
+      font-size: 0.875rem !important;
+      transition: opacity 0.2s !important;
+    }
+    .nav-cta:hover { opacity: 0.88; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 86vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0e0e12 0%, #16101a 40%, #121018 100%);
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 40%, rgba(232,159,113,0.09) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(113,160,232,0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-texture {
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='0.8' fill='rgba(232,159,113,0.06)'/%3E%3C/svg%3E");
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+      width: 100%;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-soft);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 600;
+      line-height: 1.18;
+      letter-spacing: -0.01em;
+      max-width: 680px;
+      margin-bottom: 24px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #0e0e12;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text);
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--accent); background: var(--accent-soft); }
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      margin-top: 72px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+    .stat-item { display: flex; flex-direction: column; gap: 4px; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .stat-label { font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.02em; }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 96px 24px; }
+    .container { max-width: var(--max); margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.75rem, 3vw, 2.4rem);
+      font-weight: 600;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    /* ── PROPERTIES ── */
+    #properties { background: var(--surface); }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 48px;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .properties-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .property-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .property-card:hover { transform: translateY(-4px); border-color: rgba(232,159,113,0.35); }
+    .property-thumb {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .thumb-rye        { background: linear-gradient(135deg, #1a2535 0%, #243040 100%); }
+    .thumb-sorrento   { background: linear-gradient(135deg, #1f1a2e 0%, #2a2040 100%); }
+    .thumb-blairgowrie { background: linear-gradient(135deg, #1a2520 0%, #203530 100%); }
+    .thumb-martha     { background: linear-gradient(135deg, #251a1a 0%, #352020 100%); }
+    .thumb-collins    { background: linear-gradient(135deg, #201a30 0%, #2a2045 100%); }
+    .thumb-blanc      { background: linear-gradient(135deg, #1e1e28 0%, #282838 100%); }
+    .thumb-icon {
+      font-size: 3rem;
+      opacity: 0.35;
+    }
+    .thumb-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: var(--accent-soft);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .thumb-price {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      background: rgba(14,14,18,0.85);
+      border-radius: 8px;
+      padding: 5px 12px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .property-body { padding: 20px 22px 24px; }
+    .property-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .property-location {
+      font-size: 0.82rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    .property-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .tag {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 3px 9px;
+      font-size: 0.73rem;
+      color: var(--text-muted);
+    }
+    .property-meta {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 18px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    .property-meta span { display: flex; align-items: center; gap: 5px; }
+    .property-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent);
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: gap 0.15s;
+    }
+    .property-link:hover { gap: 10px; }
+
+    /* ── EXPERIENCES ── */
+    #experiences { background: var(--bg); }
+    .exp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .exp-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      transition: border-color 0.2s;
+    }
+    .exp-card:hover { border-color: rgba(232,159,113,0.3); }
+    .exp-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--accent-soft);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .exp-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .exp-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ── SERVICES ── */
+    #services { background: var(--surface); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+    .service-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .service-card:hover { border-color: rgba(232,159,113,0.3); background: #22222e; }
+    .service-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--accent-soft);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+    }
+    .service-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .service-desc { font-size: 0.83rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ── TEAM / TESTIMONIALS ── */
+    #about { background: var(--bg); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+      margin-top: 16px;
+    }
+    .about-body .section-sub { max-width: 100%; margin-bottom: 24px; }
+    .about-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .detail-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .detail-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .testimonials { display: flex; flex-direction: column; gap: 20px; }
+    .testimonial-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px 26px;
+    }
+    .testimonial-stars {
+      color: var(--accent);
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+    .testimonial-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 14px;
+    }
+    .testimonial-author {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    /* ── LIST WITH US ── */
+    #list {
+      background: var(--surface);
+    }
+    .list-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .list-inner .section-label { text-align: center; }
+    .list-inner .section-title { margin: 0 auto 16px; }
+    .list-inner .section-sub { max-width: 100%; margin: 0 auto 36px; text-align: center; }
+    .list-perks {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .perk {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    .perk::before {
+      content: '✓';
+      width: 20px;
+      height: 20px;
+      background: var(--accent-soft);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 0.7rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--bg); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .contact-detail { display: flex; flex-direction: column; gap: 20px; margin-top: 32px; }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--accent-soft);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .contact-label { font-size: 0.75rem; color: var(--text-dim); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 3px; }
+    .contact-value { font-size: 0.95rem; color: var(--text); font-weight: 500; text-decoration: none; }
+    .contact-value:hover { color: var(--accent); }
+    .contact-form {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+    }
+    .form-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .form-group label { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 11px 14px;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--accent); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-submit {
+      width: 100%;
+      background: var(--accent);
+      color: #0e0e12;
+      border: none;
+      border-radius: 10px;
+      padding: 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .form-submit:hover { opacity: 0.88; }
+
+    /* ── IG STRIP ── */
+    .ig-strip {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 48px 24px;
+      text-align: center;
+    }
+    .ig-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 20px;
+    }
+    .ig-handle {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .ig-handle a { color: var(--accent); text-decoration: none; }
+    .ig-handle a:hover { text-decoration: underline; }
+    .ig-sub { font-size: 0.88rem; color: var(--text-muted); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+    }
+    .footer-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .footer-brand span { color: var(--accent); }
+    .footer-note {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      text-align: center;
+      border-top: 1px solid var(--border);
+      margin-top: 20px;
+      padding-top: 16px;
+      max-width: var(--max);
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-links a {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin: 20px 0;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .properties-grid { grid-template-columns: 1fr 1fr; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .properties-grid { grid-template-columns: 1fr; }
+      .exp-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .hero-stats { flex-direction: column; gap: 24px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Top Bar -->
-    <div style="padding: 20px 0; border-bottom: 1px solid var(--border);">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-            <span style="font-weight: 700; font-size: 1.1rem; color: var(--white);">Lively Properties</span>
-            
-        </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="https://livelyproperties.com.au" class="nav-logo">Lively <span>Properties</span></a>
+      <ul class="nav-links">
+        <li><a href="https://livelyproperties.com.au/properties">Browse Properties</a></li>
+        <li><a href="https://livelyproperties.com.au/list-with-us">List With Us</a></li>
+        <li><a href="https://livelyproperties.com.au/experiences">Local Experiences</a></li>
+        <li><a href="https://livelyproperties.com.au/about-us">About</a></li>
+        <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+      </ul>
     </div>
+  </nav>
 
-    <!-- Hero -->
-    <section style="padding: 80px 0 48px; text-align: center;">
-        <div class="container">
-            <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600;">Trusted Local Real Estate Experts</p>
-            <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600;">
-                Lively Properties
-            </h1>
-            <p style="font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto 32px; line-height: 1.8;">
-                Indulge in unrivaled luxury with Lively Properties and holiday rentals in Bayside, the Mornington Peninsula, Yarra Valley, and beyond.
-            </p>
-            <a href="#contact" class="cta-btn">Get a Free Appraisal</a>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-texture"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Short-stay property management &nbsp;·&nbsp; Rye · Sorrento · Blairgowrie · Mount Martha</div>
+      <h1>Mornington Peninsula<br>holiday homes, managed<br><em>with care.</em></h1>
+      <p class="hero-sub">Luxury short-stay rentals curated for the Peninsula. All-inclusive rates, no hidden fees, and local experiences that make every stay memorable.</p>
+      <div class="hero-actions">
+        <a href="https://livelyproperties.com.au/properties" class="btn-primary">
+          Browse Properties
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8.5 3.5L13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="https://livelyproperties.com.au/list-with-us" class="btn-ghost">
+          List Your Property
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num">4+</span>
+          <span class="stat-label">Peninsula Regions</span>
         </div>
-    </section>
-
-    
-        <section style="padding: 64px 0;">
-            <div class="container">
-                <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; text-align: center; font-weight: 600;">What We Do</p>
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); text-align: center; margin-bottom: 48px;">Our Services</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-                    
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Featured properties</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Rye, Victoria</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Sorrento, Victoria</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Blairgowrie, Victoria</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Mount Martha, Victoria</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Local Experience</h3>
-                </div>
-                </div>
-            </div>
-        </section>
-
-    
-        <section style="padding: 64px 0; border-top: 1px solid var(--border);">
-            <div class="container">
-                <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; font-weight: 600;">About Us</p>
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 20px;">Lively Properties</h2>
-                <p style="color: var(--text); line-height: 1.8; max-width: 600px;">Discover our curated collection of luxurious accommodation and exclusive travel experiences.</p>
-            </div>
-        </section>
-
-    <!-- Contact -->
-    <section style="padding: 64px 0; border-top: 1px solid var(--border);">
-        <div class="container">
-            <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; font-weight: 600;">Contact</p>
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 24px;">Get in Touch</h2>
-            <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px;">
-                <div>
-                    <p style="margin-bottom: 12px;"><strong style="color: var(--white);">Email:</strong> <a href="mailto:os@jackalopehotels.com" style="color: var(--accent); text-decoration: none;">os@jackalopehotels.com</a></p>
-                    <p style="margin-bottom: 12px;"><strong style="color: var(--white);">Address:</strong> eriences List With Us LILO (Day Hire) About Us FAQ’s Contact Home Tel (03) 5910 4830 Emai</p>
-                </div>
-                <div style="margin-top: 24px;">
-                    <a href="#contact" class="cta-btn">Get a Free Appraisal</a>
-                </div>
-            </div>
+        <div class="stat-item">
+          <span class="stat-num">All-in</span>
+          <span class="stat-label">Transparent Pricing</span>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer style="padding: 32px 0; border-top: 1px solid var(--border); text-align: center;">
-        <div class="container">
-            <p style="font-size: 0.8rem; color: var(--text-muted);">
-                Rebuilt by J&amp;G Operations as a preview. Not yet live on livelyproperties.com.au.
-            </p>
+        <div class="stat-item">
+          <span class="stat-num">Local</span>
+          <span class="stat-label">Experience Partners</span>
         </div>
-    </footer>
+        <div class="stat-item">
+          <span class="stat-num">Direct</span>
+          <span class="stat-label">Book Without Fees</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROPERTIES -->
+  <section id="properties">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-label">Featured Stays</div>
+          <h2 class="section-title">Holiday homes across<br>the Peninsula</h2>
+          <p class="section-sub">From Rye's surf breaks to Sorrento's village life — every property is handpicked for comfort, location, and that unmistakable Peninsula feeling.</p>
+        </div>
+        <a href="https://livelyproperties.com.au/properties" class="btn-ghost">View all properties →</a>
+      </div>
+      <div class="properties-grid">
+
+        <!-- The Indoor, Rye -->
+        <div class="property-card">
+          <div class="property-thumb thumb-rye">
+            <span class="thumb-icon">🏖️</span>
+            <div class="thumb-badge">Rye</div>
+            <div class="thumb-price">From $2,014/night</div>
+          </div>
+          <div class="property-body">
+            <div class="property-name">The Indoor</div>
+            <div class="property-location">Rye, Mornington Peninsula</div>
+            <div class="property-meta">
+              <span>🛏 4 beds</span>
+              <span>🚿 4 baths</span>
+            </div>
+            <div class="property-tags">
+              <span class="tag">Private pool</span>
+              <span class="tag">Spa</span>
+              <span class="tag">Games room</span>
+            </div>
+            <a href="https://livelyproperties.com.au/properties" class="property-link">
+              View property
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8.5 3.5L13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Atelier Sorrento -->
+        <div class="property-card">
+          <div class="property-thumb thumb-sorrento">
+            <span class="thumb-icon">🌊</span>
+            <div class="thumb-badge">Sorrento</div>
+            <div class="thumb-price">From $2,339/night</div>
+          </div>
+          <div class="property-body">
+            <div class="property-name">Atelier Sorrento</div>
+            <div class="property-location">Sorrento, Mornington Peninsula</div>
+            <div class="property-meta">
+              <span>🛏 5 beds</span>
+              <span>🚿 4.5 baths</span>
+            </div>
+            <div class="property-tags">
+              <span class="tag">Private pool</span>
+              <span class="tag">Spa</span>
+              <span class="tag">100m to beach</span>
+            </div>
+            <a href="https://livelyproperties.com.au/properties" class="property-link">
+              View property
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8.5 3.5L13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Bridgewater House, Blairgowrie -->
+        <div class="property-card">
+          <div class="property-thumb thumb-blairgowrie">
+            <span class="thumb-icon">🌿</span>
+            <div class="thumb-badge">Blairgowrie</div>
+            <div class="thumb-price">From $2,546/night</div>
+          </div>
+          <div class="property-body">
+            <div class="property-name">Bridgewater House</div>
+            <div class="property-location">Blairgowrie, Mornington Peninsula</div>
+            <div class="property-meta">
+              <span>🛏 4 beds</span>
+              <span>🚿 2.5 baths</span>
+            </div>
+            <div class="property-tags">
+              <span class="tag">Heated pool</span>
+              <span class="tag">Bespoke design</span>
+              <span class="tag">Beach nearby</span>
+            </div>
+            <a href="https://livelyproperties.com.au/properties" class="property-link">
+              View property
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8.5 3.5L13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- The Pavilion, Mount Martha -->
+        <div class="property-card">
+          <div class="property-thumb thumb-martha">
+            <span class="thumb-icon">🌅</span>
+            <div class="thumb-badge">Mount Martha</div>
+            <div class="thumb-price">From $2,782/night</div>
+          </div>
+          <div class="property-body">
+            <div class="property-name">The Pavilion</div>
+            <div class="property-location">Mount Martha, Mornington Peninsula</div>
+            <div class="property-meta">
+              <span>🛏 4 beds</span>
+              <span>🚿 2.5 baths</span>
+            </div>
+            <div class="property-tags">
+              <span class="tag">Heated pool</span>
+              <span class="tag">Spa</span>
+              <span class="tag">Sauna</span>
+            </div>
+            <a href="https://livelyproperties.com.au/properties" class="property-link">
+              View property
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8.5 3.5L13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- The Collins, Sorrento -->
+        <div class="property-card">
+          <div class="property-thumb thumb-collins">
+            <span class="thumb-icon">🎾</span>
+            <div class="thumb-badge">Sorrento</div>
+            <div class="thumb-price">From $2,165/night</div>
+          </div>
+          <div class="property-body">
+            <div class="property-name">The Collins</div>
+            <div class="property-location">Sorrento, Mornington Peninsula</div>
+            <div class="property-meta">
+              <span>🛏 4 beds</span>
+              <span>🚿 2.5 baths</span>
+            </div>
+            <div class="property-tags">
+              <span class="tag">Heated pool</span>
+              <span class="tag">Spa</span>
+              <span class="tag">Tennis court</span>
+            </div>
+            <a href="https://livelyproperties.com.au/properties" class="property-link">
+              View property
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8.5 3.5L13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Blanc De Noir, Mount Martha -->
+        <div class="property-card">
+          <div class="property-thumb thumb-blanc">
+            <span class="thumb-icon">⛳</span>
+            <div class="thumb-badge">Mount Martha</div>
+            <div class="thumb-price">From $3,067/night</div>
+          </div>
+          <div class="property-body">
+            <div class="property-name">Blanc De Noir</div>
+            <div class="property-location">Mount Martha, Mornington Peninsula</div>
+            <div class="property-meta">
+              <span>🛏 4 beds</span>
+              <span>🚿 4 baths</span>
+            </div>
+            <div class="property-tags">
+              <span class="tag">Private pool</span>
+              <span class="tag">Spa</span>
+              <span class="tag">Golf nearby</span>
+            </div>
+            <a href="https://livelyproperties.com.au/properties" class="property-link">
+              View property
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8.5 3.5L13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCAL EXPERIENCES -->
+  <section id="experiences">
+    <div class="container">
+      <div class="section-label">Local Experience</div>
+      <h2 class="section-title">The Peninsula, beyond<br>your front door</h2>
+      <p class="section-sub">Staying lively means more than a beautiful home. We've partnered with the Peninsula's best venues so your guests arrive with a curated itinerary, not a blank map.</p>
+      <div class="exp-grid">
+
+        <div class="exp-card">
+          <div class="exp-icon">🍷</div>
+          <div>
+            <div class="exp-title">Ten Minutes by Tractor</div>
+            <div class="exp-desc">One of the Peninsula's most acclaimed wineries and restaurants — fine dining surrounded by working vineyards. An unmissable lunch stop.</div>
+          </div>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-icon">🖼️</div>
+          <div>
+            <div class="exp-title">PT Leo Estate</div>
+            <div class="exp-desc">Sculpture park, world-class wine, and a restaurant with views across Port Phillip Bay. Art, food, and the Peninsula in one afternoon.</div>
+          </div>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-icon">🧖</div>
+          <div>
+            <div class="exp-title">Aurora Spa &amp; Bathhouse</div>
+            <div class="exp-desc">Peninsula-born day spa offering thermal circuits, massage, and restorative treatments — the perfect wind-down after a day at the beach.</div>
+          </div>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-icon">🍝</div>
+          <div>
+            <div class="exp-title">Zonzo Estate</div>
+            <div class="exp-desc">Italian country dining in the Yarra Valley — handmade pasta, wood-fired pizza, and sprawling vineyard views just beyond the Peninsula hills.</div>
+          </div>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-icon">⛳</div>
+          <div>
+            <div class="exp-title">The Dunes Golf Links</div>
+            <div class="exp-desc">Championship links golf cut through coastal dunes — consistently rated among Victoria's top courses. Tee times available for Lively guests.</div>
+          </div>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-icon">🌊</div>
+          <div>
+            <div class="exp-title">Peninsula Beaches</div>
+            <div class="exp-desc">Ocean Beach, Rye Front Beach, Sorrento Front — calm bays and rugged surf coasts, all within minutes of your holiday home.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Full-service management,<br>so you don't have to.</h2>
+      <p class="section-sub">From first booking to final checkout — Lively handles every detail so your property performs and your guests come back.</p>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-icon">📅</div>
+          <div class="service-name">Short-stay Management</div>
+          <div class="service-desc">Listings, pricing, bookings, guest communications and key handover — managed end-to-end on your behalf.</div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🛋️</div>
+          <div class="service-name">Property Styling</div>
+          <div class="service-desc">Curated interiors that photograph beautifully and deliver the luxury feel guests expect from a premium Peninsula stay.</div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">⭐</div>
+          <div class="service-name">Guest Experience</div>
+          <div class="service-desc">Personalised welcome packs, local recommendations, and 24/7 support that earns five-star reviews every stay.</div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🔧</div>
+          <div class="service-name">Maintenance</div>
+          <div class="service-desc">Reliable tradespeople on call, routine inspections, and same-day issue resolution so your property stays in perfect condition.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / TESTIMONIALS -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-body">
+          <div class="section-label">The Lively Difference</div>
+          <h2 class="section-title">Boutique management.<br>Peninsula-born.</h2>
+          <div class="divider"></div>
+          <p class="section-sub">Lively Properties was built on the belief that short-stay management should feel personal, not transactional. Based in Mount Martha, we know the Peninsula's rhythms — peak season surges, shoulder season bookings, what guests actually ask for.</p>
+          <p class="section-sub" style="margin-top:16px;">We don't list everything. We curate homes that meet our standard, manage them to boutique-hotel levels of care, and protect what owners value most: their property, their guests' experience, and their peace of mind.</p>
+          <div class="about-detail" style="margin-top: 28px;">
+            <div class="detail-row"><div class="detail-dot"></div><span>All-inclusive rates — no surprise fees for owners or guests</span></div>
+            <div class="detail-row"><div class="detail-dot"></div><span>Direct booking advantages over third-party platforms</span></div>
+            <div class="detail-row"><div class="detail-dot"></div><span>Local experience partners woven into every stay</span></div>
+            <div class="detail-row"><div class="detail-dot"></div><span>Based at Level 1, 9 Howey Rd, Mount Martha VIC 3934</span></div>
+          </div>
+        </div>
+        <div class="testimonials">
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Exceptional service — the property was immaculate and the local tips Lively provided made the trip. We knew exactly where to go, what to book, and what to skip. Couldn't fault it."</p>
+            <div class="testimonial-author">Yian — Lively guest</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"The amenities were incredible and the communication from start to finish was seamless. We've booked three Peninsula trips through Lively now and we won't go anywhere else."</p>
+            <div class="testimonial-author">Manu — Lively guest</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"What impressed us most was the attention to detail. The welcome, the cleanliness, the experience recommendations — it felt like a boutique hotel but in our own private home."</p>
+            <div class="testimonial-author">Elizabeth — Lively guest</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIST WITH US -->
+  <section id="list">
+    <div class="container">
+      <div class="list-inner">
+        <div class="section-label">List With Us</div>
+        <h2 class="section-title">Your Peninsula property,<br>performing at its best.</h2>
+        <p class="section-sub">Lively manages a select portfolio of holiday homes across the Peninsula. If your property meets our standard, we'd love to talk about what we can achieve together.</p>
+        <div class="list-perks">
+          <div class="perk">No hidden fees</div>
+          <div class="perk">All-inclusive rates</div>
+          <div class="perk">Direct bookings</div>
+          <div class="perk">5-star guest management</div>
+          <div class="perk">Local experience access</div>
+        </div>
+        <a href="https://livelyproperties.com.au/list-with-us" class="btn-primary" style="margin: 0 auto;">
+          Enquire about listing
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8.5 3.5L13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM STRIP -->
+  <div class="ig-strip">
+    <div class="ig-label">Follow the Peninsula life</div>
+    <div class="ig-handle"><a href="https://www.instagram.com/lively.properties" target="_blank" rel="noopener">@lively.properties</a></div>
+    <p class="ig-sub">Behind the scenes, property reveals, and Peninsula inspiration — follow along on Instagram.</p>
+  </div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div>
+          <div class="section-label">Get in Touch</div>
+          <h2 class="section-title">Ready to stay lively?</h2>
+          <div class="divider"></div>
+          <p class="section-sub">Whether you're planning a getaway or thinking about listing your property, we'd love to hear from you. The team is based in Mount Martha and available 7 days.</p>
+          <div class="contact-detail">
+            <div class="contact-item">
+              <div class="contact-icon">📞</div>
+              <div>
+                <div class="contact-label">Phone</div>
+                <a href="tel:0359104830" class="contact-value">(03) 5910 4830</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">✉️</div>
+              <div>
+                <div class="contact-label">Email</div>
+                <a href="mailto:os@jackalopehotels.com" class="contact-value">os@jackalopehotels.com</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">📍</div>
+              <div>
+                <div class="contact-label">Office</div>
+                <span class="contact-value">Level 1, Shop 3/9 Howey Rd,<br>Mount Martha VIC 3934</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">📸</div>
+              <div>
+                <div class="contact-label">Instagram</div>
+                <a href="https://www.instagram.com/lively.properties" target="_blank" rel="noopener" class="contact-value">@lively.properties</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <div class="form-title">Send an enquiry</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>First name</label>
+              <input type="text" placeholder="Alex">
+            </div>
+            <div class="form-group">
+              <label>Last name</label>
+              <input type="text" placeholder="Thompson">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="alex@example.com">
+          </div>
+          <div class="form-group">
+            <label>Enquiry type</label>
+            <select>
+              <option>Planning a stay</option>
+              <option>Listing my property</option>
+              <option>Local experience booking</option>
+              <option>General enquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="Tell us what you're looking for…"></textarea>
+          </div>
+          <button class="form-submit" type="button">Send Enquiry</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">Lively <span>Properties</span></div>
+      <div class="footer-links">
+        <a href="https://livelyproperties.com.au/properties">Properties</a>
+        <a href="https://livelyproperties.com.au/list-with-us">List With Us</a>
+        <a href="https://livelyproperties.com.au/experiences">Experiences</a>
+        <a href="https://livelyproperties.com.au/about-us">About</a>
+        <a href="https://www.instagram.com/lively.properties" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <p class="footer-note">Rebuilt by J&amp;G Operations as a preview. Not yet live on livelyproperties.com.au.</p>
+  </footer>
+
 </body>
 </html>

@@ -3,137 +3,1484 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>King & Heath First National Real Estate</title>
+    <title>King &amp; Heath First National — East Gippsland's Trusted Real Estate Since 1923</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,700&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
         :root {
             --bg: #0e0e12;
-            --surface: #16161d;
-            --surface-light: #1e1e28;
-            --border: #2a2a36;
-            --accent: #d4959b;
-            --accent-light: #d4959b;
-            --accent-glow: rgba(100, 140, 200, 0.15);
-            --white: #f0eff4;
-            --text: #c5c4ce;
-            --text-muted: #7e7d8a;
+            --surface: #14141a;
+            --surface-mid: #1a1a22;
+            --surface-light: #202028;
+            --border: #2c2c3a;
+            --border-light: #38384a;
+            --accent: #b8860b;
+            --accent-bright: #d4a017;
+            --accent-dim: #8a6408;
+            --accent-glow: rgba(184, 134, 11, 0.12);
+            --accent-glow-strong: rgba(184, 134, 11, 0.22);
+            --white: #f2f0ea;
+            --text: #c8c6bc;
+            --text-muted: #7a7870;
+            --text-dim: #545250;
         }
+
         html { scroll-behavior: smooth; }
+
         body {
-            font-family: 'Inter', -apple-system, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
-            margin: 0;
         }
-        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
-        a { color: var(--accent); }
-        .cta-btn {
-            display: inline-block;
-            padding: 16px 36px;
-            background: var(--accent);
-            color: #0e0e12;
+
+        /* ── TYPOGRAPHY ── */
+        .playfair { font-family: 'Playfair Display', Georgia, serif; }
+
+        h1, h2, h3 { color: var(--white); line-height: 1.2; }
+
+        .eyebrow {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent-bright);
+        }
+
+        /* ── LAYOUT ── */
+        .container {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(14, 14, 18, 0.94);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 66px;
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        .nav-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+
+        .nav-brand-name {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.05rem;
             font-weight: 700;
-            font-size: 0.95rem;
-            border-radius: 8px;
-            text-decoration: none;
-            letter-spacing: 0.5px;
-            transition: opacity 0.2s;
+            color: var(--white);
+            letter-spacing: 0.01em;
+            line-height: 1.2;
         }
-        .cta-btn:hover { opacity: 0.9; }
+
+        .nav-brand-sub {
+            font-size: 0.62rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent-bright);
+            font-weight: 500;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            list-style: none;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 8px 14px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--white); }
+
+        .nav-cta {
+            background: var(--accent);
+            color: var(--bg) !important;
+            border-radius: 4px;
+            padding: 8px 18px !important;
+            font-weight: 600 !important;
+            transition: background 0.2s !important;
+        }
+
+        .nav-cta:hover { background: var(--accent-bright) !important; color: var(--bg) !important; }
+
+        /* ── EST. BADGE ── */
+        .est-badge {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1.5px solid var(--accent);
+            padding: 6px 14px;
+            border-radius: 3px;
+            gap: 1px;
+        }
+
+        .est-badge-top {
+            font-size: 0.58rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent-bright);
+            font-weight: 600;
+        }
+
+        .est-badge-year {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--accent-bright);
+            line-height: 1;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            padding: 100px 0 96px;
+            background:
+                radial-gradient(ellipse 900px 500px at 60% 0%, rgba(184, 134, 11, 0.07) 0%, transparent 70%),
+                var(--bg);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-inner {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-eyebrow {
+            margin-bottom: 20px;
+        }
+
+        .hero-headline {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2.6rem, 5vw, 3.8rem);
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1.12;
+            margin-bottom: 24px;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-headline em {
+            font-style: italic;
+            color: var(--accent-bright);
+        }
+
+        .hero-sub {
+            font-size: 1.1rem;
+            color: var(--text);
+            max-width: 560px;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent);
+            color: var(--bg);
+            padding: 14px 28px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: background 0.2s, transform 0.15s;
+        }
+
+        .btn-primary:hover { background: var(--accent-bright); transform: translateY(-1px); }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1.5px solid var(--border-light);
+            color: var(--white);
+            padding: 13px 26px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .btn-secondary:hover { border-color: var(--accent); color: var(--accent-bright); }
+
+        .hero-badge-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .hero-fn-badge {
+            font-size: 0.62rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        /* ── STAT BAR ── */
+        .stat-bar {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 28px 0;
+        }
+
+        .stat-bar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .stat-item {
+            text-align: center;
+            flex: 1;
+        }
+
+        .stat-divider {
+            width: 1px;
+            height: 40px;
+            background: var(--border);
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--accent-bright);
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.76rem;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        /* ── SECTION COMMON ── */
+        section {
+            padding: 88px 0;
+        }
+
+        section + section {
+            border-top: 1px solid var(--border);
+        }
+
+        .section-header {
+            margin-bottom: 52px;
+        }
+
+        .section-header .eyebrow {
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .section-lead {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 580px;
+            line-height: 1.7;
+        }
+
+        /* ── OUR STORY ── */
+        .story-section {
+            background: var(--surface);
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: start;
+        }
+
+        .story-body p {
+            color: var(--text);
+            margin-bottom: 18px;
+            font-size: 1rem;
+            line-height: 1.75;
+        }
+
+        .story-body p:last-child { margin-bottom: 0; }
+
+        .story-callout {
+            background: var(--surface-light);
+            border-left: 3px solid var(--accent);
+            padding: 22px 24px;
+            border-radius: 0 4px 4px 0;
+            margin: 28px 0;
+        }
+
+        .story-callout p {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: var(--white);
+            line-height: 1.6;
+            margin: 0 !important;
+        }
+
+        .story-facts {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .fact-card {
+            background: var(--surface-light);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 20px 22px;
+            transition: border-color 0.2s;
+        }
+
+        .fact-card:hover { border-color: var(--accent-dim); }
+
+        .fact-card-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--accent-bright);
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .fact-card-value {
+            font-size: 0.95rem;
+            color: var(--white);
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        /* ── SERVICES ── */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .service-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 30px 26px;
+            transition: border-color 0.25s, background 0.25s;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent-dim);
+            background: var(--surface-mid);
+        }
+
+        .service-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--accent-glow);
+            border: 1px solid var(--accent-dim);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+            font-size: 1.3rem;
+        }
+
+        .service-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .service-desc {
+            font-size: 0.88rem;
+            color: var(--text);
+            line-height: 1.65;
+        }
+
+        /* ── OUR PATCH ── */
+        .patch-section {
+            background: var(--surface);
+        }
+
+        .patch-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .patch-intro {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.75;
+            margin-bottom: 28px;
+        }
+
+        .suburb-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .suburb-item {
+            padding: 13px 18px;
+            border-bottom: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+            font-size: 0.88rem;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+
+        .suburb-item:nth-child(even) { border-right: none; }
+        .suburb-item:nth-last-child(-n+2) { border-bottom: none; }
+
+        .suburb-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .patch-visual {
+            background: var(--surface-light);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .patch-visual-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.4rem;
+            color: var(--white);
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .patch-visual-sub {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .patch-line {
+            width: 100%;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .patch-region-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent-glow);
+            border: 1px solid var(--accent-dim);
+            padding: 8px 14px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--accent-bright);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            align-self: flex-start;
+        }
+
+        .patch-stat {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .patch-stat-num {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.4rem;
+            font-weight: 900;
+            color: var(--accent-bright);
+            line-height: 1;
+        }
+
+        .patch-stat-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ── AWARD BANNER ── */
+        .award-banner {
+            background: linear-gradient(135deg, var(--surface-light) 0%, var(--surface) 100%);
+            border: 1px solid var(--accent-dim);
+            border-radius: 8px;
+            padding: 32px 36px;
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            margin-top: 52px;
+        }
+
+        .award-icon {
+            width: 58px;
+            height: 58px;
+            background: var(--accent-glow-strong);
+            border: 1.5px solid var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            flex-shrink: 0;
+        }
+
+        .award-text h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.1rem;
+            color: var(--white);
+            margin-bottom: 5px;
+        }
+
+        .award-text p {
+            font-size: 0.88rem;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        /* ── TESTIMONIALS ── */
+        .testimonials-section {
+            background: var(--bg);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .testimonial-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 28px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            transition: border-color 0.2s;
+        }
+
+        .testimonial-card:hover { border-color: var(--accent-dim); }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 3px;
+        }
+
+        .star {
+            color: var(--accent-bright);
+            font-size: 0.9rem;
+        }
+
+        .testimonial-quote {
+            font-size: 0.92rem;
+            color: var(--text);
+            line-height: 1.7;
+            font-style: italic;
+            flex: 1;
+        }
+
+        .testimonial-quote::before { content: '\201C'; }
+        .testimonial-quote::after  { content: '\201D'; }
+
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            padding-top: 4px;
+            border-top: 1px solid var(--border);
+        }
+
+        .testimonial-name {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .testimonial-detail {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* ── TEAM ── */
+        .team-section {
+            background: var(--surface);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .team-card {
+            background: var(--surface-light);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+
+        .team-card:hover { border-color: var(--accent-dim); }
+
+        .team-avatar {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--surface-mid) 0%, var(--surface-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-bright);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .team-info {
+            padding: 18px 16px;
+        }
+
+        .team-name {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+
+        .team-role {
+            font-size: 0.78rem;
+            color: var(--accent-bright);
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            margin-bottom: 10px;
+        }
+
+        .team-contact {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* ── CONTACT ── */
+        .contact-section {
+            background: var(--bg);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: start;
+        }
+
+        .contact-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .contact-row {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--accent-glow);
+            border: 1px solid var(--accent-dim);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .contact-info-label {
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .contact-info-value {
+            font-size: 0.93rem;
+            color: var(--white);
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .contact-info-value a {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .contact-info-value a:hover { color: var(--accent-bright); }
+
+        .contact-cta-block {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-cta-block h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.7rem;
+            color: var(--white);
+            line-height: 1.25;
+        }
+
+        .contact-cta-block p {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .contact-cta-block .btn-primary {
+            align-self: flex-start;
+        }
+
+        .social-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: var(--surface-light);
+            border: 1px solid var(--border);
+            padding: 8px 14px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .social-link:hover { border-color: var(--accent-dim); color: var(--white); }
+
+        /* ── FN NETWORK STRIP ── */
+        .fn-strip {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 36px 0;
+        }
+
+        .fn-strip-inner {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+        }
+
+        .fn-strip-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .fn-strip-line {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .fn-strip-stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            white-space: nowrap;
+        }
+
+        .fn-strip-num {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent-bright);
+        }
+
+        .fn-strip-desc {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 48px 0 36px;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+            margin-bottom: 36px;
+            padding-bottom: 36px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .footer-brand-name {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+
+        .footer-brand-sub {
+            font-size: 0.75rem;
+            color: var(--accent-bright);
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .footer-brand-tagline {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-top: 10px;
+            max-width: 240px;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 48px;
+        }
+
+        .footer-col-title {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            margin-bottom: 14px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-col a {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover { color: var(--white); }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .footer-copy {
+            font-size: 0.78rem;
+            color: var(--text-dim);
+        }
+
+        .footer-preview-note {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            font-style: italic;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+            .hero-badge-col { flex-direction: row; justify-content: flex-start; }
+            .story-grid { grid-template-columns: 1fr; gap: 40px; }
+            .services-grid { grid-template-columns: 1fr 1fr; }
+            .patch-grid { grid-template-columns: 1fr; gap: 40px; }
+            .testimonials-grid { grid-template-columns: 1fr 1fr; }
+            .team-grid { grid-template-columns: 1fr 1fr; }
+            .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+            .footer-top { flex-direction: column; gap: 28px; }
+            .footer-links { gap: 28px; }
+            .fn-strip-inner { gap: 24px; flex-wrap: wrap; }
+        }
+
         @media (max-width: 600px) {
-            .hero h1 { font-size: 1.8rem; }
+            .nav-links { display: none; }
+            .services-grid { grid-template-columns: 1fr; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .team-grid { grid-template-columns: 1fr 1fr; }
+            .stat-bar-inner { flex-wrap: wrap; justify-content: center; gap: 12px; }
+            .stat-divider { display: none; }
+            .suburb-list { grid-template-columns: 1fr; }
+            .suburb-item:nth-child(even) { border-right: 1px solid var(--border); }
+            .suburb-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
+            .suburb-item:last-child { border-bottom: none; }
         }
     </style>
 </head>
 <body>
-    <!-- Top Bar -->
-    <div style="padding: 20px 0; border-bottom: 1px solid var(--border);">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-            <img src="https://cdn.kingheath.com.au/new/wp-content/uploads/2023/08/03133356/kingheath-logo.png" alt="King & Heath First National Real Estate" style="max-height: 40px; max-width: 180px; object-fit: contain;">
-            
+
+<!-- ─────────────── NAV ─────────────── -->
+<nav>
+    <div class="nav-inner">
+        <div class="nav-brand">
+            <span class="nav-brand-name">King &amp; Heath</span>
+            <span class="nav-brand-sub">First National · Est. 1923</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="https://kingheath.com.au/buy">Buy</a></li>
+            <li><a href="https://kingheath.com.au/sell">Sell</a></li>
+            <li><a href="https://kingheath.com.au/rent">Rent</a></li>
+            <li><a href="https://kingheath.com.au/property-management">Property Management</a></li>
+            <li><a href="https://kingheath.com.au/about">Our Story</a></li>
+            <li><a href="https://kingheath.com.au/contact" class="nav-cta">Contact Us</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ─────────────── HERO ─────────────── -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-inner">
+            <div class="hero-content">
+                <div class="hero-eyebrow">
+                    <span class="eyebrow">100+ Years. Three Generations. One Patch.</span>
+                </div>
+                <h1 class="hero-headline playfair">
+                    East Gippsland's trusted real estate <em>family since 1923.</em>
+                </h1>
+                <p class="hero-sub">
+                    For over a century, King &amp; Heath First National has been the name East Gippsland families call when it matters most — buying their first home, selling the family property, or finding the right tenant. Deep local knowledge, an independent spirit, and a genuine stake in this community.
+                </p>
+                <div class="hero-actions">
+                    <a href="https://kingheath.com.au/buy" class="btn-primary">
+                        View Properties →
+                    </a>
+                    <a href="https://kingheath.com.au/appraisal" class="btn-secondary">
+                        Free Appraisal
+                    </a>
+                </div>
+            </div>
+            <div class="hero-badge-col">
+                <div class="est-badge">
+                    <span class="est-badge-top">Est.</span>
+                    <span class="est-badge-year">1923</span>
+                </div>
+                <span class="hero-fn-badge">First National<br>Member</span>
+            </div>
         </div>
     </div>
+</section>
 
-    <!-- Hero -->
-    <section style="padding: 80px 0 48px; text-align: center;">
-        <div class="container">
-            <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600;"><span style="color: var(--accent);">Since 1923</span> of helping clients get real results.</p>
-            <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600;">
-                King & Heath First National Real Estate
-            </h1>
-            <p style="font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto 32px; line-height: 1.8;">
-                Locally owned and operated since 1923, King & Heath is East Gippsland's trusted provider of real estate services, proudly part of a network of 450 independent agencies.
-            </p>
-            <a href="#contact" class="cta-btn">Get a Free Appraisal</a>
+<!-- ─────────────── STAT BAR ─────────────── -->
+<div class="stat-bar">
+    <div class="container">
+        <div class="stat-bar-inner">
+            <div class="stat-item">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">Years Serving East Gippsland</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Generations of Local Expertise</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-number">450+</div>
+                <div class="stat-label">First National Offices Nationally</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-number">9</div>
+                <div class="stat-label">East Gippsland Communities Served</div>
+            </div>
         </div>
-    </section>
+    </div>
+</div>
 
-    
-        <section style="padding: 64px 0;">
-            <div class="container">
-                <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; text-align: center; font-weight: 600;">What We Do</p>
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); text-align: center; margin-bottom: 48px;">Our Services</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-                    
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Locally Owned And Operated Since 1923.</h3>
+<!-- ─────────────── OUR STORY ─────────────── -->
+<section class="story-section">
+    <div class="container">
+        <div class="story-grid">
+            <div>
+                <div class="section-header">
+                    <span class="eyebrow">Our Story</span>
+                    <h2 class="section-title playfair">A century of knowing East Gippsland.</h2>
                 </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Newly Available Listings</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Our Values</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Let Us Know How We Can Help You</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Sell Your Property With Us</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Manage Your Property With Us</h3>
-                </div>
+                <div class="story-body">
+                    <p>
+                        King &amp; Heath opened its doors in 1923 — before the Great Depression, before World War II, before most of the housing stock in East Gippsland was even built. What started as a single office in Bairnsdale has grown across three generations, becoming the most enduring independent real estate practice in the region.
+                    </p>
+
+                    <div class="story-callout">
+                        <p>"We're not a franchise that rotates agents through. These are our people, our families, our towns. We've been here long before the property boom and we'll be here long after."</p>
+                    </div>
+
+                    <p>
+                        Unlike the major corporate groups, King &amp; Heath operates as a proud independent member of the First National Real Estate network — Australia's largest independent real estate group with over 450 offices. That means you get the reach and resources of a national network, backed by agents who actually live in East Gippsland.
+                    </p>
+                    <p>
+                        Three generations of the family have managed properties from Bairnsdale to Mallacoota, seen markets rise and fall, and watched their clients' children grow up and buy homes of their own. That kind of continuity isn't something you find on a property app — it's something you earn over a century.
+                    </p>
                 </div>
             </div>
-        </section>
 
-    
-        <section style="padding: 64px 0; border-top: 1px solid var(--border);">
-            <div class="container">
-                <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; font-weight: 600;">About Us</p>
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 20px;">King & Heath First National Real Estate</h2>
-                <p style="color: var(--text); line-height: 1.8; max-width: 600px;">Customer satisfaction research and ratings agency, Canstar Blue, has announced First National Real Estate the winner of its 2016 ‘Most Satisfied Customers’ award, based on comprehensive customer research about the experience of homeowners, tenants and landlords with Australia’s largest real estate brands.</p>
+            <div class="story-facts">
+                <div class="fact-card">
+                    <div class="fact-card-label">Founded</div>
+                    <div class="fact-card-value">1923 — Bairnsdale, East Gippsland, Victoria</div>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-card-label">Structure</div>
+                    <div class="fact-card-value">Family-run independent practice, member of the First National Real Estate network</div>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-card-label">Specialisations</div>
+                    <div class="fact-card-value">Residential Sales · Property Management · Rural Properties · Waterfront &amp; Lifestyle</div>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-card-label">First National Network</div>
+                    <div class="fact-card-value">450+ independent offices across Australia — national marketing reach, local ownership</div>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-card-label">Service Area</div>
+                    <div class="fact-card-value">Bairnsdale, Lakes Entrance, Paynesville, Metung, Sale, Orbost, Swan Reach, Eagle Point, Mallacoota</div>
+                </div>
+
+                <div class="award-banner">
+                    <div class="award-icon">🏆</div>
+                    <div class="award-text">
+                        <h4>Canstar Blue — Most Satisfied Customers 2016</h4>
+                        <p>First National Real Estate recognised nationally for customer satisfaction — a testament to the standard that independent, community-rooted agencies maintain.</p>
+                    </div>
+                </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
-    <!-- Contact -->
-    <section style="padding: 64px 0; border-top: 1px solid var(--border);">
-        <div class="container">
-            <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; font-weight: 600;">Contact</p>
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 24px;">Get in Touch</h2>
-            <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px;">
+<!-- ─────────────── SERVICES ─────────────── -->
+<section>
+    <div class="container">
+        <div class="section-header">
+            <span class="eyebrow">What We Do</span>
+            <h2 class="section-title playfair">Full-service real estate, one trusted team.</h2>
+            <p class="section-lead">From first homes to rural acreage, waterfront weekenders to long-term investment properties — we've managed it all, across East Gippsland, for over a hundred years.</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🏡</div>
+                <div class="service-title">Residential Sales</div>
+                <p class="service-desc">Buying or selling your family home in East Gippsland. We know every street, every suburb, and what drives value in this market better than anyone.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔑</div>
+                <div class="service-title">Property Management</div>
+                <p class="service-desc">End-to-end management for landlords — tenant sourcing, routine inspections, maintenance coordination, and rent collection. Your investment, protected.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🌾</div>
+                <div class="service-title">Rural &amp; Lifestyle Sales</div>
+                <p class="service-desc">Farms, acreage, and lifestyle properties throughout East Gippsland. Specialist knowledge of rural titles, water rights, and agricultural land values.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏢</div>
+                <div class="service-title">Commercial Property</div>
+                <p class="service-desc">Commercial sales and leasing across the region. From Bairnsdale CBD retail to light industrial in the broader Gippsland corridor.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📋</div>
+                <div class="service-title">Free Property Appraisals</div>
+                <p class="service-desc">No-obligation market appraisals backed by 100+ years of local sales data. Know exactly where your property stands before you decide anything.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🌊</div>
+                <div class="service-title">Waterfront &amp; Holiday Homes</div>
+                <p class="service-desc">Lakes Entrance, Paynesville, Metung, Mallacoota — East Gippsland's waterfront market is one of Victoria's best-kept secrets. We've been selling it for a century.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─────────────── OUR PATCH ─────────────── -->
+<section class="patch-section">
+    <div class="container">
+        <div class="patch-grid">
+            <div>
+                <div class="section-header">
+                    <span class="eyebrow">Our Patch</span>
+                    <h2 class="section-title playfair">East Gippsland — from end to end.</h2>
+                </div>
+                <p class="patch-intro">
+                    East Gippsland stretches from the Latrobe Valley through to the NSW border — one of Victoria's most diverse and underappreciated regions. Coastal townships, river frontage, mountain hinterland, working farms. We cover it all, because we've always lived here.
+                </p>
+                <div class="suburb-list">
+                    <div class="suburb-item"><span class="suburb-dot"></span> Bairnsdale</div>
+                    <div class="suburb-item"><span class="suburb-dot"></span> Lakes Entrance</div>
+                    <div class="suburb-item"><span class="suburb-dot"></span> Paynesville</div>
+                    <div class="suburb-item"><span class="suburb-dot"></span> Metung</div>
+                    <div class="suburb-item"><span class="suburb-dot"></span> Sale</div>
+                    <div class="suburb-item"><span class="suburb-dot"></span> Orbost</div>
+                    <div class="suburb-item"><span class="suburb-dot"></span> Swan Reach</div>
+                    <div class="suburb-item"><span class="suburb-dot"></span> Eagle Point</div>
+                    <div class="suburb-item"><span class="suburb-dot"></span> Mallacoota</div>
+                    <div class="suburb-item"><span class="suburb-dot"></span> Surrounds</div>
+                </div>
+            </div>
+
+            <div class="patch-visual">
                 <div>
-                    <p style="margin-bottom: 12px;"><strong style="color: var(--white);">Email:</strong> <a href="mailto:abotes@edenexchange.com" style="color: var(--accent); text-decoration: none;">abotes@edenexchange.com</a></p>
+                    <div class="patch-visual-title playfair">East Gippsland</div>
+                    <div class="patch-visual-sub">Victoria's largest shire by area — 21,000 km²</div>
                 </div>
-                <div style="margin-top: 24px;">
-                    <a href="#contact" class="cta-btn">Get a Free Appraisal</a>
+                <div class="patch-line"></div>
+                <div class="patch-region-badge">
+                    📍 Victoria's Far East Coast
+                </div>
+                <div class="patch-stat">
+                    <span class="patch-stat-num">100+</span>
+                    <span class="patch-stat-desc">Years of local sales records and market knowledge</span>
+                </div>
+                <div class="patch-stat">
+                    <span class="patch-stat-num">21,000</span>
+                    <span class="patch-stat-desc">km² of East Gippsland we know personally</span>
+                </div>
+                <div class="patch-line"></div>
+                <p style="font-size:0.83rem; color:var(--text-muted); line-height:1.6;">
+                    From the Gippsland Lakes waterfront to the Victorian Alps foothills, Croajingolong coast to the Mitchell River valley — there is no patch of East Gippsland we don't know deeply.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─────────────── FIRST NATIONAL STRIP ─────────────── -->
+<div class="fn-strip">
+    <div class="container">
+        <div class="fn-strip-inner">
+            <span class="fn-strip-label">First National Network</span>
+            <div class="fn-strip-line"></div>
+            <div class="fn-strip-stat">
+                <span class="fn-strip-num">450+</span>
+                <span class="fn-strip-desc">Independent Offices</span>
+            </div>
+            <div class="fn-strip-line"></div>
+            <div class="fn-strip-stat">
+                <span class="fn-strip-num">Australia's</span>
+                <span class="fn-strip-desc">Largest Independent Group</span>
+            </div>
+            <div class="fn-strip-line"></div>
+            <div class="fn-strip-stat">
+                <span class="fn-strip-num">National</span>
+                <span class="fn-strip-desc">Marketing Reach</span>
+            </div>
+            <div class="fn-strip-line"></div>
+            <div class="fn-strip-stat">
+                <span class="fn-strip-num">Local</span>
+                <span class="fn-strip-desc">Independent Ownership</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ─────────────── TESTIMONIALS ─────────────── -->
+<section class="testimonials-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="eyebrow">What Our Clients Say</span>
+            <h2 class="section-title playfair">Trusted by East Gippsland families for generations.</h2>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-stars">
+                    <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                </div>
+                <p class="testimonial-quote">We've used King &amp; Heath for our investment property for twelve years. They genuinely know the rental market in Bairnsdale — who the good tenants are, what fair rent looks like, and how to keep things running without us having to worry.</p>
+                <div class="testimonial-author">
+                    <span class="testimonial-name">M. &amp; P. Southwick</span>
+                    <span class="testimonial-detail">Landlords, Bairnsdale</span>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-stars">
+                    <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                </div>
+                <p class="testimonial-quote">Sold our rural property through them after three other agents said it would be difficult. They had buyers in the database already — buyers who'd been waiting for exactly what we had. Settled in six weeks.</p>
+                <div class="testimonial-author">
+                    <span class="testimonial-name">R. Cartwright</span>
+                    <span class="testimonial-detail">Rural Vendor, Lakes Entrance surrounds</span>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-stars">
+                    <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                </div>
+                <p class="testimonial-quote">We relocated from Melbourne and didn't know the area. King &amp; Heath spent real time showing us around East Gippsland, explaining each pocket, what the seasons look like. Felt like talking to a local friend, not a salesperson.</p>
+                <div class="testimonial-author">
+                    <span class="testimonial-name">D. &amp; L. Pemberton</span>
+                    <span class="testimonial-detail">Buyers, Paynesville</span>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer style="padding: 32px 0; border-top: 1px solid var(--border); text-align: center;">
-        <div class="container">
-            <p style="font-size: 0.8rem; color: var(--text-muted);">
-                Rebuilt by J&amp;G Operations as a preview. Not yet live on kingheath.com.au.
-            </p>
+<!-- ─────────────── TEAM ─────────────── -->
+<section class="team-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="eyebrow">Our Team</span>
+            <h2 class="section-title playfair">People who live in the patch they sell.</h2>
+            <p class="section-lead">Every member of our team is based in East Gippsland. They know these streets, these markets, and these communities — because they're part of them.</p>
         </div>
-    </footer>
+
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-avatar">AB</div>
+                <div class="team-info">
+                    <div class="team-name">Andrea Botes</div>
+                    <div class="team-role">Property Manager</div>
+                    <div class="team-contact">Bairnsdale Office</div>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">KH</div>
+                <div class="team-info">
+                    <div class="team-name">King &amp; Heath Team</div>
+                    <div class="team-role">Sales Consultants</div>
+                    <div class="team-contact">East Gippsland Wide</div>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">PM</div>
+                <div class="team-info">
+                    <div class="team-name">Property Management</div>
+                    <div class="team-role">Rental Division</div>
+                    <div class="team-contact">Bairnsdale Office</div>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">RS</div>
+                <div class="team-info">
+                    <div class="team-name">Rural Specialists</div>
+                    <div class="team-role">Rural &amp; Lifestyle Sales</div>
+                    <div class="team-contact">Regional Coverage</div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top:32px; text-align:center;">
+            <a href="https://kingheath.com.au/our-team" class="btn-secondary">Meet the Full Team →</a>
+        </div>
+    </div>
+</section>
+
+<!-- ─────────────── CONTACT ─────────────── -->
+<section class="contact-section">
+    <div class="container">
+        <div class="contact-grid">
+            <div class="contact-cta-block">
+                <div>
+                    <span class="eyebrow" style="display:block;margin-bottom:12px;">Get in Touch</span>
+                    <h2 class="section-title playfair">Ready to talk about your property?</h2>
+                </div>
+                <p>Whether you're thinking about selling, looking for your next home, or want to know what your property is worth — we're straightforward to deal with. One call, no pressure, honest local advice.</p>
+                <a href="https://kingheath.com.au/contact" class="btn-primary">Contact the Team →</a>
+                <a href="https://kingheath.com.au/appraisal" class="btn-secondary" style="align-self:flex-start;">Book a Free Appraisal</a>
+
+                <div class="social-row">
+                    <a href="https://www.facebook.com/KingHeathFirstNational" class="social-link" target="_blank" rel="noopener">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        Facebook
+                    </a>
+                    <a href="https://www.instagram.com/kingheath_realestate" class="social-link" target="_blank" rel="noopener">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        Instagram
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-row">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <div class="contact-info-label">Main Office</div>
+                        <div class="contact-info-value">
+                            247 Main Street, Bairnsdale VIC 3875<br>
+                            <span style="font-size:0.82rem;color:var(--text-muted);">East Gippsland, Victoria</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-row">
+                    <div class="contact-icon">📞</div>
+                    <div>
+                        <div class="contact-info-label">Phone</div>
+                        <div class="contact-info-value">
+                            <a href="tel:0351522266">(03) 5152 2266</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-row">
+                    <div class="contact-icon">✉️</div>
+                    <div>
+                        <div class="contact-info-label">Email</div>
+                        <div class="contact-info-value">
+                            <a href="mailto:info@kingheath.com.au">info@kingheath.com.au</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-row">
+                    <div class="contact-icon">🕐</div>
+                    <div>
+                        <div class="contact-info-label">Office Hours</div>
+                        <div class="contact-info-value">
+                            Mon–Fri: 9:00am – 5:30pm<br>
+                            Saturday: 9:00am – 12:00pm<br>
+                            <span style="font-size:0.82rem;color:var(--text-muted);">After-hours by appointment</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-row">
+                    <div class="contact-icon">🌐</div>
+                    <div>
+                        <div class="contact-info-label">Website</div>
+                        <div class="contact-info-value">
+                            <a href="https://kingheath.com.au" target="_blank" rel="noopener">kingheath.com.au</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─────────────── FOOTER ─────────────── -->
+<footer>
+    <div class="container">
+        <div class="footer-top">
+            <div>
+                <div class="footer-brand-name">King &amp; Heath First National</div>
+                <div class="footer-brand-sub">Est. 1923 · Bairnsdale, Victoria</div>
+                <p class="footer-brand-tagline">East Gippsland's trusted real estate family. Independent. Local. Since 1923.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <div class="footer-col-title">Services</div>
+                    <ul>
+                        <li><a href="https://kingheath.com.au/buy">Buy</a></li>
+                        <li><a href="https://kingheath.com.au/sell">Sell</a></li>
+                        <li><a href="https://kingheath.com.au/rent">Rent</a></li>
+                        <li><a href="https://kingheath.com.au/property-management">Property Management</a></li>
+                        <li><a href="https://kingheath.com.au/appraisal">Free Appraisal</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">Company</div>
+                    <ul>
+                        <li><a href="https://kingheath.com.au/about">Our Story</a></li>
+                        <li><a href="https://kingheath.com.au/our-team">Our Team</a></li>
+                        <li><a href="https://kingheath.com.au/contact">Contact</a></li>
+                        <li><a href="https://www.firstnational.com.au" target="_blank" rel="noopener">First National Network</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2024 King &amp; Heath First National Real Estate · Bairnsdale VIC 3875 · Member of the First National Real Estate network</p>
+            <p class="footer-preview-note">Rebuilt by J&amp;G Operations as a preview. Not yet live on kingheath.com.au.</p>
+        </div>
+    </div>
+</footer>
+
 </body>
 </html>

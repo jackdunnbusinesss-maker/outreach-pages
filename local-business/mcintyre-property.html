@@ -1,134 +1,1483 @@
 <!DOCTYPE html>
 <html lang="en-AU">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mcintyre Property</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --bg: #0e0e12;
-            --surface: #16161d;
-            --surface-light: #1e1e28;
-            --border: #2a2a36;
-            --accent: #d4959b;
-            --accent-light: #d4959b;
-            --accent-glow: rgba(100, 140, 200, 0.15);
-            --white: #f0eff4;
-            --text: #c5c4ce;
-            --text-muted: #7e7d8a;
-        }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-            margin: 0;
-        }
-        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
-        a { color: var(--accent); }
-        .cta-btn {
-            display: inline-block;
-            padding: 16px 36px;
-            background: var(--accent);
-            color: #0e0e12;
-            font-weight: 700;
-            font-size: 0.95rem;
-            border-radius: 8px;
-            text-decoration: none;
-            letter-spacing: 0.5px;
-            transition: opacity 0.2s;
-        }
-        .cta-btn:hover { opacity: 0.9; }
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 1.8rem; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>McIntyre Property — Canberra's Local Real Estate Experts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0e0e12;
+      --surface: #16161d;
+      --surface2: #1c1c26;
+      --border: #2a2a36;
+      --accent: #7a9cd4;
+      --accent-dim: rgba(122, 156, 212, 0.12);
+      --accent-glow: rgba(122, 156, 212, 0.25);
+      --text: #e8e8f0;
+      --text-muted: #8888a0;
+      --text-dim: #5a5a70;
+      --radius: 10px;
+      --radius-lg: 16px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      line-height: 1.25;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    img { display: block; max-width: 100%; }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(14, 14, 18, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 4px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      background: var(--accent-dim);
+    }
+
+    .nav-cta {
+      background: var(--accent) !important;
+      color: #0e0e12 !important;
+      font-weight: 600 !important;
+      padding: 8px 18px !important;
+      border-radius: 7px !important;
+    }
+
+    .nav-cta:hover {
+      background: #8fb0e0 !important;
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      width: 22px;
+      height: 2px;
+      background: var(--text-muted);
+      border-radius: 2px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 96px 0 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(122, 156, 212, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(122, 156, 212, 0.3);
+      border-radius: 40px;
+      padding: 6px 16px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 28px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .hero-badge::before {
+      content: '\2605';
+      font-size: 0.7rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 700;
+      color: var(--text);
+      max-width: 780px;
+      margin: 0 auto 20px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin: 0 auto 36px;
+      font-weight: 400;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0e0e12;
+    }
+
+    .btn-primary:hover {
+      background: #8fb0e0;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px var(--accent-glow);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 64px;
+      padding-top: 48px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 4px;
+    }
+
+    /* ── SECTION SHARED ── */
+    section {
+      padding: 80px 0;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin-bottom: 48px;
+    }
+
+    .section-header {
+      margin-bottom: 48px;
+    }
+
+    /* ── PROPERTIES ── */
+    .properties { background: var(--surface); }
+
+    .props-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 36px;
+    }
+
+    .prop-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .prop-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .prop-img {
+      width: 100%;
+      height: 180px;
+      background: linear-gradient(135deg, #1a1a26 0%, #1e2030 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .prop-img-icon {
+      font-size: 2.5rem;
+      opacity: 0.2;
+    }
+
+    .prop-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--accent);
+      color: #0e0e12;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 4px 10px;
+      border-radius: 5px;
+    }
+
+    .prop-badge.under-offer {
+      background: #e8a857;
+    }
+
+    .prop-body {
+      padding: 20px;
+    }
+
+    .prop-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .prop-address {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .prop-meta {
+      display: flex;
+      gap: 16px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .prop-meta span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .prop-open {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      font-size: 0.78rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .props-footer {
+      text-align: center;
+    }
+
+    /* ── SERVICES ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .service-card:hover {
+      border-color: var(--accent);
+      background: var(--surface2);
+    }
+
+    .service-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--accent-dim);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 18px;
+      border: 1px solid rgba(122, 156, 212, 0.2);
+    }
+
+    .service-card h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .service-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 16px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+    }
+
+    .service-link::after {
+      content: '\2192';
+    }
+
+    .service-link:hover { opacity: 0.75; }
+
+    /* ── OUR PATCH ── */
+    .our-patch { background: var(--surface); }
+
+    .patch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .patch-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+    }
+
+    .patch-card h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+
+    .patch-suburbs {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .patch-suburbs li {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .patch-suburbs li::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── ABOUT ── */
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .about-tag {
+      display: inline-block;
+      background: var(--accent-dim);
+      border: 1px solid rgba(122, 156, 212, 0.3);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 4px 12px;
+      border-radius: 5px;
+      margin-bottom: 16px;
+    }
+
+    .about-body p {
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+    }
+
+    .about-awards {
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .award-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+    }
+
+    .award-icon {
+      font-size: 1.2rem;
+    }
+
+    .award-text {
+      font-size: 0.85rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .about-visual {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .about-visual-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
+
+    .market-stat {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .market-stat:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .market-stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .market-stat-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    /* ── TEAM ── */
+    .team { background: var(--surface); }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .team-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      text-align: center;
+      transition: border-color 0.2s;
+    }
+
+    .team-card:hover {
+      border-color: var(--accent);
+    }
+
+    .team-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 2px solid rgba(122, 156, 212, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 14px;
+      font-size: 1.5rem;
+    }
+
+    .team-name {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .team-role {
+      font-size: 0.78rem;
+      color: var(--accent);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .testi-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+    }
+
+    .testi-stars {
+      color: var(--accent);
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+      margin-bottom: 14px;
+    }
+
+    .testi-quote {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testi-initials {
+      width: 36px;
+      height: 36px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(122, 156, 212, 0.25);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .testi-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .testi-loc {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--surface); }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(122, 156, 212, 0.2);
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-item-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+
+    .contact-item-val {
+      font-size: 0.95rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .contact-item-val a {
+      color: var(--accent);
+    }
+
+    .contact-item-val a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-form-area {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+    }
+
+    .contact-form-area h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 7px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 11px 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--accent);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .form-group select option {
+      background: var(--surface2);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 48px 0 32px;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand .nav-logo {
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+      max-width: 260px;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .social-icon {
+      width: 34px;
+      height: 34px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: border-color 0.2s, background 0.2s, color 0.2s;
+    }
+
+    .social-icon:hover {
+      border-color: var(--accent);
+      background: var(--accent-dim);
+      color: var(--accent);
+    }
+
+    .footer-col h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 14px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-col ul li a {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover { color: var(--accent); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom p {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+
+    .footer-bottom p:last-child {
+      color: #4a4a60;
+      font-style: italic;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+
+      .hero { padding: 64px 0 56px; }
+
+      .hero-stats { gap: 28px; }
+
+      .about-inner { grid-template-columns: 1fr; gap: 36px; }
+
+      .contact-inner { grid-template-columns: 1fr; }
+
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 28px; }
+
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2rem; }
+      .hero-stats { flex-direction: column; gap: 20px; }
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Top Bar -->
-    <div style="padding: 20px 0; border-bottom: 1px solid var(--border);">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-            <img src="https://mcintyreproperty.com.au/wp-content/uploads/2017/01/mcintyre-property-logo.svg" alt="Mcintyre Property" style="max-height: 40px; max-width: 180px; object-fit: contain;">
-            <a href="tel:0262949393" class="cta-btn" style="padding: 10px 24px; font-size: 0.85rem;">02 6294 9393</a>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container">
+      <div class="nav-inner">
+        <a href="https://mcintyreproperty.com.au" class="nav-logo">McIntyre <span>Property</span></a>
+        <ul class="nav-links">
+          <li><a href="https://mcintyreproperty.com.au/buy/">Buy</a></li>
+          <li><a href="https://mcintyreproperty.com.au/sell/">Sell</a></li>
+          <li><a href="https://mcintyreproperty.com.au/rent/">Rent</a></li>
+          <li><a href="https://mcintyreproperty.com.au/rent/property-management/">Property Management</a></li>
+          <li><a href="https://mcintyreproperty.com.au/about/">About</a></li>
+          <li><a href="https://mcintyreproperty.com.au/contact/" class="nav-cta">Contact Us</a></li>
+        </ul>
+        <div class="nav-toggle" aria-label="Open menu">
+          <span></span><span></span><span></span>
         </div>
+      </div>
     </div>
+  </nav>
 
-    <!-- Hero -->
-    <section style="padding: 80px 0 48px; text-align: center;">
-        <div class="container">
-            <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600;">Trusted Local Real Estate Experts</p>
-            <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600;">
-                Mcintyre Property
-            </h1>
-            <p style="font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto 32px; line-height: 1.8;">
-                We are leading real estate agents providing properties on rent and sale in Tuggeranong, Belconnen and many other parts of Canberra. Ask for property appraisal today!
-            </p>
-            <a href="tel:0262949393" class="cta-btn">Get a Free Appraisal</a>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">Multiple Award-Winning Agency &mdash; Canberra</div>
+      <h1>Your Property,<br /><em>Your Future.</em><br />Canberra's Local Experts.</h1>
+      <p class="hero-sub">Serving Tuggeranong, Belconnen, Woden and the greater Canberra region &mdash; with honest advice, genuine local knowledge, and results that speak for themselves.</p>
+      <div class="hero-actions">
+        <a href="https://mcintyreproperty.com.au/buy/" class="btn btn-primary">Browse Properties</a>
+        <a href="https://mcintyreproperty.com.au/sell/" class="btn btn-outline">Get a Free Appraisal</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">20+</span>
+          <span class="stat-label">Years in Canberra</span>
         </div>
-    </section>
-
-    
-        <section style="padding: 64px 0;">
-            <div class="container">
-                <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; text-align: center; font-weight: 600;">What We Do</p>
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); text-align: center; margin-bottom: 48px;">Our Services</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-                    
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Your local Canberra Real Estate Experts</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Featured Homes</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">What people are saying</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">McIntyre Property - Southside Tuggeranong</h3>
-                </div>
-                </div>
-            </div>
-        </section>
-
-    
-        <section style="padding: 64px 0; border-top: 1px solid var(--border);">
-            <div class="container">
-                <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; font-weight: 600;">About Us</p>
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 20px;">Mcintyre Property</h2>
-                <p style="color: var(--text); line-height: 1.8; max-width: 600px;">You can get in touch with us a number of ways: Come in and see us (parking across the road), give us a call, or fill in this contact form and we’ll get back to you.</p>
-            </div>
-        </section>
-
-    <!-- Contact -->
-    <section style="padding: 64px 0; border-top: 1px solid var(--border);">
-        <div class="container">
-            <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; font-weight: 600;">Contact</p>
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 24px;">Get in Touch</h2>
-            <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px;">
-                <div>
-                    <p style="margin-bottom: 12px;"><strong style="color: var(--white);">Phone:</strong> <a href="tel:0262949393" style="color: var(--accent); text-decoration: none;">02 6294 9393</a></p>
-                    <p style="margin-bottom: 12px;"><strong style="color: var(--white);">Email:</strong> <a href="mailto:tegan.ketels@mcintyreproperty.com.au" style="color: var(--accent); text-decoration: none;">tegan.ketels@mcintyreproperty.com.au</a></p>
-                </div>
-                <div style="margin-top: 24px;">
-                    <a href="tel:0262949393" class="cta-btn">Get a Free Appraisal</a>
-                </div>
-            </div>
+        <div class="stat">
+          <span class="stat-num">2</span>
+          <span class="stat-label">Key Districts Covered</span>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer style="padding: 32px 0; border-top: 1px solid var(--border); text-align: center;">
-        <div class="container">
-            <p style="font-size: 0.8rem; color: var(--text-muted);">
-                Rebuilt by J&amp;G Operations as a preview. Not yet live on mcintyreproperty.com.au.
-            </p>
+        <div class="stat">
+          <span class="stat-num">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span class="stat-label">Client Satisfaction</span>
         </div>
-    </footer>
+        <div class="stat">
+          <span class="stat-num">ACT</span>
+          <span class="stat-label">Licensed &amp; Regulated</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PROPERTIES -->
+  <section class="properties">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Current Listings</p>
+        <h2 class="section-title">Fresh on the Market</h2>
+        <p class="section-sub">A sample of our latest Canberra listings &mdash; from Tuggeranong townhouses to Belconnen family homes.</p>
+      </div>
+      <div class="props-grid">
+
+        <div class="prop-card">
+          <div class="prop-img">
+            <span class="prop-badge">For Sale</span>
+            <span class="prop-img-icon">&#127968;</span>
+          </div>
+          <div class="prop-body">
+            <div class="prop-price">$890,000+</div>
+            <div class="prop-address">2/3 Charles Place, Gordon ACT 2906</div>
+            <div class="prop-meta">
+              <span>&#x1F6CF; 4 Bed</span>
+              <span>&#x1F6BF; 2 Bath</span>
+            </div>
+            <div class="prop-open">Open Home &mdash; dates on listing</div>
+          </div>
+        </div>
+
+        <div class="prop-card">
+          <div class="prop-img">
+            <span class="prop-badge">For Sale</span>
+            <span class="prop-img-icon">&#127968;</span>
+          </div>
+          <div class="prop-body">
+            <div class="prop-price">$945,000+</div>
+            <div class="prop-address">11 Rabnor Place, Isabella Plains ACT 2905</div>
+            <div class="prop-meta">
+              <span>&#x1F6CF; 4 Bed</span>
+              <span>&#x1F6BF; 2 Bath</span>
+            </div>
+            <div class="prop-open">Open Home &mdash; dates on listing</div>
+          </div>
+        </div>
+
+        <div class="prop-card">
+          <div class="prop-img">
+            <span class="prop-badge under-offer">Under Offer</span>
+            <span class="prop-img-icon">&#127968;</span>
+          </div>
+          <div class="prop-body">
+            <div class="prop-price">Under Offer</div>
+            <div class="prop-address">32 Kirkcaldie Circuit, Chisholm ACT 2905</div>
+            <div class="prop-meta">
+              <span>&#x1F6CF; 4 Bed</span>
+              <span>&#x1F6BF; 2 Bath</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="props-footer">
+        <a href="https://mcintyreproperty.com.au/buy/" class="btn btn-outline">View All Properties &#8594;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">What We Do</p>
+        <h2 class="section-title">Full-Service Real Estate,<br />Done Properly</h2>
+        <p class="section-sub">Whether you're buying your first home in Tuggeranong, selling a Belconnen investment, or looking for solid property management &mdash; we've got you covered.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-icon">&#x1F511;</div>
+          <h3>Buying</h3>
+          <p>We know Canberra's pockets inside out &mdash; from Gowrie to Evatt. We'll find the right property for your budget and keep the whole process stress-free.</p>
+          <a href="https://mcintyreproperty.com.au/buy/" class="service-link">Browse listings</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">&#x1F4C8;</div>
+          <h3>Selling</h3>
+          <p>Canberra's market moves fast, especially with public service demand around Tuggeranong and the Inner North. We price sharp and negotiate harder.</p>
+          <a href="https://mcintyreproperty.com.au/sell/" class="service-link">See recent sales</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">&#x1F3E0;</div>
+          <h3>Property Management</h3>
+          <p>ACT tenancy legislation is some of the most tenant-friendly in the country. Our team keeps you compliant, your property maintained, and your rent coming in on time.</p>
+          <a href="https://mcintyreproperty.com.au/rent/property-management/" class="service-link">Learn more</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">&#x1F4CB;</div>
+          <h3>Sales Appraisals</h3>
+          <p>Not sure what your Tuggeranong or Belconnen home is worth right now? Our free appraisals are honest, data-backed, and carry no obligation whatsoever.</p>
+          <a href="https://mcintyreproperty.com.au/sell/" class="service-link">Request appraisal</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">&#x1F4B0;</div>
+          <h3>Rental Appraisals</h3>
+          <p>With a steady stream of government tenants and public servants relocating to Canberra, we'll help you price your rental to minimise vacancy and maximise yield.</p>
+          <a href="https://mcintyreproperty.com.au/rent/" class="service-link">Get a rental appraisal</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">&#x1F91D;</div>
+          <h3>Investment Advice</h3>
+          <p>Canberra continues to outperform many capital cities on rental yields. Our investment team helps you identify the best-performing suburbs before prices move.</p>
+          <a href="https://mcintyreproperty.com.au/rent/property-management/" class="service-link">Talk to the team</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR PATCH -->
+  <section class="our-patch">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Where We Work</p>
+        <h2 class="section-title">Our Patch</h2>
+        <p class="section-sub">We focus on the suburbs we actually know &mdash; not just a pin drop on a map. Here's where you'll find us doing our best work.</p>
+      </div>
+      <div class="patch-grid">
+
+        <div class="patch-card">
+          <h4>Tuggeranong</h4>
+          <ul class="patch-suburbs">
+            <li>Gowrie</li>
+            <li>Kambah</li>
+            <li>Chisholm</li>
+            <li>Wanniassa</li>
+            <li>Calwell</li>
+            <li>Isabella Plains</li>
+            <li>Gordon</li>
+          </ul>
+        </div>
+
+        <div class="patch-card">
+          <h4>Belconnen</h4>
+          <ul class="patch-suburbs">
+            <li>Evatt</li>
+            <li>Florey</li>
+            <li>Hawker</li>
+            <li>Dunlop</li>
+            <li>Macgregor</li>
+            <li>Bruce</li>
+          </ul>
+        </div>
+
+        <div class="patch-card">
+          <h4>Woden Valley</h4>
+          <ul class="patch-suburbs">
+            <li>Phillip</li>
+            <li>Mawson</li>
+            <li>Garran</li>
+            <li>Torrens</li>
+            <li>Farrer</li>
+          </ul>
+        </div>
+
+        <div class="patch-card">
+          <h4>Weston Creek &amp; Beyond</h4>
+          <ul class="patch-suburbs">
+            <li>Weston</li>
+            <li>Rivett</li>
+            <li>Holder</li>
+            <li>Jerrabomberra</li>
+            <li>Greater Canberra</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section>
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-body">
+          <div class="about-tag">About McIntyre Property</div>
+          <h2 class="section-title">Local People,<br />Real Knowledge</h2>
+          <p>McIntyre Property has been part of the Canberra community for years &mdash; not as a franchise with a head office somewhere else, but as a locally owned agency that actually lives and works in the suburbs we sell.</p>
+          <p>We're based in Greenway, in the heart of Tuggeranong, and we service Belconnen, Woden, and Weston Creek too. That means we understand how the ACT property market behaves &mdash; the cycles, the government-sector demand, the seasonal quirks, and which pockets are quietly outperforming the rest.</p>
+          <p>If you want an agent who'll give it to you straight, handle the legwork, and actually be contactable &mdash; you've found them.</p>
+          <div class="about-awards">
+            <div class="award-item">
+              <div class="award-icon">&#x1F3C6;</div>
+              <div class="award-text">Multiple Award-Winning Real Estate Agency</div>
+            </div>
+            <div class="award-item">
+              <div class="award-icon">&#x2705;</div>
+              <div class="award-text">ACT Licensed &amp; Fully Regulated</div>
+            </div>
+            <div class="award-item">
+              <div class="award-icon">&#x1F4CD;</div>
+              <div class="award-text">Locally Owned &mdash; Greenway, Tuggeranong</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-visual">
+          <div class="about-visual-title">Canberra Market Snapshot</div>
+          <div class="market-stat">
+            <span class="market-stat-label">Median House Price (ACT)</span>
+            <span class="market-stat-val">~$970,000</span>
+          </div>
+          <div class="market-stat">
+            <span class="market-stat-label">Median Unit Price (ACT)</span>
+            <span class="market-stat-val">~$530,000</span>
+          </div>
+          <div class="market-stat">
+            <span class="market-stat-label">Avg. Gross Rental Yield</span>
+            <span class="market-stat-val">~4.2% houses</span>
+          </div>
+          <div class="market-stat">
+            <span class="market-stat-label">Vacancy Rate (Canberra)</span>
+            <span class="market-stat-val">~1.5% (tight)</span>
+          </div>
+          <div class="market-stat">
+            <span class="market-stat-label">ACT Population Growth</span>
+            <span class="market-stat-val">Steadily rising</span>
+          </div>
+          <div class="market-stat">
+            <span class="market-stat-label">Gov. Sector Employment</span>
+            <span class="market-stat-val">Largest employer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="team">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">The Team</p>
+        <h2 class="section-title">People You'll Actually Hear From</h2>
+        <p class="section-sub">No call centres, no runaround. Your agent is the person who picks up the phone.</p>
+      </div>
+      <div class="team-grid">
+
+        <div class="team-card">
+          <div class="team-avatar">&#x1F464;</div>
+          <div class="team-name">Amanda</div>
+          <div class="team-role">Sales</div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">&#x1F464;</div>
+          <div class="team-name">Col</div>
+          <div class="team-role">Sales</div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">&#x1F464;</div>
+          <div class="team-name">Tegan Ketels</div>
+          <div class="team-role">Property Manager</div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">&#x1F464;</div>
+          <div class="team-name">Jordan</div>
+          <div class="team-role">Sales</div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">&#x1F464;</div>
+          <div class="team-name">Lisa</div>
+          <div class="team-role">Property Management</div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">&#x1F464;</div>
+          <div class="team-name">Maya</div>
+          <div class="team-role">Client Services</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">What People Are Saying</p>
+        <h2 class="section-title">Don't Take Our Word for It</h2>
+        <p class="section-sub">Straight from clients who've bought, sold, and rented through us across Canberra.</p>
+      </div>
+      <div class="testimonials-grid">
+
+        <div class="testi-card">
+          <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testi-quote">"From start to finish the whole process was handled professionally. They know Tuggeranong better than anyone &mdash; we sold above our expectations and the communication was spot on the whole way through."</p>
+          <div class="testi-author">
+            <div class="testi-initials">DW</div>
+            <div>
+              <div class="testi-name">Daryl W.</div>
+              <div class="testi-loc">Vendor, Kambah</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testi-quote">"Tegan managed our Belconnen investment property and honestly made it completely hands-off for us. Tenants were screened properly, maintenance was sorted quickly, and the rent never missed a beat."</p>
+          <div class="testi-author">
+            <div class="testi-initials">BT</div>
+            <div>
+              <div class="testi-name">Betty T.</div>
+              <div class="testi-loc">Landlord, Florey</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testi-quote">"We were relocating to Canberra for work and needed something sorted fast. The team found us a great rental in Hawker within the week. No drama, just got it done."</p>
+          <div class="testi-author">
+            <div class="testi-initials">MK</div>
+            <div>
+              <div class="testi-name">Maya K.</div>
+              <div class="testi-loc">Tenant, Hawker</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Get In Touch</p>
+        <h2 class="section-title">Let's Have a Chat</h2>
+        <p class="section-sub">Whether you're buying, selling, or just want to know what your place is worth &mdash; we're always happy to talk.</p>
+      </div>
+      <div class="contact-inner">
+        <div class="contact-details">
+
+          <div class="contact-item">
+            <div class="contact-icon">&#x1F4DE;</div>
+            <div>
+              <div class="contact-item-label">Phone</div>
+              <div class="contact-item-val"><a href="tel:0262949393">02 6294 9393</a></div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">&#x1F4CD;</div>
+            <div>
+              <div class="contact-item-label">Office</div>
+              <div class="contact-item-val">Unit 277 South Quay 1<br />311 Anketell Street, Greenway ACT 2900</div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">&#x1F550;</div>
+            <div>
+              <div class="contact-item-label">Office Hours</div>
+              <div class="contact-item-val">Mon&ndash;Fri: 9:00am &ndash; 5:30pm<br />Sat: By appointment</div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">&#x1F4F2;</div>
+            <div>
+              <div class="contact-item-label">Find Us Online</div>
+              <div class="contact-item-val">
+                <a href="https://www.facebook.com/McIntyreProperty" target="_blank" rel="noopener">Facebook</a>
+                &nbsp;&middot;&nbsp;
+                <a href="https://www.instagram.com/mcintyreproperty" target="_blank" rel="noopener">Instagram</a>
+                &nbsp;&middot;&nbsp;
+                <a href="https://twitter.com/McIntyreProp" target="_blank" rel="noopener">Twitter / X</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="contact-form-area">
+          <h3>Send Us a Message</h3>
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="First and last name" />
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="you@example.com.au" />
+          </div>
+          <div class="form-group">
+            <label>Enquiry Type</label>
+            <select>
+              <option>Buying</option>
+              <option>Selling</option>
+              <option>Renting</option>
+              <option>Property Management</option>
+              <option>General Enquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="Tell us a bit about what you need..."></textarea>
+          </div>
+          <a href="https://mcintyreproperty.com.au/contact/" class="btn btn-primary" style="width:100%;justify-content:center;">Send Enquiry &#8594;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="https://mcintyreproperty.com.au" class="nav-logo">McIntyre <span>Property</span></a>
+          <p>Award-winning real estate in Tuggeranong, Belconnen &amp; greater Canberra. Locally owned, genuinely local.</p>
+          <div class="footer-socials">
+            <a href="https://www.facebook.com/McIntyreProperty" class="social-icon" target="_blank" rel="noopener" aria-label="Facebook">fb</a>
+            <a href="https://www.instagram.com/mcintyreproperty" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram">ig</a>
+            <a href="https://twitter.com/McIntyreProp" class="social-icon" target="_blank" rel="noopener" aria-label="Twitter">x</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Buy &amp; Sell</h4>
+          <ul>
+            <li><a href="https://mcintyreproperty.com.au/buy/">Properties for Sale</a></li>
+            <li><a href="https://mcintyreproperty.com.au/sell/">Sell Your Home</a></li>
+            <li><a href="https://mcintyreproperty.com.au/sell/">Sales Appraisal</a></li>
+            <li><a href="https://mcintyreproperty.com.au/sell/">Recent Sales</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Rent</h4>
+          <ul>
+            <li><a href="https://mcintyreproperty.com.au/rent/">Rentals Available</a></li>
+            <li><a href="https://mcintyreproperty.com.au/rent/property-management/">Property Management</a></li>
+            <li><a href="https://mcintyreproperty.com.au/rent/">Rental Appraisal</a></li>
+            <li><a href="https://mcintyreproperty.com.au/rent/">Tenancy Application</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="https://mcintyreproperty.com.au/about/">About Us</a></li>
+            <li><a href="https://mcintyreproperty.com.au/about/meet-the-team/">Meet the Team</a></li>
+            <li><a href="https://mcintyreproperty.com.au/about/community-events/">Community Events</a></li>
+            <li><a href="https://mcintyreproperty.com.au/contact/">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 McIntyre Property. ACT Real Estate Licence. All rights reserved.</p>
+        <p>Rebuilt by J&amp;G Operations as a preview. Not yet live on mcintyreproperty.com.au.</p>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>

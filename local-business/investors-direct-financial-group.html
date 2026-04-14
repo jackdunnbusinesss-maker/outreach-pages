@@ -1,134 +1,1263 @@
 <!DOCTYPE html>
 <html lang="en-AU">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investors Direct Financial Group</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --bg: #0e0e12;
-            --surface: #16161d;
-            --surface-light: #1e1e28;
-            --border: #2a2a36;
-            --accent: #d4959b;
-            --accent-light: #d4959b;
-            --accent-glow: rgba(100, 140, 200, 0.15);
-            --white: #f0eff4;
-            --text: #c5c4ce;
-            --text-muted: #7e7d8a;
-        }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-            margin: 0;
-        }
-        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
-        a { color: var(--accent); }
-        .cta-btn {
-            display: inline-block;
-            padding: 16px 36px;
-            background: var(--accent);
-            color: #0e0e12;
-            font-weight: 700;
-            font-size: 0.95rem;
-            border-radius: 8px;
-            text-decoration: none;
-            letter-spacing: 0.5px;
-            transition: opacity 0.2s;
-        }
-        .cta-btn:hover { opacity: 0.9; }
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 1.8rem; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Investors Direct Financial Group — Property Investment &amp; Cognitive Cities, Melbourne</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0e0e12;
+      --bg2: #13131a;
+      --bg3: #1a1a24;
+      --border: rgba(107, 140, 206, 0.15);
+      --accent: #6b8cce;
+      --accent-light: #8aa8e0;
+      --accent-dim: rgba(107, 140, 206, 0.12);
+      --text: #e8e8f0;
+      --text-muted: #8888a0;
+      --text-faint: #555568;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent-light); text-decoration: none; }
+    a:hover { color: var(--white); }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(14, 14, 18, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.01em;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent-light); }
+
+    /* HERO */
+    .hero {
+      padding: 96px 0 80px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(107, 140, 206, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 6px 14px;
+      margin-bottom: 28px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .hero-left h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 2.9rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .hero-left h1 em {
+      font-style: normal;
+      color: var(--accent-light);
+    }
+
+    .hero-left p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: var(--white);
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 13px 24px;
+      border-radius: 6px;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-light);
+      color: var(--white);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 13px 24px;
+      border-radius: 6px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent-light);
+    }
+
+    /* HERO RIGHT — CITION CARD */
+    .cition-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cition-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+
+    .cition-card-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .cition-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .cition-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+
+    .cition-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .stat-item {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+
+    .stat-value {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent-light);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      color: var(--text-faint);
+    }
+
+    .cition-link {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent-light);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cition-link::after { content: ' \2192'; }
+    .cition-link:hover { color: var(--white); }
+
+    /* SECTION HEADERS */
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.25;
+    }
+
+    .section-header p {
+      margin-top: 14px;
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* SERVICES */
+    .services {
+      padding: 88px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .service-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .service-card:hover {
+      border-color: rgba(107, 140, 206, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .service-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: var(--accent-dim);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+    }
+
+    .service-card h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .service-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .service-link {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .service-link::after { content: ' \2192'; }
+    .service-link:hover { color: var(--accent-light); }
+
+    /* COGNITIVE CITIES FEATURE */
+    .cognitive-section {
+      padding: 88px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cognitive-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .cognitive-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+
+    .cognitive-content .sub {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .pillars {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .pillar {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .pillar-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: var(--accent-dim);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .pillar-text h5 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 3px;
+    }
+
+    .pillar-text p {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .cognitive-metrics {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .metric-row {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .metric-row .m-label {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+    }
+
+    .metric-row .m-value {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--accent-light);
+      white-space: nowrap;
+    }
+
+    .aec-banner {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 10px;
+      padding: 22px 26px;
+      margin-top: 14px;
+    }
+
+    .aec-banner p {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 12px;
+    }
+
+    .aec-banner strong { color: var(--text); }
+
+    /* TEAM */
+    .team-section {
+      padding: 88px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .team-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 26px;
+      transition: border-color 0.2s;
+    }
+
+    .team-card:hover { border-color: rgba(107, 140, 206, 0.35); }
+
+    .team-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--accent-light);
+      margin-bottom: 14px;
+      letter-spacing: 0.03em;
+    }
+
+    .team-card h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .team-card .role {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 10px;
+    }
+
+    .team-card p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ABOUT / ENTITIES */
+    .about-section {
+      padding: 88px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .about-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+
+    .about-content p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .license-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .license-list li {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .license-list li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .entity-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .entity-item {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+    }
+
+    .entity-item h5 {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 5px;
+    }
+
+    .entity-item p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* CONTACT */
+    .contact-section {
+      padding: 88px 0;
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .contact-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.25;
+      margin-bottom: 14px;
+    }
+
+    .contact-content p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .contact-items {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .contact-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--accent-dim);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .c-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 2px;
+    }
+
+    .c-value {
+      font-size: 0.9rem;
+      color: var(--text);
+      display: block;
+    }
+
+    a.c-value { color: var(--accent-light); }
+    a.c-value:hover { color: var(--white); }
+
+    .contact-form-area {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 36px;
+    }
+
+    .contact-form-area h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .form-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 11px 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--text-faint); }
+
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--accent); }
+
+    .form-group textarea {
+      height: 90px;
+      resize: vertical;
+    }
+
+    .form-submit {
+      width: 100%;
+      background: var(--accent);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 13px;
+      cursor: pointer;
+      margin-top: 4px;
+      transition: background 0.2s;
+    }
+
+    .form-submit:hover { background: var(--accent-light); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--bg2);
+      padding: 40px 0;
+    }
+
+    .footer-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .footer-logo span { color: var(--accent); }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.82rem;
+      color: var(--text-faint);
+    }
+
+    .footer-links a:hover { color: var(--accent-light); }
+
+    .footer-bottom {
+      font-size: 0.8rem;
+      color: var(--text-faint);
+      line-height: 1.7;
+    }
+
+    .footer-bottom a { color: var(--text-faint); }
+    .footer-bottom a:hover { color: var(--accent-light); }
+
+    .footer-disclaimer {
+      margin-top: 8px;
+      font-size: 0.76rem;
+      color: var(--text-faint);
+      line-height: 1.6;
+    }
+
+    .footer-preview {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      font-size: 0.78rem;
+      color: var(--text-faint);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero-grid,
+      .cognitive-inner,
+      .about-inner,
+      .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+
+      .services-grid,
+      .team-grid { grid-template-columns: 1fr 1fr; }
+
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 500px) {
+      .services-grid,
+      .team-grid,
+      .cition-stats { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Top Bar -->
-    <div style="padding: 20px 0; border-bottom: 1px solid var(--border);">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-            <span style="font-weight: 700; font-size: 1.1rem; color: var(--white);">Investors Direct Financial Group</span>
-            <a href="tel:+61398687588" class="cta-btn" style="padding: 10px 24px; font-size: 0.85rem;">+61 3 9868 7588</a>
-        </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-logo">Investors<span>Direct</span></div>
+      <ul class="nav-links">
+        <li><a href="https://investorsdirect.com.au/services/">Services</a></li>
+        <li><a href="https://investorsdirect.com.au/property-investment/">Property Investment</a></li>
+        <li><a href="https://investorsdirect.com.au/cognitive-cities/">Cognitive Cities</a></li>
+        <li><a href="https://investorsdirect.com.au/about/">About</a></li>
+        <li><a href="https://investorsdirect.com.au/insights/">Insights</a></li>
+        <li><a href="https://investorsdirect.com.au/contact/">Contact</a></li>
+      </ul>
     </div>
+  </nav>
 
-    <!-- Hero -->
-    <section style="padding: 80px 0 48px; text-align: center;">
-        <div class="container">
-            <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600;"><span style="color: var(--accent);">Since 2014</span> of helping clients get real results.</p>
-            <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600;">
-                Investors Direct Financial Group
-            </h1>
-            <p style="font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto 32px; line-height: 1.8;">
-                Your trusted local partner for cition cognitive cities, what is cition?, what is a cition cognitive city?.
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-eyebrow">Australian-owned property investment strategists since 2014</div>
+      <div class="hero-grid">
+        <div class="hero-left">
+          <h1>Where <em>Property Wealth</em> Meets the Cities of Tomorrow</h1>
+          <p>
+            Investors Direct Financial Group pairs rigorous property investment advisory — CPA financial advice, credit strategy, and portfolio structuring — with a vision most advisory firms cannot match: active development of next-generation Cognitive Cities across Australia. Melbourne-based. Independently owned.
+          </p>
+          <div class="hero-cta-group">
+            <a href="https://investorsdirect.com.au/contact/" class="btn-primary">Get in Touch</a>
+            <a href="https://investorsdirect.com.au/about/" class="btn-outline">Our Story</a>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="cition-card">
+            <div class="cition-card-label">Cition &#8212; Cognitive Cities</div>
+            <h3>Shaping How Australia's Next Cities Are Built and Lived In</h3>
+            <p>
+              Cition &#8212; the development arm of IDFG &#8212; holds exclusive preferred developer status for the East Werribee Employment Precinct: a 412-hectare, AUD$71Bn GDV urban development combining a Learning City, Innovation District, and Residential Community into one integrated precinct.
             </p>
-            <a href="tel:+61398687588" class="cta-btn">Get a Free Appraisal</a>
+            <div class="cition-stats">
+              <div class="stat-item">
+                <div class="stat-value">$71Bn</div>
+                <div class="stat-label">Gross Development Value</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">412ha</div>
+                <div class="stat-label">East Werribee Precinct</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">100,000</div>
+                <div class="stat-label">Future Residents</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">$2.9Bn</div>
+                <div class="stat-label">Funding Committed (J.P. Morgan)</div>
+              </div>
+            </div>
+            <a href="https://investorsdirect.com.au/cognitive-cities/" class="cition-link">Explore the Cognitive Cities project</a>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    
-        <section style="padding: 64px 0;">
-            <div class="container">
-                <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; text-align: center; font-weight: 600;">What We Do</p>
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); text-align: center; margin-bottom: 48px;">Our Services</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-                    
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Cition Cognitive Cities</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">What is Cition?</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">What is a Cition Cognitive City?</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">A Typical Cition Cognitive City</h3>
-                </div>
-                </div>
-            </div>
-        </section>
-
-    
-        <section style="padding: 64px 0; border-top: 1px solid var(--border);">
-            <div class="container">
-                <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; font-weight: 600;">About Us</p>
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 20px;">Investors Direct Financial Group</h2>
-                <p style="color: var(--text); line-height: 1.8; max-width: 600px;">Cition is an Australian owned and operated developer specialising in major Cognitive City projects. It was established to create and deliver world-class Cognitive Cities in Australia and globally. See our world’s first cognitive city design at Australian Education City since 2014.</p>
-            </div>
-        </section>
-
-    <!-- Contact -->
-    <section style="padding: 64px 0; border-top: 1px solid var(--border);">
-        <div class="container">
-            <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; font-weight: 600;">Contact</p>
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 24px;">Get in Touch</h2>
-            <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px;">
-                <div>
-                    <p style="margin-bottom: 12px;"><strong style="color: var(--white);">Phone:</strong> <a href="tel:+61398687588" style="color: var(--accent); text-decoration: none;">+61 3 9868 7588</a></p>
-                    <p style="margin-bottom: 12px;"><strong style="color: var(--white);">Email:</strong> <a href="mailto:niro.wang@investorsdirect.com.au" style="color: var(--accent); text-decoration: none;">niro.wang@investorsdirect.com.au</a></p>
-                </div>
-                <div style="margin-top: 24px;">
-                    <a href="tel:+61398687588" class="cta-btn">Get a Free Appraisal</a>
-                </div>
-            </div>
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">What We Do</span>
+        <h2>Comprehensive Advisory Across the Full Investment Stack</h2>
+        <p>From structuring your first investment property to navigating Melbourne's market as a sophisticated investor &#8212; IDFG covers every layer.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">&#127962;</div>
+          <h4>Property Investment Advisory</h4>
+          <p>Strategic guidance on residential and commercial acquisitions across Victoria and beyond. Research-led, numbers-first advice for serious investors.</p>
+          <a href="https://investorsdirect.com.au/property-investment/" class="service-link">Learn more</a>
         </div>
-    </section>
+        <div class="service-card">
+          <div class="service-icon">&#128202;</div>
+          <h4>Financial Planning (CPA)</h4>
+          <p>CPA-qualified financial advice aligned with long-term wealth objectives. Cash flow structuring, superannuation strategy, and retirement planning.</p>
+          <a href="https://investorsdirect.com.au/services/" class="service-link">Learn more</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">&#128196;</div>
+          <h4>CPA Tax Advice</h4>
+          <p>Integrated tax strategy for property investors. Maximise deductions, minimise exposure, and keep your portfolio structure compliant as it scales.</p>
+          <a href="https://investorsdirect.com.au/services/" class="service-link">Learn more</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">&#127974;</div>
+          <h4>Credit Advisory (MFAA)</h4>
+          <p>MFAA-accredited lending strategy. Finance structuring across residential, commercial, and development briefs with access to a broad lender panel.</p>
+          <a href="https://investorsdirect.com.au/services/" class="service-link">Learn more</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">&#9878;</div>
+          <h4>Portfolio Structuring</h4>
+          <p>Entity setup, asset protection, and long-range structuring advice. Whether you hold two properties or twenty, the right structure matters from day one.</p>
+          <a href="https://investorsdirect.com.au/services/" class="service-link">Learn more</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">&#127959;</div>
+          <h4>Development Finance</h4>
+          <p>Through ID Funds Management (AFSL 488178), access wholesale and retail fund structures purpose-built for Cognitive City and development projects.</p>
+          <a href="https://investorsdirect.com.au/cognitive-cities/" class="service-link">Learn more</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer style="padding: 32px 0; border-top: 1px solid var(--border); text-align: center;">
-        <div class="container">
-            <p style="font-size: 0.8rem; color: var(--text-muted);">
-                Rebuilt by J&amp;G Operations as a preview. Not yet live on investorsdirect.com.au.
+  <!-- COGNITIVE CITIES FEATURE -->
+  <section class="cognitive-section" id="cognitive-cities">
+    <div class="container">
+      <div class="cognitive-inner">
+        <div class="cognitive-content">
+          <span class="eyebrow">Cition &#8212; Cognitive Cities</span>
+          <h2>The Next Generation of Urban Living Starts in Melbourne</h2>
+          <p class="sub">
+            Cition Pty Ltd &#8212; the development subsidiary of Investors Direct Financial Group &#8212; is building Cognitive Cities that combine collaborative education campuses, clean-energy innovation precincts, and liveable 20-minute residential neighbourhoods. The Australian Education City at East Werribee is the first proof of concept.
+          </p>
+          <div class="pillars">
+            <div class="pillar">
+              <div class="pillar-dot">1</div>
+              <div class="pillar-text">
+                <h5>Learning City</h5>
+                <p>Collaborative campuses hosting universities, TAFEs, and K&#8211;12 schools &#8212; offering lifelong and remote learning for 20,000+ domestic and international students.</p>
+              </div>
+            </div>
+            <div class="pillar">
+              <div class="pillar-dot">2</div>
+              <div class="pillar-text">
+                <h5>Innovation District</h5>
+                <p>R&amp;D and industry partnerships centred on clean energy and digital connectivity. Modelled on proven precincts like Seattle South Lake Union and Boston's Innovation District.</p>
+              </div>
+            </div>
+            <div class="pillar">
+              <div class="pillar-dot">3</div>
+              <div class="pillar-text">
+                <h5>Residential Community</h5>
+                <p>World-class housing, student accommodation, aged care, and social housing &#8212; all within a 20-minute neighbourhood designed to eliminate long commutes and build genuine community.</p>
+              </div>
+            </div>
+          </div>
+          <a href="https://investorsdirect.com.au/cognitive-cities/" class="btn-primary">Explore Cognitive Cities</a>
+        </div>
+        <div>
+          <div class="cognitive-metrics">
+            <div class="metric-row">
+              <span class="m-label">Project</span>
+              <span class="m-value">Australian Education City</span>
+            </div>
+            <div class="metric-row">
+              <span class="m-label">Location</span>
+              <span class="m-value">East Werribee, VIC</span>
+            </div>
+            <div class="metric-row">
+              <span class="m-label">Site Area</span>
+              <span class="m-value">412 hectares</span>
+            </div>
+            <div class="metric-row">
+              <span class="m-label">Gross Floor Area</span>
+              <span class="m-value">6.04M sqm GFA</span>
+            </div>
+            <div class="metric-row">
+              <span class="m-label">Gross Development Value</span>
+              <span class="m-value">AUD $71 Billion</span>
+            </div>
+            <div class="metric-row">
+              <span class="m-label">Future Residents</span>
+              <span class="m-value">100,000+</span>
+            </div>
+            <div class="metric-row">
+              <span class="m-label">Funding Committed</span>
+              <span class="m-value">AUD $2.9Bn</span>
+            </div>
+            <div class="metric-row">
+              <span class="m-label">Funding Advisor</span>
+              <span class="m-value">J.P. Morgan (2019)</span>
+            </div>
+            <div class="metric-row">
+              <span class="m-label">Status</span>
+              <span class="m-value">Active &#8212; preferred developer since 2014</span>
+            </div>
+          </div>
+          <div class="aec-banner">
+            <p>
+              <strong>Exclusive preferred developer status</strong> for the East Werribee Employment Precinct was awarded to the IDFG group. The project targets over <strong>10,000 close-to-home jobs</strong> in a city where 80% of growth-area residents currently commute long distances &#8212; addressing one of the most pressing productivity challenges facing Melbourne's west.
             </p>
+            <a href="https://investorsdirect.com.au/cognitive-cities/" class="service-link">Read the full project overview</a>
+          </div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="team-section" id="team">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">The Team</span>
+        <h2>Senior Leadership Across Finance, Development &amp; Delivery</h2>
+        <p>The IDFG group brings together CPA advisors, licensed builders, CFOs, and urban development specialists who have collectively delivered billions in projects across Australia and internationally.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">BZ</div>
+          <h4>Bill Zheng</h4>
+          <div class="role">Executive Chairman</div>
+          <p>Civil Engineering, Computer Science, MBA and Finance background. Founded Investors Direct Financial Group in 2000. Former SAP system architect at PwC Australia.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">JT</div>
+          <h4>John Tabart</h4>
+          <div class="role">Chief Executive Officer</div>
+          <p>35 years as CEO across multiple regions. Led planning and delivery of Melbourne Docklands (A$30Bn) and Barangaroo Sydney (A$15Bn). Fellow, Australian Institute of Company Directors.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">SS</div>
+          <h4>Shane Sheedy</h4>
+          <div class="role">Director, Development &amp; Construction</div>
+          <p>30+ years delivering projects across Australia. Registered Unlimited Commercial and Domestic Building Practitioner. Notable: Waterfront City Docklands, Silverwater Resort.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">SU</div>
+          <h4>Sulung Sutrisno</h4>
+          <div class="role">GM, Development Finance</div>
+          <p>20+ years real estate experience across 16 countries. MBA Financial Services (HKUST, 2007). BE (UNSW, 1995). Fluent in Chinese, English, and Bahasa Indonesia.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">JR</div>
+          <h4>Jarran Rapsey</h4>
+          <div class="role">Senior Development Manager</div>
+          <p>20+ years in property. Specialisation in large residential land subdivisions. UDIA Victoria award-winning subdivision delivery.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">OL</div>
+          <h4>Otto Luznik</h4>
+          <div class="role">Head of Finance &amp; HR</div>
+          <p>25+ years as Finance Director and CFO. Former CFO at Akron Roads/Lund Construction and Group Financial Controller at Fulton Hogan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / ENTITIES -->
+  <section class="about-section">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-content">
+          <h2>A Group Built for the Full Investment Lifecycle</h2>
+          <p>
+            Investors Direct Financial Group was established in 2000 by Bill Zheng as a vertically-integrated property and financial services group. Over two decades the group has advised thousands of investors, delivered over AUD$635M in boutique developments, and grown into one of Australia's most ambitious Cognitive City developers.
+          </p>
+          <p>
+            The group operates from Collins Square, Melbourne &#8212; one of the city's premier commercial addresses &#8212; and holds multiple Australian Financial Services Licences and real estate credentials.
+          </p>
+          <ul class="license-list">
+            <li>AFSL 488178 &#8212; ID Funds Management Limited (Retail &amp; Wholesale)</li>
+            <li>ACL 402950 &#8212; Credit advisory</li>
+            <li>AFSL 385827 &#8212; Financial planning</li>
+            <li>Real Estate Licences 071792L &amp; 0473458L</li>
+            <li>Building Licence DB-U 25276</li>
+          </ul>
+        </div>
+        <div class="entity-stack">
+          <div class="entity-item">
+            <h5>Cition Pty Ltd</h5>
+            <p>Cognitive City development subsidiary. Replicating the Australian Education City model across Australia. Dedicated development entity since 2022.</p>
+          </div>
+          <div class="entity-item">
+            <h5>Australian Education City (AEC)</h5>
+            <p>Flagship Cognitive City at East Werribee. Preferred developer status awarded 2014. AUD$71Bn GDV, AUD$2.9Bn in committed funding.</p>
+          </div>
+          <div class="entity-item">
+            <h5>ID Developments Pty Ltd</h5>
+            <p>Boutique property development arm. Sub-AUD$100M projects. AUD$635M completed since 2011.</p>
+          </div>
+          <div class="entity-item">
+            <h5>Capitol Property Group</h5>
+            <p>Master Plan Community developer. Sunbury: AUD$750M, 206 hectares, 1,900 lots. Operational since 2015.</p>
+          </div>
+          <div class="entity-item">
+            <h5>ID Funds Management Limited</h5>
+            <p>AFSL 488178. Property development fund platform for retail and wholesale investors. Focused on Cognitive City financing since 2017.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="contact-content">
+          <h2>Get in Touch</h2>
+          <p>
+            Whether you are a property investor looking for independent advisory, or an institutional party interested in the Cognitive Cities program &#8212; the IDFG team is based at Collins Square, Melbourne.
+          </p>
+          <div class="contact-items">
+            <div class="contact-item">
+              <div class="contact-icon">&#128222;</div>
+              <div>
+                <div class="c-label">Phone</div>
+                <a href="tel:+61398687588" class="c-value">+61 3 9868 7588</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">&#9993;</div>
+              <div>
+                <div class="c-label">Email</div>
+                <a href="mailto:info@cition.com.au" class="c-value">info@cition.com.au</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">&#128205;</div>
+              <div>
+                <div class="c-label">Address</div>
+                <span class="c-value">Level 23, Tower 5 &#8212; Collins Square<br />727 Collins Street, Melbourne VIC 3008</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">&#128027;</div>
+              <div>
+                <div class="c-label">Website</div>
+                <a href="https://investorsdirect.com.au" class="c-value">investorsdirect.com.au</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form-area">
+          <h3>Send a Message</h3>
+          <p class="form-desc">For property investment enquiries, Cognitive Cities partnership discussions, or general advisory &#8212; use the form below.</p>
+          <form action="https://investorsdirect.com.au/contact/" method="get">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" name="name" placeholder="Your name" />
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" name="email" placeholder="you@example.com" />
+            </div>
+            <div class="form-group">
+              <label>Enquiry</label>
+              <textarea name="message" placeholder="Tell us what you are working on..."></textarea>
+            </div>
+            <button type="submit" class="form-submit">Submit Enquiry</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-logo">Investors<span>Direct</span> Financial Group</div>
+        <ul class="footer-links">
+          <li><a href="https://investorsdirect.com.au/services/">Services</a></li>
+          <li><a href="https://investorsdirect.com.au/property-investment/">Property</a></li>
+          <li><a href="https://investorsdirect.com.au/cognitive-cities/">Cognitive Cities</a></li>
+          <li><a href="https://investorsdirect.com.au/about/">About</a></li>
+          <li><a href="https://investorsdirect.com.au/contact/">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <p>Level 23, Tower 5 &#8212; Collins Square, 727 Collins Street, Melbourne VIC 3008 &nbsp;|&nbsp; <a href="tel:+61398687588">+61 3 9868 7588</a> &nbsp;|&nbsp; <a href="mailto:info@cition.com.au">info@cition.com.au</a></p>
+        <p class="footer-disclaimer">ID Funds Management Limited holds AFSL 488178. Financial services and credit activities are provided under the relevant Australian licences held by IDFG group entities. Information on this page is general in nature and does not constitute financial advice.</p>
+        <div class="footer-preview">
+          <p>Rebuilt by J&amp;G Operations as a preview. Not yet live on investorsdirect.com.au.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>

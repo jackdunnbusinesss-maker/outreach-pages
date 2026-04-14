@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>First National Real Estate Melton</title>
+    <title>First National Real Estate Melton — Buy, Sell &amp; Rent in Melton &amp; Surrounds</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
@@ -11,15 +11,15 @@
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --bg: #0e0e12;
-            --surface: #16161d;
-            --surface-light: #1e1e28;
-            --border: #2a2a36;
-            --accent: #d4959b;
-            --accent-light: #d4959b;
-            --accent-glow: rgba(100, 140, 200, 0.15);
+            --surface: #15151b;
+            --surface-light: #1c1c25;
+            --border: #272733;
+            --accent: #d9534f;
+            --accent-hover: #c9403c;
+            --accent-subtle: rgba(217, 83, 79, 0.12);
             --white: #f0eff4;
-            --text: #c5c4ce;
-            --text-muted: #7e7d8a;
+            --text: #c2c1cc;
+            --text-muted: #78778a;
         }
         html { scroll-behavior: smooth; }
         body {
@@ -28,113 +28,1052 @@
             color: var(--text);
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
-            margin: 0;
         }
-        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
-        a { color: var(--accent); }
-        .cta-btn {
-            display: inline-block;
-            padding: 16px 36px;
-            background: var(--accent);
-            color: #0e0e12;
+        .container { max-width: 1040px; margin: 0 auto; padding: 0 28px; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* NAV */
+        nav {
+            border-bottom: 1px solid var(--border);
+            background: rgba(14,14,18,0.97);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+        }
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 28px;
+            max-width: 1040px;
+            margin: 0 auto;
+            height: 64px;
+        }
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
             font-weight: 700;
-            font-size: 0.95rem;
-            border-radius: 8px;
+            color: var(--white);
+            letter-spacing: 0.2px;
             text-decoration: none;
-            letter-spacing: 0.5px;
-            transition: opacity 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .cta-btn:hover { opacity: 0.9; }
+        .nav-logo span {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 3px 7px;
+            border-radius: 3px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); text-decoration: none; }
+        .nav-cta {
+            background: var(--accent) !important;
+            color: #fff !important;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-size: 0.82rem !important;
+            font-weight: 600 !important;
+            transition: background 0.2s !important;
+        }
+        .nav-cta:hover { background: var(--accent-hover) !important; color: #fff !important; }
+
+        /* HERO */
+        .hero {
+            padding: 96px 0 72px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 800px 500px at 50% 0%, rgba(217,83,79,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 22px;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2.1rem, 5vw, 3.1rem);
+            color: var(--white);
+            line-height: 1.2;
+            font-weight: 700;
+            max-width: 720px;
+            margin: 0 auto 24px;
+        }
+        .hero p {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 580px;
+            margin: 0 auto 36px;
+            line-height: 1.8;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.93rem;
+            padding: 15px 34px;
+            border-radius: 8px;
+            letter-spacing: 0.3px;
+            transition: background 0.2s;
+        }
+        .btn-primary:hover { background: var(--accent-hover); text-decoration: none; color: #fff; }
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            color: var(--white);
+            border: 1px solid var(--border);
+            font-weight: 600;
+            font-size: 0.93rem;
+            padding: 15px 34px;
+            border-radius: 8px;
+            letter-spacing: 0.3px;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+        /* STATS STRIP */
+        .stats-strip {
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: var(--surface);
+            padding: 36px 0;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+        }
+        .stat-item {
+            text-align: center;
+            padding: 0 24px;
+            border-right: 1px solid var(--border);
+        }
+        .stat-item:last-child { border-right: none; }
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.1;
+        }
+        .stat-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            letter-spacing: 0.3px;
+        }
+
+        /* SECTION HEADERS */
+        .section-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 14px;
+        }
+        .section-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.6rem, 3vw, 2rem);
+            color: var(--white);
+            font-weight: 600;
+            line-height: 1.25;
+            margin-bottom: 16px;
+        }
+        .section-sub {
+            color: var(--text);
+            font-size: 1rem;
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        /* PROPERTY CARDS */
+        .prop-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .prop-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .prop-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+        .prop-thumb {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: var(--surface-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        .prop-thumb-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+        }
+        .prop-tag {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--accent);
+            color: #fff;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 4px 9px;
+            border-radius: 4px;
+        }
+        .prop-body { padding: 18px; }
+        .prop-price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+        .prop-address {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+        .prop-meta {
+            display: flex;
+            gap: 12px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* SERVICES */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            margin-top: 40px;
+        }
+        .service-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 24px 18px;
+            text-align: center;
+            transition: border-color 0.2s;
+        }
+        .service-card:hover { border-color: var(--accent); }
+        .service-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--accent-subtle);
+            border-radius: 10px;
+            margin: 0 auto 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .service-icon svg { width: 22px; height: 22px; fill: var(--accent); }
+        .service-title {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--white);
+            line-height: 1.3;
+        }
+
+        /* TEAM */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .team-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 20px;
+            text-align: center;
+            transition: border-color 0.2s;
+        }
+        .team-card:hover { border-color: var(--accent); }
+        .team-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: var(--surface-light);
+            margin: 0 auto 16px;
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .team-name {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+        .team-role {
+            font-size: 0.78rem;
+            color: var(--accent);
+            letter-spacing: 0.3px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        .team-bio {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* TESTIMONIALS */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .testimonial-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px;
+        }
+        .stars { color: var(--accent); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 14px; }
+        .testimonial-quote {
+            font-size: 0.92rem;
+            color: var(--text);
+            line-height: 1.75;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .testimonial-author { font-size: 0.82rem; font-weight: 600; color: var(--white); }
+        .testimonial-location { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+
+        /* NETWORK BANNER */
+        .network-banner {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 48px 40px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 32px;
+            align-items: center;
+        }
+        .network-banner h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .network-banner p { font-size: 0.95rem; color: var(--text); line-height: 1.75; }
+        .network-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            text-align: center;
+            min-width: 120px;
+        }
+        .network-stat-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+        }
+        .network-stat-label { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.3px; margin-top: 2px; }
+
+        /* SUBURBS */
+        .suburbs-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 28px;
+        }
+        .suburb-tag {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-size: 0.82rem;
+            padding: 7px 16px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        /* CONTACT */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 40px;
+        }
+        .contact-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 32px;
+        }
+        .contact-block h4 {
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+        .contact-item {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 14px;
+            align-items: flex-start;
+        }
+        .contact-icon { color: var(--accent); font-size: 1rem; margin-top: 1px; flex-shrink: 0; }
+        .contact-detail { font-size: 0.9rem; color: var(--text); line-height: 1.5; }
+        .contact-detail strong { color: var(--white); font-size: 0.88rem; display: block; margin-bottom: 1px; }
+        .social-links { display: flex; gap: 14px; margin-top: 20px; flex-wrap: wrap; }
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: var(--surface-light);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-size: 0.82rem;
+            font-weight: 500;
+            padding: 9px 16px;
+            border-radius: 7px;
+            transition: border-color 0.2s, color 0.2s;
+            text-decoration: none;
+        }
+        .social-link:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+        /* RECENTLY SOLD STRIP */
+        .sold-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 40px;
+        }
+        .sold-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+        .sold-card:hover { border-color: var(--accent); }
+        .sold-thumb {
+            width: 100%;
+            aspect-ratio: 16/10;
+            background: var(--surface-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .sold-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #1a7a3a;
+            color: #fff;
+            font-size: 0.62rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 3px 8px;
+            border-radius: 3px;
+        }
+        .sold-body { padding: 14px; }
+        .sold-price { font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 3px; }
+        .sold-address { font-size: 0.78rem; color: var(--text-muted); }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 36px 0 28px;
+            margin-top: 80px;
+        }
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .footer-text { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
+        .footer-text a { color: var(--text-muted); }
+
+        /* SECTION SPACING */
+        section { padding: 72px 0; }
+        .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+        /* MARKET SPLIT */
+        .market-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .services-grid { grid-template-columns: repeat(3, 1fr); }
+            .team-grid { grid-template-columns: repeat(2, 1fr); }
+            .prop-grid { grid-template-columns: repeat(2, 1fr); }
+            .sold-strip { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stat-item:nth-child(2) { border-right: none; }
+            .stat-item:nth-child(3) { border-top: 1px solid var(--border); }
+            .network-banner { grid-template-columns: 1fr; }
+            .market-split { grid-template-columns: 1fr; gap: 32px; }
+        }
         @media (max-width: 600px) {
-            .hero h1 { font-size: 1.8rem; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .team-grid { grid-template-columns: 1fr; }
+            .prop-grid { grid-template-columns: 1fr; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .sold-strip { grid-template-columns: repeat(2, 1fr); }
+            .nav-links { display: none; }
+            .hero { padding: 64px 0 48px; }
         }
     </style>
 </head>
 <body>
-    <!-- Top Bar -->
-    <div style="padding: 20px 0; border-bottom: 1px solid var(--border);">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-            <img src="https://s3-ap-southeast-2.amazonaws.com/zenu/subzero/267/logo.png" alt="First National Real Estate Melton" style="max-height: 40px; max-width: 180px; object-fit: contain;">
-            <a href="tel:0397466222" class="cta-btn" style="padding: 10px 24px; font-size: 0.85rem;">03 9746 6222</a>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <a href="https://fnmelton.com.au" class="nav-logo" style="text-decoration:none;">
+            <span>FN</span>
+            First National Melton
+        </a>
+        <ul class="nav-links">
+            <li><a href="https://fnmelton.com.au/buy">Buy</a></li>
+            <li><a href="https://fnmelton.com.au/sell">Sell</a></li>
+            <li><a href="https://fnmelton.com.au/rent">Rent</a></li>
+            <li><a href="https://fnmelton.com.au/recently-sold">Recently Sold</a></li>
+            <li><a href="https://fnmelton.com.au/about-us">About Us</a></li>
+            <li><a href="https://fnmelton.com.au/our-team">Team</a></li>
+            <li><a href="#contact" class="nav-cta">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <p class="eyebrow">Your local Melton real estate experts, backed by Australia's largest independent network</p>
+        <h1>Buying, Selling &amp; Renting in Melton and the West Melbourne Growth Corridor</h1>
+        <p>First National Real Estate Melton serves families, first-home buyers, and investors across Melton, Melton West, Brookfield, and the surrounding growth corridor. Local knowledge. National strength.</p>
+        <div class="hero-actions">
+            <a href="https://fnmelton.com.au/sell" class="btn-primary">Get a Free Appraisal</a>
+            <a href="https://fnmelton.com.au/buy" class="btn-outline">Browse Properties For Sale</a>
         </div>
     </div>
+</section>
 
-    <!-- Hero -->
-    <section style="padding: 80px 0 48px; text-align: center;">
-        <div class="container">
-            <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600;">Trusted Local Real Estate Experts</p>
-            <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600;">
-                First National Real Estate Melton
-            </h1>
-            <p style="font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto 32px; line-height: 1.8;">
-                Buy, sell and rent real estate in Melton, Melton West, Brookfield and surrounding suburbs. Search for property with First National Melton.
-            </p>
-            <a href="tel:0397466222" class="cta-btn">Get a Free Appraisal</a>
+<!-- STATS STRIP -->
+<div class="stats-strip">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">87+</div>
+                <div class="stat-label">Properties Sold Last 12 Months</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">24+</div>
+                <div class="stat-label">Active Listings Right Now</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">400+</div>
+                <div class="stat-label">First National Offices Nationwide</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">311</div>
+                <div class="stat-label">High Street, Melton VIC 3337</div>
+            </div>
         </div>
-    </section>
+    </div>
+</div>
 
-    
-        <section style="padding: 64px 0;">
-            <div class="container">
-                <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; text-align: center; font-weight: 600;">What We Do</p>
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); text-align: center; margin-bottom: 48px;">Our Services</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-                    
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">The Strength of our Network</h3>
+<hr class="divider">
+
+<!-- PROPERTIES FOR SALE -->
+<section id="buy">
+    <div class="container">
+        <p class="section-label">Properties For Sale</p>
+        <h2 class="section-heading">Homes for Sale Across Melton &amp; Surrounds</h2>
+        <p class="section-sub">From first-home buyer-friendly townhouses in Melton South to family homes in Brookfield and investment properties in Weir Views — we list across the entire west Melbourne corridor.</p>
+
+        <div class="prop-grid">
+            <div class="prop-card">
+                <div class="prop-thumb">
+                    <span class="prop-tag">For Sale</span>
+                    <span class="prop-thumb-label">Melton West</span>
                 </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Properties For Sale</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Properties for Lease</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Recently Sold</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">How can we help?</h3>
-                </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Latest For Sale</h3>
-                </div>
+                <div class="prop-body">
+                    <div class="prop-price">From the mid $400s</div>
+                    <div class="prop-address">Melton West VIC 3337</div>
+                    <div class="prop-meta">
+                        <span>4 bed</span>&nbsp;&nbsp;<span>2 bath</span>&nbsp;&nbsp;<span>2 garage</span>
+                    </div>
                 </div>
             </div>
-        </section>
-
-    
-        <section style="padding: 64px 0; border-top: 1px solid var(--border);">
-            <div class="container">
-                <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; font-weight: 600;">About Us</p>
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 20px;">First National Real Estate Melton</h2>
-                <p style="color: var(--text); line-height: 1.8; max-width: 600px;">Welcome to First National Real Estate Melton We’re dedicated to delivering an exceptional experience from our Melton office, so every member of our team strives to make a difference. That begins with our promise – We put you first. When you need real estate services, it’s hard to beat a brand that has been independently verified as having Australia’s happiest clients but that’s us, so relax. To fi</p>
+            <div class="prop-card">
+                <div class="prop-thumb">
+                    <span class="prop-tag">For Sale</span>
+                    <span class="prop-thumb-label">Brookfield</span>
+                </div>
+                <div class="prop-body">
+                    <div class="prop-price">Inspect by Appointment</div>
+                    <div class="prop-address">Brookfield VIC 3338</div>
+                    <div class="prop-meta">
+                        <span>3 bed</span>&nbsp;&nbsp;<span>2 bath</span>&nbsp;&nbsp;<span>1 garage</span>
+                    </div>
+                </div>
             </div>
-        </section>
+            <div class="prop-card">
+                <div class="prop-thumb">
+                    <span class="prop-tag">For Sale</span>
+                    <span class="prop-thumb-label">Kurunjang</span>
+                </div>
+                <div class="prop-body">
+                    <div class="prop-price">Auction / POA</div>
+                    <div class="prop-address">Kurunjang VIC 3337</div>
+                    <div class="prop-meta">
+                        <span>4 bed</span>&nbsp;&nbsp;<span>2 bath</span>&nbsp;&nbsp;<span>2 garage</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <!-- Contact -->
-    <section style="padding: 64px 0; border-top: 1px solid var(--border);">
-        <div class="container">
-            <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; font-weight: 600;">Contact</p>
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 24px;">Get in Touch</h2>
-            <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px;">
+        <div style="margin-top: 32px; text-align: center;">
+            <a href="https://fnmelton.com.au/buy" class="btn-primary">View All Listings</a>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- PROPERTIES FOR LEASE -->
+<section id="rent">
+    <div class="container">
+        <p class="section-label">Properties For Lease</p>
+        <h2 class="section-heading">Rental Properties Managed With Care</h2>
+        <p class="section-sub">Our property management team handles everything from tenant placement through to ongoing maintenance — so landlords can relax and renters feel at home. We manage rentals across Melton, Eynesbury, Deanside, Weir Views, and beyond.</p>
+
+        <div class="prop-grid">
+            <div class="prop-card">
+                <div class="prop-thumb">
+                    <span class="prop-tag" style="background: #2563a8;">For Lease</span>
+                    <span class="prop-thumb-label">Melton</span>
+                </div>
+                <div class="prop-body">
+                    <div class="prop-price">$415 / week</div>
+                    <div class="prop-address">Melton VIC 3337</div>
+                    <div class="prop-meta">
+                        <span>3 bed</span>&nbsp;&nbsp;<span>1 bath</span>&nbsp;&nbsp;<span>1 garage</span>
+                    </div>
+                </div>
+            </div>
+            <div class="prop-card">
+                <div class="prop-thumb">
+                    <span class="prop-tag" style="background: #2563a8;">For Lease</span>
+                    <span class="prop-thumb-label">Deanside</span>
+                </div>
+                <div class="prop-body">
+                    <div class="prop-price">$450 / week</div>
+                    <div class="prop-address">Deanside VIC 3336</div>
+                    <div class="prop-meta">
+                        <span>4 bed</span>&nbsp;&nbsp;<span>2 bath</span>&nbsp;&nbsp;<span>2 garage</span>
+                    </div>
+                </div>
+            </div>
+            <div class="prop-card">
+                <div class="prop-thumb">
+                    <span class="prop-tag" style="background: #2563a8;">For Lease</span>
+                    <span class="prop-thumb-label">Weir Views</span>
+                </div>
+                <div class="prop-body">
+                    <div class="prop-price">$400 / week</div>
+                    <div class="prop-address">Weir Views VIC 3338</div>
+                    <div class="prop-meta">
+                        <span>3 bed</span>&nbsp;&nbsp;<span>2 bath</span>&nbsp;&nbsp;<span>1 garage</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 32px; text-align: center;">
+            <a href="https://fnmelton.com.au/rent" class="btn-primary">View All Rental Listings</a>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- RECENTLY SOLD -->
+<section id="recently-sold">
+    <div class="container">
+        <p class="section-label">Recently Sold</p>
+        <h2 class="section-heading">Results That Speak for Themselves</h2>
+        <p class="section-sub">87 properties settled in the last 12 months across Melton and surrounds. Our vendors trust us to achieve the right result — not just a quick sale.</p>
+
+        <div class="sold-strip">
+            <div class="sold-card">
+                <div class="sold-thumb">
+                    <span class="sold-badge">Sold</span>
+                    <span style="font-size: 0.7rem; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase;">Melton South</span>
+                </div>
+                <div class="sold-body">
+                    <div class="sold-price">Sold</div>
+                    <div class="sold-address">Melton South VIC 3338</div>
+                </div>
+            </div>
+            <div class="sold-card">
+                <div class="sold-thumb">
+                    <span class="sold-badge">Sold</span>
+                    <span style="font-size: 0.7rem; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase;">Strathtulloh</span>
+                </div>
+                <div class="sold-body">
+                    <div class="sold-price">Sold</div>
+                    <div class="sold-address">Strathtulloh VIC 3338</div>
+                </div>
+            </div>
+            <div class="sold-card">
+                <div class="sold-thumb">
+                    <span class="sold-badge">Sold</span>
+                    <span style="font-size: 0.7rem; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase;">Eynesbury</span>
+                </div>
+                <div class="sold-body">
+                    <div class="sold-price">Sold</div>
+                    <div class="sold-address">Eynesbury VIC 3338</div>
+                </div>
+            </div>
+            <div class="sold-card">
+                <div class="sold-thumb">
+                    <span class="sold-badge">Sold</span>
+                    <span style="font-size: 0.7rem; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase;">Melton West</span>
+                </div>
+                <div class="sold-body">
+                    <div class="sold-price">Sold</div>
+                    <div class="sold-address">Melton West VIC 3337</div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 28px; text-align: center;">
+            <a href="https://fnmelton.com.au/recently-sold" class="btn-outline">Browse Recent Sales</a>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- SERVICES -->
+<section id="services">
+    <div class="container">
+        <p class="section-label">What We Do</p>
+        <h2 class="section-heading">Full-Service Real Estate — From First Enquiry to Settlement</h2>
+        <p class="section-sub">Whether you're buying your first home, selling an investment, or want a property manager who actually picks up the phone — the First National Melton team handles it all.</p>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                </div>
+                <div class="service-title">Residential Sales</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                </div>
+                <div class="service-title">Property Management</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z"/></svg>
+                </div>
+                <div class="service-title">Rentals &amp; Leasing</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+                </div>
+                <div class="service-title">Free Appraisals</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+                </div>
+                <div class="service-title">Auctions</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- MELTON MARKET -->
+<section>
+    <div class="container">
+        <div class="market-split">
+            <div>
+                <p class="section-label">The Melton Market</p>
+                <h2 class="section-heading">One of Melbourne's Fastest-Growing Corridors</h2>
+                <p style="color: var(--text); font-size: 0.95rem; line-height: 1.8; margin-bottom: 18px;">
+                    Melton is no longer just a commuter suburb — it's a destination in its own right. New schools, retail precincts, and significant infrastructure investment have turned the City of Melton into Melbourne's most active growth corridor for first-home buyers, upsizers, and savvy investors.
+                </p>
+                <p style="color: var(--text); font-size: 0.95rem; line-height: 1.8; margin-bottom: 28px;">
+                    Established pockets of Melton West and Brookfield continue to attract strong buyer demand, while new estates like Strathtulloh and Thornhill Park deliver quality stock at accessible price points. Rental vacancy rates remain tight — making professional property management more valuable than ever.
+                </p>
+                <a href="https://fnmelton.com.au/sell" class="btn-primary">Get Your Property Appraised</a>
+            </div>
+            <div>
+                <p class="section-label" style="margin-bottom: 16px;">Suburbs We Cover</p>
+                <div class="suburbs-list">
+                    <span class="suburb-tag">Melton</span>
+                    <span class="suburb-tag">Melton West</span>
+                    <span class="suburb-tag">Melton South</span>
+                    <span class="suburb-tag">Brookfield</span>
+                    <span class="suburb-tag">Kurunjang</span>
+                    <span class="suburb-tag">Weir Views</span>
+                    <span class="suburb-tag">Strathtulloh</span>
+                    <span class="suburb-tag">Eynesbury</span>
+                    <span class="suburb-tag">Deanside</span>
+                    <span class="suburb-tag">Thornhill Park</span>
+                    <span class="suburb-tag">Rockbank</span>
+                    <span class="suburb-tag">Toolern Vale</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- TEAM -->
+<section id="team">
+    <div class="container">
+        <p class="section-label">Our Team</p>
+        <h2 class="section-heading">Local Experts. Proven Results.</h2>
+        <p class="section-sub">Small enough to care, experienced enough to deliver. From auction day strategy to ongoing tenancy management, you deal with people who know Melton inside out.</p>
+
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-avatar">JC</div>
+                <div class="team-name">Justin Carberry</div>
+                <div class="team-role">Director / Principal</div>
+                <div class="team-bio">Co-director leading the agency with a focus on digital marketing, client outcomes, and building a team that consistently punches above its weight in the west Melbourne market.</div>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">JC</div>
+                <div class="team-name">Jade Carberry</div>
+                <div class="team-role">Co-Director &amp; Sales Agent</div>
+                <div class="team-bio">2025 First National Vic/Tas Community Spirit Award winner and top-ten Salesperson of the Year finalist. Jade's client-first approach consistently delivers strong outcomes for vendors.</div>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">SW</div>
+                <div class="team-name">Sarah Whyte</div>
+                <div class="team-role">Senior Property Manager</div>
+                <div class="team-bio">Known for her reliability and meticulous approach, Sarah manages a portfolio of rental properties across the Melton region — a trusted contact for both landlords and tenants.</div>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">RW</div>
+                <div class="team-name">Russell</div>
+                <div class="team-role">Senior Sales Agent</div>
+                <div class="team-bio">Honest, down-to-earth, and results-driven. Russell has built his reputation on selling homes fast and at the right price — with transparent communication from listing to settlement.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- TESTIMONIALS -->
+<section>
+    <div class="container">
+        <p class="section-label">What Clients Say</p>
+        <h2 class="section-heading">Trusted by Vendors, Buyers &amp; Investors Across the West</h2>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-quote">"Russell sold our home in less than a week and achieved a fantastic price. He's honest, down-to-earth, and genuinely cares about both buyers and vendors — couldn't recommend him highly enough."</p>
+                <div class="testimonial-author">Verified Vendor</div>
+                <div class="testimonial-location">Melton, VIC — via RateMyAgent</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-quote">"We recently sold our land through First National Melton — the whole process was excellent. Jade was professional, efficient, and kept us updated throughout. Highly recommend."</p>
+                <div class="testimonial-author">Verified Vendor</div>
+                <div class="testimonial-location">Melton area, VIC — via RateMyAgent</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-quote">"Jade helped us secure a great tenant and then handled the sale as well. Professional and timely at every step — exactly what you want from someone who knows both sides of the market."</p>
+                <div class="testimonial-author">Property Investor</div>
+                <div class="testimonial-location">Eynesbury, VIC — via RateMyAgent</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- NETWORK BANNER -->
+<section>
+    <div class="container">
+        <div class="network-banner">
+            <div>
+                <p class="section-label">Australia's Largest Independent Network</p>
+                <h3>Part of First National — National Reach, Local Heart</h3>
+                <p>
+                    First National Real Estate is Australia's largest network of independently owned real estate agencies, with over 400 offices across the country. That means First National Melton clients get access to national marketing platforms, qualified interstate and interstate buyer databases, and best-practice tools — delivered by a team that lives and works right here in Melton.
+                </p>
+            </div>
+            <div class="network-stats">
                 <div>
-                    <p style="margin-bottom: 12px;"><strong style="color: var(--white);">Phone:</strong> <a href="tel:0397466222" style="color: var(--accent); text-decoration: none;">03 9746 6222</a></p>
-                    <p style="margin-bottom: 12px;"><strong style="color: var(--white);">Email:</strong> <a href="mailto:swhyte@hockingstuart.com.au" style="color: var(--accent); text-decoration: none;">swhyte@hockingstuart.com.au</a></p>
+                    <div class="network-stat-num">400+</div>
+                    <div class="network-stat-label">Independent Offices Nationwide</div>
                 </div>
-                <div style="margin-top: 24px;">
-                    <a href="tel:0397466222" class="cta-btn">Get a Free Appraisal</a>
+                <div>
+                    <div class="network-stat-num">#1</div>
+                    <div class="network-stat-label">Largest Indie Network in Australia</div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer style="padding: 32px 0; border-top: 1px solid var(--border); text-align: center;">
-        <div class="container">
-            <p style="font-size: 0.8rem; color: var(--text-muted);">
-                Rebuilt by J&amp;G Operations as a preview. Not yet live on fnmelton.com.au.
-            </p>
+<hr class="divider">
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="container">
+        <p class="section-label">Get in Touch</p>
+        <h2 class="section-heading">Ready to Buy, Sell, or Rent?</h2>
+        <p class="section-sub">Our team is available Monday to Friday and happy to chat. Whether it's a free appraisal, a rental estimate, or just a straight answer about where the Melton market is heading — give us a call or drop in.</p>
+
+        <div class="contact-grid">
+            <div class="contact-block">
+                <h4>Office Details</h4>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <div class="contact-detail">
+                        <strong>Address</strong>
+                        311 High Street, Melton VIC 3337
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📞</span>
+                    <div class="contact-detail">
+                        <strong>Phone</strong>
+                        <a href="tel:0397466222">03 9746 6222</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">🕐</span>
+                    <div class="contact-detail">
+                        <strong>Office Hours</strong>
+                        Monday – Friday: 9:00 AM – 5:30 PM<br>
+                        Saturday: By appointment
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/fnmelton.com.au/" class="social-link" target="_blank" rel="noopener">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        Facebook
+                    </a>
+                    <a href="https://www.instagram.com/firstnationalmelton/" class="social-link" target="_blank" rel="noopener">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        Instagram
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-block">
+                <h4>Quick Links</h4>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <a href="https://fnmelton.com.au/sell" class="btn-primary" style="text-align: center;">Request a Free Appraisal</a>
+                    <a href="https://fnmelton.com.au/buy" class="btn-outline" style="text-align: center;">Search Properties For Sale</a>
+                    <a href="https://fnmelton.com.au/rent" class="btn-outline" style="text-align: center;">Find a Rental</a>
+                    <a href="https://fnmelton.com.au/contact?office_id=535" class="btn-outline" style="text-align: center;">Contact the Team</a>
+                </div>
+            </div>
         </div>
-    </footer>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-text">
+                <strong style="color: var(--white); font-size: 0.88rem;">First National Real Estate Melton</strong><br>
+                311 High Street, Melton VIC 3337 &nbsp;·&nbsp; <a href="tel:0397466222">03 9746 6222</a><br>
+                Part of Australia's largest independent real estate network.
+            </div>
+            <div class="footer-text" style="text-align: right;">
+                <a href="https://fnmelton.com.au">fnmelton.com.au</a><br>
+                &copy; First National Real Estate Melton
+            </div>
+        </div>
+        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border); text-align: center;">
+            <p style="font-size: 0.75rem; color: var(--text-muted);">Rebuilt by J&amp;G Operations as a preview. Not yet live on fnmelton.com.au.</p>
+        </div>
+    </div>
+</footer>
+
 </body>
 </html>

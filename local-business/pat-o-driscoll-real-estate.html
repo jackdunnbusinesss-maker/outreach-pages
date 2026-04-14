@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pat O'driscoll Real Estate</title>
+    <title>Pat O'Driscoll Real Estate — Rockhampton's Most Trusted Agency Since 1986</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
@@ -14,9 +14,9 @@
             --surface: #16161d;
             --surface-light: #1e1e28;
             --border: #2a2a36;
-            --accent: #d4959b;
-            --accent-light: #d4959b;
-            --accent-glow: rgba(100, 140, 200, 0.15);
+            --accent: #c8773f;
+            --accent-light: #e08c52;
+            --accent-glow: rgba(200, 119, 63, 0.12);
             --white: #f0eff4;
             --text: #c5c4ce;
             --text-muted: #7e7d8a;
@@ -30,8 +30,140 @@
             -webkit-font-smoothing: antialiased;
             margin: 0;
         }
-        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
-        a { color: var(--accent); }
+        .container { max-width: 1040px; margin: 0 auto; padding: 0 28px; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { color: var(--accent-light); }
+
+        /* NAV */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(14, 14, 18, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 28px;
+            height: 68px;
+            max-width: 1040px;
+            margin: 0 auto;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .nav-logo img {
+            height: 40px;
+            width: auto;
+        }
+        .nav-logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        .nav-logo-text .name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--white);
+            line-height: 1.2;
+        }
+        .nav-logo-text .tagline-small {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            list-style: none;
+        }
+        .nav-links a {
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: color 0.2s, background 0.2s;
+        }
+        .nav-links a:hover {
+            color: var(--white);
+            background: var(--surface-light);
+        }
+        .nav-cta {
+            background: var(--accent) !important;
+            color: #0e0e12 !important;
+            font-weight: 700 !important;
+            padding: 9px 20px !important;
+        }
+        .nav-cta:hover { opacity: 0.9; background: var(--accent) !important; }
+
+        /* HERO */
+        .hero {
+            padding: 100px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: var(--surface-light);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            padding: 6px 18px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 28px;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.15;
+            margin-bottom: 24px;
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero h1 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
         .cta-btn {
             display: inline-block;
             padding: 16px 36px;
@@ -41,79 +173,987 @@
             font-size: 0.95rem;
             border-radius: 8px;
             text-decoration: none;
-            letter-spacing: 0.5px;
-            transition: opacity 0.2s;
+            letter-spacing: 0.4px;
+            transition: opacity 0.2s, transform 0.2s;
         }
-        .cta-btn:hover { opacity: 0.9; }
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 1.8rem; }
+        .cta-btn:hover { opacity: 0.9; transform: translateY(-1px); color: #0e0e12; }
+        .cta-ghost {
+            display: inline-block;
+            padding: 16px 36px;
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .cta-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+        /* STATS STRIP */
+        .stats-strip {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 36px 0;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+        }
+        .stat-item {
+            text-align: center;
+            padding: 0 24px;
+            border-right: 1px solid var(--border);
+        }
+        .stat-item:last-child { border-right: none; }
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+
+        /* SECTION COMMON */
+        section { padding: 80px 0; }
+        .section-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+        .section-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.1rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.25;
+            margin-bottom: 16px;
+        }
+        .section-subheading {
+            font-size: 1rem;
+            color: var(--text);
+            max-width: 580px;
+            line-height: 1.8;
+            margin-bottom: 48px;
+        }
+
+        /* ABOUT */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+        .about-content p {
+            color: var(--text);
+            margin-bottom: 18px;
+            line-height: 1.8;
+        }
+        .about-callout {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            border-radius: 8px;
+            padding: 24px 28px;
+            margin-top: 32px;
+        }
+        .about-callout p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--white);
+            margin: 0;
+            line-height: 1.7;
+        }
+        .about-facts {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .fact-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 22px 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+        .fact-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-glow);
+            border: 1px solid rgba(200, 119, 63, 0.25);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+        }
+        .fact-text strong {
+            display: block;
+            color: var(--white);
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+        .fact-text span {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        /* SERVICES */
+        .services { background: var(--surface); }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .service-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            transition: border-color 0.2s, transform 0.2s;
+            text-decoration: none;
+            display: block;
+        }
+        .service-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        .service-icon {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+        .service-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+        }
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 16px;
+        }
+
+        /* LISTINGS CTA */
+        .listings-cta {
+            background: linear-gradient(135deg, var(--surface-light) 0%, var(--surface) 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 56px;
+            text-align: center;
+        }
+        .listings-cta h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+        .listings-cta p {
+            color: var(--text);
+            margin-bottom: 32px;
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .listings-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* TEAM */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .team-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px 20px;
+            text-align: center;
+            transition: border-color 0.2s;
+            text-decoration: none;
+            display: block;
+        }
+        .team-card:hover { border-color: var(--accent); }
+        .team-avatar {
+            width: 64px;
+            height: 64px;
+            background: var(--surface-light);
+            border: 2px solid var(--border);
+            border-radius: 50%;
+            margin: 0 auto 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+        .team-card h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+        .team-card span {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        .team-more {
+            text-align: center;
+        }
+        .team-more a {
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+
+        /* TESTIMONIALS */
+        .testimonials { background: var(--surface); }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .testimonial-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+        }
+        .stars {
+            color: var(--accent);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+        .testimonial-card blockquote {
+            font-size: 0.88rem;
+            color: var(--text);
+            line-height: 1.75;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .testimonial-attr {
+            display: flex;
+            flex-direction: column;
+        }
+        .testimonial-attr strong {
+            font-size: 0.82rem;
+            color: var(--white);
+        }
+        .testimonial-attr span {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* AREAS */
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+        }
+        .area-pill {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px 12px;
+            text-align: center;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--text);
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .area-pill:hover { border-color: var(--accent); color: var(--accent); }
+
+        /* CONTACT */
+        .contact { background: var(--surface); }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: start;
+        }
+        .contact-details h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+        .contact-details > p {
+            color: var(--text);
+            margin-bottom: 36px;
+            line-height: 1.8;
+        }
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .contact-icon {
+            width: 42px;
+            height: 42px;
+            background: var(--accent-glow);
+            border: 1px solid rgba(200, 119, 63, 0.25);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .contact-item-text strong {
+            display: block;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-bottom: 4px;
+        }
+        .contact-item-text a,
+        .contact-item-text p {
+            font-size: 0.95rem;
+            color: var(--white);
+            line-height: 1.6;
+        }
+        .contact-item-text a { color: var(--accent); }
+        .contact-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 36px;
+        }
+        .contact-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+        .contact-card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+            line-height: 1.7;
+        }
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .contact-link-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px 18px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--text);
+            text-decoration: none;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .contact-link-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .contact-link-btn .icon { font-size: 1rem; }
+
+        /* FOOTER */
+        footer {
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            padding: 56px 0 32px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+        .footer-brand .name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--white);
+            margin-bottom: 6px;
+        }
+        .footer-brand .est {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 18px;
+        }
+        .footer-brand p {
+            font-size: 0.83rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            max-width: 280px;
+        }
+        .footer-social {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .social-btn {
+            width: 36px;
+            height: 36px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            text-decoration: none;
+            color: var(--text-muted);
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .social-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .footer-col h4 {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .footer-col ul a {
+            font-size: 0.83rem;
+            color: var(--text-muted);
+            transition: color 0.2s;
+        }
+        .footer-col ul a:hover { color: var(--accent); }
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .footer-bottom p {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+        .footer-bottom .preview-note {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 5px 12px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .services-grid { grid-template-columns: 1fr 1fr; }
+            .team-grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stat-item { border-right: none; border-bottom: 1px solid var(--border); padding: 20px 0; }
+            .stat-item:nth-child(even) { border-bottom: none; }
+            .areas-grid { grid-template-columns: repeat(3, 1fr); }
+            nav .nav-links { display: none; }
+            .listings-cta { padding: 36px 24px; }
+        }
+        @media (max-width: 480px) {
+            .hero { padding: 60px 0 50px; }
+            .hero h1 { font-size: 1.7rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .team-grid { grid-template-columns: repeat(2, 1fr); }
+            .areas-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <!-- Top Bar -->
-    <div style="padding: 20px 0; border-bottom: 1px solid var(--border);">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-            <img src="https://podre.com.au/wp-content/uploads/2018/08/PODRE_charcoal_stacked.png" alt="Pat O'driscoll Real Estate" style="max-height: 40px; max-width: 180px; object-fit: contain;">
-            <a href="tel:0749272122" class="cta-btn" style="padding: 10px 24px; font-size: 0.85rem;">07 4927 2122</a>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-inner">
+            <div class="nav-logo">
+                <img src="https://podre.com.au/wp-content/uploads/2021/06/PODRE_Logo_White_Transparent.png"
+                     alt="Pat O'Driscoll Real Estate"
+                     onerror="this.style.display='none'">
+                <div class="nav-logo-text">
+                    <span class="name">Pat O'Driscoll Real Estate</span>
+                    <span class="tagline-small">Rockhampton &amp; Central Queensland</span>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="https://podre.com.au/buying/">Buying</a></li>
+                <li><a href="https://podre.com.au/selling/">Selling</a></li>
+                <li><a href="https://podre.com.au/renting/">Renting</a></li>
+                <li><a href="https://podre.com.au/commercial/">Commercial</a></li>
+                <li><a href="https://podre.com.au/about-us/">About Us</a></li>
+                <li><a href="tel:0749272122" class="nav-cta">Call 07 4927 2122</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">Locally Owned Since 1986 &middot; Rockhampton, QLD</div>
+            <h1>It's nice to come home.<br><em>Find yours here.</em></h1>
+            <p>Pat O'Driscoll Real Estate has been helping Central Queenslanders buy, sell, and rent property across Rockhampton, the Capricorn Coast, and beyond for nearly four decades. The team that actually knows your patch.</p>
+            <div class="hero-actions">
+                <a href="https://podre.com.au/listings/?saleOrRental=Sale" class="cta-btn">Browse Current Listings</a>
+                <a href="https://podre.com.au/selling/market-appraisal/" class="cta-ghost">Get a Free Appraisal</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="stats-strip">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">38+</div>
+                    <div class="stat-label">Years in Rockhampton</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">32</div>
+                    <div class="stat-label">Team Members</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">70+</div>
+                    <div class="stat-label">Suburbs Covered</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1986</div>
+                    <div class="stat-label">Year Established</div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Hero -->
-    <section style="padding: 80px 0 48px; text-align: center;">
+    <!-- ABOUT -->
+    <section>
         <div class="container">
-            <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600;">Trusted Local Real Estate Experts</p>
-            <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600;">
-                Pat O'driscoll Real Estate
-            </h1>
-            <p style="font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto 32px; line-height: 1.8;">
-                Specialising in all aspects of Real Estate, we are here to help you achieve your property dream, whether it is buying, selling, renting or investing.
-            </p>
-            <a href="tel:0749272122" class="cta-btn">Get a Free Appraisal</a>
+            <div class="about-grid">
+                <div class="about-content">
+                    <div class="section-label">Our Story</div>
+                    <h2 class="section-heading">Built right here in Rocky, from the ground up</h2>
+                    <p>In 1986, Pat O'Driscoll opened a real estate agency with two staff members and a 40m&#178; office on Bolsover Street. The idea was simple: do the job properly, treat people fairly, and the rest would follow.</p>
+                    <p>Today that same office supports a team of 32 professionals covering residential sales, property management, commercial, rural, and land across Central Queensland. Still locally owned. Still on Bolsover Street.</p>
+                    <p>The team manages hundreds of properties, handles sales from Gracemere to Yeppoon and Emu Park, and has built relationships with clients who keep coming back for decades. That's not a marketing line — it's what happens when you do the little things right, consistently, for nearly four decades.</p>
+                    <div class="about-callout">
+                        <p>"We believe it is the little things that make the difference."</p>
+                    </div>
+                </div>
+                <div class="about-facts">
+                    <div class="fact-card">
+                        <div class="fact-icon">&#128205;</div>
+                        <div class="fact-text">
+                            <strong>Level 2, 102 Bolsover Street</strong>
+                            <span>Rockhampton QLD 4700 — the same address since 1986</span>
+                        </div>
+                    </div>
+                    <div class="fact-card">
+                        <div class="fact-icon">&#127968;</div>
+                        <div class="fact-text">
+                            <strong>Full-service across Central QLD</strong>
+                            <span>Residential, commercial, rural, rentals, and land sales</span>
+                        </div>
+                    </div>
+                    <div class="fact-card">
+                        <div class="fact-icon">&#129309;</div>
+                        <div class="fact-text">
+                            <strong>Landlords trust us with their investments</strong>
+                            <span>Professional property management with a responsive, dedicated team</span>
+                        </div>
+                    </div>
+                    <div class="fact-card">
+                        <div class="fact-icon">&#128222;</div>
+                        <div class="fact-text">
+                            <strong>Mon&ndash;Fri, 8:30am&ndash;5:00pm</strong>
+                            <span>Real people, real conversations &mdash; call 07 4927 2122</span>
+                        </div>
+                    </div>
+                    <div class="fact-card">
+                        <div class="fact-icon">&#127807;</div>
+                        <div class="fact-text">
+                            <strong>Capricorn Coast specialist</strong>
+                            <span>Yeppoon, Emu Park, and the Capricorn hinterland covered by the team</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    
-        <section style="padding: 64px 0;">
-            <div class="container">
-                <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; text-align: center; font-weight: 600;">What We Do</p>
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); text-align: center; margin-bottom: 48px;">Our Services</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-                    
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center;">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px;">Pat O'Driscoll Real Estate</h3>
-                </div>
+    <!-- SERVICES -->
+    <section class="services">
+        <div class="container">
+            <div class="section-label">What We Do</div>
+            <h2 class="section-heading">Every corner of the Central Queensland property market</h2>
+            <p class="section-subheading">Whether you're chasing your first home in North Rockhampton, offloading an investment in Gracemere, or need someone reliable to look after your rentals &mdash; the team has it covered.</p>
+            <div class="services-grid">
+                <a href="https://podre.com.au/buying/" class="service-card">
+                    <div class="service-icon">&#127968;</div>
+                    <h3>Residential Sales</h3>
+                    <p>Houses, townhouses, and units across Rockhampton, North Rockhampton, Gracemere, and the wider region. We keep a close eye on the local market so you don't have to.</p>
+                    <span class="service-link">Browse listings &rarr;</span>
+                </a>
+                <a href="https://podre.com.au/selling/" class="service-card">
+                    <div class="service-icon">&#128202;</div>
+                    <h3>Selling Your Property</h3>
+                    <p>Free market appraisals, honest pricing advice, and a sales team that follows up properly. See why owners in Central QLD keep coming back when it's time to sell.</p>
+                    <span class="service-link">Why sell with PODRE &rarr;</span>
+                </a>
+                <a href="https://podre.com.au/renting/" class="service-card">
+                    <div class="service-icon">&#128273;</div>
+                    <h3>Property Management</h3>
+                    <p>A dedicated property management team handling everything from leasing and routine inspections through to maintenance co-ordination and landlord reporting. Professionally managed.</p>
+                    <span class="service-link">Rental appraisal &rarr;</span>
+                </a>
+                <a href="https://podre.com.au/commercial/" class="service-card">
+                    <div class="service-icon">&#127970;</div>
+                    <h3>Commercial Sales &amp; Leasing</h3>
+                    <p>Office, retail, and industrial property in Rockhampton's CBD and surrounds. Whether you're buying, selling, or looking to lease, the commercial team knows this market well.</p>
+                    <span class="service-link">Commercial listings &rarr;</span>
+                </a>
+                <a href="https://podre.com.au/buying/?category=Rural" class="service-card">
+                    <div class="service-icon">&#127807;</div>
+                    <h3>Rural &amp; Land Sales</h3>
+                    <p>Rural properties, lifestyle blocks, and development land across Central Queensland. If you're looking to get out of town or subdivide, we can help you find the right block.</p>
+                    <span class="service-link">Rural listings &rarr;</span>
+                </a>
+                <a href="https://podre.com.au/buying/?category=Capricorn+Coast" class="service-card">
+                    <div class="service-icon">&#127958;</div>
+                    <h3>Capricorn Coast Properties</h3>
+                    <p>Yeppoon, Emu Park, Keppel Sands &mdash; the coast is only 40 kilometres from Rocky and the team covers it properly. Holiday homes, permanent residences, and investment properties.</p>
+                    <span class="service-link">Coast listings &rarr;</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- LISTINGS CTA -->
+    <section>
+        <div class="container">
+            <div class="listings-cta">
+                <h2>Properties available right now</h2>
+                <p>From family homes in Rockhampton's northern suburbs to Capricorn Coast getaways &mdash; new properties come onto the market regularly. Set up a property alert so you don't miss the right one.</p>
+                <div class="listings-actions">
+                    <a href="https://podre.com.au/listings/?saleOrRental=Sale" class="cta-btn">View Properties For Sale</a>
+                    <a href="https://podre.com.au/listings/?saleOrRental=Rental" class="cta-ghost">Rental Properties</a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-    
-
-    <!-- Contact -->
-    <section style="padding: 64px 0; border-top: 1px solid var(--border);">
+    <!-- TEAM -->
+    <section>
         <div class="container">
-            <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; font-weight: 600;">Contact</p>
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 24px;">Get in Touch</h2>
-            <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px;">
+            <div class="section-label">The Team</div>
+            <h2 class="section-heading">32 professionals who know this market</h2>
+            <p class="section-subheading">The team spans sales, property management, leasing, and administration &mdash; all based in Rocky. No outsourced call centres, no rotating roster of strangers. Just people who know the area and actually answer their phones.</p>
+            <div class="team-grid">
+                <a href="https://podre.com.au/staff/patrick-odriscoll/" class="team-card">
+                    <div class="team-avatar">PO</div>
+                    <h4>Patrick O'Driscoll</h4>
+                    <span>Principal</span>
+                </a>
+                <a href="https://podre.com.au/staff/neale-crow/" class="team-card">
+                    <div class="team-avatar">NC</div>
+                    <h4>Neale Crow</h4>
+                    <span>Principal / Sales Manager</span>
+                </a>
+                <a href="https://podre.com.au/staff/cathy-odriscoll/" class="team-card">
+                    <div class="team-avatar">CO</div>
+                    <h4>Catherine O'Driscoll</h4>
+                    <span>Manager</span>
+                </a>
+                <a href="https://podre.com.au/staff/noel-livingston/" class="team-card">
+                    <div class="team-avatar">NL</div>
+                    <h4>Noel Livingston</h4>
+                    <span>Client Relations &amp; Marketing</span>
+                </a>
+                <a href="https://podre.com.au/staff/doug-webber/" class="team-card">
+                    <div class="team-avatar">DW</div>
+                    <h4>Doug Webber</h4>
+                    <span>Sales Consultant</span>
+                </a>
+                <a href="https://podre.com.au/staff/jenny-powell/" class="team-card">
+                    <div class="team-avatar">JP</div>
+                    <h4>Jenny Powell</h4>
+                    <span>Sales Consultant</span>
+                </a>
+                <a href="https://podre.com.au/staff/hannah-seeney/" class="team-card">
+                    <div class="team-avatar">HS</div>
+                    <h4>Hannah Seeney</h4>
+                    <span>Head of Property Management</span>
+                </a>
+                <a href="https://podre.com.au/staff/rebecca-trott-2/" class="team-card">
+                    <div class="team-avatar">RT</div>
+                    <h4>Rebecca Trott</h4>
+                    <span>Business Development Manager</span>
+                </a>
+            </div>
+            <div class="team-more">
+                <a href="https://podre.com.au/about-us/meet-the-team/">Meet the full team of 32 &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-label">What Clients Say</div>
+            <h2 class="section-heading">The sort of reviews that speak for themselves</h2>
+            <p class="section-subheading">These are real clients &mdash; buyers, sellers, landlords, and tenants who trusted the team with their property decisions in Rocky and across Central Queensland.</p>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"We have such a level of absolute faith in the Team at PODRE. Our investment properties have been in good hands &mdash; they really do look after you."</blockquote>
+                    <div class="testimonial-attr">
+                        <strong>David &amp; Melissa Lafferty</strong>
+                        <span>Property Management Clients</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"I'd give Erika 6 stars if I could. She went above and beyond at every step &mdash; professional, knowledgeable, and genuinely cared about getting us the right result."</blockquote>
+                    <div class="testimonial-attr">
+                        <strong>Trina Hayes</strong>
+                        <span>Sales Client &mdash; Erika McDean</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"Doug understood exactly what I was after and pointed me straight towards the right home. Customer focused all the way &mdash; a genuine pleasure to work with."</blockquote>
+                    <div class="testimonial-attr">
+                        <strong>Stewart Doherty</strong>
+                        <span>Buyer &mdash; Doug Webber</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"Thank you all for your outstanding management of my 3 properties. Never been treated better nor received service to such a high level."</blockquote>
+                    <div class="testimonial-attr">
+                        <strong>Joanne Coombs Scott</strong>
+                        <span>Property Management Client</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"Gavan was a delight to deal with &mdash; very open and honest throughout. Really smooth process and we got a great result. Couldn't recommend him more."</blockquote>
+                    <div class="testimonial-attr">
+                        <strong>Colby</strong>
+                        <span>Sales Client &mdash; Gavan Bretz</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"Absolutely wonderful experience from start to finish &mdash; completely stress-free. Thank you from the bottom of my heart for the attentiveness and care."</blockquote>
+                    <div class="testimonial-attr">
+                        <strong>Amber &amp; Jo White</strong>
+                        <span>Sales Clients &mdash; Doug Webber</span>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align:center; margin-top: 36px;">
+                <a href="https://podre.com.au/about-us/testimonials/" style="font-size: 0.88rem; font-weight: 600; color: var(--accent);">Read more client testimonials &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICE AREAS -->
+    <section>
+        <div class="container">
+            <div class="section-label">Where We Work</div>
+            <h2 class="section-heading">Rockhampton and beyond</h2>
+            <p class="section-subheading">The team covers 70+ suburbs across Central Queensland. Whether you're in the heart of Rocky or out on the Capricorn Coast, we know these neighbourhoods.</p>
+            <div class="areas-grid">
+                <div class="area-pill">Rockhampton</div>
+                <div class="area-pill">North Rockhampton</div>
+                <div class="area-pill">Gracemere</div>
+                <div class="area-pill">Yeppoon</div>
+                <div class="area-pill">Emu Park</div>
+                <div class="area-pill">Frenchville</div>
+                <div class="area-pill">Berserker</div>
+                <div class="area-pill">Kawana</div>
+                <div class="area-pill">The Range</div>
+                <div class="area-pill">Keppel Sands</div>
+                <div class="area-pill">Glenlee</div>
+                <div class="area-pill">Park Avenue</div>
+                <div class="area-pill">Allenstown</div>
+                <div class="area-pill">Ironpot</div>
+                <div class="area-pill">Capricorn Coast</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-details">
+                    <div class="section-label">Get In Touch</div>
+                    <h2>Drop in, call, or just say g'day</h2>
+                    <p>The office is on Level 2, Bolsover Street &mdash; the same spot since 1986. The team is in Monday to Friday and happy to chat through any property questions, big or small.</p>
+                    <div class="contact-item">
+                        <div class="contact-icon">&#128222;</div>
+                        <div class="contact-item-text">
+                            <strong>Phone</strong>
+                            <a href="tel:0749272122">07 4927 2122</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">&#9993;&#65039;</div>
+                        <div class="contact-item-text">
+                            <strong>Email</strong>
+                            <a href="mailto:admin@podre.com.au">admin@podre.com.au</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">&#128205;</div>
+                        <div class="contact-item-text">
+                            <strong>Address</strong>
+                            <p>Level 2, 102 Bolsover Street<br>Rockhampton QLD 4700</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">&#128336;</div>
+                        <div class="contact-item-text">
+                            <strong>Office Hours</strong>
+                            <p>Monday &ndash; Friday: 8:30am &ndash; 5:00pm</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <h3>Ready to make a move?</h3>
+                    <p>Whether you're buying your first home, thinking about selling, or want someone reliable looking after your rental &mdash; the right place to start is a quick conversation with the team.</p>
+                    <div class="contact-links">
+                        <a href="https://podre.com.au/selling/market-appraisal/" class="contact-link-btn">
+                            <span class="icon">&#128202;</span>
+                            <span>Request a free market appraisal</span>
+                        </a>
+                        <a href="https://podre.com.au/renting/request-appraisal/" class="contact-link-btn">
+                            <span class="icon">&#128273;</span>
+                            <span>Get a rental appraisal</span>
+                        </a>
+                        <a href="https://podre.com.au/listings/?saleOrRental=Sale" class="contact-link-btn">
+                            <span class="icon">&#127968;</span>
+                            <span>Browse all properties for sale</span>
+                        </a>
+                        <a href="https://podre.com.au/buying/property-alert/" class="contact-link-btn">
+                            <span class="icon">&#128276;</span>
+                            <span>Set up a property alert</span>
+                        </a>
+                        <a href="https://podre.com.au/contact-us/" class="contact-link-btn">
+                            <span class="icon">&#128172;</span>
+                            <span>General enquiry</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="name">Pat O'Driscoll Real Estate</div>
+                    <div class="est">Est. 1986 &middot; Rockhampton, QLD</div>
+                    <p>Locally owned and operated for nearly four decades. The team knows Central Queensland property because this is our patch &mdash; we live here, work here, and look after people here.</p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/patodriscollrealestate/" class="social-btn" target="_blank" rel="noopener" title="Facebook">f</a>
+                        <a href="https://www.instagram.com/podrealestate/" class="social-btn" target="_blank" rel="noopener" title="Instagram">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/company/pat-o%27driscoll-real-estate" class="social-btn" target="_blank" rel="noopener" title="LinkedIn">in</a>
+                        <a href="https://www.youtube.com/user/PODRealEstate" class="social-btn" target="_blank" rel="noopener" title="YouTube">&#9654;</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Buy &amp; Sell</h4>
+                    <ul>
+                        <li><a href="https://podre.com.au/listings/?saleOrRental=Sale">Properties For Sale</a></li>
+                        <li><a href="https://podre.com.au/buying/open-homes/">Open Homes</a></li>
+                        <li><a href="https://podre.com.au/buying/upcoming-auctions/">Upcoming Auctions</a></li>
+                        <li><a href="https://podre.com.au/selling/market-appraisal/">Market Appraisal</a></li>
+                        <li><a href="https://podre.com.au/selling/recent-sales/">Recent Sales</a></li>
+                        <li><a href="https://podre.com.au/selling/why-sell-with-pat-odriscoll/">Why Sell With Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Rentals</h4>
+                    <ul>
+                        <li><a href="https://podre.com.au/listings/?saleOrRental=Rental">Rental Properties</a></li>
+                        <li><a href="https://podre.com.au/renting/apply-for-rental/">Apply Online</a></li>
+                        <li><a href="https://podre.com.au/renting/request-appraisal/">Rental Appraisal</a></li>
+                        <li><a href="https://podre.com.au/renting/maintenance-request/">Maintenance Request</a></li>
+                        <li><a href="https://podre.com.au/renting/landlord-tenant-info/">Landlord Info</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="https://podre.com.au/about-us/meet-the-team/">Meet The Team</a></li>
+                        <li><a href="https://podre.com.au/about-us/our-agency/">Our Agency</a></li>
+                        <li><a href="https://podre.com.au/about-us/testimonials/">Testimonials</a></li>
+                        <li><a href="https://podre.com.au/about-us/blog/">Blog</a></li>
+                        <li><a href="https://podre.com.au/commercial/">Commercial</a></li>
+                        <li><a href="https://podre.com.au/contact-us/">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
                 <div>
-                    <p style="margin-bottom: 12px;"><strong style="color: var(--white);">Phone:</strong> <a href="tel:0749272122" style="color: var(--accent); text-decoration: none;">07 4927 2122</a></p>
-                    <p style="margin-bottom: 12px;"><strong style="color: var(--white);">Email:</strong> <a href="mailto:marianne.markwell@podre.com.au" style="color: var(--accent); text-decoration: none;">marianne.markwell@podre.com.au</a></p>
-                    <p style="margin-bottom: 12px;"><strong style="color: var(--white);">Address:</strong> Homepage - Pat O'Driscoll Real Estate Pat O'Driscoll Real Estate phone 07 4927 2122</p>
+                    <p>&copy; 2024 Pat O'Driscoll Real Estate. Level 2, 102 Bolsover Street, Rockhampton QLD 4700. <a href="tel:0749272122">07 4927 2122</a></p>
+                    <p style="margin-top: 4px;">Locally owned and operated since 1986. Licence details available on request.</p>
                 </div>
-                <div style="margin-top: 24px;">
-                    <a href="tel:0749272122" class="cta-btn">Get a Free Appraisal</a>
-                </div>
+                <p class="preview-note">Rebuilt by J&amp;G Operations as a preview. Not yet live on podre.com.au.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer style="padding: 32px 0; border-top: 1px solid var(--border); text-align: center;">
-        <div class="container">
-            <p style="font-size: 0.8rem; color: var(--text-muted);">
-                Rebuilt by J&amp;G Operations as a preview. Not yet live on podre.com.au.
-            </p>
         </div>
     </footer>
+
 </body>
 </html>
