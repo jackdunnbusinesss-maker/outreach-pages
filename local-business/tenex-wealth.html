@@ -19,9 +19,9 @@
             --surface: #16161d;
             --surface-light: #1e1e28;
             --border: #2a2a36;
-            --accent: #4a9eff;
-            --accent-light: #7ab8ff;
-            --accent-glow: rgba(74, 158, 255, 0.12);
+            --accent: #7eb8c9;
+            --accent-light: #a3cfd9;
+            --accent-glow: rgba(126, 184, 201, 0.15);
             --white: #f0eff4;
             --text: #c5c4ce;
             --text-muted: #7e7d8a;
@@ -39,43 +39,51 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        /* ---- LAYOUT ---- */
         .container {
-            max-width: 720px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        /* ---- TOP BAR ---- */
-        .topbar {
-            padding: 18px 0;
+        /* ---- NAV ---- */
+        .nav {
+            padding: 24px 0;
             border-bottom: 1px solid var(--border);
-            background: var(--surface);
         }
-        .topbar-inner {
+        .nav-inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .topbar-brand {
-            font-size: 0.85rem;
+        .nav-brand {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.3rem;
             font-weight: 600;
             color: var(--white);
             letter-spacing: 0.5px;
         }
-        .topbar-location {
-            font-size: 0.75rem;
+        .nav-brand span {
+            color: var(--accent);
+        }
+        .nav-phone {
+            font-size: 0.82rem;
             color: var(--accent-light);
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            font-weight: 500;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+        .nav-phone:hover {
+            color: var(--white);
         }
 
         /* ---- HERO ---- */
         .hero {
-            padding: 80px 0 56px;
+            padding: 88px 0 64px;
             text-align: center;
         }
         .hero-eyebrow {
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 3px;
             color: var(--accent);
@@ -84,9 +92,9 @@
         }
         .hero h1 {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(1.9rem, 5vw, 2.7rem);
+            font-size: clamp(2rem, 5vw, 3rem);
             color: var(--white);
-            line-height: 1.25;
+            line-height: 1.2;
             margin-bottom: 24px;
             font-weight: 600;
         }
@@ -97,270 +105,404 @@
         .hero-sub {
             font-size: 1.05rem;
             color: var(--text);
-            max-width: 560px;
-            margin: 0 auto 36px;
+            max-width: 620px;
+            margin: 0 auto 40px;
             line-height: 1.8;
         }
         .hero-cta {
             display: inline-block;
             background: var(--accent);
-            color: #0a0a0f;
+            color: var(--bg);
             font-family: 'Inter', sans-serif;
             font-size: 0.95rem;
             font-weight: 600;
-            padding: 15px 40px;
+            padding: 16px 48px;
             border-radius: 8px;
             text-decoration: none;
-            letter-spacing: 0.4px;
+            letter-spacing: 0.5px;
             transition: background 0.3s ease, transform 0.2s ease;
         }
         .hero-cta:hover {
             background: var(--accent-light);
             transform: translateY(-1px);
         }
+        .hero-location {
+            margin-top: 18px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
 
-        /* ---- ABOUT ---- */
-        .about {
-            padding: 64px 0;
+        /* ---- WHO WE SERVE ---- */
+        .who {
+            padding: 72px 0;
             border-top: 1px solid var(--border);
         }
-        .about p {
-            font-size: 1.05rem;
-            line-height: 1.9;
-            margin-bottom: 20px;
-        }
-        .about p:last-child {
-            margin-bottom: 0;
-        }
-        .highlight {
-            color: var(--accent-light);
+        .section-eyebrow {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
             font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .section-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: var(--white);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .section-body {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.85;
+            max-width: 680px;
+        }
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 16px;
+            margin-top: 40px;
+        }
+        .audience-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 20px;
+            text-align: center;
+            transition: border-color 0.3s ease;
+        }
+        .audience-card:hover {
+            border-color: var(--accent);
+        }
+        .audience-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .audience-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         /* ---- SERVICES ---- */
         .services {
-            padding: 64px 0;
+            padding: 72px 0;
             border-top: 1px solid var(--border);
-        }
-        .section-heading {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.6rem;
-            color: var(--white);
-            margin-bottom: 40px;
-            text-align: center;
-            font-weight: 600;
         }
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 44px;
         }
         .service-card {
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 10px;
-            padding: 24px 20px;
-            transition: border-color 0.3s ease, background 0.3s ease;
+            padding: 32px 28px;
+            transition: border-color 0.3s ease;
         }
         .service-card:hover {
             border-color: var(--accent);
-            background: var(--surface-light);
         }
-        .service-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--accent);
-            margin-bottom: 12px;
-        }
-        .service-name {
-            font-size: 0.95rem;
-            color: var(--white);
-            font-weight: 500;
-            line-height: 1.4;
-        }
-
-        /* ---- CONTACT ---- */
-        .contact {
-            padding: 64px 0;
-            border-top: 1px solid var(--border);
-        }
-        .contact-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 40px 36px;
-            text-align: center;
-        }
-        .contact-heading {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.5rem;
-            color: var(--white);
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-        .contact-sub {
-            font-size: 0.95rem;
-            color: var(--text);
-            margin-bottom: 32px;
-            line-height: 1.7;
-        }
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            align-items: center;
-            margin-bottom: 32px;
-        }
-        .contact-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .contact-label {
-            font-size: 0.7rem;
+        .service-tag {
+            font-size: 0.68rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--accent);
             font-weight: 600;
-            min-width: 54px;
-            text-align: right;
+            margin-bottom: 10px;
         }
-        .contact-value {
+        .service-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.1rem;
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .service-desc {
+            font-size: 0.88rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ---- PHILOSOPHY ---- */
+        .philosophy {
+            padding: 72px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .philosophy-quote {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.2rem, 3vw, 1.65rem);
+            color: var(--white);
+            font-style: italic;
+            font-weight: 500;
+            line-height: 1.55;
+            max-width: 680px;
+            margin: 0 auto 28px;
+        }
+        .philosophy-body {
+            font-size: 1rem;
+            color: var(--text);
+            max-width: 640px;
+            margin: 0 auto;
+            line-height: 1.85;
+        }
+
+        /* ---- MEET THE ADVISOR ---- */
+        .advisor {
+            padding: 72px 0;
+            border-top: 1px solid var(--border);
+        }
+        .advisor-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 40px 36px;
+        }
+        .advisor-role {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .advisor-name {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.4rem;
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .advisor-bio {
             font-size: 0.95rem;
-            color: var(--white);
+            color: var(--text);
+            line-height: 1.85;
         }
-        .contact-value a {
-            color: var(--accent-light);
+
+        /* ---- CONTACT ---- */
+        .contact {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .contact-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .contact-sub {
+            font-size: 1rem;
+            color: var(--text);
+            max-width: 520px;
+            margin: 0 auto 44px;
+            line-height: 1.8;
+        }
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 44px;
+        }
+        .contact-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 24px 32px;
+            min-width: 180px;
+        }
+        .contact-item-label {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .contact-item-value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--white);
             text-decoration: none;
-            transition: color 0.2s ease;
         }
-        .contact-value a:hover {
-            color: var(--white);
+        .contact-item-value:hover {
+            color: var(--accent-light);
         }
-        .contact-btn {
+        .contact-cta {
             display: inline-block;
             background: var(--accent);
-            color: #0a0a0f;
+            color: var(--bg);
             font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 600;
-            padding: 14px 36px;
+            padding: 16px 48px;
             border-radius: 8px;
             text-decoration: none;
-            letter-spacing: 0.4px;
+            letter-spacing: 0.5px;
             transition: background 0.3s ease, transform 0.2s ease;
         }
-        .contact-btn:hover {
+        .contact-cta:hover {
             background: var(--accent-light);
             transform: translateY(-1px);
         }
 
         /* ---- FOOTER ---- */
         .footer {
-            padding: 36px 0;
+            padding: 40px 0;
             border-top: 1px solid var(--border);
             text-align: center;
         }
         .footer p {
             font-size: 0.75rem;
             color: var(--text-muted);
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
         /* ---- RESPONSIVE ---- */
-        @media (max-width: 600px) {
+        @media (max-width: 640px) {
             .hero {
-                padding: 56px 0 40px;
+                padding: 60px 0 48px;
             }
-            .topbar-inner {
-                flex-direction: column;
-                gap: 6px;
-                text-align: center;
+            .nav-phone {
+                display: none;
             }
             .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .audience-grid {
                 grid-template-columns: 1fr 1fr;
             }
-            .contact-card {
+            .advisor-card {
                 padding: 28px 20px;
             }
-            .contact-row {
+            .contact-details {
                 flex-direction: column;
-                gap: 2px;
                 align-items: center;
             }
-            .contact-label {
-                text-align: center;
-                min-width: auto;
+            .contact-item {
+                width: 100%;
+                max-width: 320px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Bar -->
-    <div class="topbar">
-        <div class="container topbar-inner">
-            <span class="topbar-brand">Tenex Wealth</span>
-            <span class="topbar-location">Newcastle NSW · Financial Advisor</span>
+    <!-- Nav -->
+    <nav class="nav">
+        <div class="container nav-inner">
+            <div class="nav-brand">Tenex <span>Wealth</span></div>
+            <a href="tel:0432368900" class="nav-phone">0432 368 900</a>
         </div>
-    </div>
+    </nav>
 
     <!-- Hero -->
     <section class="hero">
         <div class="container">
-            <p class="hero-eyebrow">Financial Advisor Newcastle NSW</p>
+            <p class="hero-eyebrow">Newcastle NSW &nbsp;&middot;&nbsp; Financial Advisory</p>
             <h1>Grow Your Wealth <em>Stress Free</em> with Newcastle's Trusted Financial Advisor</h1>
-            <p class="hero-sub">Good financial advice isn't about picking investments. It's about helping you make better decisions consistently — especially when it matters most. For business owners, pre-retirees, and high-income earners across Newcastle.</p>
-            <a href="tel:0432368900" class="hero-cta">Call 0432 368 900</a>
+            <p class="hero-sub">Expert financial advice for business owners, pre-retirees, and high-income earners across Newcastle NSW. Clarity around tax planning, retirement, and wealth growth — built around your goals, not a generic template.</p>
+            <a href="mailto:kerrod@tenexwealth.com.au" class="hero-cta">Book a Free Chat</a>
+            <p class="hero-location">Newcastle NSW &nbsp;&middot;&nbsp; tenexwealth.com.au</p>
         </div>
     </section>
 
-    <!-- About -->
-    <section class="about">
+    <!-- Who We Serve -->
+    <section class="who">
         <div class="container">
-            <p><span class="highlight">Kerrod Holland</span> and the team at Tenex Wealth serve business owners, pre-retirees, retirees, and high-income earners across Newcastle NSW. The focus is expert advice tailored to your situation — tax planning, retirement, and sustainable wealth growth.</p>
-            <p>We act as a sounding board, a strategist, and a steady hand when things feel uncertain. Because avoiding one bad decision can often be more valuable than making ten good ones.</p>
+            <p class="section-eyebrow">Who We Work With</p>
+            <h2 class="section-heading">Built for people with more to protect</h2>
+            <p class="section-body">Tenex Wealth specialises in working with clients who have built something worth protecting. Whether you're running a business, approaching retirement, or earning more than you know what to do with — we help you make better financial decisions consistently.</p>
+            <div class="audience-grid">
+                <div class="audience-card">
+                    <p class="audience-label">Business Owners</p>
+                    <p class="audience-desc">Structuring wealth for growth and tax efficiency while you build</p>
+                </div>
+                <div class="audience-card">
+                    <p class="audience-label">Pre-Retirees</p>
+                    <p class="audience-desc">Mapping out the transition so retirement happens on your terms</p>
+                </div>
+                <div class="audience-card">
+                    <p class="audience-label">High-Income Earners</p>
+                    <p class="audience-desc">Turning income into long-term wealth without leaving money on the table</p>
+                </div>
+                <div class="audience-card">
+                    <p class="audience-label">Retirees</p>
+                    <p class="audience-desc">Preserving and drawing on your assets with confidence and certainty</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Services -->
     <section class="services">
         <div class="container">
-            <h2 class="section-heading">What we help with</h2>
+            <p class="section-eyebrow">Our Services</p>
+            <h2 class="section-heading">Every area of your financial life, covered</h2>
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-dot"></div>
-                    <p class="service-name">Investments</p>
+                    <p class="service-tag">Planning</p>
+                    <p class="service-title">Tax Planning</p>
+                    <p class="service-desc">Structured strategies to minimise tax legally and keep more of what you earn — now and into the future.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-dot"></div>
-                    <p class="service-name">Insurances</p>
+                    <p class="service-tag">Growth</p>
+                    <p class="service-title">Investments</p>
+                    <p class="service-desc">Portfolio management aligned to your goals, risk appetite, and timeline — not generic templates.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-dot"></div>
-                    <p class="service-name">Superannuation</p>
+                    <p class="service-tag">Protection</p>
+                    <p class="service-title">Insurance</p>
+                    <p class="service-desc">Appropriate personal and business insurance to protect what you've built against the unexpected.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-dot"></div>
-                    <p class="service-name">Retirement Planning</p>
+                    <p class="service-tag">Super</p>
+                    <p class="service-title">Superannuation &amp; SMSFs</p>
+                    <p class="service-desc">Maximise your super contributions and — where appropriate — take control with a self-managed super fund.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-dot"></div>
-                    <p class="service-name">Debt Management</p>
+                    <p class="service-tag">Future</p>
+                    <p class="service-title">Retirement Planning</p>
+                    <p class="service-desc">A clear roadmap to the retirement you want, built around your numbers, your goals, and your timeline.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-dot"></div>
-                    <p class="service-name">Self-Managed Super Funds</p>
+                    <p class="service-tag">Liability</p>
+                    <p class="service-title">Debt Management</p>
+                    <p class="service-desc">Smart debt structuring to reduce interest costs and accelerate the path to financial independence.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-dot"></div>
-                    <p class="service-name">Small Business Advice</p>
+                    <p class="service-tag">Enterprise</p>
+                    <p class="service-title">Small Business Advisory</p>
+                    <p class="service-desc">Holistic financial support for business owners — from cash flow and structure to growth and exit planning.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-dot"></div>
-                    <p class="service-name">Tax Planning</p>
-                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy -->
+    <section class="philosophy">
+        <div class="container">
+            <p class="philosophy-quote">"Good financial advice isn't about picking investments. It's about helping you make better decisions consistently — especially when it matters most."</p>
+            <p class="philosophy-body">At Tenex Wealth, we act as a sounding board, a strategist, and a steady hand when things feel uncertain. Avoiding one bad decision can often be more valuable than making ten good ones. That's the standard we hold ourselves to with every client.</p>
+        </div>
+    </section>
+
+    <!-- Meet the Advisor -->
+    <section class="advisor">
+        <div class="container">
+            <div class="advisor-card">
+                <p class="advisor-role">Meet the Advisor</p>
+                <p class="advisor-name">Kerrod Holland</p>
+                <p class="advisor-bio">Kerrod Holland is the financial advisor behind Tenex Wealth, working with business owners, pre-retirees, retirees, and high-income earners across Newcastle NSW. His approach centres on clarity — helping clients understand their options, make confident decisions, and build lasting financial security. Whether you're growing a business, planning for retirement, or want a trusted hand on your finances, Kerrod provides tailored advice designed around your situation.</p>
             </div>
         </div>
     </section>
@@ -368,28 +510,31 @@
     <!-- Contact -->
     <section class="contact">
         <div class="container">
-            <div class="contact-card">
-                <h2 class="contact-heading">Ready to get started?</h2>
-                <p class="contact-sub">Reach out to Kerrod directly — by phone, email, or book a consult to start your journey with a trusted Newcastle financial planner.</p>
-                <div class="contact-details">
-                    <div class="contact-row">
-                        <span class="contact-label">Phone</span>
-                        <span class="contact-value"><a href="tel:0432368900">0432 368 900</a></span>
-                    </div>
-                    <div class="contact-row">
-                        <span class="contact-label">Email</span>
-                        <span class="contact-value"><a href="mailto:kerrod@tenexwealth.com.au">kerrod@tenexwealth.com.au</a></span>
-                    </div>
+            <h2 class="contact-heading">Ready to take control of your finances?</h2>
+            <p class="contact-sub">Reach out today — by phone, email, or a quick consult. Start your journey with Newcastle's trusted financial planner.</p>
+            <div class="contact-details">
+                <div class="contact-item">
+                    <p class="contact-item-label">Phone</p>
+                    <a href="tel:0432368900" class="contact-item-value">0432 368 900</a>
                 </div>
-                <a href="tel:0432368900" class="contact-btn">Book a Chat</a>
+                <div class="contact-item">
+                    <p class="contact-item-label">Email</p>
+                    <a href="mailto:kerrod@tenexwealth.com.au" class="contact-item-value">kerrod@tenexwealth.com.au</a>
+                </div>
+                <div class="contact-item">
+                    <p class="contact-item-label">Location</p>
+                    <span class="contact-item-value">Newcastle NSW</span>
+                </div>
             </div>
+            <a href="mailto:kerrod@tenexwealth.com.au" class="contact-cta">Book a Free Chat</a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>Tenex Wealth &mdash; Financial Advisor Newcastle NSW<br>Expert advice for business owners, pre-retirees, retirees &amp; high-income earners.</p>
+            <p>Tenex Wealth &nbsp;&middot;&nbsp; Financial Advisor Newcastle NSW &nbsp;&middot;&nbsp; tenexwealth.com.au</p>
+            <p style="margin-top: 8px;">General advice only. Consider your personal circumstances before acting on any information on this site.</p>
         </div>
     </footer>
 

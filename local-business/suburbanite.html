@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suburbanite — A New Online Presence</title>
+    <title>Suburbanite — Property Advisory</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
@@ -19,9 +19,9 @@
             --surface: #16161d;
             --surface-light: #1e1e28;
             --border: #2a2a36;
-            --accent: #7dab33;
-            --accent-light: #94c93d;
-            --accent-glow: rgba(148, 201, 61, 0.12);
+            --accent: #8ab832;
+            --accent-light: #a4d040;
+            --accent-glow: rgba(148, 201, 61, 0.15);
             --white: #f0eff4;
             --text: #c5c4ce;
             --text-muted: #7e7d8a;
@@ -47,7 +47,7 @@
 
         /* TOP BAR */
         .topbar {
-            padding: 20px 0;
+            padding: 18px 0;
             border-bottom: 1px solid var(--border);
         }
         .topbar-inner {
@@ -55,25 +55,29 @@
             justify-content: space-between;
             align-items: center;
         }
-        .topbar-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-muted);
+        .topbar-brand {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: 0.5px;
         }
-        .topbar-for {
+        .topbar-phone {
             font-size: 0.8rem;
             color: var(--accent-light);
             font-weight: 500;
+            text-decoration: none;
+        }
+        .topbar-phone:hover {
+            color: var(--white);
         }
 
         /* HERO */
         .hero {
-            padding: 80px 0 48px;
+            padding: 80px 0 56px;
             text-align: center;
         }
         .hero-eyebrow {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 3px;
             color: var(--accent);
@@ -95,121 +99,89 @@
         .hero-sub {
             font-size: 1.05rem;
             color: var(--text);
-            max-width: 560px;
+            max-width: 580px;
             margin: 0 auto;
             line-height: 1.8;
         }
 
-        /* PREVIEW SECTION */
-        .preview-section {
-            padding: 0 0 64px;
+        /* STATS */
+        .stats {
+            padding: 56px 0;
+            border-top: 1px solid var(--border);
         }
-        .preview-wrapper {
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            background: var(--surface);
-            box-shadow: 0 24px 80px rgba(0,0,0,0.4);
-            padding: 40px 36px;
-        }
-        .preview-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-        .preview-headline {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.5rem;
-            color: var(--white);
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-        .preview-body {
-            font-size: 0.95rem;
-            color: var(--text);
-            line-height: 1.8;
-        }
-
-        /* STATS ROW */
-        .stats-row {
+        .stats-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin-top: 32px;
+            gap: 24px;
         }
-        .stat-card {
-            background: var(--surface-light);
+        .stat-item {
+            background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 10px;
-            padding: 24px 20px;
+            padding: 28px 20px;
             text-align: center;
         }
-        .stat-value {
+        .stat-number {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.6rem;
+            font-size: 1.7rem;
             color: var(--accent-light);
             font-weight: 600;
-            line-height: 1.2;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
         .stat-label {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            line-height: 1.5;
         }
 
-        /* CONTEXT */
-        .context {
+        /* ABOUT */
+        .about {
             padding: 64px 0;
             border-top: 1px solid var(--border);
         }
-        .context p {
+        .section-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.6rem;
+            color: var(--white);
+            margin-bottom: 32px;
+            font-weight: 600;
+        }
+        .about p {
             font-size: 1.05rem;
             line-height: 1.9;
             margin-bottom: 20px;
+            color: var(--text);
         }
-        .context p:last-child {
+        .about p:last-child {
             margin-bottom: 0;
         }
-        .highlight-name {
+        .highlight {
             color: var(--accent-light);
             font-weight: 600;
         }
 
-        /* BULLETS */
-        .bullets {
+        /* SERVICES */
+        .services {
             padding: 64px 0;
             border-top: 1px solid var(--border);
         }
-        .bullets-heading {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.6rem;
-            color: var(--white);
-            margin-bottom: 40px;
-            text-align: center;
-            font-weight: 600;
-        }
-        .bullet-list {
+        .service-list {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 16px;
         }
-        .bullet-item {
+        .service-item {
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 10px;
-            padding: 28px 32px;
+            padding: 24px 28px;
             transition: border-color 0.3s ease;
         }
-        .bullet-item:hover {
+        .service-item:hover {
             border-color: var(--accent);
         }
-        .bullet-label {
+        .service-label {
             font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -217,38 +189,68 @@
             margin-bottom: 8px;
             font-weight: 600;
         }
-        .bullet-text {
+        .service-text {
             font-size: 1rem;
             color: var(--text);
             line-height: 1.7;
         }
 
-        /* MEDIA TRUST */
-        .media-section {
+        /* VALUES */
+        .values {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .value-item {
+            text-align: center;
+            padding: 28px 16px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+        .value-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .value-desc {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* TRUST */
+        .trust {
             padding: 64px 0;
             border-top: 1px solid var(--border);
             text-align: center;
         }
-        .media-heading {
+        .trust-intro {
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--text-muted);
             margin-bottom: 24px;
+            font-weight: 600;
         }
-        .media-list {
+        .media-grid {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
             gap: 12px;
+            justify-content: center;
         }
-        .media-tag {
+        .media-badge {
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 6px;
-            padding: 8px 18px;
-            font-size: 0.82rem;
-            color: var(--text);
+            padding: 10px 18px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
             font-weight: 500;
         }
 
@@ -276,10 +278,10 @@
         .cta-button {
             display: inline-block;
             background: var(--accent);
-            color: var(--bg);
+            color: #0e0e12;
             font-family: 'Inter', sans-serif;
             font-size: 0.95rem;
-            font-weight: 600;
+            font-weight: 700;
             padding: 16px 48px;
             border-radius: 8px;
             text-decoration: none;
@@ -312,17 +314,19 @@
             .hero {
                 padding: 56px 0 36px;
             }
-            .bullet-item {
-                padding: 22px 20px;
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .service-item {
+                padding: 20px 20px;
             }
             .cta-section {
                 padding: 56px 0;
-            }
-            .stats-row {
-                grid-template-columns: 1fr;
-            }
-            .preview-wrapper {
-                padding: 28px 20px;
             }
         }
     </style>
@@ -332,89 +336,110 @@
     <!-- Top Bar -->
     <div class="topbar">
         <div class="container topbar-inner">
-            <span class="topbar-label">Replacement Site Preview</span>
-            <span class="topbar-for">Built for Suburbanite</span>
+            <span class="topbar-brand">Suburbanite Property Advisory</span>
+            <a href="tel:1300245490" class="topbar-phone">1300 245 490</a>
         </div>
     </div>
 
     <!-- Hero -->
     <section class="hero">
         <div class="container">
-            <p class="hero-eyebrow">Built Specifically for Suburbanite</p>
-            <h1>Michael, here's what a site built for <em>serious property investors</em> looks like in 2025</h1>
-            <p class="hero-sub">We rebuilt suburbanite.com.au from scratch — same credentials, same authority, designed to actually convert the buyers and investors who land on it.</p>
+            <p class="hero-eyebrow">360° Property Advisory — Australia</p>
+            <h1><em>Suburbanite</em> — Quality property advice that is qualified, measured, tested and individual</h1>
+            <p class="hero-sub">We work exclusively with buyers and investors to provide independent, strategic advice across residential, commercial, and corporate property — with no developer kickbacks, ever.</p>
         </div>
     </section>
 
-    <!-- Preview Section with Stats -->
-    <section class="preview-section">
+    <!-- Stats -->
+    <section class="stats">
         <div class="container">
-            <div class="preview-wrapper">
-                <p class="preview-label">What we built</p>
-                <h2 class="preview-headline">360° Property Advisory — Rebuilt for Conversion</h2>
-                <p class="preview-body">Suburbanite has over a decade of credibility, $600M+ in acquisitions, and media coverage most firms never get. The current site buries all of it. This replacement puts it front and centre, in a layout that moves qualified buyers from curious to booked in a single visit.</p>
-                <div class="stats-row">
-                    <div class="stat-card">
-                        <div class="stat-value">$600M+</div>
-                        <div class="stat-label">Properties Acquired</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value">1,500+</div>
-                        <div class="stat-label">Properties Purchased</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value">10+ Yrs</div>
-                        <div class="stat-label">In the Market</div>
-                    </div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">$600M+</div>
+                    <div class="stat-label">Worth of properties acquired</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1,500+</div>
+                    <div class="stat-label">Properties purchased</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Years of combined property experience</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Context -->
-    <section class="context">
+    <!-- About -->
+    <section class="about">
         <div class="container">
-            <p><span class="highlight-name">Michael</span>, Suburbanite has built something most property advisory firms never achieve — genuine independence, over 150 years of combined experience across your team, and a trusted voice in national media for a decade. That's not easy to earn.</p>
-            <p>The problem isn't the business. The problem is that when a qualified buyer or investor lands on suburbanite.com.au today, none of that authority is immediately clear. They're doing the work to find out why they should trust you, and most of them won't bother.</p>
-            <p>What we put together is a direct replacement — same URL, same brand, fully deployable — that communicates <span class="highlight-name">Suburbanite's</span> depth and independence within the first scroll, and gives visitors a clear path to take action.</p>
+            <h2 class="section-heading">About Suburbanite</h2>
+            <p>For over 10 years, <span class="highlight">Suburbanite</span> has been a trusted voice in Australian property — helping everyday investors through to large corporate landholders navigate one of the most complex asset classes in the country.</p>
+            <p>Our team are qualified valuers, buyer's agents, and commercial property managers with decades of combined experience. We help clients identify opportunity, manage risk, and build long-term wealth through property — without the conflicts of interest that plague most advisory firms.</p>
+            <p>We are not affiliated with any builders or developers. We never take kickbacks or receive payment from both sides of a transaction. Our core values are <span class="highlight">integrity, independence, and transparency</span> — and that drives every recommendation we make.</p>
         </div>
     </section>
 
-    <!-- Bullets -->
-    <section class="bullets">
+    <!-- Services -->
+    <section class="services">
         <div class="container">
-            <h2 class="bullets-heading">What the new site does differently</h2>
-            <ul class="bullet-list">
-                <li class="bullet-item">
-                    <p class="bullet-label">Authority Above the Fold</p>
-                    <p class="bullet-text">Your media credentials (2GB, Sunrise, Studio 10, AusBiz, Commercial Real Estate) and $600M acquisition track record are visible the moment someone lands — not buried three scrolls down.</p>
+            <h2 class="section-heading">What we do</h2>
+            <ul class="service-list">
+                <li class="service-item">
+                    <p class="service-label">Property Investment</p>
+                    <p class="service-text">End-to-end acquisition support for individual investors — from strategy and search through to settlement, with independent advice at every step.</p>
                 </li>
-                <li class="bullet-item">
-                    <p class="bullet-label">Clear Independence Positioning</p>
-                    <p class="bullet-text">Your core differentiator — no kickbacks, never paid from both sides, exclusively working with buyers and investors — is front and centre. That's what separates you, and most visitors currently never see it.</p>
+                <li class="service-item">
+                    <p class="service-label">Property Valuation</p>
+                    <p class="service-text">Qualified, independent valuations for residential and commercial assets — providing the data-backed clarity needed to make confident decisions.</p>
                 </li>
-                <li class="bullet-item">
-                    <p class="bullet-label">Service Clarity</p>
-                    <p class="bullet-text">Property investment, valuation, corporate and club advisory, commercial property, and property management each get their own clear entry point — so visitors immediately know where they belong and what to do next.</p>
+                <li class="service-item">
+                    <p class="service-label">Corporate &amp; Clubs Advisory</p>
+                    <p class="service-text">Strategic property counsel for clubs, pubs, NFPs, and government — managing large landholdings, acquisitions, and commercial transitions at scale.</p>
                 </li>
-                <li class="bullet-item">
-                    <p class="bullet-label">Conversion-First Layout</p>
-                    <p class="bullet-text">Every section leads toward a single action — a call with your advisory team. No dead ends, no distractions. Built for the qualified investor who already knows they need help but needs to trust who they're calling.</p>
+                <li class="service-item">
+                    <p class="service-label">Commercial Property Management</p>
+                    <p class="service-text">Active management of commercial assets to protect and grow returns, with a team that understands both the investment and operational sides of the equation.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Commercial Acquisitions</p>
+                    <p class="service-text">Buyer-side representation on commercial transactions — sourcing, assessing, and negotiating on behalf of clients with no developer ties or conflicts.</p>
                 </li>
             </ul>
         </div>
     </section>
 
-    <!-- Media Presence -->
-    <section class="media-section">
+    <!-- Values -->
+    <section class="values">
         <div class="container">
-            <p class="media-heading">Trusted voice featured in</p>
-            <div class="media-list">
-                <span class="media-tag">2GB</span>
-                <span class="media-tag">Sunrise</span>
-                <span class="media-tag">Studio 10</span>
-                <span class="media-tag">AusBiz</span>
-                <span class="media-tag">Commercial Real Estate</span>
+            <h2 class="section-heading" style="text-align:center; margin-bottom: 36px;">Our principles</h2>
+            <div class="values-grid">
+                <div class="value-item">
+                    <div class="value-title">Integrity</div>
+                    <div class="value-desc">We act in our clients' best interests — always, without exception.</div>
+                </div>
+                <div class="value-item">
+                    <div class="value-title">Independence</div>
+                    <div class="value-desc">No developer affiliations. No kickbacks. No conflicts of interest.</div>
+                </div>
+                <div class="value-item">
+                    <div class="value-title">Transparency</div>
+                    <div class="value-desc">Clear advice, clear fees, clear reasoning behind every recommendation.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media Trust -->
+    <section class="trust">
+        <div class="container">
+            <p class="trust-intro">Trusted voice in media for 10+ years</p>
+            <div class="media-grid">
+                <span class="media-badge">2GB</span>
+                <span class="media-badge">Commercial Real Estate</span>
+                <span class="media-badge">Studio 10</span>
+                <span class="media-badge">Sunrise</span>
+                <span class="media-badge">AusBiz</span>
             </div>
         </div>
     </section>
@@ -422,17 +447,17 @@
     <!-- CTA -->
     <section class="cta-section">
         <div class="container">
-            <h2 class="cta-heading">Want to see the full build?</h2>
-            <p class="cta-sub">If the direction makes sense for Suburbanite, reply and I'll show you how to close 25 qualified leads per month — and get this deployed.</p>
-            <a href="https://calendly.com/jackdunn0987/30min" class="cta-button">Book a Call</a>
-            <p class="cta-note">No commitment. Just a conversation about what's possible.</p>
+            <h2 class="cta-heading">Talk to the Suburbanite team</h2>
+            <p class="cta-sub">Whether you're an investor looking for your next acquisition or a corporate landowner navigating a complex decision — we're here to help.</p>
+            <a href="tel:1300245490" class="cta-button">Call 1300 245 490</a>
+            <p class="cta-note">Or reach out at michael@suburbanite.com.au</p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>This page was created exclusively for Michael Mackinnon at Suburbanite. Not indexed. Not public.</p>
+            <p>Suburbanite Property Advisory &mdash; suburbanite.com.au &mdash; 1300 245 490</p>
         </div>
     </footer>
 

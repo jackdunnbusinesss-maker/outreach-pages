@@ -1,20 +1,10 @@
-<style>
-/* GHL Background Override */
-html, body, .body-wrapper, .hl_page-preview--content,
-#preview-container, .hl-page-builder, #section-0,
-.section_wrapper, .inner-section, .container-fluid,
-.row-bg-color, .row, .section-bg {
-    background-color: #0e0e12 !important;
-    background: #0e0e12 !important;
-}
-body {
-    margin: 0 !important;
-    padding: 0 !important;
-    min-height: 100vh;
-}
-</style>
-<div style="background-color: #0e0e12; min-height: 100vh; width: 100%; margin: 0; padding: 0;">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prince Wealth Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
     <style>
@@ -29,9 +19,9 @@ body {
             --surface: #16161d;
             --surface-light: #1e1e28;
             --border: #2a2a36;
-            --accent: #7b9eb5;
-            --accent-light: #a0c0d6;
-            --accent-glow: rgba(123, 158, 181, 0.15);
+            --accent: #7a9fc2;
+            --accent-light: #a0bdd8;
+            --accent-glow: rgba(122, 159, 194, 0.15);
             --white: #f0eff4;
             --text: #c5c4ce;
             --text-muted: #7e7d8a;
@@ -49,7 +39,6 @@ body {
             -webkit-font-smoothing: antialiased;
         }
 
-        /* ---- LAYOUT ---- */
         .container {
             max-width: 720px;
             margin: 0 auto;
@@ -66,25 +55,26 @@ body {
             justify-content: space-between;
             align-items: center;
         }
-        .topbar-label {
-            font-size: 0.75rem;
+        .topbar-brand {
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: var(--text-muted);
-        }
-        .topbar-for {
-            font-size: 0.8rem;
             color: var(--accent-light);
-            font-weight: 500;
+            font-weight: 600;
+        }
+        .topbar-since {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
         }
 
         /* ---- HERO ---- */
         .hero {
-            padding: 80px 0 48px;
+            padding: 88px 0 56px;
             text-align: center;
         }
         .hero-eyebrow {
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             text-transform: uppercase;
             letter-spacing: 3px;
             color: var(--accent);
@@ -93,10 +83,10 @@ body {
         }
         .hero h1 {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(2rem, 5vw, 2.8rem);
+            font-size: clamp(2rem, 5vw, 2.9rem);
             color: var(--white);
-            line-height: 1.25;
-            margin-bottom: 24px;
+            line-height: 1.2;
+            margin-bottom: 28px;
             font-weight: 600;
         }
         .hero h1 em {
@@ -108,33 +98,37 @@ body {
             color: var(--text);
             max-width: 560px;
             margin: 0 auto;
-            line-height: 1.8;
+            line-height: 1.85;
         }
 
-        /* ---- CONTEXT SECTION ---- */
-        .context {
+        /* ---- ABOUT ---- */
+        .about {
             padding: 64px 0;
             border-top: 1px solid var(--border);
         }
-        .context p {
+        .section-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        .about p {
             font-size: 1.05rem;
             line-height: 1.9;
             margin-bottom: 20px;
         }
-        .context p:last-child {
+        .about p:last-child {
             margin-bottom: 0;
         }
-        .highlight-name {
-            color: var(--accent-light);
-            font-weight: 600;
-        }
 
-        /* ---- BULLETS ---- */
-        .bullets {
+        /* ---- SERVICES ---- */
+        .services {
             padding: 64px 0;
             border-top: 1px solid var(--border);
         }
-        .bullets-heading {
+        .services-heading {
             font-family: 'Playfair Display', Georgia, serif;
             font-size: 1.6rem;
             color: var(--white);
@@ -142,23 +136,23 @@ body {
             text-align: center;
             font-weight: 600;
         }
-        .bullet-list {
+        .service-list {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 18px;
         }
-        .bullet-item {
+        .service-item {
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 10px;
             padding: 28px 32px;
             transition: border-color 0.3s ease;
         }
-        .bullet-item:hover {
+        .service-item:hover {
             border-color: var(--accent);
         }
-        .bullet-label {
+        .service-name {
             font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -166,10 +160,80 @@ body {
             margin-bottom: 8px;
             font-weight: 600;
         }
-        .bullet-text {
+        .service-desc {
             font-size: 1rem;
             color: var(--text);
             line-height: 1.7;
+        }
+
+        /* ---- VALUES ---- */
+        .values {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .values-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.6rem;
+            color: var(--white);
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+        .value-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 24px;
+        }
+        .value-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .value-text {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ---- ADVISOR ---- */
+        .advisor {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .advisor-inner {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 36px 40px;
+        }
+        .advisor-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .advisor-name {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.3rem;
+            color: var(--white);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        .advisor-role {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: capitalize;
         }
 
         /* ---- CTA ---- */
@@ -192,6 +256,23 @@ body {
             max-width: 480px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.8;
+        }
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 36px;
+        }
+        .contact-item a {
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .contact-item a:hover {
+            color: var(--white);
         }
         .cta-button {
             display: inline-block;
@@ -232,81 +313,138 @@ body {
             .hero {
                 padding: 56px 0 36px;
             }
-            .bullet-item {
+            .service-item {
                 padding: 22px 20px;
+            }
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            .advisor-inner {
+                padding: 28px 24px;
             }
             .cta-section {
                 padding: 56px 0;
             }
         }
     </style>
+</head>
+<body>
 
     <!-- Top Bar -->
     <div class="topbar">
         <div class="container topbar-inner">
-            <span class="topbar-label">Built for Prince Wealth Management</span>
-            <span class="topbar-for">Tony Raikes — Private Wealth Advisor</span>
+            <span class="topbar-brand">Prince Wealth Management</span>
+            <span class="topbar-since">Est. 2013</span>
         </div>
     </div>
 
     <!-- Hero -->
     <section class="hero">
         <div class="container">
-            <p class="hero-eyebrow">Built Specifically for Prince Wealth</p>
-            <h1>Tony, here's how we'd turn your <em>wealth management clients</em> into a steady stream of qualified referrals — on autopilot</h1>
-            <p class="hero-sub">We put together a short walkthrough showing exactly what an automated client acquisition system would look like for Prince Wealth. No fluff, no generic pitch — just the system, built around how you already advise.</p>
+            <p class="hero-eyebrow">Financial Advisory &amp; Wealth Management</p>
+            <h1>Building Your <em>Financial Freedom</em></h1>
+            <p class="hero-sub">Dedicated to empowering clients on their journey to financial freedom and prosperity — with a comprehensive suite of wealth services tailored to the unique needs of each individual.</p>
         </div>
     </section>
 
-    <!-- Context -->
-    <section class="context">
+    <!-- About -->
+    <section class="about">
         <div class="container">
-            <p><span class="highlight-name">Tony</span>, Prince Wealth has been helping Australians build financial freedom since 2013. Across wealth management, SMSFs, superannuation, securities advice, and retirement planning, you've built a practice that runs on expertise, integrity, and personal care — the kind of trust most financial advisors spend years trying to earn.</p>
-            <p>That trust is your biggest asset. The gap we see at most practices like yours isn't the quality of advice — it's the system that captures interest and converts it into booked consultations. Right now, prospects visit <span class="highlight-name">princewealth.com.au</span>, get a sense of what you offer, and leave. No follow-up. No nurture. No second chance to convert that interest into a conversation.</p>
-            <p>What we build is the infrastructure that changes that — automated lead capture, follow-up sequences, and re-engagement flows designed around the way high-net-worth clients actually make financial decisions. The result is a practice that grows without requiring more of your personal time.</p>
+            <p class="section-label">About Prince Wealth</p>
+            <p>Since 2013, Prince Wealth Management has combined expertise, integrity, and personal care to guide clients toward their financial goals. Whether planning for retirement, managing investments, or navigating complex financial landscapes, Prince Wealth provides the insights and services needed to thrive.</p>
+            <p>Every client relationship is built on a foundation of trust and tailored strategy — because no two financial journeys are the same.</p>
         </div>
     </section>
 
-    <!-- Bullets -->
-    <section class="bullets">
+    <!-- Services -->
+    <section class="services">
         <div class="container">
-            <h2 class="bullets-heading">What this system does for Prince Wealth</h2>
-            <ul class="bullet-list">
-                <li class="bullet-item">
-                    <p class="bullet-label">Capture</p>
-                    <p class="bullet-text">Turns website visitors and referral traffic into leads with a value-first entry point — a retirement readiness assessment, investment health check, or SMSF guide — that feels like Prince Wealth, not a generic lead magnet.</p>
+            <h2 class="services-heading">What We Do</h2>
+            <ul class="service-list">
+                <li class="service-item">
+                    <p class="service-name">Wealth Management</p>
+                    <p class="service-desc">Strategic financial and proactive planning — helping ensure clients are prepared for every financial milestone, from wealth accumulation to preservation.</p>
                 </li>
-                <li class="bullet-item">
-                    <p class="bullet-label">Nurture</p>
-                    <p class="bullet-text">An automated email sequence that educates prospects on wealth management, superannuation strategy, and retirement planning — positioning you as the obvious advisor before they ever book a call.</p>
+                <li class="service-item">
+                    <p class="service-name">Self-Managed Super Funds</p>
+                    <p class="service-desc">Fostering long-term investment growth through customised SMSF solutions and sophisticated investment strategies designed to align with your financial goals.</p>
                 </li>
-                <li class="bullet-item">
-                    <p class="bullet-label">Convert</p>
-                    <p class="bullet-text">Strategically timed consultation invites that move qualified prospects into your calendar without any manual follow-up from your team — filtered by service type, life stage, and investment readiness.</p>
+                <li class="service-item">
+                    <p class="service-name">Superannuation</p>
+                    <p class="service-desc">Personalised superannuation advice, ensuring each client receives attentive and tailored guidance suited to their stage of life and retirement objectives.</p>
                 </li>
-                <li class="bullet-item">
-                    <p class="bullet-label">Recover</p>
-                    <p class="bullet-text">Re-engages prospects who explored your services, downloaded a resource, or started an inquiry but never booked. At the scale you operate, these warm leads represent real revenue that's currently being left on the table.</p>
+                <li class="service-item">
+                    <p class="service-name">Retirement Planning</p>
+                    <p class="service-desc">Innovative solutions that ensure retirement assets are managed with foresight and precision — so clients can transition into retirement with confidence.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-name">Securities Advice</p>
+                    <p class="service-desc">A proven track record in securities, strong risk management practices, and a commitment to consistent performance across market conditions.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-name">Tax Planning Strategies</p>
+                    <p class="service-desc">Proactive tax strategies integrated into the broader financial plan — designed to minimise liability and maximise long-term wealth outcomes.</p>
                 </li>
             </ul>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="values">
+        <div class="container">
+            <h2 class="values-heading">Our Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <p class="value-title">Prosperity</p>
+                    <p class="value-text">Every plan is meticulously crafted to maximise potential returns and foster long-term investment growth through customised, sophisticated strategies.</p>
+                </div>
+                <div class="value-card">
+                    <p class="value-title">Reliability</p>
+                    <p class="value-text">A proven track record, strong risk management practices, and an unwavering commitment to consistent performance for every client.</p>
+                </div>
+                <div class="value-card">
+                    <p class="value-title">Integrity</p>
+                    <p class="value-text">Transparent, honest guidance — always acting in the best interests of clients with clear communication at every stage of the relationship.</p>
+                </div>
+                <div class="value-card">
+                    <p class="value-title">Personal Care</p>
+                    <p class="value-text">Attentive, tailored service for every client. No generic templates — each financial plan is built around the individual's unique circumstances and goals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advisor -->
+    <section class="advisor">
+        <div class="container">
+            <div class="advisor-inner">
+                <p class="advisor-label">Meet the Advisor</p>
+                <p class="advisor-name">Tony Raikes</p>
+                <p class="advisor-role">Private Wealth Advisor</p>
+            </div>
         </div>
     </section>
 
     <!-- CTA -->
     <section class="cta-section">
         <div class="container">
-            <h2 class="cta-heading">Want to talk through it?</h2>
-            <p class="cta-sub">If what you read makes sense for where Prince Wealth is headed, reply and I'll show you how to close 25 qualified leads per month.</p>
-            <a href="https://calendly.com/jackdunn0987/30min" class="cta-button">Book a Call</a>
-            <p class="cta-note">No commitment. Just a conversation about what's possible.</p>
+            <h2 class="cta-heading">Start Your Financial Journey</h2>
+            <p class="cta-sub">Ready to build a wealth strategy that works for your life? Get in touch with the Prince Wealth team today.</p>
+            <div class="contact-details">
+                <span class="contact-item"><a href="tel:+61402275495">+61 402 275 495</a></span>
+                <span class="contact-item"><a href="mailto:info@princewealth.com.au">info@princewealth.com.au</a></span>
+            </div>
+            <a href="mailto:info@princewealth.com.au" class="cta-button">Get in Touch</a>
+            <p class="cta-note">Prince Wealth Management — empowering financial freedom since 2013.</p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>This page was created exclusively for Tony Raikes at Prince Wealth Management. Not indexed. Not public.</p>
+            <p>Prince Wealth Management &nbsp;|&nbsp; princewealth.com.au &nbsp;|&nbsp; Australia</p>
         </div>
     </footer>
 
-</div>
+</body>
+</html>

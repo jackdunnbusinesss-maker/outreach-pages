@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Facey Commercial Property Agent — Southeast Commercial & Industrial Real Estate</title>
+    <title>Facey Industrial Commercial | Southeast Commercial & Industrial Real Estate</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
@@ -19,17 +19,15 @@
             --surface: #16161d;
             --surface-light: #1e1e28;
             --border: #2a2a36;
-            --accent: #b8a98a;
-            --accent-light: #d4c4a0;
-            --accent-glow: rgba(184, 169, 138, 0.15);
+            --accent: #b8924a;
+            --accent-light: #d4b07a;
+            --accent-glow: rgba(184, 146, 74, 0.12);
             --white: #f0eff4;
             --text: #c5c4ce;
             --text-muted: #7e7d8a;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', -apple-system, sans-serif;
@@ -45,38 +43,38 @@
             padding: 0 24px;
         }
 
-        /* ---- TOP BAR ---- */
-        .topbar {
-            padding: 16px 0;
+        /* ---- NAV ---- */
+        .nav {
+            padding: 20px 0;
             border-bottom: 1px solid var(--border);
             background: var(--surface);
         }
-        .topbar-inner {
+        .nav-inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 16px;
             flex-wrap: wrap;
         }
-        .topbar-brand {
-            font-size: 0.85rem;
+        .nav-logo {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.05rem;
             font-weight: 600;
-            color: var(--accent-light);
-            letter-spacing: 0.5px;
+            color: var(--white);
+            letter-spacing: 0.3px;
         }
-        .topbar-phone {
-            font-size: 0.8rem;
-            color: var(--text-muted);
+        .nav-phone {
+            font-size: 0.85rem;
+            color: var(--accent-light);
+            font-weight: 500;
             text-decoration: none;
             transition: color 0.2s ease;
         }
-        .topbar-phone:hover {
-            color: var(--accent-light);
-        }
+        .nav-phone:hover { color: var(--white); }
 
         /* ---- HERO ---- */
         .hero {
-            padding: 80px 0 60px;
+            padding: 88px 0 64px;
             text-align: center;
         }
         .hero-eyebrow {
@@ -89,9 +87,9 @@
         }
         .hero h1 {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(2rem, 5vw, 2.9rem);
+            font-size: clamp(2rem, 5vw, 3rem);
             color: var(--white);
-            line-height: 1.25;
+            line-height: 1.2;
             margin-bottom: 24px;
             font-weight: 600;
         }
@@ -103,16 +101,16 @@
             font-size: 1.05rem;
             color: var(--text);
             max-width: 580px;
-            margin: 0 auto 36px;
+            margin: 0 auto 40px;
             line-height: 1.8;
         }
         .hero-badge {
             display: inline-block;
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 10px 20px;
-            font-size: 0.8rem;
+            border-radius: 100px;
+            padding: 8px 20px;
+            font-size: 0.78rem;
             color: var(--accent-light);
             letter-spacing: 1px;
             font-weight: 500;
@@ -120,62 +118,70 @@
 
         /* ---- SERVICES ---- */
         .services {
-            padding: 64px 0;
+            padding: 72px 0;
             border-top: 1px solid var(--border);
+        }
+        .section-label {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 12px;
         }
         .section-heading {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.6rem;
+            font-size: clamp(1.5rem, 3.5vw, 2rem);
             color: var(--white);
-            margin-bottom: 40px;
-            text-align: center;
             font-weight: 600;
+            margin-bottom: 48px;
         }
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: 1fr 1fr;
             gap: 20px;
         }
         .service-card {
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 10px;
-            padding: 28px 24px;
+            padding: 32px 28px;
             transition: border-color 0.3s ease;
         }
-        .service-card:hover {
-            border-color: var(--accent);
-        }
-        .service-icon {
-            font-size: 1.4rem;
-            margin-bottom: 12px;
-            display: block;
-        }
-        .service-title {
-            font-size: 0.95rem;
+        .service-card:hover { border-color: var(--accent); }
+        .service-card-label {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
             font-weight: 600;
-            color: var(--white);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
-        .service-desc {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            line-height: 1.6;
+        .service-card h3 {
+            font-size: 1rem;
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--text);
+            line-height: 1.7;
         }
 
         /* ---- PROPERTY TYPES ---- */
         .property-types {
-            padding: 64px 0;
+            padding: 72px 0;
             border-top: 1px solid var(--border);
         }
         .type-list {
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
-            justify-content: center;
+            margin-top: 40px;
         }
         .type-tag {
-            background: var(--surface-light);
+            background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 6px;
             padding: 10px 18px;
@@ -184,15 +190,74 @@
             font-weight: 500;
         }
 
+        /* ---- ABOUT ---- */
+        .about {
+            padding: 72px 0;
+            border-top: 1px solid var(--border);
+        }
+        .about-body {
+            font-size: 1.05rem;
+            line-height: 1.9;
+        }
+        .about-body p {
+            margin-bottom: 20px;
+        }
+        .about-body p:last-child { margin-bottom: 0; }
+        .highlight {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* ---- TEAM ---- */
+        .team {
+            padding: 72px 0;
+            border-top: 1px solid var(--border);
+        }
+        .team-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 32px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            max-width: 400px;
+        }
+        .team-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--surface-light);
+            border: 1px solid var(--border);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: var(--accent);
+            font-weight: 600;
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+        .team-info h4 {
+            font-size: 0.95rem;
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+        .team-info p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
         /* ---- CTA ---- */
         .cta-section {
-            padding: 80px 0;
+            padding: 88px 0;
             border-top: 1px solid var(--border);
             text-align: center;
         }
         .cta-heading {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.8rem;
+            font-size: clamp(1.6rem, 4vw, 2.2rem);
             color: var(--white);
             margin-bottom: 16px;
             font-weight: 600;
@@ -200,8 +265,8 @@
         .cta-sub {
             font-size: 1rem;
             color: var(--text);
-            margin-bottom: 36px;
-            max-width: 480px;
+            margin-bottom: 40px;
+            max-width: 500px;
             margin-left: auto;
             margin-right: auto;
             line-height: 1.8;
@@ -222,7 +287,7 @@
             padding: 16px 40px;
             border-radius: 8px;
             text-decoration: none;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
             transition: background 0.3s ease, transform 0.2s ease;
         }
         .cta-button:hover {
@@ -232,65 +297,71 @@
         .cta-button-secondary {
             display: inline-block;
             background: transparent;
-            color: var(--accent-light);
+            color: var(--text);
             font-family: 'Inter', sans-serif;
             font-size: 0.95rem;
-            font-weight: 600;
+            font-weight: 500;
             padding: 16px 40px;
             border-radius: 8px;
             text-decoration: none;
-            letter-spacing: 0.5px;
             border: 1px solid var(--border);
-            transition: border-color 0.3s ease, transform 0.2s ease;
+            transition: border-color 0.3s ease, color 0.2s ease;
         }
         .cta-button-secondary:hover {
             border-color: var(--accent);
-            transform: translateY(-1px);
+            color: var(--accent-light);
         }
+
+        /* ---- CONTACT ---- */
+        .contact {
+            padding: 72px 0;
+            border-top: 1px solid var(--border);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .contact-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px;
+        }
+        .contact-item-label {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .contact-item-value {
+            font-size: 0.95rem;
+            color: var(--white);
+            font-weight: 500;
+            text-decoration: none;
+        }
+        .contact-item-value:hover { color: var(--accent-light); }
 
         /* ---- FOOTER ---- */
         .footer {
             padding: 40px 0;
             border-top: 1px solid var(--border);
+            text-align: center;
         }
-        .footer-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
-        .footer-brand {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--accent-light);
-            margin-bottom: 6px;
-        }
-        .footer-meta {
+        .footer p {
             font-size: 0.75rem;
             color: var(--text-muted);
-            line-height: 1.8;
-        }
-        .footer-contact a {
-            display: block;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            text-decoration: none;
-            margin-bottom: 4px;
-            transition: color 0.2s ease;
-        }
-        .footer-contact a:hover {
-            color: var(--accent-light);
         }
 
         /* ---- RESPONSIVE ---- */
         @media (max-width: 600px) {
-            .hero {
-                padding: 56px 0 40px;
-            }
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
+            .hero { padding: 56px 0 48px; }
+            .services-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .cta-section { padding: 64px 0; }
             .cta-actions {
                 flex-direction: column;
                 align-items: center;
@@ -299,28 +370,25 @@
                 width: 100%;
                 text-align: center;
             }
-            .footer-inner {
-                flex-direction: column;
-            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Bar -->
-    <div class="topbar">
-        <div class="container topbar-inner">
-            <span class="topbar-brand">Facey Commercial Property Agent</span>
-            <a href="tel:0397014455" class="topbar-phone">(03) 9701 4455</a>
+    <!-- Nav -->
+    <nav class="nav">
+        <div class="container nav-inner">
+            <span class="nav-logo">Facey Industrial Commercial</span>
+            <a href="tel:0397014455" class="nav-phone">(03) 9701 4455</a>
         </div>
-    </div>
+    </nav>
 
     <!-- Hero -->
     <section class="hero">
         <div class="container">
             <p class="hero-eyebrow">Southeast Commercial &amp; Industrial Real Estate</p>
             <h1>Trusted. Local. <em>Experienced.</em></h1>
-            <p class="hero-sub">Southeast Melbourne's specialists in commercial and industrial property — sales, leasing, management, and owners corporation services, backed by over a century of local expertise.</p>
+            <p class="hero-sub">Your dedicated commercial and industrial property specialists for Southeast Australia. Serving property owners, investors, landlords, and tenants since 1917.</p>
             <span class="hero-badge">Trusted Property Agents Since 1917</span>
         </div>
     </section>
@@ -328,22 +396,28 @@
     <!-- Services -->
     <section class="services">
         <div class="container">
-            <h2 class="section-heading">What we do</h2>
+            <p class="section-label">What We Do</p>
+            <h2 class="section-heading">Full-service commercial real estate</h2>
             <div class="services-grid">
                 <div class="service-card">
-                    <span class="service-icon">🏭</span>
-                    <p class="service-title">Sales &amp; Leasing</p>
-                    <p class="service-desc">End-to-end commercial and industrial property sales and leasing across Southeast Melbourne, including auctions and expressions of interest campaigns.</p>
+                    <p class="service-card-label">Sales &amp; Leasing</p>
+                    <h3>Commercial Sales &amp; Leasing</h3>
+                    <p>End-to-end support for buying, selling, and leasing commercial and industrial properties. Auctions, expressions of interest, marketing campaigns, and direct negotiations.</p>
                 </div>
                 <div class="service-card">
-                    <span class="service-icon">🔑</span>
-                    <p class="service-title">Property Management</p>
-                    <p class="service-desc">Full-service management for landlords and tenants — lease administration, maintenance coordination, and dedicated centre management.</p>
+                    <p class="service-card-label">Management</p>
+                    <h3>Property Management</h3>
+                    <p>Hands-on management for landlords and tenants. Lease administration, maintenance coordination, compliance, and centre management.</p>
                 </div>
                 <div class="service-card">
-                    <span class="service-icon">🏢</span>
-                    <p class="service-title">Facey Owners Corporation</p>
-                    <p class="service-desc">Professional owners corporation management services for commercial and industrial strata complexes.</p>
+                    <p class="service-card-label">Owners Corporation</p>
+                    <h3>Owners Corporation Services</h3>
+                    <p>Specialist owners corporation management for commercial and industrial strata properties across Southeast Victoria.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-card-label">Investment</p>
+                    <h3>Investment Properties</h3>
+                    <p>Strategic guidance for commercial property investors — identifying opportunities, assessing returns, and managing assets for long-term performance.</p>
                 </div>
             </div>
         </div>
@@ -352,7 +426,8 @@
     <!-- Property Types -->
     <section class="property-types">
         <div class="container">
-            <h2 class="section-heading">Property types we cover</h2>
+            <p class="section-label">Property Types</p>
+            <h2 class="section-heading">Industrial, commercial &amp; beyond</h2>
             <div class="type-list">
                 <span class="type-tag">Industrial / Warehouse</span>
                 <span class="type-tag">Offices</span>
@@ -364,29 +439,76 @@
         </div>
     </section>
 
+    <!-- About -->
+    <section class="about">
+        <div class="container">
+            <p class="section-label">About Us</p>
+            <h2 class="section-heading">Over a century of local expertise</h2>
+            <div class="about-body">
+                <p>Facey Industrial Commercial has been the trusted name in Southeast commercial and industrial real estate since <span class="highlight">1917</span>. More than a century of local knowledge means we understand these markets — the submarkets, the cycles, the tenants, and the owners — in ways that national agencies simply cannot replicate.</p>
+                <p>We work with landlords navigating leasing strategy, tenants finding the right commercial space, and investors building and managing portfolios. Whether you're listing a warehouse, acquiring an office suite, or managing a retail strip, we bring the same rigour and local intelligence to every transaction.</p>
+                <p>Our team covers the full spectrum: sales, leasing, property management, owners corporation, and centre management — all under one roof, all focused on Southeast Australia.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="team">
+        <div class="container">
+            <p class="section-label">Our Team</p>
+            <h2 class="section-heading" style="margin-bottom: 32px;">Meet the team</h2>
+            <div class="team-card">
+                <div class="team-avatar">AM</div>
+                <div class="team-info">
+                    <h4>Aphrodite Meimaris</h4>
+                    <p>Property Manager</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA -->
     <section class="cta-section">
         <div class="container">
-            <h2 class="cta-heading">Ready to list or find a property?</h2>
-            <p class="cta-sub">Call us directly or browse current listings. Our team has been serving Southeast Melbourne's commercial and industrial market since 1917.</p>
+            <h2 class="cta-heading">List your property or find your next space</h2>
+            <p class="cta-sub">Whether you are a landlord, tenant, or investor, our team is ready to help. Get in touch today.</p>
             <div class="cta-actions">
                 <a href="tel:0397014455" class="cta-button">Call (03) 9701 4455</a>
-                <a href="https://faceyproperty.com.au" class="cta-button-secondary">View Listings</a>
+                <a href="mailto:aphrodite@faceyindustrial.com.au" class="cta-button-secondary">Send an Email</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact">
+        <div class="container">
+            <p class="section-label">Get In Touch</p>
+            <h2 class="section-heading" style="margin-bottom: 0;">Contact us</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <p class="contact-item-label">Phone</p>
+                    <a href="tel:0397014455" class="contact-item-value">(03) 9701 4455</a>
+                </div>
+                <div class="contact-item">
+                    <p class="contact-item-label">Email</p>
+                    <a href="mailto:aphrodite@faceyindustrial.com.au" class="contact-item-value">aphrodite@faceyindustrial.com.au</a>
+                </div>
+                <div class="contact-item">
+                    <p class="contact-item-label">Website</p>
+                    <a href="https://faceyproperty.com.au" target="_blank" class="contact-item-value">faceyproperty.com.au</a>
+                </div>
+                <div class="contact-item">
+                    <p class="contact-item-label">Location</p>
+                    <span class="contact-item-value">Southeast Australia</span>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container footer-inner">
-            <div>
-                <p class="footer-brand">Facey Commercial Property Agent</p>
-                <p class="footer-meta">Trusted Property Agents Since 1917<br>Southeast Commercial &amp; Industrial Real Estate</p>
-            </div>
-            <div class="footer-contact">
-                <a href="tel:0397014455">(03) 9701 4455</a>
-                <a href="https://faceyproperty.com.au">faceyproperty.com.au</a>
-            </div>
+        <div class="container">
+            <p>Facey Industrial Commercial &mdash; Trusted Property Agents Since 1917 &mdash; Southeast Commercial &amp; Industrial Real Estate</p>
         </div>
     </footer>
 
