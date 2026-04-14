@@ -3,514 +3,366 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Facey Industrial Commercial | Southeast Commercial & Industrial Real Estate</title>
+    <title>Facey Industrial Commercial</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
     <style>
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --bg: #0e0e12;
-            --surface: #16161d;
-            --surface-light: #1e1e28;
-            --border: #2a2a36;
-            --accent: #b8924a;
-            --accent-light: #d4b07a;
-            --accent-glow: rgba(184, 146, 74, 0.12);
-            --white: #f0eff4;
-            --text: #c5c4ce;
-            --text-muted: #7e7d8a;
+            --bg: #080b10;
+            --surface: #0f1318;
+            --surface-light: #171d25;
+            --border: #1e2530;
+            --border-glow: #8a6e3a55;
+            --accent: #c9a66b;
+            --accent-light: #e4c489;
+            --accent-dim: #8a6e3a;
+            --accent-glow: #c9a66b33;
+            --accent-glow-strong: #c9a66b55;
+            --white: #edf2f7;
+            --text: #b8c4d0;
+            --text-muted: #5a6878;
+            --gradient-hero: linear-gradient(135deg, #c9a66b 0%, #e4c489 50%, #f5e0a8 100%);
+            --gradient-accent: linear-gradient(90deg, #c9a66b, #e4c489);
         }
-
         html { scroll-behavior: smooth; }
-
         body {
             font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
+            background: var(--bg); color: var(--text); line-height: 1.7;
+            -webkit-font-smoothing: antialiased; overflow-x: hidden;
         }
+        .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
 
-        .container {
-            max-width: 760px;
-            margin: 0 auto;
-            padding: 0 24px;
+        .fade-in {
+            opacity: 0; transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
         }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        /* ---- NAV ---- */
-        .nav {
-            padding: 20px 0;
+        .topbar {
+            padding: 16px 0;
             border-bottom: 1px solid var(--border);
-            background: var(--surface);
+            position: relative; z-index: 10;
+            background: rgba(8, 11, 16, 0.95);
+            backdrop-filter: blur(12px);
         }
-        .nav-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 16px;
-            flex-wrap: wrap;
+        .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+        .topbar-brand { font-size: 0.82rem; font-weight: 600; color: var(--white); letter-spacing: 0.5px; }
+        .topbar-phone {
+            font-size: 0.8rem; color: var(--accent-light); font-weight: 600;
+            text-decoration: none; transition: color 0.2s;
         }
-        .nav-logo {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: var(--white);
-            letter-spacing: 0.3px;
-        }
-        .nav-phone {
-            font-size: 0.85rem;
-            color: var(--accent-light);
-            font-weight: 500;
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-        .nav-phone:hover { color: var(--white); }
+        .topbar-phone:hover { color: var(--white); }
 
-        /* ---- HERO ---- */
-        .hero {
-            padding: 88px 0 64px;
-            text-align: center;
+        .hero { position: relative; padding: 96px 0 72px; text-align: center; overflow: hidden; }
+        .hero::before {
+            content: ''; position: absolute; top: -120px; left: 50%;
+            transform: translateX(-50%); width: 900px; height: 600px;
+            background:
+                radial-gradient(ellipse 480px 320px at 30% 40%, #c9a66b22 0%, transparent 70%),
+                radial-gradient(ellipse 360px 280px at 75% 30%, #e4c48918 0%, transparent 65%),
+                radial-gradient(ellipse 300px 240px at 55% 80%, #8a6e3a15 0%, transparent 60%);
+            pointer-events: none; z-index: 0;
         }
+        .hero::after {
+            content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .hero-inner { position: relative; z-index: 1; }
         .hero-eyebrow {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--accent);
-            margin-bottom: 20px;
-            font-weight: 600;
+            display: inline-block; font-size: 0.72rem; text-transform: uppercase;
+            letter-spacing: 3px; color: var(--accent); margin-bottom: 24px;
+            font-weight: 600; border: 1px solid var(--border-glow);
+            padding: 6px 18px; border-radius: 100px; background: #c9a66b0d;
         }
         .hero h1 {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            color: var(--white);
-            line-height: 1.2;
-            margin-bottom: 24px;
-            font-weight: 600;
-        }
-        .hero h1 em {
-            color: var(--accent-light);
-            font-style: italic;
+            font-size: clamp(2rem, 5.5vw, 3rem); line-height: 1.22;
+            margin-bottom: 28px; font-weight: 700;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .hero-sub {
-            font-size: 1.05rem;
-            color: var(--text);
-            max-width: 580px;
-            margin: 0 auto 40px;
-            line-height: 1.8;
+            font-size: 1.05rem; color: var(--text);
+            max-width: 580px; margin: 0 auto 40px; line-height: 1.85;
         }
-        .hero-badge {
-            display: inline-block;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 100px;
-            padding: 8px 20px;
-            font-size: 0.78rem;
-            color: var(--accent-light);
-            letter-spacing: 1px;
-            font-weight: 500;
+        .hero-image-card {
+            max-width: 560px; margin: 0 auto; border-radius: 16px;
+            overflow: hidden; border: 1px solid var(--border-glow);
+            box-shadow: 0 0 40px #c9a66b15, 0 24px 80px rgba(0,0,0,0.55);
+            position: relative;
+        }
+        .hero-image-card img { width: 100%; display: block; object-fit: cover; }
+        .hero-image-card::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(8,11,16,0.6) 100%);
+            z-index: 1; pointer-events: none;
         }
 
-        /* ---- SERVICES ---- */
-        .services {
-            padding: 72px 0;
-            border-top: 1px solid var(--border);
+        .stats { padding: 64px 0; position: relative; }
+        .stats::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0;
+            height: 1px; background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
         }
-        .section-label {
-            font-size: 0.68rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 12px;
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .stat-card {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 14px; padding: 32px 20px; text-align: center;
+            position: relative; overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .stat-card::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse 180px 120px at 50% 0%, #c9a66b10 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .stat-card:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 24px #c9a66b15, 0 8px 32px rgba(0,0,0,0.3);
+        }
+        .stat-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.9rem; font-weight: 700;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; margin-bottom: 8px;
+        }
+        .stat-label { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
+
+        .about, .services, .values, .trust { padding: 72px 0; position: relative; }
+        .about::before, .services::before, .values::before, .trust::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0;
+            height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent);
         }
         .section-heading {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(1.5rem, 3.5vw, 2rem);
-            color: var(--white);
-            font-weight: 600;
-            margin-bottom: 48px;
+            font-size: 1.65rem; color: var(--white); margin-bottom: 32px; font-weight: 600;
         }
-        .services-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        .service-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 32px 28px;
-            transition: border-color 0.3s ease;
-        }
-        .service-card:hover { border-color: var(--accent); }
-        .service-card-label {
-            font-size: 0.68rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        .service-card h3 {
-            font-size: 1rem;
-            color: var(--white);
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        .service-card p {
-            font-size: 0.9rem;
-            color: var(--text);
-            line-height: 1.7;
-        }
+        .about p { font-size: 1.02rem; line-height: 1.9; margin-bottom: 20px; color: var(--text); }
+        .about p:last-child { margin-bottom: 0; }
+        .highlight { color: var(--accent-light); font-weight: 600; }
 
-        /* ---- PROPERTY TYPES ---- */
-        .property-types {
-            padding: 72px 0;
-            border-top: 1px solid var(--border);
+        .service-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+        .service-item {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 12px; padding: 26px 30px; position: relative; overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
         }
-        .type-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 40px;
+        .service-item::before {
+            content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+            background: var(--gradient-accent); opacity: 0; transition: opacity 0.3s ease;
         }
-        .type-tag {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 10px 18px;
-            font-size: 0.85rem;
-            color: var(--text);
-            font-weight: 500;
+        .service-item:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 20px #c9a66b12, 0 6px 24px rgba(0,0,0,0.25);
+            transform: translateX(4px);
         }
+        .service-item:hover::before { opacity: 1; }
+        .service-label {
+            font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px;
+            color: var(--accent); margin-bottom: 8px; font-weight: 600;
+        }
+        .service-text { font-size: 0.97rem; color: var(--text); line-height: 1.7; }
 
-        /* ---- ABOUT ---- */
-        .about {
-            padding: 72px 0;
-            border-top: 1px solid var(--border);
+        .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        .value-card {
+            text-align: center; padding: 32px 20px;
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 14px; position: relative; overflow: hidden;
+            transition: border-color 0.3s ease, transform 0.25s ease;
         }
-        .about-body {
-            font-size: 1.05rem;
-            line-height: 1.9;
+        .value-card::after {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse 160px 100px at 50% 100%, #c9a66b0d 0%, transparent 70%);
+            pointer-events: none;
         }
-        .about-body p {
-            margin-bottom: 20px;
+        .value-card:hover { border-color: var(--border-glow); transform: translateY(-3px); }
+        .value-icon {
+            width: 44px; height: 44px; border-radius: 10px;
+            background: #c9a66b1a; border: 1px solid var(--border-glow);
+            margin: 0 auto 16px; display: flex; align-items: center;
+            justify-content: center; font-size: 1.1rem;
         }
-        .about-body p:last-child { margin-bottom: 0; }
-        .highlight {
-            color: var(--accent-light);
-            font-weight: 600;
-        }
+        .value-title { font-size: 0.95rem; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+        .value-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
 
-        /* ---- TEAM ---- */
-        .team {
-            padding: 72px 0;
-            border-top: 1px solid var(--border);
+        .media-visual { padding: 32px 0 64px; }
+        .media-img-wrap {
+            border-radius: 14px; overflow: hidden; border: 1px solid var(--border);
+            box-shadow: 0 0 30px #c9a66b0d, 0 20px 60px rgba(0,0,0,0.45);
         }
-        .team-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 28px 32px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            max-width: 400px;
-        }
-        .team-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: var(--surface-light);
-            border: 1px solid var(--border);
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            color: var(--accent);
-            font-weight: 600;
-            font-family: 'Playfair Display', Georgia, serif;
-        }
-        .team-info h4 {
-            font-size: 0.95rem;
-            color: var(--white);
-            font-weight: 600;
-            margin-bottom: 3px;
-        }
-        .team-info p {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-        }
+        .media-img-wrap img { width: 100%; display: block; object-fit: cover; }
 
-        /* ---- CTA ---- */
-        .cta-section {
-            padding: 88px 0;
-            border-top: 1px solid var(--border);
-            text-align: center;
+        .trust-intro {
+            font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2.5px;
+            color: var(--text-muted); margin-bottom: 28px; font-weight: 600; text-align: center;
         }
+        .media-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .media-badge {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 8px; padding: 10px 20px; font-size: 0.82rem;
+            color: var(--text-muted); font-weight: 500;
+            transition: border-color 0.25s, color 0.25s;
+        }
+        .media-badge:hover { border-color: var(--border-glow); color: var(--accent-light); }
+
+        .cta-section { padding: 96px 0; position: relative; text-align: center; overflow: hidden; }
+        .cta-section::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .cta-blob {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 700px; height: 400px;
+            background: radial-gradient(ellipse 500px 280px at 50% 50%, #c9a66b10 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .cta-inner { position: relative; z-index: 1; }
         .cta-heading {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(1.6rem, 4vw, 2.2rem);
-            color: var(--white);
-            margin-bottom: 16px;
-            font-weight: 600;
+            font-size: clamp(1.7rem, 4vw, 2.1rem); color: var(--white);
+            margin-bottom: 16px; font-weight: 600;
         }
         .cta-sub {
-            font-size: 1rem;
-            color: var(--text);
-            margin-bottom: 40px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.8;
-        }
-        .cta-actions {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
+            font-size: 1rem; color: var(--text); margin-bottom: 40px;
+            max-width: 480px; margin-left: auto; margin-right: auto;
         }
         .cta-button {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--bg);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 600;
-            padding: 16px 40px;
-            border-radius: 8px;
-            text-decoration: none;
-            letter-spacing: 0.3px;
-            transition: background 0.3s ease, transform 0.2s ease;
+            display: inline-block; background: var(--gradient-accent);
+            color: #060a0f; font-family: 'Inter', sans-serif;
+            font-size: 0.97rem; font-weight: 700; padding: 17px 52px;
+            border-radius: 10px; text-decoration: none; letter-spacing: 0.3px;
+            box-shadow: 0 0 24px #c9a66b4d, 0 8px 32px #c9a66b26;
+            transition: box-shadow 0.3s ease, transform 0.2s ease, filter 0.3s ease;
         }
         .cta-button:hover {
-            background: var(--accent-light);
-            transform: translateY(-1px);
+            box-shadow: 0 0 40px #c9a66b80, 0 12px 48px #c9a66b40;
+            transform: translateY(-2px); filter: brightness(1.08);
         }
-        .cta-button-secondary {
-            display: inline-block;
-            background: transparent;
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 500;
-            padding: 16px 40px;
-            border-radius: 8px;
-            text-decoration: none;
-            border: 1px solid var(--border);
-            transition: border-color 0.3s ease, color 0.2s ease;
-        }
-        .cta-button-secondary:hover {
-            border-color: var(--accent);
-            color: var(--accent-light);
-        }
+        .cta-note { margin-top: 18px; font-size: 0.78rem; color: var(--text-muted); }
 
-        /* ---- CONTACT ---- */
-        .contact {
-            padding: 72px 0;
-            border-top: 1px solid var(--border);
-        }
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 40px;
-        }
-        .contact-item {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 28px;
-        }
-        .contact-item-label {
-            font-size: 0.68rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-        .contact-item-value {
-            font-size: 0.95rem;
-            color: var(--white);
-            font-weight: 500;
-            text-decoration: none;
-        }
-        .contact-item-value:hover { color: var(--accent-light); }
+        .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+        .footer p { font-size: 0.73rem; color: var(--text-muted); }
 
-        /* ---- FOOTER ---- */
-        .footer {
-            padding: 40px 0;
-            border-top: 1px solid var(--border);
-            text-align: center;
-        }
-        .footer p {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        /* ---- RESPONSIVE ---- */
-        @media (max-width: 600px) {
-            .hero { padding: 56px 0 48px; }
-            .services-grid { grid-template-columns: 1fr; }
-            .contact-grid { grid-template-columns: 1fr; }
+        @media (max-width: 640px) {
+            .hero { padding: 64px 0 52px; }
+            .stats-grid { grid-template-columns: 1fr; gap: 14px; }
+            .values-grid { grid-template-columns: 1fr; gap: 14px; }
+            .service-item { padding: 22px 22px; }
             .cta-section { padding: 64px 0; }
-            .cta-actions {
-                flex-direction: column;
-                align-items: center;
-            }
-            .cta-button, .cta-button-secondary {
-                width: 100%;
-                text-align: center;
-            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Nav -->
-    <nav class="nav">
-        <div class="container nav-inner">
-            <span class="nav-logo">Facey Industrial Commercial</span>
-            <a href="tel:0397014455" class="nav-phone">(03) 9701 4455</a>
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-brand">Facey Industrial Commercial</span>
+            <a href="tel:0397014455" class="topbar-phone">(03) 9701 4455</a>
         </div>
-    </nav>
+    </div>
 
-    <!-- Hero -->
     <section class="hero">
-        <div class="container">
-            <p class="hero-eyebrow">Southeast Commercial &amp; Industrial Real Estate</p>
-            <h1>Trusted. Local. <em>Experienced.</em></h1>
-            <p class="hero-sub">Your dedicated commercial and industrial property specialists for Southeast Australia. Serving property owners, investors, landlords, and tenants since 1917.</p>
-            <span class="hero-badge">Trusted Property Agents Since 1917</span>
-        </div>
-    </section>
-
-    <!-- Services -->
-    <section class="services">
-        <div class="container">
-            <p class="section-label">What We Do</p>
-            <h2 class="section-heading">Full-service commercial real estate</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <p class="service-card-label">Sales &amp; Leasing</p>
-                    <h3>Commercial Sales &amp; Leasing</h3>
-                    <p>End-to-end support for buying, selling, and leasing commercial and industrial properties. Auctions, expressions of interest, marketing campaigns, and direct negotiations.</p>
-                </div>
-                <div class="service-card">
-                    <p class="service-card-label">Management</p>
-                    <h3>Property Management</h3>
-                    <p>Hands-on management for landlords and tenants. Lease administration, maintenance coordination, compliance, and centre management.</p>
-                </div>
-                <div class="service-card">
-                    <p class="service-card-label">Owners Corporation</p>
-                    <h3>Owners Corporation Services</h3>
-                    <p>Specialist owners corporation management for commercial and industrial strata properties across Southeast Victoria.</p>
-                </div>
-                <div class="service-card">
-                    <p class="service-card-label">Investment</p>
-                    <h3>Investment Properties</h3>
-                    <p>Strategic guidance for commercial property investors — identifying opportunities, assessing returns, and managing assets for long-term performance.</p>
-                </div>
+        <div class="hero-inner container">
+            <p class="hero-eyebrow">Southeast Melbourne — Since 1917</p>
+            <h1>Trusted southeast commercial and industrial real estate agents</h1>
+            <p class="hero-sub">Sales, leasing, property management, and owners corporation services across southeast Melbourne — backed by over 100 years of local experience and five-star quality service.</p>
+            <div class="hero-image-card">
+                <img src="https://www.faceyproperty.com.au/wp-content/uploads/2023/08/commercial-real-estate-agent.jpg" alt="Facey Industrial Commercial" loading="eager">
             </div>
         </div>
     </section>
 
-    <!-- Property Types -->
-    <section class="property-types">
+    <section class="stats fade-in">
         <div class="container">
-            <p class="section-label">Property Types</p>
-            <h2 class="section-heading">Industrial, commercial &amp; beyond</h2>
-            <div class="type-list">
-                <span class="type-tag">Industrial / Warehouse</span>
-                <span class="type-tag">Offices</span>
-                <span class="type-tag">Medical / Consulting</span>
-                <span class="type-tag">Showrooms / Bulky Goods</span>
-                <span class="type-tag">Retail</span>
-                <span class="type-tag">Land / Development</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- About -->
-    <section class="about">
-        <div class="container">
-            <p class="section-label">About Us</p>
-            <h2 class="section-heading">Over a century of local expertise</h2>
-            <div class="about-body">
-                <p>Facey Industrial Commercial has been the trusted name in Southeast commercial and industrial real estate since <span class="highlight">1917</span>. More than a century of local knowledge means we understand these markets — the submarkets, the cycles, the tenants, and the owners — in ways that national agencies simply cannot replicate.</p>
-                <p>We work with landlords navigating leasing strategy, tenants finding the right commercial space, and investors building and managing portfolios. Whether you're listing a warehouse, acquiring an office suite, or managing a retail strip, we bring the same rigour and local intelligence to every transaction.</p>
-                <p>Our team covers the full spectrum: sales, leasing, property management, owners corporation, and centre management — all under one roof, all focused on Southeast Australia.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team -->
-    <section class="team">
-        <div class="container">
-            <p class="section-label">Our Team</p>
-            <h2 class="section-heading" style="margin-bottom: 32px;">Meet the team</h2>
-            <div class="team-card">
-                <div class="team-avatar">AM</div>
-                <div class="team-info">
-                    <h4>Aphrodite Meimaris</h4>
-                    <p>Property Manager</p>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">108+</div>
+                    <div class="stat-label">Years serving southeast Melbourne</div>
+                </div><div class="stat-card">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Core service lines</div>
+                </div><div class="stat-card">
+                    <div class="stat-number">★★★★★</div>
+                    <div class="stat-label">Quality service rating</div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- CTA -->
-    <section class="cta-section">
+    <section class="about fade-in">
         <div class="container">
-            <h2 class="cta-heading">List your property or find your next space</h2>
-            <p class="cta-sub">Whether you are a landlord, tenant, or investor, our team is ready to help. Get in touch today.</p>
-            <div class="cta-actions">
-                <a href="tel:0397014455" class="cta-button">Call (03) 9701 4455</a>
-                <a href="mailto:aphrodite@faceyindustrial.com.au" class="cta-button-secondary">Send an Email</a>
+            <h2 class="section-heading">About Facey Industrial Commercial</h2>
+            <p>For over a century, <span class="highlight">Facey Industrial Commercial</span> has been the trusted name in southeast Melbourne commercial real estate. Since 1917 we have helped generations of local business owners, investors, and property holders navigate sales, leasing, and long-term asset management.</p><p>Our team covers the complete commercial and industrial property lifecycle — from sales and leasing through to property management and owners corporation services. We are local specialists first and foremost, with deep knowledge of the southeast corridor and the businesses operating within it.</p><p>Whether you're listing a property, searching for the right space, or managing an ongoing portfolio, our approach is the same — straightforward, experienced, and built around a five-star standard of service.</p>
+        </div>
+    </section>
+
+    <section class="media-visual fade-in">
+        <div class="container">
+            <div class="media-img-wrap">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80" alt="Facey Industrial Commercial" loading="lazy">
+            </div>
+        </div>
+    </section>
+    <section class="services fade-in">
+        <div class="container">
+            <h2 class="section-heading">What we do</h2>
+            <ul class="service-list">
+                <li class="service-item">
+                    <p class="service-label">Sales &amp; Leasing</p>
+                    <p class="service-text">End-to-end representation on commercial and industrial property transactions across southeast Melbourne — from initial listing through to settlement.</p>
+                </li><li class="service-item">
+                    <p class="service-label">Property Management</p>
+                    <p class="service-text">Active management of commercial and industrial assets — tenant relations, maintenance, reporting, and performance.</p>
+                </li><li class="service-item">
+                    <p class="service-label">Owners Corporation</p>
+                    <p class="service-text">Professional owners corporation services — governance, administration, and day-to-day management for strata properties.</p>
+                </li><li class="service-item">
+                    <p class="service-label">Find a Property</p>
+                    <p class="service-text">Qualified search support for tenants and buyers looking to establish or expand across the southeast commercial and industrial corridor.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+
+    <section class="trust fade-in">
+        <div class="container">
+            <p class="trust-intro">Trusted property agents since 1917</p>
+            <div class="media-grid">
+                <span class="media-badge">108+ Years</span><span class="media-badge">Sales &amp; Leasing</span><span class="media-badge">Property Management</span><span class="media-badge">Owners Corporation</span><span class="media-badge">Southeast Melbourne</span>
             </div>
         </div>
     </section>
 
-    <!-- Contact -->
-    <section class="contact">
-        <div class="container">
-            <p class="section-label">Get In Touch</p>
-            <h2 class="section-heading" style="margin-bottom: 0;">Contact us</h2>
-            <div class="contact-grid">
-                <div class="contact-item">
-                    <p class="contact-item-label">Phone</p>
-                    <a href="tel:0397014455" class="contact-item-value">(03) 9701 4455</a>
-                </div>
-                <div class="contact-item">
-                    <p class="contact-item-label">Email</p>
-                    <a href="mailto:aphrodite@faceyindustrial.com.au" class="contact-item-value">aphrodite@faceyindustrial.com.au</a>
-                </div>
-                <div class="contact-item">
-                    <p class="contact-item-label">Website</p>
-                    <a href="https://faceyproperty.com.au" target="_blank" class="contact-item-value">faceyproperty.com.au</a>
-                </div>
-                <div class="contact-item">
-                    <p class="contact-item-label">Location</p>
-                    <span class="contact-item-value">Southeast Australia</span>
-                </div>
-            </div>
+    <section class="cta-section fade-in">
+        <div class="cta-blob"></div>
+        <div class="container cta-inner">
+            <h2 class="cta-heading">List your property or find your next one</h2>
+            <p class="cta-sub">Talk to the Facey team about your commercial or industrial property needs across southeast Melbourne.</p>
+            <a href="tel:0397014455" class="cta-button">Call (03) 9701 4455</a>
+            
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>Facey Industrial Commercial &mdash; Trusted Property Agents Since 1917 &mdash; Southeast Commercial &amp; Industrial Real Estate</p>
+            <p>Facey Industrial Commercial &mdash; faceyproperty.com.au &mdash; (03) 9701 4455</p>
         </div>
     </footer>
 
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>

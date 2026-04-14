@@ -8,443 +8,383 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
     <style>
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --bg: #0e0e12;
-            --surface: #16161d;
-            --surface-light: #1e1e28;
-            --border: #2a2a36;
-            --accent: #7a9fc2;
-            --accent-light: #a0bdd8;
-            --accent-glow: rgba(122, 159, 194, 0.15);
-            --white: #f0eff4;
-            --text: #c5c4ce;
-            --text-muted: #7e7d8a;
+            --bg: #080b10;
+            --surface: #0f1318;
+            --surface-light: #171d25;
+            --border: #1e2530;
+            --border-glow: #4a699855;
+            --accent: #7a98c9;
+            --accent-light: #a3bae0;
+            --accent-dim: #4a6998;
+            --accent-glow: #7a98c933;
+            --accent-glow-strong: #7a98c955;
+            --white: #edf2f7;
+            --text: #b8c4d0;
+            --text-muted: #5a6878;
+            --gradient-hero: linear-gradient(135deg, #7a98c9 0%, #a3bae0 50%, #c9dbf3 100%);
+            --gradient-accent: linear-gradient(90deg, #7a98c9, #a3bae0);
         }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
+            background: var(--bg); color: var(--text); line-height: 1.7;
+            -webkit-font-smoothing: antialiased; overflow-x: hidden;
         }
+        .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
 
-        .container {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 0 24px;
+        .fade-in {
+            opacity: 0; transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
         }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        /* ---- TOP BAR ---- */
         .topbar {
-            padding: 20px 0;
+            padding: 16px 0;
             border-bottom: 1px solid var(--border);
+            position: relative; z-index: 10;
+            background: rgba(8, 11, 16, 0.95);
+            backdrop-filter: blur(12px);
         }
-        .topbar-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+        .topbar-brand { font-size: 0.82rem; font-weight: 600; color: var(--white); letter-spacing: 0.5px; }
+        .topbar-phone {
+            font-size: 0.8rem; color: var(--accent-light); font-weight: 600;
+            text-decoration: none; transition: color 0.2s;
         }
-        .topbar-brand {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent-light);
-            font-weight: 600;
-        }
-        .topbar-since {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            letter-spacing: 0.5px;
-        }
+        .topbar-phone:hover { color: var(--white); }
 
-        /* ---- HERO ---- */
-        .hero {
-            padding: 88px 0 56px;
-            text-align: center;
+        .hero { position: relative; padding: 96px 0 72px; text-align: center; overflow: hidden; }
+        .hero::before {
+            content: ''; position: absolute; top: -120px; left: 50%;
+            transform: translateX(-50%); width: 900px; height: 600px;
+            background:
+                radial-gradient(ellipse 480px 320px at 30% 40%, #7a98c922 0%, transparent 70%),
+                radial-gradient(ellipse 360px 280px at 75% 30%, #a3bae018 0%, transparent 65%),
+                radial-gradient(ellipse 300px 240px at 55% 80%, #4a699815 0%, transparent 60%);
+            pointer-events: none; z-index: 0;
         }
+        .hero::after {
+            content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .hero-inner { position: relative; z-index: 1; }
         .hero-eyebrow {
-            font-size: 0.78rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--accent);
-            margin-bottom: 20px;
-            font-weight: 600;
+            display: inline-block; font-size: 0.72rem; text-transform: uppercase;
+            letter-spacing: 3px; color: var(--accent); margin-bottom: 24px;
+            font-weight: 600; border: 1px solid var(--border-glow);
+            padding: 6px 18px; border-radius: 100px; background: #7a98c90d;
         }
         .hero h1 {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(2rem, 5vw, 2.9rem);
-            color: var(--white);
-            line-height: 1.2;
-            margin-bottom: 28px;
-            font-weight: 600;
-        }
-        .hero h1 em {
-            color: var(--accent-light);
-            font-style: italic;
+            font-size: clamp(2rem, 5.5vw, 3rem); line-height: 1.22;
+            margin-bottom: 28px; font-weight: 700;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .hero-sub {
-            font-size: 1.05rem;
-            color: var(--text);
-            max-width: 560px;
-            margin: 0 auto;
-            line-height: 1.85;
+            font-size: 1.05rem; color: var(--text);
+            max-width: 580px; margin: 0 auto 40px; line-height: 1.85;
+        }
+        .hero-image-card {
+            max-width: 560px; margin: 0 auto; border-radius: 16px;
+            overflow: hidden; border: 1px solid var(--border-glow);
+            box-shadow: 0 0 40px #7a98c915, 0 24px 80px rgba(0,0,0,0.55);
+            position: relative;
+        }
+        .hero-image-card img { width: 100%; display: block; object-fit: cover; }
+        .hero-image-card::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(8,11,16,0.6) 100%);
+            z-index: 1; pointer-events: none;
         }
 
-        /* ---- ABOUT ---- */
-        .about {
-            padding: 64px 0;
-            border-top: 1px solid var(--border);
+        .stats { padding: 64px 0; position: relative; }
+        .stats::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0;
+            height: 1px; background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
         }
-        .section-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 24px;
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .stat-card {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 14px; padding: 32px 20px; text-align: center;
+            position: relative; overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
-        .about p {
-            font-size: 1.05rem;
-            line-height: 1.9;
-            margin-bottom: 20px;
+        .stat-card::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse 180px 120px at 50% 0%, #7a98c910 0%, transparent 70%);
+            pointer-events: none;
         }
-        .about p:last-child {
-            margin-bottom: 0;
+        .stat-card:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 24px #7a98c915, 0 8px 32px rgba(0,0,0,0.3);
         }
-
-        /* ---- SERVICES ---- */
-        .services {
-            padding: 64px 0;
-            border-top: 1px solid var(--border);
-        }
-        .services-heading {
+        .stat-number {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.6rem;
-            color: var(--white);
-            margin-bottom: 40px;
-            text-align: center;
-            font-weight: 600;
+            font-size: 1.9rem; font-weight: 700;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; margin-bottom: 8px;
         }
-        .service-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
+        .stat-label { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
+
+        .about, .services, .values, .trust { padding: 72px 0; position: relative; }
+        .about::before, .services::before, .values::before, .trust::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0;
+            height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent);
         }
+        .section-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.65rem; color: var(--white); margin-bottom: 32px; font-weight: 600;
+        }
+        .about p { font-size: 1.02rem; line-height: 1.9; margin-bottom: 20px; color: var(--text); }
+        .about p:last-child { margin-bottom: 0; }
+        .highlight { color: var(--accent-light); font-weight: 600; }
+
+        .service-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
         .service-item {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 28px 32px;
-            transition: border-color 0.3s ease;
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 12px; padding: 26px 30px; position: relative; overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+        }
+        .service-item::before {
+            content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+            background: var(--gradient-accent); opacity: 0; transition: opacity 0.3s ease;
         }
         .service-item:hover {
-            border-color: var(--accent);
+            border-color: var(--border-glow);
+            box-shadow: 0 0 20px #7a98c912, 0 6px 24px rgba(0,0,0,0.25);
+            transform: translateX(4px);
         }
-        .service-name {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
-            margin-bottom: 8px;
-            font-weight: 600;
+        .service-item:hover::before { opacity: 1; }
+        .service-label {
+            font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px;
+            color: var(--accent); margin-bottom: 8px; font-weight: 600;
         }
-        .service-desc {
-            font-size: 1rem;
-            color: var(--text);
-            line-height: 1.7;
-        }
+        .service-text { font-size: 0.97rem; color: var(--text); line-height: 1.7; }
 
-        /* ---- VALUES ---- */
-        .values {
-            padding: 64px 0;
-            border-top: 1px solid var(--border);
-        }
-        .values-heading {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.6rem;
-            color: var(--white);
-            margin-bottom: 40px;
-            text-align: center;
-            font-weight: 600;
-        }
-        .values-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 18px;
-        }
+        .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
         .value-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 28px 24px;
+            text-align: center; padding: 32px 20px;
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 14px; position: relative; overflow: hidden;
+            transition: border-color 0.3s ease, transform 0.25s ease;
         }
-        .value-title {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 10px;
+        .value-card::after {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse 160px 100px at 50% 100%, #7a98c90d 0%, transparent 70%);
+            pointer-events: none;
         }
-        .value-text {
-            font-size: 0.95rem;
-            color: var(--text);
-            line-height: 1.7;
+        .value-card:hover { border-color: var(--border-glow); transform: translateY(-3px); }
+        .value-icon {
+            width: 44px; height: 44px; border-radius: 10px;
+            background: #7a98c91a; border: 1px solid var(--border-glow);
+            margin: 0 auto 16px; display: flex; align-items: center;
+            justify-content: center; font-size: 1.1rem;
         }
+        .value-title { font-size: 0.95rem; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+        .value-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
 
-        /* ---- ADVISOR ---- */
-        .advisor {
-            padding: 64px 0;
-            border-top: 1px solid var(--border);
+        .media-visual { padding: 32px 0 64px; }
+        .media-img-wrap {
+            border-radius: 14px; overflow: hidden; border: 1px solid var(--border);
+            box-shadow: 0 0 30px #7a98c90d, 0 20px 60px rgba(0,0,0,0.45);
         }
-        .advisor-inner {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 36px 40px;
-        }
-        .advisor-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-        .advisor-name {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.3rem;
-            color: var(--white);
-            margin-bottom: 6px;
-            font-weight: 600;
-        }
-        .advisor-role {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            text-transform: capitalize;
-        }
+        .media-img-wrap img { width: 100%; display: block; object-fit: cover; }
 
-        /* ---- CTA ---- */
-        .cta-section {
-            padding: 80px 0;
-            border-top: 1px solid var(--border);
-            text-align: center;
+        .trust-intro {
+            font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2.5px;
+            color: var(--text-muted); margin-bottom: 28px; font-weight: 600; text-align: center;
         }
+        .media-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .media-badge {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 8px; padding: 10px 20px; font-size: 0.82rem;
+            color: var(--text-muted); font-weight: 500;
+            transition: border-color 0.25s, color 0.25s;
+        }
+        .media-badge:hover { border-color: var(--border-glow); color: var(--accent-light); }
+
+        .cta-section { padding: 96px 0; position: relative; text-align: center; overflow: hidden; }
+        .cta-section::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .cta-blob {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 700px; height: 400px;
+            background: radial-gradient(ellipse 500px 280px at 50% 50%, #7a98c910 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .cta-inner { position: relative; z-index: 1; }
         .cta-heading {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.8rem;
-            color: var(--white);
-            margin-bottom: 16px;
-            font-weight: 600;
+            font-size: clamp(1.7rem, 4vw, 2.1rem); color: var(--white);
+            margin-bottom: 16px; font-weight: 600;
         }
         .cta-sub {
-            font-size: 1rem;
-            color: var(--text);
-            margin-bottom: 36px;
-            max-width: 480px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.8;
-        }
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            align-items: center;
-            margin-bottom: 36px;
-        }
-        .contact-item a {
-            color: var(--accent-light);
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 500;
-        }
-        .contact-item a:hover {
-            color: var(--white);
+            font-size: 1rem; color: var(--text); margin-bottom: 40px;
+            max-width: 480px; margin-left: auto; margin-right: auto;
         }
         .cta-button {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--bg);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 600;
-            padding: 16px 48px;
-            border-radius: 8px;
-            text-decoration: none;
-            letter-spacing: 0.5px;
-            transition: background 0.3s ease, transform 0.2s ease;
+            display: inline-block; background: var(--gradient-accent);
+            color: #060a0f; font-family: 'Inter', sans-serif;
+            font-size: 0.97rem; font-weight: 700; padding: 17px 52px;
+            border-radius: 10px; text-decoration: none; letter-spacing: 0.3px;
+            box-shadow: 0 0 24px #7a98c94d, 0 8px 32px #7a98c926;
+            transition: box-shadow 0.3s ease, transform 0.2s ease, filter 0.3s ease;
         }
         .cta-button:hover {
-            background: var(--accent-light);
-            transform: translateY(-1px);
+            box-shadow: 0 0 40px #7a98c980, 0 12px 48px #7a98c940;
+            transform: translateY(-2px); filter: brightness(1.08);
         }
-        .cta-note {
-            margin-top: 16px;
-            font-size: 0.78rem;
-            color: var(--text-muted);
-        }
+        .cta-note { margin-top: 18px; font-size: 0.78rem; color: var(--text-muted); }
 
-        /* ---- FOOTER ---- */
-        .footer {
-            padding: 40px 0;
-            border-top: 1px solid var(--border);
-            text-align: center;
-        }
-        .footer p {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
+        .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+        .footer p { font-size: 0.73rem; color: var(--text-muted); }
 
-        /* ---- RESPONSIVE ---- */
-        @media (max-width: 600px) {
-            .hero {
-                padding: 56px 0 36px;
-            }
-            .service-item {
-                padding: 22px 20px;
-            }
-            .values-grid {
-                grid-template-columns: 1fr;
-            }
-            .advisor-inner {
-                padding: 28px 24px;
-            }
-            .cta-section {
-                padding: 56px 0;
-            }
+        @media (max-width: 640px) {
+            .hero { padding: 64px 0 52px; }
+            .stats-grid { grid-template-columns: 1fr; gap: 14px; }
+            .values-grid { grid-template-columns: 1fr; gap: 14px; }
+            .service-item { padding: 22px 22px; }
+            .cta-section { padding: 64px 0; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Bar -->
     <div class="topbar">
         <div class="container topbar-inner">
             <span class="topbar-brand">Prince Wealth Management</span>
-            <span class="topbar-since">Est. 2013</span>
+            <a href="tel:+61402275495" class="topbar-phone">+61 402 275 495</a>
         </div>
     </div>
 
-    <!-- Hero -->
     <section class="hero">
-        <div class="container">
-            <p class="hero-eyebrow">Financial Advisory &amp; Wealth Management</p>
-            <h1>Building Your <em>Financial Freedom</em></h1>
-            <p class="hero-sub">Dedicated to empowering clients on their journey to financial freedom and prosperity — with a comprehensive suite of wealth services tailored to the unique needs of each individual.</p>
+        <div class="hero-inner container">
+            <p class="hero-eyebrow">Private Wealth — Since 2013</p>
+            <h1>Empowering clients on their journey to financial freedom</h1>
+            <p class="hero-sub">A comprehensive suite of wealth management services — tailored to the unique needs of individuals, combining expertise, integrity, and personal care.</p>
+            <div class="hero-image-card">
+                <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&q=80" alt="Prince Wealth Management" loading="eager">
+            </div>
         </div>
     </section>
 
-    <!-- About -->
-    <section class="about">
+    <section class="stats fade-in">
         <div class="container">
-            <p class="section-label">About Prince Wealth</p>
-            <p>Since 2013, Prince Wealth Management has combined expertise, integrity, and personal care to guide clients toward their financial goals. Whether planning for retirement, managing investments, or navigating complex financial landscapes, Prince Wealth provides the insights and services needed to thrive.</p>
-            <p>Every client relationship is built on a foundation of trust and tailored strategy — because no two financial journeys are the same.</p>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">2013</div>
+                    <div class="stat-label">Established</div>
+                </div><div class="stat-card">
+                    <div class="stat-number">Strategy</div>
+                    <div class="stat-label">Led by planning, not product</div>
+                </div><div class="stat-card">
+                    <div class="stat-number">Private</div>
+                    <div class="stat-label">Tailored advice for individuals</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="about fade-in">
+        <div class="container">
+            <h2 class="section-heading">About Prince Wealth Management</h2>
+            <p><span class="highlight">Prince Wealth Management</span> combines expertise, integrity, and personal care to guide clients toward their financial goals — whether planning for retirement, managing investments, or navigating complex financial landscapes.</p><p>Since 2013, we've focused on delivering a comprehensive suite of wealth management services tailored to the unique needs of individuals. Our approach is strategy-first — every piece of advice and every recommendation we make is built around the specific circumstances, goals, and timeline of the person in front of us.</p><p>We provide the insights, strategies, and ongoing guidance you need to thrive — because financial freedom isn't a product, it's a plan.</p>
         </div>
     </section>
 
-    <!-- Services -->
-    <section class="services">
+    <section class="media-visual fade-in">
         <div class="container">
-            <h2 class="services-heading">What We Do</h2>
+            <div class="media-img-wrap">
+                <img src="https://princewealth.com.au/wp-content/uploads/2024/12/Strategy.png" alt="Prince Wealth Management" loading="lazy">
+            </div>
+        </div>
+    </section>
+    <section class="services fade-in">
+        <div class="container">
+            <h2 class="section-heading">What we do</h2>
             <ul class="service-list">
                 <li class="service-item">
-                    <p class="service-name">Wealth Management</p>
-                    <p class="service-desc">Strategic financial and proactive planning — helping ensure clients are prepared for every financial milestone, from wealth accumulation to preservation.</p>
-                </li>
-                <li class="service-item">
-                    <p class="service-name">Self-Managed Super Funds</p>
-                    <p class="service-desc">Fostering long-term investment growth through customised SMSF solutions and sophisticated investment strategies designed to align with your financial goals.</p>
-                </li>
-                <li class="service-item">
-                    <p class="service-name">Superannuation</p>
-                    <p class="service-desc">Personalised superannuation advice, ensuring each client receives attentive and tailored guidance suited to their stage of life and retirement objectives.</p>
-                </li>
-                <li class="service-item">
-                    <p class="service-name">Retirement Planning</p>
-                    <p class="service-desc">Innovative solutions that ensure retirement assets are managed with foresight and precision — so clients can transition into retirement with confidence.</p>
-                </li>
-                <li class="service-item">
-                    <p class="service-name">Securities Advice</p>
-                    <p class="service-desc">A proven track record in securities, strong risk management practices, and a commitment to consistent performance across market conditions.</p>
-                </li>
-                <li class="service-item">
-                    <p class="service-name">Tax Planning Strategies</p>
-                    <p class="service-desc">Proactive tax strategies integrated into the broader financial plan — designed to minimise liability and maximise long-term wealth outcomes.</p>
+                    <p class="service-label">Investments</p>
+                    <p class="service-text">Portfolio strategy and ongoing investment management — built around your goals, risk profile, and time horizon.</p>
+                </li><li class="service-item">
+                    <p class="service-label">Retirement Planning</p>
+                    <p class="service-text">A complete retirement framework — superannuation, income streams, tax-aware structuring, and long-term cash flow modelling.</p>
+                </li><li class="service-item">
+                    <p class="service-label">Superannuation</p>
+                    <p class="service-text">Super strategy including SMSF advice, contribution planning, and pension structuring to maximise long-term outcomes.</p>
+                </li><li class="service-item">
+                    <p class="service-label">Risk Management</p>
+                    <p class="service-text">Personal insurance reviews and risk strategy — protecting your income, family, and wealth against the unexpected.</p>
+                </li><li class="service-item">
+                    <p class="service-label">Tax Planning</p>
+                    <p class="service-text">Tax-aware wealth strategies — ensuring structure, timing, and investment decisions are working in your favour.</p>
                 </li>
             </ul>
         </div>
     </section>
 
-    <!-- Values -->
-    <section class="values">
+    <section class="values fade-in">
         <div class="container">
-            <h2 class="values-heading">Our Values</h2>
+            <h2 class="section-heading" style="text-align:center; margin-bottom: 36px;">Our principles</h2>
             <div class="values-grid">
                 <div class="value-card">
-                    <p class="value-title">Prosperity</p>
-                    <p class="value-text">Every plan is meticulously crafted to maximise potential returns and foster long-term investment growth through customised, sophisticated strategies.</p>
-                </div>
-                <div class="value-card">
-                    <p class="value-title">Reliability</p>
-                    <p class="value-text">A proven track record, strong risk management practices, and an unwavering commitment to consistent performance for every client.</p>
-                </div>
-                <div class="value-card">
-                    <p class="value-title">Integrity</p>
-                    <p class="value-text">Transparent, honest guidance — always acting in the best interests of clients with clear communication at every stage of the relationship.</p>
-                </div>
-                <div class="value-card">
-                    <p class="value-title">Personal Care</p>
-                    <p class="value-text">Attentive, tailored service for every client. No generic templates — each financial plan is built around the individual's unique circumstances and goals.</p>
+                    <div class="value-icon">◆</div>
+                    <div class="value-title">Expertise</div>
+                    <div class="value-desc">Deep technical knowledge across investments, super, retirement, and risk.</div>
+                </div><div class="value-card">
+                    <div class="value-icon">◇</div>
+                    <div class="value-title">Integrity</div>
+                    <div class="value-desc">Advice that puts your interests first — always, without exception.</div>
+                </div><div class="value-card">
+                    <div class="value-icon">◈</div>
+                    <div class="value-title">Personal Care</div>
+                    <div class="value-desc">Every client is unique. So is every plan we build.</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Advisor -->
-    <section class="advisor">
+
+    <section class="media-visual fade-in" style="padding-top: 0; padding-bottom: 72px;">
         <div class="container">
-            <div class="advisor-inner">
-                <p class="advisor-label">Meet the Advisor</p>
-                <p class="advisor-name">Tony Raikes</p>
-                <p class="advisor-role">Private Wealth Advisor</p>
+            <div class="media-img-wrap">
+                <img src="https://princewealth.com.au/wp-content/uploads/2024/12/Services.png" alt="Prince Wealth Management" loading="lazy">
             </div>
         </div>
     </section>
-
-    <!-- CTA -->
-    <section class="cta-section">
-        <div class="container">
-            <h2 class="cta-heading">Start Your Financial Journey</h2>
-            <p class="cta-sub">Ready to build a wealth strategy that works for your life? Get in touch with the Prince Wealth team today.</p>
-            <div class="contact-details">
-                <span class="contact-item"><a href="tel:+61402275495">+61 402 275 495</a></span>
-                <span class="contact-item"><a href="mailto:info@princewealth.com.au">info@princewealth.com.au</a></span>
-            </div>
-            <a href="mailto:info@princewealth.com.au" class="cta-button">Get in Touch</a>
-            <p class="cta-note">Prince Wealth Management — empowering financial freedom since 2013.</p>
+    <section class="cta-section fade-in">
+        <div class="cta-blob"></div>
+        <div class="container cta-inner">
+            <h2 class="cta-heading">Talk to Prince Wealth</h2>
+            <p class="cta-sub">Ready to start building your plan? Reach out and we&#x27;ll schedule a conversation about your goals.</p>
+            <a href="tel:+61402275495" class="cta-button">Call +61 402 275 495</a>
+            <p class="cta-note">Or reach out at info@princewealth.com.au</p>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>Prince Wealth Management &nbsp;|&nbsp; princewealth.com.au &nbsp;|&nbsp; Australia</p>
+            <p>Prince Wealth Management &mdash; princewealth.com.au &mdash; +61 402 275 495</p>
         </div>
     </footer>
 
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>

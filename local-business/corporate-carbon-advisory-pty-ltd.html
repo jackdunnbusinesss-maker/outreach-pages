@@ -3,486 +3,393 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corporate Carbon Advisory | Sustainable Planet. Better Future.</title>
+    <title>Corporate Carbon Advisory</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
     <style>
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --bg: #0e0e12;
-            --surface: #16161d;
-            --surface-light: #1e1e28;
-            --border: #2a2a36;
-            --accent: #af231c;
-            --accent-light: #d44040;
-            --accent-glow: rgba(175, 35, 28, 0.15);
-            --white: #f0eff4;
-            --text: #c5c4ce;
-            --text-muted: #7e7d8a;
+            --bg: #080b10;
+            --surface: #0f1318;
+            --surface-light: #171d25;
+            --border: #1e2530;
+            --border-glow: #a3342c55;
+            --accent: #e85a4f;
+            --accent-light: #f07a6f;
+            --accent-dim: #a3342c;
+            --accent-glow: #e85a4f33;
+            --accent-glow-strong: #e85a4f55;
+            --white: #edf2f7;
+            --text: #b8c4d0;
+            --text-muted: #5a6878;
+            --gradient-hero: linear-gradient(135deg, #e85a4f 0%, #f07a6f 50%, #f5a39b 100%);
+            --gradient-accent: linear-gradient(90deg, #e85a4f, #f07a6f);
         }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
+            background: var(--bg); color: var(--text); line-height: 1.7;
+            -webkit-font-smoothing: antialiased; overflow-x: hidden;
         }
+        .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
 
-        .container {
-            max-width: 780px;
-            margin: 0 auto;
-            padding: 0 24px;
+        .fade-in {
+            opacity: 0; transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
         }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        /* ---- NAV ---- */
-        .nav {
-            padding: 24px 0;
+        .topbar {
+            padding: 16px 0;
             border-bottom: 1px solid var(--border);
+            position: relative; z-index: 10;
+            background: rgba(8, 11, 16, 0.95);
+            backdrop-filter: blur(12px);
         }
-        .nav-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+        .topbar-brand { font-size: 0.82rem; font-weight: 600; color: var(--white); letter-spacing: 0.5px; }
+        .topbar-phone {
+            font-size: 0.8rem; color: var(--accent-light); font-weight: 600;
+            text-decoration: none; transition: color 0.2s;
         }
-        .nav-logo {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.15rem;
-            color: var(--white);
-            font-weight: 600;
-            letter-spacing: 0.3px;
-        }
-        .nav-logo span {
-            color: var(--accent-light);
-        }
-        .nav-contact {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            letter-spacing: 0.5px;
-        }
-        .nav-contact a {
-            color: var(--accent-light);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .nav-contact a:hover {
-            color: var(--white);
-        }
+        .topbar-phone:hover { color: var(--white); }
 
-        /* ---- HERO ---- */
-        .hero {
-            padding: 96px 0 64px;
-            text-align: center;
+        .hero { position: relative; padding: 96px 0 72px; text-align: center; overflow: hidden; }
+        .hero::before {
+            content: ''; position: absolute; top: -120px; left: 50%;
+            transform: translateX(-50%); width: 900px; height: 600px;
+            background:
+                radial-gradient(ellipse 480px 320px at 30% 40%, #e85a4f22 0%, transparent 70%),
+                radial-gradient(ellipse 360px 280px at 75% 30%, #f07a6f18 0%, transparent 65%),
+                radial-gradient(ellipse 300px 240px at 55% 80%, #a3342c15 0%, transparent 60%);
+            pointer-events: none; z-index: 0;
         }
+        .hero::after {
+            content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .hero-inner { position: relative; z-index: 1; }
         .hero-eyebrow {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--accent-light);
-            margin-bottom: 24px;
-            font-weight: 600;
+            display: inline-block; font-size: 0.72rem; text-transform: uppercase;
+            letter-spacing: 3px; color: var(--accent); margin-bottom: 24px;
+            font-weight: 600; border: 1px solid var(--border-glow);
+            padding: 6px 18px; border-radius: 100px; background: #e85a4f0d;
         }
         .hero h1 {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(2.2rem, 5.5vw, 3.2rem);
-            color: var(--white);
-            line-height: 1.2;
-            margin-bottom: 28px;
-            font-weight: 600;
-        }
-        .hero h1 em {
-            color: var(--accent-light);
-            font-style: italic;
+            font-size: clamp(2rem, 5.5vw, 3rem); line-height: 1.22;
+            margin-bottom: 28px; font-weight: 700;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .hero-sub {
-            font-size: 1.1rem;
-            color: var(--text);
-            max-width: 580px;
-            margin: 0 auto 40px;
-            line-height: 1.8;
+            font-size: 1.05rem; color: var(--text);
+            max-width: 580px; margin: 0 auto 40px; line-height: 1.85;
         }
-        .hero-cta {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--white);
-            font-size: 0.9rem;
-            font-weight: 600;
-            padding: 14px 40px;
-            border-radius: 8px;
-            text-decoration: none;
-            letter-spacing: 0.5px;
-            transition: background 0.3s ease, transform 0.2s ease;
+        .hero-image-card {
+            max-width: 560px; margin: 0 auto; border-radius: 16px;
+            overflow: hidden; border: 1px solid var(--border-glow);
+            box-shadow: 0 0 40px #e85a4f15, 0 24px 80px rgba(0,0,0,0.55);
+            position: relative;
         }
-        .hero-cta:hover {
-            background: var(--accent-light);
-            transform: translateY(-1px);
+        .hero-image-card img { width: 100%; display: block; object-fit: cover; }
+        .hero-image-card::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(8,11,16,0.6) 100%);
+            z-index: 1; pointer-events: none;
         }
 
-        /* ---- STATS STRIP ---- */
-        .stats {
-            padding: 56px 0;
-            border-top: 1px solid var(--border);
+        .stats { padding: 64px 0; position: relative; }
+        .stats::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0;
+            height: 1px; background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
         }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .stat-card {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 14px; padding: 32px 20px; text-align: center;
+            position: relative; overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
-        .stat-item {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 32px 20px;
-            text-align: center;
+        .stat-card::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse 180px 120px at 50% 0%, #e85a4f10 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .stat-card:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 24px #e85a4f15, 0 8px 32px rgba(0,0,0,0.3);
         }
         .stat-number {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 2rem;
-            color: var(--white);
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 10px;
+            font-size: 1.9rem; font-weight: 700;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; margin-bottom: 8px;
         }
-        .stat-label {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            line-height: 1.5;
-        }
+        .stat-label { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
 
-        /* ---- SECTION HEADING ---- */
+        .about, .services, .values, .trust { padding: 72px 0; position: relative; }
+        .about::before, .services::before, .values::before, .trust::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0;
+            height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
         .section-heading {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.7rem;
-            color: var(--white);
-            margin-bottom: 16px;
-            font-weight: 600;
+            font-size: 1.65rem; color: var(--white); margin-bottom: 32px; font-weight: 600;
         }
-        .section-sub {
-            font-size: 1rem;
-            color: var(--text);
-            max-width: 560px;
-            line-height: 1.8;
-            margin-bottom: 40px;
-        }
+        .about p { font-size: 1.02rem; line-height: 1.9; margin-bottom: 20px; color: var(--text); }
+        .about p:last-child { margin-bottom: 0; }
+        .highlight { color: var(--accent-light); font-weight: 600; }
 
-        /* ---- ABOUT ---- */
-        .about {
-            padding: 72px 0;
-            border-top: 1px solid var(--border);
+        .service-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+        .service-item {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 12px; padding: 26px 30px; position: relative; overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
         }
-        .about p {
-            font-size: 1.05rem;
-            line-height: 1.9;
-            margin-bottom: 20px;
+        .service-item::before {
+            content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+            background: var(--gradient-accent); opacity: 0; transition: opacity 0.3s ease;
         }
-        .about p:last-child {
-            margin-bottom: 0;
+        .service-item:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 20px #e85a4f12, 0 6px 24px rgba(0,0,0,0.25);
+            transform: translateX(4px);
         }
-        .highlight {
-            color: var(--accent-light);
-            font-weight: 600;
-        }
-
-        /* ---- SERVICES ---- */
-        .services {
-            padding: 72px 0;
-            border-top: 1px solid var(--border);
-        }
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-        .service-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 32px 28px;
-            transition: border-color 0.3s ease;
-        }
-        .service-card:hover {
-            border-color: var(--accent);
-        }
+        .service-item:hover::before { opacity: 1; }
         .service-label {
-            font-size: 0.68rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent-light);
-            margin-bottom: 10px;
-            font-weight: 600;
+            font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px;
+            color: var(--accent); margin-bottom: 8px; font-weight: 600;
         }
-        .service-title {
+        .service-text { font-size: 0.97rem; color: var(--text); line-height: 1.7; }
+
+        .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        .value-card {
+            text-align: center; padding: 32px 20px;
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 14px; position: relative; overflow: hidden;
+            transition: border-color 0.3s ease, transform 0.25s ease;
+        }
+        .value-card::after {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse 160px 100px at 50% 100%, #e85a4f0d 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .value-card:hover { border-color: var(--border-glow); transform: translateY(-3px); }
+        .value-icon {
+            width: 44px; height: 44px; border-radius: 10px;
+            background: #e85a4f1a; border: 1px solid var(--border-glow);
+            margin: 0 auto 16px; display: flex; align-items: center;
+            justify-content: center; font-size: 1.1rem;
+        }
+        .value-title { font-size: 0.95rem; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+        .value-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
+
+        .media-visual { padding: 32px 0 64px; }
+        .media-img-wrap {
+            border-radius: 14px; overflow: hidden; border: 1px solid var(--border);
+            box-shadow: 0 0 30px #e85a4f0d, 0 20px 60px rgba(0,0,0,0.45);
+        }
+        .media-img-wrap img { width: 100%; display: block; object-fit: cover; }
+
+        .trust-intro {
+            font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2.5px;
+            color: var(--text-muted); margin-bottom: 28px; font-weight: 600; text-align: center;
+        }
+        .media-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .media-badge {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 8px; padding: 10px 20px; font-size: 0.82rem;
+            color: var(--text-muted); font-weight: 500;
+            transition: border-color 0.25s, color 0.25s;
+        }
+        .media-badge:hover { border-color: var(--border-glow); color: var(--accent-light); }
+
+        .cta-section { padding: 96px 0; position: relative; text-align: center; overflow: hidden; }
+        .cta-section::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .cta-blob {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 700px; height: 400px;
+            background: radial-gradient(ellipse 500px 280px at 50% 50%, #e85a4f10 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .cta-inner { position: relative; z-index: 1; }
+        .cta-heading {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.1rem;
-            color: var(--white);
-            margin-bottom: 12px;
-            font-weight: 600;
+            font-size: clamp(1.7rem, 4vw, 2.1rem); color: var(--white);
+            margin-bottom: 16px; font-weight: 600;
         }
-        .service-text {
-            font-size: 0.95rem;
-            color: var(--text);
-            line-height: 1.7;
+        .cta-sub {
+            font-size: 1rem; color: var(--text); margin-bottom: 40px;
+            max-width: 480px; margin-left: auto; margin-right: auto;
         }
+        .cta-button {
+            display: inline-block; background: var(--gradient-accent);
+            color: #060a0f; font-family: 'Inter', sans-serif;
+            font-size: 0.97rem; font-weight: 700; padding: 17px 52px;
+            border-radius: 10px; text-decoration: none; letter-spacing: 0.3px;
+            box-shadow: 0 0 24px #e85a4f4d, 0 8px 32px #e85a4f26;
+            transition: box-shadow 0.3s ease, transform 0.2s ease, filter 0.3s ease;
+        }
+        .cta-button:hover {
+            box-shadow: 0 0 40px #e85a4f80, 0 12px 48px #e85a4f40;
+            transform: translateY(-2px); filter: brightness(1.08);
+        }
+        .cta-note { margin-top: 18px; font-size: 0.78rem; color: var(--text-muted); }
 
-        /* ---- TEAM ---- */
-        .team {
-            padding: 72px 0;
-            border-top: 1px solid var(--border);
-        }
-        .team-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 32px 28px;
-            display: flex;
-            align-items: flex-start;
-            gap: 24px;
-        }
-        .team-avatar {
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            background: var(--surface-light);
-            border: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.1rem;
-            color: var(--accent-light);
-            font-weight: 600;
-            flex-shrink: 0;
-        }
-        .team-info-name {
-            font-size: 1rem;
-            color: var(--white);
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-        .team-info-role {
-            font-size: 0.8rem;
-            color: var(--accent-light);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-        }
-        .team-info-text {
-            font-size: 0.95rem;
-            color: var(--text);
-            line-height: 1.7;
-        }
+        .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+        .footer p { font-size: 0.73rem; color: var(--text-muted); }
 
-        /* ---- CONTACT ---- */
-        .contact {
-            padding: 80px 0;
-            border-top: 1px solid var(--border);
-            text-align: center;
-        }
-        .contact-details {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 36px;
-            flex-wrap: wrap;
-        }
-        .contact-item {
-            text-align: center;
-        }
-        .contact-item-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-muted);
-            margin-bottom: 6px;
-        }
-        .contact-item-value {
-            font-size: 0.95rem;
-            color: var(--white);
-            font-weight: 500;
-        }
-        .contact-item-value a {
-            color: var(--accent-light);
-            text-decoration: none;
-        }
-        .contact-item-value a:hover {
-            color: var(--white);
-        }
-
-        /* ---- FOOTER ---- */
-        .footer {
-            padding: 36px 0;
-            border-top: 1px solid var(--border);
-            text-align: center;
-        }
-        .footer p {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        /* ---- RESPONSIVE ---- */
-        @media (max-width: 600px) {
-            .hero {
-                padding: 64px 0 48px;
-            }
-            .stats-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            .team-card {
-                flex-direction: column;
-            }
-            .contact-details {
-                flex-direction: column;
-                gap: 24px;
-            }
-            .nav-contact {
-                display: none;
-            }
+        @media (max-width: 640px) {
+            .hero { padding: 64px 0 52px; }
+            .stats-grid { grid-template-columns: 1fr; gap: 14px; }
+            .values-grid { grid-template-columns: 1fr; gap: 14px; }
+            .service-item { padding: 22px 22px; }
+            .cta-section { padding: 64px 0; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Nav -->
-    <nav class="nav">
-        <div class="container nav-inner">
-            <div class="nav-logo">Corporate <span>Carbon</span> Advisory</div>
-            <div class="nav-contact">
-                <a href="tel:1300227206">1300 227 206</a>
-                &nbsp;&nbsp;|&nbsp;&nbsp;
-                <a href="mailto:info@corporatecarbon.com.au">info@corporatecarbon.com.au</a>
-            </div>
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-brand">Corporate Carbon Advisory</span>
+            <a href="tel:1300227206" class="topbar-phone">1300 227 206</a>
         </div>
-    </nav>
+    </div>
 
-    <!-- Hero -->
     <section class="hero">
-        <div class="container">
-            <p class="hero-eyebrow">Australian Carbon Market Specialists</p>
-            <h1>Sustainable planet.<br><em>Better future.</em></h1>
-            <p class="hero-sub">Delivering climate solutions from project development to the sale of credits. Corporate Carbon has been at the centre of Australia's carbon market since 2010 — developing projects, managing credits, and guiding serious participants through every stage.</p>
-            <a href="mailto:info@corporatecarbon.com.au" class="hero-cta">Get in Touch</a>
+        <div class="hero-inner container">
+            <p class="hero-eyebrow">Sustainable Planet. Better Future.</p>
+            <h1>Australia&#x27;s leading carbon project developer and advisor</h1>
+            <p class="hero-sub">Partnering with landholders, business, and government to deliver measurable carbon outcomes — from project development and trading through to strategic advisory and agribusiness innovation.</p>
+            <div class="hero-image-card">
+                <img src="https://images.squarespace-cdn.com/content/v1/5eefdfb04647173f51907d74/06637641-096f-4d6d-8fb0-50894f04db37/Cover-cropped.jpg" alt="Corporate Carbon Advisory" loading="eager">
+            </div>
         </div>
     </section>
 
-    <!-- Stats -->
-    <section class="stats">
+    <section class="stats fade-in">
         <div class="container">
             <div class="stats-grid">
-                <div class="stat-item">
+                <div class="stat-card">
                     <div class="stat-number">15M+</div>
-                    <div class="stat-label">ACCUs Delivered to CER &amp; Commercial Clients</div>
-                </div>
-                <div class="stat-item">
+                    <div class="stat-label">ACCUs delivered</div>
+                </div><div class="stat-card">
                     <div class="stat-number">100+</div>
-                    <div class="stat-label">Carbon Projects Under the Emissions Reduction Fund</div>
-                </div>
-                <div class="stat-item">
+                    <div class="stat-label">ERF projects</div>
+                </div><div class="stat-card">
                     <div class="stat-number">2010</div>
-                    <div class="stat-label">Founded — Active Since CFI Inception</div>
+                    <div class="stat-label">Founded</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="about fade-in">
+        <div class="container">
+            <h2 class="section-heading">About Corporate Carbon Advisory</h2>
+            <p><span class="highlight">Corporate Carbon Advisory</span> is one of Australia's most established carbon project developers — delivering measurable outcomes for a sustainable planet and a better future.</p><p>Since 2010 we've developed over 100 Emissions Reduction Fund projects and delivered more than 15 million Australian Carbon Credit Units (ACCUs). Our core business spans carbon project development, carbon trading, strategic advisory, and agribusiness innovation.</p><p>We work with landholders, corporates, and government to design and execute carbon outcomes that are environmentally rigorous, commercially sound, and aligned with Australia's climate goals. Our track record of innovation and our credentials across the carbon value chain set us apart.</p>
+        </div>
+    </section>
+
+    <section class="media-visual fade-in">
+        <div class="container">
+            <div class="media-img-wrap">
+                <img src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?w=1600&q=80" alt="Corporate Carbon Advisory" loading="lazy">
+            </div>
+        </div>
+    </section>
+    <section class="services fade-in">
+        <div class="container">
+            <h2 class="section-heading">What we do</h2>
+            <ul class="service-list">
+                <li class="service-item">
+                    <p class="service-label">Carbon Project Development</p>
+                    <p class="service-text">End-to-end development of ERF projects — from feasibility through registration, monitoring, and reporting.</p>
+                </li><li class="service-item">
+                    <p class="service-label">Carbon Trading</p>
+                    <p class="service-text">Market access for ACCU buyers and sellers — trading, offtake agreements, and compliance portfolio management.</p>
+                </li><li class="service-item">
+                    <p class="service-label">Strategic Advisory</p>
+                    <p class="service-text">Strategic carbon advisory for corporates, landholders, and government — policy, portfolio, and pathway design.</p>
+                </li><li class="service-item">
+                    <p class="service-label">Agribusiness &amp; Innovation</p>
+                    <p class="service-text">Incubating new approaches at the intersection of agriculture and climate — methods, measurement, and commercial scale-up.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="values fade-in">
+        <div class="container">
+            <h2 class="section-heading" style="text-align:center; margin-bottom: 36px;">Our principles</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">◆</div>
+                    <div class="value-title">Rigour</div>
+                    <div class="value-desc">Every project is grounded in methodology, measurement, and evidence.</div>
+                </div><div class="value-card">
+                    <div class="value-icon">◇</div>
+                    <div class="value-title">Innovation</div>
+                    <div class="value-desc">A track record of pushing the boundaries of what carbon can deliver.</div>
+                </div><div class="value-card">
+                    <div class="value-icon">◈</div>
+                    <div class="value-title">Integrity</div>
+                    <div class="value-desc">Measurable outcomes, transparent reporting, and aligned incentives.</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About -->
-    <section class="about">
+    <section class="trust fade-in">
         <div class="container">
-            <h2 class="section-heading">Who We Are</h2>
-            <p><span class="highlight">Corporate Carbon</span> is in the business of creating new solutions for carbon market participation. We ensure emissions reductions, carbon sequestration, and co-benefits for the environment, individuals, and businesses across Australia.</p>
-            <p>Our purpose is to reduce emissions by the gigatonne by accelerating global transformation and transition to a decarbonised economy. As a leading <span class="highlight">Australian multi-sector developer</span>, we were actively engaged in building the local Carbon Farming Initiative offsets industry from its very inception — a position of first-mover knowledge and relationships that no newcomer can replicate.</p>
-            <p>Across more than 100 projects under the Emissions Reduction Fund, we have delivered 15 million ACCUs to the Clean Energy Regulator and commercial clients. That track record underpins everything we do today: project development, trading, advisory, and agribusiness incubation.</p>
-        </div>
-    </section>
-
-    <!-- Services -->
-    <section class="services">
-        <div class="container">
-            <h2 class="section-heading">What We Do</h2>
-            <p class="section-sub">From originating new carbon projects to trading credits and advising institutional participants, Corporate Carbon operates across the full value chain of Australia's carbon market.</p>
-            <div class="services-grid">
-                <div class="service-card">
-                    <p class="service-label">ERF Projects</p>
-                    <p class="service-title">Project Development &amp; Ownership</p>
-                    <p class="service-text">We develop, own, and manage carbon projects under the Emissions Reduction Fund across multiple methodologies — from vegetation to industrial abatement. Over 100 active projects and counting.</p>
-                </div>
-                <div class="service-card">
-                    <p class="service-label">Trading</p>
-                    <p class="service-title">ACCU Trading &amp; Credit Sales</p>
-                    <p class="service-text">15 million ACCUs delivered to the Clean Energy Regulator and commercial clients. We manage the full cycle from credit generation through to verified sale and settlement.</p>
-                </div>
-                <div class="service-card">
-                    <p class="service-label">Advisory</p>
-                    <p class="service-title">Carbon Market Advisory</p>
-                    <p class="service-text">Unrivalled technical expertise providing risk management and commercial carbon abatement strategy for businesses navigating Australia's carbon regulatory environment.</p>
-                </div>
-                <div class="service-card">
-                    <p class="service-label">Agribusiness</p>
-                    <p class="service-title">Agribusiness Incubation</p>
-                    <p class="service-text">Supporting landholders and agribusiness operators to originate and register carbon projects — identifying eligible properties, selecting methodologies, and managing registration through to credit issuance.</p>
-                </div>
+            <p class="trust-intro">Trusted across the carbon value chain</p>
+            <div class="media-grid">
+                <span class="media-badge">ERF Projects</span><span class="media-badge">ACCU Trading</span><span class="media-badge">Strategic Advisory</span><span class="media-badge">Agribusiness</span><span class="media-badge">Climate Active</span>
             </div>
         </div>
     </section>
 
-    <!-- Team -->
-    <section class="team">
+    <section class="media-visual fade-in" style="padding-top: 0; padding-bottom: 72px;">
         <div class="container">
-            <h2 class="section-heading" style="margin-bottom: 32px;">Our Team</h2>
-            <div class="team-card">
-                <div class="team-avatar">KD</div>
-                <div>
-                    <p class="team-info-name">Katy Douglas</p>
-                    <p class="team-info-role">Property Manager</p>
-                    <p class="team-info-text">Part of the Corporate Carbon team supporting project landholders and property-based carbon initiatives across the Emissions Reduction Fund portfolio.</p>
-                </div>
+            <div class="media-img-wrap">
+                <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1600&q=80" alt="Corporate Carbon Advisory" loading="lazy">
             </div>
         </div>
     </section>
-
-    <!-- Contact -->
-    <section class="contact">
-        <div class="container">
-            <h2 class="section-heading">Contact Us</h2>
-            <p style="color: var(--text); font-size: 1rem; max-width: 480px; margin: 0 auto;">Ready to explore carbon market participation? Our team works with landholders, businesses, and investors across Australia.</p>
-            <div class="contact-details">
-                <div class="contact-item">
-                    <p class="contact-item-label">Phone</p>
-                    <p class="contact-item-value"><a href="tel:1300227206">1300 227 206</a></p>
-                </div>
-                <div class="contact-item">
-                    <p class="contact-item-label">Email</p>
-                    <p class="contact-item-value"><a href="mailto:info@corporatecarbon.com.au">info@corporatecarbon.com.au</a></p>
-                </div>
-                <div class="contact-item">
-                    <p class="contact-item-label">Website</p>
-                    <p class="contact-item-value"><a href="https://corporatecarbon.com.au" target="_blank">corporatecarbon.com.au</a></p>
-                </div>
-            </div>
+    <section class="cta-section fade-in">
+        <div class="cta-blob"></div>
+        <div class="container cta-inner">
+            <h2 class="cta-heading">Start a carbon conversation</h2>
+            <p class="cta-sub">Landholder, corporate, or government — talk to our team about developing, trading, or advising on carbon.</p>
+            <a href="tel:1300227206" class="cta-button">Call 1300 227 206</a>
+            <p class="cta-note">Or reach out at info@corporatecarbon.com.au</p>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Corporate Carbon Advisory Pty Ltd. All rights reserved. Australia.</p>
+            <p>Corporate Carbon Advisory &mdash; corporatecarbon.com.au &mdash; 1300 227 206</p>
         </div>
     </footer>
 
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
