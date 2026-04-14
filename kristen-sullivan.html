@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kristen Sullivan — Funnel Breakdown</title>
+    <style>
+    html, body, .body-wrapper, .hl_page-preview--content,
+    #preview-container, .hl-page-builder, #section-0,
+    .section_wrapper, .inner-section, .container-fluid,
+    .row-bg-color, .row, .section-bg {
+        background-color: #0e0e12 !important;
+        background: #0e0e12 !important;
+    }
+    body { margin: 0 !important; padding: 0 !important; min-height: 100vh; }
+    </style>
+</head>
+<body>
+<div style="background-color: #0e0e12; min-height: 100vh; width: 100%; margin: 0; padding: 0;">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+        --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28;
+        --border: #2a2a36; --accent: #d4959b; --accent-light: #e8b4b8;
+        --accent-glow: rgba(212, 149, 155, 0.15); --white: #f0eff4;
+        --text: #c5c4ce; --text-muted: #7e7d8a;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    .topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+    .topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+    .topbar-for { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+    .hero { padding: 80px 0 48px; text-align: center; }
+    .hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+    .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+    .hero h1 em { color: var(--accent-light); font-style: italic; }
+    .hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+    .video-section { padding: 0 0 64px; }
+    .video-wrapper { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,0.4); }
+    .video-placeholder { width: 100%; padding-top: 56.25%; position: relative; background: var(--surface-light); }
+    .video-placeholder-inner { position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+    .play-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--accent-glow); border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center; }
+    .play-icon svg { width: 22px; height: 22px; fill: var(--accent-light); margin-left: 3px; }
+    .placeholder-text { font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+    .video-caption { text-align: center; margin-top: 16px; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+    .context { padding: 64px 0; border-top: 1px solid var(--border); }
+    .context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+    .context p:last-child { margin-bottom: 0; }
+    .highlight-name { color: var(--accent-light); font-weight: 600; }
+    .section { padding: 64px 0; border-top: 1px solid var(--border); }
+    .section-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+    .card-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+    .card:hover { border-color: var(--accent); }
+    .card-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+    .card-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+    .pain-grid { display: flex; flex-direction: column; gap: 20px; }
+    .pain-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+    .pain-card:hover { border-color: var(--accent); }
+    .pain-problem { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px; line-height: 1.6; }
+    .pain-solution { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+    .pain-arrow { color: var(--accent); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; margin-bottom: 6px; margin-top: 14px; }
+    .testimonials { display: flex; flex-direction: column; gap: 20px; }
+    .testimonial { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+    .testimonial-quote { font-size: 1rem; color: var(--text); line-height: 1.8; margin-bottom: 16px; font-style: italic; }
+    .testimonial-author { font-size: 0.8rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+    .testimonial-note { font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; }
+    .faq-list { display: flex; flex-direction: column; gap: 16px; }
+    .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+    .faq-q { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 12px; }
+    .faq-a { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+    .cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+    .cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+    .cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+    .cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+    .cta-note { margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); }
+    .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+    .footer p { font-size: 0.75rem; color: var(--text-muted); }
+    @media (max-width: 600px) { .hero { padding: 56px 0 36px; } .card { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+</style>
+
+<div class="topbar">
+    <div class="container topbar-inner">
+        <span class="topbar-label">Complete Funnel Breakdown Below</span>
+        <span class="topbar-for">For Kristen Sullivan</span>
+    </div>
+</div>
+
+<section class="hero">
+    <div class="container">
+        <p class="hero-eyebrow">Built for Kristen's 110K Community</p>
+        <h1>Kristen, here's how we'd turn your <em>Passive Income Mom Blueprint</em> into a self-running enrollment machine</h1>
+        <p class="hero-sub">A short walkthrough showing exactly what your funnel would look like — built around your affordable fashion, easy meals, and passive income content for the moms who are ready to build something of their own.</p>
+    </div>
+</section>
+
+<section class="video-section">
+    <div class="container">
+        <div class="video-wrapper">
+            <div class="video-placeholder">
+                <div class="video-placeholder-inner">
+                    <div class="play-icon">
+                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <span class="placeholder-text">Video walkthrough — add your VSL here</span>
+                </div>
+            </div>
+        </div>
+        <p class="video-caption">3-minute walkthrough — recorded for you</p>
+    </div>
+</section>
+
+<section class="context">
+    <div class="container">
+        <p><span class="highlight-name">Kristen</span>, you've built a 110K following of moms who trust your taste — in fashion, in food, and in how to actually make money while managing a household. That last part is where your biggest opportunity lives.</p>
+        <p>The moms in your audience are watching your passive income content specifically because they want what you have. Not just the outfits. Not just the $12 Amazon finds. The income stream that doesn't require clocking out at 5pm. They're watching because they're looking for proof it's possible — and you're that proof.</p>
+        <p>What we build is the system that moves those women from "watching her passive income content" to "enrolled in the Blueprint" — automatically, without you having to be in launch mode every month. The walkthrough above shows exactly how that works for your business.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">What this funnel does for your business</h2>
+        <ul class="card-list">
+            <li class="card">
+                <p class="card-label">Capture</p>
+                <p class="card-text">Converts your most income-curious followers into leads through a free resource that speaks directly to the mom who's been saving your passive income posts for months and finally wants to do something about it.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Nurture</p>
+                <p class="card-text">An automated sequence that walks moms from "I want passive income" to "I'm enrolling in the Blueprint" — covering what it actually looks like, how it fits into her schedule, and why this is the right time.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Convert</p>
+                <p class="card-text">A frictionless Blueprint enrollment flow that fills your program without you having to personally close every sale through DMs and story polls.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Recover</p>
+                <p class="card-text">Catches the women who were one step from enrolling, got distracted, and brings them back — addressing the specific hesitation that stopped them the first time.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Ascend</p>
+                <p class="card-text">Once someone completes the Blueprint, they're pointed toward deeper support — coaching, community, or advanced resources — so the business relationship doesn't end at the first purchase.</p>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">What moms and online biz owners in your audience are actually dealing with</h2>
+        <div class="pain-grid">
+            <div class="pain-card">
+                <p class="card-label">The problem</p>
+                <p class="pain-problem">She wants to build an income stream but every time she starts researching, it turns into 14 tabs and zero action. Affiliate marketing, digital products, blogging — she doesn't know which one is actually worth starting.</p>
+                <p class="pain-arrow">The fix</p>
+                <p class="pain-solution">The Passive Income Mom Blueprint cuts through the options and shows her exactly what to do first, based on where she is right now — not a generic roadmap built for everyone.</p>
+            </div>
+            <div class="pain-card">
+                <p class="card-label">The problem</p>
+                <p class="pain-problem">She's seen the "make money online" content and doesn't trust most of it. Too many people claiming passive income while clearly working 60-hour weeks. She doesn't know who's actually legit.</p>
+                <p class="pain-arrow">The fix</p>
+                <p class="pain-solution">Kristen has built credibility across fashion, meals, and income — she's not a one-trick business guru. The funnel positions that breadth as proof of sustainability, not just income claims.</p>
+            </div>
+            <div class="pain-card">
+                <p class="card-label">The problem</p>
+                <p class="pain-problem">She's a mom. Her time is accounted for from 6am to 10pm. The idea of building a business sounds great in theory but she genuinely doesn't know how to fit it in without something else falling apart.</p>
+                <p class="pain-arrow">The fix</p>
+                <p class="pain-solution">The Blueprint is designed for the mom schedule specifically — short blocks, realistic pacing, no "wake up at 5am and hustle" energy.</p>
+            </div>
+            <div class="pain-card">
+                <p class="card-label">The problem</p>
+                <p class="pain-problem">She bought a course before. It was overwhelming, she got behind, and she never finished it. She's hesitant to invest again in something she might not complete.</p>
+                <p class="pain-arrow">The fix</p>
+                <p class="pain-solution">The funnel addresses this hesitation directly — the Blueprint is built for completion, not just purchase. And that difference shows up in how it's structured and paced.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">What moms in your community are saying</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p class="testimonial-quote">"I had been following Kristen for almost a year before I finally bought the Blueprint. I wish I'd done it months earlier. The clarity it gave me was worth ten times what I paid."</p>
+                <p class="testimonial-author">— Allison R.</p>
+                <p class="testimonial-note">Placeholder — replace with real testimonial</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-quote">"I made my first affiliate commission two weeks after starting the Blueprint. It was $34. I cried. That was the proof I needed that this actually works."</p>
+                <p class="testimonial-author">— Chelsea M.</p>
+                <p class="testimonial-note">Placeholder — replace with real testimonial</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-quote">"Kristen doesn't make it sound easy — she makes it sound doable. That's the difference. I've tried other programs that oversell it. This one actually prepares you for the work."</p>
+                <p class="testimonial-author">— Heather J.</p>
+                <p class="testimonial-note">Placeholder — replace with real testimonial</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">Common questions</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <p class="faq-q">What kind of passive income does the Blueprint cover?</p>
+                <p class="faq-a">The Blueprint covers the income streams Kristen has actually built — affiliate marketing, digital products, and leveraging content you're already creating. Not every passive income model on the internet, just the ones that actually work for moms.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">Do I need a large following to start?</p>
+                <p class="faq-a">No. The Blueprint is designed for moms at the beginning stages, not people who already have 100K followers. You don't need a huge platform to make this work — you just need to start.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">How much time per week does it require?</p>
+                <p class="faq-a">It's designed for real mom schedules. A few focused hours a week to start — not 30 hours of content creation per week. The whole point is building something that eventually runs without you in it constantly.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">How soon can I expect results?</p>
+                <p class="faq-a">Results vary, but the Blueprint focuses on getting your first wins early — small proof points that keep you going. Most women see their first income within 30–60 days when they actually work through it.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">Is this for moms with no business background?</p>
+                <p class="faq-a">Yes. Kristen's audience isn't a room full of entrepreneurs with MBA degrees. The Blueprint is built for women starting from scratch, explained in plain language, with no assumed prior knowledge.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <h2 class="cta-heading">Want to talk through it?</h2>
+        <p class="cta-sub">If what you saw in the walkthrough makes sense for where your business is headed, let's get 15 minutes on the calendar.</p>
+        <a href="https://calendly.com/jackdunn0987/30min" class="cta-button">Book Now</a>
+        <p class="cta-note">No commitment. Just a conversation about what's possible.</p>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>Built by J&amp;G Operations for Kristen Sullivan. Ready to deploy.</p>
+    </div>
+</footer>
+</div>
+</body>
+</html>

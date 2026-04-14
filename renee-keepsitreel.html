@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renee (keepsitreel) — Sideline Club</title>
+    <style>
+/* GHL Background Override */
+html, body, .body-wrapper, .hl_page-preview--content,
+#preview-container, .hl-page-builder, #section-0,
+.section_wrapper, .inner-section, .container-fluid,
+.row-bg-color, .row, .section-bg {
+    background-color: #0e0e12 !important;
+    background: #0e0e12 !important;
+}
+body { margin: 0 !important; padding: 0 !important; min-height: 100vh; }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28; --border: #2a2a36; --accent: #d4959b; --accent-light: #e8b4b8; --accent-glow: rgba(212, 149, 155, 0.15); --white: #f0eff4; --text: #c5c4ce; --text-muted: #7e7d8a; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+        .topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+        .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+        .topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+        .topbar-for { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+        .hero { padding: 80px 0 48px; text-align: center; }
+        .hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+        .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+        .hero h1 em { color: var(--accent-light); font-style: italic; }
+        .hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto 36px; line-height: 1.8; }
+        .cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+        .cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+        .video-section { padding: 0 0 64px; }
+        .video-wrapper { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,0.4); }
+        .video-placeholder { width: 100%; aspect-ratio: 16/9; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--surface); color: var(--text-muted); font-size: 0.9rem; gap: 12px; }
+        .video-placeholder-icon { width: 56px; height: 56px; border-radius: 50%; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
+        .video-caption { text-align: center; margin-top: 16px; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+        .context { padding: 64px 0; border-top: 1px solid var(--border); }
+        .context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+        .context p:last-child { margin-bottom: 0; }
+        .highlight-name { color: var(--accent-light); font-weight: 600; }
+        .bullets { padding: 64px 0; border-top: 1px solid var(--border); }
+        .bullets-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+        .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+        .bullet-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+        .bullet-item:hover { border-color: var(--accent); }
+        .bullet-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+        .bullet-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+        .pain-section { padding: 64px 0; border-top: 1px solid var(--border); }
+        .pain-grid { display: flex; flex-direction: column; gap: 20px; }
+        .pain-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+        .pain-problem { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
+        .pain-title { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 10px; }
+        .pain-fix { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 6px; font-weight: 600; }
+        .pain-solution { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+        .testimonials { padding: 64px 0; border-top: 1px solid var(--border); }
+        .testimonial-grid { display: flex; flex-direction: column; gap: 20px; }
+        .testimonial-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+        .testimonial-quote { font-size: 1rem; color: var(--text); line-height: 1.8; margin-bottom: 16px; font-style: italic; }
+        .testimonial-author { font-size: 0.8rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .testimonial-note { font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; }
+        .faq { padding: 64px 0; border-top: 1px solid var(--border); }
+        .faq-list { display: flex; flex-direction: column; gap: 16px; }
+        .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+        .faq-q { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 12px; }
+        .faq-a { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+        .cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+        .cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+        .cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+        .cta-note { margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); }
+        .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+        .footer p { font-size: 0.75rem; color: var(--text-muted); }
+        @media (max-width: 600px) { .hero { padding: 56px 0 36px; } .bullet-item { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+    </style>
+</head>
+<body>
+<div style="background-color: #0e0e12; min-height: 100vh; width: 100%; margin: 0; padding: 0;">
+
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-label">For Sports Moms &amp; Gen X</span>
+            <span class="topbar-for">Renee (keepsitreel) — Sideline Club</span>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <p class="hero-eyebrow">For the Moms Running the Whole Show from the Sideline</p>
+            <h1>You're not just a sports mom. You're the <em>team behind the team</em> — and you deserve a community that gets that.</h1>
+            <p class="hero-sub">Early morning practices, weekend tournaments three states away, coordinating schedules while somehow keeping a household running — and doing it all with a sense of humor because if you don't laugh you'll cry. Renee has 43,000 followers because she tells the truth about this life. The Sideline Club is where you belong.</p>
+            <a href="#cta" class="cta-button">Join the Sideline Club</a>
+        </div>
+    </section>
+
+    <section class="video-section">
+        <div class="container">
+            <div class="video-wrapper">
+                <div class="video-placeholder">
+                    <div class="video-placeholder-icon">▶</div>
+                    <span>Video walkthrough — add your VSL here</span>
+                </div>
+            </div>
+            <p class="video-caption">From Renee — watch before you sign up</p>
+        </div>
+    </section>
+
+    <section class="context">
+        <div class="container">
+            <p><span class="highlight-name">Renee (keepsitreel)</span> has been telling the unfiltered truth about sports mom life to 43,000 people — the logistical chaos, the emotional investment, the referee arguments you regret immediately, and the deep pride of watching your kid do something they love. Her Gen X humor and no-drama honesty turned her into a voice that sports moms trust.</p>
+            <p>The Sideline Club is the community version of that. Not a parenting advice group, not a how-to resource — a place for women who are neck-deep in youth sports culture and want to be around other people who get the specific kind of tired, proud, and occasionally unhinged that comes with it.</p>
+            <p>If your weekend schedule is dictated by tournament brackets and you've eaten more concession stand hot dogs than you'd like to admit — this is your community.</p>
+        </div>
+    </section>
+
+    <section class="bullets">
+        <div class="container">
+            <h2 class="bullets-heading">What the Sideline Club includes</h2>
+            <ul class="bullet-list">
+                <li class="bullet-item">
+                    <p class="bullet-label">The Community</p>
+                    <p class="bullet-text">A private space full of sports moms who understand the specific brand of chaos your life runs on — where venting, laughing, and sharing wins all happen in the same thread.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Survival Guides</p>
+                    <p class="bullet-text">Practical content from Renee on navigating the real stuff — travel tournaments, coach politics, keeping your sanity mid-season, and not losing yourself in the process.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">The Humor Feed</p>
+                    <p class="bullet-text">Content that actually makes you laugh about the parts of sports mom life that are objectively absurd — because some days that's what you need most.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Live Sessions with Renee</p>
+                    <p class="bullet-text">Regular hangouts where Renee keeps it real with the community — no agenda, no polish, just honest conversation about the life you're all living.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Gen X Mom Network</p>
+                    <p class="bullet-text">Connection with women your age who share your cultural references, your tolerance for nonsense, and your love/hate relationship with youth sports scheduling.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="pain-section">
+        <div class="container">
+            <h2 class="bullets-heading">The parts they don't put on the recruitment flyer</h2>
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">You're surrounded by sports parents but somehow still feel completely alone in it.</p>
+                    <p class="pain-fix">The Fix</p>
+                    <p class="pain-solution">The Sideline Club is built on the specific experience of women who are all-in for their kids and need a space that holds space for them too — not just the kids.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">The sideline drama, the parent politics, the coaches you can't stand — you have nowhere to put any of it.</p>
+                    <p class="pain-fix">The Fix</p>
+                    <p class="pain-solution">This community exists for exactly that conversation. You can be honest here without worrying it gets back to anyone in the car pool.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">You gave up so much of your own identity to support your kid's schedule — and nobody notices.</p>
+                    <p class="pain-fix">The Fix</p>
+                    <p class="pain-solution">Renee sees it. The community sees it. The Sideline Club is a place that acknowledges everything you're carrying — not just the gear bag.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">Most "mom community" content is soft and sanitized. You need someone who keeps it real.</p>
+                    <p class="pain-fix">The Fix</p>
+                    <p class="pain-solution">Renee built her whole following on honesty and humor. The Sideline Club matches that energy. No toxic positivity, no pretending the 6am drive to tryouts was fine.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="bullets-heading">What members are saying</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"I've been following Renee for two years but the community is what I didn't know I needed. These women understand my life in a way my non-sports-mom friends just can't."</p>
+                    <p class="testimonial-author">— Tanya R., volleyball mom</p>
+                    <p class="testimonial-note">Placeholder — real testimonial to be added</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"I joined during the worst travel tournament week of my life. Within 20 minutes of posting I had 15 women who completely understood. That's the whole value right there."</p>
+                    <p class="testimonial-author">— Carla M., baseball and soccer mom</p>
+                    <p class="testimonial-note">Placeholder — real testimonial to be added</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Renee's live sessions are the most honest conversations I've had about parenting in years. She just says the thing that everyone is thinking."</p>
+                    <p class="testimonial-author">— Dana H., basketball mom</p>
+                    <p class="testimonial-note">Placeholder — real testimonial to be added</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <h2 class="bullets-heading">Common questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <p class="faq-q">What sport does this focus on?</p>
+                    <p class="faq-a">All of them. The specific sport matters less than the experience — the travel, the scheduling madness, the emotional investment, the sideline politics. If that's your life, this community is for you.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">Is this just a Facebook group?</p>
+                    <p class="faq-a">No. The community platform is intentional, Renee is active in it, and the content and tone are curated to match what you actually want — not a feed full of fundraiser announcements and drama.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">My kids are getting older and almost done with youth sports. Is this still relevant?</p>
+                    <p class="faq-a">Absolutely. A lot of the community conversations are about this exact transition — what happens to your identity, your schedule, and your sense of purpose when the youth sports chapter closes.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">Do I need to be Gen X to join?</p>
+                    <p class="faq-a">No. If you follow Renee's content and it hits you right, you're the right fit regardless of birth year.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">How active is Renee in the community?</p>
+                    <p class="faq-a">Very. The whole point is that Renee is in here — not just lending her name to a community that runs itself. She shows up, she's real, and the energy matches what you already love about her content.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="cta">
+        <div class="container">
+            <h2 class="cta-heading">Find your people on the sideline.</h2>
+            <p class="cta-sub">You've been cheering everyone else on for years. Time to be in a community that shows up for you.</p>
+            <a href="https://calendly.com/jackdunn0987/30min" class="cta-button">Book Your Free Strategy Call</a>
+            <p class="cta-note">15 minutes to see if this is the right fit.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Built by J&amp;G Operations for Renee (keepsitreel). Ready to deploy.</p>
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>

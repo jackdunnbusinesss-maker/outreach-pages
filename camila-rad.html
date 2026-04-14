@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camila Rad — Recovery Reset Program</title>
+    <style>
+/* GHL Background Override */
+html, body, .body-wrapper, .hl_page-preview--content,
+#preview-container, .hl-page-builder, #section-0,
+.section_wrapper, .inner-section, .container-fluid,
+.row-bg-color, .row, .section-bg {
+    background-color: #0e0e12 !important;
+    background: #0e0e12 !important;
+}
+body { margin: 0 !important; padding: 0 !important; min-height: 100vh; }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28; --border: #2a2a36; --accent: #d4959b; --accent-light: #e8b4b8; --accent-glow: rgba(212, 149, 155, 0.15); --white: #f0eff4; --text: #c5c4ce; --text-muted: #7e7d8a; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apache-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+        .topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+        .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+        .topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+        .topbar-for { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+        .hero { padding: 80px 0 48px; text-align: center; }
+        .hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+        .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+        .hero h1 em { color: var(--accent-light); font-style: italic; }
+        .hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto 36px; line-height: 1.8; }
+        .cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+        .cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+        .video-section { padding: 0 0 64px; }
+        .video-wrapper { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,0.4); }
+        .video-placeholder { width: 100%; aspect-ratio: 16/9; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--surface); color: var(--text-muted); font-size: 0.9rem; gap: 12px; }
+        .video-placeholder-icon { width: 56px; height: 56px; border-radius: 50%; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
+        .video-caption { text-align: center; margin-top: 16px; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+        .context { padding: 64px 0; border-top: 1px solid var(--border); }
+        .context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+        .context p:last-child { margin-bottom: 0; }
+        .highlight-name { color: var(--accent-light); font-weight: 600; }
+        .bullets { padding: 64px 0; border-top: 1px solid var(--border); }
+        .bullets-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+        .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+        .bullet-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+        .bullet-item:hover { border-color: var(--accent); }
+        .bullet-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+        .bullet-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+        .pain-section { padding: 64px 0; border-top: 1px solid var(--border); }
+        .pain-grid { display: flex; flex-direction: column; gap: 20px; }
+        .pain-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+        .pain-problem { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
+        .pain-title { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 10px; }
+        .pain-fix { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 6px; font-weight: 600; }
+        .pain-solution { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+        .testimonials { padding: 64px 0; border-top: 1px solid var(--border); }
+        .testimonial-grid { display: flex; flex-direction: column; gap: 20px; }
+        .testimonial-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+        .testimonial-quote { font-size: 1rem; color: var(--text); line-height: 1.8; margin-bottom: 16px; font-style: italic; }
+        .testimonial-author { font-size: 0.8rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .testimonial-note { font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; }
+        .faq { padding: 64px 0; border-top: 1px solid var(--border); }
+        .faq-list { display: flex; flex-direction: column; gap: 16px; }
+        .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+        .faq-q { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 12px; }
+        .faq-a { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+        .cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+        .cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+        .cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+        .cta-note { margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); }
+        .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+        .footer p { font-size: 0.75rem; color: var(--text-muted); }
+        @media (max-width: 600px) { .hero { padding: 56px 0 36px; } .bullet-item { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+    </style>
+</head>
+<body>
+<div style="background-color: #0e0e12; min-height: 100vh; width: 100%; margin: 0; padding: 0;">
+
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-label">For Fitness Enthusiasts &amp; Gym Goers</span>
+            <span class="topbar-for">Camila Rad — Recovery Reset Program</span>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <p class="hero-eyebrow">The Training Part Is Not Your Problem. The Recovery Part Might Be.</p>
+            <h1>You're working hard in the gym. If you're not getting results, <em>what happens outside of it is why</em>.</h1>
+            <p class="hero-sub">Most gym goers have the training side figured out. The sleep, the stress, the nutrition timing, the mental health impact on physical performance — that's where most people are losing progress they don't even know they're losing. Camila Rad has 144,000 followers because she covers all of it honestly.</p>
+            <a href="#cta" class="cta-button">Get Started Now</a>
+        </div>
+    </section>
+
+    <section class="video-section">
+        <div class="container">
+            <div class="video-wrapper">
+                <div class="video-placeholder">
+                    <div class="video-placeholder-icon">▶</div>
+                    <span>Video walkthrough — add your VSL here</span>
+                </div>
+            </div>
+            <p class="video-caption">From Camila — watch before your next gym session</p>
+        </div>
+    </section>
+
+    <section class="context">
+        <div class="container">
+            <p><span class="highlight-name">Camila Rad</span> built an audience of 144,000 fitness enthusiasts and gym goers by covering what most fitness accounts skip: the recovery and mental health side of training. The fact that chronic stress tanks your strength gains. The relationship between sleep quality and body composition. The psychological patterns that lead to overtraining, injury, and eventually quitting.</p>
+            <p>She covers weight training seriously and covers mental health seriously — and the intersection is where most people's training stalls without them understanding why. Her content is honest about the cost of ignoring recovery, and her audience trusts her because she doesn't oversimplify it.</p>
+            <p>The Recovery Reset is the structured program: everything you need to build a recovery practice that actually supports your training — sleep, stress management, nutrition timing, and the mental side — so the work you're putting in at the gym actually shows up in results.</p>
+        </div>
+    </section>
+
+    <section class="bullets">
+        <div class="container">
+            <h2 class="bullets-heading">What's inside the Recovery Reset program</h2>
+            <ul class="bullet-list">
+                <li class="bullet-item">
+                    <p class="bullet-label">Sleep Optimization</p>
+                    <p class="bullet-text">The direct link between sleep quality and training adaptation — and the specific practices that move the needle, not just "get eight hours" as a general recommendation.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Stress &amp; Cortisol Management</p>
+                    <p class="bullet-text">How chronic stress directly impacts body composition and performance — and practical protocols for managing it in a way that doesn't require quitting your life to do.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Nutrition for Recovery</p>
+                    <p class="bullet-text">Not another macro calculator. The specific nutritional factors around training that affect recovery — timing, intake composition, and what most gym goers are systematically under-eating.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Mental Health + Training</p>
+                    <p class="bullet-text">The psychological patterns that show up in training — overtraining as avoidance, all-or-nothing thinking, the identity piece when you miss workouts — and how to build a relationship with the gym that's actually sustainable.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Active Recovery Protocol</p>
+                    <p class="bullet-text">What to do on rest days that actively supports your training rather than just waiting to go back — mobility, breath work, and low-intensity practices that accelerate adaptation.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="pain-section">
+        <div class="container">
+            <h2 class="bullets-heading">Why you're working hard and not seeing the results you should</h2>
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">You're training consistently but your progress has stalled and you don't know why.</p>
+                    <p class="pain-fix">The Fix</p>
+                    <p class="pain-solution">The Recovery Reset starts with an audit of what's happening outside the gym — sleep, stress, nutrition timing — because that's usually where the ceiling is. Your training isn't the problem.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">You're always tired, always a little sore, and it's affecting your motivation to even show up.</p>
+                    <p class="pain-fix">The Fix</p>
+                    <p class="pain-solution">Chronic fatigue in training is almost always a recovery deficit. The program addresses the specific inputs — sleep architecture, nutrition, stress load — that are keeping your system in a constant recovery hole.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">You have a complicated relationship with the gym — you love it and also use it to punish yourself.</p>
+                    <p class="pain-fix">The Fix</p>
+                    <p class="pain-solution">Camila's mental health module addresses this directly and honestly. The psychological side of training is real and it affects your results. Building a sustainable relationship with the gym is part of the program.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">You push through rest days because stopping feels like losing ground.</p>
+                    <p class="pain-fix">The Fix</p>
+                    <p class="pain-solution">The active recovery protocol reframes rest days as training sessions in a different mode — so you're still working toward your goals on off days, just in a way that actually supports adaptation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="bullets-heading">What students are saying</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"I'd been lifting for four years and hit a wall I couldn't explain. Three weeks into the Recovery Reset I was sleeping better, less inflamed, and my lifts started moving again. The training hadn't changed — the recovery had."</p>
+                    <p class="testimonial-author">— Priya L., gym goer</p>
+                    <p class="testimonial-note">Placeholder — real testimonial to be added</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"The mental health module was harder than the physical stuff and also more valuable. I didn't realize how much anxiety I was carrying into my training until Camila laid it out."</p>
+                    <p class="testimonial-author">— Sofia G., fitness enthusiast</p>
+                    <p class="testimonial-note">Placeholder — real testimonial to be added</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"I used to feel guilty on rest days. The active recovery protocol gave me something structured to do — and for the first time I'm actually recovering instead of just waiting to train."</p>
+                    <p class="testimonial-author">— Elena P.</p>
+                    <p class="testimonial-note">Placeholder — real testimonial to be added</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <h2 class="bullets-heading">Common questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <p class="faq-q">Is this for beginners or experienced lifters?</p>
+                    <p class="faq-a">Both. Beginners benefit from building recovery habits from the start. Experienced lifters benefit because recovery is usually the most neglected part of a serious training routine — it becomes more important, not less, as your training intensity increases.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">Does this replace my training program?</p>
+                    <p class="faq-a">No. The Recovery Reset runs alongside whatever you're already doing in the gym. You bring your training — this program handles everything that supports and amplifies it.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">Is this mostly about sleep or does it cover everything?</p>
+                    <p class="faq-a">Sleep is one of five major modules. The program covers sleep, stress, nutrition for recovery, mental health, and active recovery protocols — all of which interact and all of which matter.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">I have a busy schedule. How demanding is this program?</p>
+                    <p class="faq-a">The point of the program is sustainability. It's not designed to add a second full-time job to your life — it's designed to integrate into your existing routine in a way that gradually shifts your baseline recovery quality.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">Is the mental health content clinical or conversational?</p>
+                    <p class="faq-a">Conversational. Camila isn't a therapist and the program isn't a clinical intervention — it's practical guidance for understanding how psychological patterns affect physical performance, delivered the way she delivers everything: honestly and without judgment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="cta">
+        <div class="container">
+            <h2 class="cta-heading">Train hard. Recover harder.</h2>
+            <p class="cta-sub">You've been putting the work in at the gym. Make sure the 20 hours between sessions aren't undoing it. That's what the Recovery Reset is for.</p>
+            <a href="https://calendly.com/jackdunn0987/30min" class="cta-button">Book Your Free Strategy Call</a>
+            <p class="cta-note">No commitment. 15 minutes to see if this is the right fit.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Built by J&amp;G Operations for Camila Rad. Ready to deploy.</p>
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>

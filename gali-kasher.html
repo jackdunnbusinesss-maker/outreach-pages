@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sales Training for Agency Owners & Sales Pros | Gali Kasher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+    --bg: #0e0e12;
+    --surface: #16161d;
+    --surface-light: #1e1e28;
+    --border: #2a2a36;
+    --accent: #d4959b;
+    --accent-light: #e8b4b8;
+    --accent-glow: rgba(212, 149, 155, 0.15);
+    --white: #f0eff4;
+    --text: #c5c4ce;
+    --text-muted: #7e7d8a;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+.container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+.topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+.topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+.topbar-for { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+.hero { padding: 80px 0 48px; text-align: center; }
+.hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+.hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+.hero h1 em { color: var(--accent-light); font-style: italic; }
+.hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+.hero-cta { margin-top: 36px; }
+.video-section { padding: 0 0 64px; }
+.video-wrapper { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,0.4); }
+.video-placeholder { width: 100%; padding-top: 56.25%; position: relative; background: var(--surface-light); display: flex; align-items: center; justify-content: center; }
+.video-placeholder-inner { position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+.play-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--accent-glow); border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center; }
+.play-icon svg { fill: var(--accent-light); margin-left: 4px; }
+.video-placeholder-text { font-size: 0.85rem; color: var(--text-muted); letter-spacing: 0.5px; }
+.video-caption { text-align: center; margin-top: 16px; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+.context { padding: 64px 0; border-top: 1px solid var(--border); }
+.context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+.context p:last-child { margin-bottom: 0; }
+.highlight-name { color: var(--accent-light); font-weight: 600; }
+.section { padding: 64px 0; border-top: 1px solid var(--border); }
+.section-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+.card-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+.card:hover { border-color: var(--accent); }
+.card-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+.card-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+.pain-grid { display: flex; flex-direction: column; gap: 20px; }
+.pain-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+.pain-card:hover { border-color: var(--accent); }
+.pain-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
+.pain-problem { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 10px; }
+.pain-solution { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+.testimonials { display: flex; flex-direction: column; gap: 20px; }
+.testimonial { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+.testimonial-quote { font-size: 1rem; color: var(--text); line-height: 1.8; font-style: italic; margin-bottom: 16px; }
+.testimonial-author { font-size: 0.8rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+.testimonial-note { font-size: 0.72rem; color: var(--text-muted); margin-top: 4px; }
+.faq { display: flex; flex-direction: column; gap: 16px; }
+.faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 24px 28px; }
+.faq-q { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 10px; }
+.faq-a { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+.cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+.cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+.cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+.cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+.cta-note { margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); }
+.footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+.footer p { font-size: 0.75rem; color: var(--text-muted); }
+@media (max-width: 600px) {
+    .hero { padding: 56px 0 36px; }
+    .card { padding: 22px 20px; }
+    .cta-section { padding: 56px 0; }
+}
+</style>
+</head>
+<body>
+<div style="background-color: #0e0e12; min-height: 100vh; width: 100%;">
+
+<!-- Top Bar -->
+<div class="topbar">
+    <div class="container topbar-inner">
+        <span class="topbar-label">Sales Training Program</span>
+        <span class="topbar-for">For Agency Owners &amp; Sales Professionals</span>
+    </div>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="container">
+        <p class="hero-eyebrow">Gali Kasher — 537K Followers</p>
+        <h1>You're closing deals, but you're leaving <em>serious money</em> on the table every single month</h1>
+        <p class="hero-sub">Sales pros and agency owners who never got formal training are losing prospects they should be closing. Gali Kasher built a step-by-step sales system that's already changed how thousands of people sell — and it works even if you hate the idea of being "salesy."</p>
+        <div class="hero-cta">
+            <a href="#cta" class="cta-button">Get Started Now</a>
+        </div>
+    </div>
+</section>
+
+<!-- Video -->
+<section class="video-section">
+    <div class="container">
+        <div class="video-wrapper">
+            <div class="video-placeholder">
+                <div class="video-placeholder-inner">
+                    <div class="play-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <p class="video-placeholder-text">Video coming soon — Gali's message for you</p>
+                </div>
+            </div>
+        </div>
+        <p class="video-caption">Watch before you scroll — this changes how you think about selling</p>
+    </div>
+</section>
+
+<!-- Context / Authority -->
+<section class="context">
+    <div class="container">
+        <p><span class="highlight-name">Gali Kasher</span> has spent years in the trenches of sales and entrepreneurship — building an audience of over 537,000 people who follow her because she talks about money, selling, and agency growth in a way that actually makes sense.</p>
+        <p>Most people in sales learned by watching someone else do it badly. They picked up bad habits — pressure tactics, awkward closes, talking too much and listening too little. The result: you win some, you lose most, and you never really know why.</p>
+        <p>Gali's training cuts through that. She teaches insurance agents, agency owners, and sales professionals a system that's built on psychology, not pressure. The kind of selling that feels good to do and gets consistent results.</p>
+    </div>
+</section>
+
+<!-- Offer Breakdown -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">What you get inside the program</h2>
+        <ul class="card-list">
+            <li class="card">
+                <p class="card-label">Module 01</p>
+                <p class="card-text">The Psychology of Buying — understand why people say yes or no before you ever make your pitch. Stop guessing, start reading the room.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Module 02</p>
+                <p class="card-text">Discovery That Actually Works — ask the questions that reveal real objections early, so you're solving problems instead of overcoming resistance at the end.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Module 03</p>
+                <p class="card-text">The Close Without the Cringe — specific language and frameworks for asking for the sale in a way that feels natural and converts at a higher rate.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Module 04</p>
+                <p class="card-text">Objection Handling Playbook — word-for-word responses to the 12 most common objections agency owners and sales pros face, including price, "I need to think about it," and "I'll talk to my partner."</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Community</p>
+                <p class="card-text">Access to a private group of working sales pros and agency owners who share wins, help each other through tough deals, and hold each other accountable to their numbers.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Live Coaching</p>
+                <p class="card-text">Monthly group coaching calls with Gali where you can bring real deals, real objections, and real situations for live feedback.</p>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<!-- Pain Points + Solutions -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">Sound familiar?</h2>
+        <div class="pain-grid">
+            <div class="pain-card">
+                <p class="pain-label">The Problem</p>
+                <p class="pain-problem">You get to the end of the call and they say "I'll think about it" — every time</p>
+                <p class="pain-solution">That objection means you missed something earlier in the conversation. The Discovery module shows you exactly what to ask upfront so "I'll think about it" stops happening.</p>
+            </div>
+            <div class="pain-card">
+                <p class="pain-label">The Problem</p>
+                <p class="pain-problem">You feel pushy asking for the sale and end up softening your close so much they don't actually commit</p>
+                <p class="pain-solution">Asking for the sale the wrong way feels gross. The Close Without the Cringe gives you natural language that moves the deal forward without the awkward pressure-sales energy.</p>
+            </div>
+            <div class="pain-card">
+                <p class="pain-label">The Problem</p>
+                <p class="pain-problem">Price objections shut you down and you either discount or lose the deal</p>
+                <p class="pain-solution">Price objections are almost never about price. The Objection Handling Playbook reframes value in the moment and gives you the exact words to hold your number confidently.</p>
+            </div>
+            <div class="pain-card">
+                <p class="pain-label">The Problem</p>
+                <p class="pain-problem">You're inconsistent — great months followed by dry spells — and can't figure out why</p>
+                <p class="pain-solution">Inconsistency comes from not having a repeatable system. The program builds a process you run every time, so your numbers stop depending on whether you had a good day.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">What people are saying</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p class="testimonial-quote">"I went from closing maybe 20% of my calls to consistently hitting 40%+ inside of 6 weeks. The discovery framework alone was worth every penny. I stopped chasing and started converting."</p>
+                <p class="testimonial-author">Agency Owner, Insurance Vertical</p>
+                <p class="testimonial-note">Placeholder — real testimonials to be added</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-quote">"I've done other sales training. Most of it felt like memorizing scripts. Gali's approach actually taught me how to think through a sale. Big difference. My first month after finishing the program was my best ever."</p>
+                <p class="testimonial-author">Sales Professional, B2B Services</p>
+                <p class="testimonial-note">Placeholder — real testimonials to be added</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-quote">"The objection handling playbook is something I go back to constantly. It's not theory — it's real language I use in real calls. My team uses it too now."</p>
+                <p class="testimonial-author">Agency Founder, Marketing Services</p>
+                <p class="testimonial-note">Placeholder — real testimonials to be added</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">Questions people ask before joining</h2>
+        <div class="faq">
+            <div class="faq-item">
+                <p class="faq-q">Is this for people who are new to sales or experienced?</p>
+                <p class="faq-a">Both. Beginners get the foundation they never had. Experienced salespeople often find the biggest wins — they've been doing things almost-right for years and small fixes create major results fast.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">Does this work for insurance specifically?</p>
+                <p class="faq-a">Yes. The frameworks apply across industries, but Gali has deep roots in insurance and the program includes examples and scenarios specific to that space.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">How long does the program take?</p>
+                <p class="faq-a">Most people work through the core modules in 2-3 weeks at their own pace. The community and coaching calls continue after that, so the support doesn't stop when the modules end.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">What if I've tried sales training before and it didn't work?</p>
+                <p class="faq-a">Most sales training teaches scripts and tactics. This program teaches you how to think about selling. The difference is that one works only when conditions are perfect. The other works every time.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">What's the investment?</p>
+                <p class="faq-a">Pricing is covered when you get started. The focus is making sure it's the right fit first — reach out and we'll walk you through the details.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Final CTA -->
+<section class="cta-section" id="cta">
+    <div class="container">
+        <h2 class="cta-heading">Ready to close more consistently?</h2>
+        <p class="cta-sub">If you're done guessing your way through sales calls and want a system that actually works, this is the next step.</p>
+        <a href="#" class="cta-button">Get Started Now</a>
+        <p class="cta-note">No pressure. Just results.</p>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <p>Built by J&amp;G Operations for Gali Kasher. Ready to deploy.</p>
+    </div>
+</footer>
+
+</div>
+</body>
+</html>

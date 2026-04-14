@@ -1,0 +1,238 @@
+<style>
+/* GHL Background Override */
+html, body, .body-wrapper, .hl_page-preview--content,
+#preview-container, .hl-page-builder, #section-0,
+.section_wrapper, .inner-section, .container-fluid,
+.row-bg-color, .row, .section-bg {
+    background-color: #0e0e12 !important;
+    background: #0e0e12 !important;
+}
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 100vh;
+}
+</style>
+<div style="background-color: #0e0e12; min-height: 100vh; width: 100%; margin: 0; padding: 0;">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28; --border: #2a2a36;
+            --accent: #d4959b; --accent-light: #e8b4b8; --accent-glow: rgba(212, 149, 155, 0.15);
+            --white: #f0eff4; --text: #c5c4ce; --text-muted: #7e7d8a;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+        .topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+        .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+        .topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+        .topbar-for { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+        .hero { padding: 80px 0 48px; text-align: center; }
+        .hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+        .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+        .hero h1 em { color: var(--accent-light); font-style: italic; }
+        .hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+        .video-section { padding: 0 0 64px; }
+        .video-wrapper { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,0.4); }
+        .video-placeholder { width: 100%; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; background: var(--surface); color: var(--text-muted); font-size: 0.9rem; letter-spacing: 0.5px; }
+        .video-caption { text-align: center; margin-top: 16px; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+        .context { padding: 64px 0; border-top: 1px solid var(--border); }
+        .context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+        .context p:last-child { margin-bottom: 0; }
+        .highlight-name { color: var(--accent-light); font-weight: 600; }
+        .bullets { padding: 64px 0; border-top: 1px solid var(--border); }
+        .bullets-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+        .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+        .bullet-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+        .bullet-item:hover { border-color: var(--accent); }
+        .bullet-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+        .bullet-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+        .pain-section { padding: 64px 0; border-top: 1px solid var(--border); }
+        .section-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+        .pain-grid { display: flex; flex-direction: column; gap: 20px; }
+        .pain-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+        .pain-problem { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
+        .pain-title { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 10px; }
+        .pain-solution { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+        .pain-solution strong { color: var(--accent-light); font-weight: 600; }
+        .testimonials { padding: 64px 0; border-top: 1px solid var(--border); }
+        .testimonial-grid { display: flex; flex-direction: column; gap: 20px; }
+        .testimonial-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+        .testimonial-quote { font-size: 1rem; color: var(--text); line-height: 1.8; margin-bottom: 16px; font-style: italic; }
+        .testimonial-author { font-size: 0.78rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .testimonial-placeholder { font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; }
+        .faq { padding: 64px 0; border-top: 1px solid var(--border); }
+        .faq-list { display: flex; flex-direction: column; gap: 16px; }
+        .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 24px 28px; }
+        .faq-q { font-size: 0.95rem; color: var(--white); font-weight: 600; margin-bottom: 10px; }
+        .faq-a { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+        .cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+        .cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+        .cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+        .cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+        .cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+        .cta-note { margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); }
+        .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+        .footer p { font-size: 0.75rem; color: var(--text-muted); }
+        @media (max-width: 600px) { .hero { padding: 56px 0 36px; } .bullet-item { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+    </style>
+
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-label">For Moms, Home Cooks & Fitness Enthusiasts</span>
+            <span class="topbar-for">Happy Healthy Household</span>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <p class="hero-eyebrow">For the Mom Who's Done Choosing Between Healthy and Easy</p>
+            <h1>Your family can eat well, stay active, and <em>actually enjoy it</em> — without it all falling on you.</h1>
+            <p class="hero-sub">Hailey Peters built a system that keeps her household running on real food, real fitness, and real sanity. Now she's opening it up so yours can too.</p>
+        </div>
+    </section>
+
+    <section class="video-section">
+        <div class="container">
+            <div class="video-wrapper">
+                <div class="video-placeholder">[ Your video goes here ]</div>
+            </div>
+            <p class="video-caption">Watch before you keep scrolling</p>
+        </div>
+    </section>
+
+    <section class="context">
+        <div class="container">
+            <p><span class="highlight-name">Hailey Peters</span> has built a 355K-strong community of moms, home cooks, and fitness-minded women who are tired of the gap between "wanting a healthy family" and actually making it happen on a Tuesday night with a pile of laundry and a picky five-year-old.</p>
+            <p>She's not a wellness guru selling you a $300 supplement stack. She's a mom showing what actually works — the meal plans that get made, the workouts that get done, the habits that stick when life doesn't slow down.</p>
+            <p>The <span class="highlight-name">Happy Healthy Household</span> membership is where she puts all of it together for you — a complete support system for the household that wants to feel good without making health a second job.</p>
+        </div>
+    </section>
+
+    <section class="bullets">
+        <div class="container">
+            <h2 class="bullets-heading">What you get inside the membership</h2>
+            <ul class="bullet-list">
+                <li class="bullet-item">
+                    <p class="bullet-label">Weekly Meal Plans</p>
+                    <p class="bullet-text">Family-friendly recipes that don't require a culinary degree or two hours on a weeknight. Real food, real portions, real families.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Fitness for Moms</p>
+                    <p class="bullet-text">Workouts you can do at home, in 20–30 minutes, designed for the body and schedule of a mom — not a 22-year-old with a gym membership and no kids.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Grocery Systems</p>
+                    <p class="bullet-text">How to shop, prep, and stock your kitchen so you always have what you need — and stop throwing out half the fridge every Sunday.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Community Support</p>
+                    <p class="bullet-text">A group of women in exactly the same season of life, sharing what's working, cheering each other on, and keeping the momentum going week to week.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Live Monthly Calls</p>
+                    <p class="bullet-text">Get your questions answered, stay accountable, and stay connected to Hailey directly — not just her curated highlight reel.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="pain-section">
+        <div class="container">
+            <h2 class="section-heading">The things nobody talks about</h2>
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">Healthy eating falls apart by Wednesday</p>
+                    <p class="pain-solution">You meal prep Sunday, burn out by mid-week, and order pizza Thursday. <strong>The weekly meal plan system</strong> is designed to stay realistic when real life kicks in.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">Exercise keeps getting bumped to tomorrow</p>
+                    <p class="pain-solution">Between school runs, work, and dinner, there's no hour left for a real workout. <strong>The mom-specific fitness tracks</strong> work in the windows you actually have.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">Your family doesn't eat what you make them</p>
+                    <p class="pain-solution">You try to cook healthy and get complaints. <strong>Hailey's family-tested recipes</strong> are crowd-pleasers even with picky eaters at the table.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">You're doing this alone and it's exhausting</p>
+                    <p class="pain-solution">No accountability, no community, no one else who gets it. <strong>The Happy Healthy Household community</strong> is full of women who understand your exact situation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-heading">From women inside the membership</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"I've tried every meal plan app out there. Nothing stuck until this. The fact that it's built around a real family makes it feel possible instead of just aspirational."</p>
+                    <p class="testimonial-author">Mom of Three, Ohio</p>
+                    <p class="testimonial-placeholder">[Placeholder — real testimonial to be added]</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"The workouts fit into my morning before the kids wake up. I haven't skipped in six weeks. That's a record for me."</p>
+                    <p class="testimonial-author">Working Mom, Texas</p>
+                    <p class="testimonial-placeholder">[Placeholder — real testimonial to be added]</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"The community alone is worth it. I had no idea how much I needed to talk to women who are in the same boat and not pretending everything is fine."</p>
+                    <p class="testimonial-author">Mom of Two, Georgia</p>
+                    <p class="testimonial-placeholder">[Placeholder — real testimonial to be added]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-heading">Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <p class="faq-q">How much time does this actually take?</p>
+                    <p class="faq-a">The meal plans are designed for real weeknight cooking — most recipes take 30 minutes or less. Workouts run 20–30 minutes. The system is built around a busy schedule, not a hypothetical one.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">Is this just for stay-at-home moms?</p>
+                    <p class="faq-a">Not at all. Most members work full or part-time. The whole framework is built around fitting into the hours you have, not the hours you wish you had.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">What if I'm a beginner with fitness?</p>
+                    <p class="faq-a">You're in good company. The fitness tracks inside range from complete beginner to more advanced. You start where you are and build from there.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">Will my family actually eat this food?</p>
+                    <p class="faq-a">The recipes are tested on real families — including picky kids. There are modifications for common preferences and dislikes, so you're not cooking two separate meals.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">How do I join?</p>
+                    <p class="faq-a">Click the button below and you'll get instant access to everything — meal plans, workouts, community, and the monthly calls — starting today.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-heading">Your household can run differently. This is how.</h2>
+            <p class="cta-sub">Join the Happy Healthy Household membership and get the meal plans, workouts, and community that actually fit a mom's life.</p>
+            <a href="#" class="cta-button">Get Started Now</a>
+            <p class="cta-note">Cancel anytime. Start seeing the difference this week.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Built by J&G Operations for Hailey Peters. Ready to deploy.</p>
+        </div>
+    </footer>
+
+</div>

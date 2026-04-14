@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coastie PCS Playbook + Coastie Circle | Natalie (OurCoastieLife)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+    --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28; --border: #2a2a36;
+    --accent: #d4959b; --accent-light: #e8b4b8; --accent-glow: rgba(212,149,155,0.15);
+    --white: #f0eff4; --text: #c5c4ce; --text-muted: #7e7d8a;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+.container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+.topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+.topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+.topbar-for { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+.hero { padding: 80px 0 48px; text-align: center; }
+.hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+.hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+.hero h1 em { color: var(--accent-light); font-style: italic; }
+.hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+.hero-cta { margin-top: 36px; }
+.video-section { padding: 0 0 64px; }
+.video-wrapper { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,0.4); }
+.video-placeholder { width: 100%; padding-top: 56.25%; position: relative; background: var(--surface-light); }
+.video-placeholder-inner { position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+.play-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--accent-glow); border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center; }
+.play-icon svg { fill: var(--accent-light); margin-left: 4px; }
+.video-placeholder-text { font-size: 0.85rem; color: var(--text-muted); letter-spacing: 0.5px; }
+.video-caption { text-align: center; margin-top: 16px; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+.context { padding: 64px 0; border-top: 1px solid var(--border); }
+.context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+.context p:last-child { margin-bottom: 0; }
+.highlight-name { color: var(--accent-light); font-weight: 600; }
+.section { padding: 64px 0; border-top: 1px solid var(--border); }
+.section-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+.card-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+.card:hover { border-color: var(--accent); }
+.card-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+.card-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+.pain-grid { display: flex; flex-direction: column; gap: 20px; }
+.pain-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+.pain-card:hover { border-color: var(--accent); }
+.pain-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
+.pain-problem { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 10px; }
+.pain-solution { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+.testimonials { display: flex; flex-direction: column; gap: 20px; }
+.testimonial { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+.testimonial-quote { font-size: 1rem; color: var(--text); line-height: 1.8; font-style: italic; margin-bottom: 16px; }
+.testimonial-author { font-size: 0.8rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+.testimonial-note { font-size: 0.72rem; color: var(--text-muted); margin-top: 4px; }
+.faq { display: flex; flex-direction: column; gap: 16px; }
+.faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 24px 28px; }
+.faq-q { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 10px; }
+.faq-a { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+.cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+.cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+.cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+.cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+.cta-note { margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); }
+.footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+.footer p { font-size: 0.75rem; color: var(--text-muted); }
+@media (max-width: 600px) { .hero { padding: 56px 0 36px; } .card { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+</style>
+</head>
+<body>
+<div style="background-color: #0e0e12; min-height: 100vh; width: 100%;">
+
+<div class="topbar">
+    <div class="container topbar-inner">
+        <span class="topbar-label">Military Life &amp; PCS Support</span>
+        <span class="topbar-for">For Moms &amp; Military Spouses</span>
+    </div>
+</div>
+
+<section class="hero">
+    <div class="container">
+        <p class="hero-eyebrow">Natalie — OurCoastieLife — 28K Followers</p>
+        <h1>Another PCS is coming and you're doing it all while he's underway <em>and nobody warned you it would be this hard</em></h1>
+        <p class="hero-sub">The boxes, the school enrollment, the new town where you know nobody, the home décor you're buying for a base house you didn't choose. Natalie has been through it. The Coastie PCS Playbook is what she wishes she'd had — and the Coastie Circle is the community she built so you don't have to do it alone.</p>
+        <div class="hero-cta">
+            <a href="#cta" class="cta-button">Get Started Now</a>
+        </div>
+    </div>
+</section>
+
+<section class="video-section">
+    <div class="container">
+        <div class="video-wrapper">
+            <div class="video-placeholder">
+                <div class="video-placeholder-inner">
+                    <div class="play-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <p class="video-placeholder-text">Natalie's message for you — watch this first</p>
+                </div>
+            </div>
+        </div>
+        <p class="video-caption">From Natalie — covers both the Playbook and the Circle</p>
+    </div>
+</section>
+
+<section class="context">
+    <div class="container">
+        <p><span class="highlight-name">Natalie</span> (OurCoastieLife) built a community of 28,000 military moms and Coast Guard spouses who follow her because she tells the truth about this life. The chaos of a PCS. The loneliness of a new duty station. The pride, the sacrifice, and the moments you want to document because someday you'll want to remember them.</p>
+        <p>She's put that experience into two things: the Coastie PCS Playbook — a practical guide to surviving and settling in after a move — and the Coastie Circle, a private community where military moms show up for each other between the moves, the deployments, and the everything in between.</p>
+        <p>This is for women who are navigating military life with kids and doing most of it without a partner physically present. Natalie knows what that looks like. She's built the resource she needed.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">What you get</h2>
+        <ul class="card-list">
+            <li class="card">
+                <p class="card-label">PCS Playbook — Pre-Move</p>
+                <p class="card-text">The complete checklist and timeline for a Coast Guard move — what to do 90 days out, 30 days out, and the week of. No more discovering on moving day that you forgot to forward your mail or cancel the gym membership.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">PCS Playbook — Settling In</p>
+                <p class="card-text">How to get the kids adjusted to a new school, find community quickly in a new duty station, and make a base house feel like home without spending a fortune — including Natalie's exact approach to home décor on a military budget.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Solo Parenting Section</p>
+                <p class="card-text">The specific guidance for handling a move, school enrollment, or a full-on settling-in process while your spouse is underway. Because "ask your husband" isn't an option right now.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">The Coastie Circle</p>
+                <p class="card-text">A private community exclusively for military moms and CG spouses. Ask about your new duty station. Find people who understand what you're going through. Get honest answers from women who've already been where you're going.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Monthly Live Check-Ins</p>
+                <p class="card-text">Regular group calls with Natalie inside the Circle — to talk through what's hard, celebrate what's working, and keep the community connected across duty stations and time zones.</p>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">What military life actually feels like</h2>
+        <div class="pain-grid">
+            <div class="pain-card">
+                <p class="pain-label">The Reality</p>
+                <p class="pain-problem">You're managing a full household move solo while your kids are stressed and your spouse is unavailable</p>
+                <p class="pain-solution">The Solo Parenting section of the Playbook covers exactly this — how to break the process into manageable steps and what to do when the expected support just isn't there.</p>
+            </div>
+            <div class="pain-card">
+                <p class="pain-label">The Reality</p>
+                <p class="pain-problem">You arrive at a new duty station and have to start from zero — no friends, no routine, no sense of where anything is</p>
+                <p class="pain-solution">The Settling In section and the Coastie Circle work together. The Playbook gives you a framework. The community gives you people at the new station who already know the area and want to help.</p>
+            </div>
+            <div class="pain-card">
+                <p class="pain-label">The Reality</p>
+                <p class="pain-problem">Most military spouse content online doesn't understand the Coast Guard specifically — different culture, different challenges, different resources</p>
+                <p class="pain-solution">Natalie's entire platform is Coast Guard specific. The Playbook and the Circle are built around the CG experience, not Army or Navy templates that don't quite fit.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">From other Coastie wives and military moms</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p class="testimonial-quote">"Our third PCS and I finally felt prepared. The pre-move checklist alone saved me so much stress. I knew what was coming and when. My kids had a better transition than they ever had before."</p>
+                <p class="testimonial-author">Coast Guard Wife, Mom of Two</p>
+                <p class="testimonial-note">Placeholder — real testimonials to be added</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-quote">"The Coastie Circle is the first online community I've stayed in. It's full of women who actually get it. I've gotten more useful advice from this group than from any Facebook group I've ever been in."</p>
+                <p class="testimonial-author">Military Spouse, New Duty Station</p>
+                <p class="testimonial-note">Placeholder — real testimonials to be added</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">Questions before joining</h2>
+        <div class="faq">
+            <div class="faq-item">
+                <p class="faq-q">Is this only for Coast Guard or other branches too?</p>
+                <p class="faq-a">Natalie's content is Coast Guard-specific, but many military moms from other branches have found the Playbook and Circle useful. The core challenges of military moves and solo parenting are universal.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">We don't have a PCS coming up yet. Is this still worth joining?</p>
+                <p class="faq-a">Yes. Most members join the Circle for the community support year-round, not just during a move. The Playbook is there when you need it — some people read it early so they're never caught off guard.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">Is the Circle active or one of those communities where nothing happens?</p>
+                <p class="faq-a">Natalie is in it regularly, and so are the members. The monthly live calls keep it active. It's not a Facebook group that shows up in your feed once and then disappears.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">What's the cost?</p>
+                <p class="faq-a">Covered when you get started. The focus is making sure it's the right fit — reach out and Natalie will walk you through the details.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section" id="cta">
+    <div class="container">
+        <h2 class="cta-heading">You shouldn't have to figure this out alone</h2>
+        <p class="cta-sub">The Coastie PCS Playbook and Coastie Circle exist so you have a guide and a community for every stage of this life.</p>
+        <a href="#" class="cta-button">Get Started Now</a>
+        <p class="cta-note">Built by a Coastie wife. For Coastie wives.</p>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>Built by J&amp;G Operations for Natalie (OurCoastieLife). Ready to deploy.</p>
+    </div>
+</footer>
+
+</div>
+</body>
+</html>

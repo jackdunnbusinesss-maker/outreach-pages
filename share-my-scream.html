@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share My Scream — Funnel Breakdown</title>
+    <style>
+    html, body, .body-wrapper, .hl_page-preview--content,
+    #preview-container, .hl-page-builder, #section-0,
+    .section_wrapper, .inner-section, .container-fluid,
+    .row-bg-color, .row, .section-bg {
+        background-color: #0e0e12 !important;
+        background: #0e0e12 !important;
+    }
+    body { margin: 0 !important; padding: 0 !important; min-height: 100vh; }
+    </style>
+</head>
+<body>
+<div style="background-color: #0e0e12; min-height: 100vh; width: 100%; margin: 0; padding: 0;">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+        --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28;
+        --border: #2a2a36; --accent: #d4959b; --accent-light: #e8b4b8;
+        --accent-glow: rgba(212, 149, 155, 0.15); --white: #f0eff4;
+        --text: #c5c4ce; --text-muted: #7e7d8a;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    .topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+    .topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+    .topbar-for { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+    .hero { padding: 80px 0 48px; text-align: center; }
+    .hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+    .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+    .hero h1 em { color: var(--accent-light); font-style: italic; }
+    .hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+    .video-section { padding: 0 0 64px; }
+    .video-wrapper { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,0.4); }
+    .video-placeholder { width: 100%; padding-top: 56.25%; position: relative; background: var(--surface-light); }
+    .video-placeholder-inner { position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+    .play-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--accent-glow); border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center; }
+    .play-icon svg { width: 22px; height: 22px; fill: var(--accent-light); margin-left: 3px; }
+    .placeholder-text { font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+    .video-caption { text-align: center; margin-top: 16px; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+    .context { padding: 64px 0; border-top: 1px solid var(--border); }
+    .context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+    .context p:last-child { margin-bottom: 0; }
+    .highlight-name { color: var(--accent-light); font-weight: 600; }
+    .section { padding: 64px 0; border-top: 1px solid var(--border); }
+    .section-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+    .card-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+    .card:hover { border-color: var(--accent); }
+    .card-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+    .card-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+    .pain-grid { display: flex; flex-direction: column; gap: 20px; }
+    .pain-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+    .pain-card:hover { border-color: var(--accent); }
+    .pain-problem { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px; line-height: 1.6; }
+    .pain-solution { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+    .pain-arrow { color: var(--accent); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; margin-bottom: 6px; margin-top: 14px; }
+    .testimonials { display: flex; flex-direction: column; gap: 20px; }
+    .testimonial { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+    .testimonial-quote { font-size: 1rem; color: var(--text); line-height: 1.8; margin-bottom: 16px; font-style: italic; }
+    .testimonial-author { font-size: 0.8rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+    .testimonial-note { font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; }
+    .faq-list { display: flex; flex-direction: column; gap: 16px; }
+    .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+    .faq-q { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 12px; }
+    .faq-a { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+    .cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+    .cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+    .cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+    .cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+    .cta-note { margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); }
+    .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+    .footer p { font-size: 0.75rem; color: var(--text-muted); }
+    @media (max-width: 600px) { .hero { padding: 56px 0 36px; } .card { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+</style>
+
+<div class="topbar">
+    <div class="container topbar-inner">
+        <span class="topbar-label">Complete Funnel Breakdown Below</span>
+        <span class="topbar-for">For Share My Scream</span>
+    </div>
+</div>
+
+<section class="hero">
+    <div class="container">
+        <p class="hero-eyebrow">Built for Share My Scream's 55K Community</p>
+        <h1>Here's how we'd turn the <em>Meme Page Blueprint</em> into a self-running income stream for corporate creators</h1>
+        <p class="hero-sub">A short walkthrough showing exactly what your funnel would look like — built around your work humor and corporate meme content, designed for the office workers and side-hustle-curious followers who want to do what you've done, faceless.</p>
+    </div>
+</section>
+
+<section class="video-section">
+    <div class="container">
+        <div class="video-wrapper">
+            <div class="video-placeholder">
+                <div class="video-placeholder-inner">
+                    <div class="play-icon">
+                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <span class="placeholder-text">Video walkthrough — add your VSL here</span>
+                </div>
+            </div>
+        </div>
+        <p class="video-caption">3-minute walkthrough — recorded for you</p>
+    </div>
+</section>
+
+<section class="context">
+    <div class="container">
+        <p><span class="highlight-name">Share My Scream</span> has built a 55K following of office workers and corporate survivors — the people who screenshot your memes from the bathroom stall at work because they can't laugh at their desk without explaining it to their manager.</p>
+        <p>That's a loyal, specific, highly shareable audience. And they follow you because you say the things they think but can't post themselves. What's interesting is how many of them want to build what you've built — a faceless page with real reach and real income, without putting their name or face on it.</p>
+        <p>What we build is the system that takes that interest and converts it into consistent enrollments in the <span class="highlight-name">Meme Page Blueprint</span> — automatically, so you're not just making memes for engagement, you're monetizing the trust you've already earned.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">What this funnel does for your business</h2>
+        <ul class="card-list">
+            <li class="card">
+                <p class="card-label">Capture</p>
+                <p class="card-text">Converts your most side-hustle-curious followers into leads through a free resource — something that speaks directly to the corporate worker who's saved your memes, tagged their coworkers, and quietly wondered "could I do this?"</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Nurture</p>
+                <p class="card-text">An automated sequence that walks people from "I love this page" to "I want to build one of my own" — written in the same dry, corporate-aware voice your audience already trusts.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Convert</p>
+                <p class="card-text">A clean Blueprint enrollment flow that signs people up for the course without you having to sell it manually in every post or story.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Recover</p>
+                <p class="card-text">Catches the people who clicked through during their lunch break, got pulled into a meeting, and forgot to come back — and re-engages them before that window closes.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Ascend</p>
+                <p class="card-text">After the Blueprint, moves buyers toward deeper support — whether that's a community, 1:1 strategy, or a next-level offer for people who want to scale their page to real income.</p>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">What office workers and aspiring creators in your audience are actually dealing with</h2>
+        <div class="pain-grid">
+            <div class="pain-card">
+                <p class="card-label">The problem</p>
+                <p class="pain-problem">He wants a side income but has no interest in being a "content creator" — he doesn't want his face on the internet, doesn't want to make personal vlogs, and definitely doesn't want his coworkers to find his account.</p>
+                <p class="pain-arrow">The fix</p>
+                <p class="pain-solution">The Meme Page Blueprint is built specifically for faceless creators. No personal branding required. No showing up. Just the system behind a page that people actually follow and share.</p>
+            </div>
+            <div class="pain-card">
+                <p class="card-label">The problem</p>
+                <p class="pain-problem">She sees creators making money from content and assumes it requires either a massive following, a specific niche she doesn't have, or some inside knowledge she's never had access to.</p>
+                <p class="pain-arrow">The fix</p>
+                <p class="pain-solution">Share My Scream is proof that a focused, funny, faceless page can build a real following from scratch. The Blueprint is the behind-the-scenes version of how that actually happened.</p>
+            </div>
+            <div class="pain-card">
+                <p class="card-label">The problem</p>
+                <p class="pain-problem">He's stuck in a job he doesn't hate but doesn't love. The idea of building something on the side that could eventually give him options is appealing — but he doesn't know where to start or if it's even realistic.</p>
+                <p class="pain-arrow">The fix</p>
+                <p class="pain-solution">The funnel meets him where he is — not selling a dream, selling a system that's been done by someone who started from the same place.</p>
+            </div>
+            <div class="pain-card">
+                <p class="card-label">The problem</p>
+                <p class="pain-problem">She's tried starting a page before. Posted a few memes, got 12 followers, gave up. She doesn't know what makes some pages pop and others flatline.</p>
+                <p class="pain-arrow">The fix</p>
+                <p class="pain-solution">The Blueprint covers what actually drives growth on a faceless page — the content strategy, posting cadence, and niche selection that separates pages that grow from pages that don't.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">What people in your community are saying</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p class="testimonial-quote">"I started my corporate meme page two months ago using this Blueprint. 4,200 followers and my first brand deal inquiry came in last week. I still can't believe it."</p>
+                <p class="testimonial-author">— Anonymous (keeping it faceless)</p>
+                <p class="testimonial-note">Placeholder — replace with real testimonial</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-quote">"I've worked in corporate for 11 years. Finding Share My Scream felt like someone finally said what I was thinking. The Blueprint is how I turned that into something real."</p>
+                <p class="testimonial-author">— Office worker, Midwest</p>
+                <p class="testimonial-note">Placeholder — replace with real testimonial</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-quote">"The niche selection section alone was worth the price. I'd been posting into the void for months. Two weeks after following the Blueprint, I hit 1K. Completely different result."</p>
+                <p class="testimonial-author">— Creator, Finance niche</p>
+                <p class="testimonial-note">Placeholder — replace with real testimonial</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">Common questions</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <p class="faq-q">Do I need to be funny to run a meme page?</p>
+                <p class="faq-a">You need to understand what's funny to your specific audience. The Blueprint covers how to find that — it's about curation and audience understanding as much as original humor.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">Does the Blueprint cover a specific platform?</p>
+                <p class="faq-a">It covers where work humor and corporate content actually performs — Instagram and TikTok primarily — with platform-specific strategy for each.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">How does a faceless page make money?</p>
+                <p class="faq-a">Brand deals, affiliate partnerships, digital products, and creator fund revenue. The Blueprint covers each revenue stream and when to pursue which one based on your page size.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">How much time does running a meme page take?</p>
+                <p class="faq-a">That's the point — it's designed to run on 30–60 minutes a day once you have your process. The Blueprint covers how to build that process so it doesn't eat your evenings.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">Can I do this while working full-time?</p>
+                <p class="faq-a">That's exactly who this is for. The Blueprint is built around the corporate worker's schedule — not someone who already has 4 free hours a day to dedicate to content.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <h2 class="cta-heading">Want to talk through it?</h2>
+        <p class="cta-sub">If what you saw in the walkthrough makes sense for where your business is headed, let's get 15 minutes on the calendar.</p>
+        <a href="https://calendly.com/jackdunn0987/30min" class="cta-button">Book Now</a>
+        <p class="cta-note">No commitment. Just a conversation about what's possible.</p>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>Built by J&amp;G Operations for Share My Scream. Ready to deploy.</p>
+    </div>
+</footer>
+</div>
+</body>
+</html>

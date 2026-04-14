@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patty Serrato — Beauty + Fitness Community</title>
+    <style>
+/* GHL Background Override */
+html, body, .body-wrapper, .hl_page-preview--content,
+#preview-container, .hl-page-builder, #section-0,
+.section_wrapper, .inner-section, .container-fluid,
+.row-bg-color, .row, .section-bg {
+    background-color: #0e0e12 !important;
+    background: #0e0e12 !important;
+}
+body { margin: 0 !important; padding: 0 !important; min-height: 100vh; }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28; --border: #2a2a36; --accent: #d4959b; --accent-light: #e8b4b8; --accent-glow: rgba(212, 149, 155, 0.15); --white: #f0eff4; --text: #c5c4ce; --text-muted: #7e7d8a; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+        .topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+        .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+        .topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+        .topbar-for { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+        .hero { padding: 80px 0 48px; text-align: center; }
+        .hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+        .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+        .hero h1 em { color: var(--accent-light); font-style: italic; }
+        .hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto 36px; line-height: 1.8; }
+        .cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+        .cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+        .video-section { padding: 0 0 64px; }
+        .video-wrapper { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,0.4); }
+        .video-placeholder { width: 100%; aspect-ratio: 16/9; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--surface); color: var(--text-muted); font-size: 0.9rem; gap: 12px; }
+        .video-placeholder-icon { width: 56px; height: 56px; border-radius: 50%; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
+        .video-caption { text-align: center; margin-top: 16px; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+        .context { padding: 64px 0; border-top: 1px solid var(--border); }
+        .context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+        .context p:last-child { margin-bottom: 0; }
+        .highlight-name { color: var(--accent-light); font-weight: 600; }
+        .bullets { padding: 64px 0; border-top: 1px solid var(--border); }
+        .bullets-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+        .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+        .bullet-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+        .bullet-item:hover { border-color: var(--accent); }
+        .bullet-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+        .bullet-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+        .pain-section { padding: 64px 0; border-top: 1px solid var(--border); }
+        .pain-grid { display: flex; flex-direction: column; gap: 20px; }
+        .pain-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+        .pain-problem { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
+        .pain-title { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 10px; }
+        .pain-fix { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 6px; font-weight: 600; }
+        .pain-solution { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+        .testimonials { padding: 64px 0; border-top: 1px solid var(--border); }
+        .testimonial-grid { display: flex; flex-direction: column; gap: 20px; }
+        .testimonial-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+        .testimonial-quote { font-size: 1rem; color: var(--text); line-height: 1.8; margin-bottom: 16px; font-style: italic; }
+        .testimonial-author { font-size: 0.8rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .testimonial-note { font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; }
+        .faq { padding: 64px 0; border-top: 1px solid var(--border); }
+        .faq-list { display: flex; flex-direction: column; gap: 16px; }
+        .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+        .faq-q { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 12px; }
+        .faq-a { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+        .cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+        .cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+        .cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+        .cta-note { margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); }
+        .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+        .footer p { font-size: 0.75rem; color: var(--text-muted); }
+        @media (max-width: 600px) { .hero { padding: 56px 0 36px; } .bullet-item { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+    </style>
+</head>
+<body>
+<div style="background-color: #0e0e12; min-height: 100vh; width: 100%; margin: 0; padding: 0;">
+
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-label">For MUAs &amp; Gym Goers</span>
+            <span class="topbar-for">Patty Serrato — Beauty + Fitness Community</span>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <p class="hero-eyebrow">Makeup Artist. Lifter. Both. No Compromise.</p>
+            <h1>You don't have to pick between being good at your craft and <em>being serious about the gym</em>. Patty does both — and she'll show you how.</h1>
+            <p class="hero-sub">Most beauty spaces ignore the gym entirely. Most fitness spaces ignore beauty. Patty Serrato has 118,000 followers because she lives in both worlds and refuses to apologize for it — and the community she built is full of women who feel exactly the same way.</p>
+            <a href="#cta" class="cta-button">Join the Community</a>
+        </div>
+    </section>
+
+    <section class="video-section">
+        <div class="container">
+            <div class="video-wrapper">
+                <div class="video-placeholder">
+                    <div class="video-placeholder-icon">▶</div>
+                    <span>Video walkthrough — add your VSL here</span>
+                </div>
+            </div>
+            <p class="video-caption">From Patty — watch this first</p>
+        </div>
+    </section>
+
+    <section class="context">
+        <div class="container">
+            <p><span class="highlight-name">Patty Serrato</span> has spent years building an audience of 118,000 makeup artists and gym goers who share one thing in common: they refuse to be one-dimensional. MUAs who take their physique seriously. Gym goers who take their artistry seriously. Women who decided that doing it all isn't a contradiction — it's just who they are.</p>
+            <p>Patty's content covers both worlds with equal depth — makeup application, product knowledge, and technique on one side; training, nutrition, and physical discipline on the other. Her audience follows because she's the proof that both are possible at the highest level.</p>
+            <p>The community she built is where those two worlds overlap — a space for the women who are tired of fitting into one lane and want to be around others building the same kind of full, unapologetic life.</p>
+        </div>
+    </section>
+
+    <section class="bullets">
+        <div class="container">
+            <h2 class="bullets-heading">What the Beauty + Fitness Community includes</h2>
+            <ul class="bullet-list">
+                <li class="bullet-item">
+                    <p class="bullet-label">MUA Education Content</p>
+                    <p class="bullet-text">Techniques, product deep-dives, and application knowledge from Patty — built for working makeup artists and enthusiasts who want to sharpen their craft, not just collect tutorials.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Training + Nutrition Guidance</p>
+                    <p class="bullet-text">Patty's approach to the gym — programming principles, nutrition basics, and the mindset behind building a physique you're proud of without it becoming your whole personality.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Community Space</p>
+                    <p class="bullet-text">Access to a group of women doing exactly what you're doing — blending beauty and fitness in a way that most communities don't make space for.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Live Access to Patty</p>
+                    <p class="bullet-text">Regular sessions where Patty shows up in person — Q&amp;As, technique walkthroughs, training check-ins — so the community stays active and connected to the source.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Business of Beauty Module</p>
+                    <p class="bullet-text">For working MUAs — how to build clientele, price your services, and structure your work so the artistry stays sustainable long-term.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="pain-section">
+        <div class="container">
+            <h2 class="bullets-heading">What gets in the way</h2>
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">Beauty communities don't take fitness seriously. Fitness communities don't understand beauty. You fit in neither.</p>
+                    <p class="pain-fix">The Fix</p>
+                    <p class="pain-solution">Patty built this community specifically for women who occupy both spaces. You won't have to justify either part of yourself here.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">Your MUA career is consuming all your time and your fitness has fallen off.</p>
+                    <p class="pain-fix">The Fix</p>
+                    <p class="pain-solution">Patty's training approach is built around a real life — not a competitive athlete's schedule. You'll get a framework that actually fits between bookings and client days.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">You're inconsistent with training because the motivation only lasts a few weeks.</p>
+                    <p class="pain-fix">The Fix</p>
+                    <p class="pain-solution">Community accountability is different from solo motivation. When you're in a group of women training toward the same goals, showing up becomes a lot easier to maintain.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">You're not sure how to grow your MUA business past word-of-mouth.</p>
+                    <p class="pain-fix">The Fix</p>
+                    <p class="pain-solution">The business of beauty module covers the practical side — client acquisition, pricing, and building a book that doesn't rely on whoever you ran into last week.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="bullets-heading">What members are saying</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"I've been an MUA for four years and never had a space that also cared about my fitness goals. Patty's community is the first one where I don't feel like I have to split myself in half."</p>
+                    <p class="testimonial-author">— Valentina R., MUA</p>
+                    <p class="testimonial-note">Placeholder — real testimonial to be added</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"I joined for the beauty content and stayed for everything else. The training guidance is practical and Patty actually shows up. This is not a ghost community."</p>
+                    <p class="testimonial-author">— Brianna S., gym goer and MUA student</p>
+                    <p class="testimonial-note">Placeholder — real testimonial to be added</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"I finally feel like I found my people. Women who lift and do their makeup and aren't apologizing for either. That sounds simple but it's genuinely hard to find."</p>
+                    <p class="testimonial-author">— Marisol C.</p>
+                    <p class="testimonial-note">Placeholder — real testimonial to be added</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <h2 class="bullets-heading">Common questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <p class="faq-q">Do I need to be a professional MUA to join?</p>
+                    <p class="faq-a">No. The community includes working professionals and enthusiasts who are serious about makeup as a craft. Whether you do it for work or just love it, you're welcome here.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">What level of fitness experience do I need?</p>
+                    <p class="faq-a">Any level. The training content is built around principles, not a specific program that requires a gym background. Beginners get the foundation; experienced lifters get depth.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">Is this mostly about the beauty side or the fitness side?</p>
+                    <p class="faq-a">Both. Patty's community reflects who she is — someone who takes both seriously. You'll find content and conversations that go deep on makeup and deep on training equally.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">How active is Patty in the community?</p>
+                    <p class="faq-a">Very active. Regular live sessions, direct interaction in the community, and content built specifically for members. This isn't a passive community with Patty's name on it.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">What makes this different from just following Patty on social media?</p>
+                    <p class="faq-a">The depth of access, the community of like-minded women, the structured content library, and the ability to actually interact — versus consuming posts in a feed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="cta">
+        <div class="container">
+            <h2 class="cta-heading">Both sides. Full life. No apology.</h2>
+            <p class="cta-sub">Stop feeling out of place in communities that only get half of you. Join the one that was built for all of it.</p>
+            <a href="https://calendly.com/jackdunn0987/30min" class="cta-button">Book Your Free Strategy Call</a>
+            <p class="cta-note">15 minutes to see if this is the right fit.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Built by J&amp;G Operations for Patty Serrato. Ready to deploy.</p>
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>

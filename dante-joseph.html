@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dante Joseph — Trading Education</title>
+    <style>
+/* GHL Background Override */
+html, body, .body-wrapper, .hl_page-preview--content,
+#preview-container, .hl-page-builder, #section-0,
+.section_wrapper, .inner-section, .container-fluid,
+.row-bg-color, .row, .section-bg {
+    background-color: #0e0e12 !important;
+    background: #0e0e12 !important;
+}
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 100vh;
+}
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0e0e12;
+            --surface: #16161d;
+            --surface-light: #1e1e28;
+            --border: #2a2a36;
+            --accent: #d4959b;
+            --accent-light: #e8b4b8;
+            --accent-glow: rgba(212, 149, 155, 0.15);
+            --white: #f0eff4;
+            --text: #c5c4ce;
+            --text-muted: #7e7d8a;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .topbar {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+        }
+        .topbar-for {
+            font-size: 0.8rem;
+            color: var(--accent-light);
+            font-weight: 500;
+        }
+
+        .hero {
+            padding: 80px 0 48px;
+            text-align: center;
+        }
+        .hero-eyebrow {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            color: var(--white);
+            line-height: 1.25;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+        .hero h1 em {
+            color: var(--accent-light);
+            font-style: italic;
+        }
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 560px;
+            margin: 0 auto 36px;
+            line-height: 1.8;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .cta-button:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+        }
+
+        .video-section {
+            padding: 0 0 64px;
+        }
+        .video-wrapper {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+        }
+        .video-placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--surface);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            gap: 12px;
+        }
+        .video-placeholder-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+        .video-caption {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        .context {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .context p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+        .context p:last-child { margin-bottom: 0; }
+        .highlight-name {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        .bullets {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .bullets-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.6rem;
+            color: var(--white);
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .bullet-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 32px;
+            transition: border-color 0.3s ease;
+        }
+        .bullet-item:hover { border-color: var(--accent); }
+        .bullet-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .bullet-text {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .pain-section {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .pain-section .bullets-heading { margin-bottom: 40px; }
+        .pain-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .pain-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 32px;
+        }
+        .pain-problem {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        .pain-title {
+            font-size: 1rem;
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .pain-fix {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        .pain-solution {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .testimonials {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .testimonial-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .testimonial-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 32px;
+        }
+        .testimonial-quote {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 16px;
+            font-style: italic;
+        }
+        .testimonial-author {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .testimonial-note {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .faq {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .faq-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 32px;
+        }
+        .faq-q {
+            font-size: 1rem;
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .faq-a {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .cta-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 36px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-note {
+            margin-top: 16px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 600px) {
+            .hero { padding: 56px 0 36px; }
+            .bullet-item { padding: 22px 20px; }
+            .cta-section { padding: 56px 0; }
+        }
+    </style>
+</head>
+<body>
+<div style="background-color: #0e0e12; min-height: 100vh; width: 100%; margin: 0; padding: 0;">
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-label">For Traders &amp; Entrepreneurs</span>
+            <span class="topbar-for">Dante Joseph — Trading Education</span>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <p class="hero-eyebrow">A Real Trading Methodology — Not Another Hype Course</p>
+            <h1>Stop guessing the market. Start trading with a <em>repeatable system</em> that holds up when things get volatile.</h1>
+            <p class="hero-sub">Most traders blow accounts trying strategies they found on YouTube from someone who's never actually traded a live account. Dante Joseph has 60,000 followers because he shows the methodology — not the highlights. This is how you build an edge that lasts.</p>
+            <a href="#cta" class="cta-button">Get Started Now</a>
+        </div>
+    </section>
+
+    <!-- Video -->
+    <section class="video-section">
+        <div class="container">
+            <div class="video-wrapper">
+                <div class="video-placeholder">
+                    <div class="video-placeholder-icon">▶</div>
+                    <span>Video walkthrough — add your VSL here</span>
+                </div>
+            </div>
+            <p class="video-caption">Watch before you do another trade</p>
+        </div>
+    </section>
+
+    <!-- Authority -->
+    <section class="context">
+        <div class="container">
+            <p><span class="highlight-name">Dante Joseph</span> built an audience of 60,000 traders and entrepreneurs by doing the one thing most trading educators won't: showing the methodology in full, not just the wins. When markets move sideways, when volatility spikes, when every indicator is contradicting itself — Dante's students know exactly what to do because they've been taught a framework, not a trick.</p>
+            <p>The trading education space is full of people selling screenshots. Dante built his following by sharing real setups, real reasoning, and real outcomes. That credibility is why traders across every level — from people still in their 9-to-5 looking for a way out, to full-time entrepreneurs wanting to add a second income stream — come back to his content every single day.</p>
+            <p>This program is the structured version of everything he teaches. Not a collection of videos you'll forget in a week — a methodology you'll actually use.</p>
+        </div>
+    </section>
+
+    <!-- Offer Breakdown -->
+    <section class="bullets">
+        <div class="container">
+            <h2 class="bullets-heading">What's inside the trading education program</h2>
+            <ul class="bullet-list">
+                <li class="bullet-item">
+                    <p class="bullet-label">The Core Methodology</p>
+                    <p class="bullet-text">A rules-based framework for reading price action and market structure so you're not trading on gut feeling. Compliance-safe, tested across multiple market conditions.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Entry &amp; Exit System</p>
+                    <p class="bullet-text">Specific criteria for when to get in and when to get out — removing the two biggest emotional decisions from your trading day.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Risk Management Framework</p>
+                    <p class="bullet-text">Position sizing, drawdown limits, and the mindset behind protecting capital first. This is where most traders fail — you won't.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Live Trade Reviews</p>
+                    <p class="bullet-text">Ongoing access to real trade breakdowns where Dante walks through decisions in real-time — so you see the thinking, not just the outcome.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Entrepreneur Mindset Module</p>
+                    <p class="bullet-text">Trading as a business — tracking performance, journaling trades, and building the discipline that separates consistent traders from people who give up after two bad months.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Pain Points + Solutions -->
+    <section class="pain-section">
+        <div class="container">
+            <h2 class="bullets-heading">What's actually keeping you from consistent results</h2>
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">You've tried strategies that worked — until they didn't.</p>
+                    <p class="pain-fix">The Fix</p>
+                    <p class="pain-solution">A methodology-first approach means you understand why a setup works, not just what it looks like. When conditions change, you adapt instead of starting over.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">Emotions are wrecking your trades — you know it, can't stop it.</p>
+                    <p class="pain-fix">The Fix</p>
+                    <p class="pain-solution">Dante's system removes discretion from the highest-pressure moments. When you have clear rules, there's nothing to feel conflicted about.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">You're spending hours in front of charts with nothing to show for it.</p>
+                    <p class="pain-fix">The Fix</p>
+                    <p class="pain-solution">A structured methodology means you know what you're looking for before the market opens. You spend less time watching and more time executing on high-probability setups.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">Most trading content is either too basic or selling you a dream.</p>
+                    <p class="pain-fix">The Fix</p>
+                    <p class="pain-solution">Dante's 60K following wasn't built on highlight reels. He shows the real process — which means what you learn here is actually what works in live markets.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="bullets-heading">What students are saying</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"I've been trading for two years and never had a framework this clear. For the first time I'm not second-guessing every entry. The methodology just makes sense."</p>
+                    <p class="testimonial-author">— Marcus T.</p>
+                    <p class="testimonial-note">Placeholder — real testimonial to be added</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"I came in thinking I knew what I was doing. Three weeks in and I realized I'd been trading noise, not price action. The difference is real."</p>
+                    <p class="testimonial-author">— Jordan K.</p>
+                    <p class="testimonial-note">Placeholder — real testimonial to be added</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"The risk management module alone was worth it. I stopped blowing accounts the month I started applying the position sizing rules."</p>
+                    <p class="testimonial-author">— Adrienne M.</p>
+                    <p class="testimonial-note">Placeholder — real testimonial to be added</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="bullets-heading">Common questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <p class="faq-q">Do I need trading experience to start?</p>
+                    <p class="faq-a">No. The methodology is built to be learned from the ground up. If you have experience, it'll add structure to what you already know. If you're new, you'll skip the expensive trial-and-error phase most traders go through.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">What markets does this work for?</p>
+                    <p class="faq-a">The core methodology applies across equities, futures, and crypto. Dante covers the principles in a way that translates — the rules are based on price action, not a specific ticker.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">Is this a get-rich-quick program?</p>
+                    <p class="faq-a">No. If you're looking for that, this isn't the right fit. This is about building a sustainable edge over time — the kind that holds up across multiple market cycles, not just bull runs.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">How much time does it take per week?</p>
+                    <p class="faq-a">That depends on what you want from it. The methodology is designed to reduce the time you spend watching charts while improving the quality of your setups — not chain you to a screen all day.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">What's the difference between this and following signals?</p>
+                    <p class="faq-a">Signals make you dependent. A methodology makes you independent. Dante teaches you to generate your own setups so you're never relying on someone else's calls to make decisions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-section" id="cta">
+        <div class="container">
+            <h2 class="cta-heading">Ready to trade with an actual system?</h2>
+            <p class="cta-sub">Stop running the same patterns and wondering why the results don't change. Get the methodology, build the edge, and trade like you know what you're doing.</p>
+            <a href="https://calendly.com/jackdunn0987/30min" class="cta-button">Book Your Free Strategy Call</a>
+            <p class="cta-note">No commitment. 15 minutes. Find out if this is the right fit.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Built by J&amp;G Operations for Dante Joseph. Ready to deploy.</p>
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>

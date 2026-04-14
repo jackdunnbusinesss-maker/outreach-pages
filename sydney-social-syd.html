@@ -1,0 +1,234 @@
+<style>
+/* GHL Background Override */
+html, body, .body-wrapper, .hl_page-preview--content,
+#preview-container, .hl-page-builder, #section-0,
+.section_wrapper, .inner-section, .container-fluid,
+.row-bg-color, .row, .section-bg {
+    background-color: #0e0e12 !important;
+    background: #0e0e12 !important;
+}
+body { margin: 0 !important; padding: 0 !important; min-height: 100vh; }
+</style>
+<div style="background-color: #0e0e12; min-height: 100vh; width: 100%; margin: 0; padding: 0;">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28; --border: #2a2a36;
+            --accent: #d4959b; --accent-light: #e8b4b8; --accent-glow: rgba(212, 149, 155, 0.15);
+            --white: #f0eff4; --text: #c5c4ce; --text-muted: #7e7d8a;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+        .topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+        .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+        .topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+        .topbar-for { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+        .hero { padding: 80px 0 48px; text-align: center; }
+        .hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+        .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+        .hero h1 em { color: var(--accent-light); font-style: italic; }
+        .hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+        .video-section { padding: 0 0 64px; }
+        .video-wrapper { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,0.4); }
+        .video-placeholder { width: 100%; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; background: var(--surface); color: var(--text-muted); font-size: 0.9rem; letter-spacing: 0.5px; }
+        .video-caption { text-align: center; margin-top: 16px; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+        .context { padding: 64px 0; border-top: 1px solid var(--border); }
+        .context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+        .context p:last-child { margin-bottom: 0; }
+        .highlight-name { color: var(--accent-light); font-weight: 600; }
+        .bullets { padding: 64px 0; border-top: 1px solid var(--border); }
+        .bullets-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+        .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+        .bullet-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+        .bullet-item:hover { border-color: var(--accent); }
+        .bullet-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+        .bullet-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+        .pain-section { padding: 64px 0; border-top: 1px solid var(--border); }
+        .section-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+        .pain-grid { display: flex; flex-direction: column; gap: 20px; }
+        .pain-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+        .pain-problem { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
+        .pain-title { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 10px; }
+        .pain-solution { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+        .pain-solution strong { color: var(--accent-light); font-weight: 600; }
+        .testimonials { padding: 64px 0; border-top: 1px solid var(--border); }
+        .testimonial-grid { display: flex; flex-direction: column; gap: 20px; }
+        .testimonial-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+        .testimonial-quote { font-size: 1rem; color: var(--text); line-height: 1.8; margin-bottom: 16px; font-style: italic; }
+        .testimonial-author { font-size: 0.78rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .testimonial-placeholder { font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; }
+        .faq { padding: 64px 0; border-top: 1px solid var(--border); }
+        .faq-list { display: flex; flex-direction: column; gap: 16px; }
+        .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 24px 28px; }
+        .faq-q { font-size: 0.95rem; color: var(--white); font-weight: 600; margin-bottom: 10px; }
+        .faq-a { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+        .cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+        .cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+        .cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+        .cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+        .cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+        .cta-note { margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); }
+        .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+        .footer p { font-size: 0.75rem; color: var(--text-muted); }
+        @media (max-width: 600px) { .hero { padding: 56px 0 36px; } .bullet-item { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+    </style>
+
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-label">For Fitness Enthusiasts & Personal Trainers</span>
+            <span class="topbar-for">Sydney — social.syd</span>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <p class="hero-eyebrow">For PTs Who Are Done Trading Hours for Dollars</p>
+            <h1>You became a trainer to change lives. Not to <em>burn yours out</em> doing it.</h1>
+            <p class="hero-sub">Sydney has built a fitness and nutrition system that gets her clients real results — and a business coaching program that helps personal trainers build a client base that works without the 60-hour weeks.</p>
+        </div>
+    </section>
+
+    <section class="video-section">
+        <div class="container">
+            <div class="video-wrapper">
+                <div class="video-placeholder">[ Your video goes here ]</div>
+            </div>
+            <p class="video-caption">Watch this first — it's worth three minutes of your time</p>
+        </div>
+    </section>
+
+    <section class="context">
+        <div class="container">
+            <p><span class="highlight-name">Sydney (social.syd)</span> has spent years in the fitness and nutrition space, building a 116K following of athletes, enthusiasts, and fellow personal trainers who trust her because she doesn't just post workouts — she talks about what actually works and what doesn't.</p>
+            <p>She's been on both sides: the client grinding toward a goal, and the trainer trying to run a business while staying sane. That perspective is exactly what her coaching program is built on — fitness results for the individual, and a real business model for the trainer who wants to scale without burning out.</p>
+            <p>Whether you're a PT trying to get your first 10 clients, or a fitness enthusiast who wants programming that goes beyond Instagram workouts, <span class="highlight-name">Sydney's</span> coaching is built around what the industry rarely gives you: a complete system.</p>
+        </div>
+    </section>
+
+    <section class="bullets">
+        <div class="container">
+            <h2 class="bullets-heading">What the coaching program covers</h2>
+            <ul class="bullet-list">
+                <li class="bullet-item">
+                    <p class="bullet-label">Training Programming</p>
+                    <p class="bullet-text">Periodized, goal-specific programming — not cookie-cutter plans. Built around where you are now and where you're trying to go.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Nutrition Strategy</p>
+                    <p class="bullet-text">Practical nutrition guidance that supports performance and body composition without turning every meal into a math problem.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">PT Business Foundations</p>
+                    <p class="bullet-text">How to get clients, retain them, price your services, and run a fitness business that actually pays you — specifically for PTs building from the ground up.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Content & Positioning</p>
+                    <p class="bullet-text">How to build an audience as a trainer that attracts ideal clients — not just followers — without spending your entire life on social media.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Direct Coaching Access</p>
+                    <p class="bullet-text">Regular check-ins and direct feedback from Sydney — not a support ticket system, not a chatbot. Real coaching on your real situation.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="pain-section">
+        <div class="container">
+            <h2 class="section-heading">The stuff that keeps PTs stuck</h2>
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">You're fully booked but barely making enough</p>
+                    <p class="pain-solution">In-person hourly sessions have a ceiling. <strong>The business coaching module</strong> shows you how to productize your expertise and scale past the hourly model.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">Client results are inconsistent and you don't know why</p>
+                    <p class="pain-solution">Programming without nutrition guidance is half the picture. <strong>Sydney's integrated approach</strong> covers both so your clients actually get where they want to go.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">You post on social media but it doesn't bring in clients</p>
+                    <p class="pain-solution">Posting workouts builds engagement, not business. <strong>The positioning and content framework</strong> shifts your social presence into something that actually converts to paying clients.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">You got certified but nobody told you how to run a business</p>
+                    <p class="pain-solution">PT certifications teach exercise science, not client acquisition or pricing. <strong>The business foundations track</strong> closes that gap directly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-heading">From coaches and clients inside the program</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"I'd been a PT for two years and still felt like I was just figuring it out. Six weeks in and I have a waitlist. That wasn't even on my radar before."</p>
+                    <p class="testimonial-author">Personal Trainer, Florida</p>
+                    <p class="testimonial-placeholder">[Placeholder — real testimonial to be added]</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"The programming and nutrition together made a difference I didn't expect. I'd been training hard for a year with no results. Changed my approach and hit my goal in 10 weeks."</p>
+                    <p class="testimonial-author">Fitness Enthusiast, 31</p>
+                    <p class="testimonial-placeholder">[Placeholder — real testimonial to be added]</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Sydney is the real deal. She's not selling a dream — she's walking you through exactly how she did it and how to do the same. No filler."</p>
+                    <p class="testimonial-author">Online PT, Ohio</p>
+                    <p class="testimonial-placeholder">[Placeholder — real testimonial to be added]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-heading">Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <p class="faq-q">Is this for fitness clients, PTs, or both?</p>
+                    <p class="faq-a">Both. The fitness and nutrition side is for individuals wanting real results. The business coaching side is for personal trainers wanting to grow past the in-person hourly model. You can join for either or both.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">Do I need to already have clients to join the PT coaching?</p>
+                    <p class="faq-a">No. The program is designed to work whether you're starting from zero or already have a client base you want to grow. The foundations module covers getting your first clients specifically.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">How much access do I get to Sydney directly?</p>
+                    <p class="faq-a">Regular check-ins are built into the program. This isn't a course you buy and sit alone with — there's actual coaching happening throughout.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">How long is the program?</p>
+                    <p class="faq-a">The coaching runs in structured cycles. Book a call to find out which entry point is right for where you are right now.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">How do I get started?</p>
+                    <p class="faq-a">Book a free strategy call using the button below. Sydney's team will walk you through the right fit before you commit to anything.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-heading">Build the fitness career you actually want.</h2>
+            <p class="cta-sub">A free strategy call costs you 30 minutes. Not booking one costs you the business and the body you've been working toward.</p>
+            <a href="#" class="cta-button">Book Your Free Strategy Call</a>
+            <p class="cta-note">No pressure. Just a real conversation about where you are and where you want to go.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Built by J&G Operations for Sydney (social.syd). Ready to deploy.</p>
+        </div>
+    </footer>
+
+</div>

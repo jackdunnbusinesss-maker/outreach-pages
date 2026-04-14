@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corporate Beauty Routine for 9-to-5 Women | Busra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+    --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28; --border: #2a2a36;
+    --accent: #d4959b; --accent-light: #e8b4b8; --accent-glow: rgba(212,149,155,0.15);
+    --white: #f0eff4; --text: #c5c4ce; --text-muted: #7e7d8a;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+.container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+.topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+.topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+.topbar-for { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+.hero { padding: 80px 0 48px; text-align: center; }
+.hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+.hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+.hero h1 em { color: var(--accent-light); font-style: italic; }
+.hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+.hero-cta { margin-top: 36px; }
+.video-section { padding: 0 0 64px; }
+.video-wrapper { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,0.4); }
+.video-placeholder { width: 100%; padding-top: 56.25%; position: relative; background: var(--surface-light); }
+.video-placeholder-inner { position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+.play-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--accent-glow); border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center; }
+.play-icon svg { fill: var(--accent-light); margin-left: 4px; }
+.video-placeholder-text { font-size: 0.85rem; color: var(--text-muted); letter-spacing: 0.5px; }
+.video-caption { text-align: center; margin-top: 16px; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+.context { padding: 64px 0; border-top: 1px solid var(--border); }
+.context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+.context p:last-child { margin-bottom: 0; }
+.highlight-name { color: var(--accent-light); font-weight: 600; }
+.section { padding: 64px 0; border-top: 1px solid var(--border); }
+.section-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+.card-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+.card:hover { border-color: var(--accent); }
+.card-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+.card-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+.pain-grid { display: flex; flex-direction: column; gap: 20px; }
+.pain-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+.pain-card:hover { border-color: var(--accent); }
+.pain-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
+.pain-problem { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 10px; }
+.pain-solution { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+.testimonials { display: flex; flex-direction: column; gap: 20px; }
+.testimonial { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+.testimonial-quote { font-size: 1rem; color: var(--text); line-height: 1.8; font-style: italic; margin-bottom: 16px; }
+.testimonial-author { font-size: 0.8rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+.testimonial-note { font-size: 0.72rem; color: var(--text-muted); margin-top: 4px; }
+.faq { display: flex; flex-direction: column; gap: 16px; }
+.faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 24px 28px; }
+.faq-q { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 10px; }
+.faq-a { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+.cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+.cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+.cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+.cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+.cta-note { margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); }
+.footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+.footer p { font-size: 0.75rem; color: var(--text-muted); }
+@media (max-width: 600px) { .hero { padding: 56px 0 36px; } .card { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+</style>
+</head>
+<body>
+<div style="background-color: #0e0e12; min-height: 100vh; width: 100%;">
+
+<div class="topbar">
+    <div class="container topbar-inner">
+        <span class="topbar-label">Beauty &amp; Corporate Lifestyle</span>
+        <span class="topbar-for">For Corporate Women, 9-to-5 Professionals &amp; NYC Women</span>
+    </div>
+</div>
+
+<section class="hero">
+    <div class="container">
+        <p class="hero-eyebrow">Busra — NYC Corporate Life &amp; Beauty Creator — 10K Followers</p>
+        <h1>You're in back-to-back meetings all day. Your beauty routine <em>needs to survive that.</em></h1>
+        <p class="hero-sub">Between the commute, the all-hands, the three Slack threads you're ignoring, and the after-work event you're also attending — you don't have an hour to get ready. Busra built a corporate beauty routine specifically for women who live this life and still need to look put together.</p>
+        <div class="hero-cta">
+            <a href="#cta" class="cta-button">Get Started Now</a>
+        </div>
+    </div>
+</section>
+
+<section class="video-section">
+    <div class="container">
+        <div class="video-wrapper">
+            <div class="video-placeholder">
+                <div class="video-placeholder-inner">
+                    <div class="play-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <p class="video-placeholder-text">Busra's message for you — watch first</p>
+                </div>
+            </div>
+        </div>
+        <p class="video-caption">Busra covers the whole system in a few minutes</p>
+    </div>
+</section>
+
+<section class="context">
+    <div class="container">
+        <p><span class="highlight-name">Busra</span> is a software engineer in NYC who spent years figuring out a beauty and lifestyle routine that actually works for women in demanding corporate careers. She's built an audience of 10,000 corporate professionals, New Yorkers, and tech women who follow her because she talks about beauty the way someone with a full-time demanding job actually experiences it — honestly, practically, and without pretending you have two hours in the morning.</p>
+        <p>The Corporate Beauty Routine is her complete system: skincare, makeup, and personal care habits built around what actually holds up through a 10-hour workday, survives a commute, and can transition from office to dinner without a full redo.</p>
+        <p>This is for professional women who care how they look but refuse to let beauty take more time than it needs to.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">What the Corporate Beauty Routine includes</h2>
+        <ul class="card-list">
+            <li class="card">
+                <p class="card-label">The 15-Minute Morning System</p>
+                <p class="card-text">Busra's exact morning routine — skincare, base, and office-appropriate makeup — that takes 15 minutes and lasts through a full workday. No retouching required at 2pm.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Products That Work for Corporate Life</p>
+                <p class="card-text">The specific products Busra uses and why — not the ones that look best in photos but the ones that perform under fluorescent lights, through a mask, and survive a sweaty commute in August.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Skincare for Desk Workers</p>
+                <p class="card-text">How to maintain healthy skin when you're in an overly air-conditioned office, staring at screens all day, and drinking too much coffee. The routine that actually addresses corporate skin stressors.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Office-to-Evening Transition</p>
+                <p class="card-text">The 5-minute routine for going from all-day meetings to after-work drinks without going home first. What to add, what to adjust, and what to always have in your work bag.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">NYC Survival Additions</p>
+                <p class="card-text">For women who commute in a real city — subway-specific tips, weather-proofing for every season, and the products that hold up when your commute is 45 minutes on a hot platform.</p>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">The real frustrations this solves</h2>
+        <div class="pain-grid">
+            <div class="pain-card">
+                <p class="pain-label">The Problem</p>
+                <p class="pain-problem">Your makeup looks fine at 8am and by noon it's either gone or sitting in your pores</p>
+                <p class="pain-solution">Foundation and skin prep for longevity is different from standard application. The 15-Minute Morning System includes the setting and priming approach that makes makeup last through an actual full day of work.</p>
+            </div>
+            <div class="pain-card">
+                <p class="pain-label">The Problem</p>
+                <p class="pain-problem">You've spent money on beauty routines that work for influencers who don't have 9am standups</p>
+                <p class="pain-solution">Most beauty content assumes you have unlimited morning time and live a certain kind of life. Busra built this for the reality of a full-time career — fast, effective, professional-appropriate.</p>
+            </div>
+            <div class="pain-card">
+                <p class="pain-label">The Problem</p>
+                <p class="pain-problem">Your skin is suffering from the corporate environment — dry, dull, breaking out despite a routine</p>
+                <p class="pain-solution">Office environments wreck skin in specific ways. The Skincare for Desk Workers section targets exactly those stressors — blue light exposure, AC dryness, stress cortisol — with a routine that counteracts them.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">From women in corporate careers</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p class="testimonial-quote">"I was spending 45 minutes every morning and still looking mediocre by lunch. Busra's system cut my routine in half and I actually look better at the end of the day than I did before. I don't understand how but it works."</p>
+                <p class="testimonial-author">Software Engineer, NYC Tech</p>
+                <p class="testimonial-note">Placeholder — real testimonials to be added</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-quote">"The office-to-evening section is something every working woman needs. I used to dread after-work events because I looked wrecked by then. Now I actually enjoy them."</p>
+                <p class="testimonial-author">Corporate Professional, Financial Services</p>
+                <p class="testimonial-note">Placeholder — real testimonials to be added</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">Questions from working women</h2>
+        <div class="faq">
+            <div class="faq-item">
+                <p class="faq-q">Do I need to be in NYC for this to apply?</p>
+                <p class="faq-a">No. The NYC content is a bonus. The core system applies to any corporate environment. The commute-specific and city-specific tips are additional, not foundational.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">What's the skill level assumed? I'm not a makeup person.</p>
+                <p class="faq-a">This is built for women who want to look professional and put-together without becoming makeup enthusiasts. The system is simple by design — fewer products, more reliability.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">Are the product recommendations expensive?</p>
+                <p class="faq-a">Busra covers a range of price points. The philosophy is buying fewer, better products rather than a full shelf of things that mostly don't work. She includes drugstore options for most steps.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">Does this address different skin types?</p>
+                <p class="faq-a">Yes. The system includes variations for dry, oily, combination, and sensitive skin — because "one routine fits all" doesn't work in the real world, especially in corporate environments that stress skin differently.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section" id="cta">
+    <div class="container">
+        <h2 class="cta-heading">Look the part without losing your morning to it</h2>
+        <p class="cta-sub">15 minutes. A routine built for real working women. The results that hold up through whatever your workday throws at you.</p>
+        <a href="#" class="cta-button">Get Started Now</a>
+        <p class="cta-note">Built by a corporate woman. For corporate women.</p>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>Built by J&amp;G Operations for Busra. Ready to deploy.</p>
+    </div>
+</footer>
+
+</div>
+</body>
+</html>

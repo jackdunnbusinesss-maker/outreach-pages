@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chivon Leggett — Second Chapter System</title>
+    <style>
+/* GHL Background Override */
+html, body, .body-wrapper, .hl_page-preview--content,
+#preview-container, .hl-page-builder, #section-0,
+.section_wrapper, .inner-section, .container-fluid,
+.row-bg-color, .row, .section-bg {
+    background-color: #0e0e12 !important;
+    background: #0e0e12 !important;
+}
+body { margin: 0 !important; padding: 0 !important; min-height: 100vh; }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28; --border: #2a2a36; --accent: #d4959b; --accent-light: #e8b4b8; --accent-glow: rgba(212, 149, 155, 0.15); --white: #f0eff4; --text: #c5c4ce; --text-muted: #7e7d8a; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+        .topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+        .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+        .topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+        .topbar-for { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+        .hero { padding: 80px 0 48px; text-align: center; }
+        .hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+        .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+        .hero h1 em { color: var(--accent-light); font-style: italic; }
+        .hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto 36px; line-height: 1.8; }
+        .cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+        .cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+        .video-section { padding: 0 0 64px; }
+        .video-wrapper { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,0.4); }
+        .video-placeholder { width: 100%; aspect-ratio: 16/9; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--surface); color: var(--text-muted); font-size: 0.9rem; gap: 12px; }
+        .video-placeholder-icon { width: 56px; height: 56px; border-radius: 50%; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
+        .video-caption { text-align: center; margin-top: 16px; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+        .context { padding: 64px 0; border-top: 1px solid var(--border); }
+        .context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+        .context p:last-child { margin-bottom: 0; }
+        .highlight-name { color: var(--accent-light); font-weight: 600; }
+        .bullets { padding: 64px 0; border-top: 1px solid var(--border); }
+        .bullets-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+        .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+        .bullet-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+        .bullet-item:hover { border-color: var(--accent); }
+        .bullet-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+        .bullet-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+        .pain-section { padding: 64px 0; border-top: 1px solid var(--border); }
+        .pain-grid { display: flex; flex-direction: column; gap: 20px; }
+        .pain-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+        .pain-problem { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
+        .pain-title { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 10px; }
+        .pain-fix { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 6px; font-weight: 600; }
+        .pain-solution { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+        .testimonials { padding: 64px 0; border-top: 1px solid var(--border); }
+        .testimonial-grid { display: flex; flex-direction: column; gap: 20px; }
+        .testimonial-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+        .testimonial-quote { font-size: 1rem; color: var(--text); line-height: 1.8; margin-bottom: 16px; font-style: italic; }
+        .testimonial-author { font-size: 0.8rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .testimonial-note { font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; }
+        .faq { padding: 64px 0; border-top: 1px solid var(--border); }
+        .faq-list { display: flex; flex-direction: column; gap: 16px; }
+        .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+        .faq-q { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 12px; }
+        .faq-a { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+        .cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+        .cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+        .cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+        .cta-note { margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); }
+        .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+        .footer p { font-size: 0.75rem; color: var(--text-muted); }
+        @media (max-width: 600px) { .hero { padding: 56px 0 36px; } .bullet-item { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+    </style>
+</head>
+<body>
+<div style="background-color: #0e0e12; min-height: 100vh; width: 100%; margin: 0; padding: 0;">
+
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-label">For Retired Military, Travelers &amp; Wellness Seekers</span>
+            <span class="topbar-for">Chivon Leggett — Second Chapter System</span>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <p class="hero-eyebrow">Life After Service Doesn't Have to Feel Like Starting Over</p>
+            <h1>You gave years to the mission. Now it's time to build a <em>life that's yours</em> — on your terms.</h1>
+            <p class="hero-sub">The transition out of military service is one of the hardest identity shifts a person can make. The structure disappears, the purpose feels unclear, and the civilian world doesn't come with a manual. Chivon Leggett has 124,000 followers because she built her second chapter in public — and now she's showing you exactly how to build yours.</p>
+            <a href="#cta" class="cta-button">Get Started Now</a>
+        </div>
+    </section>
+
+    <section class="video-section">
+        <div class="container">
+            <div class="video-wrapper">
+                <div class="video-placeholder">
+                    <div class="video-placeholder-icon">▶</div>
+                    <span>Video walkthrough — add your VSL here</span>
+                </div>
+            </div>
+            <p class="video-caption">Watch before you make your next move</p>
+        </div>
+    </section>
+
+    <section class="context">
+        <div class="container">
+            <p><span class="highlight-name">Chivon Leggett</span> built an audience of 124,000 across travel, wellness, and lifestyle by doing what most people won't: showing the real process of building a meaningful life after military service. Not the highlight reel — the actual navigation of identity, health, travel, and purpose that comes after you hand in your uniform.</p>
+            <p>She understands the specific weight of that transition because she's lived it. The discipline that made you great in service doesn't automatically translate to civilian life — it needs a new container. The Second Chapter System is that container. A structured path from where you are now to the life you actually want to live.</p>
+            <p>124,000 people follow Chivon because her content tells the truth about this process. This program is what happens when she puts all of that into a system you can walk through.</p>
+        </div>
+    </section>
+
+    <section class="bullets">
+        <div class="container">
+            <h2 class="bullets-heading">What's inside the Second Chapter System</h2>
+            <ul class="bullet-list">
+                <li class="bullet-item">
+                    <p class="bullet-label">Identity Reset</p>
+                    <p class="bullet-text">A structured process for separating who you were in service from who you're becoming — without losing the discipline and values that define you.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Wellness Framework</p>
+                    <p class="bullet-text">Physical and mental health practices built around your military background — not generic wellness advice that ignores what your body and mind have been through.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Life by Design</p>
+                    <p class="bullet-text">How to build a lifestyle that includes travel, freedom, and purpose — practical steps for creating a post-service life that actually excites you to wake up for.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Income &amp; Purpose Alignment</p>
+                    <p class="bullet-text">Mapping your military skills and leadership experience to civilian income opportunities — so you're not starting from zero, you're translating what you already have.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Community of Veterans in Transition</p>
+                    <p class="bullet-text">Access to others who understand the specific weight of this transition — because processing this with people who've never served is a different conversation entirely.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="pain-section">
+        <div class="container">
+            <h2 class="bullets-heading">What makes this transition so hard</h2>
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">Your identity was tied to your rank and your mission. Now neither exists.</p>
+                    <p class="pain-fix">The Fix</p>
+                    <p class="pain-solution">The identity reset module walks you through building a new self-concept that honors your service without being trapped by it. You served — that shaped you. Now you get to decide what comes next.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">Civilian life feels soft, slow, and confusing — and you're losing patience with it.</p>
+                    <p class="pain-fix">The Fix</p>
+                    <p class="pain-solution">Chivon channels the drive and discipline from service into a civilian context that actually works. You're not too intense — you just need a structure that matches your capacity.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">Your wellness suffered during service and hasn't recovered the way you hoped.</p>
+                    <p class="pain-fix">The Fix</p>
+                    <p class="pain-solution">The wellness framework is specific to veterans — not a generic self-care guide. It addresses the physical and mental patterns that service created and gives you a path to rebuild on your own terms.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">You want to travel and experience life but don't have a clear financial or logistical path.</p>
+                    <p class="pain-fix">The Fix</p>
+                    <p class="pain-solution">The lifestyle design and income modules show you how veterans are using their skills to fund the life they want — without reinventing themselves from scratch.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="bullets-heading">What students are saying</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"I spent two years after separation feeling lost. This program gave me a framework I could actually use — not just inspiration, but a real path."</p>
+                    <p class="testimonial-author">— Derek W., Army Veteran</p>
+                    <p class="testimonial-note">Placeholder — real testimonial to be added</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Chivon gets it. She doesn't talk to you like a civilian trying to help a veteran. She talks to you like someone who's been through it. That made all the difference."</p>
+                    <p class="testimonial-author">— Monique T., Air Force Veteran</p>
+                    <p class="testimonial-note">Placeholder — real testimonial to be added</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"The wellness module alone was worth it. I didn't realize how much I'd been carrying until I started working through it."</p>
+                    <p class="testimonial-author">— James P., Navy Veteran</p>
+                    <p class="testimonial-note">Placeholder — real testimonial to be added</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <h2 class="bullets-heading">Common questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <p class="faq-q">Is this only for recently separated veterans?</p>
+                    <p class="faq-a">No. People find this program years after separation when they realize they're still running on old patterns. Whether you separated last month or five years ago, the work is the same — you're just starting from a different place.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">Do I have to be dealing with specific health or mental health challenges to benefit?</p>
+                    <p class="faq-a">Not at all. This isn't a clinical program. It's about building a life you actually want to live — physically, mentally, and practically. You can be thriving in some areas and stuck in others. That's exactly who this is for.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">Is this focused on the US military or does it apply internationally?</p>
+                    <p class="faq-a">While Chivon's experience is rooted in the US context, the transition challenges she covers — identity, purpose, wellness, lifestyle design — are universal to military service regardless of country.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">How is this different from standard VA resources or transition programs?</p>
+                    <p class="faq-a">This is about building a life you're excited about — not just managing the transition. VA programs focus on benefits and employment. The Second Chapter System focuses on who you're becoming and how you actually want to live.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">What's the time commitment?</p>
+                    <p class="faq-a">You can work through the program at your own pace. The modules are designed to be completed over 8–10 weeks, but there's no expiration date and community access is ongoing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="cta">
+        <div class="container">
+            <h2 class="cta-heading">Your second chapter starts here.</h2>
+            <p class="cta-sub">You put in the work for years — now it's time to build something for yourself. The transition doesn't have to be this hard. Let's talk about what's possible.</p>
+            <a href="https://calendly.com/jackdunn0987/30min" class="cta-button">Book Your Free Strategy Call</a>
+            <p class="cta-note">No commitment. 15 minutes to see if this is the right fit for where you are.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Built by J&amp;G Operations for Chivon Leggett. Ready to deploy.</p>
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abbey Fickley — Sober Mom Collective</title>
+    <style>
+/* GHL Background Override */
+html, body, .body-wrapper, .hl_page-preview--content,
+#preview-container, .hl-page-builder, #section-0,
+.section_wrapper, .inner-section, .container-fluid,
+.row-bg-color, .row, .section-bg {
+    background-color: #0e0e12 !important;
+    background: #0e0e12 !important;
+}
+body { margin: 0 !important; padding: 0 !important; min-height: 100vh; }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28; --border: #2a2a36; --accent: #d4959b; --accent-light: #e8b4b8; --accent-glow: rgba(212, 149, 155, 0.15); --white: #f0eff4; --text: #c5c4ce; --text-muted: #7e7d8a; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+        .topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+        .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+        .topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+        .topbar-for { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+        .hero { padding: 80px 0 48px; text-align: center; }
+        .hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+        .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+        .hero h1 em { color: var(--accent-light); font-style: italic; }
+        .hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto 36px; line-height: 1.8; }
+        .cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+        .cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+        .video-section { padding: 0 0 64px; }
+        .video-wrapper { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,0.4); }
+        .video-placeholder { width: 100%; aspect-ratio: 16/9; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--surface); color: var(--text-muted); font-size: 0.9rem; gap: 12px; }
+        .video-placeholder-icon { width: 56px; height: 56px; border-radius: 50%; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
+        .video-caption { text-align: center; margin-top: 16px; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+        .context { padding: 64px 0; border-top: 1px solid var(--border); }
+        .context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+        .context p:last-child { margin-bottom: 0; }
+        .highlight-name { color: var(--accent-light); font-weight: 600; }
+        .bullets { padding: 64px 0; border-top: 1px solid var(--border); }
+        .bullets-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+        .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+        .bullet-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+        .bullet-item:hover { border-color: var(--accent); }
+        .bullet-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+        .bullet-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+        .pain-section { padding: 64px 0; border-top: 1px solid var(--border); }
+        .pain-grid { display: flex; flex-direction: column; gap: 20px; }
+        .pain-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+        .pain-problem { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
+        .pain-title { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 10px; }
+        .pain-fix { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 6px; font-weight: 600; }
+        .pain-solution { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+        .testimonials { padding: 64px 0; border-top: 1px solid var(--border); }
+        .testimonial-grid { display: flex; flex-direction: column; gap: 20px; }
+        .testimonial-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+        .testimonial-quote { font-size: 1rem; color: var(--text); line-height: 1.8; margin-bottom: 16px; font-style: italic; }
+        .testimonial-author { font-size: 0.8rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .testimonial-note { font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; }
+        .faq { padding: 64px 0; border-top: 1px solid var(--border); }
+        .faq-list { display: flex; flex-direction: column; gap: 16px; }
+        .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+        .faq-q { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 12px; }
+        .faq-a { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+        .cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+        .cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+        .cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+        .cta-note { margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); }
+        .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+        .footer p { font-size: 0.75rem; color: var(--text-muted); }
+        @media (max-width: 600px) { .hero { padding: 56px 0 36px; } .bullet-item { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+    </style>
+</head>
+<body>
+<div style="background-color: #0e0e12; min-height: 100vh; width: 100%; margin: 0; padding: 0;">
+
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-label">For Moms &amp; Single Moms</span>
+            <span class="topbar-for">Abbey Fickley — Sober Mom Collective</span>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <p class="hero-eyebrow">You Don't Have to White-Knuckle This Alone</p>
+            <h1>Sober motherhood is hard. It's also <em>the best decision you'll ever make</em> — and you deserve real support while you do it.</h1>
+            <p class="hero-sub">Late nights, tantrums, the pressure to hold everything together — and somehow doing it all without the one thing everyone told you was normal. Abbey Fickley has 281,000 followers because she's honest about all of it. And she built a community so you don't have to figure it out in silence.</p>
+            <a href="#cta" class="cta-button">Join the Collective</a>
+        </div>
+    </section>
+
+    <section class="video-section">
+        <div class="container">
+            <div class="video-wrapper">
+                <div class="video-placeholder">
+                    <div class="video-placeholder-icon">▶</div>
+                    <span>Video walkthrough — add your VSL here</span>
+                </div>
+            </div>
+            <p class="video-caption">A message from Abbey — watch this first</p>
+        </div>
+    </section>
+
+    <section class="context">
+        <div class="container">
+            <p><span class="highlight-name">Abbey Fickley</span> built an audience of 281,000 mothers by being the voice most of them couldn't find anywhere else — honest about the chaos of mom life, honest about sobriety, and genuinely funny about all of it. She turned her own story into a community where moms don't have to pretend everything is fine.</p>
+            <p>The sober mom experience is specific. The late-night cravings when the house finally goes quiet. The birthday parties where every other adult has a drink. The partner who doesn't fully get it. The guilt and the grief and the quiet pride every morning you wake up and made it another day. Abbey speaks to all of that because she's lived it — and so have the 281,000 people in her audience.</p>
+            <p>The Sober Mom Collective isn't a program where you just watch videos. It's a community of women doing exactly what you're doing, with Abbey in the middle keeping it real.</p>
+        </div>
+    </section>
+
+    <section class="bullets">
+        <div class="container">
+            <h2 class="bullets-heading">What the Sober Mom Collective includes</h2>
+            <ul class="bullet-list">
+                <li class="bullet-item">
+                    <p class="bullet-label">Community Space</p>
+                    <p class="bullet-text">A private community of sober moms where you can say the real stuff — no judgment, no performance, no one trying to sell you a wine subscription.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Accountability Structure</p>
+                    <p class="bullet-text">Tools and check-ins to help you stay on track, especially during the seasons that hit hardest — holidays, birthdays, bad weeks, boring Saturdays.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Abbey's Content Library</p>
+                    <p class="bullet-text">Resources, frameworks, and real conversations about the specific challenges of sobriety inside motherhood — not generic AA content, not clinical programs.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Mom Life Support</p>
+                    <p class="bullet-text">Because you're not just sober — you're also raising kids, possibly doing it alone, probably exhausted. The collective holds space for all of it, not just the alcohol piece.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Live Sessions with Abbey</p>
+                    <p class="bullet-text">Regular access to Abbey directly — the humor, the honesty, and the reminders that you're doing better than you think you are.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="pain-section">
+        <div class="container">
+            <h2 class="bullets-heading">What it actually feels like before you find your people</h2>
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">You're surrounded by "mommy wine culture" and it's everywhere — and lonely as hell to opt out.</p>
+                    <p class="pain-fix">The Fix</p>
+                    <p class="pain-solution">The collective is full of women who opted out too. You'll finally have a group where not drinking is the norm, not the thing you have to explain every time.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">Sobriety resources feel clinical, religious, or designed for people without kids.</p>
+                    <p class="pain-fix">The Fix</p>
+                    <p class="pain-solution">Abbey built this specifically for moms. The content, the community, and the tone are designed around your actual life — not a 12-step framework from 1935.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">You're doing great by yourself — until you're not, and then there's no one to call at 10pm.</p>
+                    <p class="pain-fix">The Fix</p>
+                    <p class="pain-solution">The community is there when it gets hard. Real people, real conversations, no waiting for a Thursday night meeting to talk to someone who gets it.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">You worry your kids are too young to understand, or worse — that they already noticed too much.</p>
+                    <p class="pain-fix">The Fix</p>
+                    <p class="pain-solution">This is one of the most common fears in the community. Abbey addresses it directly, and the women in the collective have walked through this with their own kids. You're not alone in it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="bullets-heading">What members are saying</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"I found Abbey's content when I was three days sober and terrified. The community she built is the reason I'm still going. Two years later and I'm in the collective helping other moms through their first weeks."</p>
+                    <p class="testimonial-author">— Rachel D., mom of 2</p>
+                    <p class="testimonial-note">Placeholder — real testimonial to be added</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"I tried three different programs before this one. The difference is that Abbey actually makes you feel like it's possible to be sober and a real person at the same time. The humor helps more than I expected."</p>
+                    <p class="testimonial-author">— Stephanie M., single mom</p>
+                    <p class="testimonial-note">Placeholder — real testimonial to be added</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Finally a space where I don't have to explain myself or pretend I have it together. Just moms being honest. That's it. That's the whole thing and it's what I needed."</p>
+                    <p class="testimonial-author">— Kristina L., mom of 3</p>
+                    <p class="testimonial-note">Placeholder — real testimonial to be added</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <h2 class="bullets-heading">Common questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <p class="faq-q">Do I have to be fully sober to join?</p>
+                    <p class="faq-a">No. Some people come in already sober. Some are considering it. Some just know something needs to change. Where you are right now is the right place to start.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">Is this a clinical or medically supervised program?</p>
+                    <p class="faq-a">No. The Sober Mom Collective is a community and support space — not a medical program. If you have physical dependency concerns, please consult a doctor. This is for the emotional and social support side of the journey.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">I'm a single mom with almost no time. Is this realistic?</p>
+                    <p class="faq-a">That's exactly who this was built for. You can engage as much or as little as your life allows. Even showing up to scroll through the community on a hard night counts. You don't have to be all-in to get something out of this.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">How is this different from a Facebook group?</p>
+                    <p class="faq-a">Abbey is in here. The tone is curated and consistent. The content is structured and intentional. This isn't a random group — it's a community built around a shared experience with actual leadership behind it.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">What if I relapse while in the community?</p>
+                    <p class="faq-a">You stay. That's the whole point. The collective is not a place that kicks you out when things get messy. It's a place that exists for exactly that moment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="cta">
+        <div class="container">
+            <h2 class="cta-heading">You don't have to do this alone.</h2>
+            <p class="cta-sub">The hard part isn't quitting. It's staying quit without anyone around who actually understands. That's what the Sober Mom Collective is for.</p>
+            <a href="https://calendly.com/jackdunn0987/30min" class="cta-button">Book Your Free Strategy Call</a>
+            <p class="cta-note">No commitment. Just a conversation to see if this is the right fit.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Built by J&amp;G Operations for Abbey Fickley. Ready to deploy.</p>
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>

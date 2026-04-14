@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mom Content Reach Playbook | Ashley Lira</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+    --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28; --border: #2a2a36;
+    --accent: #d4959b; --accent-light: #e8b4b8; --accent-glow: rgba(212,149,155,0.15);
+    --white: #f0eff4; --text: #c5c4ce; --text-muted: #7e7d8a;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+.container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+.topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+.topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+.topbar-for { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+.hero { padding: 80px 0 48px; text-align: center; }
+.hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+.hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+.hero h1 em { color: var(--accent-light); font-style: italic; }
+.hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+.hero-cta { margin-top: 36px; }
+.video-section { padding: 0 0 64px; }
+.video-wrapper { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,0.4); }
+.video-placeholder { width: 100%; padding-top: 56.25%; position: relative; background: var(--surface-light); }
+.video-placeholder-inner { position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+.play-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--accent-glow); border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center; }
+.play-icon svg { fill: var(--accent-light); margin-left: 4px; }
+.video-placeholder-text { font-size: 0.85rem; color: var(--text-muted); letter-spacing: 0.5px; }
+.video-caption { text-align: center; margin-top: 16px; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+.context { padding: 64px 0; border-top: 1px solid var(--border); }
+.context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+.context p:last-child { margin-bottom: 0; }
+.highlight-name { color: var(--accent-light); font-weight: 600; }
+.section { padding: 64px 0; border-top: 1px solid var(--border); }
+.section-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+.card-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+.card:hover { border-color: var(--accent); }
+.card-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+.card-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+.pain-grid { display: flex; flex-direction: column; gap: 20px; }
+.pain-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+.pain-card:hover { border-color: var(--accent); }
+.pain-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
+.pain-problem { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 10px; }
+.pain-solution { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+.testimonials { display: flex; flex-direction: column; gap: 20px; }
+.testimonial { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+.testimonial-quote { font-size: 1rem; color: var(--text); line-height: 1.8; font-style: italic; margin-bottom: 16px; }
+.testimonial-author { font-size: 0.8rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+.testimonial-note { font-size: 0.72rem; color: var(--text-muted); margin-top: 4px; }
+.faq { display: flex; flex-direction: column; gap: 16px; }
+.faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 24px 28px; }
+.faq-q { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 10px; }
+.faq-a { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+.cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+.cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+.cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+.cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+.cta-note { margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); }
+.footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+.footer p { font-size: 0.75rem; color: var(--text-muted); }
+@media (max-width: 600px) { .hero { padding: 56px 0 36px; } .card { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+</style>
+</head>
+<body>
+<div style="background-color: #0e0e12; min-height: 100vh; width: 100%;">
+
+<div class="topbar">
+    <div class="container topbar-inner">
+        <span class="topbar-label">Creator Growth Education</span>
+        <span class="topbar-for">For Moms Who Create Content &amp; Want Their Work Seen</span>
+    </div>
+</div>
+
+<section class="hero">
+    <div class="container">
+        <p class="hero-eyebrow">Ashley Lira — Lifestyle &amp; Mom Content Creator — 15K Followers</p>
+        <h1>You're putting out good content. <em>It's not reaching nearly enough people.</em> Here's why.</h1>
+        <p class="hero-sub">You're creating between nap times, school pickups, and everything else mom life throws at you. The content is real, it's relatable — and most of it is being seen by 200 people who already follow you. Ashley Lira built the Mom Content Reach Playbook to fix exactly that.</p>
+        <div class="hero-cta">
+            <a href="#cta" class="cta-button">Get Started Now</a>
+        </div>
+    </div>
+</section>
+
+<section class="video-section">
+    <div class="container">
+        <div class="video-wrapper">
+            <div class="video-placeholder">
+                <div class="video-placeholder-inner">
+                    <div class="play-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <p class="video-placeholder-text">Ashley Lira's video for you — watch first</p>
+                </div>
+            </div>
+        </div>
+        <p class="video-caption">Ashley explains the reach problem — and how she fixed it</p>
+    </div>
+</section>
+
+<section class="context">
+    <div class="container">
+        <p><span class="highlight-name">Ashley Lira</span> built her following of 15,000 moms and content creators by solving a very specific problem: how do you get your content in front of people who don't know you exist yet, when you're posting about motherhood and lifestyle to an algorithm that doesn't naturally spread that content far?</p>
+        <p>The Mom Content Reach Playbook is Ashley's answer — a tactical guide to distribution, discovery, and growth for mom lifestyle and shopping creators. Not generic social media advice. Specific to the formats, platforms, and patterns that work for this niche.</p>
+        <p>If you're creating good content that isn't reaching the audience it deserves, the problem isn't what you're making. It's how and where it's being distributed. That's fixable.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">What the Mom Content Reach Playbook covers</h2>
+        <ul class="card-list">
+            <li class="card">
+                <p class="card-label">The Reach Audit</p>
+                <p class="card-text">A diagnostic process to figure out exactly where your content is getting stuck — is it the hook, the distribution, the hashtags, the format? You can't fix what you haven't correctly identified.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Content Formats That Spread</p>
+                <p class="card-text">The specific formats that get mom lifestyle content distributed beyond your existing followers — which Reel structures get pushed to explore pages and why.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Hashtag Strategy for Mom Creators</p>
+                <p class="card-text">The hashtag approach that actually works in the lifestyle and shopping niche — including which categories to target, how to mix large and small audiences, and what most people get wrong.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Shopping Content That Converts</p>
+                <p class="card-text">How to post about products and affiliate items in a way that feels natural, gets watched, and drives clicks — without your feed becoming a walking advertisement.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">The 30-Day Reach Plan</p>
+                <p class="card-text">Ashley's tested posting cadence and content mix for mom lifestyle creators — exactly what to post, how often, and in what combination to start seeing reach increase within the first month.</p>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">Why your content isn't spreading</h2>
+        <div class="pain-grid">
+            <div class="pain-card">
+                <p class="pain-label">The Problem</p>
+                <p class="pain-problem">Your Reels get good engagement from current followers but almost no reach to new people</p>
+                <p class="pain-solution">Engagement from existing followers and reach to new ones require different content signals. The Reach Audit and Content Formats sections show you how to optimize for distribution specifically, not just engagement.</p>
+            </div>
+            <div class="pain-card">
+                <p class="pain-label">The Problem</p>
+                <p class="pain-problem">You've tried different hashtags and nothing seems to make a difference</p>
+                <p class="pain-solution">Most hashtag strategies are too generic. The Hashtag Strategy section is built specifically for mom lifestyle and shopping content — the categories, mix, and rotation pattern that works in your niche.</p>
+            </div>
+            <div class="pain-card">
+                <p class="pain-label">The Problem</p>
+                <p class="pain-problem">You post shopping and affiliate content and your engagement drops every time</p>
+                <p class="pain-solution">Product-based content kills reach when it looks like an ad. The Shopping Content section shows Ashley's approach to posting products that feel like recommendations from a friend, not sponsored posts.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">From mom creators who used the playbook</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p class="testimonial-quote">"My average reach went from 400 to 3,000 per post in the first month. Same content, different approach to how I was distributing it. The Reach Audit alone was worth it — I finally understood what I was doing wrong."</p>
+                <p class="testimonial-author">Mom Lifestyle Creator, Shopping Niche</p>
+                <p class="testimonial-note">Placeholder — real testimonials to be added</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-quote">"I was terrified to post affiliate content because it always killed my engagement. Ashley's approach completely changed how I think about it. My shopping posts now perform as well as my regular content."</p>
+                <p class="testimonial-author">Content Creator, Mom &amp; Lifestyle</p>
+                <p class="testimonial-note">Placeholder — real testimonials to be added</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">Questions before joining</h2>
+        <div class="faq">
+            <div class="faq-item">
+                <p class="faq-q">My following is under 1,000. Is this too early?</p>
+                <p class="faq-a">It's actually the best time. Building with the right distribution habits from early on means you don't spend years growing slowly because of fixable distribution mistakes.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">Does this focus on Instagram or is it broader?</p>
+                <p class="faq-a">Instagram Reels is the main focus, with some coverage of TikTok. Ashley's growth happened primarily on Instagram, so that's where the most specific guidance lives.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">How quickly does the 30-Day Plan start showing results?</p>
+                <p class="faq-a">Most people see reach changes within 2-3 weeks of implementing consistently. The 30-Day Plan is paced to build the algorithm signals that drive distribution — it compounds with consistency.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">Is this only for mom content or would it work for other lifestyle niches?</p>
+                <p class="faq-a">Built for mom and shopping-adjacent content specifically. The principles apply to broader lifestyle, but the specific formats, hashtag categories, and examples are all mom creator focused.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section" id="cta">
+    <div class="container">
+        <h2 class="cta-heading">Your content deserves more than 200 views</h2>
+        <p class="cta-sub">The Mom Content Reach Playbook fixes the distribution problem so your work actually reaches the audience it was meant for.</p>
+        <a href="#" class="cta-button">Get Started Now</a>
+        <p class="cta-note">Built for mom creators who create consistently and want the reach to match.</p>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>Built by J&amp;G Operations for Ashley Lira. Ready to deploy.</p>
+    </div>
+</footer>
+
+</div>
+</body>
+</html>

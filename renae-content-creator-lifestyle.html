@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creator Mom Playbook | Renae</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+    --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28; --border: #2a2a36;
+    --accent: #d4959b; --accent-light: #e8b4b8; --accent-glow: rgba(212,149,155,0.15);
+    --white: #f0eff4; --text: #c5c4ce; --text-muted: #7e7d8a;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+.container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+.topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+.topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+.topbar-for { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+.hero { padding: 80px 0 48px; text-align: center; }
+.hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+.hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+.hero h1 em { color: var(--accent-light); font-style: italic; }
+.hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+.hero-cta { margin-top: 36px; }
+.video-section { padding: 0 0 64px; }
+.video-wrapper { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,0.4); }
+.video-placeholder { width: 100%; padding-top: 56.25%; position: relative; background: var(--surface-light); }
+.video-placeholder-inner { position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+.play-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--accent-glow); border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center; }
+.play-icon svg { fill: var(--accent-light); margin-left: 4px; }
+.video-placeholder-text { font-size: 0.85rem; color: var(--text-muted); letter-spacing: 0.5px; }
+.video-caption { text-align: center; margin-top: 16px; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+.context { padding: 64px 0; border-top: 1px solid var(--border); }
+.context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+.context p:last-child { margin-bottom: 0; }
+.highlight-name { color: var(--accent-light); font-weight: 600; }
+.section { padding: 64px 0; border-top: 1px solid var(--border); }
+.section-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+.card-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+.card:hover { border-color: var(--accent); }
+.card-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+.card-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+.pain-grid { display: flex; flex-direction: column; gap: 20px; }
+.pain-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+.pain-card:hover { border-color: var(--accent); }
+.pain-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
+.pain-problem { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 10px; }
+.pain-solution { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+.testimonials { display: flex; flex-direction: column; gap: 20px; }
+.testimonial { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+.testimonial-quote { font-size: 1rem; color: var(--text); line-height: 1.8; font-style: italic; margin-bottom: 16px; }
+.testimonial-author { font-size: 0.8rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+.testimonial-note { font-size: 0.72rem; color: var(--text-muted); margin-top: 4px; }
+.faq { display: flex; flex-direction: column; gap: 16px; }
+.faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 24px 28px; }
+.faq-q { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 10px; }
+.faq-a { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+.cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+.cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+.cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+.cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+.cta-note { margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); }
+.footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+.footer p { font-size: 0.75rem; color: var(--text-muted); }
+@media (max-width: 600px) { .hero { padding: 56px 0 36px; } .card { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+</style>
+</head>
+<body>
+<div style="background-color: #0e0e12; min-height: 100vh; width: 100%;">
+
+<div class="topbar">
+    <div class="container topbar-inner">
+        <span class="topbar-label">Creator Education</span>
+        <span class="topbar-for">For Moms, Teachers &amp; Aspiring Creators</span>
+    </div>
+</div>
+
+<section class="hero">
+    <div class="container">
+        <p class="hero-eyebrow">Renae — 113K Followers</p>
+        <h1>You're posting. You're funny. You're real. <em>So why isn't your audience growing?</em></h1>
+        <p class="hero-sub">Between grading papers, packing school lunches, and trying to get a Reel filmed before the kids notice — you're working hard at this. Renae built a 113K following doing exactly what you're doing. The Creator Mom Playbook is what she wishes she'd had from the beginning.</p>
+        <div class="hero-cta">
+            <a href="#cta" class="cta-button">Get Started Now</a>
+        </div>
+    </div>
+</section>
+
+<section class="video-section">
+    <div class="container">
+        <div class="video-wrapper">
+            <div class="video-placeholder">
+                <div class="video-placeholder-inner">
+                    <div class="play-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <p class="video-placeholder-text">Renae's video for you — watch this first</p>
+                </div>
+            </div>
+        </div>
+        <p class="video-caption">Short video from Renae — worth 3 minutes of your time</p>
+    </div>
+</section>
+
+<section class="context">
+    <div class="container">
+        <p><span class="highlight-name">Renae</span> grew her following to 113,000 while being a mom and a teacher — two full-time jobs that leave almost no room for "content strategy." She didn't hack any algorithm. She figured out how to create content that her specific audience — moms, teachers, and everyday creators — genuinely wanted to watch.</p>
+        <p>The Creator Mom Playbook is Renae's full system. Not a course with 47 modules. A focused, practical playbook built for people who have two hours a week at most to dedicate to this, not twenty.</p>
+        <p>If you're a mom or teacher who wants to build a following around your real life without turning content creation into a second career that stresses you out, this is where you start.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">What's inside the Creator Mom Playbook</h2>
+        <ul class="card-list">
+            <li class="card">
+                <p class="card-label">Your Niche Within a Niche</p>
+                <p class="card-text">How to identify the specific intersection of mom + teacher + creator content that makes you different. Your angle is already there — this helps you see it clearly.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">The 2-Hour Week Method</p>
+                <p class="card-text">Renae's approach to batching and filming content in the time most moms actually have. Not five hours on Saturday. Two hours spread across the week.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Comedy That Connects</p>
+                <p class="card-text">The specific structure behind Renae's most viral content — how she sets up the joke, the timing, the punchline delivery that works in short-form video.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Growing Without a Budget</p>
+                <p class="card-text">No paid promotion, no fancy equipment, no hiring a video editor. The organic growth playbook built specifically for creators who can't throw money at the problem.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Turning Followers into Income</p>
+                <p class="card-text">When your following is ready to monetize and how — affiliate deals, brand partnerships, digital products — without making your content feel like a shopping channel.</p>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">What's getting in the way</h2>
+        <div class="pain-grid">
+            <div class="pain-card">
+                <p class="pain-label">The Problem</p>
+                <p class="pain-problem">You can't find consistent time to create — the week disappears and you've posted once, maybe twice</p>
+                <p class="pain-solution">The 2-Hour Week Method is designed around the time moms and teachers actually have. You don't need more hours. You need a smarter system with the hours you've got.</p>
+            </div>
+            <div class="pain-card">
+                <p class="pain-label">The Problem</p>
+                <p class="pain-problem">Your funny posts get likes from people who already know you, but they don't reach anyone new</p>
+                <p class="pain-solution">Reach is a strategy problem, not a content quality problem. The growth section covers the distribution tactics that get your content seen outside your current circle.</p>
+            </div>
+            <div class="pain-card">
+                <p class="pain-label">The Problem</p>
+                <p class="pain-problem">You feel guilty spending time on content instead of being present with your family</p>
+                <p class="pain-solution">Renae addresses this directly. The Playbook includes how she thinks about the time investment, how she involves her family, and how she keeps it from bleeding into everything else.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">From moms and teachers who've used this</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p class="testimonial-quote">"I'm a second-grade teacher with two kids at home. I had zero time for content strategy. Renae's 2-hour week approach completely changed how I think about this. I've grown from 800 followers to almost 6,000 in four months."</p>
+                <p class="testimonial-author">Teacher &amp; Mom Creator</p>
+                <p class="testimonial-note">Placeholder — real testimonials to be added</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-quote">"What got me wasn't the strategy — I'd read strategy articles before. What got me was the comedy framework. I finally understood why some of my videos landed and most didn't. Now I can replicate the ones that work."</p>
+                <p class="testimonial-author">Mom of Three, Lifestyle Creator</p>
+                <p class="testimonial-note">Placeholder — real testimonials to be added</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">Before you join — common questions</h2>
+        <div class="faq">
+            <div class="faq-item">
+                <p class="faq-q">I'm not a teacher — just a mom. Is this still for me?</p>
+                <p class="faq-a">Absolutely. The teacher background is Renae's angle. The playbook is built around the lifestyle and comedy creator space, which applies whether you teach or not.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">What platform does this focus on?</p>
+                <p class="faq-a">Primarily Instagram Reels and TikTok — the short-form video formats where comedy content spreads. The principles carry across both.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">I have under 1,000 followers. Is it too early?</p>
+                <p class="faq-a">It's actually the best time. The Playbook helps you build correctly from the start, rather than having to un-learn habits you picked up by guessing.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">How long to get through the playbook?</p>
+                <p class="faq-a">Most people finish it in a weekend. It's not a long course — it's a focused playbook. The time investment is the implementation, not the reading.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section" id="cta">
+    <div class="container">
+        <h2 class="cta-heading">You've got the life. Let's build the audience.</h2>
+        <p class="cta-sub">Renae did this with no budget, no team, and no extra hours. The Creator Mom Playbook is the system she built along the way.</p>
+        <a href="#" class="cta-button">Get Started Now</a>
+        <p class="cta-note">Built for real life. Not the highlight reel version.</p>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>Built by J&amp;G Operations for Renae. Ready to deploy.</p>
+    </div>
+</footer>
+
+</div>
+</body>
+</html>

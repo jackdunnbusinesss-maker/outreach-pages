@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scale While Mothering | Erin Naanee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+    --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28; --border: #2a2a36;
+    --accent: #d4959b; --accent-light: #e8b4b8; --accent-glow: rgba(212,149,155,0.15);
+    --white: #f0eff4; --text: #c5c4ce; --text-muted: #7e7d8a;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+.container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+.topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+.topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+.topbar-for { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+.hero { padding: 80px 0 48px; text-align: center; }
+.hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+.hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+.hero h1 em { color: var(--accent-light); font-style: italic; }
+.hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+.hero-cta { margin-top: 36px; }
+.video-section { padding: 0 0 64px; }
+.video-wrapper { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,0.4); }
+.video-placeholder { width: 100%; padding-top: 56.25%; position: relative; background: var(--surface-light); }
+.video-placeholder-inner { position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+.play-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--accent-glow); border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center; }
+.play-icon svg { fill: var(--accent-light); margin-left: 4px; }
+.video-placeholder-text { font-size: 0.85rem; color: var(--text-muted); letter-spacing: 0.5px; }
+.video-caption { text-align: center; margin-top: 16px; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+.context { padding: 64px 0; border-top: 1px solid var(--border); }
+.context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+.context p:last-child { margin-bottom: 0; }
+.highlight-name { color: var(--accent-light); font-weight: 600; }
+.section { padding: 64px 0; border-top: 1px solid var(--border); }
+.section-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+.card-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+.card:hover { border-color: var(--accent); }
+.card-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+.card-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+.pain-grid { display: flex; flex-direction: column; gap: 20px; }
+.pain-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+.pain-card:hover { border-color: var(--accent); }
+.pain-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
+.pain-problem { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 10px; }
+.pain-solution { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+.testimonials { display: flex; flex-direction: column; gap: 20px; }
+.testimonial { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+.testimonial-quote { font-size: 1rem; color: var(--text); line-height: 1.8; font-style: italic; margin-bottom: 16px; }
+.testimonial-author { font-size: 0.8rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+.testimonial-note { font-size: 0.72rem; color: var(--text-muted); margin-top: 4px; }
+.faq { display: flex; flex-direction: column; gap: 16px; }
+.faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 24px 28px; }
+.faq-q { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 10px; }
+.faq-a { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+.cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+.cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+.cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+.cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+.cta-note { margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); }
+.footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+.footer p { font-size: 0.75rem; color: var(--text-muted); }
+@media (max-width: 600px) { .hero { padding: 56px 0 36px; } .card { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+</style>
+</head>
+<body>
+<div style="background-color: #0e0e12; min-height: 100vh; width: 100%;">
+
+<div class="topbar">
+    <div class="container topbar-inner">
+        <span class="topbar-label">Business &amp; Motherhood</span>
+        <span class="topbar-for">For Mom Entrepreneurs &amp; Traveling Families</span>
+    </div>
+</div>
+
+<section class="hero">
+    <div class="container">
+        <p class="hero-eyebrow">Erin Naanee — Business Coach &amp; Traveling Mom</p>
+        <h1>You don't have to choose between <em>growing your business</em> and being present for your family</h1>
+        <p class="hero-sub">Every entrepreneur-mom hits the same wall: the business needs more time, your kids need more of you, and there's nothing left over. Erin Naanee has built and scaled a business while raising a family and traveling. Scale While Mothering is the system she actually uses.</p>
+        <div class="hero-cta">
+            <a href="#cta" class="cta-button">Get Started Now</a>
+        </div>
+    </div>
+</section>
+
+<section class="video-section">
+    <div class="container">
+        <div class="video-wrapper">
+            <div class="video-placeholder">
+                <div class="video-placeholder-inner">
+                    <div class="play-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <p class="video-placeholder-text">Erin's message for you — watch first</p>
+                </div>
+            </div>
+        </div>
+        <p class="video-caption">Erin walks you through the method — 3 minutes</p>
+    </div>
+</section>
+
+<section class="context">
+    <div class="container">
+        <p><span class="highlight-name">Erin Naanee</span> didn't build her business by outsourcing her kids to someone else. She figured out how to do both — scale a real business and actually be present as a mother — and she's been documenting that journey to an audience of entrepreneurial moms and travelers who are trying to figure out the same thing.</p>
+        <p>The tension most people feel is real: growing a business requires more of everything — more time, more energy, more focus — and motherhood is already consuming all of those resources. Erin's approach isn't about hustle-culture sacrifice. It's about building systems in your business that create time, not consume it.</p>
+        <p>Scale While Mothering is the complete framework for mom entrepreneurs who want to grow their revenue without growing their stress levels.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">What Scale While Mothering includes</h2>
+        <ul class="card-list">
+            <li class="card">
+                <p class="card-label">The Constraint Map</p>
+                <p class="card-text">A diagnostic tool to identify the exact bottleneck in your business — the one thing that, if fixed, would free up the most time. Most mom entrepreneurs are working hard on the wrong problem.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Systems That Run Without You</p>
+                <p class="card-text">How to build delivery, client communication, and follow-up systems that operate while you're at the school play, on a flight, or simply unavailable. The operations blueprint for a business that doesn't need you every hour.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Revenue Without More Hours</p>
+                <p class="card-text">How to grow your income without growing your workload — productizing your expertise, raising prices, and creating offers that scale.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">The Travel Business Model</p>
+                <p class="card-text">Erin's specific approach to running a business that travels with her family — including client management, work-hour boundaries, and how to maintain growth during trips.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Community &amp; Accountability</p>
+                <p class="card-text">A private group of entrepreneur-moms who understand the specific tension of building a business while raising children. Not a generic business community — one built around your actual life.</p>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">The real obstacles this addresses</h2>
+        <div class="pain-grid">
+            <div class="pain-card">
+                <p class="pain-label">The Problem</p>
+                <p class="pain-problem">You hit a revenue ceiling and every path forward requires more of your time — which you don't have</p>
+                <p class="pain-solution">The Revenue Without More Hours module shows you how to grow income by changing what you offer and what you charge, not by working longer days.</p>
+            </div>
+            <div class="pain-card">
+                <p class="pain-label">The Problem</p>
+                <p class="pain-problem">Clients expect immediate responses and you're at pickup or dinner or trying to sleep</p>
+                <p class="pain-solution">The systems section builds communication frameworks that set expectations, automate responses, and keep clients confident without you being available 24/7.</p>
+            </div>
+            <div class="pain-card">
+                <p class="pain-label">The Problem</p>
+                <p class="pain-problem">You want to travel with your family but can't figure out how to keep the business running while you're off-grid</p>
+                <p class="pain-solution">The Travel Business Model gives you Erin's exact framework — how she structures her business so she can leave, how she prepares clients, and how she stays on top of things without being chained to her laptop.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">From other entrepreneur-moms</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p class="testimonial-quote">"I spent two years trying to grow my business while being a present mom and felt like I was failing at both. Erin's framework helped me see I was solving the wrong problem. Once I fixed my systems, everything changed."</p>
+                <p class="testimonial-author">Mom Entrepreneur, Service Business</p>
+                <p class="testimonial-note">Placeholder — real testimonials to be added</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-quote">"We took a two-week family trip last summer for the first time without me working the whole time. The Travel Business Model is real. It works."</p>
+                <p class="testimonial-author">Traveling Mom, Online Business Owner</p>
+                <p class="testimonial-note">Placeholder — real testimonials to be added</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">Questions before you join</h2>
+        <div class="faq">
+            <div class="faq-item">
+                <p class="faq-q">What kind of business does this work for?</p>
+                <p class="faq-a">Service businesses, coaching, freelance, and product-based businesses. The systems principles apply broadly. The specifics are adapted based on your situation inside the program.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">I'm just getting started — is this too advanced?</p>
+                <p class="faq-a">If you have some revenue coming in but feel stretched, this is the right time. The Constraint Map helps you identify where to focus even at an early stage.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">How much time does this program take?</p>
+                <p class="faq-a">The irony of a time-management program taking too much time isn't lost on Erin. The core modules are concise. Most people implement as they go, so the learning and execution happen simultaneously.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">Is there live coaching or is this self-paced?</p>
+                <p class="faq-a">Both. The core material is self-paced so you can work through it on your schedule. Live group coaching is available for people who want real-time feedback on their specific situation.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section" id="cta">
+    <div class="container">
+        <h2 class="cta-heading">Build the business without losing the family</h2>
+        <p class="cta-sub">You shouldn't have to pick one. Scale While Mothering is the framework that makes both possible.</p>
+        <a href="#" class="cta-button">Get Started Now</a>
+        <p class="cta-note">Proven by a mom who actually does it.</p>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>Built by J&amp;G Operations for Erin Naanee. Ready to deploy.</p>
+    </div>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,234 @@
+<style>
+/* GHL Background Override */
+html, body, .body-wrapper, .hl_page-preview--content,
+#preview-container, .hl-page-builder, #section-0,
+.section_wrapper, .inner-section, .container-fluid,
+.row-bg-color, .row, .section-bg {
+    background-color: #0e0e12 !important;
+    background: #0e0e12 !important;
+}
+body { margin: 0 !important; padding: 0 !important; min-height: 100vh; }
+</style>
+<div style="background-color: #0e0e12; min-height: 100vh; width: 100%; margin: 0; padding: 0;">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28; --border: #2a2a36;
+            --accent: #d4959b; --accent-light: #e8b4b8; --accent-glow: rgba(212, 149, 155, 0.15);
+            --white: #f0eff4; --text: #c5c4ce; --text-muted: #7e7d8a;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+        .topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+        .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+        .topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+        .topbar-for { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+        .hero { padding: 80px 0 48px; text-align: center; }
+        .hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+        .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+        .hero h1 em { color: var(--accent-light); font-style: italic; }
+        .hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+        .video-section { padding: 0 0 64px; }
+        .video-wrapper { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,0.4); }
+        .video-placeholder { width: 100%; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; background: var(--surface); color: var(--text-muted); font-size: 0.9rem; letter-spacing: 0.5px; }
+        .video-caption { text-align: center; margin-top: 16px; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+        .context { padding: 64px 0; border-top: 1px solid var(--border); }
+        .context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+        .context p:last-child { margin-bottom: 0; }
+        .highlight-name { color: var(--accent-light); font-weight: 600; }
+        .bullets { padding: 64px 0; border-top: 1px solid var(--border); }
+        .bullets-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+        .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+        .bullet-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+        .bullet-item:hover { border-color: var(--accent); }
+        .bullet-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+        .bullet-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+        .pain-section { padding: 64px 0; border-top: 1px solid var(--border); }
+        .section-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+        .pain-grid { display: flex; flex-direction: column; gap: 20px; }
+        .pain-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+        .pain-problem { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
+        .pain-title { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 10px; }
+        .pain-solution { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+        .pain-solution strong { color: var(--accent-light); font-weight: 600; }
+        .testimonials { padding: 64px 0; border-top: 1px solid var(--border); }
+        .testimonial-grid { display: flex; flex-direction: column; gap: 20px; }
+        .testimonial-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+        .testimonial-quote { font-size: 1rem; color: var(--text); line-height: 1.8; margin-bottom: 16px; font-style: italic; }
+        .testimonial-author { font-size: 0.78rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .testimonial-placeholder { font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; }
+        .faq { padding: 64px 0; border-top: 1px solid var(--border); }
+        .faq-list { display: flex; flex-direction: column; gap: 16px; }
+        .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 24px 28px; }
+        .faq-q { font-size: 0.95rem; color: var(--white); font-weight: 600; margin-bottom: 10px; }
+        .faq-a { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+        .cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+        .cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+        .cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+        .cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+        .cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+        .cta-note { margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); }
+        .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+        .footer p { font-size: 0.75rem; color: var(--text-muted); }
+        @media (max-width: 600px) { .hero { padding: 56px 0 36px; } .bullet-item { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+    </style>
+
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-label">For Running Moms & Homeowners</span>
+            <span class="topbar-for">Running Mom System</span>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <p class="hero-eyebrow">For the Mom Who Runs — and Runs the Whole House</p>
+            <h1>You don't have to choose between <em>your miles and your life.</em></h1>
+            <p class="hero-sub">Sabriena Abrre has built a system that lets moms train consistently, manage the house, and still have something left at the end of the day — without turning every week into a logistical nightmare.</p>
+        </div>
+    </section>
+
+    <section class="video-section">
+        <div class="container">
+            <div class="video-wrapper">
+                <div class="video-placeholder">[ Your video goes here ]</div>
+            </div>
+            <p class="video-caption">Watch before you plan your next training week</p>
+        </div>
+    </section>
+
+    <section class="context">
+        <div class="container">
+            <p><span class="highlight-name">Sabriena Abrre</span> has built a 306K community of moms who run, keep a home, and refuse to give up either one. She's been open about the reality — the 5am runs before the kids wake up, the laundry pile that never fully disappears, the weeks where everything competes for the same two hours.</p>
+            <p>Her content resonates because she doesn't pretend the juggle is easy or that you just need more discipline. She shows what the actual system looks like — the training schedule that fits real family life, the home routines that run in the background, and the mindset that keeps both going without burning out.</p>
+            <p>The <span class="highlight-name">Running Mom System</span> is where she packages all of it — a complete framework for the mom who loves running and loves her family and isn't willing to sacrifice one for the other.</p>
+        </div>
+    </section>
+
+    <section class="bullets">
+        <div class="container">
+            <h2 class="bullets-heading">What's inside the Running Mom System</h2>
+            <ul class="bullet-list">
+                <li class="bullet-item">
+                    <p class="bullet-label">Mom-Specific Training Plans</p>
+                    <p class="bullet-text">Running schedules built around school drop-offs, nap windows, and the reality that some days the plan falls apart — and that's accounted for.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Home Management Systems</p>
+                    <p class="bullet-text">The cleaning routines, meal prep shortcuts, and household rhythms that keep things running without requiring a three-hour Sunday reset every week.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Nutrition for Running Moms</p>
+                    <p class="bullet-text">How to fuel your training without cooking a separate meal for yourself while the kids eat something completely different.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Recovery Strategies</p>
+                    <p class="bullet-text">What to actually do on rest days when rest doesn't mean lying on the couch — and how to protect your body when training and mom life are both pulling on you.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Community of Running Moms</p>
+                    <p class="bullet-text">A group of women who get it — the early mornings, the canceled long runs, the laundry. Accountability and camaraderie from people who are in exactly the same season.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="pain-section">
+        <div class="container">
+            <h2 class="section-heading">The running mom reality</h2>
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">Training plans assume you have unlimited time</p>
+                    <p class="pain-solution">Most running plans were not designed for someone managing a household and a family. <strong>The Running Mom System</strong> is built from the ground up for your constraints, not someone else's.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">The house falls apart when you prioritize training</p>
+                    <p class="pain-solution">It shouldn't be either/or. <strong>The home management systems</strong> run in the background so your training doesn't require the household to suffer for it.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">You feel guilty every time you lace up</p>
+                    <p class="pain-solution">Running isn't selfish — it's what keeps you going. <strong>Sabriena's framework</strong> helps you build it into family life so the guilt goes away because the system supports everyone.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">You keep injuring yourself because you're running on no sleep and stress</p>
+                    <p class="pain-solution">Mom fatigue is a real training variable. <strong>The recovery and nutrition modules</strong> address the specific ways that running while sleep-deprived and stretched thin breaks down a body.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-heading">From running moms inside the system</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"I ran my first half marathon since having kids using this plan. Three kids, full-time job, and I trained consistently for four months. The system is actually real."</p>
+                    <p class="testimonial-author">Mom of Three, Colorado</p>
+                    <p class="testimonial-placeholder">[Placeholder — real testimonial to be added]</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"The home systems are something I didn't expect to need — but they're the reason the training actually stuck. When the house isn't chaos, I can focus on my runs without guilt."</p>
+                    <p class="testimonial-author">Running Mom, Illinois</p>
+                    <p class="testimonial-placeholder">[Placeholder — real testimonial to be added]</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Sabriena gets it in a way no other running coach does. She's not asking you to become a different person. She's helping you build a system around the person you already are."</p>
+                    <p class="testimonial-author">Mom Runner, Michigan</p>
+                    <p class="testimonial-placeholder">[Placeholder — real testimonial to be added]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-heading">Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <p class="faq-q">What level of runner is this for?</p>
+                    <p class="faq-a">Beginner through experienced. The system is built around fitting running into mom life — so whether you're just getting back into it or training for a marathon, there's a path for you.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">Do I need to have a race goal to use this?</p>
+                    <p class="faq-a">No. Some women inside are training for races, others just want to run consistently without it destroying the rest of their life. Both are valid and both are covered.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">How does the home management piece work?</p>
+                    <p class="faq-a">It's practical systems — not a 47-chore chart. Routines, rhythms, and shortcuts that keep the household functional without requiring perfect execution every single day.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">What if I have very young kids and almost no time?</p>
+                    <p class="faq-a">The system is specifically designed for that season. There are modified plans for moms with limited windows — including nap-run schedules and stroller-friendly options.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">How do I get started?</p>
+                    <p class="faq-a">Click the button below for instant access to the full Running Mom System.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-heading">Keep running. Keep the house. Keep your sanity.</h2>
+            <p class="cta-sub">The Running Mom System gives you the training, the home routines, and the community to make all three work at the same time.</p>
+            <a href="#" class="cta-button">Get Started Now</a>
+            <p class="cta-note">Built for moms who run. Not for moms who wish they could.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Built by J&G Operations for Sabriena Abrre. Ready to deploy.</p>
+        </div>
+    </footer>
+
+</div>

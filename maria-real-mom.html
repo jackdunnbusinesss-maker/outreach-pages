@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maria (Real Mom Life) — Funnel Breakdown</title>
+    <style>
+    html, body, .body-wrapper, .hl_page-preview--content,
+    #preview-container, .hl-page-builder, #section-0,
+    .section_wrapper, .inner-section, .container-fluid,
+    .row-bg-color, .row, .section-bg {
+        background-color: #0e0e12 !important;
+        background: #0e0e12 !important;
+    }
+    body { margin: 0 !important; padding: 0 !important; min-height: 100vh; }
+    </style>
+</head>
+<body>
+<div style="background-color: #0e0e12; min-height: 100vh; width: 100%; margin: 0; padding: 0;">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+        --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28;
+        --border: #2a2a36; --accent: #d4959b; --accent-light: #e8b4b8;
+        --accent-glow: rgba(212, 149, 155, 0.15); --white: #f0eff4;
+        --text: #c5c4ce; --text-muted: #7e7d8a;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    .topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+    .topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+    .topbar-for { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+    .hero { padding: 80px 0 48px; text-align: center; }
+    .hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+    .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+    .hero h1 em { color: var(--accent-light); font-style: italic; }
+    .hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+    .video-section { padding: 0 0 64px; }
+    .video-wrapper { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,0.4); }
+    .video-placeholder { width: 100%; padding-top: 56.25%; position: relative; background: var(--surface-light); }
+    .video-placeholder-inner { position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+    .play-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--accent-glow); border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center; }
+    .play-icon svg { width: 22px; height: 22px; fill: var(--accent-light); margin-left: 3px; }
+    .placeholder-text { font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+    .video-caption { text-align: center; margin-top: 16px; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+    .context { padding: 64px 0; border-top: 1px solid var(--border); }
+    .context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+    .context p:last-child { margin-bottom: 0; }
+    .highlight-name { color: var(--accent-light); font-weight: 600; }
+    .section { padding: 64px 0; border-top: 1px solid var(--border); }
+    .section-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+    .card-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+    .card:hover { border-color: var(--accent); }
+    .card-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+    .card-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+    .pain-grid { display: flex; flex-direction: column; gap: 20px; }
+    .pain-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+    .pain-card:hover { border-color: var(--accent); }
+    .pain-problem { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px; line-height: 1.6; }
+    .pain-solution { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+    .pain-arrow { color: var(--accent); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; margin-bottom: 6px; margin-top: 14px; }
+    .testimonials { display: flex; flex-direction: column; gap: 20px; }
+    .testimonial { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+    .testimonial-quote { font-size: 1rem; color: var(--text); line-height: 1.8; margin-bottom: 16px; font-style: italic; }
+    .testimonial-author { font-size: 0.8rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+    .testimonial-note { font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; }
+    .faq-list { display: flex; flex-direction: column; gap: 16px; }
+    .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+    .faq-q { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 12px; }
+    .faq-a { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+    .cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+    .cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+    .cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+    .cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+    .cta-note { margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); }
+    .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+    .footer p { font-size: 0.75rem; color: var(--text-muted); }
+    @media (max-width: 600px) { .hero { padding: 56px 0 36px; } .card { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+</style>
+
+<div class="topbar">
+    <div class="container topbar-inner">
+        <span class="topbar-label">Complete Funnel Breakdown Below</span>
+        <span class="topbar-for">For Maria (Real Mom Life)</span>
+    </div>
+</div>
+
+<section class="hero">
+    <div class="container">
+        <p class="hero-eyebrow">Built for Maria's 63K Community</p>
+        <h1>Maria, here's how we'd turn your <em>Family Travel Guide</em> into a self-running revenue stream for working moms</h1>
+        <p class="hero-sub">A short walkthrough showing exactly what your funnel would look like — built around your real mom life and family travel content, designed so the working moms who already trust you have a clear path to your guide.</p>
+    </div>
+</section>
+
+<section class="video-section">
+    <div class="container">
+        <div class="video-wrapper">
+            <div class="video-placeholder">
+                <div class="video-placeholder-inner">
+                    <div class="play-icon">
+                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <span class="placeholder-text">Video walkthrough — add your VSL here</span>
+                </div>
+            </div>
+        </div>
+        <p class="video-caption">3-minute walkthrough — recorded for you</p>
+    </div>
+</section>
+
+<section class="context">
+    <div class="container">
+        <p><span class="highlight-name">Maria</span>, 63K moms follow you because your account is called "Real Mom Life" and it actually delivers on that. Working moms and regular moms don't have time for content that pretends family life is a magazine shoot — they follow you because you show up the way they feel.</p>
+        <p>Family travel is one of the things that looks amazing on social media and terrifying in real life — especially for working moms who can barely coordinate a Tuesday dentist appointment, let alone a week-long family trip. Your audience wants to travel. They just don't know how to make it work with their actual life.</p>
+        <p>What we build is the system that takes that desire and converts it into consistent sales of the <span class="highlight-name">Family Travel Guide</span> — without you having to be in launch mode or manually selling every time you post a travel reel. The walkthrough above shows exactly how that looks.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">What this funnel does for your business</h2>
+        <ul class="card-list">
+            <li class="card">
+                <p class="card-label">Capture</p>
+                <p class="card-text">Converts your most travel-motivated followers into leads through a free resource that speaks directly to the working mom who's been wanting to plan a real family trip but keeps putting it off because it feels too overwhelming.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Nurture</p>
+                <p class="card-text">An automated sequence that moves moms from "I wish I could do that" to "okay I'm actually doing this" — walking them through what real family travel looks like and why the Guide makes it doable for their actual schedule.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Convert</p>
+                <p class="card-text">A frictionless Guide checkout that sells while you're working, parenting, or sleeping — so the revenue doesn't stop when you stop posting.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Recover</p>
+                <p class="card-text">Catches the moms who bookmarked your travel reel, meant to come back, and forgot — and brings them back with a short follow-up before the moment passes.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Ascend</p>
+                <p class="card-text">After the Guide, buyers are pointed toward deeper resources — whether that's destination-specific content, a community, or a future coaching or course offer you build for this audience.</p>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">What the working moms in your audience are actually dealing with</h2>
+        <div class="pain-grid">
+            <div class="pain-card">
+                <p class="card-label">The problem</p>
+                <p class="pain-problem">She's a working mom. Her PTO is limited, her mental load is maxed, and planning a family trip feels like a second job she doesn't have time for. So she keeps saving travel content and going nowhere.</p>
+                <p class="pain-arrow">The fix</p>
+                <p class="pain-solution">The Family Travel Guide does the heavy lifting for her — so the planning stage doesn't take weeks of research and 50 browser tabs. She reads the Guide and knows what to do.</p>
+            </div>
+            <div class="pain-card">
+                <p class="card-label">The problem</p>
+                <p class="pain-problem">She's tried to research family travel before and every result is either luxury travel content ($8K resort trips) or extreme budget backpacking that doesn't work with a toddler. Nothing in the middle for a normal working family.</p>
+                <p class="pain-arrow">The fix</p>
+                <p class="pain-solution">Maria's Guide is built from real mom life — not aspirational travel content designed for couples with no kids or families with unlimited budgets. The funnel leads with that specificity.</p>
+            </div>
+            <div class="pain-card">
+                <p class="card-label">The problem</p>
+                <p class="pain-problem">She's been saying "we'll travel more when things calm down" for three years. Things haven't calmed down. The kids are getting older and she's starting to feel like she's waiting for a moment that's never coming.</p>
+                <p class="pain-arrow">The fix</p>
+                <p class="pain-solution">The funnel speaks to that urgency — the kids won't stay this age, this is the window — and the Guide gives her the plan to act on it now rather than next year.</p>
+            </div>
+            <div class="pain-card">
+                <p class="card-label">The problem</p>
+                <p class="pain-problem">She loves Maria's content but doesn't realize there's a guide she can buy. She's been getting value for free and has no idea something more useful and complete exists.</p>
+                <p class="pain-arrow">The fix</p>
+                <p class="pain-solution">The funnel makes the Guide visible and accessible — turning passive followers into buyers by giving them a clear path from the content they already consume to the resource they actually need.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">What working moms in your community are saying</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p class="testimonial-quote">"I've been following Maria for over a year and finally pulled the trigger on the Guide before our spring break trip. We had the best family vacation we've ever taken. The planning piece alone saved me hours."</p>
+                <p class="testimonial-author">— Lindsey R.</p>
+                <p class="testimonial-note">Placeholder — replace with real testimonial</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-quote">"I'm a working mom with two kids under 8. Family travel felt impossible until this Guide. It's real advice from someone who's actually done it — not a travel blogger who doesn't have kids."</p>
+                <p class="testimonial-author">— Tara M.</p>
+                <p class="testimonial-note">Placeholder — replace with real testimonial</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-quote">"The Guide helped me finally have the 'let's book a trip' conversation with my husband that went somewhere. We had tried before and it always fell apart. This time we actually booked."</p>
+                <p class="testimonial-author">— Nicole F.</p>
+                <p class="testimonial-note">Placeholder — replace with real testimonial</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">Common questions</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <p class="faq-q">Is the Guide for international travel or domestic trips?</p>
+                <p class="faq-a">Both. Maria's covered family travel across different types of trips. The Guide covers the frameworks and logistics that apply whether you're driving two hours or flying somewhere new.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">What ages does the Guide work for?</p>
+                <p class="faq-a">Families with kids from toddler age through elementary school. Maria's traveled through multiple stages with her own family and the Guide reflects that range.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">Is this a budget travel guide?</p>
+                <p class="faq-a">It's a realistic family travel guide. It covers how to make smart decisions at different budget levels — not luxury content, not extreme frugality. Real options for real working families.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">I barely have time to read. Is this actually usable?</p>
+                <p class="faq-a">It's designed for working moms who don't have time to wade through content. Organized by trip stage, scannable, and built to be referenced — not read cover to cover once and forgotten.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">How is this different from free travel blog content?</p>
+                <p class="faq-a">Free content covers destinations. The Guide covers logistics — the stuff that actually makes or breaks a family trip. Packing with kids, managing travel days, what to do when things go sideways. The real part.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <h2 class="cta-heading">Want to talk through it?</h2>
+        <p class="cta-sub">If what you saw in the walkthrough makes sense for where your business is headed, let's get 15 minutes on the calendar.</p>
+        <a href="https://calendly.com/jackdunn0987/30min" class="cta-button">Book Now</a>
+        <p class="cta-note">No commitment. Just a conversation about what's possible.</p>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>Built by J&amp;G Operations for Maria (Real Mom Life). Ready to deploy.</p>
+    </div>
+</footer>
+</div>
+</body>
+</html>

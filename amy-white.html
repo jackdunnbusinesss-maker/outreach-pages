@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amy White — Funnel Breakdown</title>
+    <style>
+    html, body, .body-wrapper, .hl_page-preview--content,
+    #preview-container, .hl-page-builder, #section-0,
+    .section_wrapper, .inner-section, .container-fluid,
+    .row-bg-color, .row, .section-bg {
+        background-color: #0e0e12 !important;
+        background: #0e0e12 !important;
+    }
+    body { margin: 0 !important; padding: 0 !important; min-height: 100vh; }
+    </style>
+</head>
+<body>
+<div style="background-color: #0e0e12; min-height: 100vh; width: 100%; margin: 0; padding: 0;">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+        --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28;
+        --border: #2a2a36; --accent: #d4959b; --accent-light: #e8b4b8;
+        --accent-glow: rgba(212, 149, 155, 0.15); --white: #f0eff4;
+        --text: #c5c4ce; --text-muted: #7e7d8a;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    .topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+    .topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+    .topbar-for { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+    .hero { padding: 80px 0 48px; text-align: center; }
+    .hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+    .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+    .hero h1 em { color: var(--accent-light); font-style: italic; }
+    .hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+    .video-section { padding: 0 0 64px; }
+    .video-wrapper { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,0.4); }
+    .video-placeholder { width: 100%; padding-top: 56.25%; position: relative; background: var(--surface-light); }
+    .video-placeholder-inner { position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+    .play-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--accent-glow); border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center; }
+    .play-icon svg { width: 22px; height: 22px; fill: var(--accent-light); margin-left: 3px; }
+    .placeholder-text { font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+    .video-caption { text-align: center; margin-top: 16px; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+    .context { padding: 64px 0; border-top: 1px solid var(--border); }
+    .context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+    .context p:last-child { margin-bottom: 0; }
+    .highlight-name { color: var(--accent-light); font-weight: 600; }
+    .section { padding: 64px 0; border-top: 1px solid var(--border); }
+    .section-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+    .card-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+    .card:hover { border-color: var(--accent); }
+    .card-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+    .card-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+    .pain-grid { display: flex; flex-direction: column; gap: 20px; }
+    .pain-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+    .pain-card:hover { border-color: var(--accent); }
+    .pain-problem { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px; line-height: 1.6; }
+    .pain-solution { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+    .pain-arrow { color: var(--accent); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; margin-bottom: 6px; margin-top: 14px; }
+    .testimonials { display: flex; flex-direction: column; gap: 20px; }
+    .testimonial { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+    .testimonial-quote { font-size: 1rem; color: var(--text); line-height: 1.8; margin-bottom: 16px; font-style: italic; }
+    .testimonial-author { font-size: 0.8rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+    .testimonial-note { font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; }
+    .faq-list { display: flex; flex-direction: column; gap: 16px; }
+    .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+    .faq-q { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 12px; }
+    .faq-a { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+    .cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+    .cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+    .cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+    .cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+    .cta-note { margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); }
+    .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+    .footer p { font-size: 0.75rem; color: var(--text-muted); }
+    @media (max-width: 600px) { .hero { padding: 56px 0 36px; } .card { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+</style>
+
+<div class="topbar">
+    <div class="container topbar-inner">
+        <span class="topbar-label">Complete Funnel Breakdown Below</span>
+        <span class="topbar-for">For Amy White</span>
+    </div>
+</div>
+
+<section class="hero">
+    <div class="container">
+        <p class="hero-eyebrow">Built for Amy's 115K Community</p>
+        <h1>Amy, here's how we'd turn your <em>mom-entrepreneur mastermind</em> into a self-running enrollment machine</h1>
+        <p class="hero-sub">A short walkthrough showing exactly what your funnel would look like — built for the mothers and business owners who follow your family life, health, and entrepreneurship content and are ready to stop doing it all alone.</p>
+    </div>
+</section>
+
+<section class="video-section">
+    <div class="container">
+        <div class="video-wrapper">
+            <div class="video-placeholder">
+                <div class="video-placeholder-inner">
+                    <div class="play-icon">
+                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <span class="placeholder-text">Video walkthrough — add your VSL here</span>
+                </div>
+            </div>
+        </div>
+        <p class="video-caption">3-minute walkthrough — recorded for you</p>
+    </div>
+</section>
+
+<section class="context">
+    <div class="container">
+        <p><span class="highlight-name">Amy</span>, 115K people follow you because you're doing something that looks impossible from the outside — running a business, staying healthy, and actually being present as a mom. Not pretending to be. Actually doing it.</p>
+        <p>The mothers in your audience who are also building businesses don't need another productivity hack. They need to be around someone who's figured out how to make it work and is willing to be honest about what that actually requires. That's what you represent to them.</p>
+        <p>What we build is the system that moves those women from "inspired by her content" to "inside her mastermind" — capturing the trust you've built across 115K followers and converting it into consistent mastermind enrollments through the <span class="highlight-name">mom-entrepreneur mastermind</span>.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">What this funnel does for your business</h2>
+        <ul class="card-list">
+            <li class="card">
+                <p class="card-label">Capture</p>
+                <p class="card-text">Converts your most business-focused followers into leads through a free resource that speaks directly to the mom entrepreneur who's maxed out, looking for structure, and finally ready to invest in a peer group that gets it.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Nurture</p>
+                <p class="card-text">An automated sequence that walks mom entrepreneurs from "I want what she has" to "I'm applying to the mastermind" — covering the real objections: time, cost, whether a group can actually help her specific situation.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Convert</p>
+                <p class="card-text">A clean application or enrollment flow that fills your mastermind without you having to manually identify and pitch every qualified candidate through DMs.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Recover</p>
+                <p class="card-text">Re-engages the women who started the application, got pulled into a meeting or a kid emergency, and haven't come back — before they forget the window was open.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Retain</p>
+                <p class="card-text">Onboards mastermind members so they show up from day one knowing what to expect, how to get value, and why this cohort is different from the business groups they've been in before.</p>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">What mom entrepreneurs in your audience are actually dealing with</h2>
+        <div class="pain-grid">
+            <div class="pain-card">
+                <p class="card-label">The problem</p>
+                <p class="pain-problem">She's been growing her business while also managing the house, the kids, and a partner who is supportive but doesn't fully understand the business side. She feels completely alone in the building part — there's no one around her who gets what this actually takes.</p>
+                <p class="pain-arrow">The fix</p>
+                <p class="pain-solution">The mastermind puts her in a room (virtual or otherwise) with other mom entrepreneurs doing the same thing. Peer accountability, real strategy, and no need to explain why she can't take a morning call before 9am school drop-off.</p>
+            </div>
+            <div class="pain-card">
+                <p class="card-label">The problem</p>
+                <p class="pain-problem">She follows business coaches and mastermind leaders who don't have kids. Their advice is good in theory. In practice, it doesn't account for the fact that her schedule isn't just hers to control.</p>
+                <p class="pain-arrow">The fix</p>
+                <p class="pain-solution">Amy's mastermind is built by and for mom entrepreneurs. The frameworks, the pacing, the expectations — all calibrated for someone running a household at the same time as a business.</p>
+            </div>
+            <div class="pain-card">
+                <p class="card-label">The problem</p>
+                <p class="pain-problem">She's tried generic online communities before. Expensive, low-engagement, full of people at wildly different stages who can't actually help each other. She doesn't want another community. She wants a room of peers.</p>
+                <p class="pain-arrow">The fix</p>
+                <p class="pain-solution">The mastermind is curated, not open-door. The funnel positions that selectivity as the value — you're not buying into a crowd, you're joining a tight group of women at a similar stage who are actually invested.</p>
+            </div>
+            <div class="pain-card">
+                <p class="card-label">The problem</p>
+                <p class="pain-problem">She's plateaued. Not failing — but not growing the way she thought she would by now. She doesn't know if the problem is strategy, mindset, offers, or something she can't see because she's too close to it.</p>
+                <p class="pain-arrow">The fix</p>
+                <p class="pain-solution">The mastermind gives her outside perspective from people who can actually see her business clearly — and the specific expertise that comes from Amy's own entrepreneurship experience.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">What mom entrepreneurs in your community are saying</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p class="testimonial-quote">"I've been in paid masterminds before. This is the first one where I don't feel like I have to justify why motherhood is part of my business conversation. It just is. And everyone in the room gets that."</p>
+                <p class="testimonial-author">— Rachel K.</p>
+                <p class="testimonial-note">Placeholder — replace with real testimonial</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-quote">"Amy doesn't run a mastermind that's theoretical. She's in the weeds with you. I've gotten more practical traction in one quarter with this group than I did in two years on my own."</p>
+                <p class="testimonial-author">— Jennifer L.</p>
+                <p class="testimonial-note">Placeholder — replace with real testimonial</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-quote">"I almost didn't apply because I thought I wasn't 'big enough' yet. Biggest mistake I almost made. The growth I've seen in six months has been real — in revenue and in how I think about the business."</p>
+                <p class="testimonial-author">— Stephanie W.</p>
+                <p class="testimonial-note">Placeholder — replace with real testimonial</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">Common questions</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <p class="faq-q">What kind of businesses is the mastermind for?</p>
+                <p class="faq-a">Mom entrepreneurs building service-based businesses, product businesses, or content-based income streams. Amy's background spans health, family, and entrepreneurship — so the room tends to be diverse but grounded in the same experience of building while raising.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">How much revenue do I need to be making to apply?</p>
+                <p class="faq-a">The mastermind is for women who are already in motion — you don't have to be at a specific revenue number, but you should have a real business and real traction. This isn't a starting-from-scratch program.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">What does the mastermind actually look like week to week?</p>
+                <p class="faq-a">Group calls, peer accountability, direct access to Amy's expertise on specific business questions. It's structured enough to create momentum and flexible enough to fit around a mom's schedule.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">How is this different from Amy's social content?</p>
+                <p class="faq-a">The content is inspiration and visibility. The mastermind is where you get specific feedback on your specific business from someone who's built one and from peers who are building alongside you.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">How do I apply?</p>
+                <p class="faq-a">The application process is short and designed to make sure the mastermind is the right fit for where you are right now. Not a long form or a hard sell — just a conversation starter.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <h2 class="cta-heading">Want to talk through it?</h2>
+        <p class="cta-sub">If what you saw in the walkthrough makes sense for where your business is headed, let's get 15 minutes on the calendar.</p>
+        <a href="https://calendly.com/jackdunn0987/30min" class="cta-button">Book Now</a>
+        <p class="cta-note">No commitment. Just a conversation about what's possible.</p>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>Built by J&amp;G Operations for Amy White. Ready to deploy.</p>
+    </div>
+</footer>
+</div>
+</body>
+</html>

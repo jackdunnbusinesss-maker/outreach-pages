@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeAnna Liz — Family Travel Guide</title>
+    <style>
+/* GHL Background Override */
+html, body, .body-wrapper, .hl_page-preview--content,
+#preview-container, .hl-page-builder, #section-0,
+.section_wrapper, .inner-section, .container-fluid,
+.row-bg-color, .row, .section-bg {
+    background-color: #0e0e12 !important;
+    background: #0e0e12 !important;
+}
+body { margin: 0 !important; padding: 0 !important; min-height: 100vh; }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28; --border: #2a2a36; --accent: #d4959b; --accent-light: #e8b4b8; --accent-glow: rgba(212, 149, 155, 0.15); --white: #f0eff4; --text: #c5c4ce; --text-muted: #7e7d8a; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+        .topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+        .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+        .topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+        .topbar-for { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+        .hero { padding: 80px 0 48px; text-align: center; }
+        .hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+        .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+        .hero h1 em { color: var(--accent-light); font-style: italic; }
+        .hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto 36px; line-height: 1.8; }
+        .cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+        .cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+        .video-section { padding: 0 0 64px; }
+        .video-wrapper { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,0.4); }
+        .video-placeholder { width: 100%; aspect-ratio: 16/9; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--surface); color: var(--text-muted); font-size: 0.9rem; gap: 12px; }
+        .video-placeholder-icon { width: 56px; height: 56px; border-radius: 50%; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
+        .video-caption { text-align: center; margin-top: 16px; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+        .context { padding: 64px 0; border-top: 1px solid var(--border); }
+        .context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+        .context p:last-child { margin-bottom: 0; }
+        .highlight-name { color: var(--accent-light); font-weight: 600; }
+        .bullets { padding: 64px 0; border-top: 1px solid var(--border); }
+        .bullets-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+        .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+        .bullet-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+        .bullet-item:hover { border-color: var(--accent); }
+        .bullet-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+        .bullet-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+        .pain-section { padding: 64px 0; border-top: 1px solid var(--border); }
+        .pain-grid { display: flex; flex-direction: column; gap: 20px; }
+        .pain-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+        .pain-problem { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
+        .pain-title { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 10px; }
+        .pain-fix { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 6px; font-weight: 600; }
+        .pain-solution { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+        .testimonials { padding: 64px 0; border-top: 1px solid var(--border); }
+        .testimonial-grid { display: flex; flex-direction: column; gap: 20px; }
+        .testimonial-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+        .testimonial-quote { font-size: 1rem; color: var(--text); line-height: 1.8; margin-bottom: 16px; font-style: italic; }
+        .testimonial-author { font-size: 0.8rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .testimonial-note { font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; }
+        .faq { padding: 64px 0; border-top: 1px solid var(--border); }
+        .faq-list { display: flex; flex-direction: column; gap: 16px; }
+        .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+        .faq-q { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 12px; }
+        .faq-a { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+        .cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+        .cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+        .cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+        .cta-note { margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); }
+        .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+        .footer p { font-size: 0.75rem; color: var(--text-muted); }
+        @media (max-width: 600px) { .hero { padding: 56px 0 36px; } .bullet-item { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+    </style>
+</head>
+<body>
+<div style="background-color: #0e0e12; min-height: 100vh; width: 100%; margin: 0; padding: 0;">
+
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-label">For Mothers, Travelers &amp; Foodies</span>
+            <span class="topbar-for">DeAnna Liz — Family Travel Guide</span>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <p class="hero-eyebrow">Family Travel That Doesn't End in Meltdowns, Overspending, or Regret</p>
+            <h1>You want your kids to see the world. <em>Here's how you actually pull it off</em> without losing your mind or your budget.</h1>
+            <p class="hero-sub">Planning family travel is a completely different skill set than solo travel — and most travel guides were written for people without kids. DeAnna Liz has 61,000 followers because she covers the full picture: logistics, food, budget, and how to keep everyone happy from check-in to checkout.</p>
+            <a href="#cta" class="cta-button">Get Started Now</a>
+        </div>
+    </section>
+
+    <section class="video-section">
+        <div class="container">
+            <div class="video-wrapper">
+                <div class="video-placeholder">
+                    <div class="video-placeholder-icon">▶</div>
+                    <span>Video walkthrough — add your VSL here</span>
+                </div>
+            </div>
+            <p class="video-caption">From DeAnna — watch before you book your next trip</p>
+        </div>
+    </section>
+
+    <section class="context">
+        <div class="container">
+            <p><span class="highlight-name">DeAnna Liz</span> built an audience of 61,000 mothers, travelers, and food lovers by showing the real version of family travel — not the curated hotel room shots and stress-free arrivals, but the real planning process, the food finds, the budget math, and the moments that actually make it worth the hassle.</p>
+            <p>She covers travel, food, and family because those three things are inseparable on a real trip. The local restaurant your kids actually eat at. The hotel that looks great but the beds are bad. The hidden beach that's worth the extra 20 minutes. The airport strategy that keeps everyone calm at 5am. That's the level of detail that makes DeAnna's content valuable — and it's all in the guide.</p>
+            <p>The Family Travel Guide distills everything she's learned into a resource you can use before, during, and after your trips — so you spend less time planning and more time being present on vacation.</p>
+        </div>
+    </section>
+
+    <section class="bullets">
+        <div class="container">
+            <h2 class="bullets-heading">What's inside the Family Travel Guide</h2>
+            <ul class="bullet-list">
+                <li class="bullet-item">
+                    <p class="bullet-label">Trip Planning Framework</p>
+                    <p class="bullet-text">The exact process DeAnna uses to research, book, and structure a family trip — from destination selection to daily itinerary without over-scheduling the fun out of it.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Budget Breakdown System</p>
+                    <p class="bullet-text">How to estimate and track family travel costs accurately — flights, accommodation, food, and the expenses that always sneak up on you — so you can travel more often without financial regret.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Food Research Method</p>
+                    <p class="bullet-text">How DeAnna finds the restaurants that actually matter — the local spots, the family-friendly hidden gems, and how to avoid wasting meals at tourist traps when you only have a few days.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Destination-Specific Content</p>
+                    <p class="bullet-text">DeAnna's deep-dive breakdowns of specific destinations — what's worth it, what's overrated, and the insider logistics that only come from having actually been there with kids.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Travel with Kids Survival Guide</p>
+                    <p class="bullet-text">Packing systems, airport tactics, handling jet lag, keeping kids engaged on long travel days, and managing the inevitable moments where the best-laid plans fall apart.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="pain-section">
+        <div class="container">
+            <h2 class="bullets-heading">What actually makes family travel hard</h2>
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">You spend hours planning a trip and it still doesn't feel organized when you get there.</p>
+                    <p class="pain-fix">The Fix</p>
+                    <p class="pain-solution">DeAnna's trip planning framework builds the trip in layers — logistics first, experiences second — so you arrive with a real plan instead of a wishlist and three browser tabs open.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">Family travel costs more than you expect every single time.</p>
+                    <p class="pain-fix">The Fix</p>
+                    <p class="pain-solution">The budget breakdown system accounts for the real numbers — not the flight price you found online at 2am, but the actual all-in cost of a week away with kids, built in advance.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">You waste meals at mediocre restaurants because you didn't know where to go.</p>
+                    <p class="pain-fix">The Fix</p>
+                    <p class="pain-solution">DeAnna's food research method finds the spots that are actually worth your time — and helps you filter the tourist-trap options before you're already seated with hungry kids.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">Traveling with kids is so logistically intense that you come home more exhausted than when you left.</p>
+                    <p class="pain-fix">The Fix</p>
+                    <p class="pain-solution">The survival guide covers the packing, the airports, the jet lag, and the in-trip management that turns chaos into something that runs smoothly enough to actually enjoy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="bullets-heading">What readers are saying</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"We used DeAnna's food research method on our last trip and ate better than any vacation we've ever taken. We didn't waste a single meal. That sounds small but it's genuinely a big deal when you have two picky eaters."</p>
+                    <p class="testimonial-author">— Karen L., mom of 2</p>
+                    <p class="testimonial-note">Placeholder — real testimonial to be added</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"The budget breakdown system showed me we were massively underestimating costs every time. We actually saved more money by planning better and ended up traveling twice in one year."</p>
+                    <p class="testimonial-author">— Maria T., traveling mom</p>
+                    <p class="testimonial-note">Placeholder — real testimonial to be added</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"I came back from our last trip actually relaxed for the first time in five years of traveling with my kids. The planning framework is the reason."</p>
+                    <p class="testimonial-author">— Jessica P., mom of 3</p>
+                    <p class="testimonial-note">Placeholder — real testimonial to be added</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <h2 class="bullets-heading">Common questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <p class="faq-q">What age range is this for? I have toddlers / teens / one of each.</p>
+                    <p class="faq-a">DeAnna covers travel across multiple kid ages. The frameworks apply broadly, and the destination-specific content often includes age-specific notes — because a trip with toddlers and a trip with teenagers are completely different experiences.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">Is this domestic US travel or international?</p>
+                    <p class="faq-a">Both. DeAnna covers domestic and international destinations. The planning framework works for either. The destination-specific content includes a mix of US and international locations.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">Is this just for moms or for the whole family?</p>
+                    <p class="faq-a">DeAnna's audience skews toward moms because she speaks to the person doing most of the planning — but the guide is for the whole trip and the whole family. Partners are welcome.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">How is this different from just following travel blogs?</p>
+                    <p class="faq-a">Travel blogs give you information. This gives you a system. The difference is that you don't spend five hours reading articles before every trip — you have a framework that works regardless of where you're going.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">Does the food content account for picky eaters?</p>
+                    <p class="faq-a">Yes. DeAnna is a foodie who has raised kids. The food section explicitly covers how to find places that satisfy the adults without everyone melting down because the menu has nothing recognizable for a seven-year-old.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="cta">
+        <div class="container">
+            <h2 class="cta-heading">Your family deserves trips worth the effort.</h2>
+            <p class="cta-sub">Stop winging it and wondering why family travel is always so exhausting. There's a better way to plan and a better way to travel — and DeAnna has already figured it out.</p>
+            <a href="https://calendly.com/jackdunn0987/30min" class="cta-button">Book Your Free Strategy Call</a>
+            <p class="cta-note">No commitment. 15 minutes. See if this is the right fit.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Built by J&amp;G Operations for DeAnna Liz. Ready to deploy.</p>
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>

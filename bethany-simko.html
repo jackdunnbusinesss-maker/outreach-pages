@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bethany Simko — Funnel Breakdown</title>
+    <style>
+    html, body, .body-wrapper, .hl_page-preview--content,
+    #preview-container, .hl-page-builder, #section-0,
+    .section_wrapper, .inner-section, .container-fluid,
+    .row-bg-color, .row, .section-bg {
+        background-color: #0e0e12 !important;
+        background: #0e0e12 !important;
+    }
+    body { margin: 0 !important; padding: 0 !important; min-height: 100vh; }
+    </style>
+</head>
+<body>
+<div style="background-color: #0e0e12; min-height: 100vh; width: 100%; margin: 0; padding: 0;">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+        --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28;
+        --border: #2a2a36; --accent: #d4959b; --accent-light: #e8b4b8;
+        --accent-glow: rgba(212, 149, 155, 0.15); --white: #f0eff4;
+        --text: #c5c4ce; --text-muted: #7e7d8a;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    .topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+    .topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+    .topbar-for { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+    .hero { padding: 80px 0 48px; text-align: center; }
+    .hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+    .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+    .hero h1 em { color: var(--accent-light); font-style: italic; }
+    .hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+    .video-section { padding: 0 0 64px; }
+    .video-wrapper { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,0.4); }
+    .video-placeholder { width: 100%; padding-top: 56.25%; position: relative; background: var(--surface-light); }
+    .video-placeholder-inner { position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+    .play-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--accent-glow); border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center; }
+    .play-icon svg { width: 22px; height: 22px; fill: var(--accent-light); margin-left: 3px; }
+    .placeholder-text { font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+    .video-caption { text-align: center; margin-top: 16px; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+    .context { padding: 64px 0; border-top: 1px solid var(--border); }
+    .context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+    .context p:last-child { margin-bottom: 0; }
+    .highlight-name { color: var(--accent-light); font-weight: 600; }
+    .section { padding: 64px 0; border-top: 1px solid var(--border); }
+    .section-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+    .card-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+    .card:hover { border-color: var(--accent); }
+    .card-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+    .card-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+    .pain-grid { display: flex; flex-direction: column; gap: 20px; }
+    .pain-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+    .pain-card:hover { border-color: var(--accent); }
+    .pain-problem { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px; line-height: 1.6; }
+    .pain-solution { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+    .pain-arrow { color: var(--accent); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; margin-bottom: 6px; margin-top: 14px; }
+    .testimonials { display: flex; flex-direction: column; gap: 20px; }
+    .testimonial { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+    .testimonial-quote { font-size: 1rem; color: var(--text); line-height: 1.8; margin-bottom: 16px; font-style: italic; }
+    .testimonial-author { font-size: 0.8rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+    .testimonial-note { font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; }
+    .faq-list { display: flex; flex-direction: column; gap: 16px; }
+    .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+    .faq-q { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 12px; }
+    .faq-a { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+    .cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+    .cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+    .cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+    .cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+    .cta-note { margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); }
+    .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+    .footer p { font-size: 0.75rem; color: var(--text-muted); }
+    @media (max-width: 600px) { .hero { padding: 56px 0 36px; } .card { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+</style>
+
+<div class="topbar">
+    <div class="container topbar-inner">
+        <span class="topbar-label">Complete Funnel Breakdown Below</span>
+        <span class="topbar-for">For Bethany Simko</span>
+    </div>
+</div>
+
+<section class="hero">
+    <div class="container">
+        <p class="hero-eyebrow">Built for Bethany's 85K Community</p>
+        <h1>Bethany, here's how we'd turn your <em>marathon training + Amazon gear</em> content into a self-running revenue system</h1>
+        <p class="hero-sub">A short walkthrough showing exactly what your funnel would look like — built around your fitness content for the marathon runners and gear-curious Amazon shoppers who already trust your recommendations and just need a clearer path to buy.</p>
+    </div>
+</section>
+
+<section class="video-section">
+    <div class="container">
+        <div class="video-wrapper">
+            <div class="video-placeholder">
+                <div class="video-placeholder-inner">
+                    <div class="play-icon">
+                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <span class="placeholder-text">Video walkthrough — add your VSL here</span>
+                </div>
+            </div>
+        </div>
+        <p class="video-caption">3-minute walkthrough — recorded for you</p>
+    </div>
+</section>
+
+<section class="context">
+    <div class="container">
+        <p><span class="highlight-name">Bethany</span>, you've built a 85K following of runners and Amazon shoppers who trust you because you actually do the thing. You run marathons. You buy and test the gear. You share what works and what's worth skipping. That's a much higher bar than most content in this space.</p>
+        <p>Marathon runners are an intensely committed audience. They research obsessively, they spend real money on gear, and when they find someone whose recommendations they trust, they follow every link. Your Amazon finds aren't just content — they're a legitimate buying resource for people who take their training seriously.</p>
+        <p>What we build is the system that takes that trust and converts it consistently — into affiliate revenue, training program enrollments, and gear guide sales — without you having to manually point to every link in every story. The walkthrough above shows exactly how that works.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">What this funnel does for your business</h2>
+        <ul class="card-list">
+            <li class="card">
+                <p class="card-label">Capture</p>
+                <p class="card-text">Converts your most training-serious followers into leads through a free resource — a gear checklist, training guide, or race prep resource that speaks directly to the runner who's getting serious about their next marathon.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Nurture</p>
+                <p class="card-text">An automated sequence that walks runners through your training approach, recommended gear, and the offers behind your content — written the way you write, not like a marketing email.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Convert</p>
+                <p class="card-text">A clean purchase flow for your training program and gear guides that converts the runner who's been saving your posts and is finally ready to actually commit to their marathon goal.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Recover</p>
+                <p class="card-text">Brings back the people who clicked your Amazon link, started your checkout, and got distracted mid-race-prep-spiral — and closes those sales before they cool off.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Ascend</p>
+                <p class="card-text">After someone buys the training program, they're walked toward gear guides, next race prep resources, or community options — so each purchase leads naturally to the next.</p>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">What marathon runners and gear shoppers in your audience are actually dealing with</h2>
+        <div class="pain-grid">
+            <div class="pain-card">
+                <p class="card-label">The problem</p>
+                <p class="pain-problem">She signed up for her first marathon seven months out and has no idea what a real training plan looks like. YouTube gives her 40 different opinions. Running forums are full of people who've been running for 20 years and aren't helpful to beginners.</p>
+                <p class="pain-arrow">The fix</p>
+                <p class="pain-solution">Your training program is the clear, structured path she's been looking for — from someone who's run the races, not just studied the theory.</p>
+            </div>
+            <div class="pain-card">
+                <p class="card-label">The problem</p>
+                <p class="pain-problem">He's training for his third marathon and keeps getting hurt between weeks 10 and 14. He doesn't know if it's his shoes, his nutrition, his training volume, or something else entirely. He just knows it keeps happening.</p>
+                <p class="pain-arrow">The fix</p>
+                <p class="pain-solution">The training program covers what most generic plans don't — the gear, nutrition, and pacing adjustments that prevent the mid-training breakdown. The funnel surfaces this as a key differentiator.</p>
+            </div>
+            <div class="pain-card">
+                <p class="card-label">The problem</p>
+                <p class="pain-problem">She's an Amazon buyer who trusts Bethany's finds but doesn't always see the links before they expire or get buried. She's bought the wrong thing three times already because she couldn't find the original recommendation fast enough.</p>
+                <p class="pain-arrow">The fix</p>
+                <p class="pain-solution">A gear guide gives her a curated, searchable resource with your best finds — organized by category, not buried in a feed. The funnel captures her interest and delivers it in a format that actually stays useful.</p>
+            </div>
+            <div class="pain-card">
+                <p class="card-label">The problem</p>
+                <p class="pain-problem">He's serious about his running but doesn't want to spend $300/month on a running coach. He wants something in between "generic free training plan" and "full coaching program."</p>
+                <p class="pain-arrow">The fix</p>
+                <p class="pain-solution">Your program fills that gap — real structure, real expertise, at a price point that makes sense for someone training as a committed amateur.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">What runners in your community are saying</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p class="testimonial-quote">"Bethany's training plan got me to the starting line injury-free for the first time in three attempts. That's the win I've been chasing for two years."</p>
+                <p class="testimonial-author">— Kevin R.</p>
+                <p class="testimonial-note">Placeholder — replace with real testimonial</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-quote">"I bought two items from her Amazon list and they're both now permanent fixtures in my training kit. Her recommendations are never generic — they're things she actually uses."</p>
+                <p class="testimonial-author">— Sarah M.</p>
+                <p class="testimonial-note">Placeholder — replace with real testimonial</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-quote">"Ran my first sub-4 hour marathon following her program. I'd plateaued for three years. Whatever she's doing is different from the generic plans and my finishing time proves it."</p>
+                <p class="testimonial-author">— David T.</p>
+                <p class="testimonial-note">Placeholder — replace with real testimonial</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">Common questions</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <p class="faq-q">Is the training program for first-time marathoners or experienced runners?</p>
+                <p class="faq-a">Both. The program covers different entry points — whether you're building your base from nothing or looking to improve a time you've plateaued on.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">How is this different from a free training plan I can find online?</p>
+                <p class="faq-a">Free plans give you the mileage. This gives you the full picture — gear, nutrition, recovery, and the adjustments that actually prevent you from falling apart in mile 18.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">What's covered in the Amazon gear guide?</p>
+                <p class="faq-a">Bethany's tested recommendations organized by category — shoes, recovery tools, nutrition, running accessories. What she actually uses and would buy again.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">What if I'm training for a half marathon instead?</p>
+                <p class="faq-a">The principles apply across distance. And Bethany's content covers half marathon training too — so check what specific programs are available when you get to the enrollment page.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">Do I need a gym membership or specific equipment?</p>
+                <p class="faq-a">The training program is built around running — the core of it requires nothing but your shoes and access to roads or a track. Additional gear recommendations are provided but not required.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <h2 class="cta-heading">Want to talk through it?</h2>
+        <p class="cta-sub">If what you saw in the walkthrough makes sense for where your business is headed, let's get 15 minutes on the calendar.</p>
+        <a href="https://calendly.com/jackdunn0987/30min" class="cta-button">Book Now</a>
+        <p class="cta-note">No commitment. Just a conversation about what's possible.</p>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>Built by J&amp;G Operations for Bethany Simko. Ready to deploy.</p>
+    </div>
+</footer>
+</div>
+</body>
+</html>

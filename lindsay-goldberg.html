@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mom Humor + Fashion Creator Business | Lindsay Goldberg</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+    --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28; --border: #2a2a36;
+    --accent: #d4959b; --accent-light: #e8b4b8; --accent-glow: rgba(212,149,155,0.15);
+    --white: #f0eff4; --text: #c5c4ce; --text-muted: #7e7d8a;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+.container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+.topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+.topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+.topbar-for { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+.hero { padding: 80px 0 48px; text-align: center; }
+.hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+.hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+.hero h1 em { color: var(--accent-light); font-style: italic; }
+.hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+.hero-cta { margin-top: 36px; }
+.video-section { padding: 0 0 64px; }
+.video-wrapper { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,0.4); }
+.video-placeholder { width: 100%; padding-top: 56.25%; position: relative; background: var(--surface-light); }
+.video-placeholder-inner { position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+.play-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--accent-glow); border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center; }
+.play-icon svg { fill: var(--accent-light); margin-left: 4px; }
+.video-placeholder-text { font-size: 0.85rem; color: var(--text-muted); letter-spacing: 0.5px; }
+.video-caption { text-align: center; margin-top: 16px; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+.context { padding: 64px 0; border-top: 1px solid var(--border); }
+.context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+.context p:last-child { margin-bottom: 0; }
+.highlight-name { color: var(--accent-light); font-weight: 600; }
+.section { padding: 64px 0; border-top: 1px solid var(--border); }
+.section-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+.card-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+.card:hover { border-color: var(--accent); }
+.card-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+.card-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+.pain-grid { display: flex; flex-direction: column; gap: 20px; }
+.pain-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+.pain-card:hover { border-color: var(--accent); }
+.pain-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
+.pain-problem { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 10px; }
+.pain-solution { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+.testimonials { display: flex; flex-direction: column; gap: 20px; }
+.testimonial { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+.testimonial-quote { font-size: 1rem; color: var(--text); line-height: 1.8; font-style: italic; margin-bottom: 16px; }
+.testimonial-author { font-size: 0.8rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+.testimonial-note { font-size: 0.72rem; color: var(--text-muted); margin-top: 4px; }
+.faq { display: flex; flex-direction: column; gap: 16px; }
+.faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 24px 28px; }
+.faq-q { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 10px; }
+.faq-a { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+.cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+.cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+.cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+.cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+.cta-note { margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); }
+.footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+.footer p { font-size: 0.75rem; color: var(--text-muted); }
+@media (max-width: 600px) { .hero { padding: 56px 0 36px; } .card { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+</style>
+</head>
+<body>
+<div style="background-color: #0e0e12; min-height: 100vh; width: 100%;">
+
+<div class="topbar">
+    <div class="container topbar-inner">
+        <span class="topbar-label">Creator Business Education</span>
+        <span class="topbar-for">For Moms, Fashion Shoppers &amp; Sports Parents</span>
+    </div>
+</div>
+
+<section class="hero">
+    <div class="container">
+        <p class="hero-eyebrow">Lindsay Goldberg — 65K Followers</p>
+        <h1>You've got the audience. You've got the taste. <em>Here's how to build a real business around it.</em></h1>
+        <p class="hero-sub">Between the sideline coffees, the Target hauls, and the Reels that get way more views than you expected — you've been building an audience without fully realizing it. Lindsay Goldberg built 65K doing exactly that, and now she's teaching the business side of what she figured out.</p>
+        <div class="hero-cta">
+            <a href="#cta" class="cta-button">Get Started Now</a>
+        </div>
+    </div>
+</section>
+
+<section class="video-section">
+    <div class="container">
+        <div class="video-wrapper">
+            <div class="video-placeholder">
+                <div class="video-placeholder-inner">
+                    <div class="play-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <p class="video-placeholder-text">Lindsay's message for you — watch first</p>
+                </div>
+            </div>
+        </div>
+        <p class="video-caption">Short video from Lindsay — covers the whole picture</p>
+    </div>
+</section>
+
+<section class="context">
+    <div class="container">
+        <p><span class="highlight-name">Lindsay Goldberg</span> built an audience of 65,000 moms, fashion shoppers, and sports parents by being the person in the group chat who always finds the good deal and isn't afraid to laugh at the chaos of mom life at the same time.</p>
+        <p>That combination — affordable fashion finds mixed with honest mom humor — turned out to be exactly what her audience wanted. And Lindsay has figured out how to turn that audience into a real income stream without becoming a full-time influencer who's always "on."</p>
+        <p>Her program covers the creator business side: how to land brand deals, run affiliate programs that actually pay, create digital products your audience wants, and grow your following with intention rather than luck.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">What the program covers</h2>
+        <ul class="card-list">
+            <li class="card">
+                <p class="card-label">Your Creator Business Model</p>
+                <p class="card-text">The three most realistic ways to monetize a mom lifestyle and fashion audience — affiliate, brand partnerships, and digital products — and how to choose the right mix for where you are right now.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Affiliate Revenue That Adds Up</p>
+                <p class="card-text">Lindsay's approach to affiliate marketing — which programs work for fashion and mom content, how to structure posts for actual clicks, and how she earns passive income from content she made months ago.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Getting Brand Deals Without an Agent</p>
+                <p class="card-text">How to identify, pitch, and close brand partnerships at 10K, 25K, and 65K followers. Most creators wait to be found. Lindsay shows you how to go get it.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Content That Keeps Growing Your Audience</p>
+                <p class="card-text">The content strategy behind Lindsay's growth — what she posts, how often, and how she decides what to create next. Not a posting calendar. A thinking framework.</p>
+            </li>
+            <li class="card">
+                <p class="card-label">Digital Products for Mom Creators</p>
+                <p class="card-text">How to create a simple digital product your audience actually wants and will pay for — from the idea stage to the sale — without a team, a tech background, or months of work.</p>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">What's getting in the way</h2>
+        <div class="pain-grid">
+            <div class="pain-card">
+                <p class="pain-label">The Problem</p>
+                <p class="pain-problem">You have a following but no idea how to make money from it without a huge audience</p>
+                <p class="pain-solution">Lindsay was earning real affiliate income at under 10K followers. The Affiliate Revenue module covers the specific products, platforms, and posting strategies that work at smaller audience sizes.</p>
+            </div>
+            <div class="pain-card">
+                <p class="pain-label">The Problem</p>
+                <p class="pain-problem">Brands aren't reaching out and you don't know how to pitch yourself</p>
+                <p class="pain-solution">The Brand Deals module covers Lindsay's outreach system — how to find the right brands, what to say, what to charge, and how to handle the negotiation so you don't undercharge.</p>
+            </div>
+            <div class="pain-card">
+                <p class="pain-label">The Problem</p>
+                <p class="pain-problem">You love creating but the business side feels overwhelming and you keep putting it off</p>
+                <p class="pain-solution">The program is designed around the reality of mom life — limited time, limited mental bandwidth. Each module is focused and actionable, not a 3-hour deep-dive you'll never finish.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">From the community</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p class="testimonial-quote">"I had 8,000 followers and thought I needed 100K before anyone would pay me. Lindsay's affiliate strategy changed that in the first week. I made my first $200 from content I'd already posted."</p>
+                <p class="testimonial-author">Mom Creator, Fashion &amp; Lifestyle</p>
+                <p class="testimonial-note">Placeholder — real testimonials to be added</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-quote">"The brand deal pitch template alone was worth it. I landed two paid partnerships in my first month of reaching out. I'd been waiting for brands to come to me for two years."</p>
+                <p class="testimonial-author">Sports Mom Creator, 22K Followers</p>
+                <p class="testimonial-note">Placeholder — real testimonials to be added</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-heading">Common questions</h2>
+        <div class="faq">
+            <div class="faq-item">
+                <p class="faq-q">How many followers do I need before this is useful?</p>
+                <p class="faq-a">Lindsay started monetizing well before she hit 10K. If you have an engaged audience — even a small one — you can apply most of what she teaches right now.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">Is this only for fashion content?</p>
+                <p class="faq-a">No. The business frameworks apply to any lifestyle creator. Fashion and mom humor are Lindsay's angle, but the monetization strategies work across niches.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">Do I need to post every day?</p>
+                <p class="faq-a">No. Lindsay doesn't. The program includes her actual posting schedule and why consistency at a realistic pace beats daily posting that burns you out.</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">What if I've tried to get brand deals before and no one responded?</p>
+                <p class="faq-a">Most pitches fail because they're generic or they lead with follower count instead of value. The Brand Deals module shows you exactly how to position yourself so brands respond.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section" id="cta">
+    <div class="container">
+        <h2 class="cta-heading">Turn what you already do into what pays you</h2>
+        <p class="cta-sub">Lindsay built a business from the sideline, the fitting room, and her kitchen. You can too.</p>
+        <a href="#" class="cta-button">Get Started Now</a>
+        <p class="cta-note">No follower count requirement. Just a real audience and a willingness to work the system.</p>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>Built by J&amp;G Operations for Lindsay Goldberg. Ready to deploy.</p>
+    </div>
+</footer>
+
+</div>
+</body>
+</html>

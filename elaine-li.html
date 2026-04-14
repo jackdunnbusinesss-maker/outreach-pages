@@ -1,0 +1,234 @@
+<style>
+/* GHL Background Override */
+html, body, .body-wrapper, .hl_page-preview--content,
+#preview-container, .hl-page-builder, #section-0,
+.section_wrapper, .inner-section, .container-fluid,
+.row-bg-color, .row, .section-bg {
+    background-color: #0e0e12 !important;
+    background: #0e0e12 !important;
+}
+body { margin: 0 !important; padding: 0 !important; min-height: 100vh; }
+</style>
+<div style="background-color: #0e0e12; min-height: 100vh; width: 100%; margin: 0; padding: 0;">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28; --border: #2a2a36;
+            --accent: #d4959b; --accent-light: #e8b4b8; --accent-glow: rgba(212, 149, 155, 0.15);
+            --white: #f0eff4; --text: #c5c4ce; --text-muted: #7e7d8a;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+        .topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+        .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+        .topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+        .topbar-for { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+        .hero { padding: 80px 0 48px; text-align: center; }
+        .hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+        .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+        .hero h1 em { color: var(--accent-light); font-style: italic; }
+        .hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+        .video-section { padding: 0 0 64px; }
+        .video-wrapper { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,0.4); }
+        .video-placeholder { width: 100%; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; background: var(--surface); color: var(--text-muted); font-size: 0.9rem; letter-spacing: 0.5px; }
+        .video-caption { text-align: center; margin-top: 16px; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+        .context { padding: 64px 0; border-top: 1px solid var(--border); }
+        .context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+        .context p:last-child { margin-bottom: 0; }
+        .highlight-name { color: var(--accent-light); font-weight: 600; }
+        .bullets { padding: 64px 0; border-top: 1px solid var(--border); }
+        .bullets-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+        .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+        .bullet-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+        .bullet-item:hover { border-color: var(--accent); }
+        .bullet-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+        .bullet-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+        .pain-section { padding: 64px 0; border-top: 1px solid var(--border); }
+        .section-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+        .pain-grid { display: flex; flex-direction: column; gap: 20px; }
+        .pain-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+        .pain-problem { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
+        .pain-title { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 10px; }
+        .pain-solution { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+        .pain-solution strong { color: var(--accent-light); font-weight: 600; }
+        .testimonials { padding: 64px 0; border-top: 1px solid var(--border); }
+        .testimonial-grid { display: flex; flex-direction: column; gap: 20px; }
+        .testimonial-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+        .testimonial-quote { font-size: 1rem; color: var(--text); line-height: 1.8; margin-bottom: 16px; font-style: italic; }
+        .testimonial-author { font-size: 0.78rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .testimonial-placeholder { font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; }
+        .faq { padding: 64px 0; border-top: 1px solid var(--border); }
+        .faq-list { display: flex; flex-direction: column; gap: 16px; }
+        .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 24px 28px; }
+        .faq-q { font-size: 0.95rem; color: var(--white); font-weight: 600; margin-bottom: 10px; }
+        .faq-a { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+        .cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+        .cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+        .cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+        .cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+        .cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+        .cta-note { margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); }
+        .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+        .footer p { font-size: 0.75rem; color: var(--text-muted); }
+        @media (max-width: 600px) { .hero { padding: 56px 0 36px; } .bullet-item { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+    </style>
+
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-label">For Models, Creators & Entrepreneurs</span>
+            <span class="topbar-for">Aligned Creator Collective</span>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <p class="hero-eyebrow">For the Creator Who's Doing Everything Right — and Still Feels Off</p>
+            <h1>Success without alignment is just <em>a prettier version of stuck.</em></h1>
+            <p class="hero-sub">Elaine Li built the Aligned Creator Collective for models, creators, and entrepreneurs who have the work ethic but feel like something essential is missing — and are ready to figure out what it is.</p>
+        </div>
+    </section>
+
+    <section class="video-section">
+        <div class="container">
+            <div class="video-wrapper">
+                <div class="video-placeholder">[ Your video goes here ]</div>
+            </div>
+            <p class="video-caption">Watch before you join anything else</p>
+        </div>
+    </section>
+
+    <section class="context">
+        <div class="container">
+            <p><span class="highlight-name">Elaine Li</span> has built a 71K following in the wellness, self-growth, and lifestyle space by speaking honestly to the people who have a lot figured out on the outside but still feel the gap. Models who are booking but not happy. Creators who are growing but not grounded. Entrepreneurs who are making money but running on empty.</p>
+            <p>She doesn't sell hustle culture or toxic positivity. She works at the intersection of wellness, mindset, and real-world performance — helping women who are ambitious and self-aware understand why alignment matters and how to build it into how they actually live and work.</p>
+            <p>The <span class="highlight-name">Aligned Creator Collective</span> is her community for people who are serious about both — the external results and the internal foundation that makes those results sustainable.</p>
+        </div>
+    </section>
+
+    <section class="bullets">
+        <div class="container">
+            <h2 class="bullets-heading">What the Collective gives you</h2>
+            <ul class="bullet-list">
+                <li class="bullet-item">
+                    <p class="bullet-label">Wellness Framework</p>
+                    <p class="bullet-text">A practical approach to physical and mental wellbeing built for people with demanding schedules — not a spa retreat fantasy.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Identity & Values Clarity</p>
+                    <p class="bullet-text">The work that high-performers skip — getting clear on who you are separate from what you do, so your decisions come from a place of clarity instead of urgency.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Creator & Business Strategy</p>
+                    <p class="bullet-text">Real conversation about growing an audience, monetizing your work, and building a creative business without losing yourself in the process.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Community of Aligned Women</p>
+                    <p class="bullet-text">A curated group of models, creators, and entrepreneurs who hold each other to a higher standard — not just cheerleading, but real accountability and real ideas.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Monthly Live Sessions with Elaine</p>
+                    <p class="bullet-text">Direct access to Elaine's thinking, not just her content. Questions answered, frameworks applied to your specific situation, and the kind of honesty most communities don't offer.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="pain-section">
+        <div class="container">
+            <h2 class="section-heading">The things high-performers don't talk about</h2>
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">You're achieving things but it doesn't feel like you thought it would</p>
+                    <p class="pain-solution">The feeling that something's off even when things are objectively going well is a signal, not a problem. <strong>The identity and values work</strong> in the Collective is built around exactly this.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">You're surrounded by ambitious people who still feel empty</p>
+                    <p class="pain-solution">Being in the right room matters — but so does what that room is talking about. <strong>The Collective</strong> is specifically for women who want more than just professional wins.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">Your wellness keeps slipping when work gets busy</p>
+                    <p class="pain-solution">Health and performance treated as separate things means health always loses. <strong>Elaine's framework</strong> integrates them so you're not choosing between them every week.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">You consume a lot of self-improvement content and nothing changes</p>
+                    <p class="pain-solution">Consuming content and doing the work are completely different. <strong>The Collective</strong> is structured around application, not just inspiration — with community accountability behind it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-heading">From inside the Collective</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"I've been in masterminds, I've done online courses. This is different because Elaine actually talks about the stuff nobody else will — the part where you're winning but you feel like you're losing yourself."</p>
+                    <p class="testimonial-author">Creator & Entrepreneur, 27</p>
+                    <p class="testimonial-placeholder">[Placeholder — real testimonial to be added]</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"The community is genuinely the best part. These are women who are serious, self-aware, and don't just hype each other up — they push each other forward."</p>
+                    <p class="testimonial-author">Model & Creator, 24</p>
+                    <p class="testimonial-placeholder">[Placeholder — real testimonial to be added]</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"I came in thinking I needed a business strategy. I left with clarity about who I am and what I actually want. That turned out to be the thing that changed everything else."</p>
+                    <p class="testimonial-author">Entrepreneur, 31</p>
+                    <p class="testimonial-placeholder">[Placeholder — real testimonial to be added]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-heading">Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <p class="faq-q">Is this a business mastermind or a wellness community?</p>
+                    <p class="faq-a">Neither and both. The Aligned Creator Collective sits at the intersection of the two on purpose — because separating them is exactly why most high-performers burn out. You'll work on both inside.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">Do I need to already be a creator to join?</p>
+                    <p class="faq-a">No. The community includes models, entrepreneurs, and women building something creative — at different stages. What they share is ambition and a desire to do it without losing themselves in the process.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">How active is the community?</p>
+                    <p class="faq-a">Very. This isn't a community where people ghost after two weeks. The structure keeps it engaged — monthly sessions, ongoing conversation, and accountability built in.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">How much time does it require per week?</p>
+                    <p class="faq-a">You get out what you put in, but the minimum meaningful engagement is a few hours a week. The monthly live sessions with Elaine are the anchor — everything else builds around those.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">How do I join?</p>
+                    <p class="faq-a">Click the button below to apply for the Aligned Creator Collective. Spots are limited and the community is kept intentionally small.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-heading">Build the life and the work that actually fit together.</h2>
+            <p class="cta-sub">The Aligned Creator Collective is for the woman who's ready to stop choosing between ambition and wellbeing — and start building both at the same time.</p>
+            <a href="#" class="cta-button">Get Started Now</a>
+            <p class="cta-note">Limited spots. Curated community. Real work.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Built by J&G Operations for Elaine Li. Ready to deploy.</p>
+        </div>
+    </footer>
+
+</div>

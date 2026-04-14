@@ -1,0 +1,234 @@
+<style>
+/* GHL Background Override */
+html, body, .body-wrapper, .hl_page-preview--content,
+#preview-container, .hl-page-builder, #section-0,
+.section_wrapper, .inner-section, .container-fluid,
+.row-bg-color, .row, .section-bg {
+    background-color: #0e0e12 !important;
+    background: #0e0e12 !important;
+}
+body { margin: 0 !important; padding: 0 !important; min-height: 100vh; }
+</style>
+<div style="background-color: #0e0e12; min-height: 100vh; width: 100%; margin: 0; padding: 0;">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28; --border: #2a2a36;
+            --accent: #d4959b; --accent-light: #e8b4b8; --accent-glow: rgba(212, 149, 155, 0.15);
+            --white: #f0eff4; --text: #c5c4ce; --text-muted: #7e7d8a;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+        .topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+        .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+        .topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+        .topbar-for { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+        .hero { padding: 80px 0 48px; text-align: center; }
+        .hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+        .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+        .hero h1 em { color: var(--accent-light); font-style: italic; }
+        .hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+        .video-section { padding: 0 0 64px; }
+        .video-wrapper { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,0.4); }
+        .video-placeholder { width: 100%; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; background: var(--surface); color: var(--text-muted); font-size: 0.9rem; letter-spacing: 0.5px; }
+        .video-caption { text-align: center; margin-top: 16px; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+        .context { padding: 64px 0; border-top: 1px solid var(--border); }
+        .context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+        .context p:last-child { margin-bottom: 0; }
+        .highlight-name { color: var(--accent-light); font-weight: 600; }
+        .bullets { padding: 64px 0; border-top: 1px solid var(--border); }
+        .bullets-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+        .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+        .bullet-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+        .bullet-item:hover { border-color: var(--accent); }
+        .bullet-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+        .bullet-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+        .pain-section { padding: 64px 0; border-top: 1px solid var(--border); }
+        .section-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+        .pain-grid { display: flex; flex-direction: column; gap: 20px; }
+        .pain-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+        .pain-problem { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
+        .pain-title { font-size: 1rem; color: var(--white); font-weight: 600; margin-bottom: 10px; }
+        .pain-solution { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+        .pain-solution strong { color: var(--accent-light); font-weight: 600; }
+        .testimonials { padding: 64px 0; border-top: 1px solid var(--border); }
+        .testimonial-grid { display: flex; flex-direction: column; gap: 20px; }
+        .testimonial-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+        .testimonial-quote { font-size: 1rem; color: var(--text); line-height: 1.8; margin-bottom: 16px; font-style: italic; }
+        .testimonial-author { font-size: 0.78rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .testimonial-placeholder { font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; }
+        .faq { padding: 64px 0; border-top: 1px solid var(--border); }
+        .faq-list { display: flex; flex-direction: column; gap: 16px; }
+        .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 24px 28px; }
+        .faq-q { font-size: 0.95rem; color: var(--white); font-weight: 600; margin-bottom: 10px; }
+        .faq-a { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+        .cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+        .cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+        .cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+        .cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+        .cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+        .cta-note { margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); }
+        .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+        .footer p { font-size: 0.75rem; color: var(--text-muted); }
+        @media (max-width: 600px) { .hero { padding: 56px 0 36px; } .bullet-item { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+    </style>
+
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-label">For Nurses Who Want Their Body Back</span>
+            <span class="topbar-for">Nurse Fit System</span>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <p class="hero-eyebrow">You Spend 12 Hours Caring for Everyone Else</p>
+            <h1>Nurses deserve a fitness system built around <em>their actual schedule</em> — not some trainer's.</h1>
+            <p class="hero-sub">Pandorah has built a fitness approach that works around 12-hour shifts, rotating schedules, and a body that's spent all day on its feet. This is fitness for nurses, by someone who gets it.</p>
+        </div>
+    </section>
+
+    <section class="video-section">
+        <div class="container">
+            <div class="video-wrapper">
+                <div class="video-placeholder">[ Your video goes here ]</div>
+            </div>
+            <p class="video-caption">Watch this — it was made specifically for you</p>
+        </div>
+    </section>
+
+    <section class="context">
+        <div class="container">
+            <p><span class="highlight-name">Pandorah</span> built a 48K following of nurses and women who follow her because she speaks their language. She knows what it's like to work a 12-hour night shift, come home exhausted, and still want to feel good in your body — but have zero energy left for a complicated fitness routine.</p>
+            <p>Her content covers fitness, fashion, and travel because nurses are full human beings with lives outside the hospital — and she refuses to treat them as anything less. But her fitness work is where she's had the most impact: real programming for women who work in healthcare and are tired of generic gym advice that ignores everything about their reality.</p>
+            <p>The <span class="highlight-name">Nurse Fit System</span> is the distillation of everything that actually works for nurses — designed around shift work, recovery, and a schedule that looks nothing like the nine-to-five world most fitness plans are built for.</p>
+        </div>
+    </section>
+
+    <section class="bullets">
+        <div class="container">
+            <h2 class="bullets-heading">What's inside the Nurse Fit System</h2>
+            <ul class="bullet-list">
+                <li class="bullet-item">
+                    <p class="bullet-label">Shift-Ready Programming</p>
+                    <p class="bullet-text">Workouts designed around 12-hour shifts and rotating schedules — not the fictional five-days-a-week gym plan that never actually gets done.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Recovery-First Approach</p>
+                    <p class="bullet-text">How to actually recover after a hard shift so your off days feel like rest, not damage control — stretching, sleep strategies, and what not to do.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Nutrition for Shift Workers</p>
+                    <p class="bullet-text">What to eat before, during, and after shifts — including night shifts — without meal prepping a week's worth of food every Sunday.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Quick-Hit Workouts</p>
+                    <p class="bullet-text">20–30 minute sessions you can do at home on your days off without needing a gym membership or an hour you don't have.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Community of Nurse Fit Women</p>
+                    <p class="bullet-text">Accountability and support from a group of women who are in the same profession and understand the schedule, the stress, and the specific challenges of nursing life.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="pain-section">
+        <div class="container">
+            <h2 class="section-heading">The nurse fitness reality nobody talks about</h2>
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">Every fitness plan assumes you have a normal schedule</p>
+                    <p class="pain-solution">Monday-Friday programming doesn't work when you work three 12s and your weekend is Tuesday and Thursday. <strong>The Nurse Fit System</strong> is built around your actual week.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">You're on your feet all shift but you're not getting any fitter</p>
+                    <p class="pain-solution">Walking the floor for 12 hours isn't training — it's often why you're too sore to work out on your days off. <strong>The recovery protocols</strong> fix the baseline so real training becomes possible.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">Night shifts wreck your eating and your body composition</p>
+                    <p class="pain-solution">Hormones, metabolism, and hunger all shift differently at night. <strong>The nutrition guide</strong> is built specifically for shift workers who eat at weird hours and don't want to think too hard about it.</p>
+                </div>
+                <div class="pain-card">
+                    <p class="pain-problem">The Problem</p>
+                    <p class="pain-title">You feel guilty that you can't keep up with non-nurse fitness content</p>
+                    <p class="pain-solution">You're not lazy — you're on a schedule that makes standard fitness advice useless. <strong>This system is built for you</strong>, not adapted from something that was built for someone else.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-heading">From nurses inside the system</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"I've followed a dozen fitness accounts and always felt like I was failing because I couldn't keep up. This is the first time a program actually fit my schedule. I've been consistent for two months — that's a record."</p>
+                    <p class="testimonial-author">ICU Nurse, Ohio</p>
+                    <p class="testimonial-placeholder">[Placeholder — real testimonial to be added]</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"The recovery stuff alone was worth it. I used to come home from nights completely wrecked. Now I actually feel like a human being on my days off."</p>
+                    <p class="testimonial-author">ER Nurse, Texas</p>
+                    <p class="testimonial-placeholder">[Placeholder — real testimonial to be added]</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"I lost 12 pounds in 10 weeks. But the bigger thing is I don't feel like I'm at war with my schedule anymore. The system fits my life instead of demanding I change my life to fit it."</p>
+                    <p class="testimonial-author">Travel Nurse, 31</p>
+                    <p class="testimonial-placeholder">[Placeholder — real testimonial to be added]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-heading">Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <p class="faq-q">Is this only for nurses, or does it work for other healthcare workers?</p>
+                    <p class="faq-a">The system was built with nurses in mind but works for any shift worker in healthcare — CNAs, techs, paramedics, anyone running a rotating schedule with long hours.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">Do I need a gym membership?</p>
+                    <p class="faq-a">No. Most workouts in the system are home-based. There's an optional gym track if you prefer that, but it's not required.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">What if I work nights? Is the nutrition guidance different?</p>
+                    <p class="faq-a">Yes — there's a dedicated night shift nutrition module. The timing of meals and the types of foods that work at 2am are completely different from daytime eating.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">How much time do the workouts take?</p>
+                    <p class="faq-a">Most sessions run 20–30 minutes. They're designed for your off days — not your post-shift days when you have nothing left in the tank.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">How do I get started?</p>
+                    <p class="faq-a">Click the button below to get instant access to the Nurse Fit System.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-heading">You take care of everyone else. Time to take care of you.</h2>
+            <p class="cta-sub">The Nurse Fit System is built for the schedule you actually have — and the body you actually want.</p>
+            <a href="#" class="cta-button">Get Started Now</a>
+            <p class="cta-note">Built for nurses. Designed around shift work. No excuses needed.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Built by J&G Operations for pandorah525. Ready to deploy.</p>
+        </div>
+    </footer>
+
+</div>
