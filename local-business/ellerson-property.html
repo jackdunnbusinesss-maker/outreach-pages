@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ellerson Property — A Better Digital Presence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0e0e12;
+            --surface: #16161d;
+            --surface-light: #1e1e28;
+            --border: #2a2a36;
+            --accent: #7b9ed9;
+            --accent-light: #a0b8e8;
+            --accent-glow: rgba(123, 158, 217, 0.15);
+            --white: #f0eff4;
+            --text: #c5c4ce;
+            --text-muted: #7e7d8a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* TOP BAR */
+        .topbar {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+        }
+        .topbar-for {
+            font-size: 0.8rem;
+            color: var(--accent-light);
+            font-weight: 500;
+        }
+
+        /* HERO */
+        .hero {
+            padding: 80px 0 48px;
+            text-align: center;
+        }
+        .hero-eyebrow {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            color: var(--white);
+            line-height: 1.25;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+        .hero h1 em {
+            color: var(--accent-light);
+            font-style: italic;
+        }
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* CONTEXT */
+        .context {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .context p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+        .context p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight-name {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* BULLETS */
+        .bullets {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .bullets-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.6rem;
+            color: var(--white);
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .bullet-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 32px;
+            transition: border-color 0.3s ease;
+        }
+        .bullet-item:hover {
+            border-color: var(--accent);
+        }
+        .bullet-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .bullet-text {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* PREVIEW SECTION */
+        .preview {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .preview-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.6rem;
+            color: var(--white);
+            margin-bottom: 16px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .preview-sub {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 40px;
+        }
+        .preview-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .preview-card-header {
+            background: var(--surface-light);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--border);
+        }
+        .dot.red { background: #e05c5c; }
+        .dot.yellow { background: #d4a843; }
+        .dot.green { background: #5cbf85; }
+        .preview-url {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-left: 8px;
+            font-family: monospace;
+        }
+        .preview-body {
+            padding: 40px 36px;
+        }
+        .preview-site-name {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .preview-tagline {
+            font-size: 0.9rem;
+            color: var(--accent-light);
+            margin-bottom: 24px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        .preview-hero-text {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 28px;
+            border-left: 3px solid var(--accent);
+            padding-left: 20px;
+        }
+        .preview-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .preview-detail {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px 18px;
+        }
+        .preview-detail-label {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+        .preview-detail-value {
+            font-size: 0.9rem;
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        /* CTA */
+        .cta-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 36px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .cta-button:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+        }
+        .cta-note {
+            margin-top: 16px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            .hero {
+                padding: 56px 0 36px;
+            }
+            .bullet-item {
+                padding: 22px 20px;
+            }
+            .cta-section {
+                padding: 56px 0;
+            }
+            .preview-detail-grid {
+                grid-template-columns: 1fr;
+            }
+            .preview-body {
+                padding: 28px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-label">Prepared for Ellerson Property</span>
+            <span class="topbar-for">ellersonproperty.com.au</span>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <p class="hero-eyebrow">Built Specifically for Ellerson Property</p>
+            <h1>Brent, here's what a <em>modern replacement site</em> would look like for Ellerson Property</h1>
+            <p class="hero-sub">We rebuilt your current site from the ground up — cleaner, faster, built to convert developers and investors looking at new apartment and commercial projects across Parramatta and beyond.</p>
+        </div>
+    </section>
+
+    <!-- Context -->
+    <section class="context">
+        <div class="container">
+            <p><span class="highlight-name">Ellerson Property</span> has built something genuinely distinctive — Australia's first property development agency, creating apartment homes and commercial spaces across fast-growing urban corridors. The brand positioning, the portfolio quality, the community focus — that story is compelling.</p>
+            <p>But the current site doesn't tell it that way. First impressions matter in property development. When a prospective buyer, investor, or B2B partner lands on your site, the experience they get should match the quality of what you actually build.</p>
+            <p>Below is a preview of what a rebuilt site would look like — same brand, same content, but designed to reflect the calibre of <span class="highlight-name">Ellerson Property's</span> work and move visitors toward an enquiry.</p>
+        </div>
+    </section>
+
+    <!-- Site Preview -->
+    <section class="preview">
+        <div class="container">
+            <h2 class="preview-heading">Your replacement site — at a glance</h2>
+            <p class="preview-sub">Rebuilt from your existing content. Nothing invented.</p>
+            <div class="preview-card">
+                <div class="preview-card-header">
+                    <div class="dot red"></div>
+                    <div class="dot yellow"></div>
+                    <div class="dot green"></div>
+                    <span class="preview-url">ellersonproperty.com.au</span>
+                </div>
+                <div class="preview-body">
+                    <div class="preview-site-name">Ellerson Property</div>
+                    <div class="preview-tagline">Australia's First Property Development Agency</div>
+                    <div class="preview-hero-text">
+                        We believe everyone deserves a home they can be proud of. From imagining the potential in a block of land to handing over the keys — we support our buyers at every step.
+                    </div>
+                    <div class="preview-detail-grid">
+                        <div class="preview-detail">
+                            <div class="preview-detail-label">Location</div>
+                            <div class="preview-detail-value">Suite 2/04, 460 Church St, Parramatta NSW 2150</div>
+                        </div>
+                        <div class="preview-detail">
+                            <div class="preview-detail-label">Phone</div>
+                            <div class="preview-detail-value">+61 2 9188 0600</div>
+                        </div>
+                        <div class="preview-detail">
+                            <div class="preview-detail-label">Email</div>
+                            <div class="preview-detail-value">connect@ellersonproperty.com.au</div>
+                        </div>
+                        <div class="preview-detail">
+                            <div class="preview-detail-label">Response Time</div>
+                            <div class="preview-detail-value">Within 24 hours on business days</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bullets -->
+    <section class="bullets">
+        <div class="container">
+            <h2 class="bullets-heading">What the rebuild does differently</h2>
+            <ul class="bullet-list">
+                <li class="bullet-item">
+                    <p class="bullet-label">First Impression</p>
+                    <p class="bullet-text">A hero section that leads with your strongest asset — the "Australia's First Property Development Agency" positioning — rather than burying it below the fold.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Portfolio</p>
+                    <p class="bullet-text">Current developments presented with clear project cards — location, status, and a direct path to enquiry — so buyers and investors can act without hunting for information.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">B2B Services</p>
+                    <p class="bullet-text">The full property development agency services — site acquisition, project lifecycle support — laid out clearly for corporate clients. Right now this story is undersold.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Conversion</p>
+                    <p class="bullet-text">Enquiry forms and contact details prominently placed throughout — not just one contact page. Every section gives visitors a clear next step.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-heading">Want to see the full build?</h2>
+            <p class="cta-sub">Reply and I'll show you how we close 25 qualified leads per month for property development businesses like Ellerson Property.</p>
+            <a href="https://calendly.com/jackdunn0987/30min" class="cta-button">Book a Call</a>
+            <p class="cta-note">No commitment. Just a conversation about what's possible.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>This page was created exclusively for Brent Adams at Ellerson Property. Not indexed. Not public.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

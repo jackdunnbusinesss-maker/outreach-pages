@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suburbanite — A New Online Presence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0e0e12;
+            --surface: #16161d;
+            --surface-light: #1e1e28;
+            --border: #2a2a36;
+            --accent: #7dab33;
+            --accent-light: #94c93d;
+            --accent-glow: rgba(148, 201, 61, 0.12);
+            --white: #f0eff4;
+            --text: #c5c4ce;
+            --text-muted: #7e7d8a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* TOP BAR */
+        .topbar {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+        }
+        .topbar-for {
+            font-size: 0.8rem;
+            color: var(--accent-light);
+            font-weight: 500;
+        }
+
+        /* HERO */
+        .hero {
+            padding: 80px 0 48px;
+            text-align: center;
+        }
+        .hero-eyebrow {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            color: var(--white);
+            line-height: 1.25;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+        .hero h1 em {
+            color: var(--accent-light);
+            font-style: italic;
+        }
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* PREVIEW SECTION */
+        .preview-section {
+            padding: 0 0 64px;
+        }
+        .preview-wrapper {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+            padding: 40px 36px;
+        }
+        .preview-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .preview-headline {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .preview-body {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        /* STATS ROW */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 32px;
+        }
+        .stat-card {
+            background: var(--surface-light);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 24px 20px;
+            text-align: center;
+        }
+        .stat-value {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.6rem;
+            color: var(--accent-light);
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 6px;
+        }
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* CONTEXT */
+        .context {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .context p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+        .context p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight-name {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* BULLETS */
+        .bullets {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .bullets-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.6rem;
+            color: var(--white);
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .bullet-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 32px;
+            transition: border-color 0.3s ease;
+        }
+        .bullet-item:hover {
+            border-color: var(--accent);
+        }
+        .bullet-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .bullet-text {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* MEDIA TRUST */
+        .media-section {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .media-heading {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+        .media-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+        .media-tag {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 8px 18px;
+            font-size: 0.82rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        /* CTA */
+        .cta-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 36px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .cta-button:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+        }
+        .cta-note {
+            margin-top: 16px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            .hero {
+                padding: 56px 0 36px;
+            }
+            .bullet-item {
+                padding: 22px 20px;
+            }
+            .cta-section {
+                padding: 56px 0;
+            }
+            .stats-row {
+                grid-template-columns: 1fr;
+            }
+            .preview-wrapper {
+                padding: 28px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-label">Replacement Site Preview</span>
+            <span class="topbar-for">Built for Suburbanite</span>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <p class="hero-eyebrow">Built Specifically for Suburbanite</p>
+            <h1>Michael, here's what a site built for <em>serious property investors</em> looks like in 2025</h1>
+            <p class="hero-sub">We rebuilt suburbanite.com.au from scratch — same credentials, same authority, designed to actually convert the buyers and investors who land on it.</p>
+        </div>
+    </section>
+
+    <!-- Preview Section with Stats -->
+    <section class="preview-section">
+        <div class="container">
+            <div class="preview-wrapper">
+                <p class="preview-label">What we built</p>
+                <h2 class="preview-headline">360° Property Advisory — Rebuilt for Conversion</h2>
+                <p class="preview-body">Suburbanite has over a decade of credibility, $600M+ in acquisitions, and media coverage most firms never get. The current site buries all of it. This replacement puts it front and centre, in a layout that moves qualified buyers from curious to booked in a single visit.</p>
+                <div class="stats-row">
+                    <div class="stat-card">
+                        <div class="stat-value">$600M+</div>
+                        <div class="stat-label">Properties Acquired</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">1,500+</div>
+                        <div class="stat-label">Properties Purchased</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">10+ Yrs</div>
+                        <div class="stat-label">In the Market</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Context -->
+    <section class="context">
+        <div class="container">
+            <p><span class="highlight-name">Michael</span>, Suburbanite has built something most property advisory firms never achieve — genuine independence, over 150 years of combined experience across your team, and a trusted voice in national media for a decade. That's not easy to earn.</p>
+            <p>The problem isn't the business. The problem is that when a qualified buyer or investor lands on suburbanite.com.au today, none of that authority is immediately clear. They're doing the work to find out why they should trust you, and most of them won't bother.</p>
+            <p>What we put together is a direct replacement — same URL, same brand, fully deployable — that communicates <span class="highlight-name">Suburbanite's</span> depth and independence within the first scroll, and gives visitors a clear path to take action.</p>
+        </div>
+    </section>
+
+    <!-- Bullets -->
+    <section class="bullets">
+        <div class="container">
+            <h2 class="bullets-heading">What the new site does differently</h2>
+            <ul class="bullet-list">
+                <li class="bullet-item">
+                    <p class="bullet-label">Authority Above the Fold</p>
+                    <p class="bullet-text">Your media credentials (2GB, Sunrise, Studio 10, AusBiz, Commercial Real Estate) and $600M acquisition track record are visible the moment someone lands — not buried three scrolls down.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Clear Independence Positioning</p>
+                    <p class="bullet-text">Your core differentiator — no kickbacks, never paid from both sides, exclusively working with buyers and investors — is front and centre. That's what separates you, and most visitors currently never see it.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Service Clarity</p>
+                    <p class="bullet-text">Property investment, valuation, corporate and club advisory, commercial property, and property management each get their own clear entry point — so visitors immediately know where they belong and what to do next.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Conversion-First Layout</p>
+                    <p class="bullet-text">Every section leads toward a single action — a call with your advisory team. No dead ends, no distractions. Built for the qualified investor who already knows they need help but needs to trust who they're calling.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Media Presence -->
+    <section class="media-section">
+        <div class="container">
+            <p class="media-heading">Trusted voice featured in</p>
+            <div class="media-list">
+                <span class="media-tag">2GB</span>
+                <span class="media-tag">Sunrise</span>
+                <span class="media-tag">Studio 10</span>
+                <span class="media-tag">AusBiz</span>
+                <span class="media-tag">Commercial Real Estate</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-heading">Want to see the full build?</h2>
+            <p class="cta-sub">If the direction makes sense for Suburbanite, reply and I'll show you how to close 25 qualified leads per month — and get this deployed.</p>
+            <a href="https://calendly.com/jackdunn0987/30min" class="cta-button">Book a Call</a>
+            <p class="cta-note">No commitment. Just a conversation about what's possible.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>This page was created exclusively for Michael Mackinnon at Suburbanite. Not indexed. Not public.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

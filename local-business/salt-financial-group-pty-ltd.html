@@ -1,0 +1,312 @@
+<style>
+/* GHL Background Override */
+html, body, .body-wrapper, .hl_page-preview--content,
+#preview-container, .hl-page-builder, #section-0,
+.section_wrapper, .inner-section, .container-fluid,
+.row-bg-color, .row, .section-bg {
+    background-color: #0e0e12 !important;
+    background: #0e0e12 !important;
+}
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 100vh;
+}
+</style>
+<div style="background-color: #0e0e12; min-height: 100vh; width: 100%; margin: 0; padding: 0;">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0e0e12;
+            --surface: #16161d;
+            --surface-light: #1e1e28;
+            --border: #2a2a36;
+            --accent: #7eb8c9;
+            --accent-light: #a4d0de;
+            --accent-glow: rgba(126, 184, 201, 0.15);
+            --white: #f0eff4;
+            --text: #c5c4ce;
+            --text-muted: #7e7d8a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ---- LAYOUT ---- */
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---- TOP BAR ---- */
+        .topbar {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+        }
+        .topbar-for {
+            font-size: 0.8rem;
+            color: var(--accent-light);
+            font-weight: 500;
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            padding: 80px 0 48px;
+            text-align: center;
+        }
+        .hero-eyebrow {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            color: var(--white);
+            line-height: 1.25;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+        .hero h1 em {
+            color: var(--accent-light);
+            font-style: italic;
+        }
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* ---- CONTEXT SECTION ---- */
+        .context {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .context p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+        .context p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight-name {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* ---- BULLETS ---- */
+        .bullets {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .bullets-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.6rem;
+            color: var(--white);
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .bullet-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 32px;
+            transition: border-color 0.3s ease;
+        }
+        .bullet-item:hover {
+            border-color: var(--accent);
+        }
+        .bullet-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .bullet-text {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ---- CTA ---- */
+        .cta-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 36px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .cta-button:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+        }
+        .cta-note {
+            margin-top: 16px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 600px) {
+            .hero {
+                padding: 56px 0 36px;
+            }
+            .bullet-item {
+                padding: 22px 20px;
+            }
+            .cta-section {
+                padding: 56px 0;
+            }
+        }
+    </style>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-label">Prepared for Salt Financial Group</span>
+            <span class="topbar-for">Camberwell, VIC</span>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <p class="hero-eyebrow">Built Specifically for Salt Financial Group</p>
+            <h1>Brad, here's what a modern web presence looks like for <em>Salt Financial Group</em> — one that actually converts visitors into booked meetings</h1>
+            <p class="hero-sub">We put together a replacement landing page built around the services Salt Financial Group already offers. No generic template — a purpose-built page for your Camberwell practice designed to turn website visitors into booked consultations.</p>
+        </div>
+    </section>
+
+    <!-- Context -->
+    <section class="context">
+        <div class="container">
+            <p><span class="highlight-name">Brad</span>, Salt Financial Group has built a genuinely diversified practice in Camberwell — covering financial advice, accounting, insurance, mortgage broking, SMSFs, and business advisory under one roof. That breadth of capability is rare, and it's exactly what Melbourne families and business owners are searching for.</p>
+            <p>The problem is that most financial services websites don't communicate that depth clearly enough to turn a first-time visitor into an inquiry. People land on a page, read a tagline, and leave — without ever understanding what it would actually look like to work with your team.</p>
+            <p>The page below is built to fix that for <span class="highlight-name">Salt Financial Group</span> specifically. It leads with what your clients actually care about — growing and protecting their wealth — and gives them a clear, low-friction path to booking a meeting with you.</p>
+        </div>
+    </section>
+
+    <!-- Bullets -->
+    <section class="bullets">
+        <div class="container">
+            <h2 class="bullets-heading">What this page does differently</h2>
+            <ul class="bullet-list">
+                <li class="bullet-item">
+                    <p class="bullet-label">Clarity</p>
+                    <p class="bullet-text">Leads with the outcome your clients want — financial security and a plan that actually works — rather than a list of services they have to decode themselves.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Credibility</p>
+                    <p class="bullet-text">Surfaces your AFSL licence, your Authorised Representative status, and your Camberwell address — the trust signals that separate a serious practice from a generic web presence.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Coverage</p>
+                    <p class="bullet-text">Presents your full service range — financial advice, accounting, insurance, SMSFs, mortgage broking, and business advisory — in a way that's easy to scan and act on, not buried in nav menus.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Conversion</p>
+                    <p class="bullet-text">Every section pushes toward one action: booking a meeting. No distractions, no dead ends — just a direct path from first impression to booked appointment.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-heading">Want to see the full build?</h2>
+            <p class="cta-sub">If this is the direction Salt Financial Group wants to go, reply and I'll show you how to close 25 qualified leads per month.</p>
+            <a href="https://calendly.com/jackdunn0987/30min" class="cta-button">Book a Call</a>
+            <p class="cta-note">No commitment. Just a conversation about what's possible for your practice.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>This page was created exclusively for Brad Laird at Salt Financial Group. Not indexed. Not public.</p>
+        </div>
+    </footer>
+
+</div>
