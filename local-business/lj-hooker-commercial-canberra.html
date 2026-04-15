@@ -92,10 +92,16 @@
             align-items: center;
         }
         .topbar-brand {
-            font-size: 0.82rem;
-            font-weight: 600;
-            color: var(--white);
-            letter-spacing: 0.4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .topbar-logo {
+            height: 28px;
+            width: auto;
+            display: block;
+            filter: brightness(0) invert(1);
+            opacity: 0.88;
         }
         .topbar-phone {
             font-size: 0.8rem;
@@ -449,6 +455,34 @@
             line-height: 1.6;
         }
 
+        /* ---- GALLERY STRIP ---- */
+        .gallery-strip {
+            padding: 0 0 72px;
+            position: relative;
+            z-index: 1;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+        .gallery-img-wrap {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 0 20px rgba(210, 60, 40, 0.05), 0 12px 40px rgba(0,0,0,0.38);
+        }
+        .gallery-img-wrap img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            aspect-ratio: 4/3;
+            transition: transform 0.4s ease;
+        }
+        .gallery-img-wrap:hover img {
+            transform: scale(1.03);
+        }
+
         /* ---- TRUST ---- */
         .trust {
             padding: 64px 0;
@@ -664,6 +698,10 @@
                 grid-template-columns: 1fr;
                 gap: 14px;
             }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
             .contact-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
@@ -685,7 +723,14 @@
     <!-- Top Bar -->
     <div class="topbar">
         <div class="container topbar-inner">
-            <span class="topbar-brand">LJ Hooker Commercial Canberra</span>
+            <div class="topbar-brand">
+                <img
+                    src="https://canberra.ljhcommercial.com.au/hubfs/raw_assets/public/ljh/images/LJH_Commercial-Logo.png"
+                    alt="LJ Hooker Commercial"
+                    class="topbar-logo"
+                    loading="eager"
+                >
+            </div>
             <a href="tel:0262470222" class="topbar-phone">02 6247 0222</a>
         </div>
     </div>
@@ -814,6 +859,28 @@
                     <div class="value-icon">&#9669;</div>
                     <div class="value-title">Full Lifecycle</div>
                     <div class="value-desc">Buying, selling, leasing, managing — we cover every stage of commercial property ownership.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Strip -->
+    <section class="gallery-strip fade-in">
+        <div class="container">
+            <div class="gallery-grid">
+                <div class="gallery-img-wrap">
+                    <img
+                        src="https://canberra.ljhcommercial.com.au/hubfs/Commercial/Research%20Downloads/1916116636_Resources.jpg"
+                        alt="LJ Hooker Commercial market research"
+                        loading="lazy"
+                    >
+                </div>
+                <div class="gallery-img-wrap">
+                    <img
+                        src="https://canberra.ljhcommercial.com.au/hubfs/corporate/ljhooker/ljhcommercial.com.au/Homepage/336422462_Image%20Card.jpg"
+                        alt="LJ Hooker Commercial Canberra properties"
+                        loading="lazy"
+                    >
                 </div>
             </div>
         </div>

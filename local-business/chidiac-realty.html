@@ -95,11 +95,6 @@
             color: var(--white);
             letter-spacing: 0.4px;
         }
-        .topbar-contact {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
         .topbar-phone {
             font-size: 0.8rem;
             color: var(--accent-light);
@@ -177,7 +172,7 @@
             line-height: 1.85;
         }
 
-        /* Glassmorphism hero card */
+        /* Hero image card */
         .hero-image-card {
             max-width: 580px;
             margin: 0 auto;
@@ -189,20 +184,18 @@
                 0 0 50px rgba(99, 168, 255, 0.09),
                 0 28px 90px rgba(0, 0, 0, 0.6);
             position: relative;
-            backdrop-filter: blur(2px);
         }
         .hero-image-card img {
             width: 100%;
             display: block;
             object-fit: cover;
-            max-height: 360px;
+            max-height: 380px;
         }
-        .hero-image-card::before {
+        .hero-image-card::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, transparent 45%, rgba(7, 9, 13, 0.55) 100%);
-            z-index: 1;
+            background: linear-gradient(180deg, transparent 45%, rgba(7, 9, 13, 0.5) 100%);
             pointer-events: none;
         }
 
@@ -234,7 +227,6 @@
             overflow: hidden;
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
             cursor: default;
-            /* glassmorphism */
             backdrop-filter: blur(8px);
         }
         .stat-card::before {
@@ -296,22 +288,31 @@
             font-weight: 600;
         }
 
-        /* ---- MEDIA IMAGE ---- */
-        .media-visual {
+        /* ---- FEATURE IMAGE ---- */
+        .feature-visual {
             padding: 0 0 68px;
             position: relative;
             z-index: 1;
         }
-        .media-img-wrap {
-            border-radius: 14px;
+        .feature-img-wrap {
+            border-radius: 16px;
             overflow: hidden;
             border: 1px solid var(--border);
             box-shadow: 0 0 32px rgba(99, 168, 255, 0.05), 0 20px 60px rgba(0, 0, 0, 0.48);
+            position: relative;
         }
-        .media-img-wrap img {
+        .feature-img-wrap img {
             width: 100%;
             display: block;
             object-fit: cover;
+            max-height: 420px;
+        }
+        .feature-img-wrap::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 60%, rgba(7, 9, 13, 0.35) 100%);
+            pointer-events: none;
         }
 
         /* ---- SERVICES ---- */
@@ -371,6 +372,35 @@
             font-size: 0.96rem;
             color: var(--text);
             line-height: 1.7;
+        }
+
+        /* ---- GALLERY STRIP ---- */
+        .gallery {
+            padding: 0 0 68px;
+            position: relative;
+            z-index: 1;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .gallery-img-wrap {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+        .gallery-img-wrap:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-2px);
+        }
+        .gallery-img-wrap img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            height: 200px;
         }
 
         /* ---- VALUES ---- */
@@ -456,7 +486,7 @@
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 36px 36px;
+            padding: 36px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 32px;
@@ -472,9 +502,7 @@
             height: 2px;
             background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
         }
-        .location-card:hover {
-            border-color: var(--border-glow);
-        }
+        .location-card:hover { border-color: var(--border-glow); }
         .location-col h3 {
             font-size: 0.69rem;
             text-transform: uppercase;
@@ -619,6 +647,8 @@
             .cta-section { padding: 68px 0; }
             .cta-buttons { flex-direction: column; align-items: center; }
             .cta-button, .cta-button-ghost { width: 100%; max-width: 320px; text-align: center; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .gallery-img-wrap img { height: 220px; }
         }
     </style>
 </head>
@@ -628,9 +658,7 @@
     <div class="topbar">
         <div class="container topbar-inner">
             <span class="topbar-brand">Chidiac Realty</span>
-            <div class="topbar-contact">
-                <a href="tel:0439555999" class="topbar-phone">0439 555 999</a>
-            </div>
+            <a href="tel:0439555999" class="topbar-phone">0439 555 999</a>
         </div>
     </div>
 
@@ -639,12 +667,15 @@
         <div class="hero-inner container">
             <p class="hero-eyebrow">Real Estate — Inner West &amp; Wentworth Point, Sydney</p>
             <h1>Your partner in property — buying, selling, and leasing in Sydney</h1>
-            <p class="hero-sub">At Chidiac Realty, we take time to understand your individual goals and combine local expertise with tailored strategies to guide every decision you make with confidence.</p>
+            <p class="hero-sub">At Chidiac Realty, we take time to understand your individual goals and combine local expertise with tailored strategies to guide every decision with confidence.</p>
+            <!-- Hero image: site_images[0] — Chidiac Realty header photo -->
             <div class="hero-image-card">
                 <img
                     src="https://chidiacrealty.com.au/imagecache/fitwithin/1280x1280/_files/header-images/adobestock_252445491.jpg?1776215481"
                     alt="Chidiac Realty — Sydney waterfront property"
                     loading="eager"
+                    width="580"
+                    height="380"
                 >
             </div>
         </div>
@@ -675,19 +706,21 @@
         <div class="container">
             <h2 class="section-heading">About Chidiac Realty</h2>
             <p>We know your property journey is as unique as you are. <span class="highlight">Chidiac Realty</span> takes time to understand your individual rental or selling goals, combining that with our team's deep local expertise to develop tailored, complete solutions — not off-the-shelf answers.</p>
-            <p>We work collaboratively with our clients — sharing relevant market condition insights and expertise as we hear it. Every decision you make with us is strategic, well-informed, and guided in the best direction. We share market updates as conditions evolve, so you're never left guessing.</p>
+            <p>We work collaboratively with our clients — sharing relevant market condition insights and expertise as we hear it. Every decision you make with us is strategic, well-informed, and guided in the right direction. We share market updates as conditions evolve, so you're never left guessing.</p>
             <p>We're more than a real estate company. <span class="highlight">We're your partner in property</span>, from the first conversation through to settlement and beyond — for buyers, sellers, landlords, tenants, and everyone in between.</p>
         </div>
     </section>
 
-    <!-- Media visual 1 -->
-    <section class="media-visual fade-in">
+    <!-- Feature image: site_images[2] — property listing Wentworth Point -->
+    <section class="feature-visual fade-in">
         <div class="container">
-            <div class="media-img-wrap">
+            <div class="feature-img-wrap">
                 <img
                     src="https://chidiacrealty.clodflare.pushcreative.com.au/3039/512_3039p-2cf-1jn1lpufocoaxpde.jpg.webp"
-                    alt="Chidiac Realty — Sydney property listing"
+                    alt="Chidiac Realty — Wentworth Point property listing"
                     loading="lazy"
+                    width="760"
+                    height="420"
                 >
             </div>
         </div>
@@ -722,15 +755,28 @@
         </div>
     </section>
 
-    <!-- Media visual 2 -->
-    <section class="media-visual fade-in">
+    <!-- Gallery strip: site_images[3] and site_images[4] -->
+    <section class="gallery fade-in">
         <div class="container">
-            <div class="media-img-wrap">
-                <img
-                    src="https://chidiacrealty.clodflare.pushcreative.com.au/3038/512_3038p-2ce-8f32yiieijlzplg5.jpg.webp"
-                    alt="Chidiac Realty — Wentworth Point property"
-                    loading="lazy"
-                >
+            <div class="gallery-grid">
+                <div class="gallery-img-wrap">
+                    <img
+                        src="https://chidiacrealty.clodflare.pushcreative.com.au/3038/512_3038p-2ce-8f32yiieijlzplg5.jpg.webp"
+                        alt="Chidiac Realty — Inner West property"
+                        loading="lazy"
+                        width="374"
+                        height="200"
+                    >
+                </div>
+                <div class="gallery-img-wrap">
+                    <img
+                        src="https://chidiacrealty.clodflare.pushcreative.com.au/3031/512_3031p-2c7-d8vsijdkyi0hzr1m.jpg.webp"
+                        alt="Chidiac Realty — Sydney residential listing"
+                        loading="lazy"
+                        width="374"
+                        height="200"
+                    >
+                </div>
             </div>
         </div>
     </section>
@@ -755,19 +801,6 @@
                     <div class="value-title">Collaborative Approach</div>
                     <div class="value-desc">We work with you — sharing insights as we hear them, not after decisions are made.</div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Media visual 3 -->
-    <section class="media-visual fade-in" style="padding-top: 0;">
-        <div class="container">
-            <div class="media-img-wrap">
-                <img
-                    src="https://chidiacrealty.clodflare.pushcreative.com.au/3031/512_3031p-2c7-d8vsijdkyi0hzr1m.jpg.webp"
-                    alt="Chidiac Realty — Inner West property"
-                    loading="lazy"
-                >
             </div>
         </div>
     </section>

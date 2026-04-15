@@ -272,6 +272,28 @@
             font-weight: 600;
         }
 
+        /* ---- MILESTONE IMAGE ---- */
+        .milestone-visual {
+            padding: 0 0 56px;
+        }
+        .milestone-img-wrap {
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border-glow);
+            box-shadow: 0 0 36px rgba(56, 189, 248, 0.08), 0 18px 56px rgba(0, 0, 0, 0.5);
+            background: var(--surface);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        .milestone-img-wrap img {
+            max-width: 260px;
+            width: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
         /* ---- SERVICES ---- */
         .services {
             padding: 76px 0;
@@ -327,6 +349,22 @@
             font-size: 0.97rem;
             color: var(--text);
             line-height: 1.7;
+        }
+
+        /* ---- MEDIA VISUAL (social canvas) ---- */
+        .media-visual {
+            padding: 32px 0 64px;
+        }
+        .media-img-wrap {
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.06), 0 20px 60px rgba(0, 0, 0, 0.45);
+        }
+        .media-img-wrap img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
         }
 
         /* ---- APPROACH ---- */
@@ -390,22 +428,6 @@
             font-size: 0.79rem;
             color: var(--text-muted);
             line-height: 1.6;
-        }
-
-        /* ---- MEDIA VISUAL ---- */
-        .media-visual {
-            padding: 32px 0 64px;
-        }
-        .media-img-wrap {
-            border-radius: 14px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            box-shadow: 0 0 30px rgba(56, 189, 248, 0.06), 0 20px 60px rgba(0, 0, 0, 0.45);
-        }
-        .media-img-wrap img {
-            width: 100%;
-            display: block;
-            object-fit: cover;
         }
 
         /* ---- TRUST LOGOS ---- */
@@ -569,6 +591,7 @@
             .service-item { padding: 22px; }
             .cta-section { padding: 68px 0; }
             .hero-image-card img { max-height: 220px; }
+            .milestone-img-wrap img { max-width: 200px; }
         }
     </style>
 </head>
@@ -588,11 +611,13 @@
             <p class="hero-eyebrow">Accounting &amp; Financial Advisory — East Brisbane, QLD</p>
             <h1>Expert accounting, advisory and guidance — with integrity</h1>
             <p class="hero-sub">Perrier Ryan is a dynamic accounting and financial advisory firm helping clients with all areas of their business and financial wellbeing, with practical solutions tailored to individual needs and long-term goals.</p>
+            <!-- Hero image: site photo (home-page-735w.jpg) — eager -->
             <div class="hero-image-card">
                 <img
                     src="https://lirp.cdn-website.com/b40037a1/dms3rep/multi/opt/home-page-735w.jpg"
-                    alt="Perrier Ryan Financial Services"
+                    alt="Perrier Ryan Accountants &amp; Advisors — East Brisbane"
                     loading="eager"
+                    width="735"
                 >
             </div>
         </div>
@@ -628,6 +653,20 @@
         </div>
     </section>
 
+    <!-- Milestone badge image — site image (PRQ 25 years) -->
+    <section class="milestone-visual fade-in">
+        <div class="container">
+            <div class="milestone-img-wrap">
+                <img
+                    src="https://lirp.cdn-website.com/b40037a1/dms3rep/multi/opt/PRQ+25+years-249h.png"
+                    alt="Perrier Ryan — 25 Years in Business"
+                    loading="lazy"
+                    width="249"
+                >
+            </div>
+        </div>
+    </section>
+
     <!-- Services -->
     <section class="services fade-in">
         <div class="container">
@@ -657,14 +696,15 @@
         </div>
     </section>
 
-    <!-- Media: social canvas image -->
+    <!-- Social canvas / brand image — site image (social-canvas-1920w.png) -->
     <section class="media-visual fade-in">
         <div class="container">
             <div class="media-img-wrap">
                 <img
                     src="https://lirp.cdn-website.com/b40037a1/dms3rep/multi/opt/social-canvas-1920w.png"
-                    alt="Perrier Ryan — 25 years"
+                    alt="Perrier Ryan — Accountants &amp; Advisors"
                     loading="lazy"
+                    width="1920"
                 >
             </div>
         </div>
@@ -694,7 +734,7 @@
         </div>
     </section>
 
-    <!-- Trust / Partner Logos -->
+    <!-- Trust / Partner Logos — site images (QuickBooks + MFAA) -->
     <section class="trust fade-in">
         <div class="container">
             <p class="trust-intro">Trusted tools &amp; affiliations</p>
@@ -704,6 +744,7 @@
                         src="https://lirp.cdn-website.com/b40037a1/dms3rep/multi/opt/intuit+quickbooks-1920w.png"
                         alt="Intuit QuickBooks"
                         loading="lazy"
+                        width="200"
                     >
                 </div>
                 <div class="trust-logo-wrap">
@@ -711,6 +752,7 @@
                         src="https://lirp.cdn-website.com/b40037a1/dms3rep/multi/opt/MFAA-1920w.png"
                         alt="MFAA"
                         loading="lazy"
+                        width="200"
                     >
                 </div>
                 <span class="trust-badge">East Brisbane QLD</span>

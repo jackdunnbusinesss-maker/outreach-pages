@@ -32,9 +32,7 @@
             --gradient-accent: linear-gradient(90deg, #ea282b, #ff5457);
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', -apple-system, sans-serif;
@@ -74,10 +72,7 @@
             pointer-events: none;
             z-index: 0;
         }
-        body > * {
-            position: relative;
-            z-index: 1;
-        }
+        body > * { position: relative; z-index: 1; }
 
         /* ---- TOP BAR ---- */
         .topbar {
@@ -108,9 +103,7 @@
             text-decoration: none;
             transition: color 0.2s;
         }
-        .topbar-phone:hover {
-            color: var(--white);
-        }
+        .topbar-phone:hover { color: var(--white); }
 
         /* ---- HERO ---- */
         .hero {
@@ -143,10 +136,7 @@
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
         }
-        .hero-inner {
-            position: relative;
-            z-index: 1;
-        }
+        .hero-inner { position: relative; z-index: 1; }
         .hero-eyebrow {
             display: inline-block;
             font-size: 0.72rem;
@@ -178,6 +168,8 @@
             margin: 0 auto 40px;
             line-height: 1.85;
         }
+
+        /* Hero image card */
         .hero-image-card {
             max-width: 580px;
             margin: 0 auto;
@@ -284,12 +276,58 @@
             margin-bottom: 20px;
             color: var(--text);
         }
-        .about p:last-child {
-            margin-bottom: 0;
+        .about p:last-child { margin-bottom: 0; }
+        .highlight { color: var(--accent-light); font-weight: 600; }
+
+        /* ---- FEATURE SPLIT ---- */
+        .feature-split {
+            padding: 64px 0;
+            position: relative;
         }
-        .highlight {
-            color: var(--accent-light);
-            font-weight: 600;
+        .feature-split::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .feature-split-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .feature-split-text {}
+        .feature-split-text .section-heading {
+            margin-bottom: 20px;
+        }
+        .feature-split-text p {
+            font-size: 0.97rem;
+            line-height: 1.85;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+        .feature-split-text p:last-child { margin-bottom: 0; }
+        .feature-split-img {
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border-glow);
+            box-shadow:
+                0 0 30px rgba(234, 40, 43, 0.07),
+                0 16px 60px rgba(0, 0, 0, 0.5);
+        }
+        .feature-split-img img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            min-height: 260px;
+            max-height: 340px;
+        }
+        @media (max-width: 640px) {
+            .feature-split-inner {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
         }
 
         /* ---- SERVICES ---- */
@@ -334,9 +372,7 @@
             box-shadow: 0 0 20px rgba(234, 40, 43, 0.07), 0 6px 24px rgba(0, 0, 0, 0.25);
             transform: translateX(4px);
         }
-        .service-item:hover::before {
-            opacity: 1;
-        }
+        .service-item:hover::before { opacity: 1; }
         .service-label {
             font-size: 0.7rem;
             text-transform: uppercase;
@@ -351,20 +387,55 @@
             line-height: 1.7;
         }
 
-        /* ---- MEDIA IMAGE ---- */
-        .media-visual {
-            padding: 32px 0 64px;
-        }
-        .media-img-wrap {
-            border-radius: 14px;
+        /* ---- GLASSMORPHISM FEATURE CARD ---- */
+        .glass-card {
+            background: rgba(14, 17, 23, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(234, 40, 43, 0.2);
+            border-radius: 18px;
+            padding: 40px 36px;
+            margin: 0 0 14px;
+            position: relative;
             overflow: hidden;
-            border: 1px solid var(--border);
-            box-shadow: 0 0 30px rgba(234, 40, 43, 0.05), 0 20px 60px rgba(0,0,0,0.45);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
-        .media-img-wrap img {
-            width: 100%;
-            display: block;
-            object-fit: cover;
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(234, 40, 43, 0.35), transparent);
+        }
+        .glass-card:hover {
+            border-color: rgba(234, 40, 43, 0.35);
+            box-shadow: 0 0 32px rgba(234, 40, 43, 0.08), 0 12px 40px rgba(0, 0, 0, 0.35);
+        }
+        .glass-card-label {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--accent-light);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .glass-card-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.15rem;
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        .glass-card-sub {
+            font-size: 0.9rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        .glass-card-meta {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 12px;
         }
 
         /* ---- VALUES ---- */
@@ -432,7 +503,7 @@
 
         /* ---- RESULTS STRIP ---- */
         .results {
-            padding: 64px 0;
+            padding: 64px 0 32px;
             position: relative;
         }
         .results::before {
@@ -473,55 +544,42 @@
             color: var(--accent-light);
         }
 
-        /* ---- GLASSMORPHISM FEATURE CARD ---- */
-        .glass-card {
-            background: rgba(14, 17, 23, 0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(234, 40, 43, 0.2);
-            border-radius: 18px;
-            padding: 40px 36px;
-            margin: 0 0 14px;
-            position: relative;
+        /* ---- PHOTO GALLERY ROW ---- */
+        .gallery {
+            padding: 32px 0 72px;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .gallery-item {
+            border-radius: 12px;
             overflow: hidden;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border);
+            box-shadow: 0 0 20px rgba(234, 40, 43, 0.05), 0 12px 40px rgba(0, 0, 0, 0.4);
+            position: relative;
         }
-        .glass-card::before {
-            content: '';
+        .gallery-item img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            height: 200px;
+        }
+        .gallery-item::after {
+            content: attr(data-caption);
             position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(234, 40, 43, 0.35), transparent);
-        }
-        .glass-card:hover {
-            border-color: rgba(234, 40, 43, 0.35);
-            box-shadow: 0 0 32px rgba(234, 40, 43, 0.08), 0 12px 40px rgba(0, 0, 0, 0.35);
-        }
-        .glass-card-label {
-            font-size: 0.68rem;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            color: var(--accent-light);
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        .glass-card-title {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.15rem;
-            color: var(--white);
-            font-weight: 600;
-            margin-bottom: 10px;
-            line-height: 1.4;
-        }
-        .glass-card-sub {
-            font-size: 0.9rem;
-            color: var(--text);
-            line-height: 1.7;
-        }
-        .glass-card-meta {
-            font-size: 0.78rem;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(180deg, transparent, rgba(8, 10, 15, 0.82));
             color: var(--text-muted);
-            margin-top: 12px;
+            font-size: 0.72rem;
+            padding: 20px 12px 10px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+        @media (max-width: 480px) {
+            .gallery-grid { grid-template-columns: 1fr; }
+            .gallery-item img { height: 180px; }
         }
 
         /* ---- CTA ---- */
@@ -548,10 +606,7 @@
             background: radial-gradient(ellipse 560px 300px at 50% 50%, rgba(234, 40, 43, 0.07) 0%, transparent 70%);
             pointer-events: none;
         }
-        .cta-inner {
-            position: relative;
-            z-index: 1;
-        }
+        .cta-inner { position: relative; z-index: 1; }
         .cta-heading {
             font-family: 'Playfair Display', Georgia, serif;
             font-size: clamp(1.7rem, 4vw, 2.1rem);
@@ -609,26 +664,12 @@
 
         /* ---- RESPONSIVE ---- */
         @media (max-width: 640px) {
-            .hero {
-                padding: 64px 0 52px;
-            }
-            .stats-grid {
-                grid-template-columns: 1fr;
-                gap: 14px;
-            }
-            .values-grid {
-                grid-template-columns: 1fr;
-                gap: 14px;
-            }
-            .service-item {
-                padding: 22px 22px;
-            }
-            .glass-card {
-                padding: 28px 24px;
-            }
-            .cta-section {
-                padding: 64px 0;
-            }
+            .hero { padding: 64px 0 52px; }
+            .stats-grid { grid-template-columns: 1fr; gap: 14px; }
+            .values-grid { grid-template-columns: 1fr; gap: 14px; }
+            .service-item { padding: 22px 22px; }
+            .glass-card { padding: 28px 24px; }
+            .cta-section { padding: 64px 0; }
         }
     </style>
 </head>
@@ -645,14 +686,17 @@
     <!-- Hero -->
     <section class="hero">
         <div class="hero-inner container">
-            <p class="hero-eyebrow">Commercial Property — Port Melbourne, VIC</p>
+            <p class="hero-eyebrow">Commercial Property &mdash; Port Melbourne, VIC</p>
             <h1>Commercial Property for Growing Businesses</h1>
-            <p class="hero-sub">A boutique commercial estate agency specialising in project marketing, sales, and leasing of strata office buildings and industrial assets across metropolitan Melbourne — for over 30 years.</p>
+            <p class="hero-sub">A boutique commercial estate agency specialising in project marketing, sales, and leasing of strata office buildings and industrial assets across metropolitan Melbourne &mdash; for over 30 years.</p>
+            <!-- Hero image card: site property photo -->
             <div class="hero-image-card">
                 <img
                     src="https://dcvut9d9kis5d.cloudfront.net/agent301_mid_commercial_extra_8521865.jpg"
                     alt="Bosisto Commercial Real Estate — Melbourne commercial property"
                     loading="eager"
+                    width="580"
+                    height="340"
                 >
             </div>
         </div>
@@ -672,7 +716,7 @@
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">$10M</div>
-                    <div class="stat-label">Recent sale — 2–4 Mephan St Maribyrnong</div>
+                    <div class="stat-label">Recent sale — 2&ndash;4 Mephan St Maribyrnong</div>
                 </div>
             </div>
         </div>
@@ -688,15 +732,24 @@
         </div>
     </section>
 
-    <!-- Property showcase image -->
-    <section class="media-visual fade-in">
+    <!-- Feature split: property photo + listing detail -->
+    <section class="feature-split fade-in">
         <div class="container">
-            <div class="media-img-wrap">
-                <img
-                    src="https://dcvut9d9kis5d.cloudfront.net/mid_commercial_extra_8515655.jpg"
-                    alt="Bosisto Commercial — Melbourne commercial property listing"
-                    loading="lazy"
-                >
+            <div class="feature-split-inner">
+                <div class="feature-split-img">
+                    <img
+                        src="https://dcvut9d9kis5d.cloudfront.net/mid_commercial_extra_8515655.jpg"
+                        alt="Bosisto Commercial — Melbourne commercial property listing"
+                        loading="lazy"
+                        width="360"
+                        height="300"
+                    >
+                </div>
+                <div class="feature-split-text">
+                    <h2 class="section-heading">Active across metro Melbourne</h2>
+                    <p>Current listings span Altona North, Kensington, and Truganina &mdash; covering office showrooms, strata suites, and brand-new logistics warehouses.</p>
+                    <p>Every property is handled with the same specialist focus that has made Bosisto one of Melbourne&rsquo;s most trusted boutique commercial agencies.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -708,47 +761,47 @@
             <ul class="service-list">
                 <li class="service-item">
                     <p class="service-label">Commercial For Sale</p>
-                    <p class="service-text">Sale campaigns for strata offices, warehouses, and industrial units across metropolitan Melbourne — with specialist project marketing expertise built over three decades.</p>
+                    <p class="service-text">Sale campaigns for strata offices, warehouses, and industrial units across metropolitan Melbourne &mdash; with specialist project marketing expertise built over three decades.</p>
                 </li>
                 <li class="service-item">
                     <p class="service-label">Commercial For Lease</p>
-                    <p class="service-text">Leasing across office/showroom suites and high-clearance warehouses — current listings include 237sqm in Kensington and 335–378m² brand new warehouses in Truganina's booming logistics precinct.</p>
+                    <p class="service-text">Leasing across office/showroom suites and high-clearance warehouses &mdash; current listings include 237sqm in Kensington and 335&ndash;378m&sup2; brand new warehouses in Truganina&rsquo;s booming logistics precinct.</p>
                 </li>
                 <li class="service-item">
                     <p class="service-label">Project Marketing &amp; Sales</p>
-                    <p class="service-text">Specialist marketing and sales of strata commercial buildings — a core capability developed over 30+ years serving Melbourne's small and medium business sector.</p>
+                    <p class="service-text">Specialist marketing and sales of strata commercial buildings &mdash; a core capability developed over 30+ years serving Melbourne&rsquo;s small and medium business sector.</p>
                 </li>
                 <li class="service-item">
                     <p class="service-label">Current Projects</p>
-                    <p class="service-text">Active projects across metropolitan Melbourne, including McArthurs Business Park in Altona North — 303m² office warehouse with absolute street frontage, available for sale or lease.</p>
+                    <p class="service-text">Active projects across metropolitan Melbourne, including McArthurs Business Park in Altona North &mdash; 303m&sup2; office warehouse with absolute street frontage, available for sale or lease.</p>
                 </li>
             </ul>
         </div>
     </section>
 
-    <!-- Featured Listings (glassmorphism cards) -->
+    <!-- Featured Listings -->
     <section class="services fade-in" style="padding-top: 0;">
         <div class="container">
             <h2 class="section-heading">Featured listings</h2>
 
             <div class="glass-card">
                 <p class="glass-card-label">For Sale or Lease</p>
-                <p class="glass-card-title">303m² Office Warehouse — McArthurs Business Park</p>
-                <p class="glass-card-sub">37/42 McArthurs Road, Altona North — absolute street frontage exposure. $65,000 p.a. or $1,250,000 purchase.</p>
+                <p class="glass-card-title">303m&sup2; Office Warehouse &mdash; McArthurs Business Park</p>
+                <p class="glass-card-sub">37/42 McArthurs Road, Altona North &mdash; absolute street frontage exposure. $65,000 p.a. or $1,250,000 purchase.</p>
                 <p class="glass-card-meta">Contact agent for full details</p>
             </div>
 
             <div class="glass-card">
                 <p class="glass-card-label">For Lease</p>
-                <p class="glass-card-title">Office/Showroom + High-Clearance Warehouse — 237sqm</p>
-                <p class="glass-card-sub">49 Stubbs Street, Kensington — flexible commercial space combining showroom presentation with warehouse functionality.</p>
+                <p class="glass-card-title">Office/Showroom + High-Clearance Warehouse &mdash; 237sqm</p>
+                <p class="glass-card-sub">49 Stubbs Street, Kensington &mdash; flexible commercial space combining showroom presentation with warehouse functionality.</p>
                 <p class="glass-card-meta">Contact agent for full details</p>
             </div>
 
             <div class="glass-card">
-                <p class="glass-card-label">For Lease — 8 Available</p>
-                <p class="glass-card-title">Brand New Warehouses with First-Floor Offices — 335–378m²</p>
-                <p class="glass-card-sub">7 Logic Court, Truganina — eight brand new warehouses in a booming logistics precinct, with integrated first-floor office space.</p>
+                <p class="glass-card-label">For Lease &mdash; 8 Available</p>
+                <p class="glass-card-title">Brand New Warehouses with First-Floor Offices &mdash; 335&ndash;378m&sup2;</p>
+                <p class="glass-card-sub">7 Logic Court, Truganina &mdash; eight brand new warehouses in a booming logistics precinct, with integrated first-floor office space.</p>
                 <p class="glass-card-meta">Contact agent for full details</p>
             </div>
         </div>
@@ -762,7 +815,7 @@
                 <div class="value-card">
                     <div class="value-icon">&#9670;</div>
                     <div class="value-title">Boutique Focus</div>
-                    <div class="value-desc">Dedicated solely to commercial — not a residential agency that dabbles.</div>
+                    <div class="value-desc">Dedicated solely to commercial &mdash; not a residential agency that dabbles.</div>
                 </div>
                 <div class="value-card">
                     <div class="value-icon">&#9671;</div>
@@ -772,33 +825,46 @@
                 <div class="value-card">
                     <div class="value-icon">&#9669;</div>
                     <div class="value-title">30+ Years</div>
-                    <div class="value-desc">Deep market knowledge across metropolitan Melbourne's commercial precincts.</div>
+                    <div class="value-desc">Deep market knowledge across metropolitan Melbourne&rsquo;s commercial precincts.</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Results / sold properties -->
+    <!-- Results -->
     <section class="results fade-in">
         <div class="container">
             <p class="results-intro">Recent results</p>
             <div class="results-grid">
-                <span class="result-badge">SOLD — $14,000,000 — 43 Craig St Spotswood</span>
-                <span class="result-badge">SOLD — $10,000,000 — 2–4 Mephan St Maribyrnong</span>
-                <span class="result-badge">Sugarhill Business Park — 260 Whitehall St Yarraville</span>
+                <span class="result-badge">SOLD &mdash; $14,000,000 &mdash; 43 Craig St Spotswood</span>
+                <span class="result-badge">SOLD &mdash; $10,000,000 &mdash; 2&ndash;4 Mephan St Maribyrnong</span>
+                <span class="result-badge">Sugarhill Business Park &mdash; 260 Whitehall St Yarraville</span>
             </div>
         </div>
     </section>
 
-    <!-- Sold property image -->
-    <section class="media-visual fade-in" style="padding-top: 0; padding-bottom: 72px;">
+    <!-- Gallery: sold property photos -->
+    <section class="gallery fade-in">
         <div class="container">
-            <div class="media-img-wrap">
-                <img
-                    src="https://bosisto.com.au/database/images/sold-14000000-43-craig-st-spotswood-blog-95232-2.jpg"
-                    alt="Sold — 43 Craig St Spotswood — $14,000,000"
-                    loading="lazy"
-                >
+            <div class="gallery-grid">
+                <div class="gallery-item" data-caption="SOLD — $14,000,000 · 43 Craig St Spotswood">
+                    <img
+                        src="https://bosisto.com.au/database/images/sold-14000000-43-craig-st-spotswood-blog-95232-2.jpg"
+                        alt="Sold — 43 Craig St Spotswood — $14,000,000"
+                        loading="lazy"
+                        width="360"
+                        height="200"
+                    >
+                </div>
+                <div class="gallery-item" data-caption="SOLD — $10,000,000 · 2–4 Mephan St Maribyrnong">
+                    <img
+                        src="https://bosisto.com.au/database/images/sold-10000000-2-4-mephan-st-maribyrnong-blog-68822-7.jpg"
+                        alt="Sold — 2-4 Mephan St Maribyrnong — $10,000,000"
+                        loading="lazy"
+                        width="360"
+                        height="200"
+                    >
+                </div>
             </div>
         </div>
     </section>
@@ -808,7 +874,7 @@
         <div class="cta-blob"></div>
         <div class="container cta-inner">
             <h2 class="cta-heading">Ready to find your next commercial space?</h2>
-            <p class="cta-sub">Whether you're looking to lease, buy, or bring a new commercial project to market — the Bosisto team has the expertise to deliver.</p>
+            <p class="cta-sub">Whether you&rsquo;re looking to lease, buy, or bring a new commercial project to market &mdash; the Bosisto team has the expertise to deliver.</p>
             <a href="tel:+61385667633" class="cta-button">Call +61 3 8566 7633</a>
             <p class="cta-note">Or reach out at info@bosisto.com.au &mdash; 1/33 Fennell St, Port Melbourne VIC 3207</p>
         </div>
@@ -822,7 +888,6 @@
     </footer>
 
     <script>
-        // Scroll fade-in observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
