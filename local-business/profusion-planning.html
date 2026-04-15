@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profusion Planning — Financial Advisers, Western Australia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #060c14;
+            --surface: #0b1420;
+            --surface-light: #101e2e;
+            --border: #162030;
+            --border-glow: rgba(14, 165, 233, 0.28);
+            --accent: #0ea5e9;
+            --accent-light: #38bdf8;
+            --accent-dim: #0369a1;
+            --accent-glow: rgba(14, 165, 233, 0.16);
+            --accent-glow-strong: rgba(14, 165, 233, 0.38);
+            --teal: #14b8a6;
+            --teal-light: #2dd4bf;
+            --white: #e8f4fd;
+            --text: #94afc8;
+            --text-muted: #3d5470;
+            --gradient-hero: linear-gradient(135deg, #38bdf8 0%, #14b8a6 50%, #6366f1 100%);
+            --gradient-accent: linear-gradient(90deg, #0ea5e9, #38bdf8);
+            --gradient-teal: linear-gradient(90deg, #14b8a6, #2dd4bf);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---- SCROLL FADE-IN ---- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---- MESH BACKGROUND ---- */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 600px 500px at 15% 20%, rgba(14, 165, 233, 0.05) 0%, transparent 70%),
+                radial-gradient(ellipse 500px 400px at 85% 70%, rgba(20, 184, 166, 0.04) 0%, transparent 65%),
+                radial-gradient(ellipse 400px 350px at 50% 50%, rgba(99, 102, 241, 0.03) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ---- TOP BAR ---- */
+        .topbar {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            z-index: 10;
+            background: rgba(6, 12, 20, 0.96);
+            backdrop-filter: blur(14px);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-brand {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: 0.4px;
+        }
+        .topbar-phone {
+            font-size: 0.8rem;
+            color: var(--accent-light);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .topbar-phone:hover {
+            color: var(--white);
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            position: relative;
+            padding: 96px 0 72px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Radial mesh blobs */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 900px;
+            height: 620px;
+            background:
+                radial-gradient(ellipse 480px 340px at 30% 40%, rgba(14, 165, 233, 0.11) 0%, transparent 70%),
+                radial-gradient(ellipse 360px 280px at 75% 30%, rgba(20, 184, 166, 0.08) 0%, transparent 65%),
+                radial-gradient(ellipse 300px 240px at 55% 80%, rgba(99, 102, 241, 0.06) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-eyebrow {
+            display: inline-block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 24px;
+            font-weight: 600;
+            border: 1px solid var(--border-glow);
+            padding: 6px 18px;
+            border-radius: 100px;
+            background: rgba(14, 165, 233, 0.07);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5.5vw, 3rem);
+            line-height: 1.22;
+            margin-bottom: 28px;
+            font-weight: 700;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 580px;
+            margin: 0 auto 40px;
+            line-height: 1.85;
+        }
+
+        /* Hero image card — glassmorphism */
+        .hero-image-card {
+            max-width: 560px;
+            margin: 0 auto;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid var(--border-glow);
+            box-shadow:
+                0 0 48px rgba(14, 165, 233, 0.1),
+                0 24px 80px rgba(0, 0, 0, 0.6);
+            position: relative;
+            background: rgba(14, 165, 233, 0.03);
+            backdrop-filter: blur(2px);
+        }
+        .hero-image-card img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+        .hero-image-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(6, 12, 20, 0.55) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* ---- STATS ---- */
+        .stats {
+            padding: 64px 0;
+            position: relative;
+        }
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .stat-card {
+            background: rgba(11, 20, 32, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 32px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            cursor: default;
+            backdrop-filter: blur(8px);
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 180px 120px at 50% 0%, rgba(14, 165, 233, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .stat-card:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 28px rgba(14, 165, 233, 0.1), 0 8px 32px rgba(0, 0, 0, 0.35);
+        }
+        .stat-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.9rem;
+            font-weight: 700;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ---- ABOUT ---- */
+        .about {
+            padding: 72px 0;
+            position: relative;
+        }
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .section-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.65rem;
+            color: var(--white);
+            margin-bottom: 32px;
+            font-weight: 600;
+        }
+        .about p {
+            font-size: 1.02rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        .about p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+        .highlight-teal {
+            color: var(--teal-light);
+            font-weight: 600;
+        }
+
+        /* ---- SERVICES ---- */
+        .services {
+            padding: 72px 0;
+            position: relative;
+        }
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .service-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .service-item {
+            background: rgba(11, 20, 32, 0.65);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 26px 30px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+            cursor: default;
+            backdrop-filter: blur(6px);
+        }
+        .service-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .service-item:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 24px rgba(14, 165, 233, 0.08), 0 6px 24px rgba(0, 0, 0, 0.28);
+            transform: translateX(4px);
+        }
+        .service-item:hover::before {
+            opacity: 1;
+        }
+        .service-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .service-text {
+            font-size: 0.97rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ---- LIFE STAGES ---- */
+        .life-stages {
+            padding: 72px 0;
+            position: relative;
+        }
+        .life-stages::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .stages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .stage-card {
+            text-align: center;
+            padding: 28px 16px;
+            background: rgba(11, 20, 32, 0.65);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease;
+            cursor: default;
+            backdrop-filter: blur(6px);
+        }
+        .stage-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 140px 90px at 50% 100%, rgba(14, 165, 233, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .stage-card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.08), 0 8px 28px rgba(0,0,0,0.3);
+        }
+        .stage-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(14, 165, 233, 0.1);
+            border: 1px solid var(--border-glow);
+            margin: 0 auto 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        .stage-title {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 6px;
+        }
+        .stage-age {
+            font-size: 0.75rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* ---- TEAM SECTION ---- */
+        .team {
+            padding: 72px 0;
+            position: relative;
+        }
+        .team::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+        .team-card {
+            background: rgba(11, 20, 32, 0.65);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+            cursor: default;
+            backdrop-filter: blur(6px);
+        }
+        .team-card:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 28px rgba(14, 165, 233, 0.09), 0 8px 32px rgba(0,0,0,0.3);
+            transform: translateY(-2px);
+        }
+        .team-img-wrap {
+            position: relative;
+            overflow: hidden;
+        }
+        .team-img-wrap img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .team-card:hover .team-img-wrap img {
+            transform: scale(1.03);
+        }
+        .team-img-wrap::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(180deg, transparent, rgba(6, 12, 20, 0.7));
+            pointer-events: none;
+        }
+        .team-body {
+            padding: 22px 22px 24px;
+        }
+        .team-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+        .team-role {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.8px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .team-bio {
+            font-size: 0.85rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ---- MEDIA VISUAL ---- */
+        .media-visual {
+            padding: 32px 0 64px;
+        }
+        .media-img-wrap {
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 0 32px rgba(14, 165, 233, 0.06), 0 20px 60px rgba(0,0,0,0.48);
+        }
+        .media-img-wrap img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* ---- VALUES ---- */
+        .values {
+            padding: 72px 0;
+            position: relative;
+        }
+        .values::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+        .value-card {
+            text-align: center;
+            padding: 32px 20px;
+            background: rgba(11, 20, 32, 0.65);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, transform 0.25s ease;
+            cursor: default;
+            backdrop-filter: blur(6px);
+        }
+        .value-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 160px 100px at 50% 100%, rgba(14, 165, 233, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .value-card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-3px);
+        }
+        .value-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(14, 165, 233, 0.1);
+            border: 1px solid var(--border-glow);
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        .value-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .value-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ---- TRUST BADGES ---- */
+        .trust {
+            padding: 56px 0;
+            position: relative;
+        }
+        .trust::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .trust-intro {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .trust-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .trust-badge {
+            background: rgba(11, 20, 32, 0.65);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: border-color 0.25s, color 0.25s;
+            cursor: default;
+            backdrop-filter: blur(4px);
+        }
+        .trust-badge:hover {
+            border-color: var(--border-glow);
+            color: var(--accent-light);
+        }
+
+        /* ---- CTA ---- */
+        .cta-section {
+            padding: 96px 0;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .cta-blob {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 700px;
+            height: 400px;
+            background: radial-gradient(ellipse 500px 280px at 50% 50%, rgba(14, 165, 233, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .cta-inner {
+            position: relative;
+            z-index: 1;
+        }
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.7rem, 4vw, 2.1rem);
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 40px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+            color: #030c14;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.97rem;
+            font-weight: 700;
+            padding: 17px 52px;
+            border-radius: 10px;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            box-shadow:
+                0 0 28px rgba(14, 165, 233, 0.35),
+                0 8px 32px rgba(14, 165, 233, 0.18);
+            transition: box-shadow 0.3s ease, transform 0.2s ease, filter 0.3s ease;
+        }
+        .cta-button:hover {
+            box-shadow:
+                0 0 48px rgba(14, 165, 233, 0.55),
+                0 12px 48px rgba(14, 165, 233, 0.28);
+            transform: translateY(-2px);
+            filter: brightness(1.08);
+        }
+        .cta-note {
+            margin-top: 18px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer p {
+            font-size: 0.73rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 64px 0 52px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .stages-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .service-item {
+                padding: 22px 22px;
+            }
+            .cta-section {
+                padding: 64px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-brand">Profusion Planning — Financial Advisers</span>
+            <a href="tel:0893163050" class="topbar-phone">(08) 9316 3050</a>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner container">
+            <p class="hero-eyebrow">WA Financial Planning — AFSL Holder — Est. 2017</p>
+            <h1>Smart financial decisions today, to provide you with choice in the future</h1>
+            <p class="hero-sub">A privately owned WA financial planning firm with our own Australian Financial Services Licence — putting your interests at the centre of every decision we make.</p>
+            <div class="hero-image-card">
+                <img
+                    src="https://profusionplanning.com.au/wp-content/uploads/2021/03/hero-2000x2000-c-default.jpg"
+                    alt="Profusion Planning"
+                    loading="eager"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats fade-in">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">2017</div>
+                    <div class="stat-label">Established — privately owned from day one</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">AFSL</div>
+                    <div class="stat-label">Own licence — advice stays independent</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Flat Fee</div>
+                    <div class="stat-label">100% transparent pricing at every step</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about fade-in">
+        <div class="container">
+            <h2 class="section-heading">About Profusion Planning</h2>
+            <p>At <span class="highlight">Profusion Planning</span>, we're committed to building trusting, long-term relationships with our clients. As life changes, you need a plan flexible enough to change with it.</p>
+            <p>We are a dedicated, privately owned WA financial planning business that holds our own <span class="highlight-teal">Australian Financial Services Licence</span>. That independence means we put our clients' interests at the centre of every recommendation — not the interests of a large institution or product provider.</p>
+            <p>We specialise in holistic advice and operate on a flat fee schedule — giving you <span class="highlight">100% transparency</span> at every step of the process. No hidden charges. No commissions. No conflicts.</p>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services fade-in">
+        <div class="container">
+            <h2 class="section-heading">What we do</h2>
+            <ul class="service-list">
+                <li class="service-item">
+                    <p class="service-label">Personalised Approach</p>
+                    <p class="service-text">Every client is different. We take the time to understand your full financial picture before making a single recommendation — building a strategy that actually fits your life.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Investment Philosophy</p>
+                    <p class="service-text">Clear, conservative investment strategies that are easy to understand and built for the long term. No jargon, no unnecessary complexity — just focused on enabling informed decision making.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Goal Based Advice</p>
+                    <p class="service-text">We anchor every plan to what matters most to you — whether that's buying a home, funding retirement, or building long-term wealth. Your goals drive the strategy.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Family &amp; Estate Planning</p>
+                    <p class="service-text">Comprehensive planning that protects your family's financial future — structuring your estate so your wealth goes where you intend it to.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Superannuation &amp; GESB</p>
+                    <p class="service-text">Specialist expertise in GESB accounts, untaxed funds, and defined benefit schemes — areas that are widely misunderstood but play a major role in WA retirement outcomes.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Life Stages -->
+    <section class="life-stages fade-in">
+        <div class="container">
+            <h2 class="section-heading" style="text-align:center; margin-bottom: 36px;">Where are you in life?</h2>
+            <div class="stages-grid">
+                <div class="stage-card">
+                    <div class="stage-icon">&#9651;</div>
+                    <div class="stage-title">Fit &amp; Flexible</div>
+                    <div class="stage-age">Under 30s</div>
+                </div>
+                <div class="stage-card">
+                    <div class="stage-icon">&#9670;</div>
+                    <div class="stage-title">Grown Ups</div>
+                    <div class="stage-age">30 – 45</div>
+                </div>
+                <div class="stage-card">
+                    <div class="stage-icon">&#9671;</div>
+                    <div class="stage-title">Home Stretch</div>
+                    <div class="stage-age">45 – 60</div>
+                </div>
+                <div class="stage-card">
+                    <div class="stage-icon">&#9744;</div>
+                    <div class="stage-title">Free &amp; Easy</div>
+                    <div class="stage-age">60 – 75</div>
+                </div>
+                <div class="stage-card">
+                    <div class="stage-icon">&#9792;</div>
+                    <div class="stage-title">Twilight</div>
+                    <div class="stage-age">75+</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intro visual -->
+    <section class="media-visual fade-in">
+        <div class="container">
+            <div class="media-img-wrap">
+                <img
+                    src="https://profusionplanning.com.au/wp-content/uploads/2021/03/intro-896x598-c-default.jpg"
+                    alt="Profusion Planning office"
+                    loading="lazy"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="team fade-in">
+        <div class="container">
+            <h2 class="section-heading">Meet the team</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-img-wrap">
+                        <img
+                            src="https://profusionplanning.com.au/wp-content/uploads/2025/09/Ben.jpg"
+                            alt="Ben Coombe — Financial Adviser &amp; Director"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="team-body">
+                        <div class="team-name">Ben Coombe</div>
+                        <div class="team-role">Financial Adviser &amp; Director</div>
+                        <p class="team-bio">Passionate about clear, conservative strategies that enable informed decision making. Focused on building lasting client relationships through every phase of life. Former Director at Bruining Partners and senior roles at leading Australian Funds Management companies.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-img-wrap">
+                        <img
+                            src="https://profusionplanning.com.au/wp-content/uploads/2025/09/Rex.jpg"
+                            alt="Rex Rozario — Financial Adviser"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="team-body">
+                        <div class="team-name">Rex Rozario</div>
+                        <div class="team-role">Financial Adviser</div>
+                        <p class="team-bio">Specialist in superannuation and retirement, with 7+ years at GESB across technical and advisory roles. Deep expertise in untaxed funds and defined benefit schemes — areas that most advisers simply don't understand.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="values fade-in">
+        <div class="container">
+            <h2 class="section-heading" style="text-align:center; margin-bottom: 36px;">How we operate</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">&#9670;</div>
+                    <div class="value-title">Client-First</div>
+                    <div class="value-desc">Our own AFSL means our advice answers to you — not to a bank, insurer, or product manufacturer.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">&#9671;</div>
+                    <div class="value-title">Flat Fees</div>
+                    <div class="value-desc">No commissions. No surprises. You know exactly what you're paying before we start.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">&#9669;</div>
+                    <div class="value-title">Holistic Advice</div>
+                    <div class="value-desc">We look at your full picture — investments, super, insurance, estate — not just one piece of it.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust -->
+    <section class="trust fade-in">
+        <div class="container">
+            <p class="trust-intro">Credentials &amp; structure</p>
+            <div class="trust-grid">
+                <span class="trust-badge">AFSL Holder</span>
+                <span class="trust-badge">Privately Owned</span>
+                <span class="trust-badge">Flat Fee Model</span>
+                <span class="trust-badge">GESB Specialists</span>
+                <span class="trust-badge">Est. 2017</span>
+                <span class="trust-badge">Western Australia</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section fade-in">
+        <div class="cta-blob"></div>
+        <div class="container cta-inner">
+            <h2 class="cta-heading">Start a confidential conversation</h2>
+            <p class="cta-sub">Whether you're just starting out or approaching retirement — we'll help you make smart decisions today that give you real choices tomorrow.</p>
+            <a href="tel:0893163050" class="cta-button">Call (08) 9316 3050</a>
+            <p class="cta-note">Or email us at info@profusionplanning.com.au</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Profusion Planning &mdash; profusionplanning.com.au &mdash; (08) 9316 3050 &mdash; info@profusionplanning.com.au</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll fade-in
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>

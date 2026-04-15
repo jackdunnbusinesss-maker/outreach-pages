@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Housemark — Specialist Property Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #07090f;
+            --surface: #0e1119;
+            --surface-light: #151b25;
+            --border: #1c2333;
+            --border-glow: rgba(99, 162, 255, 0.22);
+            --accent: #638dff;
+            --accent-light: #89adff;
+            --accent-dim: #3a5bc4;
+            --accent-glow: rgba(99, 162, 255, 0.15);
+            --accent-glow-strong: rgba(99, 162, 255, 0.32);
+            --white: #edf2f7;
+            --text: #b0bccf;
+            --text-muted: #526070;
+            --gradient-hero: linear-gradient(135deg, #638dff 0%, #a78bfa 50%, #f0abfc 100%);
+            --gradient-accent: linear-gradient(90deg, #638dff, #89adff);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---- SCROLL FADE-IN ---- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---- TOP BAR ---- */
+        .topbar {
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(7, 9, 15, 0.94);
+            backdrop-filter: blur(14px);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-logo {
+            height: 28px;
+            width: auto;
+            display: block;
+        }
+        .topbar-cta {
+            font-size: 0.78rem;
+            color: var(--accent-light);
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid var(--border-glow);
+            padding: 7px 18px;
+            border-radius: 8px;
+            background: rgba(99, 162, 255, 0.07);
+            transition: background 0.2s, border-color 0.2s, color 0.2s;
+            letter-spacing: 0.2px;
+        }
+        .topbar-cta:hover {
+            background: rgba(99, 162, 255, 0.15);
+            border-color: rgba(99, 162, 255, 0.45);
+            color: var(--white);
+        }
+
+        /* ---- MESH BACKGROUND ---- */
+        .mesh-bg {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse 700px 500px at 15% 10%, rgba(99, 162, 255, 0.055) 0%, transparent 65%),
+                radial-gradient(ellipse 500px 400px at 85% 60%, rgba(167, 139, 250, 0.045) 0%, transparent 60%),
+                radial-gradient(ellipse 400px 300px at 50% 90%, rgba(240, 171, 252, 0.03) 0%, transparent 60%);
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            position: relative;
+            padding: 100px 0 76px;
+            text-align: center;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-eyebrow {
+            display: inline-block;
+            font-size: 0.71rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 24px;
+            font-weight: 600;
+            border: 1px solid var(--border-glow);
+            padding: 6px 18px;
+            border-radius: 100px;
+            background: rgba(99, 162, 255, 0.06);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.95rem, 5.5vw, 3rem);
+            line-height: 1.2;
+            margin-bottom: 28px;
+            font-weight: 700;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            font-size: 1.04rem;
+            color: var(--text);
+            max-width: 580px;
+            margin: 0 auto 44px;
+            line-height: 1.85;
+        }
+
+        /* Hero image card with glassmorphism overlay */
+        .hero-image-card {
+            max-width: 600px;
+            margin: 0 auto;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid var(--border-glow);
+            box-shadow:
+                0 0 50px rgba(99, 162, 255, 0.1),
+                0 24px 80px rgba(0, 0, 0, 0.6);
+            position: relative;
+        }
+        .hero-image-card img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            max-height: 360px;
+        }
+        .hero-image-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(7, 9, 15, 0.15) 0%, rgba(7, 9, 15, 0.55) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Glassmorphism badge on hero card */
+        .hero-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            background: rgba(14, 17, 25, 0.72);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(99, 162, 255, 0.25);
+            border-radius: 10px;
+            padding: 10px 22px;
+            white-space: nowrap;
+            font-size: 0.8rem;
+            color: var(--accent-light);
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        /* ---- STATS ---- */
+        .stats {
+            padding: 68px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 34px 18px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+            cursor: default;
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 180px 120px at 50% 0%, rgba(99, 162, 255, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .stat-card:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 24px rgba(99, 162, 255, 0.09), 0 8px 32px rgba(0, 0, 0, 0.35);
+            transform: translateY(-3px);
+        }
+        .stat-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.85rem;
+            font-weight: 700;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            font-size: 0.77rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ---- ABOUT ---- */
+        .about {
+            padding: 72px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .section-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.65rem;
+            color: var(--white);
+            margin-bottom: 32px;
+            font-weight: 600;
+        }
+        .about p {
+            font-size: 1.01rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        .about p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* ---- SERVICES ---- */
+        .services {
+            padding: 72px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .service-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .service-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 26px 28px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+            cursor: default;
+        }
+        .service-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .service-item:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 20px rgba(99, 162, 255, 0.07), 0 6px 24px rgba(0, 0, 0, 0.28);
+            transform: translateX(4px);
+        }
+        .service-item:hover::before {
+            opacity: 1;
+        }
+        .service-label {
+            font-size: 0.69rem;
+            text-transform: uppercase;
+            letter-spacing: 2.2px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .service-text {
+            font-size: 0.96rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ---- MID IMAGE ---- */
+        .media-visual {
+            padding: 24px 0 64px;
+            position: relative;
+            z-index: 1;
+        }
+        .media-img-wrap {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 0 30px rgba(99, 162, 255, 0.06), 0 20px 60px rgba(0,0,0,0.5);
+        }
+        .media-img-wrap img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            max-height: 320px;
+        }
+
+        /* ---- WHY SECTION ---- */
+        .why {
+            padding: 72px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .why::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .why-card {
+            text-align: center;
+            padding: 30px 18px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease;
+            cursor: default;
+        }
+        .why-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 160px 100px at 50% 100%, rgba(99, 162, 255, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .why-card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(99, 162, 255, 0.07), 0 8px 28px rgba(0,0,0,0.3);
+        }
+        .why-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(99, 162, 255, 0.09);
+            border: 1px solid var(--border-glow);
+            margin: 0 auto 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+        }
+        .why-title {
+            font-size: 0.94rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .why-desc {
+            font-size: 0.79rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ---- AREAS ---- */
+        .areas {
+            padding: 64px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .areas::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .areas-label {
+            font-size: 0.71rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .areas-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .area-badge {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 22px;
+            font-size: 0.83rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: border-color 0.25s, color 0.25s, background 0.25s;
+            cursor: default;
+        }
+        .area-badge:hover {
+            border-color: var(--border-glow);
+            color: var(--accent-light);
+            background: rgba(99, 162, 255, 0.05);
+        }
+
+        /* ---- CTA ---- */
+        .cta-section {
+            padding: 100px 0;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .cta-blob {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 760px;
+            height: 440px;
+            background:
+                radial-gradient(ellipse 480px 260px at 40% 50%, rgba(99, 162, 255, 0.07) 0%, transparent 70%),
+                radial-gradient(ellipse 380px 220px at 65% 50%, rgba(167, 139, 250, 0.05) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        .cta-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Glass card wrapping the CTA content */
+        .cta-glass {
+            display: inline-block;
+            background: rgba(14, 17, 25, 0.55);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(99, 162, 255, 0.2);
+            border-radius: 20px;
+            padding: 56px 52px;
+            max-width: 580px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.65rem, 4vw, 2.1rem);
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 38px;
+            line-height: 1.8;
+        }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #638dff, #89adff);
+            color: #04060f;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.97rem;
+            font-weight: 700;
+            padding: 17px 52px;
+            border-radius: 10px;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            box-shadow:
+                0 0 28px rgba(99, 162, 255, 0.35),
+                0 8px 32px rgba(99, 162, 255, 0.18);
+            transition: box-shadow 0.3s ease, transform 0.2s ease, filter 0.3s ease;
+        }
+        .cta-button:hover {
+            box-shadow:
+                0 0 50px rgba(99, 162, 255, 0.55),
+                0 12px 48px rgba(99, 162, 255, 0.28);
+            transform: translateY(-2px);
+            filter: brightness(1.08);
+        }
+        .cta-note {
+            margin-top: 18px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .footer p {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 64px 0 52px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 13px;
+            }
+            .why-grid {
+                grid-template-columns: 1fr;
+                gap: 13px;
+            }
+            .service-item {
+                padding: 22px 22px;
+            }
+            .cta-section {
+                padding: 64px 0;
+            }
+            .cta-glass {
+                padding: 40px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fixed mesh background -->
+    <div class="mesh-bg"></div>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <img
+                src="https://housemark.com.au/wp-content/uploads/2022/11/Housemark_white.png"
+                alt="Housemark"
+                class="topbar-logo"
+                loading="eager"
+            >
+            <a href="#contact" class="topbar-cta">Free Rental Assessment</a>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner container">
+            <p class="hero-eyebrow">Specialist Property Management — South-East Queensland &amp; Victoria</p>
+            <h1>Property managed properly — not just managed</h1>
+            <p class="hero-sub">Housemark is SEQ's #1 specialist property management business. We don't sell property. We manage it with dedicated managers, genuine care, and the kind of results your investment deserves.</p>
+            <div class="hero-image-card">
+                <img
+                    src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80"
+                    alt="Professional property management"
+                    loading="eager"
+                >
+                <div class="hero-badge">Rated 4.8/5 stars by landlords</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats fade-in">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">#1</div>
+                    <div class="stat-label">Ranked SEQ specialist PM — realestate.com.au</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4.8/5</div>
+                    <div class="stat-label">Star rating from landlord reviews</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2&times; faster</div>
+                    <div class="stat-label">New tenants placed vs. industry average</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about fade-in">
+        <div class="container">
+            <h2 class="section-heading">About Housemark</h2>
+            <p>At <span class="highlight">Housemark</span>, we treat your property as if it were our own. We set the benchmark for the highest possible level of property management service in the industry — because we believe landlords and tenants deserve better than the status quo.</p>
+            <p>We don't sell property. We only deal with residential rental management. That singular focus means our team of highly experienced property managers can put passion and genuine care into every property we manage — your investment included.</p>
+            <p>Based on data from realestate.com.au, Housemark is the <span class="highlight">#1 ranked South-East Queensland specialist property management business</span> for the number of properties leased in the last 3, 6, and 12 months. That's not marketing — that's the market.</p>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services fade-in">
+        <div class="container">
+            <h2 class="section-heading">What we do</h2>
+            <ul class="service-list">
+                <li class="service-item">
+                    <p class="service-label">Residential Rental Management</p>
+                    <p class="service-text">Full-service management of your investment property — tenant sourcing, screening, lease management, and ongoing care handled by dedicated managers who genuinely know your property.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Executive Portfolio Management</p>
+                    <p class="service-text">Premium management for landlords who expect more. Proactive communication, detailed reporting, and senior-level attention across every touchpoint of your investment.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Investment Services</p>
+                    <p class="service-text">Guidance for landlords growing their portfolio across South-East Queensland and Victoria — from free rental assessments through to active acquisition support.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Short-Term Letting</p>
+                    <p class="service-text">Managed short-term rental solutions for landlords looking to maximise returns across platforms — handled with the same rigour as our long-term management service.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Free Rental Assessment</p>
+                    <p class="service-text">Not sure what your property could earn? We'll deliver a detailed rental report — market data, comparable properties, and a realistic income forecast — at no cost.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Mid-page visual -->
+    <section class="media-visual fade-in">
+        <div class="container">
+            <div class="media-img-wrap">
+                <img
+                    src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&q=80"
+                    alt="Residential investment properties in South-East Queensland"
+                    loading="lazy"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Housemark -->
+    <section class="why fade-in">
+        <div class="container">
+            <h2 class="section-heading" style="text-align:center; margin-bottom: 36px;">Why landlords choose us</h2>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon">&#9670;</div>
+                    <div class="why-title">Specialist-only</div>
+                    <div class="why-desc">We don't split focus between sales and rentals. Property management is all we do.</div>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">&#9671;</div>
+                    <div class="why-title">Genuine care</div>
+                    <div class="why-desc">Dedicated managers who proactively look after both landlords and tenants.</div>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">&#9669;</div>
+                    <div class="why-title">Proven results</div>
+                    <div class="why-desc">#1 on realestate.com.au and placing tenants twice as fast as the industry average.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Areas -->
+    <section class="areas fade-in" id="contact">
+        <div class="container">
+            <p class="areas-label">Service Areas</p>
+            <div class="areas-grid">
+                <span class="area-badge">Brisbane</span>
+                <span class="area-badge">Gold Coast</span>
+                <span class="area-badge">Sunshine Coast</span>
+                <span class="area-badge">Ipswich</span>
+                <span class="area-badge">Toowoomba</span>
+                <span class="area-badge">Victoria</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section fade-in">
+        <div class="cta-blob"></div>
+        <div class="container cta-inner">
+            <div class="cta-glass">
+                <h2 class="cta-heading">Get your free rental assessment</h2>
+                <p class="cta-sub">Find out what your investment property could genuinely earn — with a no-cost rental report from SEQ's #1 specialist property management team.</p>
+                <a href="https://housemark.com.au" class="cta-button">Request a Rental Report</a>
+                <p class="cta-note">housemark.com.au — serving Brisbane, Gold Coast, Sunshine Coast, Ipswich, Toowoomba &amp; Victoria</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Housemark &mdash; Specialist Property Management &mdash; South-East Queensland &amp; Victoria &mdash; housemark.com.au</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll fade-in
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>

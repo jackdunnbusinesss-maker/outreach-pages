@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perrier Ryan — Accountants &amp; Advisors</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #06090f;
+            --surface: #0c1220;
+            --surface-light: #111a2e;
+            --border: #1a2540;
+            --border-glow: rgba(56, 189, 248, 0.22);
+            --accent: #38bdf8;
+            --accent-light: #7dd3fc;
+            --accent-dim: #0ea5e9;
+            --accent-glow: rgba(56, 189, 248, 0.16);
+            --accent-glow-strong: rgba(56, 189, 248, 0.32);
+            --teal: #2dd4bf;
+            --teal-glow: rgba(45, 212, 191, 0.18);
+            --white: #e8f4fd;
+            --text: #94aec8;
+            --text-muted: #46607a;
+            --gradient-hero: linear-gradient(135deg, #38bdf8 0%, #2dd4bf 50%, #818cf8 100%);
+            --gradient-accent: linear-gradient(90deg, #38bdf8, #2dd4bf);
+            --gradient-mesh:
+                radial-gradient(ellipse 520px 340px at 25% 35%, rgba(56, 189, 248, 0.11) 0%, transparent 70%),
+                radial-gradient(ellipse 380px 300px at 78% 25%, rgba(45, 212, 191, 0.08) 0%, transparent 65%),
+                radial-gradient(ellipse 320px 260px at 55% 85%, rgba(129, 140, 248, 0.07) 0%, transparent 60%);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---- SCROLL FADE-IN ---- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---- TOP BAR ---- */
+        .topbar {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(6, 9, 15, 0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-brand {
+            font-size: 0.83rem;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: 0.4px;
+        }
+        .topbar-phone {
+            font-size: 0.8rem;
+            color: var(--accent-light);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .topbar-phone:hover { color: var(--white); }
+
+        /* ---- HERO ---- */
+        .hero {
+            position: relative;
+            padding: 100px 0 76px;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -130px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 960px;
+            height: 640px;
+            background: var(--gradient-mesh);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+        }
+        .hero-eyebrow {
+            display: inline-block;
+            font-size: 0.71rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 26px;
+            font-weight: 600;
+            border: 1px solid var(--border-glow);
+            padding: 6px 20px;
+            border-radius: 100px;
+            background: rgba(56, 189, 248, 0.07);
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5.5vw, 3rem);
+            line-height: 1.2;
+            margin-bottom: 28px;
+            font-weight: 700;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-sub {
+            font-size: 1.04rem;
+            color: var(--text);
+            max-width: 580px;
+            margin: 0 auto 42px;
+            line-height: 1.88;
+        }
+        .hero-image-card {
+            max-width: 580px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-glow);
+            box-shadow:
+                0 0 48px rgba(56, 189, 248, 0.09),
+                0 24px 80px rgba(0, 0, 0, 0.58);
+            position: relative;
+        }
+        .hero-image-card img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            max-height: 340px;
+        }
+        .hero-image-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 45%, rgba(6, 9, 15, 0.55) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* ---- STATS ---- */
+        .stats {
+            padding: 68px 0;
+            position: relative;
+        }
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 34px 18px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            cursor: default;
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 180px 120px at 50% 0%, rgba(56, 189, 248, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .stat-card:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 28px rgba(56, 189, 248, 0.09), 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .stat-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.9rem;
+            font-weight: 700;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            font-size: 0.77rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ---- ABOUT ---- */
+        .about {
+            padding: 76px 0;
+            position: relative;
+        }
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .section-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.65rem;
+            color: var(--white);
+            margin-bottom: 32px;
+            font-weight: 600;
+        }
+        .about p {
+            font-size: 1.01rem;
+            line-height: 1.92;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        .about p:last-child { margin-bottom: 0; }
+        .highlight {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* ---- SERVICES ---- */
+        .services {
+            padding: 76px 0;
+            position: relative;
+        }
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .service-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .service-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 26px 30px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+            cursor: default;
+        }
+        .service-item::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .service-item:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 22px rgba(56, 189, 248, 0.08), 0 6px 24px rgba(0, 0, 0, 0.25);
+            transform: translateX(4px);
+        }
+        .service-item:hover::before { opacity: 1; }
+        .service-label {
+            font-size: 0.69rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .service-text {
+            font-size: 0.97rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ---- APPROACH ---- */
+        .approach {
+            padding: 76px 0;
+            position: relative;
+        }
+        .approach::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+        .approach-card {
+            text-align: center;
+            padding: 32px 18px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, transform 0.25s ease;
+            cursor: default;
+        }
+        .approach-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 160px 100px at 50% 100%, rgba(45, 212, 191, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .approach-card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-3px);
+        }
+        .approach-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid var(--border-glow);
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        .approach-title {
+            font-size: 0.94rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .approach-desc {
+            font-size: 0.79rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ---- MEDIA VISUAL ---- */
+        .media-visual {
+            padding: 32px 0 64px;
+        }
+        .media-img-wrap {
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.06), 0 20px 60px rgba(0, 0, 0, 0.45);
+        }
+        .media-img-wrap img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* ---- TRUST LOGOS ---- */
+        .trust {
+            padding: 64px 0;
+            position: relative;
+        }
+        .trust::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .trust-intro {
+            font-size: 0.71rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .trust-logos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+        }
+        .trust-logo-wrap {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 20px;
+            transition: border-color 0.25s, box-shadow 0.25s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .trust-logo-wrap:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 16px rgba(56, 189, 248, 0.08);
+        }
+        .trust-logo-wrap img {
+            height: 36px;
+            width: auto;
+            display: block;
+            filter: brightness(0.85) saturate(0.6);
+            transition: filter 0.25s;
+        }
+        .trust-logo-wrap:hover img {
+            filter: brightness(1) saturate(1);
+        }
+        .trust-badge {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: border-color 0.25s, color 0.25s;
+            cursor: default;
+        }
+        .trust-badge:hover {
+            border-color: var(--border-glow);
+            color: var(--accent-light);
+        }
+
+        /* ---- CTA ---- */
+        .cta-section {
+            padding: 100px 0;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .cta-blob {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 700px;
+            height: 400px;
+            background:
+                radial-gradient(ellipse 500px 280px at 50% 50%, rgba(56, 189, 248, 0.06) 0%, transparent 70%),
+                radial-gradient(ellipse 300px 200px at 30% 60%, rgba(45, 212, 191, 0.04) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        .cta-inner {
+            position: relative;
+            z-index: 1;
+        }
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.7rem, 4vw, 2.1rem);
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 40px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #38bdf8, #2dd4bf);
+            color: #040810;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.97rem;
+            font-weight: 700;
+            padding: 17px 54px;
+            border-radius: 10px;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            box-shadow:
+                0 0 28px rgba(56, 189, 248, 0.32),
+                0 8px 32px rgba(56, 189, 248, 0.16);
+            transition: box-shadow 0.3s ease, transform 0.2s ease, filter 0.3s ease;
+        }
+        .cta-button:hover {
+            box-shadow:
+                0 0 48px rgba(56, 189, 248, 0.52),
+                0 12px 48px rgba(56, 189, 248, 0.28);
+            transform: translateY(-2px);
+            filter: brightness(1.08);
+        }
+        .cta-note {
+            margin-top: 18px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer p {
+            font-size: 0.73rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 640px) {
+            .hero { padding: 68px 0 54px; }
+            .stats-grid { grid-template-columns: 1fr; gap: 14px; }
+            .approach-grid { grid-template-columns: 1fr; gap: 14px; }
+            .service-item { padding: 22px; }
+            .cta-section { padding: 68px 0; }
+            .hero-image-card img { max-height: 220px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-brand">Perrier Ryan Accountants &amp; Advisors</span>
+            <a href="tel:0733917566" class="topbar-phone">07 3391 7566</a>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner container">
+            <p class="hero-eyebrow">Accounting &amp; Financial Advisory — East Brisbane, QLD</p>
+            <h1>Expert accounting, advisory and guidance — with integrity</h1>
+            <p class="hero-sub">Perrier Ryan is a dynamic accounting and financial advisory firm helping clients with all areas of their business and financial wellbeing, with practical solutions tailored to individual needs and long-term goals.</p>
+            <div class="hero-image-card">
+                <img
+                    src="https://lirp.cdn-website.com/b40037a1/dms3rep/multi/opt/home-page-735w.jpg"
+                    alt="Perrier Ryan Financial Services"
+                    loading="eager"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats fade-in">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">25 Years</div>
+                    <div class="stat-label">Proudly serving clients since 2000</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Integrated</div>
+                    <div class="stat-label">Fully integrated financial services</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Whole Picture</div>
+                    <div class="stat-label">Tax, accounting, investment &amp; insurance — in one team</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about fade-in">
+        <div class="container">
+            <h2 class="section-heading">About Perrier Ryan</h2>
+            <p><span class="highlight">Perrier Ryan</span> is a dynamic accounting and financial advisory firm based at Level 1, 30 Lisburn Street, East Brisbane QLD 4169. Since 2000, we have assisted clients across all areas of their business and financial wellbeing, taking into account their lifestyle goals.</p>
+            <p>Our fully integrated financial services cover a broad range of industries, with practical, professional solutions tailored to your individual business needs. By combining the skills, expertise and experience of our tax and accounting team with our specialist investment, lending and insurance advisers, we focus on <span class="highlight">"the whole picture"</span> for our clients.</p>
+            <p>We understand that your success is our success. 2025 saw Perrier Ryan proudly celebrate <span class="highlight">25 years of working with clients</span> — a milestone built on forward-thinking advice that can adapt to any challenges facing your business.</p>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services fade-in">
+        <div class="container">
+            <h2 class="section-heading">What we do</h2>
+            <ul class="service-list">
+                <li class="service-item">
+                    <p class="service-label">Accounting &amp; Taxation</p>
+                    <p class="service-text">Comprehensive accounting and tax services covering Your Essentials, Your Performance, Your Plan, and Your Strategy — structured tiers designed to match your stage of business growth and complexity.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Financial Advisory</p>
+                    <p class="service-text">Six-step financial planning process covering wealth creation, asset protection, lending advice, estate planning, and business succession planning — tailored to your personal and business goals.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Business Brokering</p>
+                    <p class="service-text">Current listings and appraisal services to help clients buy or sell businesses with the confidence of expert accounting and advisory support throughout the transaction.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">SMSF &amp; Client Services</p>
+                    <p class="service-text">Dedicated SMSF client portal and MYOB client portal access, with integrated support across your superannuation and financial administration needs.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Tax &amp; Wealth Advice</p>
+                    <p class="service-text">Specialised advice across tax planning, wealth creation, asset protection, and lending — delivered by a team that understands both compliance obligations and long-term financial strategy.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Media: social canvas image -->
+    <section class="media-visual fade-in">
+        <div class="container">
+            <div class="media-img-wrap">
+                <img
+                    src="https://lirp.cdn-website.com/b40037a1/dms3rep/multi/opt/social-canvas-1920w.png"
+                    alt="Perrier Ryan — 25 years"
+                    loading="lazy"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Approach -->
+    <section class="approach fade-in">
+        <div class="container">
+            <h2 class="section-heading" style="text-align:center; margin-bottom:36px;">Our approach</h2>
+            <div class="approach-grid">
+                <div class="approach-card">
+                    <div class="approach-icon">&#9670;</div>
+                    <div class="approach-title">Integrity</div>
+                    <div class="approach-desc">We deliver expert guidance with integrity — acting in your best interest at every stage.</div>
+                </div>
+                <div class="approach-card">
+                    <div class="approach-icon">&#9671;</div>
+                    <div class="approach-title">Personalised</div>
+                    <div class="approach-desc">Professional "corporate" quality with a personalised, family-focused approach to every client.</div>
+                </div>
+                <div class="approach-card">
+                    <div class="approach-icon">&#9669;</div>
+                    <div class="approach-title">Integrated</div>
+                    <div class="approach-desc">Tax, accounting, and financial advisory in one team — the whole picture, not just one piece.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust / Partner Logos -->
+    <section class="trust fade-in">
+        <div class="container">
+            <p class="trust-intro">Trusted tools &amp; affiliations</p>
+            <div class="trust-logos">
+                <div class="trust-logo-wrap">
+                    <img
+                        src="https://lirp.cdn-website.com/b40037a1/dms3rep/multi/opt/intuit+quickbooks-1920w.png"
+                        alt="Intuit QuickBooks"
+                        loading="lazy"
+                    >
+                </div>
+                <div class="trust-logo-wrap">
+                    <img
+                        src="https://lirp.cdn-website.com/b40037a1/dms3rep/multi/opt/MFAA-1920w.png"
+                        alt="MFAA"
+                        loading="lazy"
+                    >
+                </div>
+                <span class="trust-badge">East Brisbane QLD</span>
+                <span class="trust-badge">Est. 2000</span>
+                <span class="trust-badge">25 Years</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section fade-in">
+        <div class="cta-blob"></div>
+        <div class="container cta-inner">
+            <h2 class="cta-heading">Talk to the Perrier Ryan team</h2>
+            <p class="cta-sub">Whether you need tax advice, financial planning, or a full-picture strategy for your business — we're here to help you achieve growth, protection, and long-term success.</p>
+            <a href="tel:0733917566" class="cta-button">Call 07 3391 7566</a>
+            <p class="cta-note">Or reach out at contact@perrierryan.com.au &mdash; Level 1, 30 Lisburn Street, East Brisbane QLD 4169</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Perrier Ryan Accountants &amp; Advisors &mdash; perrierryan.com.au &mdash; 07 3391 7566 &mdash; East Brisbane QLD 4169</p>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>

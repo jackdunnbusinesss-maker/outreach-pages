@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compass Financial Advisers — Canberra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #060c14;
+            --surface: #0b1421;
+            --surface-light: #101e2e;
+            --glass: rgba(11, 30, 50, 0.72);
+            --border: #162030;
+            --border-glow: rgba(20, 160, 210, 0.28);
+            --accent: #14a0d2;
+            --accent-light: #2ec4f0;
+            --accent-dim: #0c7aaa;
+            --accent-glow: rgba(20, 160, 210, 0.18);
+            --accent-glow-strong: rgba(20, 160, 210, 0.38);
+            --teal: #0dd3b8;
+            --white: #e8f4fb;
+            --text: #a8c4d8;
+            --text-muted: #4a6278;
+            --gradient-hero: linear-gradient(135deg, #14a0d2 0%, #0dd3b8 55%, #2ec4f0 100%);
+            --gradient-accent: linear-gradient(90deg, #14a0d2, #0dd3b8);
+            --gradient-mesh: linear-gradient(135deg, #060c14 0%, #081525 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---- SCROLL FADE-IN ---- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---- MESH BACKGROUND ---- */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 900px 600px at 10% 0%, rgba(14, 80, 140, 0.14) 0%, transparent 65%),
+                radial-gradient(ellipse 600px 500px at 90% 20%, rgba(13, 211, 184, 0.07) 0%, transparent 60%),
+                radial-gradient(ellipse 700px 400px at 50% 80%, rgba(20, 160, 210, 0.06) 0%, transparent 65%),
+                radial-gradient(ellipse 400px 300px at 80% 90%, rgba(13, 211, 184, 0.05) 0%, transparent 55%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* All sections sit above the mesh */
+        .topbar, section, footer {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ---- TOP BAR ---- */
+        .topbar {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+            background: rgba(6, 12, 20, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-brand {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: 0.5px;
+        }
+        .topbar-email {
+            font-size: 0.8rem;
+            color: var(--accent-light);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .topbar-email:hover {
+            color: var(--white);
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            position: relative;
+            padding: 100px 0 76px;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -140px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 960px;
+            height: 640px;
+            background:
+                radial-gradient(ellipse 500px 340px at 28% 38%, rgba(20, 160, 210, 0.14) 0%, transparent 70%),
+                radial-gradient(ellipse 380px 300px at 72% 28%, rgba(13, 211, 184, 0.09) 0%, transparent 65%),
+                radial-gradient(ellipse 320px 260px at 54% 82%, rgba(46, 196, 240, 0.07) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+        }
+        .hero-eyebrow {
+            display: inline-block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 24px;
+            font-weight: 600;
+            border: 1px solid var(--border-glow);
+            padding: 6px 18px;
+            border-radius: 100px;
+            background: rgba(20, 160, 210, 0.07);
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5.5vw, 3rem);
+            line-height: 1.22;
+            margin-bottom: 28px;
+            font-weight: 700;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 580px;
+            margin: 0 auto 44px;
+            line-height: 1.85;
+        }
+
+        /* Hero image card — glassmorphism */
+        .hero-image-card {
+            max-width: 560px;
+            margin: 0 auto;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid var(--border-glow);
+            background: var(--glass);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow:
+                0 0 48px rgba(20, 160, 210, 0.1),
+                0 24px 80px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 rgba(46, 196, 240, 0.12);
+        }
+        .hero-image-card img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* ---- STATS ---- */
+        .stats {
+            padding: 68px 0;
+            position: relative;
+        }
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+        .stat-card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 32px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+            cursor: default;
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 180px 120px at 50% 0%, rgba(20, 160, 210, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .stat-card:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 28px rgba(20, 160, 210, 0.1), 0 8px 32px rgba(0, 0, 0, 0.35);
+            transform: translateY(-2px);
+        }
+        .stat-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.9rem;
+            font-weight: 700;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ---- ABOUT ---- */
+        .about {
+            padding: 76px 0;
+            position: relative;
+        }
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .section-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.65rem;
+            color: var(--white);
+            margin-bottom: 32px;
+            font-weight: 600;
+        }
+        .about p {
+            font-size: 1.02rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        .about p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* ---- SERVICES ---- */
+        .services {
+            padding: 76px 0;
+            position: relative;
+        }
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .service-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .service-item {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px 30px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+            cursor: default;
+        }
+        .service-item::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .service-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 220px 100px at 0% 50%, rgba(20, 160, 210, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .service-item:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 20px rgba(20, 160, 210, 0.08), 0 6px 24px rgba(0, 0, 0, 0.28);
+            transform: translateX(4px);
+        }
+        .service-item:hover::before {
+            opacity: 1;
+        }
+        .service-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .service-text {
+            font-size: 0.97rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ---- MEDIA IMAGE ---- */
+        .media-visual {
+            padding: 32px 0 64px;
+        }
+        .media-img-wrap {
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: var(--glass);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            box-shadow:
+                0 0 32px rgba(20, 160, 210, 0.06),
+                0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        .media-img-wrap img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* ---- VALUES ---- */
+        .values {
+            padding: 76px 0;
+            position: relative;
+        }
+        .values::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+        .value-card {
+            text-align: center;
+            padding: 32px 20px;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease;
+            cursor: default;
+        }
+        .value-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 160px 100px at 50% 100%, rgba(20, 160, 210, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .value-card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-3px);
+            box-shadow: 0 0 24px rgba(20, 160, 210, 0.09), 0 8px 28px rgba(0, 0, 0, 0.3);
+        }
+        .value-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(20, 160, 210, 0.1);
+            border: 1px solid var(--border-glow);
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        .value-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .value-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ---- COMPLIANCE BADGE ---- */
+        .compliance {
+            padding: 56px 0;
+            position: relative;
+        }
+        .compliance::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .compliance-intro {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .badge {
+            background: var(--glass);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: border-color 0.25s, color 0.25s;
+            cursor: default;
+        }
+        .badge:hover {
+            border-color: var(--border-glow);
+            color: var(--accent-light);
+        }
+
+        /* ---- CTA ---- */
+        .cta-section {
+            padding: 100px 0;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .cta-blob {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 760px;
+            height: 420px;
+            background: radial-gradient(ellipse 520px 300px at 50% 50%, rgba(20, 160, 210, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .cta-inner {
+            position: relative;
+            z-index: 1;
+        }
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.7rem, 4vw, 2.1rem);
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 40px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #14a0d2, #0dd3b8);
+            color: #040d18;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.97rem;
+            font-weight: 700;
+            padding: 17px 56px;
+            border-radius: 10px;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            box-shadow:
+                0 0 28px rgba(20, 160, 210, 0.38),
+                0 8px 36px rgba(20, 160, 210, 0.18);
+            transition: box-shadow 0.3s ease, transform 0.2s ease, filter 0.3s ease;
+        }
+        .cta-button:hover {
+            box-shadow:
+                0 0 52px rgba(20, 160, 210, 0.58),
+                0 12px 52px rgba(20, 160, 210, 0.3);
+            transform: translateY(-2px);
+            filter: brightness(1.08);
+        }
+        .cta-note {
+            margin-top: 18px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer p {
+            font-size: 0.73rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 68px 0 52px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .service-item {
+                padding: 22px 22px;
+            }
+            .cta-section {
+                padding: 68px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-brand">Compass Financial Advisers</span>
+            <a href="mailto:admin@compassfa.com.au" class="topbar-email">admin@compassfa.com.au</a>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner container">
+            <p class="hero-eyebrow">Financial Planning &amp; Insurance — Canberra</p>
+            <h1>Helping you make confident decisions, with total peace of mind</h1>
+            <p class="hero-sub">At Compass Financial Advisers we specialise in wealth management through financial planning, personal insurance, and claims management — guiding Canberra clients to financial security through every stage of life.</p>
+            <div class="hero-image-card">
+                <img
+                    src="https://compassfa.com.au/wp-content/uploads/2023/09/iStock-1366667952-1024x683.jpg"
+                    alt="Compass Financial Advisers — confident financial planning"
+                    loading="eager"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats fade-in">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Core service pillars</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">CAR</div>
+                    <div class="stat-label">453944 — Matrix Planning Solutions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">ACN</div>
+                    <div class="stat-label">167 667 058 — BP (ACT) Pty Ltd</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about fade-in">
+        <div class="container">
+            <h2 class="section-heading">About Compass Financial Advisers</h2>
+            <p>At <span class="highlight">Compass Financial Advisers</span>, we believe that great advice stems from a team with the right individuals — those who not only possess the necessary skills but also share a genuine passion for making a meaningful difference.</p>
+            <p>Located in <span class="highlight">Canberra</span>, we are committed to meeting the complex and changing insurance and financial planning needs of our clients. Our team of specialists are dedicated to providing leading service backed by deep knowledge of the Australian insurance and superannuation landscape.</p>
+            <p>We operate as a Corporate Authorised Representative (453944) of Matrix Planning Solutions Limited, giving our clients access to a robust compliance framework and institutional-grade resources — with the personal attention of a boutique practice.</p>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services fade-in">
+        <div class="container">
+            <h2 class="section-heading">What we do</h2>
+            <ul class="service-list">
+                <li class="service-item">
+                    <p class="service-label">Financial Planning</p>
+                    <p class="service-text">Comprehensive financial planning tailored to your goals — helping you navigate your financial security and get on the right track for the outcomes you want.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Insurance Services</p>
+                    <p class="service-text">Personal insurance that keeps you protected through life's unexpected events — ensuring your assets, your family, and your future remain secure against premature death or a major medical event.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Claims Management</p>
+                    <p class="service-text">Dedicated support for clients navigating insurance claims — a valuable service provided by our office in an ever-increasing capacity as we manage a growing portfolio of active claims.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Second image -->
+    <section class="media-visual fade-in">
+        <div class="container">
+            <div class="media-img-wrap">
+                <img
+                    src="https://compassfa.com.au/wp-content/uploads/2023/09/iStock-1296193891-1024x683.jpg"
+                    alt="Compass Financial Advisers — insurance and wealth management"
+                    loading="lazy"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="values fade-in">
+        <div class="container">
+            <h2 class="section-heading" style="text-align:center; margin-bottom: 36px;">Our approach</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">&#9670;</div>
+                    <div class="value-title">Genuine Passion</div>
+                    <div class="value-desc">Advisers who care — not just about outcomes, but about the people behind every plan.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">&#9671;</div>
+                    <div class="value-title">Deep Knowledge</div>
+                    <div class="value-desc">Specialist expertise across Australian insurance, superannuation, and wealth management.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">&#9669;</div>
+                    <div class="value-title">Peace of Mind</div>
+                    <div class="value-desc">Every engagement is built around giving you clarity and confidence in your financial future.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Third image -->
+    <section class="media-visual fade-in" style="padding-top: 0; padding-bottom: 64px;">
+        <div class="container">
+            <div class="media-img-wrap">
+                <img
+                    src="https://compassfa.com.au/wp-content/uploads/2022/05/asset-4.png"
+                    alt="Compass Financial Advisers — wealth management"
+                    loading="lazy"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Compliance / Licensing -->
+    <section class="compliance fade-in">
+        <div class="container">
+            <p class="compliance-intro">Regulated &amp; authorised</p>
+            <div class="badge-row">
+                <span class="badge">Corporate Authorised Representative</span>
+                <span class="badge">Matrix Planning Solutions Limited</span>
+                <span class="badge">CAR No. 453944</span>
+                <span class="badge">BP (ACT) Pty Ltd — ACN 167 667 058</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section fade-in">
+        <div class="cta-blob"></div>
+        <div class="container cta-inner">
+            <h2 class="cta-heading">Ready to take control of your financial future?</h2>
+            <p class="cta-sub">Whether you need a comprehensive financial plan, personal insurance, or support managing a claim — the Compass team is here to help you move forward with confidence.</p>
+            <a href="mailto:admin@compassfa.com.au" class="cta-button">Get in touch</a>
+            <p class="cta-note">admin@compassfa.com.au</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Compass Financial Advisers &mdash; compassfa.com.au &mdash; admin@compassfa.com.au</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll fade-in
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>

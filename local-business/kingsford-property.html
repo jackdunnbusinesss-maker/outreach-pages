@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kingsford Property — The People in Property</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #06090e;
+            --surface: #0d1117;
+            --surface-light: #141a23;
+            --glass: rgba(14, 18, 26, 0.72);
+            --border: #1c2433;
+            --border-glow: rgba(56, 130, 246, 0.28);
+            --accent: #3882f6;
+            --accent-light: #60a5fa;
+            --accent-dim: #1d5fc5;
+            --accent-glow: rgba(56, 130, 246, 0.18);
+            --accent-glow-strong: rgba(56, 130, 246, 0.38);
+            --gold: #e8b84b;
+            --white: #edf2f8;
+            --text: #b0bfcc;
+            --text-muted: #4e5e70;
+            --gradient-hero: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #f472b6 100%);
+            --gradient-accent: linear-gradient(90deg, #3882f6, #60a5fa);
+            --gradient-warm: linear-gradient(135deg, #e8b84b, #f59e0b);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---- FADE-IN ---- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---- MESH BACKGROUND ---- */
+        .mesh-bg {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse 700px 500px at 15% 10%, rgba(56, 130, 246, 0.055) 0%, transparent 70%),
+                radial-gradient(ellipse 500px 400px at 85% 30%, rgba(167, 139, 250, 0.04) 0%, transparent 65%),
+                radial-gradient(ellipse 600px 350px at 50% 80%, rgba(56, 130, 246, 0.035) 0%, transparent 70%);
+        }
+
+        /* ---- TOP BAR ---- */
+        .topbar {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(6, 9, 14, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-brand {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 0.4px;
+        }
+        .topbar-phone {
+            font-size: 0.8rem;
+            color: var(--accent-light);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .topbar-phone:hover { color: var(--white); }
+
+        /* ---- HERO ---- */
+        .hero {
+            position: relative;
+            padding: 100px 0 76px;
+            text-align: center;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -140px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 960px;
+            height: 640px;
+            background:
+                radial-gradient(ellipse 500px 340px at 28% 42%, rgba(56, 130, 246, 0.12) 0%, transparent 68%),
+                radial-gradient(ellipse 380px 300px at 78% 28%, rgba(167, 139, 250, 0.08) 0%, transparent 65%),
+                radial-gradient(ellipse 320px 260px at 55% 82%, rgba(244, 114, 182, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+        }
+        .hero-eyebrow {
+            display: inline-block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-light);
+            margin-bottom: 24px;
+            font-weight: 600;
+            border: 1px solid var(--border-glow);
+            padding: 6px 18px;
+            border-radius: 100px;
+            background: rgba(56, 130, 246, 0.07);
+            backdrop-filter: blur(8px);
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5.5vw, 3.05rem);
+            line-height: 1.2;
+            margin-bottom: 28px;
+            font-weight: 700;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 580px;
+            margin: 0 auto 44px;
+            line-height: 1.85;
+        }
+
+        /* ---- HERO IMAGE CARD (glassmorphism) ---- */
+        .hero-image-card {
+            max-width: 580px;
+            margin: 0 auto;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid var(--border-glow);
+            box-shadow:
+                0 0 0 1px rgba(56, 130, 246, 0.08),
+                0 0 48px rgba(56, 130, 246, 0.1),
+                0 28px 80px rgba(0, 0, 0, 0.6);
+            position: relative;
+            background: var(--glass);
+            backdrop-filter: blur(4px);
+        }
+        .hero-image-card img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            max-height: 340px;
+        }
+        .hero-image-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 45%, rgba(6, 9, 14, 0.55) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* ---- STATS ---- */
+        .stats {
+            padding: 68px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .stat-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 34px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+            cursor: default;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 180px 120px at 50% 0%, rgba(56, 130, 246, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .stat-card:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 28px rgba(56, 130, 246, 0.1), 0 8px 32px rgba(0, 0, 0, 0.35);
+            transform: translateY(-3px);
+        }
+        .stat-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ---- ABOUT ---- */
+        .about {
+            padding: 76px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .section-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.7rem;
+            color: var(--white);
+            margin-bottom: 32px;
+            font-weight: 600;
+        }
+        .about p {
+            font-size: 1.02rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        .about p:last-child { margin-bottom: 0; }
+        .highlight {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+        .highlight-warm {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* ---- SERVICES ---- */
+        .services {
+            padding: 76px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .service-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .service-item {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px 32px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+            cursor: default;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .service-item::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .service-item:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 22px rgba(56, 130, 246, 0.08), 0 6px 24px rgba(0, 0, 0, 0.28);
+            transform: translateX(4px);
+        }
+        .service-item:hover::before { opacity: 1; }
+        .service-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--accent-light);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        .service-text {
+            font-size: 0.97rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ---- PROPERTY GRID ---- */
+        .properties {
+            padding: 76px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .properties::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .prop-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .prop-card {
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            position: relative;
+            transition: border-color 0.3s, box-shadow 0.3s, transform 0.25s;
+            cursor: default;
+        }
+        .prop-card:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 26px rgba(56, 130, 246, 0.1), 0 10px 36px rgba(0, 0, 0, 0.4);
+            transform: translateY(-4px);
+        }
+        .prop-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
+        }
+        .prop-info {
+            padding: 14px 16px;
+        }
+        .prop-address {
+            font-size: 0.8rem;
+            color: var(--white);
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 4px;
+        }
+        .prop-suburb {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        .prop-badge {
+            display: inline-block;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent-light);
+            background: rgba(56, 130, 246, 0.1);
+            border: 1px solid rgba(56, 130, 246, 0.2);
+            border-radius: 100px;
+            padding: 3px 10px;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        /* ---- VALUES ---- */
+        .values {
+            padding: 76px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .values::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+        .value-card {
+            text-align: center;
+            padding: 34px 20px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, transform 0.25s ease;
+            cursor: default;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .value-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 160px 100px at 50% 100%, rgba(56, 130, 246, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .value-card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-3px);
+        }
+        .value-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 11px;
+            background: rgba(56, 130, 246, 0.1);
+            border: 1px solid var(--border-glow);
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        .value-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .value-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ---- SUBURBS SECTION ---- */
+        .suburbs {
+            padding: 64px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .suburbs::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .suburbs-intro {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .suburb-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+        .suburb-tag {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 7px 16px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: border-color 0.25s, color 0.25s;
+            cursor: default;
+        }
+        .suburb-tag:hover {
+            border-color: var(--border-glow);
+            color: var(--accent-light);
+        }
+
+        /* ---- CTA ---- */
+        .cta-section {
+            padding: 104px 0;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .cta-blob {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 760px;
+            height: 440px;
+            background:
+                radial-gradient(ellipse 520px 300px at 50% 50%, rgba(56, 130, 246, 0.07) 0%, transparent 70%),
+                radial-gradient(ellipse 300px 200px at 35% 60%, rgba(167, 139, 250, 0.04) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        .cta-inner {
+            position: relative;
+            z-index: 1;
+        }
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.75rem, 4vw, 2.15rem);
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 44px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #3882f6, #60a5fa);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.97rem;
+            font-weight: 700;
+            padding: 18px 56px;
+            border-radius: 11px;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            box-shadow:
+                0 0 28px rgba(56, 130, 246, 0.38),
+                0 8px 32px rgba(56, 130, 246, 0.18);
+            transition: box-shadow 0.3s ease, transform 0.2s ease, filter 0.3s ease;
+        }
+        .cta-button:hover {
+            box-shadow:
+                0 0 52px rgba(56, 130, 246, 0.58),
+                0 14px 52px rgba(56, 130, 246, 0.3);
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+        }
+        .cta-note {
+            margin-top: 18px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .footer p {
+            font-size: 0.73rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 640px) {
+            .hero { padding: 68px 0 54px; }
+            .stats-grid { grid-template-columns: 1fr; gap: 14px; }
+            .prop-grid { grid-template-columns: 1fr; gap: 14px; }
+            .values-grid { grid-template-columns: 1fr; gap: 14px; }
+            .service-item { padding: 24px 22px; }
+            .cta-section { padding: 72px 0; }
+            .hero-image-card img { max-height: 220px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mesh background layer -->
+    <div class="mesh-bg"></div>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-brand">Kingsford Property</span>
+            <a href="tel:0396826222" class="topbar-phone">03 9682 6222</a>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner container">
+            <p class="hero-eyebrow">Melbourne Real Estate &mdash; Est. 1996</p>
+            <h1>Professional, personalised and trusted real estate for Melbourne</h1>
+            <p class="hero-sub">Whether you're buying, selling, renting, or leasing — Kingsford Property ensures you achieve the best possible results. Serving buyers, sellers, rental providers, and renters across greater Melbourne.</p>
+            <div class="hero-image-card fade-in">
+                <img
+                    src="https://cdn.kingsfordproperty.com.au/app/uploads/2021/10/20094518/kingsford-property_facebook-share_1200x628.jpg"
+                    alt="Kingsford Property — Melbourne Real Estate"
+                    loading="eager"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats fade-in">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">Since 1996</div>
+                    <div class="stat-label">Nearly 30 years serving Melbourne property owners and renters</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">40+</div>
+                    <div class="stat-label">Melbourne suburbs covered across metro and inner city</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4 Services</div>
+                    <div class="stat-label">Buy, sell, rent, and lease under one trusted team</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about fade-in">
+        <div class="container">
+            <h2 class="section-heading">The people in property</h2>
+            <p><span class="highlight">Kingsford Property</span> has been a cornerstone of Melbourne's real estate market since 1996. For nearly three decades, we've built our reputation on professional service, local expertise, and a genuine commitment to every client's outcome.</p>
+            <p>Our approach is straightforward: we understand that every transaction — whether you're a first-time buyer, a seasoned investor, a rental provider managing your portfolio, or a renter seeking a quality home — deserves <span class="highlight-warm">personal attention and expert guidance</span>.</p>
+            <p>From Melbourne's CBD apartments on Therry Street and Little Bourke Street to St Kilda Road and beyond, Kingsford Property operates across the full breadth of greater Melbourne with the depth of knowledge that only three decades in the market can deliver.</p>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services fade-in">
+        <div class="container">
+            <h2 class="section-heading">What we do</h2>
+            <ul class="service-list">
+                <li class="service-item">
+                    <p class="service-label">Buy</p>
+                    <p class="service-text">Expert buyer support across Melbourne's residential market — from property search and due diligence through to settlement, with experienced guidance at every step.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Sell</p>
+                    <p class="service-text">Strategic selling services designed to achieve the best possible result for vendors — with marketing, negotiation, and local market knowledge backed by nearly 30 years of experience.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Rent</p>
+                    <p class="service-text">Quality rental properties across Melbourne for prospective tenants — including tenancy applications, maintenance requests, and dedicated support throughout your tenancy.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Lease</p>
+                    <p class="service-text">Full leasing services for rental providers — from listing and tenant selection through to ongoing property management, protecting and maximising your investment.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Serviced Apartments</p>
+                    <p class="service-text">Flexible serviced apartment options in Melbourne's CBD and inner-city locations — ideal for short stays, corporate accommodation, or temporary housing arrangements.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Featured Properties -->
+    <section class="properties fade-in">
+        <div class="container">
+            <h2 class="section-heading">Featured Melbourne properties</h2>
+            <div class="prop-grid">
+                <div class="prop-card">
+                    <img
+                        src="https://agentboxcdn.com.au/clients-data/18491/public_html/media/lt/1/1P2980/171435044254292314.jpg"
+                        alt="Unit 1222/43 Therry Street Melbourne"
+                        loading="lazy"
+                    >
+                    <div class="prop-info">
+                        <div class="prop-address">43 Therry Street</div>
+                        <div class="prop-suburb">Melbourne CBD</div>
+                        <span class="prop-badge">For Sale</span>
+                    </div>
+                </div>
+                <div class="prop-card">
+                    <img
+                        src="https://agentboxcdn.com.au/clients-data/18491/public_html/media/lt/1/1P3040/172955292398434740.jpg"
+                        alt="471 Little Bourke Street Melbourne"
+                        loading="lazy"
+                    >
+                    <div class="prop-info">
+                        <div class="prop-address">471 Little Bourke Street</div>
+                        <div class="prop-suburb">Melbourne CBD</div>
+                        <span class="prop-badge">For Sale</span>
+                    </div>
+                </div>
+                <div class="prop-card">
+                    <img
+                        src="https://agentboxcdn.com.au/clients-data/18491/public_html/media/lt/1/1P3055/173214254402625848.jpg"
+                        alt="452 St Kilda Road Melbourne"
+                        loading="lazy"
+                    >
+                    <div class="prop-info">
+                        <div class="prop-address">452 St Kilda Road</div>
+                        <div class="prop-suburb">Melbourne</div>
+                        <span class="prop-badge">For Sale</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="values fade-in">
+        <div class="container">
+            <h2 class="section-heading" style="text-align:center; margin-bottom: 36px;">Our commitment</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">&#9670;</div>
+                    <div class="value-title">Professional</div>
+                    <div class="value-desc">Experienced agents delivering polished, expert service at every stage.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">&#9671;</div>
+                    <div class="value-title">Personalised</div>
+                    <div class="value-desc">Individual attention — your goals, your timeline, your outcome.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">&#9669;</div>
+                    <div class="value-title">Trusted</div>
+                    <div class="value-desc">A reputation built over 30 years on results and lasting relationships.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Melbourne Suburbs Coverage -->
+    <section class="suburbs fade-in">
+        <div class="container">
+            <p class="suburbs-intro">Melbourne suburbs we serve</p>
+            <div class="suburb-tags">
+                <span class="suburb-tag">Melbourne CBD</span>
+                <span class="suburb-tag">South Yarra</span>
+                <span class="suburb-tag">St Kilda</span>
+                <span class="suburb-tag">Southbank</span>
+                <span class="suburb-tag">Docklands</span>
+                <span class="suburb-tag">Richmond</span>
+                <span class="suburb-tag">Fitzroy</span>
+                <span class="suburb-tag">Collingwood</span>
+                <span class="suburb-tag">Carlton</span>
+                <span class="suburb-tag">Prahran</span>
+                <span class="suburb-tag">Hawthorn</span>
+                <span class="suburb-tag">Kew</span>
+                <span class="suburb-tag">Toorak</span>
+                <span class="suburb-tag">Malvern</span>
+                <span class="suburb-tag">Armadale</span>
+                <span class="suburb-tag">Brighton</span>
+                <span class="suburb-tag">Camberwell</span>
+                <span class="suburb-tag">Port Melbourne</span>
+                <span class="suburb-tag">Williamstown</span>
+                <span class="suburb-tag">Northcote</span>
+                <span class="suburb-tag">Brunswick</span>
+                <span class="suburb-tag">Essendon</span>
+                <span class="suburb-tag">Balwyn</span>
+                <span class="suburb-tag">Ivanhoe</span>
+                <span class="suburb-tag">+ more</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section fade-in">
+        <div class="cta-blob"></div>
+        <div class="container cta-inner">
+            <h2 class="cta-heading">Talk to the Kingsford team</h2>
+            <p class="cta-sub">Buying, selling, renting, or leasing — we're here to make sure you achieve the best possible result in Melbourne's property market.</p>
+            <a href="tel:0396826222" class="cta-button">Call 03 9682 6222</a>
+            <p class="cta-note">Or reach out at fiona@kingsfordproperty.com.au</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Kingsford Property &mdash; The People in Property &mdash; kingsfordproperty.com.au &mdash; 03 9682 6222</p>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>

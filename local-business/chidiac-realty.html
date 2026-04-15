@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chidiac Realty — Real Estate Specialists, Inner West &amp; Wentworth Point</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #07090d;
+            --surface: #0d1118;
+            --surface-light: #141b24;
+            --border: #1a2130;
+            --border-glow: rgba(99, 168, 255, 0.22);
+            --accent: #63a8ff;
+            --accent-light: #93c5fd;
+            --accent-dim: #3b7dd8;
+            --accent-glow: rgba(99, 168, 255, 0.15);
+            --accent-glow-strong: rgba(99, 168, 255, 0.32);
+            --white: #edf2f8;
+            --text: #b0becf;
+            --text-muted: #4e5f72;
+            --gradient-hero: linear-gradient(135deg, #63a8ff 0%, #a78bfa 50%, #38bdf8 100%);
+            --gradient-accent: linear-gradient(90deg, #63a8ff, #93c5fd);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---- MESH BACKGROUND ---- */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 800px 600px at 15% 10%, rgba(99, 168, 255, 0.04) 0%, transparent 65%),
+                radial-gradient(ellipse 600px 500px at 85% 80%, rgba(167, 139, 250, 0.04) 0%, transparent 65%),
+                radial-gradient(ellipse 500px 400px at 50% 50%, rgba(56, 189, 248, 0.025) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ---- FADE-IN ---- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---- TOP BAR ---- */
+        .topbar {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(7, 9, 13, 0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-brand {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: 0.4px;
+        }
+        .topbar-contact {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .topbar-phone {
+            font-size: 0.8rem;
+            color: var(--accent-light);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .topbar-phone:hover { color: var(--white); }
+
+        /* ---- HERO ---- */
+        .hero {
+            position: relative;
+            padding: 100px 0 76px;
+            text-align: center;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1000px;
+            height: 640px;
+            background:
+                radial-gradient(ellipse 500px 340px at 28% 38%, rgba(99, 168, 255, 0.11) 0%, transparent 68%),
+                radial-gradient(ellipse 380px 280px at 72% 28%, rgba(167, 139, 250, 0.07) 0%, transparent 65%),
+                radial-gradient(ellipse 320px 260px at 52% 82%, rgba(56, 189, 248, 0.06) 0%, transparent 62%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+        }
+        .hero-eyebrow {
+            display: inline-block;
+            font-size: 0.71rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 26px;
+            font-weight: 600;
+            border: 1px solid var(--border-glow);
+            padding: 6px 18px;
+            border-radius: 100px;
+            background: rgba(99, 168, 255, 0.06);
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5.8vw, 3.1rem);
+            line-height: 1.2;
+            margin-bottom: 28px;
+            font-weight: 700;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 580px;
+            margin: 0 auto 42px;
+            line-height: 1.85;
+        }
+
+        /* Glassmorphism hero card */
+        .hero-image-card {
+            max-width: 580px;
+            margin: 0 auto;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid var(--border-glow);
+            box-shadow:
+                0 0 0 1px rgba(99, 168, 255, 0.06),
+                0 0 50px rgba(99, 168, 255, 0.09),
+                0 28px 90px rgba(0, 0, 0, 0.6);
+            position: relative;
+            backdrop-filter: blur(2px);
+        }
+        .hero-image-card img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            max-height: 360px;
+        }
+        .hero-image-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 45%, rgba(7, 9, 13, 0.55) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* ---- STATS ---- */
+        .stats {
+            padding: 68px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 32px 18px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            cursor: default;
+            /* glassmorphism */
+            backdrop-filter: blur(8px);
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 180px 110px at 50% 0%, rgba(99, 168, 255, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .stat-card:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 28px rgba(99, 168, 255, 0.1), 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .stat-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.85rem;
+            font-weight: 700;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            font-size: 0.77rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ---- ABOUT ---- */
+        .about {
+            padding: 74px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .section-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.65rem;
+            color: var(--white);
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        .about p {
+            font-size: 1.01rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        .about p:last-child { margin-bottom: 0; }
+        .highlight {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* ---- MEDIA IMAGE ---- */
+        .media-visual {
+            padding: 0 0 68px;
+            position: relative;
+            z-index: 1;
+        }
+        .media-img-wrap {
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 0 32px rgba(99, 168, 255, 0.05), 0 20px 60px rgba(0, 0, 0, 0.48);
+        }
+        .media-img-wrap img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* ---- SERVICES ---- */
+        .services {
+            padding: 74px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .service-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+        }
+        .service-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 26px 28px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+            cursor: default;
+            backdrop-filter: blur(6px);
+        }
+        .service-item::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .service-item:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 20px rgba(99, 168, 255, 0.08), 0 6px 24px rgba(0, 0, 0, 0.25);
+            transform: translateX(4px);
+        }
+        .service-item:hover::before { opacity: 1; }
+        .service-label {
+            font-size: 0.69rem;
+            text-transform: uppercase;
+            letter-spacing: 2.2px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .service-text {
+            font-size: 0.96rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ---- VALUES ---- */
+        .values {
+            padding: 74px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .values::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .value-card {
+            text-align: center;
+            padding: 30px 18px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, transform 0.25s ease;
+            cursor: default;
+            backdrop-filter: blur(6px);
+        }
+        .value-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 160px 100px at 50% 100%, rgba(99, 168, 255, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .value-card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-3px);
+            box-shadow: 0 0 22px rgba(99, 168, 255, 0.08);
+        }
+        .value-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(99, 168, 255, 0.09);
+            border: 1px solid var(--border-glow);
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        .value-title {
+            font-size: 0.93rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .value-desc {
+            font-size: 0.79rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ---- LOCATION ---- */
+        .location {
+            padding: 68px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .location::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .location-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 36px 36px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            backdrop-filter: blur(8px);
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+        .location-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .location-card:hover {
+            border-color: var(--border-glow);
+        }
+        .location-col h3 {
+            font-size: 0.69rem;
+            text-transform: uppercase;
+            letter-spacing: 2.2px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .location-col p {
+            font-size: 0.93rem;
+            color: var(--text);
+            line-height: 1.75;
+        }
+        .location-col a {
+            color: var(--accent-light);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .location-col a:hover { color: var(--white); }
+
+        /* ---- CTA ---- */
+        .cta-section {
+            padding: 100px 0;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .cta-blob {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 720px;
+            height: 420px;
+            background:
+                radial-gradient(ellipse 480px 260px at 40% 50%, rgba(99, 168, 255, 0.07) 0%, transparent 70%),
+                radial-gradient(ellipse 380px 220px at 65% 55%, rgba(167, 139, 250, 0.05) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        .cta-inner {
+            position: relative;
+            z-index: 1;
+        }
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.7rem, 4.2vw, 2.15rem);
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 42px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #63a8ff, #93c5fd);
+            color: #060810;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.96rem;
+            font-weight: 700;
+            padding: 17px 48px;
+            border-radius: 10px;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            box-shadow:
+                0 0 26px rgba(99, 168, 255, 0.32),
+                0 8px 32px rgba(99, 168, 255, 0.16);
+            transition: box-shadow 0.3s ease, transform 0.2s ease, filter 0.3s ease;
+        }
+        .cta-button:hover {
+            box-shadow:
+                0 0 44px rgba(99, 168, 255, 0.52),
+                0 12px 50px rgba(99, 168, 255, 0.26);
+            transform: translateY(-2px);
+            filter: brightness(1.08);
+        }
+        .cta-button-ghost {
+            display: inline-block;
+            background: transparent;
+            color: var(--accent-light);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.96rem;
+            font-weight: 600;
+            padding: 17px 40px;
+            border-radius: 10px;
+            text-decoration: none;
+            border: 1px solid var(--border-glow);
+            letter-spacing: 0.3px;
+            transition: border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+        }
+        .cta-button-ghost:hover {
+            border-color: rgba(99, 168, 255, 0.5);
+            color: var(--white);
+            box-shadow: 0 0 20px rgba(99, 168, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        .cta-note {
+            margin-top: 22px;
+            font-size: 0.77rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            padding: 38px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .footer p {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 640px) {
+            .hero { padding: 68px 0 54px; }
+            .stats-grid { grid-template-columns: 1fr; gap: 12px; }
+            .values-grid { grid-template-columns: 1fr; gap: 12px; }
+            .location-card { grid-template-columns: 1fr; gap: 20px; padding: 26px 22px; }
+            .service-item { padding: 22px 20px; }
+            .cta-section { padding: 68px 0; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            .cta-button, .cta-button-ghost { width: 100%; max-width: 320px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-brand">Chidiac Realty</span>
+            <div class="topbar-contact">
+                <a href="tel:0439555999" class="topbar-phone">0439 555 999</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner container">
+            <p class="hero-eyebrow">Real Estate — Inner West &amp; Wentworth Point, Sydney</p>
+            <h1>Your partner in property — buying, selling, and leasing in Sydney</h1>
+            <p class="hero-sub">At Chidiac Realty, we take time to understand your individual goals and combine local expertise with tailored strategies to guide every decision you make with confidence.</p>
+            <div class="hero-image-card">
+                <img
+                    src="https://chidiacrealty.com.au/imagecache/fitwithin/1280x1280/_files/header-images/adobestock_252445491.jpg?1776215481"
+                    alt="Chidiac Realty — Sydney waterfront property"
+                    loading="eager"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats fade-in">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">Sydney</div>
+                    <div class="stat-label">Inner West &amp; Wentworth Point specialists</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Buy · Sell</div>
+                    <div class="stat-label">Sales &amp; acquisitions across the Inner West</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Rent · Lease</div>
+                    <div class="stat-label">Full property management for landlords &amp; tenants</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about fade-in">
+        <div class="container">
+            <h2 class="section-heading">About Chidiac Realty</h2>
+            <p>We know your property journey is as unique as you are. <span class="highlight">Chidiac Realty</span> takes time to understand your individual rental or selling goals, combining that with our team's deep local expertise to develop tailored, complete solutions — not off-the-shelf answers.</p>
+            <p>We work collaboratively with our clients — sharing relevant market condition insights and expertise as we hear it. Every decision you make with us is strategic, well-informed, and guided in the best direction. We share market updates as conditions evolve, so you're never left guessing.</p>
+            <p>We're more than a real estate company. <span class="highlight">We're your partner in property</span>, from the first conversation through to settlement and beyond — for buyers, sellers, landlords, tenants, and everyone in between.</p>
+        </div>
+    </section>
+
+    <!-- Media visual 1 -->
+    <section class="media-visual fade-in">
+        <div class="container">
+            <div class="media-img-wrap">
+                <img
+                    src="https://chidiacrealty.clodflare.pushcreative.com.au/3039/512_3039p-2cf-1jn1lpufocoaxpde.jpg.webp"
+                    alt="Chidiac Realty — Sydney property listing"
+                    loading="lazy"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services fade-in">
+        <div class="container">
+            <h2 class="section-heading">What we do</h2>
+            <ul class="service-list">
+                <li class="service-item">
+                    <p class="service-label">Sell with Us</p>
+                    <p class="service-text">Strategic selling across Inner West Sydney and Wentworth Point. We combine local market knowledge with sharper strategies and recent sales data to position your property correctly and attract the right buyers.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Property Management</p>
+                    <p class="service-text">Dedicated management for landlords — from tenant sourcing and screening through to lease management, inspections, and ongoing communication. We protect your investment and your relationships.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Buy Property</p>
+                    <p class="service-text">Residential properties for sale across Wentworth Point, the Inner West, and surrounding suburbs. Access current listings, open homes, and off-market opportunities through our team.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Rental &amp; Leasing</p>
+                    <p class="service-text">Properties for lease managed by a team that understands both sides of the rental relationship. Tenant resources, landlord support, and clear communication at every stage of the tenancy.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Instant Online Appraisal</p>
+                    <p class="service-text">Find out what your property is worth with a fast, data-driven online appraisal — backed by the Chidiac Realty team's knowledge of local market conditions and recent comparable sales.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Media visual 2 -->
+    <section class="media-visual fade-in">
+        <div class="container">
+            <div class="media-img-wrap">
+                <img
+                    src="https://chidiacrealty.clodflare.pushcreative.com.au/3038/512_3038p-2ce-8f32yiieijlzplg5.jpg.webp"
+                    alt="Chidiac Realty — Wentworth Point property"
+                    loading="lazy"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="values fade-in">
+        <div class="container">
+            <h2 class="section-heading" style="text-align: center; margin-bottom: 36px;">How we work</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">&#9670;</div>
+                    <div class="value-title">Tailored Solutions</div>
+                    <div class="value-desc">No two property journeys are the same — we build strategies around your individual goals.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">&#9671;</div>
+                    <div class="value-title">Local Expertise</div>
+                    <div class="value-desc">Deep knowledge of Inner West and Wentworth Point — informed by live market conditions.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">&#9669;</div>
+                    <div class="value-title">Collaborative Approach</div>
+                    <div class="value-desc">We work with you — sharing insights as we hear them, not after decisions are made.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media visual 3 -->
+    <section class="media-visual fade-in" style="padding-top: 0;">
+        <div class="container">
+            <div class="media-img-wrap">
+                <img
+                    src="https://chidiacrealty.clodflare.pushcreative.com.au/3031/512_3031p-2c7-d8vsijdkyi0hzr1m.jpg.webp"
+                    alt="Chidiac Realty — Inner West property"
+                    loading="lazy"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Location -->
+    <section class="location fade-in">
+        <div class="container">
+            <h2 class="section-heading">Find us</h2>
+            <div class="location-card">
+                <div class="location-col">
+                    <h3>Office</h3>
+                    <p>1 Baywater Drive<br>Wentworth Point, NSW 2127</p>
+                </div>
+                <div class="location-col">
+                    <h3>Get in touch</h3>
+                    <p>
+                        <a href="tel:0294674303">(02) 9647 4303</a><br>
+                        <a href="tel:0439555999">0439 555 999</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section fade-in">
+        <div class="cta-blob"></div>
+        <div class="container cta-inner">
+            <h2 class="cta-heading">Ready to move on your property?</h2>
+            <p class="cta-sub">Whether you're buying, selling, or looking to lease — Chidiac Realty is your partner in property across Inner West Sydney and Wentworth Point.</p>
+            <div class="cta-buttons">
+                <a href="tel:0439555999" class="cta-button">Call 0439 555 999</a>
+                <a href="tel:0294674303" class="cta-button-ghost">(02) 9647 4303</a>
+            </div>
+            <p class="cta-note">1 Baywater Drive, Wentworth Point NSW 2127 &mdash; chidiacrealty.com.au</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Chidiac Realty &mdash; Real Estate Specialists, Inner West &amp; Wentworth Point &mdash; chidiacrealty.com.au</p>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
