@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marriott Emery Wealth Services — Lifestyle Financial Planning</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #060b12;
+            --surface: #0b1320;
+            --surface-light: #101c2e;
+            --border: #1a2a3d;
+            --border-glow: rgba(56, 189, 248, 0.22);
+            --accent: #38bdf8;
+            --accent-light: #7dd3fc;
+            --accent-dim: #0ea5e9;
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --accent-glow-strong: rgba(56, 189, 248, 0.32);
+            --teal: #2dd4bf;
+            --teal-glow: rgba(45, 212, 191, 0.18);
+            --white: #eef4fb;
+            --text: #9eb8d4;
+            --text-muted: #4a6280;
+            --gradient-hero: linear-gradient(135deg, #38bdf8 0%, #2dd4bf 50%, #818cf8 100%);
+            --gradient-accent: linear-gradient(90deg, #38bdf8, #2dd4bf);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---- SCROLL FADE-IN ---- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---- TOP BAR ---- */
+        .topbar {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            z-index: 10;
+            background: rgba(6, 11, 18, 0.96);
+            backdrop-filter: blur(12px);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-brand {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: 0.5px;
+        }
+        .topbar-phone {
+            font-size: 0.8rem;
+            color: var(--accent-light);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .topbar-phone:hover {
+            color: var(--white);
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            position: relative;
+            padding: 96px 0 72px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Radial mesh blobs — finance blue/teal */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 900px;
+            height: 600px;
+            background:
+                radial-gradient(ellipse 480px 320px at 30% 40%, rgba(56, 189, 248, 0.11) 0%, transparent 70%),
+                radial-gradient(ellipse 360px 280px at 75% 30%, rgba(45, 212, 191, 0.08) 0%, transparent 65%),
+                radial-gradient(ellipse 300px 240px at 55% 80%, rgba(129, 140, 248, 0.07) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-eyebrow {
+            display: inline-block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 24px;
+            font-weight: 600;
+            border: 1px solid var(--border-glow);
+            padding: 6px 18px;
+            border-radius: 100px;
+            background: rgba(56, 189, 248, 0.06);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5.5vw, 3rem);
+            line-height: 1.22;
+            margin-bottom: 28px;
+            font-weight: 700;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 580px;
+            margin: 0 auto 40px;
+            line-height: 1.85;
+        }
+
+        /* Hero image card — glassmorphism */
+        .hero-image-card {
+            max-width: 560px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-glow);
+            box-shadow:
+                0 0 40px rgba(56, 189, 248, 0.08),
+                0 24px 80px rgba(0, 0, 0, 0.6);
+            position: relative;
+            background: var(--surface);
+            backdrop-filter: blur(8px);
+        }
+        .hero-image-card img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            max-height: 320px;
+        }
+        .hero-image-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(6, 11, 18, 0.6) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* ---- STATS ---- */
+        .stats {
+            padding: 64px 0;
+            position: relative;
+        }
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 32px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            cursor: default;
+            backdrop-filter: blur(4px);
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 180px 120px at 50% 0%, rgba(56, 189, 248, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .stat-card:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 24px rgba(56, 189, 248, 0.08), 0 8px 32px rgba(0, 0, 0, 0.35);
+        }
+        .stat-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.9rem;
+            font-weight: 700;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ---- ABOUT ---- */
+        .about {
+            padding: 72px 0;
+            position: relative;
+        }
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .section-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.65rem;
+            color: var(--white);
+            margin-bottom: 32px;
+            font-weight: 600;
+        }
+        .about p {
+            font-size: 1.02rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        .about p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* ---- SERVICES ---- */
+        .services {
+            padding: 72px 0;
+            position: relative;
+        }
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .service-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .service-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 26px 30px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+            cursor: default;
+            backdrop-filter: blur(4px);
+        }
+        .service-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .service-item:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.07), 0 6px 24px rgba(0, 0, 0, 0.28);
+            transform: translateX(4px);
+        }
+        .service-item:hover::before {
+            opacity: 1;
+        }
+        .service-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .service-text {
+            font-size: 0.97rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ---- MEDIA IMAGE ---- */
+        .media-visual {
+            padding: 32px 0 64px;
+        }
+        .media-img-wrap {
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.05), 0 20px 60px rgba(0,0,0,0.5);
+        }
+        .media-img-wrap img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            max-height: 340px;
+        }
+
+        /* ---- VALUES ---- */
+        .values {
+            padding: 72px 0;
+            position: relative;
+        }
+        .values::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+        .value-card {
+            text-align: center;
+            padding: 32px 20px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, transform 0.25s ease;
+            cursor: default;
+            backdrop-filter: blur(4px);
+        }
+        .value-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 160px 100px at 50% 100%, rgba(56, 189, 248, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .value-card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-3px);
+        }
+        .value-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid var(--border-glow);
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        .value-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .value-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ---- TRUST ---- */
+        .trust {
+            padding: 64px 0;
+            position: relative;
+        }
+        .trust::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .trust-intro {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .trust-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .trust-badge {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: border-color 0.25s, color 0.25s;
+            cursor: default;
+        }
+        .trust-badge:hover {
+            border-color: var(--border-glow);
+            color: var(--accent-light);
+        }
+
+        /* ---- CTA ---- */
+        .cta-section {
+            padding: 96px 0;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .cta-blob {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 700px;
+            height: 400px;
+            background: radial-gradient(ellipse 500px 280px at 50% 50%, rgba(56, 189, 248, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .cta-inner {
+            position: relative;
+            z-index: 1;
+        }
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.7rem, 4vw, 2.1rem);
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 40px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #0ea5e9, #2dd4bf);
+            color: #04080f;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.97rem;
+            font-weight: 700;
+            padding: 17px 52px;
+            border-radius: 10px;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            box-shadow:
+                0 0 28px rgba(56, 189, 248, 0.28),
+                0 8px 32px rgba(56, 189, 248, 0.14);
+            transition: box-shadow 0.3s ease, transform 0.2s ease, filter 0.3s ease;
+        }
+        .cta-button:hover {
+            box-shadow:
+                0 0 44px rgba(56, 189, 248, 0.48),
+                0 12px 48px rgba(56, 189, 248, 0.22);
+            transform: translateY(-2px);
+            filter: brightness(1.08);
+        }
+        .cta-note {
+            margin-top: 18px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer p {
+            font-size: 0.73rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 64px 0 52px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .service-item {
+                padding: 22px 22px;
+            }
+            .cta-section {
+                padding: 64px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-brand">Marriott Emery Wealth Services</span>
+            <a href="tel:0741525888" class="topbar-phone">(07) 41 525 888</a>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner container">
+            <p class="hero-eyebrow">Financial Planning &amp; Wealth Protection — Bundaberg</p>
+            <h1>Prepare for tomorrow, make the most of today</h1>
+            <p class="hero-sub">Marriott Emery Wealth Services delivers tailored financial strategies for Australians at every stage of life — from building super to protecting what matters most.</p>
+            <div class="hero-image-card">
+                <img
+                    src="https://i0.wp.com/articlefeedsite.p3.clientcommunity.com.au/wp-content/uploads/2025/01/24516a522a29f33495742593177e63b68f7e3b82-AI_NL_15641.jpg?w=768&resize=768,0&ssl=1"
+                    alt="Marriott Emery Wealth Services"
+                    loading="eager"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats fade-in">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">5+ yrs</div>
+                    <div class="stat-label">Serving clients in Bundaberg &amp; beyond</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Core financial planning services</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">AFSL</div>
+                    <div class="stat-label">Licenced under AFSL 232706</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about fade-in">
+        <div class="container">
+            <h2 class="section-heading">About Marriott Emery Wealth Services</h2>
+            <p>Based at <span class="highlight">140 George St, Bundaberg West QLD 4670</span>, Marriott Emery Wealth Services Pty Ltd (ABN 53 137 727 176) trades as Lifestyle Mortgage Finance &amp; Lifestyle Financial Planning. We are an Authorised Representative and Credit Representative of Akumin Financial Planning Pty Limited.</p>
+            <p>We believe that <span class="highlight">good financial advice isn't exclusive to the wealthy</span>. Every Australian has the potential to build financial independence — and a skilled adviser can help you put thought into action, especially when life gets in the way of planning ahead.</p>
+            <p>Our team develops tailored, step-by-step financial strategies and helps clients make informed decisions at any stage of life. You work hard — we make sure your money works just as hard for you.</p>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services fade-in">
+        <div class="container">
+            <h2 class="section-heading">Our services</h2>
+            <ul class="service-list">
+                <li class="service-item">
+                    <p class="service-label">Superannuation</p>
+                    <p class="service-text">Build your retirement savings strategically while you work. We help you understand your super options and ensure you're set up for a comfortable future.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Retirement Planning</p>
+                    <p class="service-text">Retirement may seem a long way off, but investing in your future today is a tax-effective strategy that pays dividends when it matters most.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Investments</p>
+                    <p class="service-text">Everyone has different needs and circumstances. We work with you to identify the investment approach that fits your goals before you put a dollar to work.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Wealth Protection</p>
+                    <p class="service-text">Insurance is the foundation of any sound financial plan. We evaluate your risks and recommend the right protection for you and your family.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Self Managed Superannuation</p>
+                    <p class="service-text">Take control of your retirement savings with an SMSF strategy built around your specific financial goals and risk profile.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Debt Management</p>
+                    <p class="service-text">Smart debt strategies that reduce your financial burden and free up capital to build the future you want.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Estate Planning</p>
+                    <p class="service-text">Protect what you've built and ensure your wealth is transferred to the people you care about — clearly, efficiently, and on your terms.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Aged Care</p>
+                    <p class="service-text">Navigate the financial complexities of aged care with confidence. We help families plan for this stage with clarity and compassion.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Media image 2 -->
+    <section class="media-visual fade-in">
+        <div class="container">
+            <div class="media-img-wrap">
+                <img
+                    src="https://i0.wp.com/articlefeedsite.p3.clientcommunity.com.au/wp-content/uploads/2026/03/Salary-sacrificing-super.png?w=768&resize=768,0&ssl=1"
+                    alt="Salary sacrificing super — Marriott Emery Wealth Services"
+                    loading="lazy"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="values fade-in">
+        <div class="container">
+            <h2 class="section-heading" style="text-align:center; margin-bottom: 36px;">How we work</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">&#9670;</div>
+                    <div class="value-title">Tailored Strategies</div>
+                    <div class="value-desc">Step-by-step financial plans built around your life, not a generic template.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">&#9671;</div>
+                    <div class="value-title">Informed Decisions</div>
+                    <div class="value-desc">We educate you at every step so you understand exactly what your money is doing and why.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">&#9669;</div>
+                    <div class="value-title">Licensed &amp; Accredited</div>
+                    <div class="value-desc">Operating under AFSL 232706 — so you know you're working with a qualified, regulated adviser.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media image 3 -->
+    <section class="media-visual fade-in" style="padding-top: 0; padding-bottom: 40px;">
+        <div class="container">
+            <div class="media-img-wrap">
+                <img
+                    src="https://i1.wp.com/articlefeedsite.p3.clientcommunity.com.au/wp-content/uploads/2026/03/Work-out-how-much-you-need-to-retire.png?w=768&resize=768,0&ssl=1"
+                    alt="Work out how much you need to retire"
+                    loading="lazy"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust -->
+    <section class="trust fade-in">
+        <div class="container">
+            <p class="trust-intro">Authorised &amp; regulated under</p>
+            <div class="trust-grid">
+                <span class="trust-badge">AFSL 232706</span>
+                <span class="trust-badge">ACL 232706</span>
+                <span class="trust-badge">Akumin Financial Planning</span>
+                <span class="trust-badge">ABN 53 137 727 176</span>
+                <span class="trust-badge">Bundaberg West QLD</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section fade-in">
+        <div class="cta-blob"></div>
+        <div class="container cta-inner">
+            <h2 class="cta-heading">Talk to a financial adviser today</h2>
+            <p class="cta-sub">Whether you're just starting to plan or ready to take the next step — our team at Marriott Emery Wealth Services is here to help you build your financial future.</p>
+            <a href="tel:0741525888" class="cta-button">Call (07) 41 525 888</a>
+            <p class="cta-note">Or email us at info@mewsgroup.com.au &mdash; 140 George St, Bundaberg West QLD 4670</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Marriott Emery Wealth Services Pty Ltd ABN 53 137 727 176 &mdash; Authorised Representative of Akumin Financial Planning Pty Limited AFSL 232706 &mdash; 140 George St, Bundaberg West QLD 4670</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll fade-in
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>

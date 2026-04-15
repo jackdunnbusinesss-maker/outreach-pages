@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emanuel Whybourne &amp; Loehr — Private Wealth Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #06090f;
+            --surface: #0c1220;
+            --surface-light: #121a2e;
+            --border: #182035;
+            --border-glow: rgba(56, 189, 248, 0.22);
+            --accent: #38bdf8;
+            --accent-light: #7dd3fc;
+            --accent-dim: #0ea5e9;
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --accent-glow-strong: rgba(56, 189, 248, 0.32);
+            --teal: #2dd4bf;
+            --teal-dim: #0d9488;
+            --white: #e8f4fd;
+            --text: #94afc8;
+            --text-muted: #3f5470;
+            --gradient-hero: linear-gradient(135deg, #38bdf8 0%, #2dd4bf 50%, #818cf8 100%);
+            --gradient-accent: linear-gradient(90deg, #38bdf8, #2dd4bf);
+            --gradient-accent-alt: linear-gradient(135deg, #38bdf8, #818cf8);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---- SCROLL FADE-IN ---- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---- TOP BAR ---- */
+        .topbar {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            z-index: 10;
+            background: rgba(6, 9, 15, 0.96);
+            backdrop-filter: blur(14px);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-brand {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: 0.5px;
+        }
+        .topbar-phone {
+            font-size: 0.8rem;
+            color: var(--accent-light);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .topbar-phone:hover {
+            color: var(--white);
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            position: relative;
+            padding: 96px 0 72px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Radial mesh blobs — finance blue/teal */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 960px;
+            height: 640px;
+            background:
+                radial-gradient(ellipse 500px 320px at 30% 40%, rgba(56, 189, 248, 0.11) 0%, transparent 70%),
+                radial-gradient(ellipse 380px 280px at 75% 30%, rgba(45, 212, 191, 0.08) 0%, transparent 65%),
+                radial-gradient(ellipse 320px 260px at 55% 80%, rgba(129, 140, 248, 0.07) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-eyebrow {
+            display: inline-block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 24px;
+            font-weight: 600;
+            border: 1px solid var(--border-glow);
+            padding: 6px 18px;
+            border-radius: 100px;
+            background: rgba(56, 189, 248, 0.06);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5.5vw, 3.1rem);
+            line-height: 1.2;
+            margin-bottom: 28px;
+            font-weight: 700;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 580px;
+            margin: 0 auto 40px;
+            line-height: 1.85;
+        }
+
+        /* Hero image card */
+        .hero-image-card {
+            max-width: 580px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-glow);
+            box-shadow:
+                0 0 48px rgba(56, 189, 248, 0.09),
+                0 24px 80px rgba(0, 0, 0, 0.6);
+            position: relative;
+        }
+        .hero-image-card img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+        .hero-image-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(6, 9, 15, 0.55) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* ---- STATS ---- */
+        .stats {
+            padding: 64px 0;
+            position: relative;
+        }
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 32px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            cursor: default;
+            /* glassmorphism */
+            backdrop-filter: blur(8px);
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 180px 120px at 50% 0%, rgba(56, 189, 248, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .stat-card:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 28px rgba(56, 189, 248, 0.1), 0 8px 32px rgba(0, 0, 0, 0.35);
+        }
+        .stat-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ---- ABOUT ---- */
+        .about {
+            padding: 72px 0;
+            position: relative;
+        }
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .section-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.65rem;
+            color: var(--white);
+            margin-bottom: 32px;
+            font-weight: 600;
+        }
+        .about p {
+            font-size: 1.02rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        .about p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* ---- SERVICES ---- */
+        .services {
+            padding: 72px 0;
+            position: relative;
+        }
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .service-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .service-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 26px 30px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+            cursor: default;
+            backdrop-filter: blur(6px);
+        }
+        .service-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .service-item:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 24px rgba(56, 189, 248, 0.08), 0 6px 24px rgba(0, 0, 0, 0.3);
+            transform: translateX(4px);
+        }
+        .service-item:hover::before {
+            opacity: 1;
+        }
+        .service-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .service-text {
+            font-size: 0.97rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ---- MEDIA IMAGE ---- */
+        .media-visual {
+            padding: 32px 0 64px;
+        }
+        .media-img-wrap {
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 0 32px rgba(56, 189, 248, 0.06), 0 20px 60px rgba(0,0,0,0.5);
+        }
+        .media-img-wrap img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* ---- VALUES ---- */
+        .values {
+            padding: 72px 0;
+            position: relative;
+        }
+        .values::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+        .value-card {
+            text-align: center;
+            padding: 32px 20px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, transform 0.25s ease;
+            cursor: default;
+            backdrop-filter: blur(6px);
+        }
+        .value-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 160px 100px at 50% 100%, rgba(56, 189, 248, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .value-card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-3px);
+        }
+        .value-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(56, 189, 248, 0.09);
+            border: 1px solid var(--border-glow);
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        .value-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .value-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ---- PRIVATE LENDING CALLOUT ---- */
+        .lending-callout {
+            padding: 72px 0;
+            position: relative;
+        }
+        .lending-callout::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .lending-glass {
+            background: var(--surface-light);
+            border: 1px solid var(--border-glow);
+            border-radius: 16px;
+            padding: 40px 36px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 0 48px rgba(56, 189, 248, 0.07), 0 16px 48px rgba(0,0,0,0.4);
+        }
+        .lending-glass::before {
+            content: '';
+            position: absolute;
+            top: -60px; right: -60px;
+            width: 320px; height: 320px;
+            background: radial-gradient(ellipse 240px 200px at 60% 40%, rgba(45, 212, 191, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .lending-glass h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.35rem;
+            color: var(--white);
+            margin-bottom: 14px;
+            font-weight: 600;
+        }
+        .lending-glass p {
+            font-size: 0.98rem;
+            color: var(--text);
+            line-height: 1.85;
+        }
+        .lending-badge {
+            display: inline-block;
+            background: rgba(45, 212, 191, 0.1);
+            border: 1px solid rgba(45, 212, 191, 0.3);
+            color: var(--teal);
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 5px 14px;
+            border-radius: 100px;
+            margin-bottom: 18px;
+        }
+
+        /* ---- CTA ---- */
+        .cta-section {
+            padding: 96px 0;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .cta-blob {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 720px;
+            height: 420px;
+            background:
+                radial-gradient(ellipse 440px 260px at 40% 50%, rgba(56, 189, 248, 0.06) 0%, transparent 70%),
+                radial-gradient(ellipse 300px 200px at 70% 50%, rgba(45, 212, 191, 0.04) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        .cta-inner {
+            position: relative;
+            z-index: 1;
+        }
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.7rem, 4vw, 2.2rem);
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 40px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #38bdf8, #2dd4bf);
+            color: #040810;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.97rem;
+            font-weight: 700;
+            padding: 17px 52px;
+            border-radius: 10px;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            box-shadow:
+                0 0 28px rgba(56, 189, 248, 0.32),
+                0 8px 32px rgba(56, 189, 248, 0.15);
+            transition: box-shadow 0.3s ease, transform 0.2s ease, filter 0.3s ease;
+        }
+        .cta-button:hover {
+            box-shadow:
+                0 0 48px rgba(56, 189, 248, 0.52),
+                0 12px 48px rgba(56, 189, 248, 0.25);
+            transform: translateY(-2px);
+            filter: brightness(1.08);
+        }
+        .cta-note {
+            margin-top: 18px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer p {
+            font-size: 0.73rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 64px 0 52px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .service-item {
+                padding: 22px 22px;
+            }
+            .lending-glass {
+                padding: 28px 22px;
+            }
+            .cta-section {
+                padding: 64px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-brand">Emanuel Whybourne &amp; Loehr</span>
+            <a href="tel:0735576900" class="topbar-phone">07 3557 6900</a>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner container">
+            <p class="hero-eyebrow">Private Wealth Management &mdash; Brisbane</p>
+            <h1>Secure your wealth, grow your legacy</h1>
+            <p class="hero-sub">Bespoke wealth management for HNW and UHNW professionals, families, and retirees across New South Wales, Queensland, and Victoria. Strategic, long-term investment advice built around you.</p>
+            <div class="hero-image-card">
+                <img
+                    src="https://cdn.prod.website-files.com/63f70290c40da53fc8833bb1/66baa21285512d25f7f21d1e_home%20img%20group.webp"
+                    alt="Emanuel Whybourne &amp; Loehr — Private Wealth Team"
+                    loading="eager"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats fade-in">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">30 Years</div>
+                    <div class="stat-label">Trusted wealth management experience</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">200+</div>
+                    <div class="stat-label">HNW families positively transformed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Global</div>
+                    <div class="stat-label">Access to investment opportunities worldwide</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about fade-in">
+        <div class="container">
+            <h2 class="section-heading">About EW&amp;L</h2>
+            <p>Over the past <span class="highlight">30 years</span>, Emanuel Whybourne &amp; Loehr has positively changed the lives of more than <span class="highlight">200 HNW families</span>. Our clients range from founders and creators of some of Australia's largest businesses to retired executives, not-for-profits, and foundations.</p>
+            <p>We are wealth advisors who assist Australian business owners, professionals, and investors who value strategic, long-term investment advice — advice that builds wealth now and secures their family's future. Our solutions are not limited to any one firm, geography, asset class, or corporate interest. We simply find the best solutions for your needs.</p>
+            <p>Based at <span class="highlight">Level 3, The Eminence, Fortitude Valley QLD</span>, our Brisbane team works closely with clients across the eastern seaboard to deliver responsive, personal service at every stage of the wealth journey.</p>
+        </div>
+    </section>
+
+    <!-- Team image -->
+    <section class="media-visual fade-in">
+        <div class="container">
+            <div class="media-img-wrap">
+                <img
+                    src="https://cdn.prod.website-files.com/63f70290c40da53fc8833bb1/66baa36b580267a4026a3b53_mobile-team-homepage-img.webp"
+                    alt="Emanuel Whybourne &amp; Loehr advisory team"
+                    loading="lazy"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services fade-in">
+        <div class="container">
+            <h2 class="section-heading">What we do</h2>
+            <ul class="service-list">
+                <li class="service-item">
+                    <p class="service-label">Investment Management</p>
+                    <p class="service-text">End-to-end investment support — proposal, implementation, ongoing monitoring, and regular review. Every portfolio is built around your specific objectives and timeline.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Global Opportunities</p>
+                    <p class="service-text">Access to the best investment options available, wherever they are in the world. We help clients diversify across geographies, asset classes, and structures with no geographic restrictions.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Legacy Planning</p>
+                    <p class="service-text">Long-term strategic advice designed to secure wealth across generations. We work with families who want to protect what they've built and ensure it endures into the future.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Private Lending</p>
+                    <p class="service-text">Exclusive private lending opportunities for qualifying clients — a differentiated income stream with structured risk management and direct access to the EW&amp;L team.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Private Lending Callout -->
+    <section class="lending-callout fade-in">
+        <div class="container">
+            <div class="lending-glass">
+                <span class="lending-badge">Featured Offering</span>
+                <h3>Private Lending — Access Beyond the Mainstream</h3>
+                <p>Emanuel Whybourne &amp; Loehr offers clients access to a private lending product that sits outside traditional market volatility. Designed for HNW investors seeking consistent, risk-managed income, this offering is available to qualifying clients through a direct conversation with our advisory team.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="values fade-in">
+        <div class="container">
+            <h2 class="section-heading" style="text-align:center; margin-bottom: 36px;">Our principles</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">&#9670;</div>
+                    <div class="value-title">Client First</div>
+                    <div class="value-desc">You and your family are our highest priority — every recommendation reflects that.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">&#9671;</div>
+                    <div class="value-title">Strategic Depth</div>
+                    <div class="value-desc">Long-term, tailored advice that adapts to markets without compromising on direction.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">&#9669;</div>
+                    <div class="value-title">Global Reach</div>
+                    <div class="value-desc">Access to the best solutions globally — unconstrained by geography or product shelf.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Office / branding image -->
+    <section class="media-visual fade-in" style="padding-top: 0; padding-bottom: 72px;">
+        <div class="container">
+            <div class="media-img-wrap">
+                <img
+                    src="https://cdn.prod.website-files.com/63f70290c40da53fc8833bb1/64210a87418cab6dbbffec30_ew_l_Imagery-05.webp"
+                    alt="Emanuel Whybourne &amp; Loehr office &mdash; Fortitude Valley Brisbane"
+                    loading="lazy"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section fade-in">
+        <div class="cta-blob"></div>
+        <div class="container cta-inner">
+            <h2 class="cta-heading">Talk to the EW&amp;L team</h2>
+            <p class="cta-sub">Whether you're a business owner, investor, or retiree looking for strategic long-term wealth management — we're here to help.</p>
+            <a href="tel:0735576900" class="cta-button">Call 07 3557 6900</a>
+            <p class="cta-note">Or reach out at connect@ewlwealth.com.au &mdash; Level 3, The Eminence, Fortitude Valley QLD</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Emanuel Whybourne &amp; Loehr &mdash; ewlwealth.com.au &mdash; 07 3557 6900 &mdash; Level 3, The Eminence, 89 McLachlan Street, Fortitude Valley QLD 4006</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll fade-in
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>

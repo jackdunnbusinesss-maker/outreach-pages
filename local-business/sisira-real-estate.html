@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sisira Real Estate — Find Your Dream Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #080b10;
+            --surface: #0f1318;
+            --surface-light: #171d25;
+            --border: #1e2530;
+            --border-glow: rgba(99, 179, 237, 0.25);
+            --accent: #63b3ed;
+            --accent-light: #90cdf4;
+            --accent-dim: #2b6cb0;
+            --accent-glow: rgba(99, 179, 237, 0.18);
+            --accent-glow-strong: rgba(99, 179, 237, 0.35);
+            --white: #edf2f7;
+            --text: #b8c4d0;
+            --text-muted: #5a6878;
+            --gradient-hero: linear-gradient(135deg, #63b3ed 0%, #76e4f7 50%, #b794f4 100%);
+            --gradient-accent: linear-gradient(90deg, #63b3ed, #90cdf4);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---- SCROLL FADE-IN ---- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---- TOP BAR ---- */
+        .topbar {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            z-index: 10;
+            background: rgba(8, 11, 16, 0.95);
+            backdrop-filter: blur(12px);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-brand {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: 0.5px;
+        }
+        .topbar-phone {
+            font-size: 0.8rem;
+            color: var(--accent-light);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .topbar-phone:hover {
+            color: var(--white);
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            position: relative;
+            padding: 96px 0 72px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Radial mesh blobs */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 900px;
+            height: 600px;
+            background:
+                radial-gradient(ellipse 480px 320px at 30% 40%, rgba(99, 179, 237, 0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 360px 280px at 75% 30%, rgba(183, 148, 244, 0.08) 0%, transparent 65%),
+                radial-gradient(ellipse 300px 240px at 55% 80%, rgba(118, 228, 247, 0.07) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-eyebrow {
+            display: inline-block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 24px;
+            font-weight: 600;
+            border: 1px solid var(--border-glow);
+            padding: 6px 18px;
+            border-radius: 100px;
+            background: rgba(99, 179, 237, 0.06);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5.5vw, 3rem);
+            line-height: 1.22;
+            margin-bottom: 28px;
+            font-weight: 700;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 580px;
+            margin: 0 auto 40px;
+            line-height: 1.85;
+        }
+
+        /* Hero image card */
+        .hero-image-card {
+            max-width: 560px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-glow);
+            box-shadow:
+                0 0 40px rgba(99, 179, 237, 0.08),
+                0 24px 80px rgba(0, 0, 0, 0.55);
+            position: relative;
+        }
+        .hero-image-card img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+        .hero-image-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(8, 11, 16, 0.6) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* ---- STATS ---- */
+        .stats {
+            padding: 64px 0;
+            position: relative;
+        }
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 32px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            cursor: default;
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 180px 120px at 50% 0%, rgba(99, 179, 237, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .stat-card:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 24px rgba(99, 179, 237, 0.08), 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .stat-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.9rem;
+            font-weight: 700;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ---- ABOUT ---- */
+        .about {
+            padding: 72px 0;
+            position: relative;
+        }
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .section-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.65rem;
+            color: var(--white);
+            margin-bottom: 32px;
+            font-weight: 600;
+        }
+        .about p {
+            font-size: 1.02rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        .about p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* ---- SERVICES ---- */
+        .services {
+            padding: 72px 0;
+            position: relative;
+        }
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .service-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .service-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 26px 30px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+            cursor: default;
+        }
+        .service-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .service-item:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 20px rgba(99, 179, 237, 0.07), 0 6px 24px rgba(0, 0, 0, 0.25);
+            transform: translateX(4px);
+        }
+        .service-item:hover::before {
+            opacity: 1;
+        }
+        .service-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .service-text {
+            font-size: 0.97rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ---- PROPERTIES ---- */
+        .properties {
+            padding: 72px 0;
+            position: relative;
+        }
+        .properties::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .property-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .property-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 22px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+            cursor: default;
+        }
+        .property-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .property-item:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 20px rgba(99, 179, 237, 0.07), 0 6px 24px rgba(0, 0, 0, 0.25);
+            transform: translateX(4px);
+        }
+        .property-item:hover::before {
+            opacity: 1;
+        }
+        .property-address {
+            font-size: 0.95rem;
+            color: var(--white);
+            font-weight: 500;
+        }
+        .property-meta {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        .property-badge {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 6px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            margin-left: 16px;
+        }
+        .badge-buy {
+            background: rgba(99, 179, 237, 0.1);
+            border: 1px solid rgba(99, 179, 237, 0.3);
+            color: var(--accent-light);
+        }
+        .badge-rent {
+            background: rgba(183, 148, 244, 0.1);
+            border: 1px solid rgba(183, 148, 244, 0.3);
+            color: #c4b5fd;
+        }
+
+        /* ---- VALUES ---- */
+        .values {
+            padding: 72px 0;
+            position: relative;
+        }
+        .values::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+        .value-card {
+            text-align: center;
+            padding: 32px 20px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, transform 0.25s ease;
+            cursor: default;
+        }
+        .value-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 160px 100px at 50% 100%, rgba(99, 179, 237, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .value-card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-3px);
+        }
+        .value-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(99, 179, 237, 0.1);
+            border: 1px solid var(--border-glow);
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        .value-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .value-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ---- MEDIA IMAGE ---- */
+        .media-visual {
+            padding: 32px 0 64px;
+        }
+        .media-img-wrap {
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 0 30px rgba(99, 179, 237, 0.05), 0 20px 60px rgba(0,0,0,0.45);
+        }
+        .media-img-wrap img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* ---- HOURS ---- */
+        .hours {
+            padding: 64px 0;
+            position: relative;
+        }
+        .hours::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .hours-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 36px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hours-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 400px 200px at 50% 100%, rgba(99, 179, 237, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.93rem;
+        }
+        .hours-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .hours-row:first-child {
+            padding-top: 0;
+        }
+        .hours-day {
+            color: var(--white);
+            font-weight: 500;
+        }
+        .hours-time {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+        .hours-closed {
+            color: var(--text-muted);
+        }
+
+        /* ---- CTA ---- */
+        .cta-section {
+            padding: 96px 0;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .cta-blob {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 700px;
+            height: 400px;
+            background: radial-gradient(ellipse 500px 280px at 50% 50%, rgba(99, 179, 237, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .cta-inner {
+            position: relative;
+            z-index: 1;
+        }
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.7rem, 4vw, 2.1rem);
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 40px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #63b3ed, #90cdf4);
+            color: #060a0f;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.97rem;
+            font-weight: 700;
+            padding: 17px 52px;
+            border-radius: 10px;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            box-shadow:
+                0 0 24px rgba(99, 179, 237, 0.3),
+                0 8px 32px rgba(99, 179, 237, 0.15);
+            transition: box-shadow 0.3s ease, transform 0.2s ease, filter 0.3s ease;
+        }
+        .cta-button:hover {
+            box-shadow:
+                0 0 40px rgba(99, 179, 237, 0.5),
+                0 12px 48px rgba(99, 179, 237, 0.25);
+            transform: translateY(-2px);
+            filter: brightness(1.08);
+        }
+        .cta-note {
+            margin-top: 18px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer p {
+            font-size: 0.73rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 64px 0 52px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .service-item {
+                padding: 22px 22px;
+            }
+            .property-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            .property-badge {
+                margin-left: 0;
+            }
+            .hours-card {
+                padding: 28px 24px;
+            }
+            .cta-section {
+                padding: 64px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-brand">Sisira Real Estate</span>
+            <a href="tel:0394378076" class="topbar-phone">03 9437 8076</a>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner container">
+            <p class="hero-eyebrow">Property Sales &amp; Management — Victoria, Australia</p>
+            <h1>Find Your Dream Home in Melbourne's North</h1>
+            <p class="hero-sub">Sisira Real Estate has been helping Victorians buy, sell, and rent property since 2010. From Craigieburn to Mernda — we know this market.</p>
+            <div class="hero-image-card">
+                <img
+                    src="https://sisirarealestate.com.au/wp-content/uploads/2025/09/cropped-Untitled-design.png"
+                    alt="Sisira Real Estate"
+                    loading="eager"
+                    onerror="this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80'"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats fade-in">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">Since 2010</div>
+                    <div class="stat-label">Established in Victoria</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">6+</div>
+                    <div class="stat-label">Active listed properties</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4 Suburbs</div>
+                    <div class="stat-label">Craigieburn, Roxburgh Park, Mernda &amp; Broadford</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about fade-in">
+        <div class="container">
+            <h2 class="section-heading">About Sisira Real Estate</h2>
+            <p>Since 2010, <span class="highlight">Sisira Real Estate</span> has been a dedicated property agency serving Melbourne's northern growth corridor. We work across residential sales, rentals, and property management — giving buyers, sellers, and renters the local expertise they need to move with confidence.</p>
+            <p>Our portfolio spans sought-after suburbs including <span class="highlight">Craigieburn, Roxburgh Park, Mernda, and Broadford</span> — areas experiencing strong demand and continued development. Whether you're looking for your first home, an investment property, or a rental, we match people with properties that fit.</p>
+            <p>Our team handles every stage of the transaction — from initial listing through to settlement — with clear communication and hands-on support at every step.</p>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services fade-in">
+        <div class="container">
+            <h2 class="section-heading">What we offer</h2>
+            <ul class="service-list">
+                <li class="service-item">
+                    <p class="service-label">Residential Sales</p>
+                    <p class="service-text">Expert guidance for buyers and sellers across Melbourne's northern suburbs — houses, townhouses, units, and apartments priced from $200 to $2.5M.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Property Rentals</p>
+                    <p class="service-text">Rental listings across Craigieburn, Roxburgh Park, Broadford, and Mernda — with a streamlined leasing process for tenants and landlords alike.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Property Management</p>
+                    <p class="service-text">End-to-end management for landlords — tenant sourcing, inspections, maintenance coordination, and rent collection so your investment runs smoothly.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Buy / Rent Search</p>
+                    <p class="service-text">Advanced search across all property types — apartments, houses, townhouses, and units — filtered by bedrooms, bathrooms, price, size, and suburb.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Featured Properties -->
+    <section class="properties fade-in">
+        <div class="container">
+            <h2 class="section-heading">Featured properties</h2>
+            <ul class="property-list">
+                <li class="property-item">
+                    <div>
+                        <div class="property-address">7 Wintle Close, Roxburgh Park VIC 3064</div>
+                        <div class="property-meta">3 bed &middot; 2 bath &middot; Price on call</div>
+                    </div>
+                    <span class="property-badge badge-buy">For Sale</span>
+                </li>
+                <li class="property-item">
+                    <div>
+                        <div class="property-address">34 Snodgrass St, Broadford VIC 3658</div>
+                        <div class="property-meta">3 bed &middot; 2 bath &middot; $495 / pw</div>
+                    </div>
+                    <span class="property-badge badge-rent">For Rent</span>
+                </li>
+                <li class="property-item">
+                    <div>
+                        <div class="property-address">8 Moxie Road, Craigieburn VIC 3064</div>
+                        <div class="property-meta">3 bed &middot; 2 bath &middot; $540 / pw</div>
+                    </div>
+                    <span class="property-badge badge-rent">For Rent</span>
+                </li>
+                <li class="property-item">
+                    <div>
+                        <div class="property-address">24 Taylan Street, Craigieburn VIC 3064</div>
+                        <div class="property-meta">3 bed &middot; 2 bath</div>
+                    </div>
+                    <span class="property-badge badge-rent">For Rent</span>
+                </li>
+                <li class="property-item">
+                    <div>
+                        <div class="property-address">9 Mango Crescent, Mernda VIC 3754</div>
+                        <div class="property-meta">3 bed &middot; 2 bath</div>
+                    </div>
+                    <span class="property-badge badge-rent">For Rent</span>
+                </li>
+                <li class="property-item">
+                    <div>
+                        <div class="property-address">10 Tigris Court, Roxburgh Park VIC 3064</div>
+                        <div class="property-meta">3 bed &middot; 2 bath</div>
+                    </div>
+                    <span class="property-badge badge-rent">For Rent</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Property image -->
+    <section class="media-visual fade-in">
+        <div class="container">
+            <div class="media-img-wrap">
+                <img
+                    src="https://sisirarealestate.com.au/wp-content/uploads/2025/09/cropped-cropped-Untitled-design-1.png"
+                    alt="Sisira Real Estate — properties"
+                    loading="lazy"
+                    onerror="this.src='https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1600&q=80'"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="values fade-in">
+        <div class="container">
+            <h2 class="section-heading" style="text-align:center; margin-bottom: 36px;">How we work</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">&#9670;</div>
+                    <div class="value-title">Local Knowledge</div>
+                    <div class="value-desc">Active across Melbourne's northern corridor since 2010 — we know these suburbs inside out.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">&#9671;</div>
+                    <div class="value-title">Full Service</div>
+                    <div class="value-desc">From listing to settlement — sales, rentals, and management all under one roof.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">&#9669;</div>
+                    <div class="value-title">Accessible</div>
+                    <div class="value-desc">Open Monday to Friday, 10am–5pm. Get in touch and we'll respond promptly.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Hours -->
+    <section class="hours fade-in">
+        <div class="container">
+            <h2 class="section-heading">Business hours</h2>
+            <div class="hours-card">
+                <div class="hours-row">
+                    <span class="hours-day">Monday – Friday</span>
+                    <span class="hours-time">10:00am – 5:00pm</span>
+                </div>
+                <div class="hours-row">
+                    <span class="hours-day">Saturday</span>
+                    <span class="hours-closed">Closed</span>
+                </div>
+                <div class="hours-row">
+                    <span class="hours-day">Sunday</span>
+                    <span class="hours-closed">Closed</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Logo / brand image -->
+    <section class="media-visual fade-in" style="padding-top: 0; padding-bottom: 72px;">
+        <div class="container">
+            <div class="media-img-wrap">
+                <img
+                    src="https://sisirarealestate.com.au/wp-content/uploads/2025/09/cropped-cropped-cropped-cropped-Untitled-design-1.png"
+                    alt="Sisira Real Estate brand"
+                    loading="lazy"
+                    onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&q=80'"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section fade-in">
+        <div class="cta-blob"></div>
+        <div class="container cta-inner">
+            <h2 class="cta-heading">Ready to find your next property?</h2>
+            <p class="cta-sub">Call us Monday to Friday and speak directly with our team. We'll help you find what you're looking for across Victoria's northern suburbs.</p>
+            <a href="tel:0394378076" class="cta-button">Call 03 9437 8076</a>
+            <p class="cta-note">Or email us at reception@sisirarealestate.com.au</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Sisira Real Estate &mdash; sisirarealestate.com.au &mdash; 03 9437 8076 &mdash; reception@sisirarealestate.com.au</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll fade-in
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapman Real Estate — Blue Mountains Property Specialists</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #080a0f;
+            --surface: #0e1118;
+            --surface-light: #151b24;
+            --border: #1c2430;
+            --border-glow: rgba(99, 163, 214, 0.28);
+            --accent: #63a3d6;
+            --accent-light: #8ec5e8;
+            --accent-dim: #3d7aaa;
+            --accent-glow: rgba(99, 163, 214, 0.16);
+            --accent-glow-strong: rgba(99, 163, 214, 0.34);
+            --white: #edf2f7;
+            --text: #b0bfce;
+            --text-muted: #526070;
+            --gradient-hero: linear-gradient(135deg, #8ec5e8 0%, #63a3d6 40%, #a5c8e0 70%, #c8dff0 100%);
+            --gradient-accent: linear-gradient(90deg, #63a3d6, #8ec5e8);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---- SCROLL FADE-IN ---- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---- TOP BAR ---- */
+        .topbar {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(8, 10, 15, 0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-brand {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: 0.5px;
+        }
+        .topbar-badge {
+            font-size: 0.72rem;
+            color: var(--accent-light);
+            font-weight: 600;
+            background: rgba(99, 163, 214, 0.08);
+            border: 1px solid var(--border-glow);
+            padding: 5px 14px;
+            border-radius: 100px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            position: relative;
+            padding: 96px 0 72px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Radial mesh blobs — mountain blues + cool silver */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -140px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 960px;
+            height: 640px;
+            background:
+                radial-gradient(ellipse 500px 340px at 28% 38%, rgba(99, 163, 214, 0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 380px 300px at 78% 28%, rgba(168, 210, 240, 0.07) 0%, transparent 65%),
+                radial-gradient(ellipse 320px 260px at 52% 82%, rgba(63, 120, 168, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-eyebrow {
+            display: inline-block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 24px;
+            font-weight: 600;
+            border: 1px solid var(--border-glow);
+            padding: 6px 18px;
+            border-radius: 100px;
+            background: rgba(99, 163, 214, 0.06);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5.5vw, 3rem);
+            line-height: 1.22;
+            margin-bottom: 28px;
+            font-weight: 700;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 580px;
+            margin: 0 auto 40px;
+            line-height: 1.85;
+        }
+
+        /* Hero image card */
+        .hero-image-card {
+            max-width: 580px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-glow);
+            box-shadow:
+                0 0 40px rgba(99, 163, 214, 0.08),
+                0 24px 80px rgba(0, 0, 0, 0.55);
+            position: relative;
+        }
+        .hero-image-card img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            max-height: 320px;
+        }
+        .hero-image-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(8, 10, 15, 0.65) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* ---- STATS ---- */
+        .stats {
+            padding: 64px 0;
+            position: relative;
+        }
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 32px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            cursor: default;
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 180px 120px at 50% 0%, rgba(99, 163, 214, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .stat-card:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 24px rgba(99, 163, 214, 0.08), 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .stat-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.9rem;
+            font-weight: 700;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ---- ABOUT ---- */
+        .about {
+            padding: 72px 0;
+            position: relative;
+        }
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .section-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.65rem;
+            color: var(--white);
+            margin-bottom: 32px;
+            font-weight: 600;
+        }
+        .about p {
+            font-size: 1.02rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        .about p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* ---- SERVICES ---- */
+        .services {
+            padding: 72px 0;
+            position: relative;
+        }
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .service-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .service-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 26px 30px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+            cursor: default;
+        }
+        .service-item::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .service-item:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 20px rgba(99, 163, 214, 0.07), 0 6px 24px rgba(0, 0, 0, 0.25);
+            transform: translateX(4px);
+        }
+        .service-item:hover::before {
+            opacity: 1;
+        }
+        .service-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .service-text {
+            font-size: 0.97rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ---- COVERAGE AREA ---- */
+        .coverage {
+            padding: 72px 0;
+            position: relative;
+        }
+        .coverage::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .coverage-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 28px;
+        }
+        .coverage-badge {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: border-color 0.25s, color 0.25s;
+            cursor: default;
+        }
+        .coverage-badge:hover {
+            border-color: var(--border-glow);
+            color: var(--accent-light);
+        }
+
+        /* ---- VALUES ---- */
+        .values {
+            padding: 72px 0;
+            position: relative;
+        }
+        .values::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+        .value-card {
+            text-align: center;
+            padding: 32px 20px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, transform 0.25s ease;
+            cursor: default;
+        }
+        .value-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 160px 100px at 50% 100%, rgba(99, 163, 214, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .value-card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-3px);
+        }
+        .value-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(99, 163, 214, 0.1);
+            border: 1px solid var(--border-glow);
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        .value-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .value-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ---- MEDIA IMAGE ---- */
+        .media-visual {
+            padding: 32px 0 64px;
+        }
+        .media-img-wrap {
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 0 30px rgba(99, 163, 214, 0.05), 0 20px 60px rgba(0,0,0,0.45);
+        }
+        .media-img-wrap img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            max-height: 380px;
+        }
+
+        /* ---- TEAM ---- */
+        .team {
+            padding: 72px 0;
+            position: relative;
+        }
+        .team::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .team-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 32px;
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            transition: border-color 0.3s ease;
+        }
+        .team-card:hover {
+            border-color: var(--border-glow);
+        }
+        .team-avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: rgba(99, 163, 214, 0.12);
+            border: 1px solid var(--border-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        .team-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+        .team-role {
+            font-size: 0.78rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+        }
+        .team-bio {
+            font-size: 0.9rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ---- CTA ---- */
+        .cta-section {
+            padding: 96px 0;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .cta-blob {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 700px;
+            height: 400px;
+            background: radial-gradient(ellipse 500px 280px at 50% 50%, rgba(99, 163, 214, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .cta-inner {
+            position: relative;
+            z-index: 1;
+        }
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.7rem, 4vw, 2.1rem);
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 40px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #63a3d6, #8ec5e8);
+            color: #060a0f;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.97rem;
+            font-weight: 700;
+            padding: 17px 52px;
+            border-radius: 10px;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            box-shadow:
+                0 0 24px rgba(99, 163, 214, 0.3),
+                0 8px 32px rgba(99, 163, 214, 0.15);
+            transition: box-shadow 0.3s ease, transform 0.2s ease, filter 0.3s ease;
+        }
+        .cta-button:hover {
+            box-shadow:
+                0 0 40px rgba(99, 163, 214, 0.5),
+                0 12px 48px rgba(99, 163, 214, 0.25);
+            transform: translateY(-2px);
+            filter: brightness(1.08);
+        }
+        .cta-note {
+            margin-top: 18px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer p {
+            font-size: 0.73rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 64px 0 52px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .service-item {
+                padding: 22px 22px;
+            }
+            .cta-section {
+                padding: 64px 0;
+            }
+            .team-card {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-brand">Chapman Real Estate</span>
+            <span class="topbar-badge">Blue Mountains, NSW</span>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner container">
+            <p class="hero-eyebrow">Blue Mountains Largest Real Estate Team — Since 1987</p>
+            <h1>Chapman Real Estate</h1>
+            <p class="hero-sub">Real estate agents and property managers serving Glenbrook, Blaxland, Springwood, Winmalee, Hazelbrook, and surrounding suburbs. The Blue Mountains' most experienced team — helping you get the highest price for your home.</p>
+            <div class="hero-image-card">
+                <img
+                    src="https://www.chapmanrealestate.com.au/wp-content/uploads/2024/07/Sell-1024x683.jpg"
+                    alt="Chapman Real Estate — Blue Mountains property"
+                    loading="eager"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats fade-in">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">1987</div>
+                    <div class="stat-label">Serving the Blue Mountains since</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">#1</div>
+                    <div class="stat-label">Largest real estate team in the Blue Mountains</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">6+</div>
+                    <div class="stat-label">Offices across the Mountains</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about fade-in">
+        <div class="container">
+            <h2 class="section-heading">About Chapman Real Estate</h2>
+            <p>Chapman Real Estate has been the Blue Mountains' most trusted name in property <span class="highlight">since 1987</span>. As the region's largest and most experienced real estate team, Chapman has spent nearly four decades helping locals sell, buy, lease, and manage property across the Mountains.</p>
+            <p>With more agents in more offices than any other agency in the region, Chapman brings genuine local expertise to every transaction. A unique database of ready buyers, a well-earned reputation for results, and deep roots in the community mean that when you choose Chapman, you're backed by the best the Blue Mountains has to offer.</p>
+            <p>From first-time sellers to seasoned investors, Chapman's team is built around one goal: <span class="highlight">getting you the highest price for your home</span> and making the process seamless along the way.</p>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services fade-in">
+        <div class="container">
+            <h2 class="section-heading">What we do</h2>
+            <ul class="service-list">
+                <li class="service-item">
+                    <p class="service-label">Sell</p>
+                    <p class="service-text">Expert sales strategy backed by a unique database of qualified buyers — so your property reaches the right people at the right time, and achieves the best possible price.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Buy</p>
+                    <p class="service-text">Access the full range of Blue Mountains properties with guidance from agents who know every suburb, street, and market shift across the region.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Lease</p>
+                    <p class="service-text">Find the right rental property or tenant with a team that understands the Mountains rental market and handles every detail from listing to handover.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Property Management</p>
+                    <p class="service-text">Comprehensive management for investment properties — protecting your asset and maximising returns with responsive, professional service built on decades of local experience.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Team photo -->
+    <section class="media-visual fade-in">
+        <div class="container">
+            <div class="media-img-wrap">
+                <img
+                    src="https://www.chapmanrealestate.com.au/wp-content/uploads/2026/01/Sales-Agents-1-1024x620.jpg"
+                    alt="Chapman Real Estate sales team"
+                    loading="lazy"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Coverage Area -->
+    <section class="coverage fade-in">
+        <div class="container">
+            <h2 class="section-heading">Areas we serve</h2>
+            <p style="font-size: 0.97rem; color: var(--text); line-height: 1.8;">Chapman operates across the full Blue Mountains corridor — with multiple offices positioned throughout the region to give sellers, buyers, and investors genuine local advantage.</p>
+            <div class="coverage-grid">
+                <span class="coverage-badge">Glenbrook</span>
+                <span class="coverage-badge">Blaxland</span>
+                <span class="coverage-badge">Springwood</span>
+                <span class="coverage-badge">Winmalee</span>
+                <span class="coverage-badge">Hazelbrook</span>
+                <span class="coverage-badge">Surrounding Suburbs</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="values fade-in">
+        <div class="container">
+            <h2 class="section-heading" style="text-align:center; margin-bottom: 36px;">Why Chapman</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">&#9670;</div>
+                    <div class="value-title">Local Knowledge</div>
+                    <div class="value-desc">Decades of Mountains expertise — we know the market better than anyone.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">&#9671;</div>
+                    <div class="value-title">Proven Results</div>
+                    <div class="value-desc">A track record of strong outcomes built since 1987 and thousands of successful sales.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">&#9669;</div>
+                    <div class="value-title">Ready Buyers</div>
+                    <div class="value-desc">A unique buyer database that gives your property an edge from day one.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sold properties image -->
+    <section class="media-visual fade-in" style="padding-top: 0; padding-bottom: 72px;">
+        <div class="container">
+            <div class="media-img-wrap">
+                <img
+                    src="https://www.chapmanrealestate.com.au/wp-content/uploads/2023/01/CRE-SELL-Previously-Sold-1024x1024.jpg"
+                    alt="Chapman Real Estate sold properties"
+                    loading="lazy"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="team fade-in">
+        <div class="container">
+            <h2 class="section-heading" style="margin-bottom: 28px;">Our team</h2>
+            <div class="team-card">
+                <div class="team-avatar">&#128100;</div>
+                <div>
+                    <div class="team-name">Grace Corscadden</div>
+                    <div class="team-role">Property Manager</div>
+                    <div class="team-bio">Grace manages the day-to-day operations of Chapman's rental portfolio — ensuring landlords and tenants receive professional, responsive service backed by the full resources of the Blue Mountains' largest real estate team.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section fade-in">
+        <div class="cta-blob"></div>
+        <div class="container cta-inner">
+            <h2 class="cta-heading">Ready to get started?</h2>
+            <p class="cta-sub">Whether you're selling, buying, leasing, or investing — Chapman Real Estate has the local expertise and the proven track record to deliver results across the Blue Mountains.</p>
+            <a href="mailto:gcorscadden@chapmanrealestate.com.au" class="cta-button">Get in Touch</a>
+            <p class="cta-note">gcorscadden@chapmanrealestate.com.au &mdash; chapmanrealestate.com.au</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Chapman Real Estate &mdash; Blue Mountains, NSW &mdash; chapmanrealestate.com.au &mdash; &copy; 2026 Chapman Real Estate. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll fade-in
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
