@@ -3,706 +3,99 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex, nofollow">
-<title>Coastal Wealth Directions &mdash; Financial Planning, Kempsey NSW</title>
+<title>Coastal Wealth Directions | Financial Planning, Kempsey NSW</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-:root {
-    --bg: #f6f3ee;
-    --surface: #ffffff;
-    --surface-alt: #efeae1;
-    --border: #d9d2c4;
-    --accent: #1f4d46;
-    --accent-light: #2d6a60;
-    --accent-soft: #e4ede9;
-    --ink: #14211f;
-    --text: #3c4845;
-    --text-muted: #6e7873;
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-    font-family: 'Inter', -apple-system, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
-}
-
-.container {
-    max-width: 1040px;
-    margin: 0 auto;
-    padding: 0 24px;
-}
-
-/* ---- NAV ---- */
-.nav {
-    padding: 22px 0;
-    border-bottom: 1px solid var(--border);
-    background: var(--surface);
-}
-.nav-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 24px;
-    flex-wrap: wrap;
-}
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-}
-.brand-mark {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: var(--accent);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Playfair Display', Georgia, serif;
-    font-weight: 600;
-    font-size: 1rem;
-    letter-spacing: 0.5px;
-}
-.brand-name {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1.15rem;
-    color: var(--ink);
-    font-weight: 600;
-}
-.brand-sub {
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--text-muted);
-    margin-top: 2px;
-}
-.nav-links {
-    display: flex;
-    gap: 28px;
-    align-items: center;
-    list-style: none;
-    font-size: 0.9rem;
-}
-.nav-links a {
-    color: var(--text);
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-.nav-links a:hover { color: var(--accent); }
-.nav-cta {
-    background: var(--accent);
-    color: #fff !important;
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-weight: 500;
-    font-size: 0.85rem;
-}
-.nav-cta:hover { background: var(--accent-light); color: #fff !important; }
-
-/* ---- HERO ---- */
-.hero {
-    padding: 96px 0 80px;
-    background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
-    border-bottom: 1px solid var(--border);
-}
-.hero-inner {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 60px;
-    align-items: center;
-}
-.hero-eyebrow {
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--accent);
-    margin-bottom: 22px;
-    font-weight: 600;
-}
-.hero h1 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(2.2rem, 4.4vw, 3.2rem);
-    color: var(--ink);
-    line-height: 1.18;
-    margin-bottom: 24px;
-    font-weight: 600;
-}
-.hero h1 em {
-    color: var(--accent);
-    font-style: italic;
-}
-.hero-sub {
-    font-size: 1.08rem;
-    color: var(--text);
-    line-height: 1.75;
-    margin-bottom: 32px;
-    max-width: 520px;
-}
-.hero-actions {
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-}
-.btn-primary {
-    display: inline-block;
-    background: var(--accent);
-    color: #fff;
-    padding: 15px 30px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: background 0.25s ease, transform 0.2s ease;
-}
-.btn-primary:hover {
-    background: var(--accent-light);
-    transform: translateY(-1px);
-}
-.btn-secondary {
-    display: inline-block;
-    background: transparent;
-    color: var(--accent);
-    padding: 15px 30px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95rem;
-    border: 1px solid var(--accent);
-    transition: background 0.25s ease;
-}
-.btn-secondary:hover { background: var(--accent-soft); }
-
-.hero-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 36px 34px;
-    box-shadow: 0 12px 40px rgba(20, 33, 31, 0.06);
-}
-.hero-card-label {
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--accent);
-    font-weight: 600;
-    margin-bottom: 12px;
-}
-.hero-card-quote {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-style: italic;
-    font-size: 1.25rem;
-    color: var(--ink);
-    line-height: 1.55;
-    margin-bottom: 18px;
-}
-.hero-card-attr {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-}
-
-/* ---- STAT BAND ---- */
-.stat-band {
-    background: var(--accent);
-    color: #fff;
-    padding: 40px 0;
-}
-.stat-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-    text-align: center;
-}
-.stat-num {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 2.4rem;
-    font-weight: 600;
-    margin-bottom: 6px;
-}
-.stat-label {
-    font-size: 0.85rem;
-    letter-spacing: 1px;
-    opacity: 0.85;
-    text-transform: uppercase;
-}
-
-/* ---- SECTION ---- */
-.section {
-    padding: 96px 0;
-    border-bottom: 1px solid var(--border);
-}
-.section-eyebrow {
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--accent);
-    font-weight: 600;
-    margin-bottom: 16px;
-    text-align: center;
-}
-.section-heading {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(1.8rem, 3.4vw, 2.4rem);
-    color: var(--ink);
-    line-height: 1.25;
-    margin-bottom: 18px;
-    text-align: center;
-    font-weight: 600;
-}
-.section-sub {
-    font-size: 1.03rem;
-    color: var(--text);
-    max-width: 640px;
-    margin: 0 auto 56px;
-    text-align: center;
-    line-height: 1.8;
-}
-
-/* ---- ABOUT ---- */
-.about {
-    background: var(--surface);
-}
-.about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: start;
-}
-.about-copy p {
-    margin-bottom: 18px;
-    font-size: 1rem;
-    line-height: 1.85;
-}
-.about-copy p:last-child { margin-bottom: 0; }
-.about-signature {
-    margin-top: 28px;
-    padding-top: 24px;
-    border-top: 1px solid var(--border);
-}
-.about-signature-name {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1.2rem;
-    color: var(--ink);
-    font-weight: 600;
-}
-.about-signature-role {
-    font-size: 0.88rem;
-    color: var(--text-muted);
-    margin-top: 4px;
-}
-.about-highlights {
-    background: var(--surface-alt);
-    border-radius: 12px;
-    padding: 40px 36px;
-    border: 1px solid var(--border);
-}
-.about-highlights h3 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1.3rem;
-    color: var(--ink);
-    margin-bottom: 22px;
-    font-weight: 600;
-}
-.highlight-list {
-    list-style: none;
-}
-.highlight-list li {
-    padding: 14px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 0.98rem;
-    color: var(--text);
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-}
-.highlight-list li:last-child { border-bottom: none; }
-.highlight-list li::before {
-    content: "";
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-    margin-top: 10px;
-    flex-shrink: 0;
-}
-
-/* ---- SERVICES ---- */
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-}
-.service-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 34px 30px;
-    transition: transform 0.25s ease, border-color 0.25s ease;
-}
-.service-card:hover {
-    transform: translateY(-3px);
-    border-color: var(--accent);
-}
-.service-num {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 0.95rem;
-    color: var(--accent);
-    letter-spacing: 2px;
-    margin-bottom: 16px;
-    font-weight: 600;
-}
-.service-title {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1.25rem;
-    color: var(--ink);
-    margin-bottom: 12px;
-    font-weight: 600;
-}
-.service-text {
-    font-size: 0.95rem;
-    color: var(--text);
-    line-height: 1.7;
-}
-
-/* ---- APPROACH ---- */
-.approach {
-    background: var(--surface);
-}
-.approach-steps {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    margin-top: 24px;
-}
-.step-num {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: var(--accent-soft);
-    color: var(--accent);
-    font-family: 'Playfair Display', Georgia, serif;
-    font-weight: 600;
-    font-size: 1.1rem;
-    margin-bottom: 18px;
-}
-.step-title {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1.15rem;
-    color: var(--ink);
-    margin-bottom: 10px;
-    font-weight: 600;
-}
-.step-text {
-    font-size: 0.95rem;
-    color: var(--text);
-    line-height: 1.75;
-}
-
-/* ---- CTA ---- */
-.cta {
-    background: var(--ink);
-    color: #fff;
-    padding: 96px 0;
-    text-align: center;
-}
-.cta h2 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(2rem, 3.6vw, 2.6rem);
-    margin-bottom: 18px;
-    font-weight: 600;
-    color: #fff;
-}
-.cta p {
-    font-size: 1.05rem;
-    color: rgba(255, 255, 255, 0.78);
-    max-width: 560px;
-    margin: 0 auto 36px;
-    line-height: 1.75;
-}
-.cta .btn-primary {
-    background: #fff;
-    color: var(--ink);
-}
-.cta .btn-primary:hover { background: var(--surface-alt); }
-.cta-contact {
-    margin-top: 32px;
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.6);
-}
-.cta-contact a {
-    color: #fff;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-/* ---- FOOTER ---- */
-.footer {
-    background: var(--surface);
-    padding: 48px 0 32px;
-}
-.footer-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 48px;
-    margin-bottom: 32px;
-}
-.footer-col h4 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1rem;
-    color: var(--ink);
-    margin-bottom: 14px;
-    font-weight: 600;
-}
-.footer-col p, .footer-col a {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    line-height: 1.8;
-    text-decoration: none;
-    display: block;
-}
-.footer-col a:hover { color: var(--accent); }
-.footer-bottom {
-    padding-top: 24px;
-    border-top: 1px solid var(--border);
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    text-align: center;
-    line-height: 1.7;
-}
-.footer-disclaimer {
-    margin-top: 10px;
-    max-width: 760px;
-    margin-left: auto;
-    margin-right: auto;
-    font-style: italic;
-}
-
-/* ---- RESPONSIVE ---- */
-@media (max-width: 860px) {
-    .hero { padding: 64px 0 56px; }
-    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-    .stat-grid { grid-template-columns: 1fr; gap: 20px; }
-    .about-grid { grid-template-columns: 1fr; gap: 40px; }
-    .services-grid { grid-template-columns: 1fr; }
-    .approach-steps { grid-template-columns: 1fr; gap: 28px; }
-    .footer-grid { grid-template-columns: 1fr; gap: 28px; }
-    .nav-links { gap: 16px; }
-    .section { padding: 64px 0; }
-}
-@media (max-width: 520px) {
-    .nav-links li:not(:last-child) { display: none; }
-}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0e0e12;--surface:#16161d;--surface-light:#1e1e28;--border:#2a2a36;--accent:#7bb8a4;--accent-light:#9fd4bf;--white:#f0eff4;--text:#c5c4ce;--text-muted:#7e7d8a}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+.container{max-width:720px;margin:0 auto;padding:0 24px}
+.topbar{padding:20px 0;border-bottom:1px solid var(--border)}
+.topbar-inner{display:flex;justify-content:space-between;align-items:center}
+.topbar-brand{font-size:0.9rem;font-weight:600;color:var(--white);letter-spacing:0.5px}
+.topbar-phone{font-size:0.85rem;color:var(--accent-light);text-decoration:none}
+.topbar-phone:hover{color:var(--white)}
+.hero{padding:80px 0 48px;text-align:center}
+.hero-eyebrow{font-size:0.8rem;text-transform:uppercase;letter-spacing:3px;color:var(--accent);margin-bottom:20px;font-weight:600}
+.hero h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,5vw,2.8rem);color:var(--white);line-height:1.25;margin-bottom:24px;font-weight:600}
+.hero h1 em{color:var(--accent-light);font-style:italic}
+.hero-sub{font-size:1.05rem;color:var(--text);max-width:560px;margin:0 auto;line-height:1.8}
+.section{padding:64px 0;border-top:1px solid var(--border)}
+.section-heading{font-family:'Playfair Display',Georgia,serif;font-size:1.6rem;color:var(--white);margin-bottom:40px;text-align:center;font-weight:600}
+.services-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.service-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:28px 20px;text-align:center;transition:border-color 0.3s}
+.service-card:hover{border-color:var(--accent)}
+.service-card h3{font-size:0.95rem;color:var(--white);margin-bottom:8px;font-weight:600}
+.service-card p{font-size:0.85rem;color:var(--text-muted);line-height:1.6}
+.about-text{font-size:1.05rem;line-height:1.9;margin-bottom:20px}
+.about-text:last-child{margin-bottom:0}
+.highlight{color:var(--accent-light);font-weight:600}
+.cta-section{padding:80px 0;border-top:1px solid var(--border);text-align:center}
+.cta-heading{font-family:'Playfair Display',Georgia,serif;font-size:1.8rem;color:var(--white);margin-bottom:16px;font-weight:600}
+.cta-sub{font-size:1rem;color:var(--text);margin-bottom:36px;max-width:480px;margin-left:auto;margin-right:auto}
+.cta-button{display:inline-block;background:var(--accent);color:var(--bg);font-family:'Inter',sans-serif;font-size:0.95rem;font-weight:600;padding:16px 48px;border-radius:8px;text-decoration:none;letter-spacing:0.5px;transition:background 0.3s,transform 0.2s}
+.cta-button:hover{background:var(--accent-light);transform:translateY(-1px)}
+.cta-note{margin-top:16px;font-size:0.78rem;color:var(--text-muted)}
+.cta-note a{color:var(--accent);text-decoration:none}
+.footer{padding:40px 0;border-top:1px solid var(--border);text-align:center}
+.footer p{font-size:0.75rem;color:var(--text-muted);margin-bottom:6px}
+@media(max-width:600px){.hero{padding:56px 0 36px}.services-grid{grid-template-columns:1fr}.cta-section{padding:56px 0}}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav">
-    <div class="container nav-inner">
-        <div class="brand">
-            <div class="brand-mark">CWD</div>
-            <div>
-                <div class="brand-name">Coastal Wealth Directions</div>
-                <div class="brand-sub">Kempsey &middot; NSW</div>
-            </div>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#approach">Approach</a></li>
-            <li><a href="#contact" class="nav-cta">Book a consultation</a></li>
-        </ul>
-    </div>
-</nav>
+<div class="topbar">
+<div class="container topbar-inner">
+<span class="topbar-brand">Coastal Wealth Directions</span>
+<a href="tel:0265631635" class="topbar-phone">02 6563 1635</a>
+</div>
+</div>
 
-<!-- HERO -->
 <section class="hero">
-    <div class="container hero-inner">
-        <div>
-            <p class="hero-eyebrow">Financial Planning &middot; Macleay, Hastings &amp; Manning Valleys</p>
-            <h1>Strategies that strengthen your <em>financial position</em> &mdash; built around the life you actually want.</h1>
-            <p class="hero-sub">Coastal Wealth Directions is a tailored financial planning practice in Kempsey, helping pre-retirees and families across the NSW Mid North Coast build substance beneath their lifestyle and retirement goals.</p>
-            <div class="hero-actions">
-                <a href="#contact" class="btn-primary">Book a consultation</a>
-                <a href="#services" class="btn-secondary">How we help</a>
-            </div>
-        </div>
-        <div class="hero-card">
-            <p class="hero-card-label">Our belief</p>
-            <p class="hero-card-quote">"Direction, not intention, determines your destination."</p>
-            <p class="hero-card-attr">&mdash; Andy Stanley</p>
-        </div>
-    </div>
+<div class="container">
+<p class="hero-eyebrow">Kempsey &bull; Macleay &bull; Hastings &bull; Manning Valleys</p>
+<h1>Financial advice built around <em>your life</em>, not a template</h1>
+<p class="hero-sub">For over 17 years, Coastal Wealth Directions has helped individuals and families across the Mid North Coast build financial plans that actually make sense for how they live.</p>
+</div>
 </section>
 
-<!-- STAT BAND -->
-<section class="stat-band">
-    <div class="container stat-grid">
-        <div>
-            <div class="stat-num">17+</div>
-            <div class="stat-label">Years serving the Coast</div>
-        </div>
-        <div>
-            <div class="stat-num">25+</div>
-            <div class="stat-label">Years in financial services</div>
-        </div>
-        <div>
-            <div class="stat-num">3</div>
-            <div class="stat-label">Valleys served from Kempsey</div>
-        </div>
-    </div>
+<section class="section">
+<div class="container">
+<h2 class="section-heading">How we help</h2>
+<div class="services-grid">
+<div class="service-card"><h3>Financial Strategy</h3><p>Comprehensive planning aligned to your goals, values, and stage of life.</p></div>
+<div class="service-card"><h3>Retirement Planning</h3><p>Clear strategies to help you retire with confidence and on your terms.</p></div>
+<div class="service-card"><h3>Insurance Planning</h3><p>Protection that fits your circumstances without paying for what you don't need.</p></div>
+</div>
+</div>
 </section>
 
-<!-- ABOUT -->
-<section class="section about" id="about">
-    <div class="container">
-        <p class="section-eyebrow">About the practice</p>
-        <h2 class="section-heading">Financial planning that fits real lives</h2>
-        <p class="section-sub">Everyone's experience with money is different. Our work starts by understanding yours &mdash; then building a plan that actually fits it.</p>
-
-        <div class="about-grid">
-            <div class="about-copy">
-                <p>Coastal Wealth Directions is the culmination of more than 25 years of experience in the financial services industry. It was created to offer a financial planning service that is both comprehensive and completely tailored.</p>
-                <p>Our clients are diverse &mdash; across ages, stages of life, and the resources they bring with them. So our strategies are diverse too. We meet you where you are now, and help guide you toward where you want to go.</p>
-                <p>Your lifestyle and financial goals are personal and important to you. We help you build some substance beneath them, with an actionable plan designed to give you real choices at every stage.</p>
-                <div class="about-signature">
-                    <div class="about-signature-name">Tania Powick</div>
-                    <div class="about-signature-role">Owner &amp; Principal Financial Planner</div>
-                </div>
-            </div>
-            <div class="about-highlights">
-                <h3>Who we work with</h3>
-                <ul class="highlight-list">
-                    <li>Pre-retirees preparing for the next chapter</li>
-                    <li>Families building long-term financial security</li>
-                    <li>Clients across the Macleay, Hastings and Manning Valleys</li>
-                    <li>Locals in Kempsey, Port Macquarie and the wider Mid North Coast</li>
-                    <li>People who want advice tailored to their circumstances, not a template</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+<section class="section">
+<div class="container">
+<h2 class="section-heading">About the practice</h2>
+<p class="about-text"><span class="highlight">Tania Powick</span> is the Owner and Principal Financial Planner at Coastal Wealth Directions, bringing over 25 years of experience in financial services.</p>
+<p class="about-text">Based in the heart of Kempsey, just 20 minutes from the beach and 40 minutes north of Port Macquarie, the practice serves clients across the Macleay, Hastings, and Manning Valleys.</p>
+<p class="about-text">The approach is straightforward: everyone's relationship with money is different, so every plan is different. No cookie-cutter strategies. Financial solutions are tailored to meet you where you are now and guide you toward where you want to go.</p>
+</div>
 </section>
 
-<!-- SERVICES -->
-<section class="section" id="services">
-    <div class="container">
-        <p class="section-eyebrow">How we help</p>
-        <h2 class="section-heading">Advice across the full financial picture</h2>
-        <p class="section-sub">Tailored strategies designed around your circumstances, your goals, and the kind of future you're working toward.</p>
-
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-num">01</div>
-                <h3 class="service-title">Financial Planning</h3>
-                <p class="service-text">Comprehensive financial advice built around your income, assets, family situation and the goals that matter most to you.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-num">02</div>
-                <h3 class="service-title">Retirement Strategy</h3>
-                <p class="service-text">Planning for retirement, and through retirement. Strategies designed to give you confidence about the years ahead.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-num">03</div>
-                <h3 class="service-title">Insurance Planning</h3>
-                <p class="service-text">Protecting what you've built and the people who depend on you, with cover matched to your risk profile and stage of life.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-num">04</div>
-                <h3 class="service-title">Wealth Planning</h3>
-                <p class="service-text">Longer-term wealth strategies that align your resources with the life you want, now and into the future.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-num">05</div>
-                <h3 class="service-title">Financial Advice</h3>
-                <p class="service-text">One-off or ongoing advice for the decisions that come up along the way &mdash; from major purchases to life changes.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-num">06</div>
-                <h3 class="service-title">Strategies for Retirement</h3>
-                <p class="service-text">Practical, personal strategies for pre-retirees who want a clear picture of what their retirement can look like, and how to get there.</p>
-            </div>
-        </div>
-    </div>
+<section class="cta-section">
+<div class="container">
+<h2 class="cta-heading">Ready to get started?</h2>
+<p class="cta-sub">Book an initial consultation to talk through your situation. No jargon, no pressure.</p>
+<a href="tel:0265631635" class="cta-button">Call 02 6563 1635</a>
+<p class="cta-note">Or email <a href="mailto:admin@coastalwealthdirections.com.au">admin@coastalwealthdirections.com.au</a></p>
+</div>
 </section>
 
-<!-- APPROACH -->
-<section class="section approach" id="approach">
-    <div class="container">
-        <p class="section-eyebrow">Our approach</p>
-        <h2 class="section-heading">A clear direction, built with you</h2>
-        <p class="section-sub">We don't fit people into boxes. Every plan starts with a conversation, and every strategy is built around the person in front of us.</p>
-
-        <div class="approach-steps">
-            <div>
-                <div class="step-num">1</div>
-                <h3 class="step-title">Understand</h3>
-                <p class="step-text">We start with your situation &mdash; income, family, goals, concerns, timeline. The things that make your circumstances yours.</p>
-            </div>
-            <div>
-                <div class="step-num">2</div>
-                <h3 class="step-title">Tailor</h3>
-                <p class="step-text">We build a plan matched to where you are and where you want to go. No cookie-cutter product pushes. No one-size-fits-all strategies.</p>
-            </div>
-            <div>
-                <div class="step-num">3</div>
-                <h3 class="step-title">Guide</h3>
-                <p class="step-text">We walk alongside you as circumstances change &mdash; reviewing, adjusting, and keeping your plan honest to your goals.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- CTA -->
-<section class="cta" id="contact">
-    <div class="container">
-        <h2>Ready to build your plan?</h2>
-        <p>If you're thinking about retirement, reassessing your financial position, or simply want advice tailored to your circumstances &mdash; we'd love to hear from you.</p>
-        <a href="tel:0265631635" class="btn-primary">Book a consultation</a>
-        <div class="cta-contact">
-            <p>Call us on <a href="tel:0265631635">02 6563 1635</a> &nbsp;&middot;&nbsp; Email <a href="mailto:admin@coastalwealthdirections.com.au">admin@coastalwealthdirections.com.au</a></p>
-        </div>
-    </div>
-</section>
-
-<!-- FOOTER -->
 <footer class="footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>Coastal Wealth Directions</h4>
-                <p>Serving the Macleay, Hastings and Manning Valleys from our office in the heart of Kempsey &mdash; just 20 minutes from the beach and 40 minutes north of Port Macquarie.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <a href="tel:0265631635">02 6563 1635</a>
-                <a href="mailto:admin@coastalwealthdirections.com.au">admin@coastalwealthdirections.com.au</a>
-                <p>Kempsey, NSW<br><em>[office address to be added]</em></p>
-            </div>
-            <div class="footer-col">
-                <h4>Practice</h4>
-                <a href="#about">About</a>
-                <a href="#services">How we help</a>
-                <a href="#approach">Our approach</a>
-                <a href="#contact">Book a consultation</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; Coastal Wealth Directions. All rights reserved.</p>
-            <p class="footer-disclaimer">The information on this website is general in nature and does not take into account your personal objectives, financial situation or needs. Before acting on any advice, consider whether it is appropriate for your circumstances and seek personal advice from a qualified financial adviser.</p>
-        </div>
-    </div>
+<div class="container">
+<p>&copy; 2026 Coastal Wealth Directions. All rights reserved.</p>
+<p>Kempsey, NSW</p>
+</div>
 </footer>
 
 </body>
