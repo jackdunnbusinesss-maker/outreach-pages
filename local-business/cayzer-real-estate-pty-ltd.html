@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buxton | Cayzer — Bayside Melbourne Real Estate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --bg: #0e0e12;
+    --surface: #16161d;
+    --surface-light: #1e1e28;
+    --border: #2a2a36;
+    --accent: #c9a96e;
+    --accent-light: #e0c48c;
+    --accent-glow: rgba(201, 169, 110, 0.15);
+    --white: #f0eff4;
+    --text: #c5c4ce;
+    --text-muted: #7e7d8a;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ---- TOP BAR ---- */
+.topbar {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+}
+.topbar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+.brand-mark {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.1rem;
+    color: var(--white);
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+.brand-mark span {
+    color: var(--accent);
+    margin: 0 6px;
+}
+.topbar-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+}
+
+/* ---- HERO ---- */
+.hero {
+    padding: 96px 0 64px;
+    text-align: center;
+}
+.hero-eyebrow {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--accent);
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+.hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2.2rem, 5.5vw, 3.4rem);
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 24px;
+    font-weight: 600;
+}
+.hero h1 em {
+    color: var(--accent-light);
+    font-style: italic;
+}
+.hero-sub {
+    font-size: 1.1rem;
+    color: var(--text);
+    max-width: 640px;
+    margin: 0 auto 36px;
+    line-height: 1.8;
+}
+.hero-cta {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--bg);
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 16px 44px;
+    border-radius: 8px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+.hero-cta:hover {
+    background: var(--accent-light);
+    transform: translateY(-1px);
+}
+
+/* ---- INTRO ---- */
+.intro {
+    padding: 72px 0;
+    border-top: 1px solid var(--border);
+}
+.intro-inner {
+    max-width: 720px;
+    margin: 0 auto;
+}
+.intro h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.8rem;
+    color: var(--white);
+    margin-bottom: 24px;
+    font-weight: 600;
+    text-align: center;
+}
+.intro p {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    margin-bottom: 20px;
+}
+.intro p:last-child { margin-bottom: 0; }
+.highlight {
+    color: var(--accent-light);
+    font-weight: 600;
+}
+
+/* ---- SERVICES ---- */
+.services {
+    padding: 72px 0;
+    border-top: 1px solid var(--border);
+}
+.services-heading {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.8rem;
+    color: var(--white);
+    margin-bottom: 48px;
+    text-align: center;
+    font-weight: 600;
+}
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+.service-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 32px 28px;
+    transition: border-color 0.3s ease;
+}
+.service-card:hover { border-color: var(--accent); }
+.service-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+.service-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.3rem;
+    color: var(--white);
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+.service-text {
+    font-size: 0.98rem;
+    color: var(--text);
+    line-height: 1.7;
+}
+
+/* ---- OFFICES ---- */
+.offices {
+    padding: 72px 0;
+    border-top: 1px solid var(--border);
+}
+.offices-heading {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.8rem;
+    color: var(--white);
+    margin-bottom: 16px;
+    text-align: center;
+    font-weight: 600;
+}
+.offices-sub {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    max-width: 540px;
+    margin: 0 auto 44px;
+}
+.offices-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+.office-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 32px 28px;
+}
+.office-suburb {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+.office-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.4rem;
+    color: var(--white);
+    margin-bottom: 14px;
+    font-weight: 600;
+}
+.office-address {
+    font-size: 1rem;
+    color: var(--text);
+    line-height: 1.7;
+}
+
+/* ---- CTA ---- */
+.cta-section {
+    padding: 96px 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+}
+.cta-heading {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2rem;
+    color: var(--white);
+    margin-bottom: 18px;
+    font-weight: 600;
+}
+.cta-sub {
+    font-size: 1.05rem;
+    color: var(--text);
+    margin-bottom: 40px;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.cta-button {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--bg);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 18px 52px;
+    border-radius: 8px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+.cta-button:hover {
+    background: var(--accent-light);
+    transform: translateY(-1px);
+}
+.cta-note {
+    margin-top: 18px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* ---- FOOTER ---- */
+.footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+}
+.footer p {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 600px) {
+    .hero { padding: 64px 0 44px; }
+    .intro, .services, .offices { padding: 56px 0; }
+    .cta-section { padding: 64px 0; }
+    .service-card, .office-card { padding: 24px 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+    <div class="container topbar-inner">
+        <div class="brand-mark">BUXTON <span>|</span> CAYZER</div>
+        <div class="topbar-label">Port Melbourne · Albert Park</div>
+    </div>
+</div>
+
+<section class="hero">
+    <div class="container">
+        <p class="hero-eyebrow">Bayside Melbourne Real Estate</p>
+        <h1>Selling, buying and renting across <em>Port Phillip</em>.</h1>
+        <p class="hero-sub">Buxton | Cayzer brings together two long-standing local teams under one bayside brand — now working as part of the wider Buxton network across Port Melbourne, Albert Park and the surrounding Port Phillip corridor.</p>
+        <a href="#contact" class="hero-cta">Speak with the team</a>
+    </div>
+</section>
+
+<section class="intro">
+    <div class="container intro-inner">
+        <h2>A local partnership, a wider reach</h2>
+        <p>Buxton Port Phillip has joined forces with <span class="highlight">Cayzer Real Estate</span> to form Buxton | Cayzer — a co-branded entity serving the Port Melbourne and Albert Park communities.</p>
+        <p>As part of a phased transition, Buxton Port Melbourne has moved into Cayzer's larger premises on Bay Street, while the Montague Street office continues to trade under the new co-branded identity. Both locations will operate this way over the next 6–12 months.</p>
+        <p>The result is a team of more than 50 property professionals across four strategic locations, combining Cayzer's local service legacy with the Buxton network's broader strength.</p>
+    </div>
+</section>
+
+<section class="services">
+    <div class="container">
+        <h2 class="services-heading">How we work with owners and buyers</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <p class="service-label">For Sellers</p>
+                <h3 class="service-title">Residential Sales</h3>
+                <p class="service-text">Listing, marketing and selling homes across the bayside Port Phillip market, supported by the wider Buxton network.</p>
+            </div>
+            <div class="service-card">
+                <p class="service-label">For Landlords</p>
+                <h3 class="service-title">Property Management</h3>
+                <p class="service-text">Ongoing management for investment properties across Port Melbourne, Albert Park and surrounds — handled by a dedicated local team.</p>
+            </div>
+            <div class="service-card">
+                <p class="service-label">For Tenants</p>
+                <h3 class="service-title">Rentals &amp; Leasing</h3>
+                <p class="service-text">Current rental listings and leasing support across our Port Phillip office catchments.</p>
+            </div>
+            <div class="service-card">
+                <p class="service-label">For Buyers</p>
+                <h3 class="service-title">Buyer Enquiries</h3>
+                <p class="service-text">Access to current listings and upcoming properties through the combined Buxton | Cayzer and Buxton Real Estate Group network.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="offices">
+    <div class="container">
+        <h2 class="offices-heading">Two offices across Port Phillip</h2>
+        <p class="offices-sub">Visit either location to speak with our sales or property management teams.</p>
+        <div class="offices-grid">
+            <div class="office-card">
+                <p class="office-suburb">Port Melbourne</p>
+                <h3 class="office-name">Buxton | Cayzer Port Melbourne</h3>
+                <p class="office-address">370 Bay Street<br>Port Melbourne VIC</p>
+            </div>
+            <div class="office-card">
+                <p class="office-suburb">Albert Park</p>
+                <h3 class="office-name">Buxton | Cayzer Albert Park</h3>
+                <p class="office-address">330 Montague Street<br>Albert Park VIC</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section" id="contact">
+    <div class="container">
+        <h2 class="cta-heading">Thinking of selling, leasing or buying?</h2>
+        <p class="cta-sub">Get in touch with the Buxton | Cayzer team and we'll connect you with the right person for your property.</p>
+        <a href="mailto:mhughes@cayzer.com.au" class="cta-button">Contact Us</a>
+        <p class="cta-note">Enquiries for sales, property management and rentals across Port Melbourne and Albert Park.</p>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>Buxton | Cayzer — Port Melbourne &amp; Albert Park<br>Part of the Buxton Real Estate Group network.</p>
+    </div>
+</footer>
+
+</body>
+</html>

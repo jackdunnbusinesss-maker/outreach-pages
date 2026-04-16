@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sublime Property Agents — Real Estate &amp; Property Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #080b10;
+            --surface: #0f1318;
+            --surface-light: #171d25;
+            --border: #1e2530;
+            --border-glow: rgba(66, 140, 180, 0.28);
+            --accent: #428cb4;
+            --accent-light: #6ab4d8;
+            --accent-dim: #2b5f7a;
+            --accent-glow: rgba(66, 140, 180, 0.18);
+            --accent-glow-strong: rgba(66, 140, 180, 0.38);
+            --white: #edf2f7;
+            --text: #b8c4d0;
+            --text-muted: #5a6878;
+            --gradient-hero: linear-gradient(135deg, #6ab4d8 0%, #a0d4f0 45%, #c4e8f8 100%);
+            --gradient-accent: linear-gradient(90deg, #428cb4, #6ab4d8);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---- SCROLL FADE-IN ---- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---- TOP BAR ---- */
+        .topbar {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(8, 11, 16, 0.95);
+            backdrop-filter: blur(12px);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-brand {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: 0.5px;
+        }
+        .topbar-phone {
+            font-size: 0.8rem;
+            color: var(--accent-light);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .topbar-phone:hover { color: var(--white); }
+
+        /* ---- HERO ---- */
+        .hero {
+            position: relative;
+            padding: 96px 0 72px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Mesh blobs */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 900px;
+            height: 600px;
+            background:
+                radial-gradient(ellipse 500px 340px at 30% 40%, rgba(66, 140, 180, 0.13) 0%, transparent 70%),
+                radial-gradient(ellipse 380px 280px at 75% 30%, rgba(43, 95, 122, 0.10) 0%, transparent 65%),
+                radial-gradient(ellipse 300px 240px at 55% 80%, rgba(106, 180, 216, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-eyebrow {
+            display: inline-block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-light);
+            margin-bottom: 24px;
+            font-weight: 600;
+            border: 1px solid var(--border-glow);
+            padding: 6px 18px;
+            border-radius: 100px;
+            background: rgba(66, 140, 180, 0.07);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5.5vw, 3rem);
+            line-height: 1.22;
+            margin-bottom: 28px;
+            font-weight: 700;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 580px;
+            margin: 0 auto 40px;
+            line-height: 1.85;
+        }
+
+        /* Hero image card with glassmorphism */
+        .hero-image-card {
+            max-width: 580px;
+            margin: 0 auto;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid var(--border-glow);
+            box-shadow:
+                0 0 48px rgba(66, 140, 180, 0.10),
+                0 24px 80px rgba(0, 0, 0, 0.55);
+            position: relative;
+            background: rgba(15, 19, 24, 0.5);
+            backdrop-filter: blur(6px);
+        }
+        .hero-image-card img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            height: 340px;
+        }
+        .hero-image-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 45%, rgba(8, 11, 16, 0.65) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Logo overlay on hero card */
+        .hero-logo-wrap {
+            position: absolute;
+            bottom: 20px;
+            left: 24px;
+            z-index: 2;
+        }
+        .hero-logo-wrap img {
+            height: 44px;
+            width: auto;
+            display: block;
+            filter: brightness(0) invert(1);
+            opacity: 0.9;
+        }
+
+        /* ---- STATS ---- */
+        .stats {
+            padding: 64px 0;
+            position: relative;
+        }
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 32px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            cursor: default;
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 180px 120px at 50% 0%, rgba(66, 140, 180, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .stat-card:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 24px rgba(66, 140, 180, 0.09), 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .stat-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.9rem;
+            font-weight: 700;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ---- ABOUT ---- */
+        .about {
+            padding: 72px 0;
+            position: relative;
+        }
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .section-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.65rem;
+            color: var(--white);
+            margin-bottom: 32px;
+            font-weight: 600;
+        }
+        .about p {
+            font-size: 1.02rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        .about p:last-child { margin-bottom: 0; }
+        .highlight {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* ---- SUBURB GRID ---- */
+        .suburbs {
+            padding: 72px 0;
+            position: relative;
+        }
+        .suburbs::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .suburb-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 8px;
+        }
+        .suburb-tag {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: border-color 0.25s, color 0.25s;
+            cursor: default;
+        }
+        .suburb-tag:hover {
+            border-color: var(--border-glow);
+            color: var(--accent-light);
+        }
+        .suburbs-intro {
+            font-size: 1.02rem;
+            line-height: 1.85;
+            margin-bottom: 28px;
+            color: var(--text);
+        }
+
+        /* ---- SERVICES ---- */
+        .services {
+            padding: 72px 0;
+            position: relative;
+        }
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .service-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .service-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 26px 30px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+            cursor: default;
+        }
+        .service-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .service-item:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 20px rgba(66, 140, 180, 0.08), 0 6px 24px rgba(0, 0, 0, 0.25);
+            transform: translateX(4px);
+        }
+        .service-item:hover::before { opacity: 1; }
+        .service-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-light);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .service-text {
+            font-size: 0.97rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ---- MEDIA VISUAL ---- */
+        .media-visual {
+            padding: 32px 0 64px;
+        }
+        .media-img-wrap {
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 0 30px rgba(66, 140, 180, 0.06), 0 20px 60px rgba(0,0,0,0.45);
+        }
+        .media-img-wrap img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* ---- LISTINGS SNAPSHOT ---- */
+        .listings {
+            padding: 72px 0;
+            position: relative;
+        }
+        .listings::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .listings-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+        .listing-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+            position: relative;
+            transition: border-color 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease;
+            cursor: default;
+        }
+        .listing-card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-3px);
+            box-shadow: 0 0 24px rgba(66, 140, 180, 0.09), 0 12px 40px rgba(0, 0, 0, 0.35);
+        }
+        .listing-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+        .listing-info {
+            padding: 18px 20px;
+        }
+        .listing-status {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            color: var(--accent-light);
+            margin-bottom: 6px;
+        }
+        .listing-address {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 4px;
+            line-height: 1.35;
+        }
+        .listing-suburb {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- VALUES ---- */
+        .values {
+            padding: 72px 0;
+            position: relative;
+        }
+        .values::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+        .value-card {
+            text-align: center;
+            padding: 32px 20px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, transform 0.25s ease;
+            cursor: default;
+        }
+        .value-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 160px 100px at 50% 100%, rgba(66, 140, 180, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .value-card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-3px);
+        }
+        .value-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(66, 140, 180, 0.10);
+            border: 1px solid var(--border-glow);
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        .value-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .value-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ---- CTA ---- */
+        .cta-section {
+            padding: 96px 0;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .cta-blob {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 700px;
+            height: 400px;
+            background: radial-gradient(ellipse 500px 280px at 50% 50%, rgba(66, 140, 180, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .cta-inner {
+            position: relative;
+            z-index: 1;
+        }
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.7rem, 4vw, 2.1rem);
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 40px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #428cb4, #6ab4d8);
+            color: #060a0f;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.97rem;
+            font-weight: 700;
+            padding: 17px 52px;
+            border-radius: 10px;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            box-shadow:
+                0 0 28px rgba(66, 140, 180, 0.38),
+                0 8px 32px rgba(66, 140, 180, 0.18);
+            transition: box-shadow 0.3s ease, transform 0.2s ease, filter 0.3s ease;
+        }
+        .cta-button:hover {
+            box-shadow:
+                0 0 48px rgba(66, 140, 180, 0.55),
+                0 12px 48px rgba(66, 140, 180, 0.28);
+            transform: translateY(-2px);
+            filter: brightness(1.08);
+        }
+        .cta-note {
+            margin-top: 18px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer p {
+            font-size: 0.73rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 640px) {
+            .hero { padding: 64px 0 52px; }
+            .stats-grid { grid-template-columns: 1fr; gap: 14px; }
+            .values-grid { grid-template-columns: 1fr; gap: 14px; }
+            .listings-grid { grid-template-columns: 1fr; gap: 14px; }
+            .service-item { padding: 22px 22px; }
+            .cta-section { padding: 64px 0; }
+            .hero-image-card img { height: 220px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-brand">Sublime Property Agents</span>
+            <a href="tel:0295575888" class="topbar-phone">02 9557 5888</a>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner container">
+            <p class="hero-eyebrow">Real Estate &amp; Property Management — Sydney</p>
+            <h1>Experience the Sublime Difference in Sydney Real Estate</h1>
+            <p class="hero-sub">Client satisfaction and property success are fundamental at Sublime. Renowned for a client-focused approach, we deliver outstanding outcomes and a smooth real estate journey — whether you're buying, selling, or renting.</p>
+            <div class="hero-image-card">
+                <img
+                    src="https://www.sublimeproperty.com.au/wp-content/uploads/2025/03/15063097764519-1-scaled.jpg"
+                    alt="Sublime Property Agents — Sydney real estate"
+                    loading="eager"
+                >
+                <div class="hero-logo-wrap">
+                    <img
+                        src="https://www.sublimeproperty.com.au/wp-content/uploads/2018/01/logosublime.png"
+                        alt="Sublime Property Agents logo"
+                        loading="eager"
+                    >
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats fade-in">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">Buy</div>
+                    <div class="stat-label">Residential &amp; commercial properties for sale across inner Sydney</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Sell</div>
+                    <div class="stat-label">Sales appraisals and recent results across our coverage area</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Rent</div>
+                    <div class="stat-label">Residential &amp; commercial leasing with landlord management services</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about fade-in">
+        <div class="container">
+            <h2 class="section-heading">About Sublime Property Agents</h2>
+            <p>At <span class="highlight">Sublime</span>, client satisfaction and property success are fundamental. Renowned for our client-focused approach, we deliver outstanding outcomes and a smooth real estate journey for every client we work with.</p>
+            <p>Whether you're thinking of renting, buying, or selling, our team is here to guide you through every step. We handle residential and commercial sales, leases, property management, and appraisals — providing a complete real estate service under one roof.</p>
+            <p>We service St Peters, Dapto, Pagewood, Enmore, Ruse, Ashfield, Liverpool, Tempe, Canterbury, Redfern, Bellevue Hill, Mascot, and the surrounding suburbs. <span class="highlight">Experience the Sublime difference.</span></p>
+        </div>
+    </section>
+
+    <!-- Property image -->
+    <section class="media-visual fade-in">
+        <div class="container">
+            <div class="media-img-wrap">
+                <img
+                    src="https://www.sublimeproperty.com.au/wp-content/uploads/2025/03/iStock-477707350-Large.jpeg"
+                    alt="Sydney property — Sublime Property Agents"
+                    loading="lazy"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services fade-in">
+        <div class="container">
+            <h2 class="section-heading">What we do</h2>
+            <ul class="service-list">
+                <li class="service-item">
+                    <p class="service-label">Buy</p>
+                    <p class="service-text">Residential and commercial properties for sale, including current projects and open for inspection times — we help buyers find the right property across our suburbs.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Sell with Sublime</p>
+                    <p class="service-text">Request a sales appraisal or browse recent results. We bring local knowledge, marketing expertise, and a client-first approach to every sale campaign.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Residential for Lease</p>
+                    <p class="service-text">Quality rental properties across Sydney's inner suburbs. Tenancy applications, open for inspection schedules, and vacate notices all handled through our streamlined process.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Commercial for Lease &amp; Sale</p>
+                    <p class="service-text">Commercial leasing and acquisition across our coverage area — from appraisal through to settlement, supported by our dedicated team.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Landlord Services</p>
+                    <p class="service-text">Rental appraisals, maintenance requests, and full property management for landlords — protecting your investment while keeping tenants satisfied.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Listings snapshot -->
+    <section class="listings fade-in">
+        <div class="container">
+            <h2 class="section-heading">Current Listings</h2>
+            <div class="listings-grid">
+                <div class="listing-card">
+                    <img
+                        src="https://www.sublimeproperty.com.au/wp-content/uploads/2025/03/iStock-2165068752-Large.jpeg"
+                        alt="For Sale — Liverpool"
+                        loading="lazy"
+                    >
+                    <div class="listing-info">
+                        <p class="listing-status">For Sale</p>
+                        <p class="listing-address">2201/10 Norfolk Street</p>
+                        <p class="listing-suburb">Liverpool &mdash; $565,000</p>
+                    </div>
+                </div>
+                <div class="listing-card">
+                    <img
+                        src="https://www.sublimeproperty.com.au/wp-content/uploads/2025/01/tempe-scaled.jpg"
+                        alt="For Lease — St Peters"
+                        loading="lazy"
+                    >
+                    <div class="listing-info">
+                        <p class="listing-status">For Lease</p>
+                        <p class="listing-address">F402/13-19 Princes Highway</p>
+                        <p class="listing-suburb">St Peters &mdash; $880 pw</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Suburbs served -->
+    <section class="suburbs fade-in">
+        <div class="container">
+            <h2 class="section-heading">Areas We Serve</h2>
+            <p class="suburbs-intro">Sublime Property Agents operates across a wide corridor of inner and south-western Sydney suburbs, giving our clients access to deep local market knowledge wherever they're buying, selling, or renting.</p>
+            <div class="suburb-tags">
+                <span class="suburb-tag">St Peters</span>
+                <span class="suburb-tag">Tempe</span>
+                <span class="suburb-tag">Enmore</span>
+                <span class="suburb-tag">Redfern</span>
+                <span class="suburb-tag">Newtown</span>
+                <span class="suburb-tag">Canterbury</span>
+                <span class="suburb-tag">Ashfield</span>
+                <span class="suburb-tag">Mascot</span>
+                <span class="suburb-tag">Pagewood</span>
+                <span class="suburb-tag">Bellevue Hill</span>
+                <span class="suburb-tag">Liverpool</span>
+                <span class="suburb-tag">Sydenham</span>
+                <span class="suburb-tag">Maroubra</span>
+                <span class="suburb-tag">Hammondville</span>
+                <span class="suburb-tag">Ruse</span>
+                <span class="suburb-tag">Dapto</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="values fade-in">
+        <div class="container">
+            <h2 class="section-heading" style="text-align:center; margin-bottom: 36px;">Our approach</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">&#9670;</div>
+                    <div class="value-title">Client-Focused</div>
+                    <div class="value-desc">Every decision we make is driven by what's best for our clients — not a commission target.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">&#9671;</div>
+                    <div class="value-title">Outstanding Outcomes</div>
+                    <div class="value-desc">We're known for delivering results — in sales prices, lease terms, and management quality.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">&#9669;</div>
+                    <div class="value-title">Smooth Journey</div>
+                    <div class="value-desc">Property can be stressful. We handle the complexity so you don't have to.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section fade-in">
+        <div class="cta-blob"></div>
+        <div class="container cta-inner">
+            <h2 class="cta-heading">Thinking of renting or selling?</h2>
+            <p class="cta-sub">Get in touch with the Sublime team for an appraisal, a rental assessment, or a conversation about your next move in the Sydney property market.</p>
+            <a href="tel:0295575888" class="cta-button">Call 02 9557 5888</a>
+            <p class="cta-note">Or reach out at info@sublimeproperty.com.au</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Sublime Property Agents &mdash; sublimeproperty.com.au &mdash; 02 9557 5888</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll fade-in
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>

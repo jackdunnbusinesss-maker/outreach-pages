@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Montara Wealth — Financial Advisors Sydney</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #07090f;
+            --surface: #0d1020;
+            --surface-light: #131729;
+            --border: #1a2040;
+            --border-glow: rgba(60, 109, 240, 0.28);
+            --accent: #3c6df0;
+            --accent-light: #6b93f7;
+            --accent-dim: #2a4db0;
+            --accent-glow: rgba(60, 109, 240, 0.16);
+            --accent-glow-strong: rgba(60, 109, 240, 0.32);
+            --white: #edf2f8;
+            --text: #b0bdd4;
+            --text-muted: #4a5878;
+            --gradient-hero: linear-gradient(135deg, #6b93f7 0%, #a78bfa 50%, #60a5fa 100%);
+            --gradient-accent: linear-gradient(90deg, #3c6df0, #6b93f7);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---- SCROLL FADE-IN ---- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---- TOP BAR (glassmorphism) ---- */
+        .topbar {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(7, 9, 15, 0.82);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-brand {
+            font-size: 0.84rem;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: 0.4px;
+        }
+        .topbar-phone {
+            font-size: 0.8rem;
+            color: var(--accent-light);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .topbar-phone:hover {
+            color: var(--white);
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            position: relative;
+            padding: 96px 0 72px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Radial mesh blobs */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -140px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 960px;
+            height: 660px;
+            background:
+                radial-gradient(ellipse 520px 360px at 28% 42%, rgba(60, 109, 240, 0.15) 0%, transparent 68%),
+                radial-gradient(ellipse 380px 300px at 78% 28%, rgba(107, 147, 247, 0.09) 0%, transparent 65%),
+                radial-gradient(ellipse 300px 260px at 54% 82%, rgba(167, 139, 250, 0.07) 0%, transparent 62%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-eyebrow {
+            display: inline-block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-light);
+            margin-bottom: 24px;
+            font-weight: 600;
+            border: 1px solid var(--border-glow);
+            padding: 6px 18px;
+            border-radius: 100px;
+            background: rgba(60, 109, 240, 0.07);
+        }
+
+        /* Gradient h1 */
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5.5vw, 3rem);
+            line-height: 1.22;
+            margin-bottom: 28px;
+            font-weight: 700;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 580px;
+            margin: 0 auto 40px;
+            line-height: 1.85;
+        }
+
+        /* Hero image card */
+        .hero-image-card {
+            max-width: 580px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-glow);
+            box-shadow:
+                0 0 48px rgba(60, 109, 240, 0.1),
+                0 24px 80px rgba(0, 0, 0, 0.6);
+            position: relative;
+        }
+        .hero-image-card img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            max-height: 340px;
+        }
+        .hero-image-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(7, 9, 15, 0.65) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* ---- STATS ---- */
+        .stats {
+            padding: 64px 0;
+            position: relative;
+        }
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 32px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            cursor: default;
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 180px 120px at 50% 0%, rgba(60, 109, 240, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .stat-card:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 28px rgba(60, 109, 240, 0.1), 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .stat-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.85rem;
+            font-weight: 700;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ---- ABOUT ---- */
+        .about {
+            padding: 72px 0;
+            position: relative;
+        }
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .section-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.65rem;
+            color: var(--white);
+            margin-bottom: 32px;
+            font-weight: 600;
+        }
+        .about p {
+            font-size: 1.02rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        .about p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* ---- WHO WE HELP ---- */
+        .who {
+            padding: 72px 0;
+            position: relative;
+        }
+        .who::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .who-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-top: 8px;
+        }
+        .who-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px 26px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, transform 0.25s ease;
+            cursor: default;
+        }
+        .who-card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-3px);
+        }
+        .who-card-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .who-card-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+        }
+
+        /* ---- SERVICES ---- */
+        .services {
+            padding: 72px 0;
+            position: relative;
+        }
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .service-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .service-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 26px 30px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+            cursor: default;
+        }
+        .service-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .service-item:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 22px rgba(60, 109, 240, 0.09), 0 6px 24px rgba(0, 0, 0, 0.25);
+            transform: translateX(4px);
+        }
+        .service-item:hover::before {
+            opacity: 1;
+        }
+        .service-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-light);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .service-text {
+            font-size: 0.97rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ---- MID-PAGE VISUAL ---- */
+        .media-visual {
+            padding: 32px 0 64px;
+        }
+        .media-img-wrap {
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 0 32px rgba(60, 109, 240, 0.06), 0 20px 60px rgba(0,0,0,0.5);
+        }
+        .media-img-wrap img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* ---- VALUES ---- */
+        .values {
+            padding: 72px 0;
+            position: relative;
+        }
+        .values::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+        .value-card {
+            text-align: center;
+            padding: 32px 20px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, transform 0.25s ease;
+            cursor: default;
+        }
+        .value-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 160px 100px at 50% 100%, rgba(60, 109, 240, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .value-card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-3px);
+        }
+        .value-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(60, 109, 240, 0.1);
+            border: 1px solid var(--border-glow);
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        .value-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .value-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ---- TRUST / AS FEATURED IN ---- */
+        .trust {
+            padding: 64px 0;
+            position: relative;
+        }
+        .trust::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .trust-intro {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .media-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+        }
+        .media-logo {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 18px;
+            transition: border-color 0.25s;
+            cursor: default;
+        }
+        .media-logo img {
+            height: 26px;
+            width: auto;
+            display: block;
+            filter: grayscale(1) brightness(0.6);
+            transition: filter 0.25s;
+        }
+        .media-logo:hover {
+            border-color: var(--border-glow);
+        }
+        .media-logo:hover img {
+            filter: grayscale(0.1) brightness(1);
+        }
+
+        /* ---- CTA ---- */
+        .cta-section {
+            padding: 96px 0;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .cta-blob {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 760px;
+            height: 420px;
+            background: radial-gradient(ellipse 520px 300px at 50% 50%, rgba(60, 109, 240, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .cta-inner {
+            position: relative;
+            z-index: 1;
+        }
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.7rem, 4vw, 2.1rem);
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 40px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* Glowing CTA */
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #3c6df0, #6b93f7);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.97rem;
+            font-weight: 700;
+            padding: 17px 52px;
+            border-radius: 10px;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            box-shadow:
+                0 0 28px rgba(60, 109, 240, 0.42),
+                0 8px 32px rgba(60, 109, 240, 0.2);
+            transition: box-shadow 0.3s ease, transform 0.2s ease, filter 0.3s ease;
+        }
+        .cta-button:hover {
+            box-shadow:
+                0 0 52px rgba(60, 109, 240, 0.6),
+                0 12px 48px rgba(60, 109, 240, 0.28);
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+        }
+        .cta-note {
+            margin-top: 18px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer p {
+            font-size: 0.73rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 64px 0 52px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .who-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .service-item {
+                padding: 22px 22px;
+            }
+            .cta-section {
+                padding: 64px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar (glassmorphism) -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-brand">Montara Wealth</span>
+            <a href="tel:0283303733" class="topbar-phone">02 8330 3733</a>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner container">
+            <p class="hero-eyebrow">Financial Advisors — Sydney, NSW</p>
+            <h1>Secure your future while maintaining your lifestyle</h1>
+            <p class="hero-sub">Montara Wealth helps everyday Australians in their 30s, 40s, and 50s build a clear, strategic plan for their financial future — covering everything from cashflow and super to property, investing, and estate planning.</p>
+            <div class="hero-image-card">
+                <img
+                    src="https://montarawealth.com.au/wp-content/uploads/2025/01/montara-wealth-best-financial-advisors-banner-v3.jpg"
+                    alt="Montara Wealth — Financial Advisors Sydney"
+                    loading="eager"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats fade-in">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Specialist service areas</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Sydney</div>
+                    <div class="stat-label">CBD office — George St, Level 6</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Holistic</div>
+                    <div class="stat-label">Bespoke plans, not one-size-fits-all</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about fade-in">
+        <div class="container">
+            <h2 class="section-heading">About Montara Wealth</h2>
+            <p>Based in the heart of <span class="highlight">Sydney's CBD at 309–315 George Street, Level 6</span>, Montara Wealth is a team of passionate financial professionals dedicated to helping Australians take genuine control of their financial future.</p>
+            <p>We specialise in working with people in their 30s, 40s and 50s — those who are earning well but aren't yet seeing their efforts translate into real wealth. Whether you're juggling a mortgage and kids, planning your first investment, or trying to see a retirement date on the horizon, our advisers take the pressure off.</p>
+            <p>Our approach is holistic and strategic. We build bespoke financial plans that reflect your unique goals, challenges, and lifestyle — with a deep understanding of the current financial landscape at every step. At <span class="highlight">Montara Wealth</span>, clarity and confidence are built into every engagement.</p>
+        </div>
+    </section>
+
+    <!-- Who We Help -->
+    <section class="who fade-in">
+        <div class="container">
+            <h2 class="section-heading">Does this sound like you?</h2>
+            <div class="who-grid">
+                <div class="who-card">
+                    <div class="who-card-title">First-time investors</div>
+                    <div class="who-card-desc">Ready to put your money to work but unsure where to start or what to avoid.</div>
+                </div>
+                <div class="who-card">
+                    <div class="who-card-title">Young couples</div>
+                    <div class="who-card-desc">Planning for a home, a family, or both — and trying to make the numbers stack up.</div>
+                </div>
+                <div class="who-card">
+                    <div class="who-card-title">Single professionals</div>
+                    <div class="who-card-desc">Earning a strong income and looking to reduce tax while growing real wealth fast.</div>
+                </div>
+                <div class="who-card">
+                    <div class="who-card-title">Parents pre-retirement</div>
+                    <div class="who-card-desc">Balancing mortgage, school fees and super — and wanting a clear path to retire on your terms.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services fade-in">
+        <div class="container">
+            <h2 class="section-heading">Our services</h2>
+            <ul class="service-list">
+                <li class="service-item">
+                    <p class="service-label">Cashflow Management</p>
+                    <p class="service-text">Get a clear picture of where your money is going and build a structure that actually moves you forward — without cutting out what matters.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Superannuation</p>
+                    <p class="service-text">Optimise your super contributions and investment strategy so your retirement savings are working as hard as you are.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Property Purchase &amp; Property Investing</p>
+                    <p class="service-text">From buying your first home to building a portfolio, we provide the financial strategy that makes every acquisition a confident, informed decision.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Self-Managed Super Fund (SMSF)</p>
+                    <p class="service-text">Take control of your retirement savings with an SMSF structure — designed, set up, and managed with the right advice at every stage.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Share Investing</p>
+                    <p class="service-text">Build wealth through equities with a strategy aligned to your risk profile, timeframe, and broader financial plan.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Insurance</p>
+                    <p class="service-text">Protect what you've built — life, income protection, and TPD cover that fits your situation, not an off-the-shelf policy.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Estate Planning</p>
+                    <p class="service-text">Ensure your wealth passes to the right people, the right way. We coordinate with legal professionals to align your estate with your financial structure.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Mid-page visual -->
+    <section class="media-visual fade-in">
+        <div class="container">
+            <div class="media-img-wrap">
+                <img
+                    src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&q=80"
+                    alt="Financial planning — Montara Wealth"
+                    loading="lazy"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="values fade-in">
+        <div class="container">
+            <h2 class="section-heading" style="text-align:center; margin-bottom: 36px;">How we approach your finances</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">&#9670;</div>
+                    <div class="value-title">Holistic</div>
+                    <div class="value-desc">We look at your full financial picture — not just one slice of it.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">&#9671;</div>
+                    <div class="value-title">Strategic</div>
+                    <div class="value-desc">Every recommendation is tied to your goals, your timeline, and your life.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">&#9669;</div>
+                    <div class="value-title">Practical</div>
+                    <div class="value-desc">Clear, actionable plans — not generic advice you've already heard.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust / As Featured In -->
+    <section class="trust fade-in">
+        <div class="container">
+            <p class="trust-intro">As featured in</p>
+            <div class="media-grid">
+                <div class="media-logo">
+                    <img
+                        src="https://montarawealth.com.au/wp-content/uploads/2020/07/realestate.png"
+                        alt="realestate.com.au"
+                        loading="lazy"
+                    >
+                </div>
+                <div class="media-logo">
+                    <img
+                        src="https://montarawealth.com.au/wp-content/uploads/2020/07/dt.png"
+                        alt="Domain"
+                        loading="lazy"
+                    >
+                </div>
+                <div class="media-logo">
+                    <img
+                        src="https://montarawealth.com.au/wp-content/uploads/2020/07/ab.png"
+                        alt="Australian Broker"
+                        loading="lazy"
+                    >
+                </div>
+                <div class="media-logo">
+                    <img
+                        src="https://montarawealth.com.au/wp-content/uploads/2020/07/allhomes.png"
+                        alt="Allhomes"
+                        loading="lazy"
+                    >
+                </div>
+                <div class="media-logo">
+                    <img
+                        src="https://montarawealth.com.au/wp-content/uploads/2020/07/superguide.png"
+                        alt="SuperGuide"
+                        loading="lazy"
+                    >
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section fade-in">
+        <div class="cta-blob"></div>
+        <div class="container cta-inner">
+            <h2 class="cta-heading">Book a free chat with Montara Wealth</h2>
+            <p class="cta-sub">Whether you're buying a first home, growing your investments, or finally building a retirement plan — our Sydney-based team is ready to help.</p>
+            <a href="tel:0283303733" class="cta-button">Call 02 8330 3733</a>
+            <p class="cta-note">Suite 1, Level 6 / 309–315 George St, Sydney NSW 2000</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Montara Wealth &mdash; montarawealth.com.au &mdash; 02 8330 3733 &mdash; Suite 1, Level 6 / 309&ndash;315 George St, Sydney NSW 2000</p>
+        </div>
+    </footer>
+
+    <script>
+        // IntersectionObserver scroll fade-in
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>

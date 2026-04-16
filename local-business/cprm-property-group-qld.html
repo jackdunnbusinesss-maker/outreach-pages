@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPRM Property Group (QLD) — Diverse Property Specialists</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #06080f;
+            --surface: #0c1020;
+            --surface-light: #121828;
+            --border: #1a2236;
+            --border-glow: rgba(212, 175, 55, 0.28);
+            --accent: #d4af37;
+            --accent-light: #f0ce5e;
+            --accent-dim: #9c7e1a;
+            --accent-glow: rgba(212, 175, 55, 0.18);
+            --accent-glow-strong: rgba(212, 175, 55, 0.38);
+            --white: #eef2f8;
+            --text: #b0bdcc;
+            --text-muted: #546075;
+            --gradient-hero: linear-gradient(135deg, #d4af37 0%, #f0ce5e 45%, #e8a838 100%);
+            --gradient-accent: linear-gradient(90deg, #d4af37, #f0ce5e);
+            --gradient-mesh: linear-gradient(135deg, rgba(212,175,55,0.12) 0%, rgba(14,30,70,0.0) 60%);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---- SCROLL FADE-IN ---- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---- MESH BACKGROUND ---- */
+        .mesh-bg {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse 700px 500px at 15% 20%, rgba(212, 175, 55, 0.055) 0%, transparent 70%),
+                radial-gradient(ellipse 600px 400px at 85% 65%, rgba(14, 40, 110, 0.08) 0%, transparent 65%),
+                radial-gradient(ellipse 450px 350px at 50% 90%, rgba(212, 175, 55, 0.04) 0%, transparent 60%);
+        }
+
+        /* ---- TOP BAR ---- */
+        .topbar {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(6, 8, 15, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-brand {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 0.5px;
+        }
+        .topbar-phone {
+            font-size: 0.8rem;
+            color: var(--accent-light);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .topbar-phone:hover {
+            color: var(--white);
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            position: relative;
+            padding: 100px 0 76px;
+            text-align: center;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 960px;
+            height: 640px;
+            background:
+                radial-gradient(ellipse 520px 340px at 28% 38%, rgba(212, 175, 55, 0.11) 0%, transparent 70%),
+                radial-gradient(ellipse 380px 300px at 78% 28%, rgba(14, 60, 150, 0.07) 0%, transparent 65%),
+                radial-gradient(ellipse 320px 260px at 52% 78%, rgba(212, 175, 55, 0.06) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-eyebrow {
+            display: inline-block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 26px;
+            font-weight: 600;
+            border: 1px solid var(--border-glow);
+            padding: 6px 20px;
+            border-radius: 100px;
+            background: rgba(212, 175, 55, 0.07);
+            backdrop-filter: blur(8px);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5.5vw, 3rem);
+            line-height: 1.22;
+            margin-bottom: 28px;
+            font-weight: 700;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            font-size: 1.04rem;
+            color: var(--text);
+            max-width: 580px;
+            margin: 0 auto 44px;
+            line-height: 1.85;
+        }
+
+        /* Hero image card — glassmorphism */
+        .hero-image-card {
+            max-width: 580px;
+            margin: 0 auto;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid var(--border-glow);
+            box-shadow:
+                0 0 0 1px rgba(212, 175, 55, 0.06),
+                0 0 48px rgba(212, 175, 55, 0.1),
+                0 28px 90px rgba(0, 0, 0, 0.65);
+            position: relative;
+            background: var(--surface);
+            backdrop-filter: blur(4px);
+        }
+        .hero-image-card img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            min-height: 260px;
+        }
+        .hero-image-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 45%, rgba(6, 8, 15, 0.55) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* ---- STATS ---- */
+        .stats {
+            padding: 68px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 34px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+            cursor: default;
+            backdrop-filter: blur(8px);
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 200px 130px at 50% 0%, rgba(212, 175, 55, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .stat-card:hover {
+            border-color: var(--border-glow);
+            box-shadow:
+                0 0 30px rgba(212, 175, 55, 0.1),
+                0 8px 36px rgba(0, 0, 0, 0.35);
+            transform: translateY(-3px);
+        }
+        .stat-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.9rem;
+            font-weight: 700;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+        }
+
+        /* ---- ABOUT ---- */
+        .about {
+            padding: 76px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .section-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.7rem;
+            color: var(--white);
+            margin-bottom: 32px;
+            font-weight: 600;
+        }
+        .about p {
+            font-size: 1.02rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        .about p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* ---- SERVICES ---- */
+        .services {
+            padding: 76px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .service-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+        }
+        .service-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 26px 30px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+            cursor: default;
+            backdrop-filter: blur(6px);
+        }
+        .service-item::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .service-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 300px 160px at 0% 50%, rgba(212, 175, 55, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .service-item:hover {
+            border-color: var(--border-glow);
+            box-shadow:
+                0 0 22px rgba(212, 175, 55, 0.08),
+                0 6px 28px rgba(0, 0, 0, 0.28);
+            transform: translateX(5px);
+        }
+        .service-item:hover::before {
+            opacity: 1;
+        }
+        .service-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2.2px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        .service-text {
+            font-size: 0.97rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ---- MEDIA IMAGE ---- */
+        .media-visual {
+            padding: 32px 0 68px;
+            position: relative;
+            z-index: 1;
+        }
+        .media-img-wrap {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow:
+                0 0 32px rgba(212, 175, 55, 0.06),
+                0 22px 64px rgba(0, 0, 0, 0.5);
+            background: var(--surface);
+        }
+        .media-img-wrap img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            min-height: 220px;
+        }
+
+        /* ---- VALUES ---- */
+        .values {
+            padding: 76px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .values::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .value-card {
+            text-align: center;
+            padding: 34px 20px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease;
+            cursor: default;
+            backdrop-filter: blur(6px);
+        }
+        .value-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 180px 110px at 50% 100%, rgba(212, 175, 55, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .value-card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-4px);
+            box-shadow:
+                0 0 28px rgba(212, 175, 55, 0.09),
+                0 12px 40px rgba(0, 0, 0, 0.32);
+        }
+        .value-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--border-glow);
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        .value-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .value-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ---- LOCATION BADGE ---- */
+        .location-section {
+            padding: 64px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .location-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .location-intro {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--text-muted);
+            margin-bottom: 26px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .location-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .location-badge {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 22px;
+            font-size: 0.83rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: border-color 0.25s, color 0.25s;
+            cursor: default;
+            backdrop-filter: blur(4px);
+        }
+        .location-badge:hover {
+            border-color: var(--border-glow);
+            color: var(--accent-light);
+        }
+
+        /* ---- CTA ---- */
+        .cta-section {
+            padding: 100px 0;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .cta-blob {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 760px;
+            height: 440px;
+            background: radial-gradient(ellipse 540px 300px at 50% 50%, rgba(212, 175, 55, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .cta-inner {
+            position: relative;
+            z-index: 1;
+        }
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.7rem, 4vw, 2.2rem);
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 42px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4af37, #f0ce5e);
+            color: #06080f;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.97rem;
+            font-weight: 700;
+            padding: 18px 56px;
+            border-radius: 12px;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            box-shadow:
+                0 0 0 1px rgba(212, 175, 55, 0.2),
+                0 0 28px rgba(212, 175, 55, 0.32),
+                0 10px 36px rgba(212, 175, 55, 0.18);
+            transition: box-shadow 0.3s ease, transform 0.2s ease, filter 0.3s ease;
+        }
+        .cta-button:hover {
+            box-shadow:
+                0 0 0 1px rgba(212, 175, 55, 0.35),
+                0 0 48px rgba(212, 175, 55, 0.55),
+                0 14px 52px rgba(212, 175, 55, 0.28);
+            transform: translateY(-3px);
+            filter: brightness(1.06);
+        }
+        .cta-note {
+            margin-top: 18px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+        .cta-note a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .cta-note a:hover {
+            color: var(--accent-light);
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .footer p {
+            font-size: 0.73rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 68px 0 56px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 13px;
+            }
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 13px;
+            }
+            .service-item {
+                padding: 22px 20px;
+            }
+            .cta-section {
+                padding: 68px 0;
+            }
+            .hero-image-card img {
+                min-height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fixed mesh background -->
+    <div class="mesh-bg"></div>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-brand">CPRM Property Group (QLD)</span>
+            <a href="tel:0734820100" class="topbar-phone">07 3482 0100</a>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner container">
+            <p class="hero-eyebrow">Diverse Property Specialists — Queensland</p>
+            <h1>All aspects of property — commercial, residential, projects &amp; migration</h1>
+            <p class="hero-sub">CPRM Property Group is a diverse Queensland property group specialising in commercial sales &amp; leasing, asset management, residential sales, business sales, project management, buyers advocacy, and affordable housing.</p>
+            <div class="hero-image-card">
+                <img
+                    src="https://cprmqld.com.au/getattachment/481fd815-06c4-4122-a7d6-289d8822ec65/cta-one"
+                    alt="CPRM Property Group Queensland"
+                    loading="eager"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats fade-in">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Core property disciplines</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">QLD</div>
+                    <div class="stat-label">Specialists across Queensland</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Milton</div>
+                    <div class="stat-label">Level 3, 303 Coronation Drive</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about fade-in">
+        <div class="container">
+            <h2 class="section-heading">About CPRM Property Group</h2>
+            <p><span class="highlight">CPRM Property Group (QLD)</span> is a diverse property group based in Milton, Queensland, operating from Level 3, 303 Coronation Drive. Our team covers the full spectrum of property — commercial and residential sales, leasing, asset management, project development, business sales, buyers advocacy, and affordable housing.</p>
+            <p>We believe property is more than a transaction. Whether you're looking to buy, sell, lease, or invest across commercial, residential, or industrial asset classes, CPRM brings depth of expertise across every phase of the property lifecycle.</p>
+            <p>Our office operates Monday to Friday, 8:30am to 5:00pm. Reach us directly on <span class="highlight">07 3482 0100</span> or via WhatsApp on <span class="highlight">+61 (0) 499 472 146</span>.</p>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services fade-in">
+        <div class="container">
+            <h2 class="section-heading">What we do</h2>
+            <ul class="service-list">
+                <li class="service-item">
+                    <p class="service-label">Affordable Housing</p>
+                    <p class="service-text">Delivering accessible housing solutions across Queensland, including pre-fabricated and modular construction methods designed for efficiency and affordability.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Commercial Sales &amp; Leasing</p>
+                    <p class="service-text">End-to-end commercial property transactions — from sourcing and negotiating through to settlement — across Queensland's commercial and industrial markets.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Commercial Asset Management</p>
+                    <p class="service-text">Active management of commercial assets to protect and maximise returns, covering tenant relations, maintenance, and performance reporting.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Residential Sales</p>
+                    <p class="service-text">Strategic representation for residential sellers and buyers across Queensland, backed by local market knowledge and a full-service sales process.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Business Sales</p>
+                    <p class="service-text">Specialist guidance on buying and selling business assets, combining commercial property expertise with an understanding of operating business value.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Project Management &amp; Buyers Advocacy</p>
+                    <p class="service-text">Overseeing development projects from inception to delivery, and providing independent buyers advocacy to ensure clients secure the right property at the right price.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Media image 1 -->
+    <section class="media-visual fade-in">
+        <div class="container">
+            <div class="media-img-wrap">
+                <img
+                    src="https://cprmqld.com.au/getattachment/65526e35-8fc8-4be4-b696-3ff409a4bcba/cta-two"
+                    alt="CPRM Property Group — Queensland property"
+                    loading="lazy"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="values fade-in">
+        <div class="container">
+            <h2 class="section-heading" style="text-align:center; margin-bottom: 36px;">How we operate</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">&#9670;</div>
+                    <div class="value-title">Full-Spectrum</div>
+                    <div class="value-desc">Commercial, residential, business, and affordable housing — one group, all aspects.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">&#9671;</div>
+                    <div class="value-title">Queensland Focus</div>
+                    <div class="value-desc">Local expertise in the QLD market with deep knowledge of Whitsunday, Gold Coast, and South East Queensland.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">&#9669;</div>
+                    <div class="value-title">Migration Services</div>
+                    <div class="value-desc">Supporting clients relocating to Queensland with property and migration guidance in one place.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media image 2 -->
+    <section class="media-visual fade-in" style="padding-top: 0;">
+        <div class="container">
+            <div class="media-img-wrap">
+                <img
+                    src="https://cprmqld.com.au/getattachment/3d91f627-364a-46b6-b9b1-e933a1a114c8/cta-two"
+                    alt="CPRM Property Group — project"
+                    loading="lazy"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Location / active projects -->
+    <section class="location-section fade-in">
+        <div class="container">
+            <p class="location-intro">Active projects &amp; areas of focus</p>
+            <div class="location-badges">
+                <span class="location-badge">Whitsunday Airpark Hangar House</span>
+                <span class="location-badge">Gold Coast Townhouses — 2025</span>
+                <span class="location-badge">5000sqm Industrial Warehouse — 2025</span>
+                <span class="location-badge">Laguna Bailey Road Medical Centre</span>
+                <span class="location-badge">32 Business Drive, Narangba</span>
+                <span class="location-badge">107–109 School Road, Kallangur</span>
+                <span class="location-badge">Smart Home Projects</span>
+                <span class="location-badge">Milton QLD Office</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section fade-in">
+        <div class="cta-blob"></div>
+        <div class="container cta-inner">
+            <h2 class="cta-heading">Connect with the CPRM team</h2>
+            <p class="cta-sub">Whether you're buying, selling, leasing, or developing across commercial or residential property in Queensland — speak to our team today.</p>
+            <a href="tel:0734820100" class="cta-button">Call 07 3482 0100</a>
+            <p class="cta-note">Or email us at <a href="mailto:info@cprmqld.com.au">info@cprmqld.com.au</a> &nbsp;&middot;&nbsp; WhatsApp: +61 (0) 499 472 146</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>CPRM Property Group (QLD) &mdash; Level 3/303 Coronation Drive, Milton QLD 4064 &mdash; cprmqld.com.au &mdash; 07 3482 0100</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll fade-in
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.10 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>

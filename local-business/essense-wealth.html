@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Essense Wealth — Your Why, Our How.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --bg: #fafaf7;
+    --surface: #ffffff;
+    --surface-soft: #f3f2ee;
+    --border: #e4e2dc;
+    --accent: #496363;
+    --accent-deep: #34484a;
+    --accent-soft: #e6ecec;
+    --ink: #1f2626;
+    --text: #3d4747;
+    --text-muted: #7a8383;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 28px;
+}
+
+/* ---- TOP BAR ---- */
+.topbar {
+    padding: 22px 0;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+}
+.topbar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.brand {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.brand small {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    text-transform: none;
+    font-style: italic;
+    margin-top: 2px;
+}
+.nav-cta {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    border: 1px solid var(--accent);
+    padding: 9px 18px;
+    border-radius: 6px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+.nav-cta:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+/* ---- HERO ---- */
+.hero {
+    padding: 96px 0 72px;
+    text-align: center;
+    background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
+    border-bottom: 1px solid var(--border);
+}
+.hero-eyebrow {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--accent);
+    margin-bottom: 22px;
+    font-weight: 600;
+}
+.hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2.2rem, 5.2vw, 3.2rem);
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 22px;
+    font-weight: 600;
+}
+.hero h1 em {
+    color: var(--accent);
+    font-style: italic;
+}
+.hero-sub {
+    font-size: 1.08rem;
+    color: var(--text);
+    max-width: 620px;
+    margin: 0 auto 36px;
+    line-height: 1.8;
+}
+.hero-cta {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 15px 38px;
+    border-radius: 6px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+.hero-cta:hover {
+    background: var(--accent-deep);
+    transform: translateY(-1px);
+}
+
+/* ---- APPROACH ---- */
+.approach {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--border);
+}
+.section-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--accent);
+    margin-bottom: 14px;
+    font-weight: 600;
+    text-align: center;
+}
+.section-heading {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.7rem, 3.5vw, 2.2rem);
+    color: var(--ink);
+    margin-bottom: 40px;
+    text-align: center;
+    font-weight: 600;
+    line-height: 1.3;
+}
+.approach p {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    margin-bottom: 22px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.approach p:last-child { margin-bottom: 0; }
+.pullquote {
+    border-left: 3px solid var(--accent);
+    padding: 14px 24px;
+    margin: 36px auto;
+    max-width: 620px;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--accent-deep);
+    background: var(--surface-soft);
+}
+
+/* ---- PROCESS ---- */
+.process {
+    padding: 80px 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+}
+.process-intro {
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto 48px;
+    font-size: 1rem;
+    color: var(--text);
+}
+.steps {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    counter-reset: step;
+}
+.step {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 26px 30px 26px 32px;
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 22px;
+    align-items: flex-start;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.step:hover {
+    border-color: var(--accent);
+    box-shadow: 0 8px 24px rgba(73, 99, 99, 0.08);
+}
+.step-num {
+    counter-increment: step;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1;
+    padding-top: 4px;
+}
+.step-num::before { content: "0" counter(step); }
+.step-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.25rem;
+    color: var(--ink);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+.step-body {
+    font-size: 0.98rem;
+    color: var(--text);
+    line-height: 1.7;
+}
+
+/* ---- SERVICES ---- */
+.services {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--border);
+}
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+    margin-top: 12px;
+}
+.service-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 26px 24px;
+    text-align: left;
+}
+.service-card h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.1rem;
+    color: var(--ink);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+.service-card p {
+    font-size: 0.93rem;
+    color: var(--text);
+    line-height: 1.65;
+}
+
+/* ---- CTA ---- */
+.cta-section {
+    padding: 96px 0;
+    background: var(--accent);
+    text-align: center;
+    color: #fff;
+}
+.cta-heading {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    margin-bottom: 18px;
+    font-weight: 600;
+    color: #fff;
+}
+.cta-sub {
+    font-size: 1.05rem;
+    margin-bottom: 36px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.7;
+}
+.cta-button {
+    display: inline-block;
+    background: #fff;
+    color: var(--accent-deep);
+    font-size: 0.98rem;
+    font-weight: 600;
+    padding: 16px 44px;
+    border-radius: 6px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+.cta-button:hover {
+    background: var(--surface-soft);
+    transform: translateY(-1px);
+}
+.cta-contact {
+    margin-top: 24px;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.85);
+}
+.cta-contact a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* ---- FOOTER ---- */
+.footer {
+    padding: 44px 0 36px;
+    background: var(--ink);
+    color: var(--text-muted);
+    text-align: center;
+}
+.footer .brand-mini {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1rem;
+    color: #fff;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+}
+.footer .tagline-mini {
+    font-style: italic;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+    color: rgba(255,255,255,0.75);
+}
+.footer p {
+    font-size: 0.76rem;
+    max-width: 620px;
+    margin: 0 auto;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.55);
+}
+.footer .compliance {
+    margin-top: 14px;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.4);
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 640px) {
+    .hero { padding: 68px 0 52px; }
+    .approach, .process, .services { padding: 60px 0; }
+    .cta-section { padding: 72px 0; }
+    .step {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 22px 22px;
+    }
+    .step-num { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- Top Bar -->
+<header class="topbar">
+    <div class="container topbar-inner">
+        <div class="brand">
+            Essense Wealth
+            <small>Your Why, Our How.</small>
+        </div>
+        <a href="#book" class="nav-cta">Book a Chat</a>
+    </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="container">
+        <p class="hero-eyebrow">Financial Advice, Built Around You</p>
+        <h1>Your life and finances are inseparable — but money is the <em>vehicle</em>, not the destination.</h1>
+        <p class="hero-sub">At Essense Wealth, we help you take control of the resource that funds the life you actually want. Plain-English advice, aligned to your values, delivered at your pace.</p>
+        <a href="#book" class="hero-cta">Book an Introductory Chat</a>
+    </div>
+</section>
+
+<!-- Approach -->
+<section class="approach">
+    <div class="container">
+        <p class="section-label">Our Approach</p>
+        <h2 class="section-heading">It's your life. It's your time.</h2>
+        <p>Your life and story are uniquely yours. We begin by spending time getting to know your unique story and what drives you — your core values, your objectives and your why.</p>
+        <p>Our strategies and services are always aligned to your values and vision. By breaking your objectives into tangible goals, we work together to achieve the outcomes that matter to you. We educate, coach and mentor you through each step, and celebrate each win along the way.</p>
+        <div class="pullquote">
+            We like to keep it real. No financial jargon. No boring industry terms. Just plain-English advice that's easy to understand — so you always feel confident and in control.
+        </div>
+        <p>As our client, you'll have access to leading technology that offers real-time analysis so you can track and monitor your entire financial plan, any time.</p>
+    </div>
+</section>
+
+<!-- Process -->
+<section class="process">
+    <div class="container">
+        <p class="section-label">Our Process</p>
+        <h2 class="section-heading">Five steps. One clear path forward.</h2>
+        <p class="process-intro">"The secret to getting ahead is getting started." — Mark Twain</p>
+
+        <ol class="steps">
+            <li class="step">
+                <div class="step-num"></div>
+                <div>
+                    <h3 class="step-title">Introductory Chat</h3>
+                    <p class="step-body">A short initial consultation focused on understanding your needs and motivations for seeking advice. We'll uncover your why and your vision, answer any burning questions, and let you know what to expect moving forwards. Once booked, you'll receive a confirmation email and text with information on how to prepare. (15–30 minutes.)</p>
+                </div>
+            </li>
+            <li class="step">
+                <div class="step-num"></div>
+                <div>
+                    <h3 class="step-title">Discovery Session — It's all about you</h3>
+                    <p class="step-body">This session is dedicated to getting to know you properly. We clarify your core values and the higher purpose that drives and motivates you. We explore your vision of life in the future and what's important right now — the foundation everything else is built on.</p>
+                </div>
+            </li>
+            <li class="step">
+                <div class="step-num"></div>
+                <div>
+                    <h3 class="step-title">Your Financial Roadmap</h3>
+                    <p class="step-body">We translate your values, goals and current position into a clear plan. You'll see where you are, where you want to be, and the steps that connect the two — in plain English, without the jargon.</p>
+                </div>
+            </li>
+            <li class="step">
+                <div class="step-num"></div>
+                <div>
+                    <h3 class="step-title">Recommendation & Implementation</h3>
+                    <p class="step-body">We walk through our recommendations with you, answer every question, and put the plan into action once you're comfortable. You stay in the driver's seat at every point.</p>
+                </div>
+            </li>
+            <li class="step">
+                <div class="step-num"></div>
+                <div>
+                    <h3 class="step-title">Further Advice and Guidance</h3>
+                    <p class="step-body">Life changes. Markets move. We stay with you — educating, coaching and adjusting the plan as your circumstances evolve, and celebrating each win along the way.</p>
+                </div>
+            </li>
+        </ol>
+    </div>
+</section>
+
+<!-- Services -->
+<section class="services">
+    <div class="container">
+        <p class="section-label">What We Do</p>
+        <h2 class="section-heading">Advice, in plain English.</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <h3>Values-Led Planning</h3>
+                <p>Every strategy is built on what actually matters to you — your core values, your objectives, your why.</p>
+            </div>
+            <div class="service-card">
+                <h3>Goal-Setting & Clarity</h3>
+                <p>We break bigger objectives into tangible goals so progress is visible and the plan stays workable.</p>
+            </div>
+            <div class="service-card">
+                <h3>Plain-English Advice</h3>
+                <p>No jargon, no industry fog. Clear explanations so you always understand what's being recommended and why.</p>
+            </div>
+            <div class="service-card">
+                <h3>Ongoing Coaching</h3>
+                <p>Education, coaching and mentoring through each stage — with flexibility to adapt as life changes.</p>
+            </div>
+            <div class="service-card">
+                <h3>Real-Time Tracking</h3>
+                <p>Access to technology that lets you track and monitor your full financial plan in real time.</p>
+            </div>
+            <div class="service-card">
+                <h3>Long-Term Partnership</h3>
+                <p>Ongoing advice and guidance built around how your circumstances, goals and priorities evolve.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="book">
+    <div class="container">
+        <h2 class="cta-heading">Start with a short introductory chat.</h2>
+        <p class="cta-sub">15–30 minutes, no commitment. We'll listen to what you're trying to achieve, answer your questions, and show you what working together would look like.</p>
+        <a href="mailto:f.lucani@ugc.net.au?subject=Introductory%20Chat%20—%20Essense%20Wealth" class="cta-button">Book an Introductory Chat</a>
+        <p class="cta-contact">Or email us directly at <a href="mailto:f.lucani@ugc.net.au">f.lucani@ugc.net.au</a></p>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="brand-mini">ESSENSE WEALTH</div>
+        <div class="tagline-mini">Your Why, Our How.</div>
+        <p>General information only. Any advice referenced on this page is general in nature and does not take into account your personal objectives, financial situation or needs. Consider whether it is appropriate for you before acting on it, and obtain personal advice where necessary.</p>
+        <p class="compliance">&copy; Essense Wealth. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>

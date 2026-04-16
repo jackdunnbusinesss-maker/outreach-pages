@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callagher Estate Agents — Sydney Inner West</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #07090f;
+            --surface: #0d1019;
+            --surface-light: #141824;
+            --border: #1c2234;
+            --border-glow: rgba(196, 160, 80, 0.28);
+            --accent: #c4a050;
+            --accent-light: #e0c07a;
+            --accent-dim: #8c6e2a;
+            --accent-glow: rgba(196, 160, 80, 0.16);
+            --accent-glow-strong: rgba(196, 160, 80, 0.34);
+            --white: #edf0f7;
+            --text: #9daabb;
+            --text-muted: #4e5d72;
+            --gradient-hero: linear-gradient(135deg, #c4a050 0%, #e8d48a 45%, #a8c4e0 100%);
+            --gradient-accent: linear-gradient(90deg, #c4a050, #e0c07a);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---- SCROLL FADE-IN ---- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---- MESH BACKGROUND ---- */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 800px 600px at 10% 20%, rgba(196, 160, 80, 0.04) 0%, transparent 65%),
+                radial-gradient(ellipse 600px 500px at 90% 70%, rgba(100, 140, 200, 0.04) 0%, transparent 65%),
+                radial-gradient(ellipse 500px 400px at 50% 50%, rgba(196, 160, 80, 0.025) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ---- TOP BAR ---- */
+        .topbar {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(7, 9, 15, 0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-brand {
+            font-size: 0.83rem;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: 0.4px;
+        }
+        .topbar-location {
+            font-size: 0.77rem;
+            color: var(--accent);
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            position: relative;
+            padding: 100px 0 76px;
+            text-align: center;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1000px;
+            height: 650px;
+            background:
+                radial-gradient(ellipse 500px 340px at 28% 38%, rgba(196, 160, 80, 0.11) 0%, transparent 68%),
+                radial-gradient(ellipse 380px 300px at 78% 28%, rgba(100, 150, 210, 0.07) 0%, transparent 62%),
+                radial-gradient(ellipse 320px 260px at 55% 82%, rgba(196, 160, 80, 0.06) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-eyebrow {
+            display: inline-block;
+            font-size: 0.71rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 26px;
+            font-weight: 600;
+            border: 1px solid var(--border-glow);
+            padding: 6px 20px;
+            border-radius: 100px;
+            background: rgba(196, 160, 80, 0.06);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5.5vw, 3.1rem);
+            line-height: 1.2;
+            margin-bottom: 28px;
+            font-weight: 700;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 580px;
+            margin: 0 auto 44px;
+            line-height: 1.85;
+        }
+
+        /* Hero image card */
+        .hero-image-card {
+            max-width: 580px;
+            margin: 0 auto;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid var(--border-glow);
+            box-shadow:
+                0 0 48px rgba(196, 160, 80, 0.09),
+                0 28px 80px rgba(0, 0, 0, 0.6);
+            position: relative;
+        }
+        .hero-image-card img {
+            width: 100%;
+            height: 320px;
+            display: block;
+            object-fit: cover;
+        }
+        .hero-image-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 45%, rgba(7, 9, 15, 0.65) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* ---- STATS ---- */
+        .stats {
+            padding: 68px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 34px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            cursor: default;
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 200px 130px at 50% 0%, rgba(196, 160, 80, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .stat-card:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 28px rgba(196, 160, 80, 0.09), 0 10px 36px rgba(0, 0, 0, 0.32);
+        }
+        .stat-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.95rem;
+            font-weight: 700;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            font-size: 0.77rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ---- ABOUT ---- */
+        .about {
+            padding: 76px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .section-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.7rem;
+            color: var(--white);
+            margin-bottom: 32px;
+            font-weight: 600;
+        }
+        .about p {
+            font-size: 1.02rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        .about p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* ---- SERVICES ---- */
+        .services {
+            padding: 76px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .service-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .service-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px 32px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+            cursor: default;
+        }
+        .service-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .service-item:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 22px rgba(196, 160, 80, 0.08), 0 6px 26px rgba(0, 0, 0, 0.26);
+            transform: translateX(4px);
+        }
+        .service-item:hover::before {
+            opacity: 1;
+        }
+        .service-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .service-text {
+            font-size: 0.97rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ---- MEDIA IMAGE (mid-page) ---- */
+        .media-visual {
+            padding: 16px 0 68px;
+            position: relative;
+            z-index: 1;
+        }
+        .media-img-wrap {
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 0 32px rgba(196, 160, 80, 0.05), 0 22px 64px rgba(0,0,0,0.48);
+        }
+        .media-img-wrap img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            height: 340px;
+        }
+
+        /* ---- VALUES ---- */
+        .values {
+            padding: 76px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .values::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+        .value-card {
+            text-align: center;
+            padding: 34px 20px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, transform 0.25s ease;
+            cursor: default;
+        }
+        .value-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 160px 100px at 50% 100%, rgba(196, 160, 80, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .value-card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-4px);
+        }
+        .value-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(196, 160, 80, 0.1);
+            border: 1px solid var(--border-glow);
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        .value-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .value-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ---- LOCATION GLASS CARD ---- */
+        .location-strip {
+            padding: 68px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .location-strip::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .glass-card {
+            background: rgba(13, 16, 25, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glow);
+            border-radius: 16px;
+            padding: 40px 36px;
+            position: relative;
+            overflow: hidden;
+        }
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 400px 200px at 50% 0%, rgba(196, 160, 80, 0.07) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        .glass-card-inner {
+            position: relative;
+            z-index: 1;
+        }
+        .glass-card h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.3rem;
+            color: var(--white);
+            margin-bottom: 14px;
+            font-weight: 600;
+        }
+        .glass-card p {
+            font-size: 0.97rem;
+            color: var(--text);
+            line-height: 1.8;
+        }
+        .glass-card .detail-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+        .detail-tag {
+            font-size: 0.74rem;
+            font-weight: 600;
+            color: var(--accent);
+            background: rgba(196, 160, 80, 0.08);
+            border: 1px solid rgba(196, 160, 80, 0.2);
+            padding: 4px 14px;
+            border-radius: 100px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        /* ---- TRUST BADGES ---- */
+        .trust {
+            padding: 64px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .trust::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .trust-intro {
+            font-size: 0.71rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .badge-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .badge {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 22px;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: border-color 0.25s, color 0.25s;
+            cursor: default;
+        }
+        .badge:hover {
+            border-color: var(--border-glow);
+            color: var(--accent-light);
+        }
+
+        /* ---- BOTTOM IMAGE ---- */
+        .media-visual-bottom {
+            padding: 0 0 76px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ---- CTA ---- */
+        .cta-section {
+            padding: 100px 0;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .cta-blob {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 720px;
+            height: 420px;
+            background: radial-gradient(ellipse 520px 300px at 50% 50%, rgba(196, 160, 80, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .cta-inner {
+            position: relative;
+            z-index: 1;
+        }
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.7rem, 4vw, 2.15rem);
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #c4a050, #e0c07a);
+            color: #06080e;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.97rem;
+            font-weight: 700;
+            padding: 18px 56px;
+            border-radius: 10px;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            box-shadow:
+                0 0 28px rgba(196, 160, 80, 0.32),
+                0 10px 36px rgba(196, 160, 80, 0.14);
+            transition: box-shadow 0.3s ease, transform 0.2s ease, filter 0.3s ease;
+        }
+        .cta-button:hover {
+            box-shadow:
+                0 0 48px rgba(196, 160, 80, 0.52),
+                0 14px 52px rgba(196, 160, 80, 0.26);
+            transform: translateY(-2px);
+            filter: brightness(1.08);
+        }
+        .cta-note {
+            margin-top: 18px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .footer p {
+            font-size: 0.73rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 68px 0 52px;
+            }
+            .hero-image-card img {
+                height: 220px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .service-item {
+                padding: 22px 22px;
+            }
+            .glass-card {
+                padding: 28px 22px;
+            }
+            .cta-section {
+                padding: 68px 0;
+            }
+            .media-img-wrap img {
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-brand">Callagher Estate Agents</span>
+            <span class="topbar-location">Strathfield &amp; Inner West, Sydney</span>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner container">
+            <p class="hero-eyebrow">Sydney Inner West Real Estate</p>
+            <h1>Buy, sell, and rent with agents who know Inner West Sydney</h1>
+            <p class="hero-sub">Callagher Estate Agents serves buyers, sellers, landlords, and tenants across Sydney's Inner West and Strathfield — with a dedicated team that brings local expertise to every transaction.</p>
+            <div class="hero-image-card">
+                <img
+                    src="https://theagency.com.au/imagecache/fitwithin/1280x1280/_files/landing-pages/shutterstock-2397132823.jpg?1776252127"
+                    alt="Callagher Estate Agents — Sydney Inner West property"
+                    loading="eager"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats fade-in">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">Buy</div>
+                    <div class="stat-label">Properties for sale, open inspections &amp; upcoming auctions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Sell</div>
+                    <div class="stat-label">Appraisals, sold listings &amp; selling guides</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Rent</div>
+                    <div class="stat-label">Properties for lease, tenant &amp; landlord services</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about fade-in">
+        <div class="container">
+            <h2 class="section-heading">About Callagher</h2>
+            <p>Callagher Estate Agents has long been a trusted name across <span class="highlight">Sydney's Inner West and Strathfield</span>. Led by Cary Giezekamp and David Giezekamp, the team brings deep local knowledge and a genuine commitment to their clients' outcomes.</p>
+            <p>The Callagher team sees an exciting future for clients across Sydney's Inner West and around Australia. The property management team works closely with both landlords and tenants to ensure smooth, professional experiences at every stage.</p>
+            <p>Operating from <span class="highlight">50 The Boulevarde, Strathfield NSW 2135</span>, Callagher covers the full spectrum of residential real estate — from first-time buyers navigating the market to experienced investors managing growing portfolios.</p>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services fade-in">
+        <div class="container">
+            <h2 class="section-heading">What we offer</h2>
+            <ul class="service-list">
+                <li class="service-item">
+                    <p class="service-label">Buying</p>
+                    <p class="service-text">Access properties for sale across Sydney's Inner West, with open for inspection schedules and upcoming auction listings to keep you ahead of the market.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Selling</p>
+                    <p class="service-text">Request an appraisal and get a clear read on what your property is worth — backed by a team that knows the local market and a strong record of sold results.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Property Management</p>
+                    <p class="service-text">Comprehensive rental management for landlords and tenants — covering properties for lease, inspections, leased listings, and appraisal requests.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Project Developments</p>
+                    <p class="service-text">New project and off-the-plan property sales — connecting buyers with development opportunities across the Inner West and beyond.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Commercial Property</p>
+                    <p class="service-text">Commercial sales and leasing for business owners and investors looking to buy, sell, or lease commercial assets across the region.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Mid-page image -->
+    <section class="media-visual fade-in">
+        <div class="container">
+            <div class="media-img-wrap">
+                <img
+                    src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80"
+                    alt="Sydney Inner West property — Callagher Estate Agents"
+                    loading="lazy"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="values fade-in">
+        <div class="container">
+            <h2 class="section-heading" style="text-align:center; margin-bottom: 38px;">What sets us apart</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">&#9670;</div>
+                    <div class="value-title">Local Knowledge</div>
+                    <div class="value-desc">Deep roots in Sydney's Inner West and Strathfield with results that reflect it.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">&#9671;</div>
+                    <div class="value-title">Full Service</div>
+                    <div class="value-desc">Sales, rentals, management, and commercial — one team, every need covered.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">&#9669;</div>
+                    <div class="value-title">Client Focus</div>
+                    <div class="value-desc">An exciting future for clients — from first purchase to long-term portfolio growth.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team / Location glass card -->
+    <section class="location-strip fade-in">
+        <div class="container">
+            <div class="glass-card">
+                <div class="glass-card-inner">
+                    <h3>Our Strathfield office</h3>
+                    <p>The Callagher team is based at 50 The Boulevarde, Strathfield NSW 2135 — serving buyers, sellers, landlords, and tenants across Sydney's Inner West. Cary Giezekamp, David Giezekamp, and the property management team are available to discuss your property needs.</p>
+                    <div class="detail-row">
+                        <span class="detail-tag">Inner West</span>
+                        <span class="detail-tag">Strathfield</span>
+                        <span class="detail-tag">NSW</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust badges -->
+    <section class="trust fade-in">
+        <div class="container">
+            <p class="trust-intro">Services available across</p>
+            <div class="badge-grid">
+                <span class="badge">Residential Sales</span>
+                <span class="badge">Property Management</span>
+                <span class="badge">Auctions</span>
+                <span class="badge">Project Developments</span>
+                <span class="badge">Commercial</span>
+                <span class="badge">Open Inspections</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom image -->
+    <section class="media-visual-bottom fade-in">
+        <div class="container">
+            <div class="media-img-wrap">
+                <img
+                    src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1600&q=80"
+                    alt="Residential property — Callagher Estate Agents"
+                    loading="lazy"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section fade-in">
+        <div class="cta-blob"></div>
+        <div class="container cta-inner">
+            <h2 class="cta-heading">Talk to the Callagher team</h2>
+            <p class="cta-sub">Whether you're buying, selling, renting, or investing across Sydney's Inner West — reach out and let us help you move forward.</p>
+            <a href="https://callagher.com.au" class="cta-button">Visit callagher.com.au</a>
+            <p class="cta-note">50 The Boulevarde, Strathfield NSW 2135 &mdash; jessie@callagher.com.au</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Callagher Estate Agents &mdash; callagher.com.au &mdash; 50 The Boulevarde, Strathfield NSW 2135</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll fade-in
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wilson Commercial — Commercial Real Estate, Inner South-East Melbourne</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --bg: #0e0e12;
+    --surface: #16161d;
+    --surface-light: #1e1e28;
+    --border: #2a2a36;
+    --accent: #c9a779;
+    --accent-light: #e0c394;
+    --accent-glow: rgba(201, 167, 121, 0.15);
+    --white: #f0eff4;
+    --text: #c5c4ce;
+    --text-muted: #7e7d8a;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* TOP BAR */
+.topbar {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+}
+.topbar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.brand {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--white);
+    letter-spacing: 2px;
+}
+.topbar-loc {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+}
+
+/* HERO */
+.hero {
+    padding: 96px 0 56px;
+    text-align: center;
+}
+.hero-eyebrow {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--accent);
+    margin-bottom: 22px;
+    font-weight: 600;
+}
+.hero h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 24px;
+    font-weight: 600;
+}
+.hero h1 em {
+    color: var(--accent-light);
+    font-style: italic;
+}
+.hero-sub {
+    font-size: 1.08rem;
+    color: var(--text);
+    max-width: 600px;
+    margin: 0 auto 36px;
+    line-height: 1.8;
+}
+.hero-ctas {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.btn {
+    display: inline-block;
+    font-size: 0.92rem;
+    font-weight: 600;
+    padding: 14px 32px;
+    border-radius: 6px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: background 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
+}
+.btn-primary {
+    background: var(--accent);
+    color: var(--bg);
+}
+.btn-primary:hover {
+    background: var(--accent-light);
+    transform: translateY(-1px);
+}
+.btn-ghost {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid var(--border);
+}
+.btn-ghost:hover {
+    border-color: var(--accent);
+    color: var(--accent-light);
+}
+
+/* CONTEXT */
+.context {
+    padding: 72px 0;
+    border-top: 1px solid var(--border);
+}
+.context p {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    margin-bottom: 20px;
+}
+.context p:last-child { margin-bottom: 0; }
+.highlight {
+    color: var(--accent-light);
+    font-weight: 600;
+}
+
+/* SERVICES */
+.services {
+    padding: 72px 0;
+    border-top: 1px solid var(--border);
+}
+.section-heading {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.75rem;
+    color: var(--white);
+    margin-bottom: 16px;
+    text-align: center;
+    font-weight: 600;
+}
+.section-sub {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 44px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.service-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+}
+.service-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 28px 30px;
+    transition: border-color 0.3s ease;
+}
+.service-card:hover { border-color: var(--accent); }
+.service-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+.service-title {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.25rem;
+    color: var(--white);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+.service-text {
+    font-size: 0.98rem;
+    color: var(--text);
+    line-height: 1.7;
+}
+
+/* COVERAGE */
+.coverage {
+    padding: 72px 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+}
+.suburb-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 32px;
+}
+.suburb {
+    background: var(--surface-light);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    letter-spacing: 0.5px;
+}
+.council-note {
+    margin-top: 28px;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+}
+
+/* CTA */
+.cta-section {
+    padding: 88px 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+}
+.cta-heading {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.9rem;
+    color: var(--white);
+    margin-bottom: 16px;
+    font-weight: 600;
+}
+.cta-sub {
+    font-size: 1rem;
+    color: var(--text);
+    margin-bottom: 36px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.cta-row {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.cta-note {
+    margin-top: 20px;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+/* FOOTER */
+.footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+}
+.footer p {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+
+@media (max-width: 600px) {
+    .hero { padding: 64px 0 40px; }
+    .service-card { padding: 22px 22px; }
+    .context, .services, .coverage { padding: 56px 0; }
+    .cta-section { padding: 64px 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+    <div class="container topbar-inner">
+        <div class="brand">WILSON COMMERCIAL</div>
+        <div class="topbar-loc">Inner South-East Melbourne</div>
+    </div>
+</div>
+
+<section class="hero">
+    <div class="container">
+        <p class="hero-eyebrow">Commercial Leasing · Sales · Property Management</p>
+        <h1>Commercial property, <em>handled locally</em> across the Port Phillip, Glen Eira and Stonnington corridor.</h1>
+        <p class="hero-sub">Wilson Commercial works with owners, tenants and investors across St Kilda, Prahran, Elsternwick, Caulfield and the surrounding inner south-east. Local agents, local knowledge, straight answers.</p>
+        <div class="hero-ctas">
+            <a href="#appraisal" class="btn btn-primary">Request an Appraisal</a>
+            <a href="#inspection" class="btn btn-ghost">Book an Inspection</a>
+        </div>
+    </div>
+</section>
+
+<section class="context">
+    <div class="container">
+        <p>Commercial property in Melbourne's inner south-east doesn't behave like the rest of the city. Retail on Acland Street reads differently to offices in Prahran. Industrial in Caulfield South trades on different drivers to showrooms on Dandenong Road. The right agent has to know the streets, not just the market.</p>
+        <p>That's where <span class="highlight">Wilson Commercial</span> operates. We know Melbourne and the wider Port Phillip, Glen Eira and Stonnington areas through the agents who work them every day. Whether you're buying, selling, leasing, or handing over management of a commercial asset, the conversation starts with your local expert — not a call centre.</p>
+    </div>
+</section>
+
+<section class="services" id="services">
+    <div class="container">
+        <h2 class="section-heading">What we do</h2>
+        <p class="section-sub">Three service lines, all focused on commercial property across inner south-east Melbourne.</p>
+        <div class="service-grid">
+            <div class="service-card">
+                <p class="service-label">01 · Leasing</p>
+                <h3 class="service-title">Commercial Leasing</h3>
+                <p class="service-text">Representing landlords securing quality tenants, and tenants looking for the right space — retail, office, industrial, showroom, healthcare and bulky goods premises across the corridor.</p>
+            </div>
+            <div class="service-card">
+                <p class="service-label">02 · Sales</p>
+                <h3 class="service-title">Commercial Sales</h3>
+                <p class="service-text">Sale campaigns for owner-occupiers and investors. Blocks of units, offices, retail premises, industrial stock and mixed-use assets — priced and marketed to the buyers already active in this pocket of Melbourne.</p>
+            </div>
+            <div class="service-card">
+                <p class="service-label">03 · Management</p>
+                <h3 class="service-title">Commercial Property Management</h3>
+                <p class="service-text">Day-to-day management for commercial landlords — lease administration, tenant relationships, maintenance coordination, after-hours response, and the quiet work that keeps an asset performing.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="coverage">
+    <div class="container">
+        <h2 class="section-heading">Where we work</h2>
+        <p class="section-sub">Our agents live and work in the same postcodes as the properties we represent.</p>
+        <div class="suburb-grid">
+            <span class="suburb">St Kilda</span>
+            <span class="suburb">St Kilda East</span>
+            <span class="suburb">Elwood</span>
+            <span class="suburb">Elsternwick</span>
+            <span class="suburb">Caulfield</span>
+            <span class="suburb">Caulfield North</span>
+            <span class="suburb">Caulfield South</span>
+            <span class="suburb">Prahran</span>
+        </div>
+        <p class="council-note">Covering the Port Phillip, Glen Eira and Stonnington municipalities — and the surrounding suburbs where our clients hold commercial assets.</p>
+    </div>
+</section>
+
+<section class="cta-section" id="appraisal">
+    <div class="container">
+        <h2 class="cta-heading">Ready to talk about your property?</h2>
+        <p class="cta-sub">Request a commercial appraisal or book an inspection on a listing. A local Wilson agent will be in touch.</p>
+        <div class="cta-row">
+            <a href="https://wilsonagents.com.au" class="btn btn-primary">Request an Appraisal</a>
+            <a href="https://wilsonagents.com.au" id="inspection" class="btn btn-ghost">Book an Inspection</a>
+        </div>
+        <p class="cta-note">Commercial leasing, sales and property management — inner south-east Melbourne.</p>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>Wilson Commercial — Real estate agents and property managers across Port Phillip, Glen Eira and Stonnington.</p>
+        <p>St Kilda · St Kilda East · Caulfield North · Elwood · Elsternwick · Caulfield South · Caulfield · Prahran</p>
+    </div>
+</footer>
+
+</body>
+</html>

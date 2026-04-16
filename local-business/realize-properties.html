@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realize Properties — Adelaide Real Estate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #080b10;
+            --surface: #0f1318;
+            --surface-light: #171d25;
+            --border: #1e2530;
+            --border-glow: rgba(99, 179, 237, 0.25);
+            --accent: #63b3ed;
+            --accent-light: #90cdf4;
+            --accent-dim: #2b6cb0;
+            --accent-glow: rgba(99, 179, 237, 0.18);
+            --accent-glow-strong: rgba(99, 179, 237, 0.35);
+            --white: #edf2f7;
+            --text: #b8c4d0;
+            --text-muted: #5a6878;
+            --gradient-hero: linear-gradient(135deg, #63b3ed 0%, #9f7aea 50%, #f6ad55 100%);
+            --gradient-accent: linear-gradient(90deg, #63b3ed, #90cdf4);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---- SCROLL FADE-IN ---- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---- TOP BAR ---- */
+        .topbar {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            z-index: 10;
+            background: rgba(8, 11, 16, 0.95);
+            backdrop-filter: blur(12px);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-brand {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: 0.5px;
+        }
+        .topbar-phone {
+            font-size: 0.8rem;
+            color: var(--accent-light);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .topbar-phone:hover {
+            color: var(--white);
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            position: relative;
+            padding: 96px 0 72px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Radial mesh blobs */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 900px;
+            height: 600px;
+            background:
+                radial-gradient(ellipse 480px 320px at 30% 40%, rgba(99, 179, 237, 0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 360px 280px at 75% 30%, rgba(159, 122, 234, 0.08) 0%, transparent 65%),
+                radial-gradient(ellipse 300px 240px at 55% 80%, rgba(246, 173, 85, 0.06) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-eyebrow {
+            display: inline-block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 24px;
+            font-weight: 600;
+            border: 1px solid var(--border-glow);
+            padding: 6px 18px;
+            border-radius: 100px;
+            background: rgba(99, 179, 237, 0.06);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5.5vw, 3rem);
+            line-height: 1.22;
+            margin-bottom: 28px;
+            font-weight: 700;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 580px;
+            margin: 0 auto 40px;
+            line-height: 1.85;
+        }
+
+        /* Hero image card */
+        .hero-image-card {
+            max-width: 560px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-glow);
+            box-shadow:
+                0 0 40px rgba(99, 179, 237, 0.08),
+                0 24px 80px rgba(0, 0, 0, 0.55);
+            position: relative;
+        }
+        .hero-image-card img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            height: 340px;
+        }
+        .hero-image-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(8, 11, 16, 0.6) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* ---- STATS ---- */
+        .stats {
+            padding: 64px 0;
+            position: relative;
+        }
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 32px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            cursor: default;
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 180px 120px at 50% 0%, rgba(99, 179, 237, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .stat-card:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 24px rgba(99, 179, 237, 0.08), 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .stat-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.9rem;
+            font-weight: 700;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ---- ABOUT ---- */
+        .about {
+            padding: 72px 0;
+            position: relative;
+        }
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .section-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.65rem;
+            color: var(--white);
+            margin-bottom: 32px;
+            font-weight: 600;
+        }
+        .about p {
+            font-size: 1.02rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        .about p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* ---- FEATURED LISTING ---- */
+        .featured {
+            padding: 72px 0;
+            position: relative;
+        }
+        .featured::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .listing-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            cursor: default;
+        }
+        .listing-card:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 30px rgba(99, 179, 237, 0.08), 0 16px 48px rgba(0, 0, 0, 0.35);
+        }
+        .listing-img-wrap {
+            position: relative;
+            overflow: hidden;
+        }
+        .listing-img-wrap img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            height: 300px;
+            transition: transform 0.5s ease;
+        }
+        .listing-card:hover .listing-img-wrap img {
+            transform: scale(1.03);
+        }
+        .listing-img-wrap::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(180deg, transparent, var(--surface));
+            pointer-events: none;
+        }
+        .listing-body {
+            padding: 28px 32px 32px;
+        }
+        .listing-badge {
+            display: inline-block;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            border: 1px solid var(--border-glow);
+            padding: 4px 14px;
+            border-radius: 100px;
+            background: rgba(99, 179, 237, 0.06);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .listing-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.35rem;
+            color: var(--white);
+            margin-bottom: 12px;
+            font-weight: 600;
+            line-height: 1.35;
+        }
+        .listing-price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+        }
+        .listing-desc {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .listing-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .listing-feat {
+            background: var(--surface-light);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 5px 12px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* ---- SERVICES ---- */
+        .services {
+            padding: 72px 0;
+            position: relative;
+        }
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .service-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .service-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 26px 30px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+            cursor: default;
+        }
+        .service-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .service-item:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 20px rgba(99, 179, 237, 0.07), 0 6px 24px rgba(0, 0, 0, 0.25);
+            transform: translateX(4px);
+        }
+        .service-item:hover::before {
+            opacity: 1;
+        }
+        .service-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .service-text {
+            font-size: 0.97rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ---- VALUES ---- */
+        .values {
+            padding: 72px 0;
+            position: relative;
+        }
+        .values::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+        .value-card {
+            text-align: center;
+            padding: 32px 20px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, transform 0.25s ease;
+            cursor: default;
+        }
+        .value-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 160px 100px at 50% 100%, rgba(99, 179, 237, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .value-card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-3px);
+        }
+        .value-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(99, 179, 237, 0.1);
+            border: 1px solid var(--border-glow);
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        .value-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .value-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ---- MEDIA IMAGE ---- */
+        .media-visual {
+            padding: 32px 0 64px;
+        }
+        .media-img-wrap {
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 0 30px rgba(99, 179, 237, 0.05), 0 20px 60px rgba(0,0,0,0.45);
+        }
+        .media-img-wrap img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            height: 320px;
+        }
+
+        /* ---- TRUST ---- */
+        .trust {
+            padding: 64px 0;
+            position: relative;
+        }
+        .trust::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .trust-intro {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .media-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .media-badge {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: border-color 0.25s, color 0.25s;
+            cursor: default;
+        }
+        .media-badge:hover {
+            border-color: var(--border-glow);
+            color: var(--accent-light);
+        }
+
+        /* ---- CTA ---- */
+        .cta-section {
+            padding: 96px 0;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .cta-blob {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 700px;
+            height: 400px;
+            background: radial-gradient(ellipse 500px 280px at 50% 50%, rgba(99, 179, 237, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .cta-inner {
+            position: relative;
+            z-index: 1;
+        }
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.7rem, 4vw, 2.1rem);
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 40px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #63b3ed, #90cdf4);
+            color: #060a0f;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.97rem;
+            font-weight: 700;
+            padding: 17px 52px;
+            border-radius: 10px;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            box-shadow:
+                0 0 24px rgba(99, 179, 237, 0.3),
+                0 8px 32px rgba(99, 179, 237, 0.15);
+            transition: box-shadow 0.3s ease, transform 0.2s ease, filter 0.3s ease;
+        }
+        .cta-button:hover {
+            box-shadow:
+                0 0 40px rgba(99, 179, 237, 0.5),
+                0 12px 48px rgba(99, 179, 237, 0.25);
+            transform: translateY(-2px);
+            filter: brightness(1.08);
+        }
+        .cta-note {
+            margin-top: 18px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer p {
+            font-size: 0.73rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 64px 0 52px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .service-item {
+                padding: 22px 22px;
+            }
+            .listing-body {
+                padding: 22px 22px 26px;
+            }
+            .cta-section {
+                padding: 64px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-brand">Realize Properties</span>
+            <a href="tel:0883598367" class="topbar-phone">08 8359 8367</a>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner container">
+            <p class="hero-eyebrow">Buying · Selling · Renting · Property Management — Adelaide</p>
+            <h1>Adelaide property, handled with care — from first look to settlement</h1>
+            <p class="hero-sub">Realize Properties covers every side of real estate across Adelaide — residential sales, rental management, and commercial leasing, all under one roof.</p>
+            <div class="hero-image-card">
+                <img
+                    src="https://phimg.reapit.website/da8b4a9bc4798e7dcf8f0836b85769e30e1c389e"
+                    alt="Realize Properties — Adelaide real estate"
+                    loading="eager"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats fade-in">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">Buy</div>
+                    <div class="stat-label">Residential and investment properties for sale across Adelaide</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Sell</div>
+                    <div class="stat-label">Free appraisals, selling tips, and recent sale results</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Rent</div>
+                    <div class="stat-label">Residential and commercial properties for lease</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about fade-in">
+        <div class="container">
+            <h2 class="section-heading">About Realize Properties</h2>
+            <p><span class="highlight">Realize Properties</span> is a full-service real estate agency serving buyers, sellers, landlords, and tenants across Adelaide. Whether you're searching for your next home, looking to sell, or need professional management for your investment, the team covers it all.</p>
+            <p>From residential sales and open home inspections to <span class="highlight">property management and commercial leasing</span>, Realize Properties brings local knowledge and hands-on service to every transaction. The team works closely with buyers through a dedicated buyer alert system and supports sellers with honest appraisals and clear market insight.</p>
+            <p>Current listings include everything from <span class="highlight">affordable starter homes</span> through to renovated coastal properties — including a four-bedroom home a short walk from the beach at Largs Bay, listed at $1,580,000.</p>
+        </div>
+    </section>
+
+    <!-- Featured Listing -->
+    <section class="featured fade-in">
+        <div class="container">
+            <h2 class="section-heading">Featured listing</h2>
+            <div class="listing-card">
+                <div class="listing-img-wrap">
+                    <img
+                        src="https://img.agentaccount.com/397f9a0f15ed8255a8f08aea94d6fabb4b2317c5"
+                        alt="Short walk to the beach — Largs Bay"
+                        loading="lazy"
+                    >
+                </div>
+                <div class="listing-body">
+                    <span class="listing-badge">For Sale — Largs Bay</span>
+                    <h3 class="listing-title">Short walk to the beach in a quiet street</h3>
+                    <div class="listing-price">$1,580,000</div>
+                    <p class="listing-desc">Easy living in a fantastic location. This renovated four-bedroom home sits in a no-through, tree-lined street close to Largs Bay beach. Open-plan living and dining flows seamlessly to a covered outdoor entertaining area, with a private courtyard and R/C air conditioning throughout.</p>
+                    <div class="listing-features">
+                        <span class="listing-feat">4 Bedrooms</span>
+                        <span class="listing-feat">2 Ensuites</span>
+                        <span class="listing-feat">Walk-in robe</span>
+                        <span class="listing-feat">Modern kitchen</span>
+                        <span class="listing-feat">Outdoor entertaining</span>
+                        <span class="listing-feat">Private courtyard</span>
+                        <span class="listing-feat">R/C Air conditioning</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Second property image -->
+    <section class="media-visual fade-in">
+        <div class="container">
+            <div class="media-img-wrap">
+                <img
+                    src="https://img.agentaccount.com/22d1129272b8930a189525414e0296e55b3e45ce"
+                    alt="Realize Properties listing"
+                    loading="lazy"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services fade-in">
+        <div class="container">
+            <h2 class="section-heading">What we do</h2>
+            <ul class="service-list">
+                <li class="service-item">
+                    <p class="service-label">Buying</p>
+                    <p class="service-text">Browse properties for sale across Adelaide, attend open homes, and sign up for the Buyer Alert to be notified the moment a matching listing hits the market.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Selling</p>
+                    <p class="service-text">Free property appraisals, proven selling tips, and recent sale data to help you understand what your property is worth and how to position it competitively.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Residential Rentals</p>
+                    <p class="service-text">Properties for lease across Adelaide, with rental inspections scheduled for prospective tenants. All tenant forms available online for a smooth application process.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Commercial Leasing</p>
+                    <p class="service-text">Commercial properties available for lease — suitable for businesses looking for the right space in the right location across the Adelaide metro area.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Property Management</p>
+                    <p class="service-text">End-to-end management for landlords — handling tenants, inspections, maintenance, and reporting so your investment performs without the day-to-day burden.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="values fade-in">
+        <div class="container">
+            <h2 class="section-heading" style="text-align:center; margin-bottom: 36px;">How we work</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">&#9670;</div>
+                    <div class="value-title">Local knowledge</div>
+                    <div class="value-desc">Deep understanding of the Adelaide market — from coastal suburbs to the inner metro.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">&#9671;</div>
+                    <div class="value-title">Full service</div>
+                    <div class="value-desc">Buying, selling, renting, and management — everything handled in-house.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">&#9669;</div>
+                    <div class="value-title">Responsive team</div>
+                    <div class="value-desc">Enquiries answered promptly, with a team that's accessible throughout the process.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services offered badges -->
+    <section class="trust fade-in">
+        <div class="container">
+            <p class="trust-intro">Services we cover</p>
+            <div class="media-grid">
+                <span class="media-badge">Residential Sales</span>
+                <span class="media-badge">Open Homes</span>
+                <span class="media-badge">Buyer Alert</span>
+                <span class="media-badge">Selling Appraisals</span>
+                <span class="media-badge">Rentals</span>
+                <span class="media-badge">Commercial For Lease</span>
+                <span class="media-badge">Property Management</span>
+                <span class="media-badge">Tenant Forms</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section fade-in">
+        <div class="cta-blob"></div>
+        <div class="container cta-inner">
+            <h2 class="cta-heading">Talk to the Realize Properties team</h2>
+            <p class="cta-sub">Whether you're buying, selling, or looking to lease — reach out and the team will help you move forward with confidence.</p>
+            <a href="tel:0883598367" class="cta-button">Call 08 8359 8367</a>
+            <p class="cta-note">Or enquire at reception@realizeproperties.com.au</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Realize Properties &mdash; realizeproperties.com.au &mdash; 08 8359 8367</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll fade-in
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
