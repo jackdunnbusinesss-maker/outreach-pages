@@ -1,0 +1,434 @@
+<style>
+/* GHL Background Override */
+html, body, .body-wrapper, .hl_page-preview--content,
+#preview-container, .hl-page-builder, #section-0,
+.section_wrapper, .inner-section, .container-fluid,
+.row-bg-color, .row, .section-bg {
+    background-color: #0e0e12 !important;
+    background: #0e0e12 !important;
+}
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 100vh;
+}
+</style>
+<div style="background-color: #0e0e12; min-height: 100vh; width: 100%; margin: 0; padding: 0;">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0e0e12;
+            --surface: #16161d;
+            --surface-light: #1e1e28;
+            --border: #2a2a36;
+            --accent: #81d742;
+            --accent-light: #9ae85c;
+            --accent-glow: rgba(129, 215, 66, 0.15);
+            --white: #f0eff4;
+            --text: #c5c4ce;
+            --text-muted: #7e7d8a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ---- LAYOUT ---- */
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---- TOP BAR ---- */
+        .topbar {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+        }
+        .topbar-name {
+            font-size: 0.85rem;
+            color: var(--accent-light);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            padding: 80px 0 48px;
+            text-align: center;
+        }
+        .hero-eyebrow {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            color: var(--white);
+            line-height: 1.25;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+        .hero h1 em {
+            color: var(--accent-light);
+            font-style: italic;
+        }
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 580px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* ---- CONTEXT SECTION ---- */
+        .context {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .context p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+        .context p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight-name {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* ---- SERVICES ---- */
+        .services {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .services-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.6rem;
+            color: var(--white);
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .service-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 24px;
+            transition: border-color 0.3s ease;
+        }
+        .service-card:hover {
+            border-color: var(--accent);
+        }
+        .service-card h3 {
+            font-size: 1rem;
+            color: var(--white);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .service-card p {
+            font-size: 0.92rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ---- WHY US ---- */
+        .bullets {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .bullets-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.6rem;
+            color: var(--white);
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .bullet-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 32px;
+            transition: border-color 0.3s ease;
+        }
+        .bullet-item:hover {
+            border-color: var(--accent);
+        }
+        .bullet-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .bullet-text {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ---- CONTACT ---- */
+        .contact {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .contact-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.6rem;
+            color: var(--white);
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 36px;
+        }
+        .contact-item {
+            font-size: 1rem;
+            color: var(--text);
+        }
+        .contact-item a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---- CTA ---- */
+        .cta-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 36px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .cta-button:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+        }
+        .cta-note {
+            margin-top: 16px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 600px) {
+            .hero {
+                padding: 56px 0 36px;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .bullet-item {
+                padding: 22px 20px;
+            }
+            .cta-section {
+                padding: 56px 0;
+            }
+        }
+    </style>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-name">Real Estate Rentals</span>
+            <span class="topbar-label">Property Management Brisbane</span>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <p class="hero-eyebrow">Property Management Specialist</p>
+            <h1>Maximising returns for <em>property investors</em> across South East Queensland</h1>
+            <p class="hero-sub">Real Estate Rentals is the dedicated property management agency delivering higher rents, lower vacancy rates and quality tenants for landlords in Brisbane, Ipswich, Logan, the Gold Coast and Sunshine Coast.</p>
+        </div>
+    </section>
+
+    <!-- Context -->
+    <section class="context">
+        <div class="container">
+            <p>Owning an investment property is like running a business. That means you need a property manager who treats it like one -- not someone juggling sales targets and rental books at the same time.</p>
+            <p><span class="highlight-name">Real Estate Rentals</span> focuses exclusively on property management. No sales division, no conflicting interests. Just a team that's entirely focused on your property performing at its best.</p>
+            <p>We're so confident in our service that your first month's management is free. Try us out, see the difference, and decide from there.</p>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services">
+        <div class="container">
+            <h2 class="services-heading">What we do for landlords</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Higher Rents</h3>
+                    <p>We know the South East Queensland market inside out and price your property to attract quality tenants at the strongest possible return.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Lower Vacancy Rates</h3>
+                    <p>Fast turnarounds, proactive marketing and efficient application processing keep your property earning -- not sitting empty.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Quality Tenants</h3>
+                    <p>Thorough screening and fair processes mean better tenants, fewer headaches and longer tenancies for landlords.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Easy Transfer</h3>
+                    <p>Switching property managers can feel like a hassle. We handle the entire transfer process for you -- start to finish.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us -->
+    <section class="bullets">
+        <div class="container">
+            <h2 class="bullets-heading">Why investors choose Real Estate Rentals</h2>
+            <ul class="bullet-list">
+                <li class="bullet-item">
+                    <p class="bullet-label">No Conflicts of Interest</p>
+                    <p class="bullet-text">We don't sell property. Our objectives are aligned entirely with your success as a landlord -- not with pushing listings out the door.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Great Communication</p>
+                    <p class="bullet-text">You'll always know what's happening with your property. Clear, timely updates from a team that actually picks up the phone.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Cutting-Edge Technology</p>
+                    <p class="bullet-text">Efficient use of technology means faster processes, easier access to your property data and less time wasted on admin.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">1 Month Free</p>
+                    <p class="bullet-text">Experience the Real Estate Rentals difference with no upfront commitment. Your first month's management is on us.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Tenant Section -->
+    <section class="context" style="border-top: 1px solid var(--border);">
+        <div class="container">
+            <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 24px; font-weight: 600; text-align: center;">For tenants</h2>
+            <p>We look after our tenants the same way we look after our landlords. That means well-maintained properties, fair processes, fast application turnarounds and a team that genuinely cares about your experience.</p>
+            <p>Whether you're looking for a new rental, need to pay rent or are preparing to vacate, we make the process straightforward.</p>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact">
+        <div class="container">
+            <h2 class="contact-heading">Get in touch</h2>
+            <div class="contact-details">
+                <p class="contact-item">Phone: <a href="tel:0738466009">07 3846 6009</a></p>
+                <p class="contact-item">Email: <a href="mailto:rentals@rerentals.com.au">rentals@rerentals.com.au</a></p>
+                <p class="contact-item">Web: rerentals.com.au</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-heading">Ready to switch property managers?</h2>
+            <p class="cta-sub">Get a free rental appraisal and see what your investment property should really be earning. Your first month's management is free.</p>
+            <a href="mailto:rentals@rerentals.com.au?subject=Free%20Rental%20Appraisal" class="cta-button">Request a Free Appraisal</a>
+            <p class="cta-note">No lock-in contracts. No obligation.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Real Estate Rentals -- Property Management Brisbane, Ipswich, Logan, Gold Coast &amp; Sunshine Coast</p>
+        </div>
+    </footer>
+
+</div>

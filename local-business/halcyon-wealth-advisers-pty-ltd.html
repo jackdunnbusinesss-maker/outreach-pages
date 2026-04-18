@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halcyon Wealth Advisers | Financial Advisers in Sydney, NSW</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0e0e12;
+            --surface: #16161d;
+            --surface-light: #1e1e28;
+            --border: #2a2a36;
+            --accent: #6fa8a0;
+            --accent-light: #8cc4bb;
+            --accent-glow: rgba(111, 168, 160, 0.15);
+            --white: #f0eff4;
+            --text: #c5c4ce;
+            --text-muted: #7e7d8a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---- TOP BAR ---- */
+        .topbar {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-logo img {
+            height: 36px;
+            width: auto;
+        }
+        .topbar-contact {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+        .topbar-contact a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        .topbar-contact a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            padding: 80px 0 56px;
+            text-align: center;
+        }
+        .hero-eyebrow {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            color: var(--white);
+            line-height: 1.25;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+        .hero h1 em {
+            color: var(--accent-light);
+            font-style: italic;
+        }
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 580px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* ---- INTRO ---- */
+        .intro {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .intro p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+        .intro p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* ---- SERVICES ---- */
+        .services {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .services-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.6rem;
+            color: var(--white);
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .service-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 24px;
+            transition: border-color 0.3s ease;
+        }
+        .service-card:hover {
+            border-color: var(--accent);
+        }
+        .service-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .service-text {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* ---- APPROACH ---- */
+        .approach {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .approach-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.6rem;
+            color: var(--white);
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .approach-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .approach-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 32px;
+            transition: border-color 0.3s ease;
+        }
+        .approach-item:hover {
+            border-color: var(--accent);
+        }
+        .approach-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .approach-text {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ---- CTA ---- */
+        .cta-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 36px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .cta-button:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+        }
+        .cta-alt {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .cta-alt a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        .cta-alt a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        .footer p:last-child {
+            margin-bottom: 0;
+        }
+        .footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: var(--accent-light);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 600px) {
+            .hero {
+                padding: 56px 0 36px;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .approach-item {
+                padding: 22px 20px;
+            }
+            .cta-section {
+                padding: 56px 0;
+            }
+            .topbar-inner {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <div class="topbar-logo">
+                <img src="https://lirp.cdn-website.com/c9dba5a9/dms3rep/multi/opt/Hal-Logo-2023-1920w.png" alt="Halcyon Wealth Advisers logo">
+            </div>
+            <div class="topbar-contact">
+                <a href="tel:1800931678">1800 931 678</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <p class="hero-eyebrow">Financial Advisers &middot; Sydney, NSW</p>
+            <h1>Experienced financial advice <em>built around your goals</em></h1>
+            <p class="hero-sub">Halcyon Wealth Advisers helps individuals, families, and businesses across Sydney take control of their financial future with clear, considered advice you can actually act on.</p>
+        </div>
+    </section>
+
+    <!-- Intro -->
+    <section class="intro">
+        <div class="container">
+            <p>Whether you're planning for retirement, building wealth, or looking to get your financial affairs properly organised, <span class="highlight">Halcyon Wealth Advisers</span> provides direct access to experienced advisers who work with you -- not just for you.</p>
+            <p>We take the time to understand your situation, identify what matters most, and put a plan in place that reflects your priorities and risk appetite. No jargon-heavy reports that sit in a drawer. Practical advice, clearly explained.</p>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services">
+        <div class="container">
+            <h2 class="services-heading">How We Can Help</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <p class="service-label">Financial Planning</p>
+                    <p class="service-text">A structured process to assess where you are, define where you want to be, and map the steps to get there.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-label">Wealth Creation</p>
+                    <p class="service-text">Investment strategies designed around your goals, timeline, and comfort with risk.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-label">Retirement Planning</p>
+                    <p class="service-text">Specialist retirement advice including Self Managed Super Fund (SMSF) implementation tailored to your aspirations.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-label">Personal Superannuation</p>
+                    <p class="service-text">Review and optimisation of your super to make sure it's working as hard as you are.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-label">Personal Insurance</p>
+                    <p class="service-text">Protection for your income, your family, and the life you've built -- structured for your specific circumstances.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-label">Estate Planning</p>
+                    <p class="service-text">Ensuring your wealth is distributed the way you intend, with structures that reflect your wishes.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-label">Corporate Superannuation</p>
+                    <p class="service-text">Super solutions for businesses looking after their employees' retirement outcomes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Approach -->
+    <section class="approach">
+        <div class="container">
+            <h2 class="approach-heading">Our Approach</h2>
+            <ul class="approach-list">
+                <li class="approach-item">
+                    <p class="approach-label">Organisation &amp; Accountability</p>
+                    <p class="approach-text">We help you get your financial house in order -- assessing your current position, identifying gaps, and putting the right strategies in place so nothing falls through the cracks.</p>
+                </li>
+                <li class="approach-item">
+                    <p class="approach-label">Objectivity &amp; Proactivity</p>
+                    <p class="approach-text">Money decisions get emotional. We bring a clear-headed outside perspective and help you prepare for life transitions before they arrive, not after.</p>
+                </li>
+                <li class="approach-item">
+                    <p class="approach-label">Education &amp; Partnership</p>
+                    <p class="approach-text">We explain the options and the risks in plain language. You make the decisions. We work in concert with you -- it's your plan, and you should understand every part of it.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-heading">Ready to have a conversation?</h2>
+            <p class="cta-sub">Get in touch with our team to discuss your financial situation. No obligation, no pressure -- just a straightforward chat about what's possible.</p>
+            <div class="cta-buttons">
+                <a href="tel:1800931678" class="cta-button">Call 1800 931 678</a>
+                <p class="cta-alt">Or email us at <a href="mailto:enquiries@halcyonwealth.com.au">enquiries@halcyonwealth.com.au</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Halcyon Wealth Advisers Pty Ltd is a Corporate Authorised Representative of Madison Financial Group Pty Ltd ABN 36 002 459 001 AFSL No. 246679.</p>
+            <p>Sydney, NSW &middot; <a href="tel:1800931678">1800 931 678</a> &middot; <a href="mailto:enquiries@halcyonwealth.com.au">enquiries@halcyonwealth.com.au</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>

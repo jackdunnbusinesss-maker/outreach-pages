@@ -1,0 +1,377 @@
+<style>
+/* GHL Background Override */
+html, body, .body-wrapper, .hl_page-preview--content,
+#preview-container, .hl-page-builder, #section-0,
+.section_wrapper, .inner-section, .container-fluid,
+.row-bg-color, .row, .section-bg {
+    background-color: #0b1a1b !important;
+    background: #0b1a1b !important;
+}
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 100vh;
+}
+</style>
+<div style="background-color: #0b1a1b; min-height: 100vh; width: 100%; margin: 0; padding: 0;">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0b1a1b;
+            --surface: #0f2224;
+            --surface-light: #142e30;
+            --border: #1d4045;
+            --accent: #1d9199;
+            --accent-light: #2ab8c2;
+            --accent-glow: rgba(29, 145, 153, 0.15);
+            --white: #f0f5f5;
+            --text: #b8cfd1;
+            --text-muted: #6a8c8f;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ---- LAYOUT ---- */
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---- TOP BAR ---- */
+        .topbar {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+        }
+        .topbar-phone {
+            font-size: 0.85rem;
+            color: var(--accent-light);
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            padding: 80px 0 48px;
+            text-align: center;
+        }
+        .hero-eyebrow {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            color: var(--white);
+            line-height: 1.25;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+        .hero h1 em {
+            color: var(--accent-light);
+            font-style: italic;
+        }
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 580px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* ---- CONTEXT SECTION ---- */
+        .context {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .context p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+        .context p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight-name {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* ---- VALUES ---- */
+        .values {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .values-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.6rem;
+            color: var(--white);
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .value-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 32px 20px;
+            transition: border-color 0.3s ease;
+        }
+        .value-card:hover {
+            border-color: var(--accent);
+        }
+        .value-label {
+            font-size: 1.1rem;
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .value-text {
+            font-size: 0.9rem;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* ---- SERVICES ---- */
+        .services {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .services-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.6rem;
+            color: var(--white);
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .service-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .service-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 32px;
+            transition: border-color 0.3s ease;
+        }
+        .service-item:hover {
+            border-color: var(--accent);
+        }
+        .service-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .service-text {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ---- CTA ---- */
+        .cta-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 36px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .cta-button:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+        }
+        .cta-note {
+            margin-top: 16px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 600px) {
+            .hero {
+                padding: 56px 0 36px;
+            }
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            .service-item {
+                padding: 22px 20px;
+            }
+            .cta-section {
+                padding: 56px 0;
+            }
+        }
+    </style>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-label">Darwin Property Management</span>
+            <a href="tel:0889844404" class="topbar-phone">08 8984 4404</a>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <p class="hero-eyebrow">Darwin &middot; Northern Territory</p>
+            <h1>Reliable property management built on <em>integrity, knowledge and commitment</em></h1>
+            <p class="hero-sub">Now Leasing NT provides leasing and property management services across the Darwin region. Personal service, proactive management, and a partnership that property owners can count on.</p>
+        </div>
+    </section>
+
+    <!-- Context -->
+    <section class="context">
+        <div class="container">
+            <p><span class="highlight-name">Now Leasing NT</span> was founded by Joely Sullivan and Joanne Griffiths -- two experienced Darwin property managers who had already been working together across various businesses in the Territory for close to a decade before launching the company.</p>
+            <p>That proven partnership is the backbone of everything here. With a small, dedicated team, Now Leasing NT delivers the kind of hands-on, proactive service that larger agencies struggle to match. Every property owner gets direct access to the people actually managing their investment.</p>
+            <p>The approach is straightforward: know the Darwin market inside out, communicate honestly, and treat every property as if it were your own.</p>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="values">
+        <div class="container">
+            <h2 class="values-heading">What drives Now Leasing NT</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <p class="value-label">Integrity</p>
+                    <p class="value-text">Honest, transparent communication with landlords and tenants alike.</p>
+                </div>
+                <div class="value-card">
+                    <p class="value-label">Knowledge</p>
+                    <p class="value-text">Deep understanding of the Darwin rental market and NT tenancy legislation.</p>
+                </div>
+                <div class="value-card">
+                    <p class="value-label">Commitment</p>
+                    <p class="value-text">Proactive management that protects your investment long-term.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services">
+        <div class="container">
+            <h2 class="services-heading">Services for property owners</h2>
+            <ul class="service-list">
+                <li class="service-item">
+                    <p class="service-label">Property Management</p>
+                    <p class="service-text">End-to-end management of your rental property -- from tenant screening and lease execution through to routine inspections, maintenance coordination and rent collection.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Leasing</p>
+                    <p class="service-text">Marketing your property to quality tenants, conducting viewings, processing applications and getting your property leased at the right price as quickly as possible.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Rental Appraisals</p>
+                    <p class="service-text">Complimentary appraisals so you know exactly what your property is worth in the current Darwin market before making any decisions.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Service Guarantee</p>
+                    <p class="service-text">Now Leasing NT stands behind the service they deliver. If expectations aren't met, they want to hear about it and make it right.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-heading">Get in touch</h2>
+            <p class="cta-sub">Whether you're looking for a new property manager or want to know what your property could rent for, the team is happy to have a chat.</p>
+            <a href="tel:0889844404" class="cta-button">Call 08 8984 4404</a>
+            <p class="cta-note">Or email joely@nowleasingnt.com.au</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; Now Leasing NT &middot; Darwin, Northern Territory</p>
+        </div>
+    </footer>
+
+</div>
