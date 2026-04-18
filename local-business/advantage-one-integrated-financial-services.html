@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advantage One | Accountants &amp; Financial Advisors — Adelaide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0c0c0c;
+            --surface: #151515;
+            --surface-light: #1c1c1c;
+            --border: #272727;
+            --accent: #efa950;
+            --accent-light: #f5bf7a;
+            --accent-glow: rgba(239, 169, 80, 0.12);
+            --white: #f2f0eb;
+            --text: #c4c2ba;
+            --text-muted: #7a7870;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 740px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---- TOP BAR ---- */
+        .topbar {
+            padding: 18px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+        .topbar-name {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+        }
+        .topbar-contact {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+        .topbar-contact a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+        .topbar-contact a:hover {
+            color: var(--accent-light);
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            padding: 88px 0 56px;
+            text-align: center;
+        }
+        .hero-eyebrow {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 22px;
+            font-weight: 600;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5vw, 2.75rem);
+            color: var(--white);
+            line-height: 1.25;
+            margin-bottom: 26px;
+            font-weight: 600;
+        }
+        .hero h1 em {
+            color: var(--accent-light);
+            font-style: italic;
+        }
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 580px;
+            margin: 0 auto 36px;
+            line-height: 1.8;
+        }
+        .hero-cta {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 14px 40px;
+            border-radius: 7px;
+            text-decoration: none;
+            letter-spacing: 0.4px;
+            transition: background 0.25s ease, transform 0.2s ease;
+        }
+        .hero-cta:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+        }
+
+        /* ---- DIVIDER ---- */
+        .divider {
+            border: none;
+            border-top: 1px solid var(--border);
+        }
+
+        /* ---- ABOUT ---- */
+        .about {
+            padding: 72px 0;
+        }
+        .section-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .about h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.7rem;
+            color: var(--white);
+            margin-bottom: 28px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        .about p {
+            font-size: 1.02rem;
+            line-height: 1.9;
+            margin-bottom: 18px;
+            color: var(--text);
+        }
+        .about p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ---- SERVICES GRID ---- */
+        .services {
+            padding: 72px 0;
+        }
+        .services h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.7rem;
+            color: var(--white);
+            margin-bottom: 40px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .service-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 26px;
+            transition: border-color 0.3s ease;
+        }
+        .service-card:hover {
+            border-color: var(--accent);
+        }
+        .service-icon {
+            font-size: 1.4rem;
+            margin-bottom: 14px;
+            display: block;
+        }
+        .service-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+        .service-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+        }
+
+        /* ---- SPECIALISATION ---- */
+        .specialisation {
+            padding: 72px 0;
+        }
+        .specialisation h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.7rem;
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .specialisation .lead {
+            font-size: 1.02rem;
+            color: var(--text);
+            line-height: 1.85;
+            margin-bottom: 32px;
+        }
+        .spec-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .spec-tag {
+            background: var(--surface-light);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 8px 16px;
+            font-size: 0.82rem;
+            color: var(--accent-light);
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        /* ---- APPROACH ---- */
+        .approach {
+            padding: 72px 0;
+        }
+        .approach h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.7rem;
+            color: var(--white);
+            margin-bottom: 40px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .approach-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .approach-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 26px 30px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        .approach-num {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            min-width: 32px;
+            padding-top: 2px;
+        }
+        .approach-body {}
+        .approach-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 6px;
+        }
+        .approach-text {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+        }
+
+        /* ---- CTA ---- */
+        .cta-section {
+            padding: 88px 0;
+            text-align: center;
+        }
+        .cta-section h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.9rem;
+            color: var(--white);
+            margin-bottom: 18px;
+            font-weight: 600;
+        }
+        .cta-section p {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 36px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: background 0.25s ease, transform 0.2s ease;
+        }
+        .cta-button:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+        }
+        .cta-note {
+            margin-top: 18px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer-top {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+        .footer-top a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+        .footer-top a:hover {
+            color: var(--accent-light);
+        }
+        .footer-bottom {
+            font-size: 0.72rem;
+            color: #4a4845;
+            line-height: 1.6;
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 600px) {
+            .hero {
+                padding: 60px 0 40px;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .topbar-contact {
+                display: none;
+            }
+            .approach-item {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .cta-section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="topbar">
+    <div class="container topbar-inner">
+        <span class="topbar-name">Advantage One</span>
+        <span class="topbar-contact">
+            <a href="tel:0882034800">08 8203 4800</a>
+            &nbsp;&middot;&nbsp;
+            <a href="mailto:advantageone@advantageone.com.au">advantageone@advantageone.com.au</a>
+        </span>
+    </div>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="container">
+        <p class="hero-eyebrow">Adelaide Accountants &amp; Financial Advisors</p>
+        <h1>One team. One focus. <em>Your advantage.</em></h1>
+        <p class="hero-sub">Advantage One is a professional financial services and accounting firm helping Adelaide businesses and individuals improve their performance and financial position — with the personal attention of a boutique practice and the depth of a full-service firm.</p>
+        <a href="mailto:advantageone@advantageone.com.au" class="hero-cta">Book a Free Consultation</a>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- About -->
+<section class="about">
+    <div class="container">
+        <p class="section-label">About Us</p>
+        <h2>Large firm capability. Boutique firm service.</h2>
+        <p>At Advantage One, you are our number one priority — and we are your advantage. Our experienced team of accountants, financial advisors, and business coaches works alongside clients to build tailored strategies that improve financial fitness and drive lasting performance.</p>
+        <p>Much like a sporting coach, we collaborate with you to develop the tactics and game plan needed to succeed in today's competitive environment. Whether you're a business owner, a health professional, or planning for retirement or aged care, our team brings focused expertise to every engagement.</p>
+        <p>Advantage One has partnered with Carbon Group, extending our reach and resources while preserving the responsive, relationship-driven service our Adelaide clients rely on.</p>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- Services -->
+<section class="services">
+    <div class="container">
+        <p class="section-label" style="text-align:center;">What We Do</p>
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-icon">📊</span>
+                <p class="service-title">Tax &amp; Accounting</p>
+                <p class="service-desc">Complete tax and accounting services for individuals and businesses — structured to optimise your financial position and keep you compliant.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">💼</span>
+                <p class="service-title">Business Advisory</p>
+                <p class="service-desc">Strategic coaching and advisory for business owners. We work with you to set direction, improve profitability, and build a stronger operation.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">📈</span>
+                <p class="service-title">Strategic Financial Advisory</p>
+                <p class="service-desc">Integrated financial planning and wealth-building strategies designed around your personal and business goals.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🏡</span>
+                <p class="service-title">Aged Care Advisory</p>
+                <p class="service-desc">Specialist aged care financial guidance to help families navigate funding, accommodation decisions, and intergenerational wealth planning.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🔄</span>
+                <p class="service-title">Succession Planning</p>
+                <p class="service-desc">Structured succession strategies to ensure your business or estate transitions smoothly — protecting what you've built.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">📋</span>
+                <p class="service-title">Investment Management</p>
+                <p class="service-desc">Managed investment support aligned with your risk profile, time horizon, and long-term financial objectives.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- Specialisation -->
+<section class="specialisation">
+    <div class="container">
+        <p class="section-label">Industry Specialisation</p>
+        <h2>Built for Health Professionals</h2>
+        <p class="lead">Advantage One has a dedicated specialisation serving health professionals across Adelaide. Our team understands the distinct financial and business challenges that come with practice ownership, partnership structures, and professional income — and we provide advice calibrated to that reality.</p>
+        <div class="spec-tags">
+            <span class="spec-tag">Doctors</span>
+            <span class="spec-tag">Dentists</span>
+            <span class="spec-tag">Allied Health Professionals</span>
+            <span class="spec-tag">Practice Owners</span>
+            <span class="spec-tag">Health Business Advisory</span>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- Approach -->
+<section class="approach">
+    <div class="container">
+        <p class="section-label" style="text-align:center;">Our Approach</p>
+        <h2>How We Work With You</h2>
+        <ul class="approach-list">
+            <li class="approach-item">
+                <span class="approach-num">01</span>
+                <div class="approach-body">
+                    <p class="approach-title">Understand Your Position</p>
+                    <p class="approach-text">We start by getting a clear picture of where you are — financially, operationally, and personally. No assumptions. No generic templates.</p>
+                </div>
+            </li>
+            <li class="approach-item">
+                <span class="approach-num">02</span>
+                <div class="approach-body">
+                    <p class="approach-title">Build a Tailored Strategy</p>
+                    <p class="approach-text">Our team develops a plan specific to your goals — whether that's growing your business, managing tax, preparing for aged care, or planning succession.</p>
+                </div>
+            </li>
+            <li class="approach-item">
+                <span class="approach-num">03</span>
+                <div class="approach-body">
+                    <p class="approach-title">Execute and Adjust</p>
+                    <p class="approach-text">We stay alongside you as circumstances change — keeping your strategy current and your financial position moving in the right direction.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="container">
+        <h2>Start with a free consultation</h2>
+        <p>If you'd like to talk through your financial or business situation with an experienced Advantage One advisor, get in touch. The first conversation is complimentary.</p>
+        <a href="mailto:advantageone@advantageone.com.au" class="cta-button">Get in Contact</a>
+        <p class="cta-note">Or call us directly: <a href="tel:0882034800" style="color: var(--text-muted); text-decoration:none;">08 8203 4800</a></p>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <p class="footer-top">Advantage One — Accountants &amp; Financial Advisors &middot; Adelaide, SA &middot; <a href="tel:0882034800">08 8203 4800</a></p>
+        <p class="footer-bottom">Advantage One provides accounting, business advisory, and financial services. Any financial advice is general in nature and does not take into account your personal circumstances. Please consider whether it is appropriate for you before acting on it. Advantage One has partnered with Carbon Group.</p>
+    </div>
+</footer>
+
+</body>
+</html>

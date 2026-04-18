@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foresight Financial Planning</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0a0f1a;
+            --surface: #111827;
+            --surface-light: #1a2235;
+            --border: #1e2d47;
+            --accent: #008ae1;
+            --accent-light: #3aa8f5;
+            --accent-glow: rgba(0, 138, 225, 0.12);
+            --white: #eef2f8;
+            --text: #b8c4d8;
+            --text-muted: #5e6e88;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---- NAV ---- */
+        .topbar {
+            padding: 22px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-brand {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: 0.3px;
+        }
+        .topbar-tagline {
+            font-size: 0.78rem;
+            color: var(--accent-light);
+            letter-spacing: 0.5px;
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            padding: 88px 0 56px;
+            text-align: center;
+        }
+        .hero-eyebrow {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 22px;
+            font-weight: 600;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            color: var(--white);
+            line-height: 1.25;
+            margin-bottom: 26px;
+            font-weight: 600;
+        }
+        .hero h1 em {
+            color: var(--accent-light);
+            font-style: italic;
+        }
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.85;
+        }
+
+        /* ---- DIVIDER ---- */
+        .section-divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 0;
+        }
+
+        /* ---- ABOUT ---- */
+        .about {
+            padding: 64px 0;
+        }
+        .about p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        .about p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* ---- SERVICES ---- */
+        .services {
+            padding: 64px 0;
+        }
+        .section-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.65rem;
+            color: var(--white);
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .service-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .service-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 32px;
+            transition: border-color 0.25s ease;
+        }
+        .service-item:hover {
+            border-color: var(--accent);
+        }
+        .service-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .service-text {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ---- TEAM ---- */
+        .team {
+            padding: 64px 0;
+        }
+        .team-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .team-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 32px;
+        }
+        .team-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+        .team-role {
+            font-size: 0.8rem;
+            color: var(--accent-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+        .team-bio {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.75;
+        }
+
+        /* ---- ABOUT STRIP ---- */
+        .about-strip {
+            padding: 64px 0;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .about-strip-inner {
+            text-align: center;
+        }
+        .about-strip p {
+            font-size: 1rem;
+            line-height: 1.85;
+            color: var(--text);
+            max-width: 580px;
+            margin: 0 auto;
+        }
+
+        /* ---- CTA ---- */
+        .cta-section {
+            padding: 88px 0;
+            text-align: center;
+        }
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.85rem;
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 36px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: background 0.25s ease, transform 0.2s ease;
+        }
+        .cta-button:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+        }
+        .cta-note {
+            margin-top: 16px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            padding: 36px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+        .footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: var(--accent-light);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 600px) {
+            .hero {
+                padding: 60px 0 40px;
+            }
+            .topbar-tagline {
+                display: none;
+            }
+            .service-item,
+            .team-card {
+                padding: 22px 20px;
+            }
+            .cta-section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nav -->
+    <nav class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-brand">Foresight Financial Planning</span>
+            <span class="topbar-tagline">Your way forward</span>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <p class="hero-eyebrow">Financial Planning &amp; Mortgage Broking</p>
+            <h1>Affordable, comprehensive advice built around <em>your</em> financial goals</h1>
+            <p class="hero-sub">Foresight Financial Planning was created to give everyday Australians access to tailored financial advice and services — without the complexity or the cost that usually gets in the way.</p>
+        </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- About -->
+    <section class="about">
+        <div class="container">
+            <p>At <span class="highlight">Foresight Financial Planning</span>, our clients' needs come first. We're with you every step of the way — providing the knowledge, guidance, and confidence to make the most of your situation and keep you moving forward.</p>
+            <p>Whether you're focused on owning your home sooner, retiring earlier, protecting your assets, or simply increasing your current rate of wealth creation, Foresight can help make it happen.</p>
+            <p>Our team brings <span class="highlight">over 35 years of combined experience</span> to every client relationship. That depth means we've seen the full range of financial situations — and we know what it actually takes to get results.</p>
+        </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- Services -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-heading">What we can help you with</h2>
+            <ul class="service-list">
+                <li class="service-item">
+                    <p class="service-label">Financial Planning</p>
+                    <p class="service-text">Comprehensive, personalised financial advice tailored to where you are now and where you want to be. We look at the full picture — income, assets, goals, and risk — and build a plan that actually works for your life.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Home Ownership</p>
+                    <p class="service-text">Strategies and mortgage broking support to help you get into the property market sooner, structure your loan well, and build equity faster than you would on your own.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Retirement Planning</p>
+                    <p class="service-text">Clear, practical guidance on how to retire earlier and with more certainty. We help you understand what's possible and map out the steps to get there — without the guesswork.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Asset Protection</p>
+                    <p class="service-text">Advice on protecting what you've built. Whether you're starting out or well into wealth creation, we make sure the right structures and safeguards are in place.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Wealth Creation</p>
+                    <p class="service-text">Ongoing strategies to grow your wealth at a pace that makes sense for your situation. We identify the opportunities most people miss and help you take advantage of them.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- Team -->
+    <section class="team">
+        <div class="container">
+            <h2 class="section-heading">Our team</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <p class="team-name">Len McCarthy</p>
+                    <p class="team-role">Executive Director</p>
+                    <p class="team-bio">Len is an Executive Director and Authorised Representative of HNW Planning Pty Ltd. With decades of experience in financial planning and client advisory, he brings a considered, long-term approach to every engagement.</p>
+                </div>
+                <div class="team-card">
+                    <p class="team-name">David Sayer</p>
+                    <p class="team-role">Executive Director, Financial Adviser &amp; Mortgage Broker</p>
+                    <p class="team-bio">David is an Executive Director, Authorised Financial Adviser, and accredited Mortgage Broker. He works across financial planning and lending — giving clients a single, trusted point of contact for both sides of their financial picture.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About strip -->
+    <div class="about-strip">
+        <div class="container about-strip-inner">
+            <p>Foresight Financial Planning is a joint venture between Boost Financial Coaching Pty Ltd and Delphi Financial Solutions Pty Ltd, each Corporate Authorised Representatives of HNW Planning Pty Ltd (AFSL &amp; ACL 225216). Len McCarthy and David Sayer are Authorised Representatives of HNW Planning Pty Ltd.</p>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-heading">Ready to move forward?</h2>
+            <p class="cta-sub">Book an obligation-free meeting with our team. We can even come to you. The first step is just a conversation.</p>
+            <a href="mailto:david@foresightfinancial.com.au" class="cta-button">Get in Touch</a>
+            <p class="cta-note">No obligation. No pressure. Just straightforward advice.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Foresight Financial Planning &nbsp;|&nbsp; <a href="https://foresightfinancial.com.au">foresightfinancial.com.au</a></p>
+            <p style="margin-top: 8px;">General advice only. Consider your personal circumstances before acting on any information provided.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

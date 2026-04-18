@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizon Wealth Advisory — Brisbane Financial Advisors</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0b1219;
+            --surface: #111c26;
+            --surface-light: #172130;
+            --border: #1e3045;
+            --accent: #008ed3;
+            --accent-light: #2da8e8;
+            --accent-glow: rgba(0, 142, 211, 0.12);
+            --white: #eef3f8;
+            --text: #b8c8d8;
+            --text-muted: #5a7080;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---- TOP BAR ---- */
+        .topbar {
+            padding: 18px 0;
+            border-bottom: 1px solid var(--border);
+            background: var(--surface);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .topbar-brand {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: 0.5px;
+        }
+        .topbar-contact {
+            font-size: 0.78rem;
+            color: var(--accent-light);
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            padding: 88px 0 56px;
+            text-align: center;
+        }
+        .hero-eyebrow {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            color: var(--white);
+            line-height: 1.25;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+        .hero h1 em {
+            color: var(--accent-light);
+            font-style: italic;
+        }
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 560px;
+            margin: 0 auto 36px;
+            line-height: 1.8;
+        }
+        .hero-cta {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 15px 44px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .hero-cta:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+        }
+
+        /* ---- INTRO ---- */
+        .intro {
+            padding: 72px 0;
+            border-top: 1px solid var(--border);
+        }
+        .intro p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+        .intro p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* ---- SERVICES ---- */
+        .services {
+            padding: 72px 0;
+            border-top: 1px solid var(--border);
+        }
+        .section-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.65rem;
+            color: var(--white);
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .service-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .service-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 32px;
+            transition: border-color 0.3s ease;
+        }
+        .service-card:hover {
+            border-color: var(--accent);
+        }
+        .service-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .service-text {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ---- LOCATIONS ---- */
+        .locations {
+            padding: 72px 0;
+            border-top: 1px solid var(--border);
+        }
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 14px;
+            margin-top: 36px;
+        }
+        .location-pill {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        /* ---- TRUST BAR ---- */
+        .trust {
+            padding: 56px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .trust-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+        .trust-facts {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .trust-fact {
+            text-align: center;
+        }
+        .trust-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2rem;
+            color: var(--white);
+            font-weight: 600;
+            line-height: 1;
+        }
+        .trust-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 6px;
+        }
+
+        /* ---- CTA ---- */
+        .cta-section {
+            padding: 88px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.9rem;
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 36px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .cta-button:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+        }
+        .cta-note {
+            margin-top: 16px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer-name {
+            font-size: 0.9rem;
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .footer p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+        .footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: var(--accent-light);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 600px) {
+            .hero {
+                padding: 60px 0 40px;
+            }
+            .service-card {
+                padding: 22px 20px;
+            }
+            .cta-section {
+                padding: 60px 0;
+            }
+            .trust-facts {
+                gap: 28px;
+            }
+            .topbar-inner {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body style="background-color: #0b1219;">
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-brand">Horizon Wealth Advisory</span>
+            <a href="tel:1300351716" class="topbar-contact">1300 351 716</a>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <p class="hero-eyebrow">Brisbane Financial Advisors — Established 2016</p>
+            <h1>Boutique wealth advice for <em>every stage</em> of your financial life</h1>
+            <p class="hero-sub">Horizon Wealth Advisory is a Brisbane-based financial planning firm helping individuals, families, and businesses build, protect, and grow their wealth — with advisors who take the time to understand your goals.</p>
+            <a href="tel:1300351716" class="hero-cta">Book a Free Consultation</a>
+        </div>
+    </section>
+
+    <!-- Intro -->
+    <section class="intro">
+        <div class="container">
+            <p>At <span class="highlight">Horizon Wealth Advisory</span>, we work with Queenslanders at every stage of life — from young professionals just starting to build wealth, to families navigating estate planning, to business owners planning for retirement.</p>
+            <p>We're a boutique firm, which means you deal directly with an experienced adviser who knows your situation — not a rotating team or a call centre. Our office is based at <span class="highlight">6/123 Eagle St, Brisbane City</span>, and we service clients across the greater Brisbane region and beyond.</p>
+            <p>As an Authorised Representative of Eagle Street Advisory Pty Ltd (AFSL 543761), we operate under a fully licensed and compliant framework — so you can engage with confidence.</p>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-heading">What we help you with</h2>
+            <div class="service-grid">
+                <div class="service-card">
+                    <p class="service-label">Retirement Planning</p>
+                    <p class="service-text">Whether retirement is five years or twenty years away, we help you map out exactly what you need and build a strategy that gets you there — with the flexibility to adapt as life changes.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-label">Investments &amp; Wealth Creation</p>
+                    <p class="service-text">From investment portfolios to wealth creation strategies, we help you put your money to work in a way that aligns with your risk tolerance, timeframe, and goals.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-label">Cash Flow Management</p>
+                    <p class="service-text">We help you get a clear picture of your finances, eliminate inefficiencies, and build habits that create long-term financial momentum — not just short-term fixes.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-label">Personal Insurance &amp; Income Protection</p>
+                    <p class="service-text">Your income is your most valuable asset. We structure insurance solutions — including income protection and life cover — to make sure you and your family are protected if the unexpected happens.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-label">SMSF Advice</p>
+                    <p class="service-text">Self-managed super funds offer control and flexibility — but they come with real compliance obligations. We guide you through setup, strategy, and ongoing management so your SMSF works for you.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-label">Estate Planning &amp; Binding Nominations</p>
+                    <p class="service-text">Making sure your assets go where you intend — and that your family is protected — requires more than a will. We walk you through binding nominations and estate structures that hold up when it matters.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-label">Business &amp; Financial Planning</p>
+                    <p class="service-text">For business owners, personal and business finances are rarely separate. We help you align both — from protecting what you've built to planning your eventual exit.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-label">Financial Planning for Young Professionals</p>
+                    <p class="service-text">Starting early is the single biggest advantage in wealth building. We work with young professionals who want to get ahead — on super, savings, insurance, and long-term strategy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations -->
+    <section class="locations">
+        <div class="container">
+            <h2 class="section-heading">Areas we service</h2>
+            <p style="text-align:center; font-size:1rem; color:var(--text); margin-bottom:0;">We work with clients across Brisbane and the surrounding region, with local knowledge of the communities we serve.</p>
+            <div class="locations-grid">
+                <div class="location-pill">Brisbane City</div>
+                <div class="location-pill">Chermside</div>
+                <div class="location-pill">Grange</div>
+                <div class="location-pill">North Brisbane</div>
+                <div class="location-pill">Stafford</div>
+                <div class="location-pill">Windsor</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust -->
+    <section class="trust">
+        <div class="container">
+            <p class="trust-label">By the numbers</p>
+            <div class="trust-facts">
+                <div class="trust-fact">
+                    <div class="trust-number">2016</div>
+                    <div class="trust-desc">Established</div>
+                </div>
+                <div class="trust-fact">
+                    <div class="trust-number">Eagle St</div>
+                    <div class="trust-desc">Brisbane CBD office</div>
+                </div>
+                <div class="trust-fact">
+                    <div class="trust-number">AFSL</div>
+                    <div class="trust-desc">Licensed &amp; compliant</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-heading">Ready to take the next step?</h2>
+            <p class="cta-sub">Book a free initial consultation with our Brisbane team. We'll look at where you are now, where you want to be, and what it takes to get there.</p>
+            <a href="tel:1300351716" class="cta-button">Call 1300 351 716</a>
+            <p class="cta-note">Or email us at <a href="mailto:info@horizonwa.com.au" style="color:var(--text-muted);">info@horizonwa.com.au</a></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-name">Horizon Wealth Advisory Pty Ltd</p>
+            <p>ABN 38 642 452 257 &nbsp;·&nbsp; Authorised Representative of Eagle Street Advisory Pty Ltd (AFSL 543761)</p>
+            <p style="margin-top:6px;">6/123 Eagle St, Brisbane City QLD 4000 &nbsp;·&nbsp; <a href="tel:1300351716">1300 351 716</a> &nbsp;·&nbsp; <a href="mailto:info@horizonwa.com.au">info@horizonwa.com.au</a></p>
+            <p style="margin-top:12px; font-size:0.7rem; color:#3a5060;">General financial advice only. Consider your personal circumstances before acting on any information provided here.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

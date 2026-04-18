@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health &amp; Finance Integrated — Specialist Financial Planning</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0b100f;
+            --surface: #121a18;
+            --surface-light: #192320;
+            --border: #243028;
+            --accent: #5a9e7a;
+            --accent-light: #7ec49a;
+            --accent-glow: rgba(90, 158, 122, 0.12);
+            --white: #eef3f0;
+            --text: #b8c9be;
+            --text-muted: #6b8070;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* TOP BAR */
+        .topbar {
+            padding: 18px 0;
+            border-bottom: 1px solid var(--border);
+            background: var(--surface);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+        .topbar-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: 0.3px;
+        }
+        .topbar-tag {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+        }
+
+        /* HERO */
+        .hero {
+            padding: 80px 0 56px;
+            text-align: center;
+        }
+        .hero-eyebrow {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 22px;
+            font-weight: 600;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.9rem, 5vw, 2.7rem);
+            color: var(--white);
+            line-height: 1.25;
+            margin-bottom: 26px;
+            font-weight: 600;
+        }
+        .hero h1 em {
+            color: var(--accent-light);
+            font-style: italic;
+        }
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.85;
+        }
+
+        /* DIVIDER */
+        .divider {
+            border: none;
+            border-top: 1px solid var(--border);
+        }
+
+        /* ABOUT SECTION */
+        .about {
+            padding: 64px 0;
+        }
+        .section-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--accent);
+            margin-bottom: 28px;
+            font-weight: 600;
+        }
+        .about p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        .about p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* SERVICES */
+        .services {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .services-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.65rem;
+            color: var(--white);
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+        .service-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .service-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 26px 30px;
+            transition: border-color 0.3s ease;
+        }
+        .service-item:hover {
+            border-color: var(--accent);
+        }
+        .service-label {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .service-text {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* TRANSITION NOTICE */
+        .notice {
+            padding: 48px 0;
+            border-top: 1px solid var(--border);
+        }
+        .notice-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            border-radius: 8px;
+            padding: 28px 32px;
+        }
+        .notice-box p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--text);
+        }
+        .notice-box strong {
+            color: var(--white);
+        }
+
+        /* CONTACT / CTA */
+        .cta-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 40px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+        .contact-options {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            align-items: center;
+        }
+        .contact-link {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.4px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .contact-link:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+        }
+        .contact-link.secondary {
+            background: transparent;
+            color: var(--accent-light);
+            border: 1px solid var(--accent);
+            padding: 14px 40px;
+        }
+        .contact-link.secondary:hover {
+            background: var(--accent-glow);
+        }
+        .contact-detail {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 36px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+        .footer p + p {
+            margin-top: 6px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            .hero {
+                padding: 56px 0 40px;
+            }
+            .topbar-tag {
+                display: none;
+            }
+            .service-item {
+                padding: 20px 20px;
+            }
+            .cta-section {
+                padding: 56px 0;
+            }
+            .notice-box {
+                padding: 22px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-name">Health &amp; Finance Integrated</span>
+            <span class="topbar-tag">Award-Winning Specialist Financial Planning</span>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <p class="hero-eyebrow">Specialist Financial Planning — Sydney</p>
+            <h1>Advice tailored to your <em>health, wealth,</em> and family</h1>
+            <p class="hero-sub">We work with people navigating life's more complex financial moments — after a TPD claim, heading into retirement, or planning for a family member with a disability. Specialist advice, built around your situation.</p>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- About -->
+    <section class="about">
+        <div class="container">
+            <p class="section-label">Who We Are</p>
+            <p>Health &amp; Finance Integrated is an award-winning specialist financial planning practice. We work with clients across wealth preservation and management, succession planning, strategic investment advice, taxation strategy, and retirement planning.</p>
+            <p>Our focus is people who need advice that goes beyond the standard — those managing a TPD payout, preparing for retirement on their own terms, families investing with discipline and care, and carers establishing Special Disability Trusts for a loved one.</p>
+            <p>We take the time to understand your health circumstances, your family situation, and your long-term goals before making any recommendation. That's the only way to give advice worth following.</p>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services">
+        <div class="container">
+            <h2 class="services-heading">What we can help you with</h2>
+            <ul class="service-list">
+                <li class="service-item">
+                    <p class="service-label">Post-TPD &amp; Compensation Advice</p>
+                    <p class="service-text">If your TPD claim has been approved, the decisions you make next have long-term consequences. We map the tax treatment, super access, cash flow, and investment steps so you can move forward with clarity and confidence.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Tax-Smart Investing &amp; Portfolio Management</p>
+                    <p class="service-text">Goal-based portfolios built with a clear strategy and reviewed regularly. We coordinate super and non-super investments, explain the rationale behind every move, and keep your plan on track as life changes.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Pre-Retirement &amp; Retirement Income Planning</p>
+                    <p class="service-text">Whether retirement is two years away or on the horizon, we help you structure your income, super, and entitlements so you're not leaving money on the table or making decisions you can't reverse.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Age Pension &amp; Centrelink Strategy</p>
+                    <p class="service-text">Centrelink rules are complex and the interactions with your super and assets can be costly if you get them wrong. We develop strategies that maximise your entitlements within the rules.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Special Disability Trusts &amp; Protective Trusts</p>
+                    <p class="service-text">For families planning for a loved one with a disability, we advise on the structure and establishment of Special Disability Trusts and Protective Trusts — giving you a framework that protects their future without jeopardising government support.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Financial Services Guides &amp; Ongoing Reviews</p>
+                    <p class="service-text">We provide clear documentation of our services, fees, and obligations. Regular client reviews keep your financial plan current as your circumstances evolve.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Transition Notice -->
+    <section class="notice">
+        <div class="container">
+            <div class="notice-box">
+                <p><strong>A note on our name:</strong> Over the coming months, Health &amp; Finance Integrated will transition to trading as <strong>AbleFS</strong>. Our name and email addresses will change — your adviser, your advice relationship, and the services you receive will not. No action is required.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-heading">Ready to talk through your situation?</h2>
+            <p class="cta-sub">Submit an enquiry or call us directly. A member of our team will be in touch to understand where you're at and whether we're the right fit.</p>
+            <div class="contact-options">
+                <a href="mailto:info@healthfinance.com.au" class="contact-link">Send an Enquiry</a>
+                <a href="tel:0284585165" class="contact-link secondary">02 8458 5165</a>
+                <p class="contact-detail">You can also reach us on 1300 10 44 99</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Health &amp; Finance Integrated — Specialist Financial Planning</p>
+            <p>General information only. This website does not constitute financial advice. Advice is provided under our Australian Financial Services Licence. Please refer to our Financial Services Guide before proceeding.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

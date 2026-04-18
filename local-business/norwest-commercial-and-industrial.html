@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Norwest Commercial &amp; Industrial Real Estate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0e0e12;
+            --surface: #16161d;
+            --surface-light: #1e1e28;
+            --border: #2a2a36;
+            --accent: #7ba7c4;
+            --accent-light: #9ec0d8;
+            --accent-glow: rgba(123, 167, 196, 0.15);
+            --white: #f0eff4;
+            --text: #c5c4ce;
+            --text-muted: #7e7d8a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---- TOP BAR ---- */
+        .topbar {
+            padding: 18px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: 0.3px;
+        }
+        .topbar-region {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            padding: 88px 0 56px;
+            text-align: center;
+        }
+        .hero-eyebrow {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 22px;
+            font-weight: 600;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            color: var(--white);
+            line-height: 1.25;
+            margin-bottom: 28px;
+            font-weight: 600;
+        }
+        .hero h1 em {
+            color: var(--accent-light);
+            font-style: italic;
+        }
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* ---- DIVIDER ---- */
+        .divider {
+            border: none;
+            border-top: 1px solid var(--border);
+        }
+
+        /* ---- PILLARS ---- */
+        .pillars {
+            padding: 72px 0;
+            border-top: 1px solid var(--border);
+        }
+        .pillars-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.55rem;
+            color: var(--white);
+            margin-bottom: 44px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .pillar-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .pillar-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 32px;
+            transition: border-color 0.3s ease;
+        }
+        .pillar-item:hover {
+            border-color: var(--accent);
+        }
+        .pillar-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .pillar-text {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ---- ABOUT ---- */
+        .about {
+            padding: 72px 0;
+            border-top: 1px solid var(--border);
+        }
+        .about p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+        .about p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* ---- CONTACT ---- */
+        .contact-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .contact-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .contact-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 36px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+        .contact-button {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .contact-button:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+        }
+        .contact-detail {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .contact-detail a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        .contact-detail a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 600px) {
+            .hero {
+                padding: 60px 0 40px;
+            }
+            .pillar-item {
+                padding: 22px 20px;
+            }
+            .contact-section {
+                padding: 60px 0;
+            }
+            .topbar-region {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-name">Norwest Commercial &amp; Industrial</span>
+            <span class="topbar-region">Sydney's North West</span>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <p class="hero-eyebrow">Commercial &middot; Industrial &middot; Retail</p>
+            <h1>Leadership. Local Knowledge. <em>Result Driven.</em></h1>
+            <p class="hero-sub">Norwest is Sydney's north west's leading independent specialist in commercial, industrial and retail real estate — delivering outcomes for owners, investors and occupiers across the region.</p>
+        </div>
+    </section>
+
+    <!-- Pillars -->
+    <section class="pillars">
+        <div class="container">
+            <h2 class="pillars-heading">What we do</h2>
+            <ul class="pillar-list">
+                <li class="pillar-item">
+                    <p class="pillar-label">Commercial Real Estate</p>
+                    <p class="pillar-text">Office and commercial property across Sydney's north west — leasing, sales and management handled by specialists who know this market inside out.</p>
+                </li>
+                <li class="pillar-item">
+                    <p class="pillar-label">Industrial Property</p>
+                    <p class="pillar-text">Warehouses, distribution centres and industrial facilities in one of Sydney's most active logistics corridors. Deep relationships and deep local knowledge.</p>
+                </li>
+                <li class="pillar-item">
+                    <p class="pillar-label">Retail Property</p>
+                    <p class="pillar-text">Retail leasing and sales across the north west — from neighbourhood strip shops to larger format centres. We match the right tenants to the right spaces.</p>
+                </li>
+                <li class="pillar-item">
+                    <p class="pillar-label">Property Management</p>
+                    <p class="pillar-text">Hands-on management for commercial and industrial landlords who want their assets looked after properly — not passed off to a junior team member.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about">
+        <div class="container">
+            <p>Norwest Commercial &amp; Industrial is an <span class="highlight">independent specialist</span> — not a franchise, not a generalist agency. That means every client gets direct access to experienced practitioners who live and work in Sydney's north west.</p>
+            <p>The north west is one of the fastest-growing commercial and industrial precincts in New South Wales. Knowing it well — the off-market stock, the active tenants, the owner motivations — is what separates a good result from an average one.</p>
+            <p>Whether you're a landlord looking for a tenant, an investor evaluating an acquisition, or a business hunting for the right premises, we have the local reach and the commercial expertise to get it done.</p>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="contact-heading">Get in touch</h2>
+            <p class="contact-sub">Talk directly with a specialist. No call centres, no hand-offs — just straightforward advice from people who know this market.</p>
+            <a href="mailto:kirsten.gauci@norwestcommercial.com.au" class="contact-button">Send an Enquiry</a>
+            <p class="contact-detail">Or visit us at <a href="https://norwestcommercial.com.au" target="_blank" rel="noopener">norwestcommercial.com.au</a></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Norwest Commercial &amp; Industrial Real Estate &mdash; Sydney's North West<br>Independent specialists in commercial, industrial and retail property.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

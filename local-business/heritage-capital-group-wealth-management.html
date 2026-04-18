@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage Capital Group | Wealth Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0b0d14;
+            --surface: #111420;
+            --surface-mid: #171c2e;
+            --surface-light: #1d2438;
+            --border: #252d45;
+            --border-light: #2e3855;
+            --accent: #8fa8d4;
+            --accent-light: #b3c8e8;
+            --accent-glow: rgba(143, 168, 212, 0.12);
+            --gold: #c8a96e;
+            --gold-light: #dfc08e;
+            --white: #edf0f7;
+            --text: #b8bfd4;
+            --text-muted: #6b7494;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* ---- NAV ---- */
+        .nav {
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: 0.3px;
+        }
+        .nav-logo span {
+            color: var(--gold);
+        }
+        .nav-contact {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            letter-spacing: 0.3px;
+        }
+        .nav-contact:hover {
+            color: var(--accent-light);
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            padding: 96px 0 72px;
+            text-align: center;
+        }
+        .hero-eyebrow {
+            display: inline-block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--gold);
+            margin-bottom: 28px;
+            font-weight: 600;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 28px;
+            font-weight: 600;
+            max-width: 640px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero h1 em {
+            color: var(--accent-light);
+            font-style: italic;
+        }
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 580px;
+            margin: 0 auto 40px;
+            line-height: 1.85;
+        }
+        .hero-cta {
+            display: inline-block;
+            background: var(--gold);
+            color: #0b0d14;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 15px 44px;
+            border-radius: 6px;
+            text-decoration: none;
+            letter-spacing: 0.4px;
+            transition: background 0.25s ease, transform 0.2s ease;
+        }
+        .hero-cta:hover {
+            background: var(--gold-light);
+            transform: translateY(-1px);
+        }
+
+        /* ---- TENETS BAR ---- */
+        .tenets {
+            padding: 48px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: var(--surface);
+        }
+        .tenets-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            text-align: center;
+        }
+        .tenet-item {
+            padding: 20px 12px;
+        }
+        .tenet-word {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* ---- ABOUT ---- */
+        .about {
+            padding: 88px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .section-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .about h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+            color: var(--white);
+            margin-bottom: 32px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        .about p {
+            font-size: 1.02rem;
+            line-height: 1.9;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+        .about p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        /* ---- APPROACH ---- */
+        .approach {
+            padding: 88px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .approach h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+            color: var(--white);
+            margin-bottom: 48px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        .approach-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .approach-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 32px 28px;
+            transition: border-color 0.3s ease;
+        }
+        .approach-card:hover {
+            border-color: var(--accent);
+        }
+        .approach-card-label {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--gold);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .approach-card h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.15rem;
+            color: var(--white);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .approach-card p {
+            font-size: 0.93rem;
+            color: var(--text);
+            line-height: 1.75;
+        }
+
+        /* ---- EXPERIENCE STRIP ---- */
+        .experience {
+            padding: 64px 0;
+            border-bottom: 1px solid var(--border);
+            background: var(--surface);
+        }
+        .experience-inner {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+        }
+        .exp-stat {
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .exp-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 3rem;
+            color: var(--gold);
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+        .exp-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .exp-divider {
+            width: 1px;
+            height: 80px;
+            background: var(--border-light);
+            flex-shrink: 0;
+        }
+        .exp-text {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.85;
+        }
+
+        /* ---- SERVICES ---- */
+        .services {
+            padding: 88px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .services h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+            color: var(--white);
+            margin-bottom: 48px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        .service-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .service-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 28px;
+            transition: border-color 0.3s ease;
+        }
+        .service-item:hover {
+            border-color: var(--accent);
+        }
+        .service-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--gold);
+            margin-top: 8px;
+            flex-shrink: 0;
+        }
+        .service-content {}
+        .service-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 6px;
+        }
+        .service-desc {
+            font-size: 0.9rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ---- CONTACT ---- */
+        .contact {
+            padding: 88px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .contact h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .contact-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 48px;
+            max-width: 520px;
+            line-height: 1.8;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .contact-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 28px;
+        }
+        .contact-card-label {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .contact-card a {
+            font-size: 0.97rem;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .contact-card a:hover {
+            color: var(--white);
+        }
+        .contact-card p {
+            font-size: 0.97rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            padding: 48px 0;
+            text-align: center;
+        }
+        .footer-logo {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.05rem;
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .footer-logo span {
+            color: var(--gold);
+        }
+        .footer-disc {
+            font-size: 0.73rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 10px;
+            line-height: 1.7;
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 64px 0 52px;
+            }
+            .tenets-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0;
+            }
+            .tenet-item {
+                border-bottom: 1px solid var(--border);
+            }
+            .approach-grid {
+                grid-template-columns: 1fr;
+            }
+            .experience-inner {
+                flex-direction: column;
+                text-align: center;
+                gap: 28px;
+            }
+            .exp-divider {
+                display: none;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nav -->
+    <nav class="nav">
+        <div class="container nav-inner">
+            <div class="nav-logo">Heritage <span>Capital</span> Group</div>
+            <a class="nav-contact" href="tel:+61394534888">+613 9453 4888</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <span class="hero-eyebrow">Wealth Management &mdash; Melbourne</span>
+            <h1>Integrated, sophisticated wealth management for <em>individuals and families</em></h1>
+            <p class="hero-sub">Heritage Capital Group provides bespoke wealth management solutions built around your financial goals, your professional network, and your future. Every plan is developed, managed, and adjusted in-house&mdash;with complete transparency at every step.</p>
+            <a href="mailto:info@heritagecapital.com.au" class="hero-cta">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- Tenets Bar -->
+    <div class="tenets">
+        <div class="container">
+            <div class="tenets-grid">
+                <div class="tenet-item">
+                    <div class="tenet-word">Transparency</div>
+                </div>
+                <div class="tenet-item">
+                    <div class="tenet-word">Agility</div>
+                </div>
+                <div class="tenet-item">
+                    <div class="tenet-word">Integrity</div>
+                </div>
+                <div class="tenet-item">
+                    <div class="tenet-word">Personalisation</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About -->
+    <section class="about">
+        <div class="container">
+            <p class="section-label">Our Story</p>
+            <h2>A firm built on four principles that never get compromised</h2>
+            <p>Heritage Capital Group was founded on a belief that wealth management should be genuinely personalised&mdash;not templated, not outsourced, and not opaque. The HCG ethos is built around four core tenets: Transparency, Agility, Integrity, and Personalisation. These aren't aspirational values on a wall. They're the operating principles behind every decision we make on behalf of our clients.</p>
+            <p>Managing every component of your wealth management plan internally, we work with you and your professional network to provide a service offering that combines unparalleled flexibility with strategic freedom. When your circumstances change, your plan changes with them&mdash;directly and immediately, without the delays that come from outsourced management or rigid product structures.</p>
+        </div>
+    </section>
+
+    <!-- Experience Strip -->
+    <div class="experience">
+        <div class="container">
+            <div class="experience-inner">
+                <div class="exp-stat">
+                    <div class="exp-number">30+</div>
+                    <div class="exp-label">Years combined<br>experience</div>
+                </div>
+                <div class="exp-divider"></div>
+                <p class="exp-text">Directors Hamish Blievers and Elizabeth Walmsley bring a combined 30 years in wealth management. Together with an internal team of specialists and research and technology partners, they take an innovative approach to investment solutions&mdash;providing customised service backed by industry expertise, delivered with the convenience and immediacy clients require.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Approach -->
+    <section class="approach">
+        <div class="container">
+            <p class="section-label">Our Approach</p>
+            <h2>Personalised planning. Integrated execution.</h2>
+            <div class="approach-grid">
+                <div class="approach-card">
+                    <div class="approach-card-label">Collaboration</div>
+                    <h3>We work within your existing network</h3>
+                    <p>After gaining a thorough understanding of your financial needs and goals, we work collaboratively with your accountant, lawyer, and existing professional relationships to produce a seamlessly integrated investment solution&mdash;all managed in-house.</p>
+                </div>
+                <div class="approach-card">
+                    <div class="approach-card-label">Personalisation</div>
+                    <h3>Your plan reflects your situation</h3>
+                    <p>We seek the most tax-effective structures specifically for your circumstances, tailoring a plan that reflects your current requirements, future needs, and individual considerations. The goal is to simplify your financial affairs while protecting and growing your wealth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services">
+        <div class="container">
+            <p class="section-label">What We Do</p>
+            <h2>Wealth management managed entirely in-house</h2>
+            <ul class="service-list">
+                <li class="service-item">
+                    <div class="service-dot"></div>
+                    <div class="service-content">
+                        <div class="service-title">Integrated Wealth Management</div>
+                        <div class="service-desc">Comprehensive management of your wealth plan under one roof. No hand-offs, no third-party managers, no loss of control or visibility over your investments and strategy.</div>
+                    </div>
+                </li>
+                <li class="service-item">
+                    <div class="service-dot"></div>
+                    <div class="service-content">
+                        <div class="service-title">Bespoke Investment Solutions</div>
+                        <div class="service-desc">Access to any service or investment in the market, structured around your goals and risk profile. Solutions designed for individual investors and their families&mdash;not off-the-shelf portfolios.</div>
+                    </div>
+                </li>
+                <li class="service-item">
+                    <div class="service-dot"></div>
+                    <div class="service-content">
+                        <div class="service-title">Agile Portfolio Management</div>
+                        <div class="service-desc">Plans that can be optimised and adjusted directly and immediately. Our internal structure means we respond to changes in your circumstances or the market without delay or bureaucracy.</div>
+                    </div>
+                </li>
+                <li class="service-item">
+                    <div class="service-dot"></div>
+                    <div class="service-content">
+                        <div class="service-title">Professional Network Collaboration</div>
+                        <div class="service-desc">We integrate with your existing accountant, legal adviser, and other professional relationships to deliver a seamlessly coordinated financial strategy&mdash;no silos, no duplication, no gaps.</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact">
+        <div class="container">
+            <p class="section-label">Get in Touch</p>
+            <h2>Ready to talk about your financial goals?</h2>
+            <p class="contact-sub">We're happy to discuss your situation and explain how Heritage Capital Group can help. Reach out by phone or email and a member of our team will be in touch.</p>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-card-label">Email</div>
+                    <a href="mailto:info@heritagecapital.com.au">info@heritagecapital.com.au</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-card-label">Phone</div>
+                    <a href="tel:+61394534888">+613 9453 4888</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">Heritage <span>Capital</span> Group</div>
+            <p class="footer-disc">Heritage Capital Group (ACN 631 054 192 &nbsp;|&nbsp; ABN 36 216 034 692) holds Australian Financial Services Licence (AFSL) 518138. A Financial Services Guide (FSG) is available upon request.</p>
+            <p class="footer-disc">General information only. This website does not constitute personal financial advice. Past performance is not a reliable indicator of future performance. Please consider your personal circumstances before acting on any information contained here.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
