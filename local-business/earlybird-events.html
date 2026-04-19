@@ -1,354 +1,127 @@
 <!DOCTYPE html>
 <html lang="en-AU">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Earlybird Events — Full-Service Event Management</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg: #0e0e12;
-            --surface: #16161d;
-            --surface-light: #1e1e28;
-            --border: #2a2a36;
-            --accent: #e8a030;
-            --accent-light: #f0be6a;
-            --accent-glow: rgba(232, 160, 48, 0.15);
-            --white: #f0eff4;
-            --text: #c5c4ce;
-            --text-muted: #7e7d8a;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .container {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* ---- TOP BAR ---- */
-        .topbar {
-            padding: 20px 0;
-            border-bottom: 1px solid var(--border);
-        }
-        .topbar-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .topbar-brand {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--white);
-            letter-spacing: 0.5px;
-        }
-        .topbar-contact {
-            font-size: 0.8rem;
-            color: var(--accent-light);
-            font-weight: 500;
-            text-decoration: none;
-        }
-        .topbar-contact:hover {
-            color: var(--white);
-        }
-
-        /* ---- HERO ---- */
-        .hero {
-            padding: 80px 0 64px;
-            text-align: center;
-        }
-        .hero-eyebrow {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--accent);
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-        .hero h1 {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(2rem, 5vw, 2.8rem);
-            color: var(--white);
-            line-height: 1.25;
-            margin-bottom: 24px;
-            font-weight: 600;
-        }
-        .hero h1 em {
-            color: var(--accent-light);
-            font-style: italic;
-        }
-        .hero-sub {
-            font-size: 1.05rem;
-            color: var(--text);
-            max-width: 560px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-
-        /* ---- SERVICES ---- */
-        .services {
-            padding: 64px 0;
-            border-top: 1px solid var(--border);
-        }
-        .services-heading {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.6rem;
-            color: var(--white);
-            margin-bottom: 40px;
-            text-align: center;
-            font-weight: 600;
-        }
-        .bullet-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .bullet-item {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 28px 32px;
-            transition: border-color 0.3s ease;
-        }
-        .bullet-item:hover {
-            border-color: var(--accent);
-        }
-        .bullet-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        .bullet-text {
-            font-size: 1rem;
-            color: var(--text);
-            line-height: 1.7;
-        }
-
-        /* ---- ABOUT ---- */
-        .about {
-            padding: 64px 0;
-            border-top: 1px solid var(--border);
-        }
-        .section-heading {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.6rem;
-            color: var(--white);
-            margin-bottom: 28px;
-            font-weight: 600;
-        }
-        .about p {
-            font-size: 1.05rem;
-            line-height: 1.9;
-            margin-bottom: 20px;
-        }
-        .about p:last-child {
-            margin-bottom: 0;
-        }
-        .highlight {
-            color: var(--accent-light);
-            font-weight: 600;
-        }
-
-        /* ---- CONTACT ---- */
-        .contact {
-            padding: 64px 0;
-            border-top: 1px solid var(--border);
-        }
-        .contact-detail {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 16px;
-        }
-        .contact-detail-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
-            font-weight: 600;
-            min-width: 56px;
-        }
-        .contact-detail a {
-            color: var(--text);
-            text-decoration: none;
-            font-size: 1rem;
-        }
-        .contact-detail a:hover {
-            color: var(--accent-light);
-        }
-
-        /* ---- CTA ---- */
-        .cta-section {
-            padding: 80px 0;
-            border-top: 1px solid var(--border);
-            text-align: center;
-        }
-        .cta-heading {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.8rem;
-            color: var(--white);
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-        .cta-sub {
-            font-size: 1rem;
-            color: var(--text);
-            margin-bottom: 36px;
-            max-width: 480px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .cta-button {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--bg);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 600;
-            padding: 16px 48px;
-            border-radius: 8px;
-            text-decoration: none;
-            letter-spacing: 0.5px;
-            transition: background 0.3s ease, transform 0.2s ease;
-        }
-        .cta-button:hover {
-            background: var(--accent-light);
-            transform: translateY(-1px);
-        }
-
-        /* ---- FOOTER ---- */
-        .footer {
-            padding: 40px 0;
-            border-top: 1px solid var(--border);
-            text-align: center;
-        }
-        .footer p {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        /* ---- RESPONSIVE ---- */
-        @media (max-width: 600px) {
-            .hero {
-                padding: 56px 0 36px;
-            }
-            .bullet-item {
-                padding: 22px 20px;
-            }
-            .cta-section {
-                padding: 56px 0;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Earlybird Events</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root { --bg: #0e0e12; --surface: #16161d; --border: #2a2a36; --accent: #d4959b; --accent-light: #e8b4b8; --white: #f0eff4; --text: #c5c4ce; --text-muted: #7e7d8a; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+.container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+.topbar-inner { display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+.topbar-contact { color: var(--accent-light); font-weight: 500; }
+.hero { padding: 80px 0 48px; text-align: center; }
+.hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+.hero h1 em { color: var(--accent-light); font-style: italic; }
+.hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+.context { padding: 64px 0; border-top: 1px solid var(--border); }
+.context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+.context p:last-child { margin-bottom: 0; }
+.bullets { padding: 64px 0; border-top: 1px solid var(--border); }
+.bullets-heading { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+.bullet-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+.bullet-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+.bullet-item:hover { border-color: var(--accent); }
+.bullet-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+.bullet-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+.cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+.cta-heading { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+.cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; }
+.contact-details { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; }
+.contact-item { font-size: 0.9rem; color: var(--text-muted); }
+.contact-item a { color: var(--accent-light); text-decoration: none; }
+.footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+.footer p { font-size: 0.75rem; color: var(--text-muted); }
+@media (max-width: 600px) { .hero { padding: 56px 0 36px; } .bullet-item { padding: 22px 20px; } }
+</style>
 </head>
 <body>
 
-    <!-- Top Bar -->
-    <div class="topbar">
-        <div class="container topbar-inner">
-            <span class="topbar-brand">Earlybird Events</span>
-            <a href="tel:0405675583" class="topbar-contact">0405 675 583</a>
-        </div>
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-inner">
+      <span>Earlybird Events</span>
+      <span class="topbar-contact">0405 675 583</span>
     </div>
+  </div>
+</div>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="container">
-            <p class="hero-eyebrow">Full-Service Event Management</p>
-            <h1>Forward thinking. <em>Fresh approach.</em> Full-service event management.</h1>
-            <p class="hero-sub">From government departments and national institutions to luxury brand launches, Earlybird Events handles the full scope — strategy, logistics, and delivery — so your event lands the way it should.</p>
-        </div>
-    </section>
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Event Management &bull; Australia</p>
+    <h1>Every event is bespoke.<br><em>None are off the shelf.</em></h1>
+    <p class="hero-sub">Earlybird Events is a small, highly experienced event management team that has delivered awards nights, international conferences, world championships, national concerts, government events, and luxury brand launches across Australia and beyond.</p>
+  </div>
+</section>
 
-    <!-- Services -->
-    <section class="services">
-        <div class="container">
-            <h2 class="services-heading">What we do</h2>
-            <ul class="bullet-list">
-                <li class="bullet-item">
-                    <p class="bullet-label">Corporate &amp; Government Events</p>
-                    <p class="bullet-text">End-to-end event management for corporate organisations and government bodies. We handle the planning, supplier coordination, and on-the-day delivery, so your team can focus on the room, not the logistics.</p>
-                </li>
-                <li class="bullet-item">
-                    <p class="bullet-label">Brand Launches &amp; Activations</p>
-                    <p class="bullet-text">Consumer brand launches and live activations that create a real impression. We have brought luxury brands to market and understand what it takes to make a moment stick with the right audience.</p>
-                </li>
-                <li class="bullet-item">
-                    <p class="bullet-label">National Institution Events</p>
-                    <p class="bullet-text">High-profile events for major national institutions where the stakes are high and the margin for error is zero. We bring the experience and the systems to match the scale.</p>
-                </li>
-                <li class="bullet-item">
-                    <p class="bullet-label">Strategic Event Consulting</p>
-                    <p class="bullet-text">Not every engagement needs full production. If your team has capacity but needs strategic direction on format, programming, supplier selection, or risk management, we work alongside you to fill the gaps.</p>
-                </li>
-            </ul>
-        </div>
-    </section>
+<section class="context">
+  <div class="container">
+    <p>There is a difference between an event that runs on time and an event that people remember. Earlybird Events is built for the second kind. The team approaches every project the way a bespoke tailor approaches a suit: the brief is taken seriously, the details are deliberate, and nothing is pulled off a rack.</p>
+    <p>The client list reflects the breadth of that capability. Earlybird Events has launched luxury consumer brands in Australia, delivered events for major national institutions, and managed occasions for government departments at the highest level. Clients return because the standard is consistent, the communication is clear, and the final result reflects what they actually wanted.</p>
+    <p>The team is intentionally small. That is not a limitation but a feature. Every project receives direct attention from experienced professionals, not a junior team member working from a template. When the event matters, the people running it should be the ones who have done it before.</p>
+  </div>
+</section>
 
-    <!-- About -->
-    <section class="about">
-        <div class="container">
-            <h2 class="section-heading">About Earlybird Events</h2>
-            <p><span class="highlight">Earlybird Events</span> is led by Kimberlee King, a full-service event management professional with a track record across some of Australia's most significant events and organisations.</p>
-            <p>We have launched luxury consumer brands, delivered events for major national institutions and government departments, and worked directly with the Prime Minister's office. That range of experience shapes how we approach every brief, regardless of scale.</p>
-            <p>Our approach is direct and practical. We are not a large agency with layers between you and the people doing the work. When you work with Earlybird Events, you work with us.</p>
-        </div>
-    </section>
+<section class="bullets">
+  <div class="container">
+    <h2 class="bullets-heading">Events Earlybird delivers</h2>
+    <ul class="bullet-list">
+      <li class="bullet-item">
+        <div class="bullet-label">Awards Nights &amp; Gala Balls</div>
+        <div class="bullet-text">From intimate industry awards to large-scale gala evenings, designed and delivered with the formality, flow, and attention to atmosphere that occasions like these demand.</div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-label">International Conferences</div>
+        <div class="bullet-text">End-to-end management of multi-day conferences at an international standard, covering venue, logistics, speaker management, delegate experience, and on-the-day production.</div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-label">World Championships</div>
+        <div class="bullet-text">Large-scale sporting and competitive events run to a global standard, with the operational depth and contingency planning that high-profile competitions require.</div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-label">National Music Concerts</div>
+        <div class="bullet-text">Full production and event management for national-scale music events, from venue and artist logistics through to audience experience and post-event wrap.</div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-label">Brand Launches</div>
+        <div class="bullet-text">Launch events for luxury consumer brands and major institutions, designed to position the brand correctly from the first impression and leave the right people talking.</div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-label">Government Events</div>
+        <div class="bullet-text">Ceremonial, policy, and departmental events delivered with the protocol awareness and operational precision that government occasions require.</div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-label">End-to-End Event Management</div>
+        <div class="bullet-text">Full-service management from initial concept through to post-event reporting, handling every moving part so the client can focus on being present rather than managing logistics.</div>
+      </li>
+    </ul>
+  </div>
+</section>
 
-    <!-- Contact -->
-    <section class="contact">
-        <div class="container">
-            <h2 class="section-heading">Contact</h2>
-            <div class="contact-detail">
-                <span class="contact-detail-label">Phone</span>
-                <a href="tel:0405675583">0405 675 583</a>
-            </div>
-            <div class="contact-detail">
-                <span class="contact-detail-label">Email</span>
-                <a href="mailto:kimberlee@earlybirdevents.com.au">kimberlee@earlybirdevents.com.au</a>
-            </div>
-        </div>
-    </section>
+<section class="cta-section">
+  <div class="container">
+    <h2 class="cta-heading">Tell us about your event</h2>
+    <p class="cta-sub">Whether you are planning a gala, a conference, a launch, or something that does not fit a standard category, the Earlybird Events team is ready to talk through what it takes to get it right.</p>
+    <a href="tel:0405675583" class="cta-button">Call Us Today</a>
+    <div class="contact-details">
+      <div class="contact-item">Phone: <a href="tel:0405675583">0405 675 583</a></div>
+    </div>
+  </div>
+</section>
 
-    <!-- CTA -->
-    <section class="cta-section">
-        <div class="container">
-            <h2 class="cta-heading">Let's talk about your event</h2>
-            <p class="cta-sub">Tell us what you are planning and we will let you know how we can help. No long forms, just a conversation.</p>
-            <a href="tel:0405675583" class="cta-button">Get in Touch</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>Rebuilt by J&amp;G Operations as a preview. Not yet live on earlybirdevents.com.au</p>
-        </div>
-    </footer>
+<footer class="footer">
+  <div class="container">
+    <p>Earlybird Events &bull; Bespoke Event Management &bull; Australia</p>
+  </div>
+</footer>
 
 </body>
 </html>

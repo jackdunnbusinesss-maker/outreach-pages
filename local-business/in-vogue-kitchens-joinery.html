@@ -1,375 +1,123 @@
 <!DOCTYPE html>
 <html lang="en-AU">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>In Vogue Kitchens &amp; Joinery — Custom Kitchens &amp; Joinery</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg: #0e0e12;
-            --surface: #16161d;
-            --surface-light: #1e1e28;
-            --border: #2a2a36;
-            --accent: #c0956e;
-            --accent-light: #d4ad88;
-            --accent-glow: rgba(192, 149, 110, 0.15);
-            --white: #f0eff4;
-            --text: #c5c4ce;
-            --text-muted: #7e7d8a;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* ---- LAYOUT ---- */
-        .container {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* ---- TOP BAR ---- */
-        .topbar {
-            padding: 20px 0;
-            border-bottom: 1px solid var(--border);
-        }
-        .topbar-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .topbar-logo img {
-            height: 36px;
-            width: auto;
-            display: block;
-            filter: brightness(0) invert(1);
-        }
-        .topbar-contact {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 2px;
-        }
-        .topbar-phone {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--accent);
-            text-decoration: none;
-            letter-spacing: 0.3px;
-        }
-        .topbar-email {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-decoration: none;
-        }
-        .topbar-email:hover,
-        .topbar-phone:hover {
-            color: var(--accent-light);
-        }
-
-        /* ---- HERO ---- */
-        .hero {
-            padding: 80px 0 56px;
-            text-align: center;
-        }
-        .hero-eyebrow {
-            font-size: 0.78rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--accent);
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-        .hero h1 {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(2rem, 5vw, 2.8rem);
-            color: var(--white);
-            line-height: 1.25;
-            margin-bottom: 24px;
-            font-weight: 600;
-        }
-        .hero h1 em {
-            color: var(--accent-light);
-            font-style: italic;
-        }
-        .hero-sub {
-            font-size: 1.05rem;
-            color: var(--text);
-            max-width: 560px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-
-        /* ---- SERVICES ---- */
-        .services {
-            padding: 64px 0;
-            border-top: 1px solid var(--border);
-        }
-        .section-heading {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.6rem;
-            color: var(--white);
-            margin-bottom: 40px;
-            text-align: center;
-            font-weight: 600;
-        }
-        .bullet-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .bullet-item {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 28px 32px;
-            transition: border-color 0.3s ease;
-        }
-        .bullet-item:hover {
-            border-color: var(--accent);
-        }
-        .bullet-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        .bullet-text {
-            font-size: 1rem;
-            color: var(--text);
-            line-height: 1.7;
-        }
-
-        /* ---- ABOUT ---- */
-        .about {
-            padding: 64px 0;
-            border-top: 1px solid var(--border);
-        }
-        .about p {
-            font-size: 1.05rem;
-            line-height: 1.9;
-            margin-bottom: 20px;
-        }
-        .about p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* ---- CONTACT ---- */
-        .contact {
-            padding: 64px 0;
-            border-top: 1px solid var(--border);
-        }
-        .contact-grid {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-            margin-top: 32px;
-        }
-        .contact-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 24px 28px;
-            flex: 1;
-            min-width: 200px;
-        }
-        .contact-card-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        .contact-card a {
-            font-size: 1rem;
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .contact-card a:hover {
-            color: var(--accent-light);
-        }
-
-        /* ---- CTA ---- */
-        .cta-section {
-            padding: 80px 0;
-            border-top: 1px solid var(--border);
-            text-align: center;
-        }
-        .cta-heading {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.8rem;
-            color: var(--white);
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-        .cta-sub {
-            font-size: 1rem;
-            color: var(--text);
-            margin-bottom: 36px;
-            max-width: 480px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .cta-button {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--bg);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 600;
-            padding: 16px 48px;
-            border-radius: 8px;
-            text-decoration: none;
-            letter-spacing: 0.5px;
-            transition: background 0.3s ease, transform 0.2s ease;
-        }
-        .cta-button:hover {
-            background: var(--accent-light);
-            transform: translateY(-1px);
-        }
-
-        /* ---- FOOTER ---- */
-        .footer {
-            padding: 40px 0;
-            border-top: 1px solid var(--border);
-            text-align: center;
-        }
-        .footer p {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        /* ---- RESPONSIVE ---- */
-        @media (max-width: 600px) {
-            .hero {
-                padding: 56px 0 36px;
-            }
-            .bullet-item {
-                padding: 22px 20px;
-            }
-            .cta-section {
-                padding: 56px 0;
-            }
-            .topbar-logo img {
-                height: 28px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>In Vogue Kitchens &amp; Joinery | Custom Kitchens Sydney</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root { --bg: #0e0e12; --surface: #16161d; --border: #2a2a36; --accent: #d4959b; --accent-light: #e8b4b8; --white: #f0eff4; --text: #c5c4ce; --text-muted: #7e7d8a; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+.container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+.topbar-inner { display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+.topbar-contact { color: var(--accent-light); font-weight: 500; }
+.hero { padding: 80px 0 48px; text-align: center; }
+.hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+.hero h1 em { color: var(--accent-light); font-style: italic; }
+.hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+.context { padding: 64px 0; border-top: 1px solid var(--border); }
+.context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+.context p:last-child { margin-bottom: 0; }
+.bullets { padding: 64px 0; border-top: 1px solid var(--border); }
+.bullets-heading { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+.bullet-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+.bullet-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+.bullet-item:hover { border-color: var(--accent); }
+.bullet-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+.bullet-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+.cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+.cta-heading { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+.cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; }
+.contact-details { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; }
+.contact-item { font-size: 0.9rem; color: var(--text-muted); }
+.contact-item a { color: var(--accent-light); text-decoration: none; }
+.footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+.footer p { font-size: 0.75rem; color: var(--text-muted); }
+@media (max-width: 600px) { .hero { padding: 56px 0 36px; } .bullet-item { padding: 22px 20px; } }
+</style>
 </head>
 <body>
 
-    <!-- Top Bar -->
-    <header class="topbar">
-        <div class="container topbar-inner">
-            <div class="topbar-logo">
-                <img src="https://www.invoguekitchens.com.au/wp-content/themes/invoguekitchens/images/logo.svg" alt="In Vogue Kitchens &amp; Joinery">
-            </div>
-            <div class="topbar-contact">
-                <a href="tel:0404400798" class="topbar-phone">0404 400 798</a>
-                <a href="mailto:robert@invoguekitchens.com.au" class="topbar-email">robert@invoguekitchens.com.au</a>
-            </div>
-        </div>
-    </header>
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-inner">
+      <span>In Vogue Kitchens &amp; Joinery &mdash; Sydney</span>
+      <span class="topbar-contact">0404 400 798</span>
+    </div>
+  </div>
+</div>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="container">
-            <p class="hero-eyebrow">Custom Kitchens &amp; Joinery</p>
-            <h1>Elegant designs, <em>practical solutions.</em> Custom kitchens, bedrooms, wardrobes and joinery.</h1>
-            <p class="hero-sub">In Vogue Kitchens &amp; Joinery brings together expert craftsmanship and the latest products to deliver custom kitchen and joinery solutions that are built to last and designed to impress.</p>
-        </div>
-    </section>
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Custom Kitchens &amp; Joinery &mdash; Sydney</p>
+    <h1>Designed, manufactured, and installed with <em>attention to detail</em> at every step</h1>
+    <p class="hero-sub">In Vogue Kitchens and Joinery specialises in custom kitchens and bespoke joinery across Sydney. From elegant kitchen designs through to made-to-measure storage, wardrobes, and home offices, quality is never compromised.</p>
+  </div>
+</section>
 
-    <!-- Services -->
-    <section class="services">
-        <div class="container">
-            <h2 class="section-heading">What we design and build</h2>
-            <ul class="bullet-list">
-                <li class="bullet-item">
-                    <p class="bullet-label">Kitchens</p>
-                    <p class="bullet-text">A large range of custom kitchen designs to suit every style and budget. From contemporary to classic, we use the latest materials and finishes to create a kitchen that works beautifully for how you actually live.</p>
-                </li>
-                <li class="bullet-item">
-                    <p class="bullet-label">Bedrooms &amp; Wardrobes</p>
-                    <p class="bullet-text">Custom bedroom storage and built-in wardrobe solutions designed around your space. Sliding doors, walk-in robes, and fitted bedroom furniture that maximises storage without sacrificing style.</p>
-                </li>
-                <li class="bullet-item">
-                    <p class="bullet-label">Custom Made Joinery</p>
-                    <p class="bullet-text">Bespoke joinery for any room in the home. Laundries, home offices, entertainment units, display cabinetry, and built-in shelving, all made to measure and finished to a high standard.</p>
-                </li>
-                <li class="bullet-item">
-                    <p class="bullet-label">Projects</p>
-                    <p class="bullet-text">From single rooms to full home fit-outs, we work with builders, developers, and homeowners on projects of all sizes. Reliable timelines, quality workmanship, and a straightforward process from design to installation.</p>
-                </li>
-            </ul>
-        </div>
-    </section>
+<section class="context">
+  <div class="container">
+    <p>A kitchen or custom joinery project is one of the more significant investments you make in a home. The difference between a result you live with and one you love comes down to the quality of the design thinking, the materials, and the installation that brings it all together.</p>
+    <p>In Vogue Kitchens and Joinery handles the full process in-house, from design through to manufacture and installation. That means no hand-offs between different trades, no finger-pointing when something does not fit, and a consistent standard of craftsmanship from start to finish.</p>
+    <p>The team draws on a large range of kitchen designs and custom ideas, built around what actually works for each home and each client, rather than a fixed catalogue of options.</p>
+  </div>
+</section>
 
-    <!-- About -->
-    <section class="about">
-        <div class="container">
-            <h2 class="section-heading">About In Vogue Kitchens &amp; Joinery</h2>
-            <p>In Vogue Kitchens &amp; Joinery specialises in custom kitchen design and joinery solutions for Australian homes. We offer a large range of designs and styles, using the latest products and materials available.</p>
-            <p>Every project starts with understanding how you use your space. We take the time to get the design right before anything is built, so the finished result looks exactly as you imagined and functions the way you need it to.</p>
-            <p>From a single kitchen renovation to a full home joinery package, we bring the same attention to detail and commitment to quality to every job we take on.</p>
-        </div>
-    </section>
+<section class="bullets">
+  <div class="container">
+    <h2 class="bullets-heading">What In Vogue designs and builds</h2>
+    <ul class="bullet-list">
+      <li class="bullet-item">
+        <div class="bullet-label">Kitchens</div>
+        <div class="bullet-text">Custom kitchen design and installation across Sydney. Whether the brief calls for something striking or something that simply works beautifully for the way you cook, the team brings a large range of ideas and a precise eye for detail.</div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-label">Custom Made Joinery</div>
+        <div class="bullet-text">Bespoke joinery built to fit your space exactly. No off-the-shelf compromises. Every piece is manufactured to your specifications and installed to the same standard as the design itself.</div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-label">Wardrobes &amp; Bedrooms</div>
+        <div class="bullet-text">Custom wardrobe and bedroom storage solutions designed around how you actually use the space. Walk-in robes, built-ins, and full bedroom joinery packages available.</div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-label">Vanities</div>
+        <div class="bullet-text">Custom bathroom vanities designed and built to complement your bathroom's proportions and style. Practical storage without sacrificing the finish.</div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-label">Home Office &amp; Home Entertainment</div>
+        <div class="bullet-text">Purpose-built home office cabinetry and entertainment units that fit the room properly and store everything it needs to, without looking like furniture from a flat-pack catalogue.</div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-label">Projects</div>
+        <div class="bullet-text">Full design, manufacture, and installation across larger residential projects. One point of contact, consistent quality throughout, and a team that does not cut corners when no one is watching.</div>
+      </li>
+    </ul>
+  </div>
+</section>
 
-    <!-- Contact -->
-    <section class="contact">
-        <div class="container">
-            <h2 class="section-heading">Get in touch</h2>
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <p class="contact-card-label">Phone</p>
-                    <a href="tel:0404400798">0404 400 798</a>
-                </div>
-                <div class="contact-card">
-                    <p class="contact-card-label">Email</p>
-                    <a href="mailto:robert@invoguekitchens.com.au">robert@invoguekitchens.com.au</a>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="cta-section">
+  <div class="container">
+    <h2 class="cta-heading">Start your project with In Vogue</h2>
+    <p class="cta-sub">Talk to the team about your kitchen or joinery project. Servicing Sydney with a standard of work that speaks for itself.</p>
+    <a href="tel:0404400798" class="cta-button">Call 0404 400 798</a>
+    <div class="contact-details">
+      <span class="contact-item">In Vogue Kitchens &amp; Joinery &mdash; Sydney, Australia</span>
+    </div>
+  </div>
+</section>
 
-    <!-- CTA -->
-    <section class="cta-section">
-        <div class="container">
-            <h2 class="cta-heading">Ready to bring your vision to life?</h2>
-            <p class="cta-sub">Contact our team today to discuss your kitchen or joinery project. We will work with you from first concept through to final installation.</p>
-            <a href="tel:0404400798" class="cta-button">Get a Quote</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>Rebuilt by J&amp;G Operations as a preview. Not yet live on invoguekitchens.com.au</p>
-        </div>
-    </footer>
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2026 In Vogue Kitchens &amp; Joinery. All rights reserved.</p>
+  </div>
+</footer>
 
 </body>
 </html>

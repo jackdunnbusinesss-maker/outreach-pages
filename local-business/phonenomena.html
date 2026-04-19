@@ -1,379 +1,119 @@
 <!DOCTYPE html>
 <html lang="en-AU">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phonenomena — Business Mobile Fleet Management</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg: #0e0e12;
-            --surface: #16161d;
-            --surface-light: #1e1e28;
-            --border: #2a2a36;
-            --accent: #00b4d8;
-            --accent-light: #33c8e8;
-            --accent-glow: rgba(0, 180, 216, 0.15);
-            --white: #f0eff4;
-            --text: #c5c4ce;
-            --text-muted: #7e7d8a;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* ---- LAYOUT ---- */
-        .container {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* ---- TOP BAR ---- */
-        .topbar {
-            padding: 20px 0;
-            border-bottom: 1px solid var(--border);
-        }
-        .topbar-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .topbar-logo img {
-            height: 32px;
-            width: auto;
-            display: block;
-            filter: brightness(0) invert(1);
-        }
-        .topbar-contact {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 2px;
-        }
-        .topbar-phone {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--accent);
-            text-decoration: none;
-            letter-spacing: 0.3px;
-        }
-        .topbar-email {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-decoration: none;
-        }
-        .topbar-email:hover,
-        .topbar-phone:hover {
-            color: var(--accent-light);
-        }
-
-        /* ---- HERO ---- */
-        .hero {
-            padding: 80px 0 56px;
-            text-align: center;
-        }
-        .hero-eyebrow {
-            font-size: 0.78rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--accent);
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-        .hero h1 {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(2rem, 5vw, 2.8rem);
-            color: var(--white);
-            line-height: 1.25;
-            margin-bottom: 24px;
-            font-weight: 600;
-        }
-        .hero h1 em {
-            color: var(--accent-light);
-            font-style: italic;
-        }
-        .hero-sub {
-            font-size: 1.05rem;
-            color: var(--text);
-            max-width: 560px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-
-        /* ---- SERVICES ---- */
-        .services {
-            padding: 64px 0;
-            border-top: 1px solid var(--border);
-        }
-        .section-heading {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.6rem;
-            color: var(--white);
-            margin-bottom: 40px;
-            text-align: center;
-            font-weight: 600;
-        }
-        .bullet-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .bullet-item {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 28px 32px;
-            transition: border-color 0.3s ease;
-        }
-        .bullet-item:hover {
-            border-color: var(--accent);
-        }
-        .bullet-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        .bullet-text {
-            font-size: 1rem;
-            color: var(--text);
-            line-height: 1.7;
-        }
-
-        /* ---- ABOUT ---- */
-        .about {
-            padding: 64px 0;
-            border-top: 1px solid var(--border);
-        }
-        .about p {
-            font-size: 1.05rem;
-            line-height: 1.9;
-            margin-bottom: 20px;
-        }
-        .about p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* ---- CONTACT ---- */
-        .contact {
-            padding: 64px 0;
-            border-top: 1px solid var(--border);
-        }
-        .contact-grid {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-            margin-top: 32px;
-        }
-        .contact-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 24px 28px;
-            flex: 1;
-            min-width: 200px;
-        }
-        .contact-card-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        .contact-card a {
-            font-size: 1rem;
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .contact-card a:hover {
-            color: var(--accent-light);
-        }
-
-        /* ---- CTA ---- */
-        .cta-section {
-            padding: 80px 0;
-            border-top: 1px solid var(--border);
-            text-align: center;
-        }
-        .cta-heading {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.8rem;
-            color: var(--white);
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-        .cta-sub {
-            font-size: 1rem;
-            color: var(--text);
-            margin-bottom: 36px;
-            max-width: 480px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .cta-button {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--bg);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 600;
-            padding: 16px 48px;
-            border-radius: 8px;
-            text-decoration: none;
-            letter-spacing: 0.5px;
-            transition: background 0.3s ease, transform 0.2s ease;
-        }
-        .cta-button:hover {
-            background: var(--accent-light);
-            transform: translateY(-1px);
-        }
-
-        /* ---- FOOTER ---- */
-        .footer {
-            padding: 40px 0;
-            border-top: 1px solid var(--border);
-            text-align: center;
-        }
-        .footer p {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        /* ---- RESPONSIVE ---- */
-        @media (max-width: 600px) {
-            .hero {
-                padding: 56px 0 36px;
-            }
-            .bullet-item {
-                padding: 22px 20px;
-            }
-            .cta-section {
-                padding: 56px 0;
-            }
-            .topbar-logo img {
-                height: 24px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phonenomena | Enterprise Mobility Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root { --bg: #0e0e12; --surface: #16161d; --border: #2a2a36; --accent: #d4959b; --accent-light: #e8b4b8; --white: #f0eff4; --text: #c5c4ce; --text-muted: #7e7d8a; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+.container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+.topbar-inner { display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+.topbar-contact { color: var(--accent-light); font-weight: 500; }
+.hero { padding: 80px 0 48px; text-align: center; }
+.hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+.hero h1 em { color: var(--accent-light); font-style: italic; }
+.hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+.context { padding: 64px 0; border-top: 1px solid var(--border); }
+.context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+.context p:last-child { margin-bottom: 0; }
+.bullets { padding: 64px 0; border-top: 1px solid var(--border); }
+.bullets-heading { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+.bullet-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+.bullet-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+.bullet-item:hover { border-color: var(--accent); }
+.bullet-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+.bullet-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+.cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+.cta-heading { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+.cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; }
+.contact-details { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; }
+.contact-item { font-size: 0.9rem; color: var(--text-muted); }
+.contact-item a { color: var(--accent-light); text-decoration: none; }
+.footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+.footer p { font-size: 0.75rem; color: var(--text-muted); }
+@media (max-width: 600px) { .hero { padding: 56px 0 36px; } .bullet-item { padding: 22px 20px; } }
+</style>
 </head>
 <body>
 
-    <!-- Top Bar -->
-    <header class="topbar">
-        <div class="container topbar-inner">
-            <div class="topbar-logo">
-                <img src="https://phonenomena.com.au/wp-content/uploads/2024/07/phonenomena_logo_greyscale.svg" alt="Phonenomena">
-            </div>
-            <div class="topbar-contact">
-                <a href="tel:1300721281" class="topbar-phone">1300 721 281</a>
-                <a href="mailto:anne@phonenomena.com.au" class="topbar-email">anne@phonenomena.com.au</a>
-            </div>
-        </div>
-    </header>
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-inner">
+      <span>Phonenomena &mdash; Telstra Enterprise Partner</span>
+      <span class="topbar-contact">1300 721 281</span>
+    </div>
+  </div>
+</div>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="container">
-            <p class="hero-eyebrow">Business Mobile Fleet Management</p>
-            <h1>Mobility made simple. A refreshing alternative to dealing <em>direct with carriers.</em></h1>
-            <p class="hero-sub">Phonenomena takes the complexity out of managing your business mobile fleet. From procurement to support, we handle it all so you can focus on running your business.</p>
-        </div>
-    </section>
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Enterprise Mobility Management &mdash; Australia</p>
+    <h1>Managing <em>tens of thousands</em> of mobiles, so your team never has to deal with a carrier again</h1>
+    <p class="hero-sub">Phonenomena is an accredited Telstra Enterprise Partner built for Australian companies running large mobile fleets. One partner. One point of contact. Zero carrier queues.</p>
+  </div>
+</section>
 
-    <!-- Services -->
-    <section class="services">
-        <div class="container">
-            <h2 class="section-heading">What we do</h2>
-            <ul class="bullet-list">
-                <li class="bullet-item">
-                    <p class="bullet-label">Enterprise Mobile Services</p>
-                    <p class="bullet-text">End-to-end mobile solutions for Australian businesses of all sizes. We manage carrier relationships, plan optimisation, and device procurement on your behalf, so you never have to deal directly with the carriers again.</p>
-                </li>
-                <li class="bullet-item">
-                    <p class="bullet-label">PriorityCARE</p>
-                    <p class="bullet-text">Priority account management for your business. Dedicated support that moves at the speed your team needs, with direct access to specialists who know your account inside and out.</p>
-                </li>
-                <li class="bullet-item">
-                    <p class="bullet-label">24HRCARE</p>
-                    <p class="bullet-text">Around-the-clock support for business-critical mobile issues. When your team relies on connectivity to operate, you need support that does not keep business hours. We are always available.</p>
-                </li>
-                <li class="bullet-item">
-                    <p class="bullet-label">Usercare</p>
-                    <p class="bullet-text">Direct support for individual users across your fleet. Onboarding new staff, replacing damaged devices, or troubleshooting connectivity issues, handled promptly without going through multiple layers of carrier hold music.</p>
-                </li>
-                <li class="bullet-item">
-                    <p class="bullet-label">Mobile Fleet Management</p>
-                    <p class="bullet-text">Centralised tools and reporting to give you full visibility over your entire mobile fleet. Track usage, manage costs, and make informed decisions about your mobile spend, all in one place.</p>
-                </li>
-            </ul>
-        </div>
-    </section>
+<section class="context">
+  <div class="container">
+    <p>Managing a large mobile fleet directly through a carrier means slow support queues, fragmented billing, and no single view of your devices, data, or costs. For organisations running hundreds or thousands of mobiles, that complexity adds up fast.</p>
+    <p>Phonenomena was purpose-built as an alternative to going direct with Telstra. As an accredited Enterprise Partner, the team carries full access to the Telstra enterprise network while layering on managed services, software tools, and dedicated support structures designed to work at scale.</p>
+    <p>The result is a single relationship that covers everything from day-one device rollout through to ongoing repairs, software management, billing oversight, and IoT connectivity.</p>
+  </div>
+</section>
 
-    <!-- About -->
-    <section class="about">
-        <div class="container">
-            <h2 class="section-heading">About Phonenomena</h2>
-            <p>Managing a large business mobile fleet through a carrier directly is frustrating. Long hold times, account managers who change constantly, and plans that never quite fit what your business actually needs.</p>
-            <p>Phonenomena exists as a trusted alternative. We sit between your business and the carriers, managing every aspect of your mobile fleet so you get the right plans, the right devices, and the right support, without the headaches that come with going direct.</p>
-            <p>Our tools make fleet management genuinely simple. From a single user to hundreds of devices across multiple sites, we give you the visibility and control you need to keep your business moving.</p>
-        </div>
-    </section>
+<section class="bullets">
+  <div class="container">
+    <h2 class="bullets-heading">What Phonenomena handles for your fleet</h2>
+    <ul class="bullet-list">
+      <li class="bullet-item">
+        <div class="bullet-label">Enterprise Support</div>
+        <div class="bullet-text">PriorityCARE, 24HRCARE, and Usercare give your team fast, dedicated support at every level, from executive devices through to field staff who cannot afford downtime.</div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-label">Device Solutions</div>
+        <div class="bullet-text">Rapidrollout gets new devices into staff hands quickly. Switcheasy manages handset upgrades cleanly. Easyrepair handles repairs without sending employees to a carrier store.</div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-label">Software Solutions</div>
+        <div class="bullet-text">Iotmanager, MDMplus, and Assetfinder give your IT team live visibility and control over every device, SIM, and connected asset across the entire fleet.</div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-label">Billing Solutions</div>
+        <div class="bullet-text">Datawatch flags unusual usage before it becomes an invoice surprise. Billsimple consolidates complex multi-plan billing into one clean, readable monthly report.</div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-label">Consulting</div>
+        <div class="bullet-text">Fleet strategy, plan optimisation, and migration planning from a team that works at enterprise scale every day. Practical advice grounded in how Australian mobile fleets actually operate.</div>
+      </li>
+    </ul>
+  </div>
+</section>
 
-    <!-- Contact -->
-    <section class="contact">
-        <div class="container">
-            <h2 class="section-heading">Get in touch</h2>
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <p class="contact-card-label">Phone</p>
-                    <a href="tel:1300721281">1300 721 281</a>
-                </div>
-                <div class="contact-card">
-                    <p class="contact-card-label">Email</p>
-                    <a href="mailto:anne@phonenomena.com.au">anne@phonenomena.com.au</a>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="cta-section">
+  <div class="container">
+    <h2 class="cta-heading">Ready to simplify your mobile fleet?</h2>
+    <p class="cta-sub">Talk to the Phonenomena team about your current fleet size and what a fully managed approach would look like for your organisation.</p>
+    <a href="tel:1300721281" class="cta-button">Call 1300 721 281</a>
+    <div class="contact-details">
+      <span class="contact-item">Phonenomena &mdash; Telstra Enterprise Partner &mdash; Australia</span>
+    </div>
+  </div>
+</section>
 
-    <!-- CTA -->
-    <section class="cta-section">
-        <div class="container">
-            <h2 class="cta-heading">Ready to simplify your mobile fleet?</h2>
-            <p class="cta-sub">Speak with our team today and find out how Phonenomena can take the complexity out of your business mobile management.</p>
-            <a href="tel:1300721281" class="cta-button">Get Started</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>Rebuilt by J&amp;G Operations as a preview. Not yet live on phonenomena.com.au</p>
-        </div>
-    </footer>
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2026 Phonenomena. All rights reserved.</p>
+  </div>
+</footer>
 
 </body>
 </html>

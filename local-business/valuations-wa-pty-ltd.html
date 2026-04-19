@@ -1,383 +1,124 @@
 <!DOCTYPE html>
 <html lang="en-AU">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valuations WA — Perth's Leading Property Valuation Firm</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg: #0e0e12;
-            --surface: #16161d;
-            --surface-light: #1e1e28;
-            --border: #2a2a36;
-            --accent: #4e8098;
-            --accent-light: #6fa0b8;
-            --accent-glow: rgba(78, 128, 152, 0.15);
-            --white: #f0eff4;
-            --text: #c5c4ce;
-            --text-muted: #7e7d8a;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* ---- LAYOUT ---- */
-        .container {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* ---- TOP BAR ---- */
-        .topbar {
-            padding: 20px 0;
-            border-bottom: 1px solid var(--border);
-        }
-        .topbar-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .topbar-name {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--white);
-            letter-spacing: 0.3px;
-        }
-        .topbar-contact {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 2px;
-        }
-        .topbar-phone {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--accent);
-            text-decoration: none;
-            letter-spacing: 0.3px;
-        }
-        .topbar-email {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-decoration: none;
-        }
-        .topbar-email:hover,
-        .topbar-phone:hover {
-            color: var(--accent-light);
-        }
-
-        /* ---- HERO ---- */
-        .hero {
-            padding: 80px 0 56px;
-            text-align: center;
-        }
-        .hero-eyebrow {
-            font-size: 0.78rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--accent);
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-        .hero h1 {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(2rem, 5vw, 2.8rem);
-            color: var(--white);
-            line-height: 1.25;
-            margin-bottom: 24px;
-            font-weight: 600;
-        }
-        .hero h1 em {
-            color: var(--accent-light);
-            font-style: italic;
-        }
-        .hero-sub {
-            font-size: 1.05rem;
-            color: var(--text);
-            max-width: 560px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-
-        /* ---- SERVICES ---- */
-        .services {
-            padding: 64px 0;
-            border-top: 1px solid var(--border);
-        }
-        .section-heading {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.6rem;
-            color: var(--white);
-            margin-bottom: 40px;
-            text-align: center;
-            font-weight: 600;
-        }
-        .bullet-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .bullet-item {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 28px 32px;
-            transition: border-color 0.3s ease;
-        }
-        .bullet-item:hover {
-            border-color: var(--accent);
-        }
-        .bullet-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        .bullet-text {
-            font-size: 1rem;
-            color: var(--text);
-            line-height: 1.7;
-        }
-
-        /* ---- ABOUT ---- */
-        .about {
-            padding: 64px 0;
-            border-top: 1px solid var(--border);
-        }
-        .about p {
-            font-size: 1.05rem;
-            line-height: 1.9;
-            margin-bottom: 20px;
-        }
-        .about p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* ---- CONTACT ---- */
-        .contact {
-            padding: 64px 0;
-            border-top: 1px solid var(--border);
-        }
-        .contact-grid {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-            margin-top: 32px;
-        }
-        .contact-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 24px 28px;
-            flex: 1;
-            min-width: 200px;
-        }
-        .contact-card-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        .contact-card a {
-            font-size: 1rem;
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .contact-card a:hover {
-            color: var(--accent-light);
-        }
-
-        /* ---- CTA ---- */
-        .cta-section {
-            padding: 80px 0;
-            border-top: 1px solid var(--border);
-            text-align: center;
-        }
-        .cta-heading {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.8rem;
-            color: var(--white);
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-        .cta-sub {
-            font-size: 1rem;
-            color: var(--text);
-            margin-bottom: 36px;
-            max-width: 480px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .cta-button {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--white);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 600;
-            padding: 16px 48px;
-            border-radius: 8px;
-            text-decoration: none;
-            letter-spacing: 0.5px;
-            transition: background 0.3s ease, transform 0.2s ease;
-        }
-        .cta-button:hover {
-            background: var(--accent-light);
-            transform: translateY(-1px);
-        }
-
-        /* ---- FOOTER ---- */
-        .footer {
-            padding: 40px 0;
-            border-top: 1px solid var(--border);
-            text-align: center;
-        }
-        .footer p {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        /* ---- RESPONSIVE ---- */
-        @media (max-width: 600px) {
-            .hero {
-                padding: 56px 0 36px;
-            }
-            .bullet-item {
-                padding: 22px 20px;
-            }
-            .cta-section {
-                padding: 56px 0;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valuations WA | Independent Property Valuers Perth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root { --bg: #0e0e12; --surface: #16161d; --border: #2a2a36; --accent: #d4959b; --accent-light: #e8b4b8; --white: #f0eff4; --text: #c5c4ce; --text-muted: #7e7d8a; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+.container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+.topbar-inner { display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+.topbar-contact { color: var(--accent-light); font-weight: 500; }
+.hero { padding: 80px 0 48px; text-align: center; }
+.hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+.hero h1 em { color: var(--accent-light); font-style: italic; }
+.hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+.context { padding: 64px 0; border-top: 1px solid var(--border); }
+.context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+.context p:last-child { margin-bottom: 0; }
+.bullets { padding: 64px 0; border-top: 1px solid var(--border); }
+.bullets-heading { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+.bullet-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+.bullet-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; }
+.bullet-item:hover { border-color: var(--accent); }
+.bullet-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+.bullet-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+.cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+.cta-heading { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+.cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; }
+.contact-details { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; }
+.contact-item { font-size: 0.9rem; color: var(--text-muted); }
+.contact-item a { color: var(--accent-light); text-decoration: none; }
+.footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+.footer p { font-size: 0.75rem; color: var(--text-muted); }
+@media (max-width: 600px) { .hero { padding: 56px 0 36px; } .bullet-item { padding: 22px 20px; } }
+</style>
 </head>
 <body>
 
-    <!-- Top Bar -->
-    <header class="topbar">
-        <div class="container topbar-inner">
-            <div class="topbar-name">Valuations WA</div>
-            <div class="topbar-contact">
-                <a href="tel:0892421611" class="topbar-phone">(08) 9242 1611</a>
-                <a href="mailto:ross@valuationswa.com.au" class="topbar-email">ross@valuationswa.com.au</a>
-            </div>
-        </div>
-    </header>
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-inner">
+      <span>Valuations WA &mdash; Osborne Park, Perth</span>
+      <span class="topbar-contact">(08) 9242 1611</span>
+    </div>
+  </div>
+</div>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="container">
-            <p class="hero-eyebrow">Independent Property Valuers, Perth WA</p>
-            <h1>Perth's leading property valuation firm. <em>Independent, accurate,</em> and won't be beaten on price.</h1>
-            <p class="hero-sub">Valuations WA provides independent property valuations for solicitors, accountants, and property owners across Western Australia. Accurate reports, fast turnaround, and pricing that speaks for itself.</p>
-        </div>
-    </section>
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Independent Property Valuers &mdash; Perth, Western Australia</p>
+    <h1>Perth's trusted independent valuers, <em>serving clients since the 1980s</em></h1>
+    <p class="hero-sub">Valuations WA provides independent property valuations across Perth and Western Australia. Every report is prepared by a Certified Practising Valuer and member of the Australian Property Institute. Won't be beaten on price or service.</p>
+  </div>
+</section>
 
-    <!-- Services -->
-    <section class="services">
-        <div class="container">
-            <h2 class="section-heading">Our valuation services</h2>
-            <ul class="bullet-list">
-                <li class="bullet-item">
-                    <p class="bullet-label">Property Valuations</p>
-                    <p class="bullet-text">Independent, certified valuations for residential and commercial properties across Perth and regional WA. Every report is prepared by a qualified, registered valuer with no conflicts of interest.</p>
-                </li>
-                <li class="bullet-item">
-                    <p class="bullet-label">Family Law Valuations</p>
-                    <p class="bullet-text">Court-admissible property valuations for family law proceedings and asset settlement matters. Prepared to the standards required by the Family Court of Australia, delivered with the sensitivity these situations demand.</p>
-                </li>
-                <li class="bullet-item">
-                    <p class="bullet-label">Capital Gains Tax Valuations</p>
-                    <p class="bullet-text">Pre-sale and retrospective valuations to establish market value for capital gains tax purposes. Compliant with ATO requirements and prepared to withstand scrutiny from your accountant or the ATO.</p>
-                </li>
-                <li class="bullet-item">
-                    <p class="bullet-label">Retrospective Tax Valuations</p>
-                    <p class="bullet-text">Historical market valuations dated back to a specific point in time. Commonly required for estate administration, CGT events, and tax audit situations where the value at a past date needs to be established.</p>
-                </li>
-                <li class="bullet-item">
-                    <p class="bullet-label">Stamp Duty / Related Party Transfer Valuations</p>
-                    <p class="bullet-text">Independent valuations required by the WA Office of State Revenue for stamp duty assessments, related party transfers, and property transactions where an arms-length sale price is not available.</p>
-                </li>
-                <li class="bullet-item">
-                    <p class="bullet-label">Strata Building Insurance Valuations</p>
-                    <p class="bullet-text">Replacement cost assessments for strata buildings to ensure body corporates carry adequate insurance coverage. Prepared in accordance with strata legislation requirements and insurer guidelines.</p>
-                </li>
-                <li class="bullet-item">
-                    <p class="bullet-label">SMSF Valuations</p>
-                    <p class="bullet-text">Independent market valuations for property held within a self-managed superannuation fund. Required annually for SMSF compliance and prepared to meet ATO and ASIC reporting standards.</p>
-                </li>
-            </ul>
-        </div>
-    </section>
+<section class="context">
+  <div class="container">
+    <p>When a property valuation carries legal or financial weight, you need a firm that is truly independent and fully accredited. Valuations WA has operated from Osborne Park since the 1980s, building a reputation in Perth for reliable, professionally defensible valuations across a full range of purposes.</p>
+    <p>Every valuer on the team holds Certified Practising Valuer (CPV) status and is a current member of the Australian Property Institute. That means each report stands on its own merits in Family Law proceedings, ATO assessments, SMSF audits, or any other context where independence and credibility are non-negotiable.</p>
+    <p>The firm's long-standing presence in Perth also means genuine local knowledge of the Western Australian property market, not generic estimates generated from a national database.</p>
+  </div>
+</section>
 
-    <!-- About -->
-    <section class="about">
-        <div class="container">
-            <h2 class="section-heading">About Valuations WA</h2>
-            <p>Valuations WA is a Perth-based independent property valuation firm serving solicitors, accountants, real estate professionals, and property owners across Western Australia.</p>
-            <p>As an independent firm, we have no ties to banks, developers, or real estate agents. That independence is what makes our reports credible, and it is what protects our clients when their valuation is scrutinised by the ATO, the courts, or a counterparty.</p>
-            <p>We will not be beaten on price or service. If you have received a quote elsewhere, contact us before you proceed.</p>
-        </div>
-    </section>
+<section class="bullets">
+  <div class="container">
+    <h2 class="bullets-heading">Valuation services</h2>
+    <ul class="bullet-list">
+      <li class="bullet-item">
+        <div class="bullet-label">Family Law Valuations</div>
+        <div class="bullet-text">Independent valuations prepared for property settlement proceedings. Reports are structured to meet the requirements of family law matters and are prepared by qualified CPVs.</div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-label">Capital Gains Tax Valuations</div>
+        <div class="bullet-text">Accurate market value assessments for CGT purposes, prepared in accordance with ATO requirements and ready for submission with your tax return.</div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-label">Retrospective Tax Valuations</div>
+        <div class="bullet-text">Historical property valuations dated to a specific past point in time, used for establishing cost base, pre-CGT status, or other retrospective tax obligations.</div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-label">Stamp Duty &amp; Related Party Transfers</div>
+        <div class="bullet-text">Valuations required by the Office of State Revenue for dutiable transactions, including transfers between related parties and trust restructures.</div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-label">Strata Building Insurance Valuations</div>
+        <div class="bullet-text">Replacement cost assessments for strata scheme buildings, used to ensure insurance coverage accurately reflects current rebuild costs.</div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-label">SMSF Valuations</div>
+        <div class="bullet-text">Compliant independent valuations of SMSF property assets prepared to meet the requirements of the ATO and your SMSF auditor.</div>
+      </li>
+    </ul>
+  </div>
+</section>
 
-    <!-- Contact -->
-    <section class="contact">
-        <div class="container">
-            <h2 class="section-heading">Contact us</h2>
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <p class="contact-card-label">Phone</p>
-                    <a href="tel:0892421611">(08) 9242 1611</a>
-                </div>
-                <div class="contact-card">
-                    <p class="contact-card-label">Email</p>
-                    <a href="mailto:ross@valuationswa.com.au">ross@valuationswa.com.au</a>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="cta-section">
+  <div class="container">
+    <h2 class="cta-heading">Request a valuation</h2>
+    <p class="cta-sub">Get in touch with the Valuations WA team to discuss your requirements. Competitive pricing, qualified valuers, and reports that hold up when it counts.</p>
+    <a href="tel:0892421611" class="cta-button">Call (08) 9242 1611</a>
+    <div class="contact-details">
+      <span class="contact-item">Or email: <a href="mailto:VALS@VALUATIONSWA.COM.AU">VALS@VALUATIONSWA.COM.AU</a></span>
+      <span class="contact-item">Valuations WA Pty Ltd &mdash; Osborne Park, Perth WA</span>
+    </div>
+  </div>
+</section>
 
-    <!-- CTA -->
-    <section class="cta-section">
-        <div class="container">
-            <h2 class="cta-heading">Request a valuation today</h2>
-            <p class="cta-sub">Speak with our team about your property valuation requirements. Fast turnaround, independent reports, and pricing that won't be beaten.</p>
-            <a href="tel:0892421611" class="cta-button">Request a Valuation</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>Rebuilt by J&amp;G Operations as a preview. Not yet live on valuationswa.com.au</p>
-        </div>
-    </footer>
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2026 Valuations WA Pty Ltd. All rights reserved.</p>
+  </div>
+</footer>
 
 </body>
 </html>
