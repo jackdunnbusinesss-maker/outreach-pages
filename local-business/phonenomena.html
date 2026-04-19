@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phonenomena — Mobile Fleet Management for Australian Enterprises</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0e0e12;
+      --surface: #16161d;
+      --border:  #2a2a36;
+      --accent:  #00b4a0;
+      --text:    #c5c4ce;
+      --white:   #f0eff4;
+      --muted:   #7e7d8a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(14, 14, 18, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    /* Mobile nav toggle */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: opacity 0.2s;
+    }
+
+    @media (max-width: 640px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        gap: 0;
+        padding: 8px 0;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a {
+        display: block;
+        padding: 14px 24px;
+        font-size: 0.95rem;
+      }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 60% 40%, rgba(0,180,160,0.08) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 20% 80%, rgba(0,180,160,0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.25;
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 80px 24px;
+      width: 100%;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,180,160,0.1);
+      border: 1px solid rgba(0,180,160,0.25);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+    .hero-badge::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.15;
+      max-width: 800px;
+      margin-bottom: 24px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text);
+      max-width: 560px;
+      margin-bottom: 40px;
+      line-height: 1.75;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 14px 28px;
+      border-radius: 8px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: #009e8c; transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--white);
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 14px 28px;
+      border-radius: 8px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .stat-item { display: flex; flex-direction: column; gap: 4px; }
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--white);
+      font-family: 'Playfair Display', serif;
+      line-height: 1;
+    }
+    .stat-number span { color: var(--accent); }
+    .stat-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 96px 24px; }
+    .section-inner { max-width: 1120px; margin: 0 auto; }
+    .section-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.75;
+      margin-bottom: 56px;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: var(--surface); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .service-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      transition: border-color 0.2s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .service-card:hover { border-color: rgba(0,180,160,0.4); transform: translateY(-2px); }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(0,180,160,0.1);
+      border: 1px solid rgba(0,180,160,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      font-size: 1.2rem;
+    }
+    .service-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .service-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--bg); }
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .about-layout { grid-template-columns: 1fr; gap: 40px; }
+    }
+    .about-text p {
+      color: var(--text);
+      line-height: 1.85;
+      margin-bottom: 16px;
+    }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-highlight {
+      color: var(--white);
+      font-weight: 500;
+    }
+    .about-card-stack { display: flex; flex-direction: column; gap: 16px; }
+    .about-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 24px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .about-card-icon {
+      font-size: 1.4rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .about-card-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .about-card-body {
+      font-size: 0.825rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--surface); }
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+    }
+    .contact-detail {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 28px;
+    }
+    .contact-detail:last-child { margin-bottom: 0; }
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: rgba(0,180,160,0.1);
+      border: 1px solid rgba(0,180,160,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1rem;
+    }
+    .contact-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+    .contact-value {
+      font-size: 1rem;
+      color: var(--white);
+      font-weight: 500;
+    }
+    .contact-value a { color: var(--white); transition: color 0.2s; }
+    .contact-value a:hover { color: var(--accent); }
+    .contact-sub-text {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+    .contact-cta-box {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px 36px;
+    }
+    .contact-cta-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .contact-cta-box p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 24px;
+      line-height: 1.7;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .footer-logo span { color: var(--accent); }
+    .footer-disclaimer {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .footer-disclaimer a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-decoration-color: rgba(0,180,160,0.4);
+    }
+    .footer-divider {
+      width: 40px;
+      height: 1px;
+      background: var(--border);
+      margin: 16px auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-logo">Phone<span>nomena</span></div>
+      <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-inner">
+      <div class="hero-badge">Carrier-Neutral Mobile Fleet Specialists</div>
+      <h1>A Refreshing Alternative to<br /><em>Dealing Direct With Carriers</em></h1>
+      <p class="hero-sub">
+        Phonenomena simplifies mobile fleet management for Australian enterprises — giving you simple tools, expert support, and a single point of accountability across your entire mobile fleet.
+      </p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">Get in Touch</a>
+        <a href="#services" class="btn-secondary">Our Services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-number"><span>AU</span></div>
+          <div class="stat-label">National Service</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">5<span>+</span></div>
+          <div class="stat-label">Service Solutions</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">24<span>hr</span></div>
+          <div class="stat-label">Support Available</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-inner">
+      <div class="section-tag">What We Do</div>
+      <h2 class="section-heading">Solutions Built for<br />Large Mobile Fleets</h2>
+      <p class="section-sub">From enterprise-wide fleet management to round-the-clock care, Phonenomena delivers the tools and support your business needs to stay connected.</p>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-icon">🏢</div>
+          <div class="service-title">Enterprise Services</div>
+          <div class="service-desc">Purpose-built mobile fleet solutions for large Australian organisations — streamlining procurement, provisioning, and management across your entire workforce.</div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🔧</div>
+          <div class="service-title">Service Solutions</div>
+          <div class="service-desc">Comprehensive service frameworks designed to reduce complexity and cost when managing large volumes of mobile devices and accounts across multiple carriers.</div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">⭐</div>
+          <div class="service-title">PriorityCARE</div>
+          <div class="service-desc">Priority-tier account management for enterprises that need dedicated support, faster response times, and proactive fleet oversight from specialists who know your account.</div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🕐</div>
+          <div class="service-title">24HRCARE</div>
+          <div class="service-desc">Round-the-clock support coverage so your mobile fleet never goes unattended. Critical issues resolved day or night, keeping your business operational at all hours.</div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📱</div>
+          <div class="service-title">Usercare</div>
+          <div class="service-desc">End-user support that takes the burden off your IT team. Phonenomena handles individual device queries and user-level issues, so your people stay productive.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-layout">
+        <div class="about-text">
+          <div class="section-tag">About Phonenomena</div>
+          <h2 class="section-heading">Simplified Mobile Fleet<br />Management</h2>
+          <p>
+            <span class="about-highlight">Phonenomena is a carrier-neutral mobile fleet management specialist trusted by Australian enterprises.</span> Rather than navigating the complexity of dealing direct with carriers, businesses rely on Phonenomena as a single, accountable partner across their entire mobile operation.
+          </p>
+          <p>
+            With simple, purpose-built tools for managing large mobile fleets and a tiered support model that scales to your needs, Phonenomena removes the friction from enterprise telecommunications management.
+          </p>
+          <p>
+            Operating nationally, Phonenomena works with organisations of all sizes to bring clarity, control, and genuine service to a space that has long been overcomplicated.
+          </p>
+        </div>
+        <div class="about-card-stack">
+          <div class="about-card">
+            <div class="about-card-icon">🌐</div>
+            <div>
+              <div class="about-card-title">National Coverage</div>
+              <div class="about-card-body">Serving Australian enterprises nationwide — no geographic limitations on support or service delivery.</div>
+            </div>
+          </div>
+          <div class="about-card">
+            <div class="about-card-icon">📡</div>
+            <div>
+              <div class="about-card-title">Carrier-Neutral Specialist</div>
+              <div class="about-card-body">Independent of any single carrier, giving your business unbiased guidance and flexible fleet options across the market.</div>
+            </div>
+          </div>
+          <div class="about-card">
+            <div class="about-card-icon">🛠️</div>
+            <div>
+              <div class="about-card-title">Simple Fleet Management Tools</div>
+              <div class="about-card-body">Purpose-built tools that make it straightforward to manage, monitor, and control large mobile fleets without the complexity.</div>
+            </div>
+          </div>
+          <div class="about-card">
+            <div class="about-card-icon">🤝</div>
+            <div>
+              <div class="about-card-title">Trusted by Australian Enterprises</div>
+              <div class="about-card-body">A proven track record supporting enterprise clients who need reliable, accountable mobile fleet management at scale.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="contact-layout">
+        <div>
+          <div class="section-tag">Get in Touch</div>
+          <h2 class="section-heading">Ready to Simplify<br />Your Mobile Fleet?</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; max-width: 400px; margin-bottom: 40px; line-height: 1.75;">
+            Call us to discuss your fleet. Whether you're managing 50 devices or 5,000, Phonenomena has a solution built around your needs.
+          </p>
+          <div class="contact-detail">
+            <div class="contact-icon">📞</div>
+            <div>
+              <div class="contact-label">Phone</div>
+              <div class="contact-value"><a href="tel:1300721281">1300 721 281</a></div>
+              <div class="contact-sub-text">National — call us to get started</div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">🌐</div>
+            <div>
+              <div class="contact-label">Service Area</div>
+              <div class="contact-value">Australia — National</div>
+              <div class="contact-sub-text">Serving enterprises across all states and territories</div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-cta-box">
+          <h3>Speak to a Fleet Specialist</h3>
+          <p>Tell us about your fleet and we'll walk you through the right service solution. No carrier bias, no runaround — just straightforward expertise.</p>
+          <a href="tel:1300721281" class="btn-primary" style="display: inline-flex; width: 100%; justify-content: center;">
+            Call 1300 721 281
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Phone<span>nomena</span></div>
+      <div class="footer-divider"></div>
+      <p class="footer-disclaimer">
+        Rebuilt by <a href="#">J&amp;G Operations</a> as a preview. Not yet live on phonenomena.com.au.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

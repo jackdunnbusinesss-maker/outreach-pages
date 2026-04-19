@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Little Italy Coffee Roasters — Sydney Specialty Coffee</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0e0e12;
+      --surface: #16161d;
+      --border:  #2a2a36;
+      --accent:  #3d85c6;
+      --accent-dim: rgba(61, 133, 198, 0.15);
+      --text:    #c5c4ce;
+      --white:   #f0eff4;
+      --muted:   #7e7d8a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(14, 14, 18, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.04em;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    /* hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px 20px;
+      gap: 16px;
+    }
+    .mobile-menu a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu.open { display: flex; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px 100px;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 50% 30%, rgba(61, 133, 198, 0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 70%, rgba(61, 133, 198, 0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    /* decorative ring */
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      border: 1px solid rgba(61, 133, 198, 0.08);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 780px; }
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(61, 133, 198, 0.4);
+      border-radius: 999px;
+      padding: 5px 16px;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .hero-sub {
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      color: var(--muted);
+      max-width: 540px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 14px 36px;
+      border-radius: 6px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: #4f97d8; transform: translateY(-2px); }
+
+    /* ── SECTION BASE ── */
+    section { padding: 90px 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 14px;
+    }
+    .section-desc {
+      font-size: 0.97rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 52px;
+      line-height: 1.7;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    /* ── CARDS GRID ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px 28px;
+      transition: border-color 0.25s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .card:hover { border-color: rgba(61, 133, 198, 0.45); transform: translateY(-3px); }
+    .card:hover::before { opacity: 1; }
+    .card-icon {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+      line-height: 1;
+    }
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .card-body {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .card-tag {
+      display: inline-block;
+      margin-top: 18px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border-radius: 4px;
+      padding: 4px 10px;
+    }
+
+    /* ── PRODUCTS ── */
+    #products { background: var(--bg); }
+
+    /* ── TRAINING ── */
+    #training { background: var(--surface); }
+    #training .card { background: var(--bg); }
+    .training-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 28px;
+    }
+    .training-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 36px 32px;
+      transition: border-color 0.25s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .training-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .training-card:hover { border-color: rgba(61, 133, 198, 0.45); transform: translateY(-3px); }
+    .training-card:hover::before { opacity: 1; }
+    .training-level {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(61, 133, 198, 0.35);
+      border-radius: 4px;
+      padding: 3px 10px;
+      margin-bottom: 16px;
+    }
+    .training-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .training-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── VISIT ── */
+    #visit { background: var(--bg); }
+    .visit-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 52px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .visit-card::after {
+      content: '';
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(61,133,198,0.1) 0%, transparent 70%);
+      right: -80px;
+      bottom: -80px;
+      pointer-events: none;
+    }
+    .visit-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .visit-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+    .visit-desc {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+    .visit-features { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .visit-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 0.93rem;
+      color: var(--text);
+    }
+    .visit-features li::before {
+      content: '→';
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--surface); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .contact-info-block {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .contact-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(61,133,198,0.25);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .contact-detail-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .contact-detail-value {
+      font-size: 0.97rem;
+      color: var(--white);
+      font-weight: 500;
+    }
+    .contact-detail-value a {
+      color: var(--accent);
+      transition: color 0.2s;
+    }
+    .contact-detail-value a:hover { color: #6aaee0; }
+    .contact-cta-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 36px 32px;
+    }
+    .contact-cta-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .contact-cta-text {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 24px;
+      line-height: 1.65;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .footer-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .footer-note a { color: var(--accent); }
+    .footer-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 20px 0;
+    }
+    .footer-copy {
+      font-size: 0.74rem;
+      color: var(--border);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      section { padding: 64px 20px; }
+
+      .visit-card {
+        grid-template-columns: 1fr;
+        padding: 36px 28px;
+        gap: 32px;
+      }
+      .contact-grid { grid-template-columns: 1fr; }
+
+      .hero { min-height: 80vh; padding: 60px 20px 80px; }
+      .hero::after { width: 320px; height: 320px; }
+    }
+
+    @media (max-width: 480px) {
+      .cards-grid { grid-template-columns: 1fr; }
+      .training-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-logo">LICR<span>.</span></div>
+      <ul class="nav-links">
+        <li><a href="#products">Products</a></li>
+        <li><a href="#training">Training</a></li>
+        <li><a href="#visit">Visit</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#products" onclick="closeMobile()">Products</a>
+      <a href="#training" onclick="closeMobile()">Training</a>
+      <a href="#visit" onclick="closeMobile()">Visit</a>
+      <a href="#contact" onclick="closeMobile()">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-badge">Sydney Specialty Coffee</div>
+      <h1>Coffee is a balance between<br>art and science.</h1>
+      <p class="hero-sub">
+        Little Italy Coffee Roasters brings premium specialty coffee to Sydney, NSW —
+        from meticulously sourced beans and signature blends to hands-on barista
+        training and immersive roasting experiences.
+      </p>
+      <a href="#products" class="btn-primary">Shop Beans</a>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- PRODUCTS -->
+  <section id="products">
+    <div class="container">
+      <p class="section-label">Our Coffee</p>
+      <h2 class="section-title">Specialty Beans &amp; Signature Blends</h2>
+      <p class="section-desc">
+        Every bag starts with exceptional green coffee and ends with a roast designed
+        to bring out the best of what's inside.
+      </p>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-icon">☕</div>
+          <div class="card-title">Premium Specialty Beans</div>
+          <p class="card-body">
+            Carefully sourced single-origin and specialty-grade coffee beans, selected
+            for quality, traceability, and flavour complexity.
+          </p>
+          <span class="card-tag">Specialty Grade</span>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔥</div>
+          <div class="card-title">Right on Q — Limited Release</div>
+          <p class="card-body">
+            A limited-edition release blend from Little Italy Coffee Roasters. Crafted
+            in small batches, Right on Q is available while stocks last.
+          </p>
+          <span class="card-tag">Limited Release</span>
+        </div>
+        <div class="card">
+          <div class="card-icon">🫘</div>
+          <div class="card-title">Signature Blends</div>
+          <p class="card-body">
+            House blends developed in-house at LICR, balancing consistency with
+            character — suited to espresso, milk-based drinks, and filter brewing.
+          </p>
+          <span class="card-tag">House Blends</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- TRAINING -->
+  <section id="training">
+    <div class="container">
+      <p class="section-label">Barista Training</p>
+      <h2 class="section-title">Learn the Craft</h2>
+      <p class="section-desc">
+        Whether you're picking up a portafilter for the first time or refining your
+        technique, LICR's training courses are built around the art and science of
+        great coffee.
+      </p>
+      <div class="training-grid">
+        <div class="training-card">
+          <div class="training-level">Introductory</div>
+          <div class="training-title">Introductory Barista Course</div>
+          <p class="training-desc">
+            Start your coffee journey with the fundamentals — espresso extraction,
+            milk texturing, and the core principles behind a great cup. Suitable for
+            home enthusiasts and those considering a career in coffee.
+          </p>
+        </div>
+        <div class="training-card">
+          <div class="training-level">Advanced</div>
+          <div class="training-title">Advanced Barista Course</div>
+          <p class="training-desc">
+            Deepen your technical knowledge and refine your workflow. Covers advanced
+            espresso theory, dialling in, palate development, and consistency under
+            pressure — for those serious about the craft.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- VISIT -->
+  <section id="visit">
+    <div class="container">
+      <p class="section-label">Experiences</p>
+      <h2 class="section-title">Come Inside</h2>
+      <p class="section-desc">
+        Coffee is best understood when you see it being made. LICR offers two
+        immersive on-site experiences in Sydney.
+      </p>
+      <div class="visit-card">
+        <div>
+          <p class="visit-label">On-Site Experiences</p>
+          <h3 class="visit-title">Roasting Room &amp; Tasting Lab</h3>
+          <p class="visit-desc">
+            Step into the LICR Roasting Room for a behind-the-scenes look at the
+            roasting process — where the science of heat meets the art of flavour
+            development. Then move through to the Tasting Lab to explore the
+            finished product: cupping, sensory evaluation, and guided tastings led
+            by the LICR team.
+          </p>
+        </div>
+        <ul class="visit-features">
+          <li>Roasting Room — see the full roasting process up close</li>
+          <li>Tasting Lab — guided cupping and sensory sessions</li>
+          <li>Hosted by the LICR team in Sydney, NSW</li>
+          <li>Available for individuals, groups, and trade visitors</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <p class="section-label">Get In Touch</p>
+      <h2 class="section-title">Contact LICR</h2>
+      <p class="section-desc">
+        Questions about an order, training enrolment, or booking a Roasting Room
+        visit? Reach out directly.
+      </p>
+      <div class="contact-grid">
+        <div class="contact-info-block">
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <p class="contact-detail-label">Phone</p>
+              <p class="contact-detail-value">
+                <a href="tel:+61428049756">+61 428 049 756</a>
+              </p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <p class="contact-detail-label">Location</p>
+              <p class="contact-detail-value">Sydney, NSW, Australia</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🌐</div>
+            <div>
+              <p class="contact-detail-label">Website</p>
+              <p class="contact-detail-value">
+                <a href="https://licr.com.au" target="_blank" rel="noopener">licr.com.au</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="contact-cta-block">
+          <h3 class="contact-cta-title">Ready to order or book?</h3>
+          <p class="contact-cta-text">
+            Whether you're after beans, a barista course, or an immersive roastery
+            experience — call us directly or visit licr.com.au to find out more.
+          </p>
+          <a href="tel:+61428049756" class="btn-primary">Call Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-logo">Little Italy Coffee Roasters</p>
+      <hr class="footer-divider" />
+      <p class="footer-note">
+        Rebuilt by <strong>J&amp;G Operations</strong> as a preview. Not yet live on licr.com.au.
+      </p>
+      <hr class="footer-divider" />
+      <p class="footer-copy">© 2026 Little Italy Coffee Roasters · Sydney, NSW</p>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+    hamburger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') mobileMenu.classList.toggle('open');
+    });
+    function closeMobile() {
+      mobileMenu.classList.remove('open');
+    }
+  </script>
+
+</body>
+</html>

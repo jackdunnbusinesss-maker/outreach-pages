@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carousel Consulting — Change Management Consulting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0e0e12;
+    --surface: #16161d;
+    --surface2: #1e1e28;
+    --border: #2a2a36;
+    --accent: #2abb61;
+    --text: #c5c4ce;
+    --white: #f0eff4;
+    --muted: #7e7d8a;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(14, 14, 18, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .nav-logo img {
+    height: 38px;
+    width: auto;
+    display: block;
+  }
+
+  .nav-logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--white);
+    font-weight: 700;
+    display: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  /* HERO */
+  .hero {
+    min-height: 88vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 24px;
+    background: radial-gradient(ellipse at 50% 0%, rgba(42, 187, 97, 0.08) 0%, transparent 65%);
+  }
+
+  .hero-inner { max-width: 760px; }
+
+  .hero-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(42, 187, 97, 0.1);
+    border: 1px solid rgba(42, 187, 97, 0.25);
+    border-radius: 100px;
+    padding: 5px 14px;
+    margin-bottom: 28px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.6rem, 6vw, 4.2rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.12;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--text);
+    max-width: 560px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--accent);
+    color: #0e0e12;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 14px 34px;
+    border-radius: 8px;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: opacity 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  /* SECTION BASE */
+  section { padding: 96px 24px; }
+
+  .container { max-width: 1080px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .section-intro {
+    color: var(--text);
+    max-width: 600px;
+    margin-bottom: 56px;
+    font-size: 1.05rem;
+  }
+
+  /* SERVICES */
+  #services { background: var(--surface); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .service-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 24px;
+    transition: border-color 0.25s, transform 0.2s;
+    cursor: default;
+  }
+
+  .service-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+
+  .service-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(42, 187, 97, 0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .service-icon svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+  .service-card h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .service-card p {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ABOUT */
+  #about { background: var(--bg); }
+
+  .about-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 48px;
+    max-width: 720px;
+  }
+
+  .about-card p {
+    color: var(--text);
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+
+  /* CONTACT */
+  #contact { background: var(--surface); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+    max-width: 720px;
+  }
+
+  .contact-item {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 24px;
+  }
+
+  .contact-item .item-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .contact-item a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: 500;
+    transition: opacity 0.2s;
+  }
+
+  .contact-item a:hover { opacity: 0.8; }
+
+  .contact-item span {
+    color: var(--text);
+    font-size: 0.95rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    padding: 28px 24px;
+    text-align: center;
+  }
+
+  footer p {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    nav { padding: 0 16px; }
+    .nav-links { gap: 18px; }
+    .nav-links a { font-size: 0.8rem; }
+    section { padding: 72px 16px; }
+    .about-card { padding: 28px 20px; }
+  }
+
+  @media (max-width: 420px) {
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo" id="nav-logo-wrap">
+    <img src="https://carouselconsulting.com.au/wp-content/uploads/2025/04/CC-Horizontal-Logo.png" alt="Carousel Consulting" id="nav-logo-img">
+    <span class="nav-logo-text" id="nav-logo-fallback">Carousel Consulting</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-label">Change Management Consulting</span>
+    <h1>Carousel Consulting</h1>
+    <p class="hero-sub">Strategic change management that moves organisations forward — through design, implementation, and the capability to sustain it.</p>
+    <a href="tel:0417728609" class="btn-primary">Call Us — 0417 728 609</a>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <p class="section-label">What We Do</p>
+    <h2 class="section-title">Our Services</h2>
+    <p class="section-intro">End-to-end change management services, from strategy through to team-level capability building.</p>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Change Design</h3>
+        <p>Architecting structured change programmes tailored to your organisation's people, culture, and objectives.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Change Strategy</h3>
+        <p>Developing clear, actionable change strategies that align leadership intent with operational reality.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Change Implementation</h3>
+        <p>Hands-on delivery and coordination of change initiatives, keeping programmes on track and people engaged.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Change Capability</h3>
+        <p>Building lasting internal capability so your teams can lead and sustain change long after the engagement ends.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <h3>Change Readiness Assessment Package</h3>
+        <p>A structured assessment to evaluate your organisation's readiness to absorb and sustain change effectively.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Collaboration Maturity Improvement Package</h3>
+        <p>Assessing and elevating how teams collaborate — improving trust, communication, and cross-functional effectiveness.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3>High-Performance Team Reset Package</h3>
+        <p>A focused reset for teams experiencing friction or performance plateaus — restoring momentum and alignment.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Building Team Resilience Program</h3>
+        <p>Structured programme to strengthen team resilience — helping people adapt, recover, and perform through disruption.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <p class="section-label">About</p>
+    <h2 class="section-title">Who We Are</h2>
+    <div class="about-card">
+      <p>Carousel Consulting is a change management consulting firm dedicated to helping organisations navigate complex transitions with confidence. We work across strategy, design, and implementation — bringing the structure and expertise needed to make change stick. Whether you're facing a transformation programme or a team challenge, we're here to help.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label">Get in Touch</p>
+    <h2 class="section-title">Contact Us</h2>
+    <p class="section-intro">Ready to talk through your change challenge? Reach out and let us help.</p>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <p class="item-label">Phone</p>
+        <a href="tel:0417728609">0417 728 609</a>
+      </div>
+      <div class="contact-item">
+        <p class="item-label">Location &amp; Hours</p>
+        <span>Contact us for details</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Rebuilt by J&amp;G Operations as a preview. Not yet live on carouselconsulting.com.au.</p>
+</footer>
+
+<script>
+  (function() {
+    var img = document.getElementById('nav-logo-img');
+    var fallback = document.getElementById('nav-logo-fallback');
+    img.onerror = function() {
+      img.style.display = 'none';
+      fallback.style.display = 'inline';
+    };
+  })();
+</script>
+
+</body>
+</html>

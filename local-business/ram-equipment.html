@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAM Equipment — Adelaide's Dry Hire Equipment Specialist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0e0e12;
+            --surface: #16161d;
+            --surface-light: #1e1e28;
+            --border: #2a2a36;
+            --border-glow: #e8521a55;
+            --accent: #e8521a;
+            --accent-light: #ff7043;
+            --accent-dim: #a83b12;
+            --accent-glow: #e8521a33;
+            --accent-glow-strong: #e8521a55;
+            --white: #f0eff4;
+            --text: #c5c4ce;
+            --text-muted: #7e7d8a;
+            --gradient-hero: linear-gradient(135deg, #e8521a 0%, #ff7043 50%, #ffab91 100%);
+            --gradient-accent: linear-gradient(90deg, #e8521a, #ff7043);
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg); color: var(--text); line-height: 1.7;
+            -webkit-font-smoothing: antialiased; overflow-x: hidden;
+        }
+        .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+        .fade-in {
+            opacity: 0; transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* NAV */
+        .topbar {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(14, 14, 18, 0.96);
+            backdrop-filter: blur(14px);
+        }
+        .topbar-inner { display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+        .topbar-brand { font-size: 0.9rem; font-weight: 700; color: var(--white); letter-spacing: 0.5px; white-space: nowrap; }
+        .topbar-nav { display: flex; gap: 24px; }
+        .topbar-nav a {
+            font-size: 0.78rem; color: var(--text-muted); text-decoration: none;
+            font-weight: 500; letter-spacing: 0.3px; transition: color 0.2s;
+        }
+        .topbar-nav a:hover { color: var(--accent-light); }
+        .topbar-cta {
+            font-size: 0.8rem; color: var(--accent-light); font-weight: 600;
+            text-decoration: none; transition: color 0.2s; white-space: nowrap;
+        }
+        .topbar-cta:hover { color: var(--white); }
+
+        /* HERO */
+        .hero { position: relative; padding: 100px 0 76px; text-align: center; overflow: hidden; }
+        .hero::before {
+            content: ''; position: absolute; top: -120px; left: 50%;
+            transform: translateX(-50%); width: 900px; height: 600px;
+            background:
+                radial-gradient(ellipse 480px 320px at 30% 40%, #e8521a22 0%, transparent 70%),
+                radial-gradient(ellipse 360px 280px at 75% 30%, #ff704318 0%, transparent 65%),
+                radial-gradient(ellipse 300px 240px at 55% 80%, #a83b1215 0%, transparent 60%);
+            pointer-events: none; z-index: 0;
+        }
+        .hero::after {
+            content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .hero-inner { position: relative; z-index: 1; }
+        .hero-eyebrow {
+            display: inline-block; font-size: 0.72rem; text-transform: uppercase;
+            letter-spacing: 3px; color: var(--accent); margin-bottom: 24px;
+            font-weight: 600; border: 1px solid var(--border-glow);
+            padding: 6px 18px; border-radius: 100px; background: #e8521a0d;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5.5vw, 3rem); line-height: 1.22;
+            margin-bottom: 28px; font-weight: 700;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-sub {
+            font-size: 1.05rem; color: var(--text);
+            max-width: 580px; margin: 0 auto 40px; line-height: 1.85;
+        }
+        .hero-cta {
+            display: inline-block; background: var(--gradient-accent);
+            color: #0e0e12; font-family: 'Inter', sans-serif;
+            font-size: 1rem; font-weight: 700; padding: 17px 52px;
+            border-radius: 10px; text-decoration: none; letter-spacing: 0.3px;
+            box-shadow: 0 0 24px #e8521a4d, 0 8px 32px #e8521a26;
+            transition: box-shadow 0.3s ease, transform 0.2s ease, filter 0.3s ease;
+        }
+        .hero-cta:hover {
+            box-shadow: 0 0 40px #e8521a80, 0 12px 48px #e8521a40;
+            transform: translateY(-2px); filter: brightness(1.08);
+        }
+
+        /* SERVICES */
+        .services { padding: 80px 0; position: relative; }
+        .services::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0;
+            height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .section-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.65rem; color: var(--white); margin-bottom: 32px; font-weight: 600;
+        }
+        .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        .service-card {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 14px; padding: 30px 24px; position: relative; overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+        }
+        .service-card::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse 180px 120px at 50% 0%, #e8521a10 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .service-card:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 24px #e8521a15, 0 8px 32px rgba(0,0,0,0.3);
+            transform: translateY(-3px);
+        }
+        .service-icon {
+            width: 44px; height: 44px; border-radius: 10px;
+            background: #e8521a1a; border: 1px solid var(--border-glow);
+            margin: 0 0 16px; display: flex; align-items: center;
+            justify-content: center; font-size: 1.15rem;
+        }
+        .service-title { font-size: 0.95rem; font-weight: 600; color: var(--white); margin-bottom: 10px; }
+        .service-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.65; }
+
+        /* ISO TRUST BADGE */
+        .trust-band { padding: 48px 0; position: relative; }
+        .trust-band::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0;
+            height: 1px; background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .trust-band::after {
+            content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+            height: 1px; background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .trust-badge-wrap { display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap; }
+        .iso-badge {
+            display: flex; align-items: center; gap: 16px;
+            background: var(--surface); border: 1px solid var(--border-glow);
+            border-radius: 14px; padding: 20px 32px;
+            box-shadow: 0 0 24px #e8521a1a, 0 8px 32px rgba(0,0,0,0.2);
+        }
+        .iso-icon {
+            width: 52px; height: 52px; border-radius: 50%;
+            background: var(--gradient-accent); display: flex; align-items: center;
+            justify-content: center; font-size: 1.3rem; flex-shrink: 0;
+            box-shadow: 0 0 16px #e8521a55;
+        }
+        .iso-text-wrap {}
+        .iso-label {
+            font-size: 0.68rem; text-transform: uppercase; letter-spacing: 2.5px;
+            color: var(--accent); font-weight: 700; margin-bottom: 4px;
+        }
+        .iso-title { font-size: 1rem; font-weight: 700; color: var(--white); }
+        .iso-sub { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+        .trust-tags { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+        .trust-tag {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 8px; padding: 10px 18px; font-size: 0.8rem;
+            color: var(--text-muted); font-weight: 500;
+            transition: border-color 0.25s, color 0.25s;
+        }
+        .trust-tag:hover { border-color: var(--border-glow); color: var(--accent-light); }
+
+        /* ABOUT */
+        .about { padding: 72px 0; position: relative; }
+        .about::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0;
+            height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .about p { font-size: 1.02rem; line-height: 1.9; margin-bottom: 20px; color: var(--text); }
+        .about p:last-child { margin-bottom: 0; }
+        .highlight { color: var(--accent-light); font-weight: 600; }
+
+        /* CONTACT */
+        .contact { padding: 72px 0; position: relative; }
+        .contact::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0;
+            height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .contact-card {
+            background: var(--surface); border: 1px solid var(--border-glow);
+            border-radius: 16px; padding: 44px 40px; text-align: center;
+            position: relative; overflow: hidden;
+            box-shadow: 0 0 40px #e8521a15, 0 20px 60px rgba(0,0,0,0.35);
+        }
+        .contact-card::before {
+            content: ''; position: absolute; top: -80px; left: 50%;
+            transform: translateX(-50%); width: 500px; height: 300px;
+            background: radial-gradient(ellipse 400px 200px at 50% 0%, #e8521a12 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .contact-inner { position: relative; z-index: 1; }
+        .contact-eyebrow {
+            font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2.5px;
+            color: var(--accent); font-weight: 700; margin-bottom: 14px;
+        }
+        .contact-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.8rem; color: var(--white); margin-bottom: 12px; font-weight: 600;
+        }
+        .contact-sub { font-size: 0.95rem; color: var(--text); margin-bottom: 32px; line-height: 1.7; }
+        .contact-phone {
+            display: inline-block; background: var(--gradient-accent);
+            color: #0e0e12; font-family: 'Inter', sans-serif;
+            font-size: 1.05rem; font-weight: 700; padding: 17px 56px;
+            border-radius: 10px; text-decoration: none; letter-spacing: 0.3px;
+            box-shadow: 0 0 24px #e8521a4d, 0 8px 32px #e8521a26;
+            transition: box-shadow 0.3s ease, transform 0.2s ease, filter 0.3s ease;
+        }
+        .contact-phone:hover {
+            box-shadow: 0 0 40px #e8521a80, 0 12px 48px #e8521a40;
+            transform: translateY(-2px); filter: brightness(1.08);
+        }
+        .contact-location { margin-top: 20px; font-size: 0.82rem; color: var(--text-muted); }
+
+        /* FOOTER */
+        .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+        .footer p { font-size: 0.73rem; color: var(--text-muted); line-height: 1.8; }
+        .footer-preview {
+            margin-top: 8px; font-size: 0.7rem; color: var(--text-muted);
+            opacity: 0.6; font-style: italic;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 640px) {
+            .hero { padding: 72px 0 56px; }
+            .topbar-nav { display: none; }
+            .cards-grid { grid-template-columns: 1fr; gap: 14px; }
+            .iso-badge { flex-direction: column; text-align: center; gap: 12px; padding: 24px; }
+            .contact-card { padding: 36px 24px; }
+            .contact-heading { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-brand">RAM Equipment</span>
+            <div class="topbar-nav">
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <a href="tel:1300726000" class="topbar-cta">1300 726 000</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-inner container">
+            <p class="hero-eyebrow">Adelaide, SA — ISO Certified</p>
+            <h1>Adelaide's Dry Hire Equipment Specialist</h1>
+            <p class="hero-sub">ISO certified equipment for construction and infrastructure projects across South Australia. Hire or purchase — and experience the RAM difference.</p>
+            <a href="tel:1300726000" class="hero-cta">Call 1300 726 000</a>
+        </div>
+    </section>
+
+    <section id="services" class="services fade-in">
+        <div class="container">
+            <h2 class="section-heading">What we do</h2>
+            <div class="cards-grid">
+                <div class="service-card">
+                    <div class="service-icon">🏗️</div>
+                    <div class="service-title">Dry Hire Equipment</div>
+                    <div class="service-desc">Construction and infrastructure-grade equipment available for dry hire across South Australia — operator not included, full control in your hands.</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✅</div>
+                    <div class="service-title">ISO Certified Fleet</div>
+                    <div class="service-desc">Every piece of equipment meets ISO certification standards — so your site stays compliant and your team stays safe.</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <div class="service-title">Equipment Purchase</div>
+                    <div class="service-desc">Buy direct from Adelaide's dry hire specialist. Quality equipment with the same ISO-certified standard you expect from our hire fleet.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="trust-band fade-in">
+        <div class="container">
+            <div class="trust-badge-wrap">
+                <div class="iso-badge">
+                    <div class="iso-icon">🏅</div>
+                    <div class="iso-text-wrap">
+                        <div class="iso-label">Certification</div>
+                        <div class="iso-title">ISO Certified Equipment</div>
+                        <div class="iso-sub">Every hire and purchase meets international standards</div>
+                    </div>
+                </div>
+                <div class="trust-tags">
+                    <span class="trust-tag">Dry Hire Specialist</span>
+                    <span class="trust-tag">Construction &amp; Infrastructure</span>
+                    <span class="trust-tag">Adelaide, SA</span>
+                    <span class="trust-tag">Hire &amp; Purchase</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about fade-in">
+        <div class="container">
+            <h2 class="section-heading">About RAM Equipment</h2>
+            <p><span class="highlight">RAM Equipment</span> is Adelaide's dedicated dry hire equipment specialist, supplying construction and infrastructure projects across South Australia with ISO certified machinery and plant.</p>
+            <p>From short-term site requirements to longer infrastructure programs, RAM offers flexible hire and purchase options backed by a fleet that meets the highest certification standards. No guesswork, no surprises — just equipment that performs.</p>
+            <p>Experience the RAM difference: reliable equipment, certified quality, and a team that understands what your project demands.</p>
+        </div>
+    </section>
+
+    <section id="contact" class="contact fade-in">
+        <div class="container">
+            <div class="contact-card">
+                <div class="contact-inner">
+                    <p class="contact-eyebrow">Get in touch</p>
+                    <h2 class="contact-heading">Ready to hire or purchase?</h2>
+                    <p class="contact-sub">Talk to the RAM Equipment team about your construction or infrastructure requirements across South Australia.</p>
+                    <a href="tel:1300726000" class="contact-phone">Call 1300 726 000</a>
+                    <p class="contact-location">Adelaide, SA, Australia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>RAM Equipment &mdash; ramequipment.com.au &mdash; 1300 726 000 &mdash; Adelaide, SA</p>
+            <p class="footer-preview">Rebuilt by J&amp;G Operations as a preview. Not yet live on ramequipment.com.au.</p>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

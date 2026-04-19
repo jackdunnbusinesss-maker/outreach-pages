@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Colville Gallery — Contemporary Art, Hobart</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg:       #0e0e12;
+      --surface:  #16161d;
+      --border:   #2a2a36;
+      --accent:   #c9a35c;
+      --accent-dim: rgba(201, 163, 92, 0.12);
+      --text:     #c5c4ce;
+      --white:    #f0eff4;
+      --muted:    #7e7d8a;
+      --nav-h:    64px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: rgba(14, 14, 18, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: calc(100vh - var(--nav-h));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 5vw, 4rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 40%, rgba(201, 163, 92, 0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 80% 60% at 50% 100%, rgba(201, 163, 92, 0.03) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      max-width: 720px;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--muted);
+      font-weight: 300;
+      letter-spacing: 0.01em;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: #0e0e12;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.85rem 2.25rem;
+      border-radius: 2px;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.88;
+      transform: translateY(-1px);
+    }
+
+    .hero-divider {
+      width: 48px;
+      height: 1px;
+      background: var(--accent);
+      margin: 3rem auto 0;
+      opacity: 0.5;
+    }
+
+    /* ── SECTIONS SHARED ── */
+    section {
+      padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 4rem);
+    }
+
+    .section-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-body {
+      font-size: 1rem;
+      color: var(--text);
+      max-width: 600px;
+      line-height: 1.8;
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .services-header {
+      margin-bottom: 3rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem 1.75rem;
+      transition: border-color 0.25s;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+    }
+
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent-dim);
+      border-radius: 2px;
+    }
+
+    .card-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.65rem;
+    }
+
+    .card p {
+      font-size: 0.92rem;
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-accent-block {
+      border-left: 2px solid var(--accent);
+      padding-left: 1.5rem;
+    }
+
+    .about-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+
+    .about-detail {
+      font-size: 0.9rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 680px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .contact-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .contact-value {
+      font-size: 1.05rem;
+      color: var(--white);
+      font-weight: 400;
+    }
+
+    .contact-value a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .contact-value a:hover {
+      opacity: 0.8;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem clamp(1.5rem, 5vw, 4rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .footer-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    /* ── MOBILE NAV ── */
+    @media (max-width: 520px) {
+      .nav-links {
+        gap: 1.2rem;
+      }
+
+      .nav-links a {
+        font-size: 0.75rem;
+      }
+
+      .footer-note {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Colville Gallery</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-eyebrow">Hobart · Tasmania</span>
+      <h1>Colville Gallery</h1>
+      <p class="hero-sub">Contemporary art. Hobart's Collins Street.</p>
+      <a href="#contact" class="btn-primary">Visit the Gallery</a>
+      <div class="hero-divider"></div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-inner">
+      <div class="services-header">
+        <p class="section-label">What We Offer</p>
+        <h2 class="section-title">Gallery Services</h2>
+      </div>
+      <div class="cards">
+
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <h3>Exhibitions</h3>
+          <p>A rotating programme of contemporary art exhibitions presented in the heart of Hobart. Each show is curated to bring ambitious, thought-provoking work to audiences across Tasmania and beyond.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3>Art Sales</h3>
+          <p>Works presented in the gallery are available for acquisition. Our team can guide collectors at every level — whether you are purchasing your first piece or adding to an established collection.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <h3>COLLECT Art Purchase Scheme</h3>
+          <p>COLLECT is an art purchase scheme that makes acquiring original contemporary works more accessible. It is designed for buyers who wish to build a collection gradually, spreading the cost of a purchase over time without sacrificing quality or provenance.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div>
+          <p class="section-label">About the Gallery</p>
+          <h2 class="section-title">Led by expertise.<br>Rooted in Hobart.</h2>
+          <p class="section-body">
+            Colville Gallery is directed by Trudi Curtis, an Art Historian and Curator with a deep commitment to contemporary practice. Located at 30 Collins Street in central Hobart, the gallery operates as a dedicated space for living artists working across a broad range of disciplines.
+          </p>
+        </div>
+        <div class="about-accent-block">
+          <p class="about-quote">"A contemporary art gallery in central Hobart, led by an Art Historian and Curator."</p>
+          <p class="about-detail">Director — Trudi Curtis, Art Historian &amp; Curator</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <p class="section-label">Get in Touch</p>
+      <h2 class="section-title">Find Us</h2>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <span class="contact-label">Phone</span>
+          <span class="contact-value"><a href="tel:0419292626">0419 292 626</a></span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Address</span>
+          <span class="contact-value">30 Collins Street<br>Hobart, Tasmania</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Specialisation</span>
+          <span class="contact-value">Contemporary Art</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-logo">Colville Gallery</span>
+    <p class="footer-note">Rebuilt by J&amp;G Operations as a preview. Not yet live on colvillegallery.com.au.</p>
+  </footer>
+
+</body>
+</html>
