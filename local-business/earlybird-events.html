@@ -1,470 +1,354 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Earlybird Events — Event Management Australia</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earlybird Events — Full-Service Event Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    :root {
-      --bg:      #0e0e12;
-      --surface: #16161d;
-      --border:  #2a2a36;
-      --text:    #c5c4ce;
-      --white:   #f0eff4;
-      --muted:   #7e7d8a;
-      --accent:  #e84393;
-      --accent-dim: rgba(232,67,147,0.12);
-    }
+        :root {
+            --bg: #0e0e12;
+            --surface: #16161d;
+            --surface-light: #1e1e28;
+            --border: #2a2a36;
+            --accent: #e8a030;
+            --accent-light: #f0be6a;
+            --accent-glow: rgba(232, 160, 48, 0.15);
+            --white: #f0eff4;
+            --text: #c5c4ce;
+            --text-muted: #7e7d8a;
+        }
 
-    html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-      font-size: 16px;
-      line-height: 1.65;
-    }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    /* ── NAV ── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(14,14,18,0.88);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 24px;
-      height: 62px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--white);
-      text-decoration: none;
-      letter-spacing: -0.02em;
-    }
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-    }
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.875rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--white); }
-    .nav-cta {
-      background: var(--accent);
-      color: #fff;
-      text-decoration: none;
-      padding: 8px 18px;
-      border-radius: 6px;
-      font-size: 0.875rem;
-      font-weight: 600;
-      transition: opacity 0.2s;
-      white-space: nowrap;
-    }
-    .nav-cta:hover { opacity: 0.88; }
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
 
-    /* ── HERO ── */
-    .hero-wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 96px 24px 80px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
-    .hero-label {
-      display: inline-block;
-      background: var(--accent-dim);
-      color: var(--accent);
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 5px 12px;
-      border-radius: 4px;
-      margin-bottom: 20px;
-    }
-    .hero-h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.18;
-      letter-spacing: -0.03em;
-      margin-bottom: 20px;
-    }
-    .hero-sub {
-      font-size: 1.05rem;
-      color: var(--text);
-      margin-bottom: 36px;
-      max-width: 480px;
-    }
-    .btn-primary {
-      display: inline-block;
-      background: var(--accent);
-      color: #fff;
-      text-decoration: none;
-      padding: 14px 28px;
-      border-radius: 7px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      transition: opacity 0.2s, transform 0.15s;
-    }
-    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+        /* ---- TOP BAR ---- */
+        .topbar {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-brand {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: 0.5px;
+        }
+        .topbar-contact {
+            font-size: 0.8rem;
+            color: var(--accent-light);
+            font-weight: 500;
+            text-decoration: none;
+        }
+        .topbar-contact:hover {
+            color: var(--white);
+        }
 
-    .hero-visual {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 40px 36px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .hero-stat {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--border);
-    }
-    .hero-stat:last-child { border-bottom: none; padding-bottom: 0; }
-    .hero-stat-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.75rem;
-      font-weight: 700;
-      color: var(--accent);
-      line-height: 1.2;
-    }
-    .hero-stat-label { font-size: 0.88rem; color: var(--muted); }
+        /* ---- HERO ---- */
+        .hero {
+            padding: 80px 0 64px;
+            text-align: center;
+        }
+        .hero-eyebrow {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            color: var(--white);
+            line-height: 1.25;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+        .hero h1 em {
+            color: var(--accent-light);
+            font-style: italic;
+        }
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
 
-    /* ── SECTION SHARED ── */
-    section { padding: 80px 24px; }
-    .container { max-width: 1100px; margin: 0 auto; }
-    .section-label {
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 10px;
-    }
-    .section-heading {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.6rem, 3vw, 2.25rem);
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.22;
-      letter-spacing: -0.02em;
-      margin-bottom: 16px;
-    }
-    .section-sub {
-      font-size: 1rem;
-      color: var(--muted);
-      max-width: 580px;
-      margin-bottom: 48px;
-    }
+        /* ---- SERVICES ---- */
+        .services {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .services-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.6rem;
+            color: var(--white);
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .bullet-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 32px;
+            transition: border-color 0.3s ease;
+        }
+        .bullet-item:hover {
+            border-color: var(--accent);
+        }
+        .bullet-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .bullet-text {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
 
-    /* ── SERVICES ── */
-    #services { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-    }
-    .service-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 28px 26px;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .service-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-3px);
-    }
-    .service-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--accent-dim);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-    }
-    .service-icon svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
-    .service-card h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 8px;
-    }
-    .service-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+        /* ---- ABOUT ---- */
+        .about {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .section-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.6rem;
+            color: var(--white);
+            margin-bottom: 28px;
+            font-weight: 600;
+        }
+        .about p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+        .about p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
 
-    /* ── ABOUT ── */
-    #about .about-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
-    .about-body { font-size: 1rem; color: var(--text); line-height: 1.75; }
-    .about-body p + p { margin-top: 16px; }
-    .about-highlights {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .highlight-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 18px 20px;
-    }
-    .highlight-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-      margin-top: 6px;
-      flex-shrink: 0;
-    }
-    .highlight-item span { font-size: 0.9rem; color: var(--text); }
+        /* ---- CONTACT ---- */
+        .contact {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        .contact-detail-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            font-weight: 600;
+            min-width: 56px;
+        }
+        .contact-detail a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        .contact-detail a:hover {
+            color: var(--accent-light);
+        }
 
-    /* ── CONTACT ── */
-    #contact { background: var(--surface); border-top: 1px solid var(--border); }
-    .contact-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 48px;
-      max-width: 640px;
-    }
-    .contact-method {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-top: 28px;
-    }
-    .contact-method-icon {
-      width: 42px;
-      height: 42px;
-      background: var(--accent-dim);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .contact-method-icon svg { width: 18px; height: 18px; stroke: var(--accent); fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
-    .contact-method-label { font-size: 0.78rem; color: var(--muted); margin-bottom: 2px; }
-    .contact-method a {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--white);
-      text-decoration: none;
-    }
-    .contact-method a:hover { color: var(--accent); }
+        /* ---- CTA ---- */
+        .cta-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 36px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .cta-button:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+        }
 
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 28px 24px;
-      text-align: center;
-    }
-    footer p { font-size: 0.8rem; color: var(--muted); }
+        /* ---- FOOTER ---- */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
 
-    /* ── MOBILE ── */
-    @media (max-width: 768px) {
-      .hero-wrap { grid-template-columns: 1fr; padding: 60px 20px 48px; gap: 40px; }
-      .hero-visual { display: none; }
-      #about .about-inner { grid-template-columns: 1fr; gap: 36px; }
-      #contact .contact-card { padding: 32px 24px; }
-      .nav-links { display: none; }
-    }
-    @media (max-width: 480px) {
-      section { padding: 56px 20px; }
-    }
-  </style>
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 600px) {
+            .hero {
+                padding: 56px 0 36px;
+            }
+            .bullet-item {
+                padding: 22px 20px;
+            }
+            .cta-section {
+                padding: 56px 0;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-inner">
-      <a class="nav-logo" href="#hero">Earlybird Events</a>
-      <ul class="nav-links">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <a class="nav-cta" href="#contact">Start planning</a>
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-brand">Earlybird Events</span>
+            <a href="tel:0405675583" class="topbar-contact">0405 675 583</a>
+        </div>
     </div>
-  </nav>
 
-  <!-- HERO -->
-  <section id="hero" style="padding:0;">
-    <div class="hero-wrap">
-      <div>
-        <span class="hero-label">Event Management</span>
-        <h1 class="hero-h1">Forward thinking.<br>Fresh approach.</h1>
-        <p class="hero-sub">Earlybird Events delivers corporate and government events across Australia — from major national institutions to luxury consumer brand launches. Strategy, logistics, and delivery under one roof.</p>
-        <a class="btn-primary" href="#contact">Start planning</a>
-      </div>
-      <div class="hero-visual">
-        <div class="hero-stat">
-          <span class="hero-stat-num">Government</span>
-          <span class="hero-stat-label">Prime Minister &amp; national departments</span>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <p class="hero-eyebrow">Full-Service Event Management</p>
+            <h1>Forward thinking. <em>Fresh approach.</em> Full-service event management.</h1>
+            <p class="hero-sub">From government departments and national institutions to luxury brand launches, Earlybird Events handles the full scope — strategy, logistics, and delivery — so your event lands the way it should.</p>
         </div>
-        <div class="hero-stat">
-          <span class="hero-stat-num">Corporate</span>
-          <span class="hero-stat-label">Brand launches &amp; major institutions</span>
-        </div>
-        <div class="hero-stat">
-          <span class="hero-stat-num">National</span>
-          <span class="hero-stat-label">Event delivery across Australia</span>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="container">
-      <p class="section-label">What we do</p>
-      <h2 class="section-heading">Events for organisations that can't afford to get it wrong</h2>
-      <p class="section-sub">From government policy launches to luxury brand activations, Earlybird Events manages every detail so you don't have to.</p>
-      <div class="services-grid">
-
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-          </div>
-          <h3>Corporate Event Management</h3>
-          <p>End-to-end management for corporate events — conferences, leadership summits, internal functions, and high-profile client gatherings — delivered with precision.</p>
+    <!-- Services -->
+    <section class="services">
+        <div class="container">
+            <h2 class="services-heading">What we do</h2>
+            <ul class="bullet-list">
+                <li class="bullet-item">
+                    <p class="bullet-label">Corporate &amp; Government Events</p>
+                    <p class="bullet-text">End-to-end event management for corporate organisations and government bodies. We handle the planning, supplier coordination, and on-the-day delivery, so your team can focus on the room, not the logistics.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Brand Launches &amp; Activations</p>
+                    <p class="bullet-text">Consumer brand launches and live activations that create a real impression. We have brought luxury brands to market and understand what it takes to make a moment stick with the right audience.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">National Institution Events</p>
+                    <p class="bullet-text">High-profile events for major national institutions where the stakes are high and the margin for error is zero. We bring the experience and the systems to match the scale.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Strategic Event Consulting</p>
+                    <p class="bullet-text">Not every engagement needs full production. If your team has capacity but needs strategic direction on format, programming, supplier selection, or risk management, we work alongside you to fill the gaps.</p>
+                </li>
+            </ul>
         </div>
+    </section>
 
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          </div>
-          <h3>Government Event Delivery</h3>
-          <p>Specialist event delivery for government departments, agencies, and national institutions — including events at the highest levels of Australian government.</p>
+    <!-- About -->
+    <section class="about">
+        <div class="container">
+            <h2 class="section-heading">About Earlybird Events</h2>
+            <p><span class="highlight">Earlybird Events</span> is led by Kimberlee King, a full-service event management professional with a track record across some of Australia's most significant events and organisations.</p>
+            <p>We have launched luxury consumer brands, delivered events for major national institutions and government departments, and worked directly with the Prime Minister's office. That range of experience shapes how we approach every brief, regardless of scale.</p>
+            <p>Our approach is direct and practical. We are not a large agency with layers between you and the people doing the work. When you work with Earlybird Events, you work with us.</p>
         </div>
+    </section>
 
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          </div>
-          <h3>Brand Launch Events</h3>
-          <p>From luxury consumer brand activations to national product launches — events designed to create the right moment for your brand with audiences that matter.</p>
+    <!-- Contact -->
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-heading">Contact</h2>
+            <div class="contact-detail">
+                <span class="contact-detail-label">Phone</span>
+                <a href="tel:0405675583">0405 675 583</a>
+            </div>
+            <div class="contact-detail">
+                <span class="contact-detail-label">Email</span>
+                <a href="mailto:kimberlee@earlybirdevents.com.au">kimberlee@earlybirdevents.com.au</a>
+            </div>
         </div>
+    </section>
 
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-          </div>
-          <h3>Event Strategy &amp; Consulting</h3>
-          <p>Not just logistics — strategic event planning that aligns with your organisation's goals. Consulting on format, positioning, audience, and measurable outcomes.</p>
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-heading">Let's talk about your event</h2>
+            <p class="cta-sub">Tell us what you are planning and we will let you know how we can help. No long forms, just a conversation.</p>
+            <a href="tel:0405675583" class="cta-button">Get in Touch</a>
         </div>
+    </section>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="container">
-      <div class="about-inner">
-        <div>
-          <p class="section-label">About Earlybird Events</p>
-          <h2 class="section-heading">Where fresh thinking meets flawless execution</h2>
-          <div class="about-body">
-            <p>Earlybird Events brings a forward-thinking approach to event management for government departments, national institutions, and commercial organisations across Australia. Their track record includes events for the Prime Minister and major government agencies, as well as luxury consumer brand launches that demand equal parts creativity and precision.</p>
-            <p>Every event is approached with a fresh perspective — strategy-led, detail-obsessed, and built around what the moment actually needs to achieve.</p>
-          </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Rebuilt by J&amp;G Operations as a preview. Not yet live on earlybirdevents.com.au</p>
         </div>
-        <div class="about-highlights">
-          <div class="highlight-item">
-            <div class="highlight-dot"></div>
-            <span>Prime Minister and federal government events</span>
-          </div>
-          <div class="highlight-item">
-            <div class="highlight-dot"></div>
-            <span>Major national institutions and departments</span>
-          </div>
-          <div class="highlight-item">
-            <div class="highlight-dot"></div>
-            <span>Luxury consumer brand launches</span>
-          </div>
-          <div class="highlight-item">
-            <div class="highlight-dot"></div>
-            <span>National delivery across Australia</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="container">
-      <p class="section-label">Contact</p>
-      <h2 class="section-heading">Let's talk about your next event</h2>
-      <p class="section-sub">Reach out to start the conversation about your event.</p>
-      <div class="contact-card">
-        <div class="contact-method">
-          <div class="contact-method-icon">
-            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.69 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.14-1.14a2 2 0 0 1 2.11-.45c.91.33 1.85.57 2.81.69A2 2 0 0 1 22 16.92z"/></svg>
-          </div>
-          <div>
-            <div class="contact-method-label">Phone</div>
-            <a href="tel:0405675583">0405 675 583</a>
-          </div>
-        </div>
-        <div class="contact-method">
-          <div class="contact-method-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </div>
-          <div>
-            <div class="contact-method-label">Website</div>
-            <a href="https://earlybirdevents.com.au" target="_blank" rel="noopener">earlybirdevents.com.au</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>Rebuilt by J&amp;G Operations as a preview. Not yet live on earlybirdevents.com.au.</p>
-  </footer>
+    </footer>
 
 </body>
 </html>

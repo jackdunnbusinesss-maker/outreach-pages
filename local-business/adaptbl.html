@@ -1,468 +1,352 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Adaptbl — Flexible Legal Staffing & Secondments</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adaptbl — Flexible Legal Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    :root {
-      --bg:      #0e0e12;
-      --surface: #16161d;
-      --border:  #2a2a36;
-      --text:    #c5c4ce;
-      --white:   #f0eff4;
-      --muted:   #7e7d8a;
-      --accent:  #6e8efb;
-      --accent-dim: rgba(110,142,251,0.12);
-    }
+        :root {
+            --bg: #0e0e12;
+            --surface: #16161d;
+            --surface-light: #1e1e28;
+            --border: #2a2a36;
+            --accent: #6c63ff;
+            --accent-light: #9d97ff;
+            --accent-glow: rgba(108, 99, 255, 0.15);
+            --white: #f0eff4;
+            --text: #c5c4ce;
+            --text-muted: #7e7d8a;
+        }
 
-    html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-      font-size: 16px;
-      line-height: 1.65;
-    }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    /* ── NAV ── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(14,14,18,0.88);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 24px;
-      height: 62px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--white);
-      text-decoration: none;
-      letter-spacing: -0.02em;
-    }
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-    }
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.875rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--white); }
-    .nav-cta {
-      background: var(--accent);
-      color: #fff;
-      text-decoration: none;
-      padding: 8px 18px;
-      border-radius: 6px;
-      font-size: 0.875rem;
-      font-weight: 600;
-      transition: opacity 0.2s;
-      white-space: nowrap;
-    }
-    .nav-cta:hover { opacity: 0.88; }
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
 
-    /* ── HERO ── */
-    #hero {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 96px 24px 80px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
-    .hero-label {
-      display: inline-block;
-      background: var(--accent-dim);
-      color: var(--accent);
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 5px 12px;
-      border-radius: 4px;
-      margin-bottom: 20px;
-    }
-    .hero-h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.18;
-      letter-spacing: -0.03em;
-      margin-bottom: 20px;
-    }
-    .hero-sub {
-      font-size: 1.05rem;
-      color: var(--text);
-      margin-bottom: 36px;
-      max-width: 480px;
-    }
-    .btn-primary {
-      display: inline-block;
-      background: var(--accent);
-      color: #fff;
-      text-decoration: none;
-      padding: 14px 28px;
-      border-radius: 7px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      transition: opacity 0.2s, transform 0.15s;
-    }
-    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
-    .hero-visual {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 40px 36px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .hero-stat {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--border);
-    }
-    .hero-stat:last-child { border-bottom: none; padding-bottom: 0; }
-    .hero-stat-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--accent);
-    }
-    .hero-stat-label { font-size: 0.88rem; color: var(--muted); }
+        /* ---- TOP BAR ---- */
+        .topbar {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-logo {
+            height: 36px;
+            width: auto;
+            display: block;
+        }
+        .topbar-contact {
+            font-size: 0.8rem;
+            color: var(--accent-light);
+            font-weight: 500;
+            text-decoration: none;
+        }
+        .topbar-contact:hover {
+            color: var(--white);
+        }
 
-    /* ── SECTION SHARED ── */
-    section { padding: 80px 24px; }
-    .container { max-width: 1100px; margin: 0 auto; }
-    .section-label {
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 10px;
-    }
-    .section-heading {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.6rem, 3vw, 2.25rem);
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.22;
-      letter-spacing: -0.02em;
-      margin-bottom: 16px;
-    }
-    .section-sub {
-      font-size: 1rem;
-      color: var(--muted);
-      max-width: 580px;
-      margin-bottom: 48px;
-    }
+        /* ---- HERO ---- */
+        .hero {
+            padding: 80px 0 64px;
+            text-align: center;
+        }
+        .hero-eyebrow {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            color: var(--white);
+            line-height: 1.25;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+        .hero h1 em {
+            color: var(--accent-light);
+            font-style: italic;
+        }
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
 
-    /* ── SERVICES ── */
-    #services { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-    }
-    .service-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 28px 26px;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .service-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-3px);
-    }
-    .service-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--accent-dim);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-    }
-    .service-icon svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
-    .service-card h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 8px;
-    }
-    .service-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+        /* ---- SERVICES ---- */
+        .services {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .services-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.6rem;
+            color: var(--white);
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .bullet-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 32px;
+            transition: border-color 0.3s ease;
+        }
+        .bullet-item:hover {
+            border-color: var(--accent);
+        }
+        .bullet-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .bullet-text {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
 
-    /* ── ABOUT ── */
-    #about .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
-    .about-body { font-size: 1rem; color: var(--text); line-height: 1.75; }
-    .about-body p + p { margin-top: 16px; }
-    .about-highlights {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .highlight-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 18px 20px;
-    }
-    .highlight-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-      margin-top: 6px;
-      flex-shrink: 0;
-    }
-    .highlight-item span { font-size: 0.9rem; color: var(--text); }
+        /* ---- ABOUT ---- */
+        .about {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .section-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.6rem;
+            color: var(--white);
+            margin-bottom: 28px;
+            font-weight: 600;
+        }
+        .about p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+        .about p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
 
-    /* ── CONTACT ── */
-    #contact { background: var(--surface); border-top: 1px solid var(--border); }
-    .contact-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 48px;
-      max-width: 640px;
-    }
-    .contact-method {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-top: 28px;
-    }
-    .contact-method-icon {
-      width: 42px;
-      height: 42px;
-      background: var(--accent-dim);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .contact-method-icon svg { width: 18px; height: 18px; stroke: var(--accent); fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
-    .contact-method-label { font-size: 0.78rem; color: var(--muted); margin-bottom: 2px; }
-    .contact-method a {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--white);
-      text-decoration: none;
-    }
-    .contact-method a:hover { color: var(--accent); }
+        /* ---- CONTACT ---- */
+        .contact {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        .contact-detail-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            font-weight: 600;
+            min-width: 56px;
+        }
+        .contact-detail a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        .contact-detail a:hover {
+            color: var(--accent-light);
+        }
 
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 28px 24px;
-      text-align: center;
-    }
-    footer p { font-size: 0.8rem; color: var(--muted); }
+        /* ---- CTA ---- */
+        .cta-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 36px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .cta-button:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+        }
 
-    /* ── MOBILE ── */
-    @media (max-width: 768px) {
-      #hero { grid-template-columns: 1fr; padding: 60px 20px 48px; gap: 40px; }
-      .hero-visual { display: none; }
-      .about .about-grid { grid-template-columns: 1fr; gap: 36px; }
-      #contact .contact-card { padding: 32px 24px; }
-      .nav-links { display: none; }
-    }
-    @media (max-width: 480px) {
-      section { padding: 56px 20px; }
-    }
-  </style>
+        /* ---- FOOTER ---- */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 600px) {
+            .hero {
+                padding: 56px 0 36px;
+            }
+            .bullet-item {
+                padding: 22px 20px;
+            }
+            .cta-section {
+                padding: 56px 0;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-inner">
-      <a class="nav-logo" href="#hero">Adaptbl</a>
-      <ul class="nav-links">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <a class="nav-cta" href="#contact">Get in touch</a>
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <img
+                src="https://images.squarespace-cdn.com/content/v1/5c19b82f8f51301306afee6b/048c86ea-20f8-4eb3-ab25-6dfd2c185399/Adaptbl_logo-01.png"
+                alt="Adaptbl"
+                class="topbar-logo"
+            >
+            <a href="mailto:help@adaptbl.com.au" class="topbar-contact">help@adaptbl.com.au</a>
+        </div>
     </div>
-  </nav>
 
-  <!-- HERO -->
-  <section id="hero" style="padding-left:24px; padding-right:24px;">
-    <div style="max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
-      <div>
-        <span class="hero-label">Flexible Legal Staffing</span>
-        <h1 class="hero-h1">Law has evolved.<br>Your resourcing should too.</h1>
-        <p class="hero-sub">Adaptbl provides flexible legal, paralegal, and support personnel solutions for government and commercial in-house teams across Australia. Secondments, advice, and full support services — when you need them.</p>
-        <a class="btn-primary" href="#contact">Get in touch</a>
-      </div>
-      <div class="hero-visual">
-        <div class="hero-stat">
-          <span class="hero-stat-num">Govt &amp; Commercial</span>
-          <span class="hero-stat-label">In-house teams served</span>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <p class="hero-eyebrow">Flexible Legal Solutions</p>
+            <h1>Law has evolved. <em>Flexible</em> legal solutions for government and business in-house teams.</h1>
+            <p class="hero-sub">Adaptbl provides legal, paralegal and support personnel solutions that fit the way your team actually works today, not the way law firms operated a decade ago.</p>
         </div>
-        <div class="hero-stat">
-          <span class="hero-stat-num">Flexible</span>
-          <span class="hero-stat-label">Secondment &amp; support models</span>
-        </div>
-        <div class="hero-stat">
-          <span class="hero-stat-num">Australia-wide</span>
-          <span class="hero-stat-label">Coverage across all sectors</span>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="container">
-      <p class="section-label">What we do</p>
-      <h2 class="section-heading">Legal resourcing built for real teams</h2>
-      <p class="section-sub">From short-term secondments to ongoing legal support, Adaptbl covers every resourcing need for in-house legal functions.</p>
-      <div class="services-grid">
-
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <h3>Secondments</h3>
-          <p>Place experienced legal and paralegal professionals into your team on a flexible, short- or long-term basis — without the overhead of permanent headcount.</p>
+    <!-- Services -->
+    <section class="services">
+        <div class="container">
+            <h2 class="services-heading">What we do</h2>
+            <ul class="bullet-list">
+                <li class="bullet-item">
+                    <p class="bullet-label">Secondments</p>
+                    <p class="bullet-text">Experienced legal professionals placed directly into your team for short or extended engagements. All the capability of a senior hire, without the overhead of a permanent appointment.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Legal Advice</p>
+                    <p class="bullet-text">Practical, plain-language advice from lawyers who understand government and in-house environments. Focused on outcomes, not billing hours.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Legal Support Services</p>
+                    <p class="bullet-text">Paralegal and administrative support that keeps your legal function running at capacity. Document management, research, drafting assistance, and process coordination.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Consulting</p>
+                    <p class="bullet-text">Strategic guidance for in-house legal functions looking to restructure, scale, or resolve a specific operational challenge. Built around your circumstances, not a generic framework.</p>
+                </li>
+            </ul>
         </div>
+    </section>
 
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-          </div>
-          <h3>Legal Advice</h3>
-          <p>Access specialist legal advice through flexible engagement models designed for government and commercial in-house teams operating under resource constraints.</p>
+    <!-- About -->
+    <section class="about">
+        <div class="container">
+            <h2 class="section-heading">About Adaptbl</h2>
+            <p><span class="highlight">Adaptbl</span> was built around a straightforward observation: the way organisations use legal resources has changed, but the way most providers structure their services has not.</p>
+            <p>We provide flexible legal, paralegal and support personnel solutions for government agencies and business in-house legal teams. Whether you need a senior lawyer for a specific project, paralegal support to clear a backlog, or consulting help to improve how your function runs, we arrange it to suit what you actually need.</p>
+            <p>Law has evolved. We help your team stay ahead of it.</p>
         </div>
+    </section>
 
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-          </div>
-          <h3>Legal Support Services</h3>
-          <p>Comprehensive legal support covering document management, matter administration, and operational functions that keep your legal function running efficiently.</p>
+    <!-- Contact -->
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-heading">Contact</h2>
+            <div class="contact-detail">
+                <span class="contact-detail-label">Email</span>
+                <a href="mailto:help@adaptbl.com.au">help@adaptbl.com.au</a>
+            </div>
         </div>
+    </section>
 
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          </div>
-          <h3>Consulting</h3>
-          <p>Strategic consulting for legal teams navigating change — resourcing models, workflow design, and operational improvements for government and commercial clients.</p>
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-heading">Ready to talk?</h2>
+            <p class="cta-sub">Tell us what your team is dealing with and we will put together the right arrangement. No lengthy intake process, just a direct conversation.</p>
+            <a href="mailto:help@adaptbl.com.au" class="cta-button">Get in Touch</a>
         </div>
+    </section>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="container">
-      <div class="about-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
-        <div>
-          <p class="section-label">About Adaptbl</p>
-          <h2 class="section-heading">Built for how modern legal teams actually work</h2>
-          <div class="about-body">
-            <p>Law has evolved, and so have the demands on in-house legal functions. Adaptbl provides flexible legal, paralegal, and support personnel solutions tailored to the realities of government and commercial teams — where workloads shift and permanent headcount isn't always the answer.</p>
-            <p>Whether you need a secondee for six weeks or ongoing legal support capacity, Adaptbl builds resourcing solutions around your team rather than asking your team to fit a rigid model.</p>
-          </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Rebuilt by J&amp;G Operations as a preview. Not yet live on adaptbl.com.au</p>
         </div>
-        <div class="about-highlights">
-          <div class="highlight-item">
-            <div class="highlight-dot"></div>
-            <span>Government and commercial in-house teams</span>
-          </div>
-          <div class="highlight-item">
-            <div class="highlight-dot"></div>
-            <span>Legal, paralegal, and support personnel</span>
-          </div>
-          <div class="highlight-item">
-            <div class="highlight-dot"></div>
-            <span>Flexible engagement — short-term to ongoing</span>
-          </div>
-          <div class="highlight-item">
-            <div class="highlight-dot"></div>
-            <span>Australia-wide coverage</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="container">
-      <p class="section-label">Contact</p>
-      <h2 class="section-heading">Ready to talk resourcing?</h2>
-      <p class="section-sub">Reach out directly and the Adaptbl team will get back to you.</p>
-      <div class="contact-card">
-        <div class="contact-method">
-          <div class="contact-method-icon">
-            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </div>
-          <div>
-            <div class="contact-method-label">Email</div>
-            <a href="mailto:help@adaptbl.com.au">help@adaptbl.com.au</a>
-          </div>
-        </div>
-        <div class="contact-method">
-          <div class="contact-method-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </div>
-          <div>
-            <div class="contact-method-label">Website</div>
-            <a href="https://adaptbl.com.au" target="_blank" rel="noopener">adaptbl.com.au</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>Rebuilt by J&amp;G Operations as a preview. Not yet live on adaptbl.com.au.</p>
-  </footer>
+    </footer>
 
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,19 +17,14 @@
         :root {
             --bg: #0e0e12;
             --surface: #16161d;
-            --surface-light: #1c1c26;
+            --surface-light: #1e1e28;
             --border: #2a2a36;
-            --border-glow: rgba(91, 143, 168, 0.28);
-            --accent: #5b8fa8;
-            --accent-light: #7aafc8;
-            --accent-dim: #456f84;
-            --accent-glow: rgba(91, 143, 168, 0.14);
-            --accent-glow-strong: rgba(91, 143, 168, 0.30);
+            --accent: #4e8098;
+            --accent-light: #6fa0b8;
+            --accent-glow: rgba(78, 128, 152, 0.15);
             --white: #f0eff4;
             --text: #c5c4ce;
             --text-muted: #7e7d8a;
-            --gradient-hero: linear-gradient(135deg, #5b8fa8 0%, #7aafc8 50%, #a8cfe0 100%);
-            --gradient-accent: linear-gradient(90deg, #5b8fa8, #7aafc8);
         }
 
         html {
@@ -42,721 +37,345 @@
             color: var(--text);
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
         }
 
+        /* ---- LAYOUT ---- */
         .container {
-            max-width: 780px;
+            max-width: 720px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        /* ── NAV ── */
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(14, 14, 18, 0.90);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
+        /* ---- TOP BAR ---- */
+        .topbar {
+            padding: 20px 0;
             border-bottom: 1px solid var(--border);
         }
-
-        .nav-inner {
-            max-width: 780px;
-            margin: 0 auto;
-            padding: 0 24px;
-            height: 60px;
+        .topbar-inner {
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
         }
-
-        .nav-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.15rem;
+        .topbar-name {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.1rem;
             font-weight: 600;
             color: var(--white);
-            letter-spacing: -0.01em;
-            text-decoration: none;
+            letter-spacing: 0.3px;
         }
-
-        .nav-logo span {
-            color: var(--accent);
-        }
-
-        .nav-links {
+        .topbar-contact {
             display: flex;
-            gap: 28px;
-            list-style: none;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 2px;
         }
-
-        .nav-links a {
-            font-size: 0.82rem;
-            font-weight: 500;
+        .topbar-phone {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+            letter-spacing: 0.3px;
+        }
+        .topbar-email {
+            font-size: 0.75rem;
             color: var(--text-muted);
             text-decoration: none;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            transition: color 0.2s;
         }
-
-        .nav-links a:hover {
+        .topbar-email:hover,
+        .topbar-phone:hover {
             color: var(--accent-light);
         }
 
-        /* ── HERO ── */
+        /* ---- HERO ---- */
         .hero {
-            padding: 96px 0 80px;
+            padding: 80px 0 56px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
         }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -60px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 560px;
-            height: 560px;
-            background: radial-gradient(ellipse at center, rgba(91, 143, 168, 0.10) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
         .hero-eyebrow {
-            display: inline-block;
-            font-size: 0.72rem;
-            font-weight: 600;
-            letter-spacing: 0.12em;
+            font-size: 0.78rem;
             text-transform: uppercase;
+            letter-spacing: 3px;
             color: var(--accent);
-            background: rgba(91, 143, 168, 0.10);
-            border: 1px solid rgba(91, 143, 168, 0.22);
-            padding: 5px 14px;
-            border-radius: 100px;
-            margin-bottom: 28px;
+            margin-bottom: 20px;
+            font-weight: 600;
         }
-
         .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 700;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
             color: var(--white);
-            line-height: 1.18;
-            letter-spacing: -0.02em;
-            margin-bottom: 22px;
+            line-height: 1.25;
+            margin-bottom: 24px;
+            font-weight: 600;
         }
-
         .hero h1 em {
+            color: var(--accent-light);
             font-style: italic;
-            background: var(--gradient-hero);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
-
         .hero-sub {
             font-size: 1.05rem;
             color: var(--text);
-            max-width: 520px;
-            margin: 0 auto 40px;
-            line-height: 1.75;
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.8;
         }
 
-        .btn-primary {
-            display: inline-block;
-            background: var(--accent);
-            color: #fff;
-            font-size: 0.88rem;
-            font-weight: 600;
-            letter-spacing: 0.03em;
-            padding: 13px 32px;
-            border-radius: 6px;
-            text-decoration: none;
-            transition: background 0.2s, box-shadow 0.2s;
-            box-shadow: 0 0 0 0 rgba(91, 143, 168, 0);
+        /* ---- SERVICES ---- */
+        .services {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
         }
-
-        .btn-primary:hover {
-            background: var(--accent-light);
-            box-shadow: 0 4px 24px rgba(91, 143, 168, 0.30);
-        }
-
-        /* ── DIVIDER ── */
-        .divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border), transparent);
-            margin: 0;
-        }
-
-        /* ── SECTION TITLES ── */
-        .section {
-            padding: 72px 0;
-        }
-
-        .section-label {
-            font-size: 0.70rem;
-            font-weight: 600;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 10px;
-        }
-
         .section-heading {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1.5rem, 3.5vw, 2rem);
-            font-weight: 600;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.6rem;
             color: var(--white);
-            letter-spacing: -0.015em;
-            line-height: 1.25;
-            margin-bottom: 14px;
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
         }
-
-        .section-intro {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            max-width: 520px;
-            line-height: 1.75;
-            margin-bottom: 48px;
+        .bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
-
-        /* ── SERVICE CARDS ── */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 16px;
-        }
-
-        .service-card {
+        .bullet-item {
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 10px;
-            padding: 24px 22px;
-            transition: border-color 0.2s, box-shadow 0.2s;
-            position: relative;
-            overflow: hidden;
+            padding: 28px 32px;
+            transition: border-color 0.3s ease;
         }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: var(--accent-glow);
-            opacity: 0;
-            transition: opacity 0.25s;
-            border-radius: inherit;
+        .bullet-item:hover {
+            border-color: var(--accent);
         }
-
-        .service-card:hover {
-            border-color: rgba(91, 143, 168, 0.45);
-            box-shadow: 0 6px 28px rgba(91, 143, 168, 0.12);
-        }
-
-        .service-card:hover::before {
-            opacity: 1;
-        }
-
-        .service-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
-            background: rgba(91, 143, 168, 0.12);
-            border: 1px solid rgba(91, 143, 168, 0.20);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 16px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .service-icon svg {
-            width: 18px;
-            height: 18px;
-            stroke: var(--accent);
-            fill: none;
-            stroke-width: 1.6;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        .service-card h3 {
-            font-size: 0.92rem;
+        .bullet-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 8px;
             font-weight: 600;
-            color: var(--white);
-            letter-spacing: -0.01em;
-            line-height: 1.35;
-            position: relative;
-            z-index: 1;
         }
-
-        /* ── ABOUT ── */
-        .about-inner {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 44px 40px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about-inner::before {
-            content: '';
-            position: absolute;
-            top: -40px;
-            right: -40px;
-            width: 220px;
-            height: 220px;
-            background: radial-gradient(ellipse at center, rgba(91, 143, 168, 0.08) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .about-inner p {
+        .bullet-text {
             font-size: 1rem;
             color: var(--text);
-            line-height: 1.80;
-            margin-bottom: 18px;
-            position: relative;
-            z-index: 1;
+            line-height: 1.7;
         }
 
-        .about-inner p:last-child {
+        /* ---- ABOUT ---- */
+        .about {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .about p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+        .about p:last-child {
             margin-bottom: 0;
         }
 
-        .about-inner strong {
-            color: var(--white);
-            font-weight: 600;
-        }
-
-        .about-stats {
-            display: flex;
-            gap: 32px;
-            margin-top: 32px;
-            padding-top: 28px;
+        /* ---- CONTACT ---- */
+        .contact {
+            padding: 64px 0;
             border-top: 1px solid var(--border);
-            position: relative;
-            z-index: 1;
+        }
+        .contact-grid {
+            display: flex;
+            gap: 24px;
             flex-wrap: wrap;
+            margin-top: 32px;
         }
-
-        .stat-item {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .stat-value {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-light);
-            letter-spacing: -0.02em;
-        }
-
-        .stat-label {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            font-weight: 500;
-            letter-spacing: 0.02em;
-        }
-
-        /* ── CONTACT ── */
-        #contact {
+        .contact-card {
             background: var(--surface);
-        }
-
-        .contact-inner {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            align-items: start;
-        }
-
-        .contact-info h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: var(--white);
-            margin-bottom: 16px;
-        }
-
-        .contact-info p {
-            font-size: 0.92rem;
-            color: var(--text);
-            line-height: 1.75;
-            margin-bottom: 24px;
-        }
-
-        .contact-location {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 0.88rem;
-            color: var(--text-muted);
-        }
-
-        .contact-location svg {
-            width: 16px;
-            height: 16px;
-            stroke: var(--accent);
-            fill: none;
-            stroke-width: 1.8;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .contact-form-box {
-            background: var(--surface-light);
             border: 1px solid var(--border);
             border-radius: 10px;
-            padding: 28px 24px;
+            padding: 24px 28px;
+            flex: 1;
+            min-width: 200px;
         }
-
-        .contact-form-box h4 {
-            font-size: 0.88rem;
-            font-weight: 600;
-            color: var(--white);
-            margin-bottom: 20px;
-            letter-spacing: -0.01em;
-        }
-
-        .form-group {
-            margin-bottom: 14px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            letter-spacing: 0.04em;
+        .contact-card-label {
+            font-size: 0.7rem;
             text-transform: uppercase;
-            margin-bottom: 6px;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 10px 13px;
-            font-size: 0.88rem;
-            font-family: 'Inter', sans-serif;
-            color: var(--white);
-            outline: none;
-            transition: border-color 0.2s, box-shadow 0.2s;
-            appearance: none;
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: var(--text-muted);
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(91, 143, 168, 0.12);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 90px;
-        }
-
-        .form-group select option {
-            background: var(--surface);
-            color: var(--white);
-        }
-
-        .btn-form {
-            width: 100%;
-            background: var(--accent);
-            color: #fff;
-            font-size: 0.88rem;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 8px;
             font-weight: 600;
-            letter-spacing: 0.03em;
-            padding: 12px;
-            border-radius: 6px;
-            border: none;
-            cursor: pointer;
-            transition: background 0.2s, box-shadow 0.2s;
-            margin-top: 6px;
-            font-family: 'Inter', sans-serif;
+        }
+        .contact-card a {
+            font-size: 1rem;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .contact-card a:hover {
+            color: var(--accent-light);
         }
 
-        .btn-form:hover {
-            background: var(--accent-light);
-            box-shadow: 0 4px 20px rgba(91, 143, 168, 0.28);
-        }
-
-        /* ── FOOTER ── */
-        footer {
-            background: var(--bg);
+        /* ---- CTA ---- */
+        .cta-section {
+            padding: 80px 0;
             border-top: 1px solid var(--border);
-            padding: 28px 0;
             text-align: center;
         }
-
-        .footer-preview {
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 36px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
             display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .cta-button:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer p {
             font-size: 0.75rem;
             color: var(--text-muted);
-            background: rgba(91, 143, 168, 0.06);
-            border: 1px solid rgba(91, 143, 168, 0.15);
-            border-radius: 6px;
-            padding: 8px 18px;
-            line-height: 1.6;
         }
 
-        .footer-preview a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        .footer-preview a:hover {
-            text-decoration: underline;
-        }
-
-        /* ── MOBILE ── */
-        @media (max-width: 640px) {
-            .nav-links {
-                gap: 18px;
-            }
-
-            .nav-links a {
-                font-size: 0.75rem;
-            }
-
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 600px) {
             .hero {
-                padding: 64px 0 56px;
+                padding: 56px 0 36px;
             }
-
-            .services-grid {
-                grid-template-columns: 1fr 1fr;
+            .bullet-item {
+                padding: 22px 20px;
             }
-
-            .about-inner {
-                padding: 28px 22px;
-            }
-
-            .contact-inner {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-
-            .section {
-                padding: 52px 0;
-            }
-        }
-
-        @media (max-width: 420px) {
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-links {
-                display: none;
+            .cta-section {
+                padding: 56px 0;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAV -->
-    <nav>
-        <div class="nav-inner">
-            <a href="#" class="nav-logo">Valuations <span>WA</span></a>
-            <ul class="nav-links">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+    <!-- Top Bar -->
+    <header class="topbar">
+        <div class="container topbar-inner">
+            <div class="topbar-name">Valuations WA</div>
+            <div class="topbar-contact">
+                <a href="tel:0892421611" class="topbar-phone">(08) 9242 1611</a>
+                <a href="mailto:ross@valuationswa.com.au" class="topbar-email">ross@valuationswa.com.au</a>
+            </div>
         </div>
-    </nav>
+    </header>
 
-    <!-- HERO -->
+    <!-- Hero -->
     <section class="hero">
         <div class="container">
-            <div class="hero-eyebrow">Perth, Western Australia</div>
-            <h1>Perth's <em>Leading</em> Property<br>Valuation Firm</h1>
-            <p class="hero-sub">Independent, objective valuations backed by deep local knowledge. Whether it's family law, tax, or asset management — Valuations WA delivers trusted, court-grade reports across all property types.</p>
-            <a href="#contact" class="btn-primary">Request a Valuation</a>
+            <p class="hero-eyebrow">Independent Property Valuers, Perth WA</p>
+            <h1>Perth's leading property valuation firm. <em>Independent, accurate,</em> and won't be beaten on price.</h1>
+            <p class="hero-sub">Valuations WA provides independent property valuations for solicitors, accountants, and property owners across Western Australia. Accurate reports, fast turnaround, and pricing that speaks for itself.</p>
         </div>
     </section>
 
-    <div class="divider"></div>
-
-    <!-- SERVICES -->
-    <section class="section" id="services">
+    <!-- Services -->
+    <section class="services">
         <div class="container">
-            <div class="section-label">What We Do</div>
-            <h2 class="section-heading">Specialist Valuation Services</h2>
-            <p class="section-intro">From complex legal proceedings to routine asset assessments, our valuers provide precise, independent reports you can rely on.</p>
-
-            <div class="services-grid">
-
-                <!-- Card 1 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                    </div>
-                    <h3>Family Law Valuations</h3>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-                    </div>
-                    <h3>Capital Gains Tax Valuations</h3>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                    </div>
-                    <h3>Retrospective Tax Valuations</h3>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                    </div>
-                    <h3>Stamp Duty / Related Party Transfer Valuations</h3>
-                </div>
-
-                <!-- Card 5 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    </div>
-                    <h3>Strata Building Insurance Valuations</h3>
-                </div>
-
-                <!-- Card 6 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-                    </div>
-                    <h3>SMSF Valuations</h3>
-                </div>
-
-                <!-- Card 7 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                    </div>
-                    <h3>General Property Valuations</h3>
-                </div>
-
-            </div>
+            <h2 class="section-heading">Our valuation services</h2>
+            <ul class="bullet-list">
+                <li class="bullet-item">
+                    <p class="bullet-label">Property Valuations</p>
+                    <p class="bullet-text">Independent, certified valuations for residential and commercial properties across Perth and regional WA. Every report is prepared by a qualified, registered valuer with no conflicts of interest.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Family Law Valuations</p>
+                    <p class="bullet-text">Court-admissible property valuations for family law proceedings and asset settlement matters. Prepared to the standards required by the Family Court of Australia, delivered with the sensitivity these situations demand.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Capital Gains Tax Valuations</p>
+                    <p class="bullet-text">Pre-sale and retrospective valuations to establish market value for capital gains tax purposes. Compliant with ATO requirements and prepared to withstand scrutiny from your accountant or the ATO.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Retrospective Tax Valuations</p>
+                    <p class="bullet-text">Historical market valuations dated back to a specific point in time. Commonly required for estate administration, CGT events, and tax audit situations where the value at a past date needs to be established.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Stamp Duty / Related Party Transfer Valuations</p>
+                    <p class="bullet-text">Independent valuations required by the WA Office of State Revenue for stamp duty assessments, related party transfers, and property transactions where an arms-length sale price is not available.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Strata Building Insurance Valuations</p>
+                    <p class="bullet-text">Replacement cost assessments for strata buildings to ensure body corporates carry adequate insurance coverage. Prepared in accordance with strata legislation requirements and insurer guidelines.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">SMSF Valuations</p>
+                    <p class="bullet-text">Independent market valuations for property held within a self-managed superannuation fund. Required annually for SMSF compliance and prepared to meet ATO and ASIC reporting standards.</p>
+                </li>
+            </ul>
         </div>
     </section>
 
-    <div class="divider"></div>
-
-    <!-- ABOUT -->
-    <section class="section" id="about">
+    <!-- About -->
+    <section class="about">
         <div class="container">
-            <div class="section-label">About Us</div>
-            <h2 class="section-heading">Local Knowledge. Independent Advice.</h2>
-            <div class="about-inner">
-                <p>Valuations WA Pty Ltd is <strong>Perth's leading property valuation firm</strong>, built on a foundation of deep local market knowledge and decades of on-the-ground experience across Western Australia.</p>
-                <p>Every report we produce is fully <strong>independent and objective</strong> — free from the conflicts of interest that can compromise valuations tied to sales, finance, or insurance commissions. Our valuers are engaged solely to provide accurate, defensible assessments that hold up in court, before the ATO, or in any professional context.</p>
-                <p>From residential properties in the suburbs to complex commercial assets, our team understands the nuances of the Perth market and delivers valuations with the precision and credibility that solicitors, accountants, trustees, and investors rely on.</p>
+            <h2 class="section-heading">About Valuations WA</h2>
+            <p>Valuations WA is a Perth-based independent property valuation firm serving solicitors, accountants, real estate professionals, and property owners across Western Australia.</p>
+            <p>As an independent firm, we have no ties to banks, developers, or real estate agents. That independence is what makes our reports credible, and it is what protects our clients when their valuation is scrutinised by the ATO, the courts, or a counterparty.</p>
+            <p>We will not be beaten on price or service. If you have received a quote elsewhere, contact us before you proceed.</p>
+        </div>
+    </section>
 
-                <div class="about-stats">
-                    <div class="stat-item">
-                        <span class="stat-value">Perth</span>
-                        <span class="stat-label">Western Australia</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value">7</span>
-                        <span class="stat-label">Valuation specialisations</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value">100%</span>
-                        <span class="stat-label">Independent &amp; objective</span>
-                    </div>
+    <!-- Contact -->
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-heading">Contact us</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <p class="contact-card-label">Phone</p>
+                    <a href="tel:0892421611">(08) 9242 1611</a>
+                </div>
+                <div class="contact-card">
+                    <p class="contact-card-label">Email</p>
+                    <a href="mailto:ross@valuationswa.com.au">ross@valuationswa.com.au</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="divider"></div>
-
-    <!-- CONTACT -->
-    <section class="section" id="contact">
+    <!-- CTA -->
+    <section class="cta-section">
         <div class="container">
-            <div class="section-label">Get in Touch</div>
-            <h2 class="section-heading">Request a Valuation</h2>
-
-            <div class="contact-inner">
-                <div class="contact-info">
-                    <h3>We're Based in Perth</h3>
-                    <p>Tell us about your property and the purpose of the valuation. Our team will get back to you promptly to confirm scope, timeframe, and fees.</p>
-                    <div class="contact-location">
-                        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                        <span>Perth, WA, Australia</span>
-                    </div>
-                </div>
-
-                <div class="contact-form-box">
-                    <h4>Valuation Enquiry</h4>
-
-                    <div class="form-group">
-                        <label>Full Name</label>
-                        <input type="text" placeholder="Your name">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Email Address</label>
-                        <input type="email" placeholder="your@email.com">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Valuation Type</label>
-                        <select>
-                            <option value="" disabled selected>Select a service</option>
-                            <option>Family Law Valuation</option>
-                            <option>Capital Gains Tax Valuation</option>
-                            <option>Retrospective Tax Valuation</option>
-                            <option>Stamp Duty / Related Party Transfer</option>
-                            <option>Strata Building Insurance Valuation</option>
-                            <option>SMSF Valuation</option>
-                            <option>General Property Valuation</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Property &amp; Notes</label>
-                        <textarea placeholder="Property address, type, and any relevant details…"></textarea>
-                    </div>
-
-                    <button class="btn-form">Send Enquiry</button>
-                </div>
-            </div>
+            <h2 class="cta-heading">Request a valuation today</h2>
+            <p class="cta-sub">Speak with our team about your property valuation requirements. Fast turnaround, independent reports, and pricing that won't be beaten.</p>
+            <a href="tel:0892421611" class="cta-button">Request a Valuation</a>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer>
+    <!-- Footer -->
+    <footer class="footer">
         <div class="container">
-            <span class="footer-preview">
-                Rebuilt by <a href="https://jangoperations.com" target="_blank">J&amp;G Operations</a> as a preview. Not yet live on <a href="https://valuationswa.com.au" target="_blank">valuationswa.com.au</a>.
-            </span>
+            <p>Rebuilt by J&amp;G Operations as a preview. Not yet live on valuationswa.com.au</p>
         </div>
     </footer>
 

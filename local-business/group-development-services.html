@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Group Development Services — Civil Engineering &amp; Surveying, NSW</title>
+    <title>Group Development Services — Civil Engineering &amp; Surveying</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
@@ -17,727 +17,349 @@
         :root {
             --bg: #0e0e12;
             --surface: #16161d;
-            --surface-light: #1c1c25;
+            --surface-light: #1e1e28;
             --border: #2a2a36;
             --accent: #c8a96e;
-            --accent-light: #dfc08a;
-            --accent-dim: #8f7344;
-            --accent-glow: rgba(200, 169, 110, 0.14);
-            --accent-glow-strong: rgba(200, 169, 110, 0.28);
+            --accent-light: #dbbe8c;
+            --accent-glow: rgba(200, 169, 110, 0.15);
             --white: #f0eff4;
             --text: #c5c4ce;
-            --muted: #7e7d8a;
+            --text-muted: #7e7d8a;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
+            font-family: 'Inter', -apple-system, sans-serif;
             background: var(--bg);
             color: var(--text);
-            font-family: 'Inter', sans-serif;
-            font-size: 16px;
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* ── NAV ── */
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(14, 14, 18, 0.90);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .nav-inner {
-            max-width: 1160px;
+        .container {
+            max-width: 720px;
             margin: 0 auto;
             padding: 0 24px;
-            height: 64px;
+        }
+
+        /* TOP BAR */
+        .topbar {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .topbar-inner {
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
         }
-
-        .nav-logo {
-            font-family: 'Playfair Display', serif;
+        .topbar-name {
+            font-size: 0.95rem;
             font-weight: 600;
-            font-size: 1.1rem;
             color: var(--white);
-            letter-spacing: 0.01em;
-            text-decoration: none;
+        }
+        .topbar-category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
         }
 
-        .nav-logo span {
-            color: var(--accent);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--muted);
-            text-decoration: none;
-            font-size: 0.875rem;
-            font-weight: 500;
-            letter-spacing: 0.03em;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        .nav-cta {
-            background: var(--accent);
-            color: var(--bg) !important;
-            padding: 8px 18px;
-            border-radius: 6px;
-            font-weight: 600 !important;
-            transition: background 0.2s !important;
-        }
-
-        .nav-cta:hover {
-            background: var(--accent-light) !important;
-            color: var(--bg) !important;
-        }
-
-        /* ── HERO ── */
+        /* HERO */
         .hero {
-            position: relative;
-            padding: 120px 24px 100px;
+            padding: 80px 0 56px;
             text-align: center;
-            overflow: hidden;
         }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -120px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 700px;
-            height: 700px;
-            background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 70%);
-            pointer-events: none;
+        .hero-logo {
+            margin-bottom: 32px;
         }
-
+        .hero-logo img {
+            height: 64px;
+            width: auto;
+            filter: brightness(1.1);
+        }
         .hero-eyebrow {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.12em;
+            font-size: 0.8rem;
             text-transform: uppercase;
+            letter-spacing: 3px;
             color: var(--accent);
-            border: 1px solid rgba(200, 169, 110, 0.30);
-            background: rgba(200, 169, 110, 0.07);
-            padding: 6px 16px;
-            border-radius: 100px;
-            margin-bottom: 28px;
+            margin-bottom: 20px;
+            font-weight: 600;
         }
-
         .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.4rem, 5.5vw, 4rem);
-            font-weight: 700;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
             color: var(--white);
-            line-height: 1.18;
-            letter-spacing: -0.01em;
-            max-width: 760px;
-            margin: 0 auto 24px;
-        }
-
-        .hero h1 em {
-            font-style: italic;
-            color: var(--accent);
-        }
-
-        .hero-sub {
-            font-size: 1.1rem;
-            color: var(--text);
-            max-width: 560px;
-            margin: 0 auto 40px;
-            line-height: 1.75;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 14px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: var(--bg);
-            padding: 14px 32px;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            text-decoration: none;
-            letter-spacing: 0.02em;
-            transition: background 0.2s, transform 0.15s;
-            display: inline-block;
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-light);
-            transform: translateY(-1px);
-        }
-
-        .btn-ghost {
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 14px 32px;
-            border-radius: 8px;
-            font-weight: 500;
-            font-size: 0.95rem;
-            text-decoration: none;
-            transition: border-color 0.2s, color 0.2s;
-            display: inline-block;
-        }
-
-        .btn-ghost:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        /* ── DIVIDER ── */
-        .divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border) 20%, var(--border) 80%, transparent);
-            margin: 0 24px;
-        }
-
-        /* ── STATS STRIP ── */
-        .stats-strip {
-            padding: 52px 24px;
-        }
-
-        .stats-inner {
-            max-width: 1160px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 32px;
-            text-align: center;
-        }
-
-        .stat-item {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .stat-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--accent);
-            line-height: 1;
-        }
-
-        .stat-label {
-            font-size: 0.82rem;
-            font-weight: 500;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            color: var(--muted);
-        }
-
-        /* ── SECTIONS ── */
-        .section {
-            padding: 96px 24px;
-        }
-
-        .section-inner {
-            max-width: 1160px;
-            margin: 0 auto;
-        }
-
-        .section-label {
-            font-size: 0.75rem;
+            line-height: 1.25;
+            margin-bottom: 24px;
             font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 14px;
         }
-
-        .section-heading {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-            font-weight: 700;
-            color: var(--white);
-            line-height: 1.22;
-            margin-bottom: 18px;
+        .hero h1 em {
+            color: var(--accent-light);
+            font-style: italic;
         }
-
-        .section-body {
+        .hero-sub {
             font-size: 1.05rem;
             color: var(--text);
-            max-width: 640px;
+            max-width: 560px;
+            margin: 0 auto;
             line-height: 1.8;
         }
 
-        /* ── SERVICES ── */
-        .services-grid {
-            margin-top: 56px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 24px;
-        }
-
-        .service-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 36px 28px;
-            position: relative;
-            overflow: hidden;
-            transition: border-color 0.25s, transform 0.2s;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-dim), var(--accent));
-            opacity: 0;
-            transition: opacity 0.25s;
-        }
-
-        .service-card:hover {
-            border-color: rgba(200, 169, 110, 0.35);
-            transform: translateY(-3px);
-        }
-
-        .service-card:hover::before {
-            opacity: 1;
-        }
-
-        .service-icon {
-            width: 44px;
-            height: 44px;
-            background: var(--accent-glow);
-            border: 1px solid rgba(200, 169, 110, 0.22);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .service-icon svg {
-            width: 22px;
-            height: 22px;
-            stroke: var(--accent);
-            fill: none;
-            stroke-width: 1.75;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        .service-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: var(--white);
-            margin-bottom: 10px;
-        }
-
-        .service-desc {
-            font-size: 0.9rem;
-            color: var(--muted);
-            line-height: 1.65;
-        }
-
-        /* ── ABOUT ── */
-        .about-section {
-            background: var(--surface);
+        /* SERVICES */
+        .services {
+            padding: 64px 0;
             border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
         }
-
-        .about-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 72px;
-            align-items: center;
+        .section-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.6rem;
+            color: var(--white);
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
         }
-
-        .about-highlight {
-            background: var(--surface-light);
-            border: 1px solid var(--border);
-            border-left: 3px solid var(--accent);
-            border-radius: 8px;
-            padding: 28px 24px;
-            margin-top: 28px;
-            font-size: 0.95rem;
-            color: var(--text);
-            font-style: italic;
-            line-height: 1.7;
-        }
-
-        .about-visual {
+        .bullet-list {
+            list-style: none;
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
-
-        .about-stat-card {
-            background: var(--bg);
+        .bullet-item {
+            background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 10px;
-            padding: 24px 28px;
-            display: flex;
-            align-items: center;
-            gap: 18px;
+            padding: 28px 32px;
+            transition: border-color 0.3s ease;
         }
-
-        .about-stat-card .stat-num {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 700;
+        .bullet-item:hover {
+            border-color: var(--accent);
+        }
+        .bullet-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             color: var(--accent);
-            line-height: 1;
-            min-width: 72px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .bullet-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 6px;
+        }
+        .bullet-text {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.7;
         }
 
-        .about-stat-card .stat-desc {
-            font-size: 0.88rem;
-            color: var(--muted);
-            line-height: 1.55;
+        /* ABOUT */
+        .about {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+        .about p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+        .about p:last-child { margin-bottom: 0; }
+        .highlight {
+            color: var(--accent-light);
+            font-weight: 600;
         }
 
-        /* ── CONTACT ── */
-        .contact-inner {
-            max-width: 860px;
-            margin: 0 auto;
-            text-align: center;
+        /* CONTACT */
+        .contact {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
         }
-
-        .contact-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 56px 48px;
-            margin-top: 48px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 360px;
-            height: 360px;
-            background: radial-gradient(ellipse at center top, var(--accent-glow) 0%, transparent 65%);
-            pointer-events: none;
-        }
-
-        .contact-details {
+        .contact-grid {
             display: flex;
             flex-direction: column;
-            gap: 18px;
-            align-items: center;
-            margin-bottom: 36px;
+            gap: 16px;
+            margin-top: 32px;
         }
-
         .contact-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 20px 28px;
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 1rem;
-            color: var(--text);
+            gap: 16px;
         }
-
-        .contact-item svg {
-            width: 18px;
-            height: 18px;
-            stroke: var(--accent);
-            fill: none;
-            stroke-width: 1.75;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            flex-shrink: 0;
+        .contact-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            font-weight: 600;
+            min-width: 60px;
         }
-
-        .contact-item a {
-            color: var(--white);
+        .contact-value a {
+            color: var(--accent-light);
             text-decoration: none;
+            font-size: 0.95rem;
             font-weight: 500;
-            font-size: 1.15rem;
-            transition: color 0.2s;
         }
+        .contact-value a:hover { color: var(--white); }
 
-        .contact-item a:hover {
-            color: var(--accent);
-        }
-
-        /* ── FOOTER ── */
-        footer {
-            background: var(--surface);
+        /* CTA */
+        .cta-section {
+            padding: 80px 0;
             border-top: 1px solid var(--border);
-            padding: 28px 24px;
             text-align: center;
         }
-
-        .footer-inner {
-            max-width: 1160px;
-            margin: 0 auto;
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 36px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .cta-button:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
         }
 
-        .footer-note {
-            font-size: 0.8rem;
-            color: var(--muted);
-            line-height: 1.6;
+        /* FOOTER */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
         }
 
-        .footer-note a {
-            color: var(--muted);
-            text-decoration: underline;
-            text-underline-offset: 3px;
-        }
-
-        /* ── RESPONSIVE ── */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero {
-                padding: 80px 20px 72px;
-            }
-
-            .about-layout {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .contact-card {
-                padding: 40px 24px;
-            }
-
-            .section {
-                padding: 72px 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats-inner {
-                grid-template-columns: 1fr 1fr;
+        @media (max-width: 600px) {
+            .hero { padding: 56px 0 36px; }
+            .bullet-item { padding: 22px 20px; }
+            .cta-section { padding: 56px 0; }
+            .topbar-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAV -->
-    <nav>
-        <div class="nav-inner">
-            <a href="#" class="nav-logo">Group <span>Development</span> Services</a>
-            <ul class="nav-links">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact" class="nav-cta">Enquire Now</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- HERO -->
-    <section class="hero">
-        <div class="hero-eyebrow">Civil Engineering &amp; Surveying — NSW, Australia</div>
-        <h1><em>From Concept</em><br>to Completion.</h1>
-        <p class="hero-sub">
-            30+ years of full-service civil engineering and surveying expertise, guiding land development projects from the first sketch to the final certificate.
-        </p>
-        <div class="hero-actions">
-            <a href="#contact" class="btn-primary">Enquire Now</a>
-            <a href="#services" class="btn-ghost">Our Services</a>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- STATS STRIP -->
-    <div class="stats-strip">
-        <div class="stats-inner">
-            <div class="stat-item">
-                <div class="stat-number">30+</div>
-                <div class="stat-label">Years of Expertise</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">4</div>
-                <div class="stat-label">Core Disciplines</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">NSW</div>
-                <div class="stat-label">Based in Australia</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">End&#8209;to&#8209;End</div>
-                <div class="stat-label">Project Delivery</div>
-            </div>
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-name">Group Development Services</span>
+            <span class="topbar-category">Civil Engineering &amp; Surveying</span>
         </div>
     </div>
 
-    <div class="divider"></div>
-
-    <!-- SERVICES -->
-    <section class="section" id="services">
-        <div class="section-inner">
-            <div class="section-label">What We Do</div>
-            <h2 class="section-heading">Full-Service Land Development</h2>
-            <p class="section-body">
-                From town planning approvals through to final survey certification, Group Development Services manages every technical discipline in-house.
-            </p>
-
-            <div class="services-grid">
-
-                <!-- Planning -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/>
-                        </svg>
-                    </div>
-                    <div class="service-title">Planning</div>
-                    <p class="service-desc">
-                        Strategic land-use planning and development applications, navigating council requirements and statutory frameworks from the outset.
-                    </p>
-                </div>
-
-                <!-- Project Management -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
-                        </svg>
-                    </div>
-                    <div class="service-title">Project Management</div>
-                    <p class="service-desc">
-                        End-to-end coordination of design, approvals, and construction, keeping programmes on time and budgets intact across complex developments.
-                    </p>
-                </div>
-
-                <!-- Civil Engineering -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0H5m14 0h2M5 21H3M10 10h4M10 14h4M10 6h4"/>
-                        </svg>
-                    </div>
-                    <div class="service-title">Civil Engineering</div>
-                    <p class="service-desc">
-                        Roads, drainage, earthworks, and utility infrastructure designed and documented to the standards required for subdivision and development approvals.
-                    </p>
-                </div>
-
-                <!-- Surveying -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24">
-                            <circle cx="12" cy="12" r="3"/>
-                            <path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/>
-                        </svg>
-                    </div>
-                    <div class="service-title">Surveying</div>
-                    <p class="service-desc">
-                        Cadastral, engineering, and construction surveys delivered with precision, providing the reliable spatial data that underpins every stage of your project.
-                    </p>
-                </div>
-
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-logo">
+                <img src="https://gdsland.com.au/static/uploads/images/gds-logo-wfthxlfucasv-wfdpgcnffndw.svg" alt="Group Development Services">
             </div>
+            <p class="hero-eyebrow">Civil Engineering &amp; Surveying — Est. 1989</p>
+            <h1>From <em>Concept to Completion.</em></h1>
+            <p class="hero-sub">Full-service civil engineering and surveying across NSW. We've been helping property developers, builders, and landowners get projects across the line since 1989.</p>
         </div>
     </section>
 
-    <!-- ABOUT -->
-    <section class="section about-section" id="about">
-        <div class="section-inner">
-            <div class="about-layout">
-                <div>
-                    <div class="section-label">About Us</div>
-                    <h2 class="section-heading">Three Decades of Land Development Excellence</h2>
-                    <p class="section-body">
-                        Group Development Services has spent more than 30 years guiding clients through every stage of the land development process in NSW. By combining civil engineering and surveying disciplines under one roof, we eliminate the delays and gaps that come with fragmented consulting — and deliver projects from concept to completion with the confidence that comes from deep, hard-won expertise.
-                    </p>
-                    <blockquote class="about-highlight">
-                        "From Concept to Completion." — that's not a tagline, it's the operating model. One team, one point of contact, every discipline covered.
-                    </blockquote>
+    <!-- Services -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-heading">What we do</h2>
+            <ul class="bullet-list">
+                <li class="bullet-item">
+                    <p class="bullet-label">Planning</p>
+                    <p class="bullet-title">Planning</p>
+                    <p class="bullet-text">Development planning and approvals support. We work through the regulatory landscape so your project moves forward without unnecessary delays.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Management</p>
+                    <p class="bullet-title">Project Management</p>
+                    <p class="bullet-text">End-to-end project coordination from initial brief through to practical completion. We keep the moving parts aligned so nothing falls through the gaps.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Engineering</p>
+                    <p class="bullet-title">Civil Engineering</p>
+                    <p class="bullet-text">Roads, drainage, earthworks, utilities and infrastructure design. Practical engineering solutions built around what your site actually needs.</p>
+                </li>
+                <li class="bullet-item">
+                    <p class="bullet-label">Surveying</p>
+                    <p class="bullet-title">Surveying</p>
+                    <p class="bullet-text">Cadastral surveying, subdivision, feature and contour surveys, and construction set-out. Accurate on-the-ground data your whole team can rely on.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about">
+        <div class="container">
+            <h2 class="section-heading">About GDS</h2>
+            <p><span class="highlight">Group Development Services</span> is a full-service civil engineering and surveying firm that has been operating across NSW since 1989. Over more than three decades we've built a track record working alongside property developers, residential builders, commercial operators, and private landowners.</p>
+            <p>We handle planning, project management, civil engineering, and surveying in-house, which means fewer handoffs and a cleaner line from concept through to completion. No compartmentalised advice that doesn't connect. One team that understands the whole picture.</p>
+            <p>If you're at the start of a project or stuck somewhere in the middle, we're the kind of firm that knows what to do with a complicated brief.</p>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-heading">Get in touch</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <span class="contact-label">Phone</span>
+                    <span class="contact-value"><a href="tel:0299801000">02 9980 1000</a></span>
                 </div>
-                <div class="about-visual">
-                    <div class="about-stat-card">
-                        <div class="stat-num">30+</div>
-                        <div class="stat-desc">Years of civil engineering and surveying expertise across New South Wales.</div>
-                    </div>
-                    <div class="about-stat-card">
-                        <div class="stat-num">4</div>
-                        <div class="stat-desc">Integrated disciplines — Planning, Project Management, Civil Engineering, and Surveying — delivered in-house.</div>
-                    </div>
-                    <div class="about-stat-card">
-                        <div class="stat-num">1</div>
-                        <div class="stat-desc">Full-service team managing your project from the first feasibility study to the final title.</div>
-                    </div>
+                <div class="contact-item">
+                    <span class="contact-label">Email</span>
+                    <span class="contact-value"><a href="mailto:bchristie@projectsurveyors.com.au">bchristie@projectsurveyors.com.au</a></span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CONTACT -->
-    <section class="section" id="contact">
-        <div class="contact-inner">
-            <div class="section-label">Get in Touch</div>
-            <h2 class="section-heading">Start Your Project Today</h2>
-            <p class="section-body" style="margin: 0 auto;">
-                Ready to move from concept to completion? Reach out to our team in NSW to discuss your land development project.
-            </p>
-            <div class="contact-card">
-                <div class="contact-details">
-                    <div class="contact-item">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.05h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.22-1.22a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
-                        </svg>
-                        <a href="tel:0299801000">02 9980 1000</a>
-                    </div>
-                    <div class="contact-item">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/>
-                            <circle cx="12" cy="10" r="3"/>
-                        </svg>
-                        <span>NSW, Australia</span>
-                    </div>
-                </div>
-                <a href="tel:0299801000" class="btn-primary" style="font-size: 1rem; padding: 16px 40px;">
-                    Call 02 9980 1000
-                </a>
-            </div>
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-heading">Ready to start a project?</h2>
+            <p class="cta-sub">Whether you're in the planning stage or need surveying and engineering support mid-project, get in touch and we'll talk through what's needed.</p>
+            <a href="tel:0299801000" class="cta-button">Start a Project</a>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-inner">
-            <p class="footer-note">
-                Rebuilt by <strong>J&amp;G Operations</strong> as a preview. Not yet live on gdsland.com.au.
-            </p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Rebuilt by J&amp;G Operations as a preview. Not yet live on gdsland.com.au</p>
         </div>
     </footer>
 

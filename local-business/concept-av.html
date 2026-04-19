@@ -1,729 +1,407 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Concept AV — Audio-Visual Technology Solutions</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concept AV — AV Integration Perth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+    *, *::before, *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
     :root {
-      --bg:      #0e0e12;
-      --surface: #16161d;
-      --border:  #2a2a36;
-      --accent:  #4a9eff;
-      --text:    #c5c4ce;
-      --white:   #f0eff4;
-      --muted:   #7e7d8a;
+        --bg: #0e0e12;
+        --surface: #16161d;
+        --surface-light: #1e1e28;
+        --border: #2a2a36;
+        --accent: #4a9eff;
+        --accent-light: #72b6ff;
+        --accent-glow: rgba(74, 158, 255, 0.15);
+        --white: #f0eff4;
+        --text: #c5c4ce;
+        --text-muted: #7e7d8a;
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+        scroll-behavior: smooth;
+    }
 
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-      font-size: 16px;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
+        font-family: 'Inter', -apple-system, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
     }
 
-    a { color: inherit; text-decoration: none; }
-
-    /* ── NAV ── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(14, 14, 18, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 24px;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--white);
-      letter-spacing: 0.02em;
-    }
-    .nav-logo span { color: var(--accent); }
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: var(--muted);
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--white); }
-
-    /* Mobile nav toggle */
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
-    }
-    .nav-toggle span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--text);
-      border-radius: 2px;
-      transition: opacity 0.2s;
+    /* ---- LAYOUT ---- */
+    .container {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 24px;
     }
 
-    @media (max-width: 640px) {
-      .nav-toggle { display: flex; }
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 64px;
-        left: 0;
-        right: 0;
-        background: var(--surface);
+    /* ---- TOP BAR ---- */
+    .topbar {
+        padding: 20px 0;
         border-bottom: 1px solid var(--border);
-        flex-direction: column;
-        gap: 0;
-        padding: 8px 0;
-      }
-      .nav-links.open { display: flex; }
-      .nav-links a {
-        display: block;
-        padding: 14px 24px;
+    }
+    .topbar-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .topbar-name {
         font-size: 0.95rem;
-      }
+        font-weight: 600;
+        color: var(--white);
+        letter-spacing: 0.3px;
+    }
+    .topbar-category {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--text-muted);
     }
 
-    /* ── HERO ── */
+    /* ---- HERO ---- */
     .hero {
-      position: relative;
-      min-height: 92vh;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
+        padding: 80px 0 56px;
+        text-align: center;
     }
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 60% 40%, rgba(74,158,255,0.08) 0%, transparent 65%),
-        radial-gradient(ellipse 50% 40% at 20% 80%, rgba(74,158,255,0.05) 0%, transparent 60%);
-      pointer-events: none;
+    .hero-logo {
+        margin-bottom: 36px;
     }
-    .hero-grid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 60px 60px;
-      opacity: 0.25;
-      pointer-events: none;
+    .hero-logo img {
+        height: 56px;
+        width: auto;
     }
-    .hero-inner {
-      position: relative;
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 80px 24px;
-      width: 100%;
-    }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(74,158,255,0.1);
-      border: 1px solid rgba(74,158,255,0.25);
-      color: var(--accent);
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 6px 14px;
-      border-radius: 100px;
-      margin-bottom: 28px;
-    }
-    .hero-badge::before {
-      content: '';
-      display: block;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
+    .hero-eyebrow {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: var(--accent);
+        margin-bottom: 20px;
+        font-weight: 600;
     }
     .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.4rem, 6vw, 4.2rem);
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.15;
-      max-width: 800px;
-      margin-bottom: 24px;
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: clamp(2rem, 5vw, 2.8rem);
+        color: var(--white);
+        line-height: 1.25;
+        margin-bottom: 24px;
+        font-weight: 600;
     }
     .hero h1 em {
-      font-style: normal;
-      color: var(--accent);
+        color: var(--accent-light);
+        font-style: italic;
     }
     .hero-sub {
-      font-size: 1.1rem;
-      color: var(--text);
-      max-width: 560px;
-      margin-bottom: 40px;
-      line-height: 1.75;
+        font-size: 1.05rem;
+        color: var(--text);
+        max-width: 560px;
+        margin: 0 auto;
+        line-height: 1.8;
     }
-    .hero-ctas {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--accent);
-      color: #fff;
-      font-weight: 600;
-      font-size: 0.95rem;
-      padding: 14px 28px;
-      border-radius: 8px;
-      transition: background 0.2s, transform 0.15s;
-    }
-    .btn-primary:hover { background: #3a8eef; transform: translateY(-1px); }
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--white);
-      font-weight: 500;
-      font-size: 0.95rem;
-      padding: 14px 28px;
-      border-radius: 8px;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
-    .hero-stats {
-      display: flex;
-      gap: 40px;
-      margin-top: 60px;
-      padding-top: 40px;
-      border-top: 1px solid var(--border);
-      flex-wrap: wrap;
-    }
-    .stat-item { display: flex; flex-direction: column; gap: 4px; }
-    .stat-number {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--white);
-      font-family: 'Playfair Display', serif;
-      line-height: 1;
-    }
-    .stat-number span { color: var(--accent); }
-    .stat-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; }
-
-    /* ── SECTION SHARED ── */
-    section { padding: 96px 24px; }
-    .section-inner { max-width: 1120px; margin: 0 auto; }
-    .section-tag {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--accent);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-    .section-heading {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.2;
-      margin-bottom: 16px;
-    }
-    .section-sub {
-      font-size: 1rem;
-      color: var(--muted);
-      max-width: 560px;
-      line-height: 1.75;
-      margin-bottom: 56px;
+    .hero-badge {
+        display: inline-block;
+        margin-top: 32px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 100px;
+        padding: 10px 24px;
+        font-size: 0.82rem;
+        color: var(--accent-light);
+        font-weight: 500;
+        letter-spacing: 0.3px;
     }
 
-    /* ── SERVICES ── */
-    #services { background: var(--surface); }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
+    /* ---- SERVICES ---- */
+    .services {
+        padding: 64px 0;
+        border-top: 1px solid var(--border);
     }
-    .service-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 28px;
-      transition: border-color 0.2s, transform 0.2s;
-      position: relative;
-      overflow: hidden;
+    .services-heading {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 1.6rem;
+        color: var(--white);
+        margin-bottom: 40px;
+        text-align: center;
+        font-weight: 600;
     }
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent), transparent);
-      opacity: 0;
-      transition: opacity 0.2s;
+    .bullet-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
     }
-    .service-card:hover { border-color: rgba(74,158,255,0.4); transform: translateY(-2px); }
-    .service-card:hover::before { opacity: 1; }
-    .service-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      background: rgba(74,158,255,0.1);
-      border: 1px solid rgba(74,158,255,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 18px;
-      font-size: 1.2rem;
+    .bullet-item {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 28px 32px;
+        transition: border-color 0.3s ease;
     }
-    .service-title {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 10px;
+    .bullet-item:hover {
+        border-color: var(--accent);
     }
-    .service-desc {
-      font-size: 0.875rem;
-      color: var(--muted);
-      line-height: 1.7;
+    .bullet-label {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--accent);
+        margin-bottom: 8px;
+        font-weight: 600;
+    }
+    .bullet-text {
+        font-size: 1rem;
+        color: var(--text);
+        line-height: 1.7;
     }
 
-    /* ── SECTORS ── */
-    #sectors { background: var(--bg); }
-    .sectors-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 16px;
-      margin-top: 48px;
+    /* ---- ABOUT ---- */
+    .about {
+        padding: 64px 0;
+        border-top: 1px solid var(--border);
     }
-    .sector-pill {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 20px 22px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--text);
-      transition: border-color 0.2s, color 0.2s;
+    .about-heading {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 1.6rem;
+        color: var(--white);
+        margin-bottom: 24px;
+        font-weight: 600;
     }
-    .sector-pill:hover { border-color: var(--accent); color: var(--white); }
-    .sector-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-      flex-shrink: 0;
+    .about p {
+        font-size: 1.05rem;
+        line-height: 1.9;
+        margin-bottom: 20px;
+        color: var(--text);
+    }
+    .about p:last-child {
+        margin-bottom: 0;
     }
 
-    /* ── ABOUT ── */
-    #about { background: var(--surface); }
-    .about-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
+    /* ---- CONTACT ---- */
+    .contact {
+        padding: 64px 0;
+        border-top: 1px solid var(--border);
     }
-    @media (max-width: 768px) {
-      .about-layout { grid-template-columns: 1fr; gap: 40px; }
+    .contact-heading {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 1.6rem;
+        color: var(--white);
+        margin-bottom: 32px;
+        font-weight: 600;
     }
-    .about-text p {
-      color: var(--text);
-      line-height: 1.85;
-      margin-bottom: 16px;
+    .contact-details {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
     }
-    .about-text p:last-child { margin-bottom: 0; }
-    .about-highlight {
-      color: var(--white);
-      font-weight: 500;
-    }
-    .about-card-stack { display: flex; flex-direction: column; gap: 16px; }
-    .about-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 20px 24px;
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-    .about-card-icon {
-      font-size: 1.4rem;
-      margin-top: 2px;
-      flex-shrink: 0;
-    }
-    .about-card-title {
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 4px;
-    }
-    .about-card-body {
-      font-size: 0.825rem;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    /* ── CONTACT ── */
-    #contact { background: var(--bg); }
-    .contact-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: start;
-    }
-    @media (max-width: 768px) {
-      .contact-layout { grid-template-columns: 1fr; gap: 40px; }
-    }
-    .contact-detail {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-      margin-bottom: 28px;
-    }
-    .contact-detail:last-child { margin-bottom: 0; }
-    .contact-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-      background: rgba(74,158,255,0.1);
-      border: 1px solid rgba(74,158,255,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 1rem;
+    .contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
     }
     .contact-label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 4px;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--text-muted);
+        font-weight: 600;
+        min-width: 72px;
+        padding-top: 2px;
     }
     .contact-value {
-      font-size: 1rem;
-      color: var(--white);
-      font-weight: 500;
+        font-size: 1rem;
+        color: var(--text);
     }
-    .contact-value a { color: var(--white); transition: color 0.2s; }
-    .contact-value a:hover { color: var(--accent); }
-    .contact-sub-text {
-      font-size: 0.875rem;
-      color: var(--muted);
-      margin-top: 3px;
+    .contact-value a {
+        color: var(--accent-light);
+        text-decoration: none;
+        transition: color 0.2s ease;
     }
-    .contact-cta-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 40px 36px;
-    }
-    .contact-cta-box h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 12px;
-    }
-    .contact-cta-box p {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-bottom: 24px;
-      line-height: 1.7;
+    .contact-value a:hover {
+        color: var(--white);
     }
 
-    /* ── FOOTER ── */
-    footer {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      padding: 32px 24px;
-      text-align: center;
+    /* ---- CTA ---- */
+    .cta-section {
+        padding: 80px 0;
+        border-top: 1px solid var(--border);
+        text-align: center;
     }
-    .footer-inner {
-      max-width: 1120px;
-      margin: 0 auto;
+    .cta-heading {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 1.8rem;
+        color: var(--white);
+        margin-bottom: 16px;
+        font-weight: 600;
     }
-    .footer-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 10px;
+    .cta-sub {
+        font-size: 1rem;
+        color: var(--text);
+        margin-bottom: 36px;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
     }
-    .footer-logo span { color: var(--accent); }
-    .footer-disclaimer {
-      font-size: 0.78rem;
-      color: var(--muted);
-      line-height: 1.6;
+    .cta-button {
+        display: inline-block;
+        background: var(--accent);
+        color: var(--bg);
+        font-family: 'Inter', sans-serif;
+        font-size: 0.95rem;
+        font-weight: 600;
+        padding: 16px 48px;
+        border-radius: 8px;
+        text-decoration: none;
+        letter-spacing: 0.5px;
+        transition: background 0.3s ease, transform 0.2s ease;
     }
-    .footer-disclaimer a {
-      color: var(--accent);
-      text-decoration: underline;
-      text-decoration-color: rgba(74,158,255,0.4);
+    .cta-button:hover {
+        background: var(--accent-light);
+        transform: translateY(-1px);
     }
-    .footer-divider {
-      width: 40px;
-      height: 1px;
-      background: var(--border);
-      margin: 16px auto;
+
+    /* ---- FOOTER ---- */
+    .footer {
+        padding: 40px 0;
+        border-top: 1px solid var(--border);
+        text-align: center;
     }
-  </style>
+    .footer p {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        line-height: 1.7;
+    }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 600px) {
+        .hero {
+            padding: 56px 0 36px;
+        }
+        .bullet-item {
+            padding: 22px 20px;
+        }
+        .cta-section {
+            padding: 56px 0;
+        }
+        .topbar-inner {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
+        }
+    }
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-inner">
-      <div class="nav-logo">Concept<span>&nbsp;AV</span></div>
-      <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+<!-- Top Bar -->
+<div class="topbar">
+    <div class="container topbar-inner">
+        <span class="topbar-name">Concept AV</span>
+        <span class="topbar-category">AV Integration</span>
     </div>
-  </nav>
+</div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-grid"></div>
-    <div class="hero-inner">
-      <div class="hero-badge">38+ Years of AV Excellence</div>
-      <h1>Connect Your Team<br /><em>Anywhere, Anytime</em></h1>
-      <p class="hero-sub">
-        Concept AV delivers end-to-end audio-visual technology solutions for Perth's leading organisations — from agile huddle rooms to large-scale conference environments, education campuses, mining operations, and government facilities.
-      </p>
-      <div class="hero-ctas">
-        <a href="#contact" class="btn-primary">Get a Quote</a>
-        <a href="#services" class="btn-secondary">Our Services</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat-item">
-          <div class="stat-number">38<span>+</span></div>
-          <div class="stat-label">Years in Business</div>
+<!-- Hero -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-logo">
+            <img src="https://conceptav.com.au/wp-content/uploads/2025/02/Concept_AV_Logo_Transparent.svg" alt="Concept AV">
         </div>
-        <div class="stat-item">
-          <div class="stat-number">4</div>
-          <div class="stat-label">Sectors Served</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">MTR</div>
-          <div class="stat-label">Certified Deployments</div>
-        </div>
-      </div>
+        <p class="hero-eyebrow">AV Integration Specialists</p>
+        <h1>Connect Your Team <em>Anywhere,</em> Anytime</h1>
+        <p class="hero-sub">Concept AV designs and installs audio-visual solutions that help organisations across Western Australia communicate, collaborate, and connect — whether across the room or across the country.</p>
+        <span class="hero-badge">38+ years of AV excellence</span>
     </div>
-  </section>
+</section>
 
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="section-inner">
-      <div class="section-tag">What We Do</div>
-      <h2 class="section-heading">AV Solutions Built<br />for Every Environment</h2>
-      <p class="section-sub">From compact huddle rooms to enterprise conference halls, we design and deploy AV systems that work from day one.</p>
-      <div class="services-grid">
-
-        <div class="service-card">
-          <div class="service-icon">🏢</div>
-          <div class="service-title">Meeting Space AV</div>
-          <div class="service-desc">Purpose-built AV solutions for huddle rooms through to large conference rooms — video, audio, and control systems integrated seamlessly.</div>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">💻</div>
-          <div class="service-title">Microsoft Teams Rooms</div>
-          <div class="service-desc">Certified Microsoft Teams Rooms deployments that enable effortless hybrid collaboration. Hardware, software, and integration managed end-to-end.</div>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">🎓</div>
-          <div class="service-title">Education AV</div>
-          <div class="service-desc">Interactive and presentation technology for learning environments — designed to engage students and support modern teaching methodologies.</div>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">⛏️</div>
-          <div class="service-title">Mining Sector AV</div>
-          <div class="service-desc">Rugged, reliable AV infrastructure for mine sites and operations centres — built to perform in demanding Western Australian conditions.</div>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">🏛️</div>
-          <div class="service-title">Government AV</div>
-          <div class="service-desc">Secure, compliant AV deployments for government agencies and public sector facilities. Trusted by WA government organisations for over three decades.</div>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">📊</div>
-          <div class="service-title">Corporate AV</div>
-          <div class="service-desc">Enterprise-grade audio-visual technology for boardrooms, training facilities, and corporate campuses — designed to elevate communication and productivity.</div>
-        </div>
-
-      </div>
+<!-- Services -->
+<section class="services">
+    <div class="container">
+        <h2 class="services-heading">Our solutions</h2>
+        <ul class="bullet-list">
+            <li class="bullet-item">
+                <p class="bullet-label">AV Integration</p>
+                <p class="bullet-text">End-to-end design and installation of audio-visual systems tailored to your space, your people, and how your organisation actually works.</p>
+            </li>
+            <li class="bullet-item">
+                <p class="bullet-label">Conference Room Solutions</p>
+                <p class="bullet-text">Purpose-built conferencing environments that make meetings clear, reliable, and free of the technical friction that wastes everyone's time.</p>
+            </li>
+            <li class="bullet-item">
+                <p class="bullet-label">Meeting Space Design</p>
+                <p class="bullet-text">From boardrooms to breakout areas, we design spaces where technology supports communication rather than getting in the way of it.</p>
+            </li>
+            <li class="bullet-item">
+                <p class="bullet-label">Microsoft Teams Rooms</p>
+                <p class="bullet-text">Certified Microsoft Teams Rooms installations that integrate with your existing workflows and give every participant an equal seat at the table, wherever they are.</p>
+            </li>
+            <li class="bullet-item">
+                <p class="bullet-label">Education Technology</p>
+                <p class="bullet-text">Interactive displays, classroom AV, and presentation systems that help educators teach and students engage — in schools, TAFEs, and universities across WA.</p>
+            </li>
+            <li class="bullet-item">
+                <p class="bullet-label">Mining &amp; Government AV</p>
+                <p class="bullet-text">Rugged, reliable AV solutions for demanding environments — from remote mining operations to government facilities where performance and security are non-negotiable.</p>
+            </li>
+        </ul>
     </div>
-  </section>
+</section>
 
-  <!-- SECTORS -->
-  <section id="sectors">
-    <div class="section-inner">
-      <div class="section-tag">Industries We Serve</div>
-      <h2 class="section-heading">Trusted Across<br />Western Australia</h2>
-      <div class="sectors-grid">
-        <div class="sector-pill"><div class="sector-dot"></div>Education</div>
-        <div class="sector-pill"><div class="sector-dot"></div>Mining</div>
-        <div class="sector-pill"><div class="sector-dot"></div>Government</div>
-        <div class="sector-pill"><div class="sector-dot"></div>Corporate</div>
-      </div>
+<!-- About -->
+<section class="about">
+    <div class="container">
+        <h2 class="about-heading">About Concept AV</h2>
+        <p>For more than 38 years, Concept AV has been at the centre of audio-visual integration in Western Australia. Founded and grown locally, we've built long-standing relationships with organisations across education, mining, government, and corporate sectors throughout the state.</p>
+        <p>We don't just supply equipment. We take the time to understand how your organisation communicates, then design and install systems that fit that reality. From initial consultation through to ongoing support, our team is with you at every stage.</p>
+        <p>Our showroom and offices are based in Balcatta, and we work with clients across WA and nationally on projects of all scales.</p>
     </div>
-  </section>
+</section>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="section-inner">
-      <div class="about-layout">
-        <div class="about-text">
-          <div class="section-tag">About Concept AV</div>
-          <h2 class="section-heading">Over 38 Years of<br />AV Excellence</h2>
-          <p>
-            <span class="about-highlight">Concept AV has been designing and deploying audio-visual technology solutions for over 38 years.</span> Based in Balcatta, Perth, we have built a reputation as a trusted AV partner for organisations across Western Australia's most demanding sectors.
-          </p>
-          <p>
-            From education campuses and government agencies to mining operations and corporate enterprises, our team delivers technology that connects people — reliably, clearly, and wherever they need to be.
-          </p>
-          <p>
-            Our approach is straightforward: understand your environment, specify the right solution, and install it to a standard that holds up over time.
-          </p>
+<!-- Contact -->
+<section class="contact">
+    <div class="container">
+        <h2 class="contact-heading">Contact us</h2>
+        <div class="contact-details">
+            <div class="contact-item">
+                <span class="contact-label">Phone</span>
+                <span class="contact-value"><a href="tel:0894294333">(08) 9429 4333</a></span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">Address</span>
+                <span class="contact-value">2/32 Mumford Place, Balcatta WA 6021</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">Web</span>
+                <span class="contact-value"><a href="https://conceptav.com.au" target="_blank" rel="noopener">conceptav.com.au</a></span>
+            </div>
         </div>
-        <div class="about-card-stack">
-          <div class="about-card">
-            <div class="about-card-icon">📍</div>
-            <div>
-              <div class="about-card-title">Perth Based</div>
-              <div class="about-card-body">Located at 2/32 Mumford Pl, Balcatta WA 6021 — servicing clients throughout Western Australia.</div>
-            </div>
-          </div>
-          <div class="about-card">
-            <div class="about-card-icon">🏆</div>
-            <div>
-              <div class="about-card-title">Proven Track Record</div>
-              <div class="about-card-body">Trusted by education, mining, government, and corporate clients for over 38 years.</div>
-            </div>
-          </div>
-          <div class="about-card">
-            <div class="about-card-icon">🤝</div>
-            <div>
-              <div class="about-card-title">Microsoft Teams Rooms Partner</div>
-              <div class="about-card-body">Accredited to design and deploy certified Microsoft Teams Rooms environments for hybrid workplaces.</div>
-            </div>
-          </div>
-          <div class="about-card">
-            <div class="about-card-icon">🔧</div>
-            <div>
-              <div class="about-card-title">End-to-End Delivery</div>
-              <div class="about-card-body">From consultation and design through to installation and support — everything managed under one roof.</div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </section>
+</section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="section-inner">
-      <div class="contact-layout">
-        <div>
-          <div class="section-tag">Get in Touch</div>
-          <h2 class="section-heading">Ready to Upgrade<br />Your AV?</h2>
-          <p style="color: var(--muted); font-size: 0.95rem; max-width: 400px; margin-bottom: 40px; line-height: 1.75;">
-            Call us to discuss your project. Whether it's a single meeting room or a multi-site rollout, we'll scope the right solution for your environment.
-          </p>
-          <div class="contact-detail">
-            <div class="contact-icon">📞</div>
-            <div>
-              <div class="contact-label">Phone</div>
-              <div class="contact-value"><a href="tel:0894294333">(08) 9429 4333</a></div>
-              <div class="contact-sub-text">Call us to get started</div>
-            </div>
-          </div>
-          <div class="contact-detail">
-            <div class="contact-icon">📍</div>
-            <div>
-              <div class="contact-label">Address</div>
-              <div class="contact-value">2/32 Mumford Pl, Balcatta WA 6021</div>
-              <div class="contact-sub-text">Perth, Western Australia</div>
-            </div>
-          </div>
-          <div class="contact-detail">
-            <div class="contact-icon">🌐</div>
-            <div>
-              <div class="contact-label">Website</div>
-              <div class="contact-value">conceptav.com.au</div>
-            </div>
-          </div>
-        </div>
-        <div class="contact-cta-box">
-          <h3>Get a Quote Today</h3>
-          <p>Tell us about your space and we'll put together a solution. From huddle rooms to enterprise conference environments — we've seen it all.</p>
-          <a href="tel:0894294333" class="btn-primary" style="display: inline-flex; width: 100%; justify-content: center;">
-            Call (08) 9429 4333
-          </a>
-        </div>
-      </div>
+<!-- CTA -->
+<section class="cta-section">
+    <div class="container">
+        <h2 class="cta-heading">Ready to upgrade your AV environment?</h2>
+        <p class="cta-sub">Tell us about your space and what you need. We'll put together a quote tailored to your organisation.</p>
+        <a href="tel:0894294333" class="cta-button">Get a Quote</a>
     </div>
-  </section>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-logo">Concept<span>&nbsp;AV</span></div>
-      <div class="footer-divider"></div>
-      <p class="footer-disclaimer">
-        Rebuilt by <a href="#">J&amp;G Operations</a> as a preview. Not yet live on conceptav.com.au.
-      </p>
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <p>Rebuilt by J&amp;G Operations as a preview. Not yet live on conceptav.com.au</p>
     </div>
-  </footer>
+</footer>
 
 </body>
 </html>
