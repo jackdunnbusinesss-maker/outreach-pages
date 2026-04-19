@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rivetti Financial — Financial Planning &amp; Insurance for Physicians</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0e0e12;
+      --surface: #16161d;
+      --surface-light: #1e1e28;
+      --border: #2a2a36;
+      --white: #f0eff4;
+      --text: #c5c4ce;
+      --text-muted: #7e7d8a;
+      --accent: #4a7ab5;
+      --accent-light: #6a9ad5;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      line-height: 1.2;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Topbar ── */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(14, 14, 18, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .topbar-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+
+    .topbar-logo span { color: var(--accent-light); }
+
+    .topbar-nav {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .topbar-nav a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    .topbar-nav a:hover { color: var(--white); }
+
+    .topbar-cta {
+      background: var(--accent);
+      color: var(--white);
+      border: none;
+      padding: 0.5rem 1.25rem;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: inline-block;
+    }
+
+    .topbar-cta:hover { background: var(--accent-light); }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 40%, rgba(74, 122, 181, 0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 15% 80%, rgba(106, 154, 213, 0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(74, 122, 181, 0.12);
+      border: 1px solid rgba(74, 122, 181, 0.3);
+      border-radius: 999px;
+      padding: 0.35rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--accent-light);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.03em;
+    }
+
+    .hero h1 em { font-style: normal; color: var(--accent-light); }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 2.25rem;
+      max-width: 480px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+      border: none;
+      padding: 0.8rem 1.75rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 0.8rem 1.75rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-block;
+    }
+
+    .btn-ghost:hover { border-color: var(--accent); color: var(--white); }
+
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      position: relative;
+    }
+
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 17px;
+      background: linear-gradient(135deg, rgba(74,122,181,0.3), transparent 60%);
+      z-index: -1;
+    }
+
+    .hero-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .hero-stat {
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+
+    .hero-stat-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent-light);
+    }
+
+    .hero-stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* ── Section shared ── */
+    section { padding: 5rem 2rem; }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-sub {
+      color: var(--text-muted);
+      max-width: 560px;
+      margin-bottom: 3rem;
+    }
+
+    /* ── Services ── */
+    .services { background: var(--surface); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .service-card {
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .service-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+    .service-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(74, 122, 181, 0.12);
+      border: 1px solid rgba(74, 122, 181, 0.25);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .service-card h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card p { font-size: 0.875rem; color: var(--text-muted); }
+
+    /* ── About ── */
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .about-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    .about-features li::before {
+      content: '✓';
+      color: var(--accent-light);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .about-visual {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+    }
+
+    .highlight-box {
+      background: rgba(74,122,181,0.08);
+      border: 1px solid rgba(74,122,181,0.2);
+      border-radius: 10px;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .highlight-box-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-light);
+      margin-bottom: 0.4rem;
+    }
+
+    .highlight-box-text {
+      font-size: 0.95rem;
+      color: var(--white);
+    }
+
+    /* ── Contact ── */
+    .contact { background: var(--surface); }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--accent); }
+
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .contact-info-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(74,122,181,0.1);
+      border: 1px solid rgba(74,122,181,0.25);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-info-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-info-val { color: var(--white); font-weight: 500; }
+    .contact-info-val a { color: var(--accent-light); }
+    .contact-info-val a:hover { text-decoration: underline; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    footer strong { color: var(--text); }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .topbar-nav { display: none; }
+      .hero-inner, .about-inner, .contact-inner { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="topbar-logo">Rivetti <span>Financial</span></div>
+    <nav>
+      <ul class="topbar-nav">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="#contact" class="topbar-cta">Get a Quote</a>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">Physicians · Residents &amp; Fellows · Financial Planning</div>
+        <h1>Financial planning &amp; insurance <em>built for physicians</em></h1>
+        <p class="hero-sub">Specialty-specific disability coverage, life insurance, and financial planning designed exclusively for physicians — including discounted rates for residents and fellows. No medical evaluation required.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Get a Quote</a>
+          <a href="#services" class="btn-ghost">Explore Services</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-title">Designed for your career stage</div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-val">Own-Occ</div>
+            <div class="hero-stat-label">Specialty-specific coverage</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-val">No</div>
+            <div class="hero-stat-label">Medical evaluation required</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-val">Discounted</div>
+            <div class="hero-stat-label">Rates for residents &amp; fellows</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-val">Full</div>
+            <div class="hero-stat-label">Financial planning coverage</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="section-inner">
+      <div class="section-label">What we offer</div>
+      <h2 class="section-title">Insurance &amp; planning for every stage of a physician's career</h2>
+      <p class="section-sub">From residency through attending, Rivetti Financial provides the coverage and planning strategies physicians need at each phase of their career.</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🛡️</div>
+          <h3>Disability Insurance</h3>
+          <p>Specialty-specific, own-occupation disability coverage with no medical evaluation required. Protects the income tied to your specialty — not just any occupation.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">❤️</div>
+          <h3>Life Insurance</h3>
+          <p>Term and permanent life insurance options structured for physicians — protecting your family, your practice, and your financial plan.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🎓</div>
+          <h3>Financial Planning for Residents &amp; Fellows</h3>
+          <p>Discounted rates and tailored financial planning for physicians in training. The right foundation from day one of your career.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📊</div>
+          <h3>Market Analysis &amp; Investment Updates</h3>
+          <p>Ongoing market analysis and investment guidance relevant to high-income professionals with complex financial profiles.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <div class="about-inner">
+        <div>
+          <div class="section-label">About Rivetti Financial</div>
+          <h2 class="section-title">Specialists who understand the physician's financial journey</h2>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">Rivetti Financial specialises in financial planning and insurance for physicians. We understand the unique challenges physicians face — long training periods, high debt loads, and careers that depend entirely on personal health and specialty capability.</p>
+          <ul class="about-features">
+            <li>Specialty-specific own-occupation disability coverage</li>
+            <li>No medical evaluation required to obtain coverage</li>
+            <li>Discounted rates for residents and fellows in training</li>
+            <li>Full financial planning — not just insurance</li>
+            <li>Focused exclusively on physicians and their financial needs</li>
+          </ul>
+        </div>
+        <div class="about-visual">
+          <div class="highlight-box">
+            <div class="highlight-box-label">Own-Occupation Coverage</div>
+            <div class="highlight-box-text">Specialty-specific disability insurance means if you can't perform the duties of your specific specialty, you're covered — even if you could work in another capacity.</div>
+          </div>
+          <div class="highlight-box">
+            <div class="highlight-box-label">No Medical Evaluation</div>
+            <div class="highlight-box-text">Obtain your coverage without going through a separate medical underwriting process — designed for busy physicians.</div>
+          </div>
+          <div class="highlight-box">
+            <div class="highlight-box-label">Residents &amp; Fellows</div>
+            <div class="highlight-box-text">Discounted rates for physicians in training. Lock in coverage early at the best rates available.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <div class="contact-inner">
+        <div>
+          <div class="section-label">Get in touch</div>
+          <h2 class="section-title">Get a quote today</h2>
+          <p class="section-sub">Tell us about your specialty and career stage. We'll come back with coverage options and a financial plan tailored to you.</p>
+          <form class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" placeholder="Your first name" />
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" placeholder="Your last name" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="you@email.com" />
+            </div>
+            <div class="form-group">
+              <label>Specialty</label>
+              <input type="text" placeholder="e.g. Cardiology, Surgery, Internal Medicine…" />
+            </div>
+            <div class="form-group">
+              <label>Career Stage</label>
+              <select>
+                <option value="">Select your stage</option>
+                <option>Medical Student</option>
+                <option>Resident</option>
+                <option>Fellow</option>
+                <option>Attending Physician</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>What are you looking for?</label>
+              <textarea placeholder="Tell us about your coverage or planning needs..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="align-self: flex-start;">Get a Quote</button>
+          </form>
+        </div>
+        <div class="contact-info">
+          <div class="contact-info-item">
+            <div class="contact-info-icon">🌐</div>
+            <div>
+              <div class="contact-info-label">Website</div>
+              <div class="contact-info-val"><a href="https://rivettifinancial.com" target="_blank" rel="noopener">rivettifinancial.com</a></div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">🩺</div>
+            <div>
+              <div class="contact-info-label">Specialisation</div>
+              <div class="contact-info-val">Financial planning &amp; insurance for physicians</div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">⚡</div>
+            <div>
+              <div class="contact-info-label">Process</div>
+              <div class="contact-info-val">No medical evaluation required</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Rivetti Financial. All rights reserved. &nbsp;|&nbsp; <strong>Rebuilt by J&amp;G Operations as a preview. Not yet live on rivettifinancial.com.</strong></p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Sector Union — Advocating for Finance Workers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0e0e12;
+            --surface: #16161d;
+            --surface-light: #1e1e28;
+            --border: #2a2a36;
+            --border-glow: rgba(108, 142, 191, 0.28);
+            --accent: #6c8ebf;
+            --accent-light: #8aafd4;
+            --accent-dim: #4a6a9a;
+            --accent-glow: rgba(108, 142, 191, 0.16);
+            --accent-glow-strong: rgba(108, 142, 191, 0.36);
+            --white: #f0eff4;
+            --text: #c5c4ce;
+            --text-muted: #7e7d8a;
+            --gradient-hero: linear-gradient(135deg, #6c8ebf 0%, #8aafd4 50%, #aecde8 100%);
+            --gradient-accent: linear-gradient(90deg, #6c8ebf, #8aafd4);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 900px 600px at 15% 10%, rgba(108, 142, 191, 0.05) 0%, transparent 65%),
+                radial-gradient(ellipse 700px 500px at 88% 80%, rgba(138, 175, 212, 0.04) 0%, transparent 60%),
+                radial-gradient(ellipse 500px 400px at 58% 48%, rgba(108, 142, 191, 0.03) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* TOP BAR */
+        .topbar {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            z-index: 10;
+            background: rgba(14, 14, 18, 0.96);
+            backdrop-filter: blur(14px);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-brand {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: 0.5px;
+        }
+        .topbar-phone {
+            font-size: 0.8rem;
+            color: var(--accent-light);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .topbar-phone:hover { color: var(--white); }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            padding: 96px 0 72px;
+            text-align: center;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 960px;
+            height: 640px;
+            background:
+                radial-gradient(ellipse 500px 340px at 28% 38%, rgba(108, 142, 191, 0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 380px 280px at 78% 28%, rgba(138, 175, 212, 0.09) 0%, transparent 65%),
+                radial-gradient(ellipse 320px 260px at 55% 82%, rgba(108, 142, 191, 0.06) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .hero-inner { position: relative; z-index: 1; }
+
+        .hero-eyebrow {
+            display: inline-block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 24px;
+            font-weight: 600;
+            border: 1px solid var(--border-glow);
+            padding: 6px 18px;
+            border-radius: 100px;
+            background: rgba(108, 142, 191, 0.07);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5.5vw, 3rem);
+            line-height: 1.22;
+            margin-bottom: 28px;
+            font-weight: 700;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 580px;
+            margin: 0 auto 40px;
+            line-height: 1.85;
+        }
+
+        /* STATS */
+        .stats {
+            padding: 64px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .stat-card {
+            background: rgba(22, 22, 29, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 32px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            cursor: default;
+            backdrop-filter: blur(10px);
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 200px 120px at 50% 0%, rgba(108, 142, 191, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .stat-card:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 28px rgba(108, 142, 191, 0.1), 0 8px 32px rgba(0, 0, 0, 0.35);
+        }
+        .stat-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.9rem;
+            font-weight: 700;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ABOUT */
+        .about {
+            padding: 72px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .section-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.65rem;
+            color: var(--white);
+            margin-bottom: 32px;
+            font-weight: 600;
+        }
+        .about p {
+            font-size: 1.02rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        .about p:last-child { margin-bottom: 0; }
+        .highlight { color: var(--accent-light); font-weight: 600; }
+
+        /* SERVICES */
+        .services {
+            padding: 72px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .service-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .service-item {
+            background: rgba(22, 22, 29, 0.65);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 26px 30px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+            cursor: default;
+            backdrop-filter: blur(8px);
+        }
+        .service-item::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .service-item:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 24px rgba(108, 142, 191, 0.08), 0 6px 24px rgba(0, 0, 0, 0.28);
+            transform: translateX(4px);
+        }
+        .service-item:hover::before { opacity: 1; }
+        .service-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .service-text {
+            font-size: 0.97rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* VALUES */
+        .values {
+            padding: 72px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .values::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+        .value-card {
+            text-align: center;
+            padding: 32px 20px;
+            background: rgba(22, 22, 29, 0.65);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease;
+            cursor: default;
+            backdrop-filter: blur(10px);
+        }
+        .value-card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-3px);
+            box-shadow: 0 0 24px rgba(108, 142, 191, 0.1), 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+        .value-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(108, 142, 191, 0.1);
+            border: 1px solid var(--border-glow);
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        .value-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .value-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* CREDENTIALS */
+        .credentials {
+            padding: 64px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .credentials::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .trust-intro {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .badge-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .badge {
+            background: rgba(22, 22, 29, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: border-color 0.25s, color 0.25s;
+            cursor: default;
+            backdrop-filter: blur(8px);
+        }
+        .badge:hover { border-color: var(--border-glow); color: var(--accent-light); }
+
+        /* CTA */
+        .cta-section {
+            padding: 96px 0;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+        }
+        .cta-blob {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 760px;
+            height: 440px;
+            background:
+                radial-gradient(ellipse 460px 260px at 38% 50%, rgba(108, 142, 191, 0.07) 0%, transparent 70%),
+                radial-gradient(ellipse 340px 220px at 72% 50%, rgba(138, 175, 212, 0.05) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        .cta-inner { position: relative; z-index: 1; }
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.7rem, 4vw, 2.1rem);
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 40px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #6c8ebf, #8aafd4);
+            color: #060d18;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.97rem;
+            font-weight: 700;
+            padding: 17px 52px;
+            border-radius: 10px;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            box-shadow:
+                0 0 28px rgba(108, 142, 191, 0.4),
+                0 0 60px rgba(108, 142, 191, 0.18),
+                0 8px 32px rgba(108, 142, 191, 0.2);
+            transition: box-shadow 0.3s ease, transform 0.2s ease, filter 0.3s ease;
+        }
+        .cta-button:hover {
+            box-shadow:
+                0 0 48px rgba(108, 142, 191, 0.65),
+                0 0 90px rgba(108, 142, 191, 0.3),
+                0 12px 48px rgba(108, 142, 191, 0.28);
+            transform: translateY(-2px);
+            filter: brightness(1.08);
+        }
+        .cta-note {
+            margin-top: 18px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .footer p { font-size: 0.73rem; color: var(--text-muted); }
+
+        @media (max-width: 640px) {
+            .hero { padding: 64px 0 52px; }
+            .stats-grid { grid-template-columns: 1fr; gap: 14px; }
+            .values-grid { grid-template-columns: 1fr; gap: 14px; }
+            .service-item { padding: 22px 22px; }
+            .cta-section { padding: 64px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-brand">Finance Sector Union</span>
+            <a href="tel:1300366378" class="topbar-phone">1300 366 378</a>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner container">
+            <p class="hero-eyebrow">Advocating for Finance Workers &mdash; Australia</p>
+            <h1>Advocating for Finance Workers for Over 100 Years</h1>
+            <p class="hero-sub">The Finance Sector Union has been standing up for finance workers across Australia for over a century — fighting for better pay, safer conditions, and dignity in the workplace. We campaign. We win.</p>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats fade-in">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Years advocating for finance sector workers across Australia</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">National</div>
+                    <div class="stat-label">Coverage across Australia's finance and banking sector</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">We Win</div>
+                    <div class="stat-label">A proven record of successful campaigns and workplace gains</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about fade-in">
+        <div class="container">
+            <h2 class="section-heading">About the Finance Sector Union</h2>
+            <p>The Finance Sector Union has been <span class="highlight">advocating and supporting finance workers across Australia for over 100 years</span>. We are the union for employees in banking, insurance, finance, and related industries — people who keep the financial system running but too often face insecurity, unfair treatment, and inadequate protections.</p>
+            <p>We campaign for <span class="highlight">better pay, conditions, and dignity in the workplace</span> — and we don't just campaign, we win. From protecting bank branches to fighting the unregulated rollout of AI, the FSU is at the frontline of every major issue facing finance workers today.</p>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services fade-in">
+        <div class="container">
+            <h2 class="section-heading">What the FSU Does for Members</h2>
+            <ul class="service-list">
+                <li class="service-item">
+                    <p class="service-label">Member Benefits</p>
+                    <p class="service-text">Exclusive access to a wide range of member benefits, discounts, and support services designed specifically for finance sector workers.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Workplace Campaigns</p>
+                    <p class="service-text">Coordinated campaigns to improve wages, working conditions, and job security for finance sector employees across Australia.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">AI in Finance Advocacy</p>
+                    <p class="service-text">Actively challenging the unregulated introduction of AI in banking and finance — ensuring technology is deployed fairly and transparently, without destroying jobs.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Gender Equity Campaigns</p>
+                    <p class="service-text">Fighting for equal pay, parental leave, flexible work arrangements, and an end to discrimination for women in the finance sector.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Save Our Bank Branches</p>
+                    <p class="service-text">Campaigning to protect physical bank branches and the jobs that come with them — a vital service for communities across Australia.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Legal Support &amp; Advice</p>
+                    <p class="service-text">Access to expert legal advice and representation for members facing workplace disputes, unfair dismissal, or discrimination.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Journey Insurance Protection</p>
+                    <p class="service-text">Complimentary journey accident insurance for members travelling to and from work — an FSU member benefit.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-label">Exclusive Member Discounts</p>
+                    <p class="service-text">Significant savings on health insurance, travel, technology, entertainment, and more — reserved exclusively for FSU members.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="values fade-in">
+        <div class="container">
+            <h2 class="section-heading" style="text-align:center; margin-bottom: 36px;">Why the FSU matters</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">&#9670;</div>
+                    <div class="value-title">Collective Power</div>
+                    <div class="value-desc">Individually we're employees. Together we are a force that employers and governments cannot ignore.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">&#9671;</div>
+                    <div class="value-title">Proven Results</div>
+                    <div class="value-desc">Over 100 years of campaigns, negotiations, and victories — a track record of getting real outcomes for real workers.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">&#9669;</div>
+                    <div class="value-title">Your Voice</div>
+                    <div class="value-desc">The FSU ensures every finance worker has a seat at the table — and someone fighting in their corner.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Credentials -->
+    <section class="credentials fade-in">
+        <div class="container">
+            <p class="trust-intro">Focus areas &amp; campaigns</p>
+            <div class="badge-grid">
+                <span class="badge">Banking &amp; Finance</span>
+                <span class="badge">AI in Finance</span>
+                <span class="badge">Gender Equity</span>
+                <span class="badge">Save Our Bank Branches</span>
+                <span class="badge">Workplace Rights</span>
+                <span class="badge">Journey Insurance</span>
+                <span class="badge">Legal Support</span>
+                <span class="badge">Member Discounts</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section fade-in">
+        <div class="cta-blob"></div>
+        <div class="container cta-inner">
+            <h2 class="cta-heading">Ready to join the FSU?</h2>
+            <p class="cta-sub">Thousands of finance workers across Australia rely on the FSU every day. Become a member and get access to legal support, exclusive benefits, and a union that has been winning for workers for over 100 years.</p>
+            <a href="tel:1300366378" class="cta-button">Join the FSU</a>
+            <p class="cta-note">Call us on 1300 366 378</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Rebuilt by J&amp;G Operations as a preview. Not yet live on fsunion.org.au.</p>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wealth Management at HVCU</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0e0e12;
+      --surface: #16161d;
+      --surface-light: #1e1e28;
+      --border: #2a2a36;
+      --white: #f0eff4;
+      --text: #c5c4ce;
+      --text-muted: #7e7d8a;
+      --accent: #4a7ab5;
+      --accent-light: #6a9ad5;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      line-height: 1.25;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── TOPBAR ── */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(14, 14, 18, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .topbar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .topbar-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.01em;
+    }
+
+    .topbar-logo span { color: var(--accent-light); }
+
+    .topbar-nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .topbar-nav a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    .topbar-nav a:hover { color: var(--white); }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 24px;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-light);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(74, 122, 181, 0.35);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent-light);
+      color: var(--accent-light);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 80px 24px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 65% 55% at 75% 45%, rgba(74, 122, 181, 0.13) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 15% 85%, rgba(106, 154, 213, 0.07) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.18;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(74, 122, 181, 0.12);
+      border: 1px solid rgba(74, 122, 181, 0.3);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 28px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      box-shadow: 0 0 8px var(--accent-light);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 700;
+      max-width: 680px;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent-light);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 44px;
+      line-height: 1.8;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .hero-ctas .btn {
+      font-size: 0.95rem;
+      padding: 13px 30px;
+    }
+
+    /* ── SECTION SCAFFOLD ── */
+    section {
+      padding: 96px 24px;
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      color: var(--text-muted);
+      max-width: 560px;
+      line-height: 1.8;
+      margin-bottom: 56px;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+
+    /* ── SERVICES ── */
+    .services { background: var(--surface); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 36px 32px;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-light));
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+
+    .service-card:hover {
+      border-color: rgba(106, 154, 213, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .service-card:hover::before { opacity: 1; }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: rgba(74, 122, 181, 0.15);
+      border: 1px solid rgba(74, 122, 181, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-visual {
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .stat-item {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 20px;
+    }
+
+    .stat-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .stat-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent-light);
+    }
+
+    .about-content p {
+      color: var(--text);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+
+    .about-content p:last-child { margin-bottom: 0; }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--surface); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--accent-light);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    .form-group select option { background: var(--surface-light); }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .contact-info-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .contact-info-icon {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      background: rgba(74, 122, 181, 0.12);
+      border: 1px solid rgba(74, 122, 181, 0.25);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .contact-info-text strong {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 2px;
+    }
+
+    .contact-info-text span {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .contact-info-text a {
+      color: var(--accent-light);
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 40px 24px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .footer-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: right;
+      max-width: 480px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .topbar-nav { display: none; }
+      .about-grid,
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero { min-height: auto; padding: 60px 20px; }
+      section { padding: 64px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-logo">Wealth Management at <span>HVCU</span></div>
+      <nav>
+        <ul class="topbar-nav">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact" class="btn btn-primary">Schedule a Review</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Hudson Valley Credit Union</div>
+      <h1>A <em>Personalised</em> Approach<br />to Wealth Management</h1>
+      <p class="hero-sub">
+        We give every client our undivided attention. Our first priority is helping you take care of yourself and your family — understanding your situation before making any recommendation.
+      </p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">Schedule a Review</a>
+        <a href="#services" class="btn btn-outline">Our Services</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-inner">
+      <div class="section-label">What We Offer</div>
+      <h2 class="section-title">Our Services</h2>
+      <p class="section-sub">Comprehensive wealth solutions tailored to where you are today and where you want to be tomorrow.</p>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">&#9675;</div>
+          <h3>Wealth Management</h3>
+          <p>Holistic management of your financial picture, aligned with your personal goals and family priorities.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">&#9651;</div>
+          <h3>Portfolio Review</h3>
+          <p>A thorough review of your existing investments to ensure they remain on track and properly positioned.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">&#9650;</div>
+          <h3>Wealth Accumulation</h3>
+          <p>Strategic approaches to growing your wealth steadily over time, built around your risk profile and timeline.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">&#9670;</div>
+          <h3>Retirement Planning</h3>
+          <p>Planning for the retirement you envision — when you want to retire, and how you want to live when you do.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="stat-item">
+            <div class="stat-label">Our Commitment</div>
+            <div class="stat-value">Undivided Attention</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Phone</div>
+            <div class="stat-value"><a href="tel:8454633366" style="color: inherit;">845.463.3366</a></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Location</div>
+            <div class="stat-value" style="font-size: 1rem; line-height: 1.5;">11 Marshall Rd Suite 2A<br />Wappingers Falls, NY 12590</div>
+          </div>
+        </div>
+        <div class="about-content">
+          <div class="section-label">About Us</div>
+          <h2 class="section-title">Who We Are</h2>
+          <p>Wealth Management at Hudson Valley Credit Union offers a personalised approach to managing your financial future. We give every client our undivided attention.</p>
+          <p>Our first priority is helping you take care of yourself and your family. We want to learn about your personal situation before making any recommendation — because the right plan starts with truly understanding you.</p>
+          <a href="#contact" class="btn btn-primary" style="margin-top: 16px; display: inline-block;">Schedule a Review</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div>
+          <div class="section-label">Contact</div>
+          <h2 class="section-title">Schedule a Review</h2>
+          <p class="section-sub" style="margin-bottom: 32px;">Let us know a little about your situation and we will be in touch to arrange a personalised consultation.</p>
+
+          <div class="contact-info">
+            <div class="contact-info-item">
+              <div class="contact-info-icon">&#9742;</div>
+              <div class="contact-info-text">
+                <strong>Phone</strong>
+                <span><a href="tel:8454633366">845.463.3366</a></span>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon">&#9679;</div>
+              <div class="contact-info-text">
+                <strong>Address</strong>
+                <span>11 Marshall Rd Suite 2A, Wappingers Falls, NY 12590</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form" onsubmit="return false;">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" placeholder="Jane" />
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" placeholder="Doe" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="jane@example.com" />
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" placeholder="(845) 000-0000" />
+          </div>
+          <div class="form-group">
+            <label>Area of Interest</label>
+            <select>
+              <option value="">Select a service...</option>
+              <option>Wealth Management</option>
+              <option>Portfolio Review</option>
+              <option>Wealth Accumulation</option>
+              <option>Retirement Planning</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="Tell us a little about your situation..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="align-self: flex-start; font-size: 0.95rem; padding: 13px 28px;">Schedule a Review</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">Wealth Management at HVCU</div>
+      <div class="footer-note">
+        Rebuilt by J&amp;G Operations as a preview. Not yet live on wealthathvcu.com.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

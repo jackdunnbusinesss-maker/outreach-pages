@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ashland Capital Advisors — Business Brokerage, Exit Planning &amp; Advisory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0e0e12;
+      --surface: #16161d;
+      --surface-light: #1e1e28;
+      --border: #2a2a36;
+      --white: #f0eff4;
+      --text: #c5c4ce;
+      --text-muted: #7e7d8a;
+      --accent: #5a7a4a;
+      --accent-light: #7a9a6a;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      line-height: 1.2;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Topbar ── */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(14, 14, 18, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .topbar-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+
+    .topbar-logo span { color: var(--accent-light); }
+
+    .topbar-nav {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .topbar-nav a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    .topbar-nav a:hover { color: var(--white); }
+
+    .topbar-cta {
+      background: var(--accent);
+      color: var(--white);
+      border: none;
+      padding: 0.5rem 1.25rem;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: inline-block;
+    }
+
+    .topbar-cta:hover { background: var(--accent-light); }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 68% 38%, rgba(90, 122, 74, 0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 55% at 18% 78%, rgba(122, 154, 106, 0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(90, 122, 74, 0.12);
+      border: 1px solid rgba(90, 122, 74, 0.3);
+      border-radius: 999px;
+      padding: 0.35rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--accent-light);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.03em;
+    }
+
+    .hero h1 em { font-style: normal; color: var(--accent-light); }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 2.25rem;
+      max-width: 500px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+      border: none;
+      padding: 0.8rem 1.75rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 0.8rem 1.75rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-block;
+    }
+
+    .btn-ghost:hover { border-color: var(--accent); color: var(--white); }
+
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      position: relative;
+    }
+
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 17px;
+      background: linear-gradient(135deg, rgba(90,122,74,0.28), transparent 60%);
+      z-index: -1;
+    }
+
+    .hero-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    .process-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .process-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+    }
+
+    .step-num {
+      width: 28px;
+      height: 28px;
+      background: rgba(90,122,74,0.2);
+      border: 1px solid rgba(90,122,74,0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent-light);
+      flex-shrink: 0;
+    }
+
+    .step-text {
+      font-size: 0.875rem;
+      color: var(--text);
+    }
+
+    .step-text strong { color: var(--white); display: block; margin-bottom: 0.1rem; }
+
+    /* ── Section shared ── */
+    section { padding: 5rem 2rem; }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-sub {
+      color: var(--text-muted);
+      max-width: 560px;
+      margin-bottom: 3rem;
+    }
+
+    /* ── Services ── */
+    .services { background: var(--surface); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .service-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(90, 122, 74, 0.12);
+      border: 1px solid rgba(90, 122, 74, 0.25);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.3rem;
+    }
+
+    .service-card h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .service-card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ── About ── */
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .about-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    .about-features li::before {
+      content: '✓';
+      color: var(--accent-light);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .about-visual {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+    }
+
+    .about-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--white);
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      line-height: 1.55;
+      border-left: 3px solid var(--accent);
+      padding-left: 1.25rem;
+    }
+
+    .about-quote-attr {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* ── Contact ── */
+    .contact { background: var(--surface); }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--accent); }
+
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .contact-info-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(90,122,74,0.1);
+      border: 1px solid rgba(90,122,74,0.25);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-info-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-info-val { color: var(--white); font-weight: 500; }
+    .contact-info-val a { color: var(--accent-light); }
+    .contact-info-val a:hover { text-decoration: underline; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    footer strong { color: var(--text); }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .topbar-nav { display: none; }
+      .hero-inner, .about-inner, .contact-inner { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="topbar-logo">Ashland <span>Capital</span> Advisors</div>
+    <nav>
+      <ul class="topbar-nav">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="#contact" class="topbar-cta">Value My Business</a>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">Business Brokerage · Exit Planning · Advisory</div>
+        <h1>Expert guidance to <em>sell your business</em> on your terms</h1>
+        <p class="hero-sub">Ashland Capital Advisors helps business owners find the best buyer, plan their exit, and achieve their goals — backed by seasoned advisors with real-world transaction experience.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Value My Business</a>
+          <a href="#services" class="btn-ghost">Explore Our Services</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-title">Our process, simplified</div>
+        <div class="process-steps">
+          <div class="process-step">
+            <div class="step-num">1</div>
+            <div class="step-text">
+              <strong>Business Valuation</strong>
+              Understand what your business is worth before going to market.
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="step-num">2</div>
+            <div class="step-text">
+              <strong>Exit Planning</strong>
+              Structure your exit for maximum value and a smooth transition.
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="step-num">3</div>
+            <div class="step-text">
+              <strong>Find the Best Buyer</strong>
+              Strategic buyer identification and confidential deal process.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="section-inner">
+      <div class="section-label">What we do</div>
+      <h2 class="section-title">Everything you need to exit successfully</h2>
+      <p class="section-sub">From the first valuation conversation to closing day — Ashland Capital Advisors guides business owners through every step of the transaction process.</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🏢</div>
+          <h3>Business Brokerage</h3>
+          <p>We represent business owners in the sale of their companies — managing confidentiality, identifying qualified buyers, and negotiating terms to achieve the best outcome. Seasoned transaction experience, not a listing service.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🗺️</div>
+          <h3>Exit Planning</h3>
+          <p>Whether you're selling in 12 months or 5 years, a proper exit plan makes a significant difference to your outcome. We help you prepare the business, structure the deal, and time the market — so you leave on your terms.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">💻</div>
+          <h3>IT Services</h3>
+          <p>Technology advisory and IT services to support business operations and transaction readiness — ensuring your systems don't become a liability in the sale process.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <div class="about-inner">
+        <div>
+          <div class="section-label">Who we are</div>
+          <h2 class="section-title">Advisors who have been on both sides of the table</h2>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">Ashland Capital Advisors offers expert business brokerage, exit planning, and advisory services. Our team brings real-world transaction experience — we've been on both sides of deals, which means we understand what buyers are looking for and how to position your business to command the best price.</p>
+          <ul class="about-features">
+            <li>Expert business brokerage with a confidential deal process</li>
+            <li>Exit planning that begins well before your target sale date</li>
+            <li>Seasoned advisors with real-world transaction experience</li>
+            <li>Help finding the best buyer — not just any buyer</li>
+            <li>Focused on helping owners achieve their goals, not just close deals</li>
+          </ul>
+        </div>
+        <div class="about-visual">
+          <p class="about-quote">"We help business owners find the best buyer, plan their exit, and achieve their goals. Seasoned advisors with real-world transaction experience."</p>
+          <p class="about-quote-attr">Ashland Capital Advisors — Business Brokerage &amp; Exit Planning</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <div class="contact-inner">
+        <div>
+          <div class="section-label">Get started</div>
+          <h2 class="section-title">Value my business</h2>
+          <p class="section-sub">Tell us about your business and your goals. We'll get back to you with an initial perspective and next steps — no obligation.</p>
+          <form class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" placeholder="Your first name" />
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" placeholder="Your last name" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="you@business.com" />
+            </div>
+            <div class="form-group">
+              <label>Business Name</label>
+              <input type="text" placeholder="Your business name" />
+            </div>
+            <div class="form-group">
+              <label>Industry</label>
+              <input type="text" placeholder="e.g. Manufacturing, Healthcare, Technology…" />
+            </div>
+            <div class="form-group">
+              <label>What are you looking to do?</label>
+              <select>
+                <option value="">Select an option</option>
+                <option>Sell my business in the next 12 months</option>
+                <option>Plan my exit (longer horizon)</option>
+                <option>Understand what my business is worth</option>
+                <option>IT advisory / support</option>
+                <option>General enquiry</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Additional context</label>
+              <textarea placeholder="Tell us about your business, goals, and timeline..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="align-self: flex-start;">Value My Business</button>
+          </form>
+        </div>
+        <div class="contact-info">
+          <div class="contact-info-item">
+            <div class="contact-info-icon">🌐</div>
+            <div>
+              <div class="contact-info-label">Website</div>
+              <div class="contact-info-val"><a href="https://ashcap.com" target="_blank" rel="noopener">ashcap.com</a></div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">🏢</div>
+            <div>
+              <div class="contact-info-label">Services</div>
+              <div class="contact-info-val">Business Brokerage · Exit Planning · IT Services</div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">🤝</div>
+            <div>
+              <div class="contact-info-label">Commitment</div>
+              <div class="contact-info-val">Confidential process. No obligation to proceed.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Ashland Capital Advisors. All rights reserved. &nbsp;|&nbsp; <strong>Rebuilt by J&amp;G Operations as a preview. Not yet live on ashcap.com.</strong></p>
+  </footer>
+
+</body>
+</html>

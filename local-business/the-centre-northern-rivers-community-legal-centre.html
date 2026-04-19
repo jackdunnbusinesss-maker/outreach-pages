@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Northern Rivers Community Legal Centre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0e0e12;
+      --surface: #16161d;
+      --surface-light: #1e1e28;
+      --border: #2a2a36;
+      --white: #f0eff4;
+      --text: #c5c4ce;
+      --text-muted: #7e7d8a;
+      --accent: #4a7ab5;
+      --accent-light: #6a9ad5;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── TOPBAR ── */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(14, 14, 18, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 68px;
+    }
+
+    .topbar-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--white);
+      max-width: 240px;
+      line-height: 1.2;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--white);
+      padding: 10px 22px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, transform 0.15s;
+      cursor: pointer;
+      border: none;
+      white-space: nowrap;
+    }
+    .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
+
+    .btn-outline {
+      display: inline-block;
+      border: 1.5px solid var(--accent);
+      color: var(--white);
+      padding: 10px 22px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+    .btn-outline:hover { background: var(--accent); transform: translateY(-1px); }
+
+    /* ── ACKNOWLEDGEMENT BANNER ── */
+    .acknowledgement {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 5%;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    .acknowledgement span { color: var(--text); font-style: normal; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -160px;
+      right: -120px;
+      width: 620px;
+      height: 620px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(74,122,181,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner { max-width: 800px; position: relative; z-index: 1; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(74,122,181,0.12);
+      border: 1px solid rgba(74,122,181,0.35);
+      color: var(--accent-light);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+    .eyebrow::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-light);
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(34px, 5vw, 58px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.14;
+      margin-bottom: 24px;
+    }
+    .hero h1 span { color: var(--accent-light); }
+
+    .hero-sub {
+      font-size: 18px;
+      color: var(--text);
+      max-width: 580px;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .hero-info {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-top: 56px;
+    }
+
+    .hero-info-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-info-item .icon {
+      font-size: 16px;
+    }
+
+    .hero-info-item .info-text {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .hero-info-item .info-text strong {
+      display: block;
+      color: var(--white);
+      font-size: 15px;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 96px 5%; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 580px;
+      line-height: 1.7;
+    }
+
+    /* ── SERVICES ── */
+    .services { background: var(--surface); }
+    .services-header { margin-bottom: 56px; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 26px;
+      transition: border-color 0.2s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover { border-color: rgba(74,122,181,0.4); transform: translateY(-4px); }
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(74,122,181,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      font-size: 20px;
+    }
+
+    .service-card h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .service-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── ABOUT ── */
+    .about { background: var(--bg); }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-text p { color: var(--text); line-height: 1.75; margin-bottom: 14px; }
+
+    .acknowledgement-block {
+      background: rgba(74,122,181,0.08);
+      border: 1px solid rgba(74,122,181,0.25);
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-top: 24px;
+      font-size: 14px;
+      color: var(--text-muted);
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    .about-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px;
+    }
+
+    .quick-facts { display: flex; flex-direction: column; gap: 16px; }
+
+    .quick-fact {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 16px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .quick-fact-icon { font-size: 18px; flex-shrink: 0; }
+
+    .quick-fact-text strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 3px;
+    }
+
+    .quick-fact-text span { font-size: 13px; color: var(--text-muted); }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--surface); }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-info { display: flex; flex-direction: column; gap: 20px; margin-top: 32px; }
+
+    .contact-item { display: flex; align-items: flex-start; gap: 16px; }
+
+    .contact-item-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(74,122,181,0.12);
+      border: 1px solid rgba(74,122,181,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .contact-item-text .label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .contact-item-text .value { font-size: 15px; color: var(--white); font-weight: 500; }
+    .contact-item-text a.value:hover { color: var(--accent-light); }
+
+    .contact-form {
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+    }
+
+    .contact-form h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .contact-form .form-note {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+    .form-row { display: flex; gap: 16px; }
+    .form-row .form-group { flex: 1; }
+
+    .form-group label { font-size: 13px; font-weight: 500; color: var(--text-muted); }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: vertical;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--text-muted); }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--accent); }
+    .form-group select option { background: var(--surface); }
+
+    .form-submit { width: 100%; margin-top: 8px; padding: 14px; font-size: 15px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 40px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--white);
+      max-width: 200px;
+      line-height: 1.3;
+    }
+
+    .footer-note {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-align: center;
+      flex: 1;
+    }
+    .footer-note em { color: var(--text); font-style: normal; }
+
+    @media (max-width: 768px) {
+      .about-inner, .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+      .form-row { flex-direction: column; }
+      footer { flex-direction: column; text-align: center; }
+      .hero-info { flex-direction: column; gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="topbar-logo">
+      <div class="logo-mark">CLC</div>
+      <span class="logo-text">Northern Rivers Community Legal Centre</span>
+    </div>
+    <a href="#contact" class="btn-primary">Get Legal Help</a>
+  </header>
+
+  <!-- ACKNOWLEDGEMENT BANNER -->
+  <div class="acknowledgement">
+    We acknowledge the people of the <span>Bundjalung Nation</span>, Traditional Custodians of the land on which we work.
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Free Legal Help — Northern Rivers NSW</div>
+      <h1>Free legal help for<br>the <span>Northern Rivers</span><br>community</h1>
+      <p class="hero-sub">
+        The Northern Rivers Community Legal Centre provides free, high-quality legal services to people across the Northern Rivers of NSW — including tenancy, domestic violence, disaster recovery, Aboriginal services, and family law.
+      </p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">Get Legal Help</a>
+        <a href="#services" class="btn-outline">Our Services</a>
+      </div>
+      <div class="hero-info">
+        <div class="hero-info-item">
+          <div class="icon">📞</div>
+          <div class="info-text">
+            <strong><a href="tel:0266211000" style="color:var(--white);">(02) 6621 1000</a></strong>
+            Local line
+          </div>
+        </div>
+        <div class="hero-info-item">
+          <div class="icon">📞</div>
+          <div class="info-text">
+            <strong><a href="tel:1800689889" style="color:var(--white);">1800 689 889</a></strong>
+            Free call
+          </div>
+        </div>
+        <div class="hero-info-item">
+          <div class="icon">🕐</div>
+          <div class="info-text">
+            <strong>Mon–Thu 9am–4pm</strong>
+            Phones open Friday
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="services-header">
+      <div class="section-label">How We Help</div>
+      <h2 class="section-title">Free Legal Services<br>Across the Region</h2>
+      <p class="section-sub">From tenancy disputes to disaster recovery, our services are free, confidential, and available to everyone in the Northern Rivers community.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">⚖️</div>
+        <h3>Legal Services &amp; Advice</h3>
+        <p>Free legal advice and representation across a range of civil law matters for eligible community members.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏠</div>
+        <h3>Tenant Services</h3>
+        <p>Advice on tenancy rights, disputes with landlords, repairs, bonds, and eviction matters.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌿</div>
+        <h3>Aboriginal Services</h3>
+        <p>Culturally safe legal services tailored to support Aboriginal and Torres Strait Islander community members.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">👨‍👩‍👧</div>
+        <h3>Family Law Support</h3>
+        <p>Assistance with parenting arrangements, separation, and other family law matters.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🛡️</div>
+        <h3>Domestic &amp; Family Violence Advocacy</h3>
+        <p>Specialist support and legal advice for people experiencing domestic or family violence.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌊</div>
+        <h3>Disaster Response &amp; Recovery</h3>
+        <p>Legal assistance for community members affected by floods, fires, and natural disasters.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📚</div>
+        <h3>Community Legal Education</h3>
+        <p>Workshops and resources to help the community understand their legal rights and responsibilities.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-text">
+        <div class="section-label">About Us</div>
+        <h2 class="section-title">Here for Everyone in the Northern Rivers</h2>
+        <p>The Northern Rivers Community Legal Centre provides free, high-quality legal services to people across the Northern Rivers of NSW. We are here to help with tenancy, domestic violence, disaster recovery, Aboriginal services, and family law.</p>
+        <p style="color: var(--text-muted);">Our services are free and confidential. We work with people who may not otherwise be able to access legal help, ensuring that justice is not determined by your ability to pay.</p>
+        <div class="acknowledgement-block">
+          We acknowledge the people of the Bundjalung Nation, Traditional Custodians of the land on which we work and pay our respects to Elders past and present.
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="quick-facts">
+          <div class="quick-fact">
+            <div class="quick-fact-icon">📍</div>
+            <div class="quick-fact-text">
+              <strong>Address</strong>
+              <span>56 Carrington Street, Lismore NSW</span>
+            </div>
+          </div>
+          <div class="quick-fact">
+            <div class="quick-fact-icon">🕐</div>
+            <div class="quick-fact-text">
+              <strong>Office Hours</strong>
+              <span>Monday–Thursday 9am–4pm<br>Phones open Friday</span>
+            </div>
+          </div>
+          <div class="quick-fact">
+            <div class="quick-fact-icon">📞</div>
+            <div class="quick-fact-text">
+              <strong>Local Line</strong>
+              <span><a href="tel:0266211000" style="color:var(--accent-light);">(02) 6621 1000</a></span>
+            </div>
+          </div>
+          <div class="quick-fact">
+            <div class="quick-fact-icon">📞</div>
+            <div class="quick-fact-text">
+              <strong>Free Call</strong>
+              <span><a href="tel:1800689889" style="color:var(--accent-light);">1800 689 889</a></span>
+            </div>
+          </div>
+          <div class="quick-fact">
+            <div class="quick-fact-icon">✅</div>
+            <div class="quick-fact-text">
+              <strong>Services are Free</strong>
+              <span>All advice and assistance is provided at no cost</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div>
+        <div class="section-label">Get in Touch</div>
+        <h2 class="section-title">Get Free<br>Legal Help</h2>
+        <p class="section-sub">Call us, visit our Lismore office, or send us an enquiry below. All services are free and confidential.</p>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div class="contact-item-text">
+              <div class="label">Local Line</div>
+              <a href="tel:0266211000" class="value">(02) 6621 1000</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div class="contact-item-text">
+              <div class="label">Free Call</div>
+              <a href="tel:1800689889" class="value">1800 689 889</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div class="contact-item-text">
+              <div class="label">Address</div>
+              <span class="value">56 Carrington Street, Lismore NSW</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🕐</div>
+            <div class="contact-item-text">
+              <div class="label">Hours</div>
+              <span class="value">Mon–Thu 9am–4pm | Phones open Friday</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>Send an Enquiry</h3>
+        <p class="form-note">All information is kept strictly confidential.</p>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Jane" />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Smith" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="04XX XXX XXX" />
+        </div>
+        <div class="form-group">
+          <label>Area of Legal Help Needed</label>
+          <select>
+            <option value="">Select area...</option>
+            <option>General Legal Advice</option>
+            <option>Tenancy / Housing</option>
+            <option>Aboriginal Services</option>
+            <option>Family Law</option>
+            <option>Domestic &amp; Family Violence</option>
+            <option>Disaster Recovery</option>
+            <option>Community Legal Education</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Brief description of your situation</label>
+          <textarea rows="4" placeholder="Please describe your legal issue briefly (optional)..."></textarea>
+        </div>
+        <button class="btn-primary form-submit">Get Legal Help</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Northern Rivers Community Legal Centre</div>
+    <div class="footer-note">Rebuilt by <em>J&amp;G Operations</em> as a preview. Not yet live on northernriversclc.org.au.</div>
+    <div style="font-size:13px; color: var(--text-muted);">© 2026 NRCLC</div>
+  </footer>
+
+</body>
+</html>
