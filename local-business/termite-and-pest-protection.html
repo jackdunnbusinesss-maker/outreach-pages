@@ -1,489 +1,128 @@
 <!DOCTYPE html>
 <html lang="en-AU">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Termite And Pest Protection — Brisbane Pest and Termite Control Specialists</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg: #0e0e12;
-            --surface: #16161d;
-            --surface-light: #1e1e28;
-            --border: #2a2a36;
-            --accent: #f49528;
-            --accent-light: #f7ab4d;
-            --accent-glow: rgba(244, 149, 40, 0.15);
-            --white: #f0eff4;
-            --text: #c5c4ce;
-            --text-muted: #7e7d8a;
-        }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .container {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* ---- TOPBAR ---- */
-        .topbar {
-            padding: 18px 0;
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(14, 14, 18, 0.96);
-            backdrop-filter: blur(14px);
-        }
-        .topbar-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .topbar-logo-wrap {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .topbar-logo {
-            height: 36px;
-            width: 36px;
-            object-fit: cover;
-            border-radius: 6px;
-        }
-        .topbar-brand {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--white);
-            letter-spacing: 0.01em;
-        }
-        .topbar-brand span { color: var(--accent); }
-        .topbar-right {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        .topbar-nav {
-            display: flex;
-            gap: 20px;
-        }
-        .topbar-nav a {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 500;
-            letter-spacing: 0.3px;
-            transition: color 0.2s;
-        }
-        .topbar-nav a:hover { color: var(--accent-light); }
-        .topbar-cta {
-            font-size: 0.8rem;
-            color: var(--accent-light);
-            font-weight: 600;
-            text-decoration: none;
-            transition: color 0.2s;
-            white-space: nowrap;
-        }
-        .topbar-cta:hover { color: var(--white); }
-
-        /* ---- HERO ---- */
-        .hero {
-            padding: 88px 0 60px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -60px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 800px;
-            height: 500px;
-            background:
-                radial-gradient(ellipse 500px 300px at 50% 20%, rgba(244, 149, 40, 0.1) 0%, transparent 70%),
-                radial-gradient(ellipse 300px 200px at 30% 70%, rgba(244, 149, 40, 0.06) 0%, transparent 65%);
-            pointer-events: none;
-            z-index: 0;
-        }
-        .hero-inner { position: relative; z-index: 1; }
-        .hero-eyebrow {
-            font-size: 0.72rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--accent);
-            margin-bottom: 20px;
-            font-weight: 600;
-            display: inline-block;
-            border: 1px solid rgba(244, 149, 40, 0.4);
-            padding: 6px 18px;
-            border-radius: 100px;
-            background: rgba(244, 149, 40, 0.08);
-        }
-        .hero h1 {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(2rem, 5vw, 2.8rem);
-            color: var(--white);
-            line-height: 1.25;
-            margin-bottom: 24px;
-            font-weight: 600;
-        }
-        .hero h1 em {
-            color: var(--accent-light);
-            font-style: italic;
-        }
-        .hero-sub {
-            font-size: 1.05rem;
-            color: var(--text);
-            max-width: 560px;
-            margin: 0 auto 36px;
-            line-height: 1.85;
-        }
-        .hero-cta {
-            display: inline-block;
-            background: var(--accent);
-            color: #0e0e12;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 700;
-            padding: 16px 44px;
-            border-radius: 8px;
-            text-decoration: none;
-            letter-spacing: 0.3px;
-            transition: background 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 0 20px rgba(244, 149, 40, 0.35), 0 8px 24px rgba(244, 149, 40, 0.2);
-        }
-        .hero-cta:hover {
-            background: var(--accent-light);
-            transform: translateY(-2px);
-        }
-        .hero-trust {
-            margin-top: 20px;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        /* ---- SERVICES ---- */
-        .services {
-            padding: 72px 0;
-            border-top: 1px solid var(--border);
-        }
-        .section-heading {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.6rem;
-            color: var(--white);
-            margin-bottom: 40px;
-            text-align: center;
-            font-weight: 600;
-        }
-        .services-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-        .bullet-item {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 24px 24px;
-            transition: border-color 0.3s ease, transform 0.2s ease;
-        }
-        .bullet-item:hover {
-            border-color: var(--accent);
-            transform: translateY(-2px);
-        }
-        .bullet-item.featured {
-            grid-column: span 2;
-            border-color: rgba(244, 149, 40, 0.35);
-            background: var(--surface-light);
-        }
-        .bullet-item.featured:hover {
-            border-color: var(--accent);
-        }
-        .bullet-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        .bullet-text {
-            font-size: 0.92rem;
-            color: var(--text);
-            line-height: 1.65;
-        }
-        .bullet-item.featured .bullet-text {
-            font-size: 1rem;
-            line-height: 1.7;
-        }
-
-        /* ---- ABOUT ---- */
-        .about {
-            padding: 72px 0;
-            border-top: 1px solid var(--border);
-        }
-        .about p {
-            font-size: 1.02rem;
-            line-height: 1.9;
-            margin-bottom: 20px;
-            color: var(--text);
-        }
-        .about p:last-child { margin-bottom: 0; }
-        .highlight { color: var(--accent-light); font-weight: 600; }
-
-        /* ---- CONTACT ---- */
-        .contact {
-            padding: 72px 0;
-            border-top: 1px solid var(--border);
-        }
-        .contact-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-top: 32px;
-        }
-        .contact-item {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 20px 28px;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            transition: border-color 0.3s;
-        }
-        .contact-item:hover { border-color: var(--accent); }
-        .contact-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
-            font-weight: 600;
-        }
-        .contact-value {
-            font-size: 1rem;
-            color: var(--white);
-        }
-        .contact-value a {
-            color: var(--white);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .contact-value a:hover { color: var(--accent-light); }
-
-        /* ---- CTA ---- */
-        .cta-section {
-            padding: 80px 0;
-            border-top: 1px solid var(--border);
-            text-align: center;
-        }
-        .cta-heading {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.8rem;
-            color: var(--white);
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-        .cta-sub {
-            font-size: 1rem;
-            color: var(--text);
-            margin-bottom: 36px;
-            max-width: 480px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .cta-button {
-            display: inline-block;
-            background: var(--accent);
-            color: #0e0e12;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 700;
-            padding: 16px 48px;
-            border-radius: 8px;
-            text-decoration: none;
-            letter-spacing: 0.5px;
-            box-shadow: 0 0 20px rgba(244, 149, 40, 0.35), 0 8px 24px rgba(244, 149, 40, 0.2);
-            transition: background 0.3s ease, transform 0.2s ease;
-        }
-        .cta-button:hover {
-            background: var(--accent-light);
-            transform: translateY(-1px);
-        }
-        .cta-note {
-            margin-top: 16px;
-            font-size: 0.78rem;
-            color: var(--text-muted);
-        }
-
-        /* ---- FOOTER ---- */
-        .footer {
-            padding: 40px 0;
-            border-top: 1px solid var(--border);
-            text-align: center;
-        }
-        .footer p {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        /* ---- RESPONSIVE ---- */
-        @media (max-width: 600px) {
-            .hero { padding: 64px 0 48px; }
-            .services-grid { grid-template-columns: 1fr; }
-            .bullet-item.featured { grid-column: span 1; }
-            .cta-section { padding: 56px 0; }
-            .topbar-nav { display: none; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Termite and Pest Protection | Brisbane Pest &amp; Termite Control</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28;
+      --border: #2a2a36; --accent: #f49528; --accent-light: #f7b05c;
+      --accent-glow: rgba(244,149,40,0.15); --white: #f0eff4;
+      --text: #c5c4ce; --text-muted: #7e7d8a;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    .topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+    .topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+    .topbar-contact { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+    .hero { padding: 80px 0 48px; text-align: center; }
+    .hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+    .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+    .hero h1 em { color: var(--accent-light); font-style: italic; }
+    .hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+    .context { padding: 64px 0; border-top: 1px solid var(--border); }
+    .context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+    .context p:last-child { margin-bottom: 0; }
+    .highlight { color: var(--accent-light); font-weight: 600; }
+    .bullets { padding: 64px 0; border-top: 1px solid var(--border); }
+    .bullets-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+    .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+    .bullet-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+    .bullet-item:hover { border-color: var(--accent); }
+    .bullet-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+    .bullet-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+    .cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+    .cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+    .cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+    .cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+    .contact-details { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; }
+    .contact-item { font-size: 0.9rem; color: var(--text-muted); }
+    .contact-item a { color: var(--accent-light); text-decoration: none; }
+    .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+    .footer p { font-size: 0.75rem; color: var(--text-muted); }
+    @media (max-width: 600px) { .hero { padding: 56px 0 36px; } .bullet-item { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+  </style>
 </head>
 <body>
 
-    <!-- Topbar -->
-    <div class="topbar">
-        <div class="container topbar-inner">
-            <div class="topbar-logo-wrap">
-                <img src="https://termiteandpestprotection.com.au/wp-content/uploads/2024/04/cropped-BIG-JPEG-HIRES-scaled-1.jpg" alt="Termite And Pest Protection" class="topbar-logo">
-                <span class="topbar-brand">Termite &amp; Pest <span>Protection</span></span>
-            </div>
-            <div class="topbar-right">
-                <nav class="topbar-nav">
-                    <a href="#services">Services</a>
-                    <a href="#about">About</a>
-                    <a href="#contact">Contact</a>
-                </nav>
-                <a href="tel:1800201901" class="topbar-cta">1800 201 901</a>
-            </div>
-        </div>
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <span class="topbar-label">Termite and Pest Protection</span>
+        <span class="topbar-contact"><a href="tel:1800201901" style="color: inherit; text-decoration: none;">1800 201 901</a></span>
+      </div>
     </div>
+  </div>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="container hero-inner">
-            <p class="hero-eyebrow">Brisbane, QLD — Pest and Termite Specialists</p>
-            <h1>Brisbane's pest and termite control specialists.<br><em>Pre-construction treatments</em> for builders.</h1>
-            <p class="hero-sub">Termite And Pest Protection handles the full range of residential pest control across Brisbane, with specialist capability in pre-construction termite treatments for builders and construction companies.</p>
-            <a href="tel:1800201901" class="hero-cta">Book an Inspection</a>
-            <p class="hero-trust">Free quotes across Brisbane and surrounding areas</p>
-        </div>
-    </section>
+  <section class="hero">
+    <div class="container">
+      <p class="hero-eyebrow">Brisbane &amp; Surrounding Areas</p>
+      <h1>Pest and Termite Control for<br><em>Builders and Homeowners</em></h1>
+      <p class="hero-sub">Licensed pest management professionals protecting Brisbane properties from termites and pests. Pre-construction barriers, thorough inspections, baiting systems, and general pest treatments from a family-owned team with competitive pricing and detailed reporting.</p>
+    </div>
+  </section>
 
-    <!-- Services -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2 class="section-heading">Pest control services</h2>
-            <div class="services-grid">
-                <div class="bullet-item">
-                    <p class="bullet-label">Termites</p>
-                    <p class="bullet-text">Comprehensive inspections, baiting systems, and full eradication treatments to protect your property from termite damage.</p>
-                </div>
-                <div class="bullet-item">
-                    <p class="bullet-label">Ants</p>
-                    <p class="bullet-text">Targeted ant treatments for indoor infestations and exterior colonies around your home or site.</p>
-                </div>
-                <div class="bullet-item">
-                    <p class="bullet-label">Spiders</p>
-                    <p class="bullet-text">Safe removal and preventative barrier treatments for common and dangerous spider species across Brisbane.</p>
-                </div>
-                <div class="bullet-item">
-                    <p class="bullet-label">Rodents</p>
-                    <p class="bullet-text">Rat and mouse control using bait stations and exclusion techniques to keep your property rodent-free.</p>
-                </div>
-                <div class="bullet-item">
-                    <p class="bullet-label">Mosquitos</p>
-                    <p class="bullet-text">Outdoor mosquito treatments targeting breeding zones and resting areas around your home and yard.</p>
-                </div>
-                <div class="bullet-item">
-                    <p class="bullet-label">Flies</p>
-                    <p class="bullet-text">Fly management solutions for residential and commercial environments in and around Brisbane.</p>
-                </div>
-                <div class="bullet-item">
-                    <p class="bullet-label">Cockroaches</p>
-                    <p class="bullet-text">Gel baiting, crack and crevice treatments, and growth regulator applications for lasting cockroach control.</p>
-                </div>
-                <div class="bullet-item">
-                    <p class="bullet-label">Ticks</p>
-                    <p class="bullet-text">Tick control treatments for yards and outdoor spaces to protect your family and pets.</p>
-                </div>
-                <div class="bullet-item featured">
-                    <p class="bullet-label">Pre-Construction Termite Treatment</p>
-                    <p class="bullet-text">Specialist pre-construction termite barrier systems for builders and construction projects across Brisbane. Chemical and physical barriers installed at the correct stage of the build, ensuring compliance and long-term protection from day one. We understand builder timelines, we show up on schedule, and we document everything you need.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section class="context">
+    <div class="container">
+      <p>Termites cause serious structural damage to Australian homes and buildings, often long before any visible signs appear. Whether you're a builder starting a new project or a homeowner wanting peace of mind, having the right protection in place from the outset is far less disruptive and costly than dealing with an active infestation.</p>
+      <p>Termite and Pest Protection is a <span class="highlight">family-owned, licensed business</span> serving Brisbane and the surrounding region. We handle everything from pre-construction termite management using the GREENZONE advanced barrier system, through to post-construction treatments, annual inspections, and general pest control across residential and commercial properties.</p>
+      <p>Every inspection comes with a detailed written report, and we offer ongoing support to help you maintain manufacturer warranties over time. When you contact us, you deal with experienced professionals who know Brisbane's conditions and take the time to explain your options without pressure.</p>
+    </div>
+  </section>
 
-    <!-- About -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-heading">About us</h2>
-            <p><span class="highlight">Termite And Pest Protection</span> is a Brisbane-based pest control company specialising in termite management and pre-construction treatments for builders and the construction industry across the greater Brisbane area.</p>
-            <p>From comprehensive termite inspections and eradication to full residential pest management covering ants, spiders, rodents, cockroaches, mosquitos, flies, and ticks, we handle every pest challenge with targeted, effective solutions.</p>
-            <p>Our pre-construction work means we understand the timelines and compliance requirements builders face. We show up on schedule, complete the treatment correctly the first time, and provide the documentation you need for your records.</p>
-        </div>
-    </section>
+  <section class="bullets">
+    <div class="container">
+      <h2 class="bullets-heading">What We Cover</h2>
+      <ul class="bullet-list">
+        <li class="bullet-item">
+          <div class="bullet-label">Pre-Construction Termite Management</div>
+          <div class="bullet-text">GREENZONE advanced termite barrier system installed during construction, providing long-term protection before a single wall goes up. Designed for new builds across Brisbane and surrounds, with documentation to support your building warranty.</div>
+        </li>
+        <li class="bullet-item">
+          <div class="bullet-label">Termite Inspections &amp; Barrier Systems</div>
+          <div class="bullet-text">Thorough property inspections with detailed written reports. We identify risk areas and install or maintain physical and chemical barrier systems to keep termites out of your home or commercial building.</div>
+        </li>
+        <li class="bullet-item">
+          <div class="bullet-label">Termite Baiting Systems</div>
+          <div class="bullet-text">Strategic bait stations monitor and eliminate termite colonies over time, offering a discreet and ongoing defence for properties where traditional barrier installation is not practical.</div>
+        </li>
+        <li class="bullet-item">
+          <div class="bullet-label">General Pest Control</div>
+          <div class="bullet-text">Treatments for ants, spiders, rodents, mosquitoes, flies, cockroaches, and ticks. We also carry out fire ant treatments in line with Queensland biosecurity requirements.</div>
+        </li>
+        <li class="bullet-item">
+          <div class="bullet-label">Warranty Support &amp; Ongoing Maintenance</div>
+          <div class="bullet-text">We help you stay on top of annual servicing requirements so your termite treatment warranties remain valid. Regular follow-up inspections and reporting keep your protection current year after year.</div>
+        </li>
+      </ul>
+    </div>
+  </section>
 
-    <!-- Contact -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-heading">Get in touch</h2>
-            <div class="contact-grid">
-                <div class="contact-item">
-                    <span class="contact-label">Phone</span>
-                    <span class="contact-value"><a href="tel:1800201901">1800 201 901</a></span>
-                </div>
-                <div class="contact-item">
-                    <span class="contact-label">Email</span>
-                    <span class="contact-value"><a href="mailto:anthony.devries@tri.edu.au">anthony.devries@tri.edu.au</a></span>
-                </div>
-                <div class="contact-item">
-                    <span class="contact-label">Service Area</span>
-                    <span class="contact-value">Brisbane, QLD and surrounding areas</span>
-                </div>
-                <div class="contact-item">
-                    <span class="contact-label">Website</span>
-                    <span class="contact-value"><a href="https://termiteandpestprotection.com.au" target="_blank" rel="noopener">termiteandpestprotection.com.au</a></span>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="cta-heading">Get a Quote or Book an Inspection</h2>
+      <p class="cta-sub">Talk to our team about protecting your property. We service Brisbane and the surrounding areas, and we're happy to discuss your situation before any commitment is made.</p>
+      <a href="tel:1800201901" class="cta-button">Call 1800 201 901</a>
+      <div class="contact-details">
+        <div class="contact-item">Email: <a href="mailto:info@termiteandpestprotection.com.au">info@termiteandpestprotection.com.au</a></div>
+        <div class="contact-item">Servicing Brisbane and surrounding areas</div>
+      </div>
+    </div>
+  </section>
 
-    <!-- CTA -->
-    <section class="cta-section">
-        <div class="container">
-            <h2 class="cta-heading">Ready to protect your property?</h2>
-            <p class="cta-sub">Call us for a free quote on pest control or pre-construction termite treatments anywhere in Brisbane.</p>
-            <a href="tel:1800201901" class="cta-button">Book an Inspection</a>
-            <p class="cta-note">Call 1800 201 901 — free quotes, Brisbane and surrounds</p>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>Rebuilt by J&amp;G Operations as a preview. Not yet live on termiteandpestprotection.com.au</p>
-        </div>
-    </footer>
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Termite and Pest Protection. Licensed pest management professionals. Brisbane, QLD, Australia.</p>
+    </div>
+  </footer>
 
 </body>
 </html>

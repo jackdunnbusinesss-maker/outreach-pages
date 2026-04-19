@@ -1,690 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CFB Software — Astrobe Embedded Oberon Development Tools</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg: #0e0e12;
-            --surface: #16161d;
-            --surface-light: #1e1e28;
-            --border: #2a2a36;
-            --border-glow: rgba(91, 141, 212, 0.28);
-            --accent: #5b8dd4;
-            --accent-light: #7aaae8;
-            --accent-dim: #3d6ab0;
-            --accent-glow: rgba(91, 141, 212, 0.16);
-            --accent-glow-strong: rgba(91, 141, 212, 0.36);
-            --white: #f0eff4;
-            --text: #c5c4ce;
-            --text-muted: #7e7d8a;
-            --gradient-hero: linear-gradient(135deg, #5b8dd4 0%, #7aaae8 50%, #a0c4f8 100%);
-            --gradient-accent: linear-gradient(90deg, #5b8dd4, #7aaae8);
-        }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 760px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(28px);
-            transition: opacity 0.65s ease, transform 0.65s ease;
-        }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background:
-                radial-gradient(ellipse 900px 600px at 15% 10%, rgba(91, 141, 212, 0.05) 0%, transparent 65%),
-                radial-gradient(ellipse 700px 500px at 88% 80%, rgba(122, 170, 232, 0.04) 0%, transparent 60%),
-                radial-gradient(ellipse 500px 400px at 58% 48%, rgba(91, 141, 212, 0.03) 0%, transparent 60%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* TOP BAR */
-        .topbar {
-            padding: 16px 0;
-            border-bottom: 1px solid var(--border);
-            position: relative;
-            z-index: 10;
-            background: rgba(14, 14, 18, 0.96);
-            backdrop-filter: blur(14px);
-        }
-        .topbar-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .topbar-brand {
-            font-size: 0.82rem;
-            font-weight: 600;
-            color: var(--white);
-            letter-spacing: 0.5px;
-        }
-        .topbar-tag {
-            font-size: 0.75rem;
-            color: var(--accent-light);
-            font-weight: 500;
-        }
-
-        /* HERO */
-        .hero {
-            position: relative;
-            padding: 96px 0 72px;
-            text-align: center;
-            overflow: hidden;
-            z-index: 1;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -120px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 960px;
-            height: 640px;
-            background:
-                radial-gradient(ellipse 500px 340px at 28% 38%, rgba(91, 141, 212, 0.12) 0%, transparent 70%),
-                radial-gradient(ellipse 380px 280px at 78% 28%, rgba(122, 170, 232, 0.09) 0%, transparent 65%),
-                radial-gradient(ellipse 320px 260px at 55% 82%, rgba(91, 141, 212, 0.06) 0%, transparent 60%);
-            pointer-events: none;
-            z-index: 0;
-        }
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
-        }
-        .hero-inner { position: relative; z-index: 1; }
-
-        .hero-eyebrow {
-            display: inline-block;
-            font-size: 0.72rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--accent);
-            margin-bottom: 24px;
-            font-weight: 600;
-            border: 1px solid var(--border-glow);
-            padding: 6px 18px;
-            border-radius: 100px;
-            background: rgba(91, 141, 212, 0.07);
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(2rem, 5.5vw, 3rem);
-            line-height: 1.22;
-            margin-bottom: 28px;
-            font-weight: 700;
-            background: var(--gradient-hero);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-sub {
-            font-size: 1.05rem;
-            color: var(--text);
-            max-width: 580px;
-            margin: 0 auto 40px;
-            line-height: 1.85;
-        }
-
-        /* PLATFORM PILLS */
-        .platform-pills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 8px;
-        }
-        .platform-pill {
-            font-size: 0.73rem;
-            font-weight: 600;
-            color: var(--accent-light);
-            border: 1px solid var(--border-glow);
-            border-radius: 100px;
-            padding: 6px 16px;
-            background: rgba(91, 141, 212, 0.07);
-            letter-spacing: 0.5px;
-        }
-
-        /* STATS */
-        .stats {
-            padding: 64px 0;
-            position: relative;
-            z-index: 1;
-        }
-        .stats::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
-        }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-        .stat-card {
-            background: rgba(22, 22, 29, 0.7);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 32px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-            cursor: default;
-            backdrop-filter: blur(10px);
-        }
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse 200px 120px at 50% 0%, rgba(91, 141, 212, 0.07) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .stat-card:hover {
-            border-color: var(--border-glow);
-            box-shadow: 0 0 28px rgba(91, 141, 212, 0.1), 0 8px 32px rgba(0, 0, 0, 0.35);
-        }
-        .stat-number {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.9rem;
-            font-weight: 700;
-            background: var(--gradient-accent);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 8px;
-        }
-        .stat-label {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-
-        /* ABOUT */
-        .about {
-            padding: 72px 0;
-            position: relative;
-            z-index: 1;
-        }
-        .about::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border), transparent);
-        }
-        .section-heading {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.65rem;
-            color: var(--white);
-            margin-bottom: 32px;
-            font-weight: 600;
-        }
-        .about p {
-            font-size: 1.02rem;
-            line-height: 1.9;
-            margin-bottom: 20px;
-            color: var(--text);
-        }
-        .about p:last-child { margin-bottom: 0; }
-        .highlight { color: var(--accent-light); font-weight: 600; }
-
-        /* CODE INLINE */
-        code {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.88em;
-            color: var(--accent-light);
-            background: rgba(91, 141, 212, 0.1);
-            border: 1px solid rgba(91, 141, 212, 0.2);
-            border-radius: 4px;
-            padding: 1px 6px;
-        }
-
-        /* SERVICES */
-        .services {
-            padding: 72px 0;
-            position: relative;
-            z-index: 1;
-        }
-        .services::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border), transparent);
-        }
-        .service-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-        .service-item {
-            background: rgba(22, 22, 29, 0.65);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 26px 30px;
-            position: relative;
-            overflow: hidden;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
-            cursor: default;
-            backdrop-filter: blur(8px);
-        }
-        .service-item::before {
-            content: '';
-            position: absolute;
-            left: 0; top: 0; bottom: 0;
-            width: 3px;
-            background: var(--gradient-accent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .service-item:hover {
-            border-color: var(--border-glow);
-            box-shadow: 0 0 24px rgba(91, 141, 212, 0.08), 0 6px 24px rgba(0, 0, 0, 0.28);
-            transform: translateX(4px);
-        }
-        .service-item:hover::before { opacity: 1; }
-        .service-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        .service-text {
-            font-size: 0.97rem;
-            color: var(--text);
-            line-height: 1.7;
-        }
-
-        /* VALUES */
-        .values {
-            padding: 72px 0;
-            position: relative;
-            z-index: 1;
-        }
-        .values::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border), transparent);
-        }
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-        }
-        .value-card {
-            text-align: center;
-            padding: 32px 20px;
-            background: rgba(22, 22, 29, 0.65);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            position: relative;
-            overflow: hidden;
-            transition: border-color 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease;
-            cursor: default;
-            backdrop-filter: blur(10px);
-        }
-        .value-card:hover {
-            border-color: var(--border-glow);
-            transform: translateY(-3px);
-            box-shadow: 0 0 24px rgba(91, 141, 212, 0.1), 0 12px 40px rgba(0, 0, 0, 0.3);
-        }
-        .value-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 10px;
-            background: rgba(91, 141, 212, 0.1);
-            border: 1px solid var(--border-glow);
-            margin: 0 auto 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-        }
-        .value-title {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--white);
-            margin-bottom: 8px;
-        }
-        .value-desc {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        /* CREDENTIALS */
-        .credentials {
-            padding: 64px 0;
-            position: relative;
-            z-index: 1;
-        }
-        .credentials::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border), transparent);
-        }
-        .trust-intro {
-            font-size: 0.72rem;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            color: var(--text-muted);
-            margin-bottom: 28px;
-            font-weight: 600;
-            text-align: center;
-        }
-        .badge-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-        }
-        .badge {
-            background: rgba(22, 22, 29, 0.7);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 10px 20px;
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            font-weight: 500;
-            transition: border-color 0.25s, color 0.25s;
-            cursor: default;
-            backdrop-filter: blur(8px);
-        }
-        .badge:hover { border-color: var(--border-glow); color: var(--accent-light); }
-
-        /* CTA */
-        .cta-section {
-            padding: 96px 0;
-            position: relative;
-            text-align: center;
-            overflow: hidden;
-            z-index: 1;
-        }
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
-        }
-        .cta-blob {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 760px;
-            height: 440px;
-            background:
-                radial-gradient(ellipse 460px 260px at 38% 50%, rgba(91, 141, 212, 0.07) 0%, transparent 70%),
-                radial-gradient(ellipse 340px 220px at 72% 50%, rgba(122, 170, 232, 0.05) 0%, transparent 65%);
-            pointer-events: none;
-        }
-        .cta-inner { position: relative; z-index: 1; }
-        .cta-heading {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(1.7rem, 4vw, 2.1rem);
-            color: var(--white);
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-        .cta-sub {
-            font-size: 1rem;
-            color: var(--text);
-            margin-bottom: 40px;
-            max-width: 480px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #5b8dd4, #7aaae8);
-            color: #050c18;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.97rem;
-            font-weight: 700;
-            padding: 17px 52px;
-            border-radius: 10px;
-            text-decoration: none;
-            letter-spacing: 0.3px;
-            box-shadow:
-                0 0 28px rgba(91, 141, 212, 0.4),
-                0 0 60px rgba(91, 141, 212, 0.18),
-                0 8px 32px rgba(91, 141, 212, 0.2);
-            transition: box-shadow 0.3s ease, transform 0.2s ease, filter 0.3s ease;
-        }
-        .cta-button:hover {
-            box-shadow:
-                0 0 48px rgba(91, 141, 212, 0.65),
-                0 0 90px rgba(91, 141, 212, 0.3),
-                0 12px 48px rgba(91, 141, 212, 0.28);
-            transform: translateY(-2px);
-            filter: brightness(1.08);
-        }
-        .cta-note {
-            margin-top: 18px;
-            font-size: 0.78rem;
-            color: var(--text-muted);
-        }
-
-        /* FOOTER */
-        .footer {
-            padding: 40px 0;
-            border-top: 1px solid var(--border);
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-        .footer p { font-size: 0.73rem; color: var(--text-muted); }
-
-        @media (max-width: 640px) {
-            .hero { padding: 64px 0 52px; }
-            .stats-grid { grid-template-columns: 1fr; gap: 14px; }
-            .values-grid { grid-template-columns: 1fr; gap: 14px; }
-            .service-item { padding: 22px 22px; }
-            .cta-section { padding: 64px 0; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CFB Software – Embedded Oberon Development Tools</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28;
+      --border: #2a2a36; --accent: #d4959b; --accent-light: #e8b4b8;
+      --accent-glow: rgba(212,149,155,0.15); --white: #f0eff4;
+      --text: #c5c4ce; --text-muted: #7e7d8a;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    .topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+    .topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+    .topbar-contact { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+    .hero { padding: 80px 0 48px; text-align: center; }
+    .hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+    .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+    .hero h1 em { color: var(--accent-light); font-style: italic; }
+    .hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+    .context { padding: 64px 0; border-top: 1px solid var(--border); }
+    .context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+    .context p:last-child { margin-bottom: 0; }
+    .highlight { color: var(--accent-light); font-weight: 600; }
+    .bullets { padding: 64px 0; border-top: 1px solid var(--border); }
+    .bullets-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+    .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+    .bullet-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+    .bullet-item:hover { border-color: var(--accent); }
+    .bullet-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+    .bullet-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+    .cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+    .cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+    .cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+    .cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+    .contact-details { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; }
+    .contact-item { font-size: 0.9rem; color: var(--text-muted); }
+    .contact-item a { color: var(--accent-light); text-decoration: none; }
+    .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+    .footer p { font-size: 0.75rem; color: var(--text-muted); }
+    @media (max-width: 600px) { .hero { padding: 56px 0 36px; } .bullet-item { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+  </style>
 </head>
 <body>
 
-    <!-- Top Bar -->
-    <div class="topbar">
-        <div class="container topbar-inner">
-            <span class="topbar-brand">CFB Software</span>
-            <span class="topbar-tag">Embedded Oberon Development Tools</span>
-        </div>
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span class="topbar-label">CFB Software</span>
     </div>
+  </div>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-inner container">
-            <p class="hero-eyebrow">Professional Embedded Software Tooling</p>
-            <h1>Embedded Oberon Software Development Tools</h1>
-            <p class="hero-sub">CFB Software makes Astrobe — a professional Oberon-based IDE and compiler for embedded microcontroller development. Build reliable, efficient firmware for ARM Cortex-M and Raspberry Pi RP2040/RP2350 platforms on Windows 10/11.</p>
-            <div class="platform-pills">
-                <span class="platform-pill">ARM Cortex-M0 / M3 / M4 / M7</span>
-                <span class="platform-pill">Raspberry Pi RP2040</span>
-                <span class="platform-pill">Raspberry Pi RP2350</span>
-                <span class="platform-pill">RISC5 FPGA</span>
-                <span class="platform-pill">Windows 10 / 11</span>
-            </div>
-        </div>
-    </section>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <p class="hero-eyebrow">Embedded Oberon Development Tools</p>
+      <h1>Professional tooling for <em>Oberon-based</em> embedded systems development</h1>
+      <p class="hero-sub">CFB Software builds development tools for engineers working with Oberon on ARM Cortex-M and RISC5 FPGA targets. Precise, lean, and built for real hardware.</p>
+    </div>
+  </section>
 
-    <!-- Stats -->
-    <section class="stats fade-in">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">Oberon</div>
-                    <div class="stat-label">Professional Oberon-based IDE and compiler for embedded targets</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">ARM + RP2</div>
-                    <div class="stat-label">Support for Cortex-M and Raspberry Pi RP2040/RP2350 platforms</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">Astrobe</div>
-                    <div class="stat-label">The flagship toolchain — IDE, compiler, debugger in one package</div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Context -->
+  <section class="context">
+    <div class="container">
+      <p><span class="highlight">CFB Software</span> produces the Astrobe integrated development environment, purpose-built for writing, compiling, and deploying Oberon programs directly to embedded targets. The toolchain runs on Windows 10 and 11 (64-bit) and covers the RP2040, RP2350, ARM Cortex-M0 through M7, and RISC5 FPGA platforms.</p>
+      <p>Unlike general-purpose IDEs adapted for microcontrollers, Astrobe is designed from the ground up around the Oberon language and the constraints of bare-metal embedded programming. The result is a focused, fast workflow with no unnecessary abstraction between your code and the hardware it runs on.</p>
+      <p>The <span class="highlight">HCFiler</span> library extends this with a lean SDHC filesystem implementation optimised for embedded systems, where code size and determinism matter more than feature breadth.</p>
+    </div>
+  </section>
 
-    <!-- About -->
-    <section class="about fade-in">
-        <div class="container">
-            <h2 class="section-heading">About CFB Software</h2>
-            <p>CFB Software makes <span class="highlight">Astrobe</span> — a professional Oberon-based IDE and compiler purpose-built for embedded microcontroller development. Where most embedded toolchains are complex, fragile, and require deep configuration, Astrobe is designed to be clean, reliable, and productive from the start.</p>
-            <p>The Oberon language's strong type system and module structure make it exceptionally suited for <span class="highlight">safety-critical and resource-constrained embedded systems</span>. Astrobe brings this power to ARM Cortex-M microcontrollers and Raspberry Pi RP2040/RP2350 boards, running on Windows 10/11 with a self-contained, zero-dependency toolchain.</p>
-            <p>CFB Software also produces <span class="highlight">HCFiler</span> — a complete SDHC filesystem implementation for embedded systems — and Astrobe for RISC5 FPGA, extending Oberon development to hardware description targets.</p>
-        </div>
-    </section>
+  <!-- Bullets -->
+  <section class="bullets">
+    <div class="container">
+      <h2 class="bullets-heading">Tools and platforms</h2>
+      <ul class="bullet-list">
+        <li class="bullet-item">
+          <p class="bullet-label">Astrobe for RP2040 / RP2350</p>
+          <p class="bullet-text">Full Oberon development environment targeting the Raspberry Pi RP2040 and RP2350 microcontrollers. Compile, link, and deploy to the target from a single Windows-based IDE.</p>
+        </li>
+        <li class="bullet-item">
+          <p class="bullet-label">Astrobe for ARM Cortex-M</p>
+          <p class="bullet-text">Supports Cortex-M0, M3, M4, and M7 cores. Write Oberon for industry-standard ARM targets without relying on a C toolchain or vendor SDK layer.</p>
+        </li>
+        <li class="bullet-item">
+          <p class="bullet-label">Astrobe for RISC5 FPGA</p>
+          <p class="bullet-text">Targets the RISC5 soft processor on FPGA hardware. A self-contained path from Oberon source to a running FPGA system.</p>
+        </li>
+        <li class="bullet-item">
+          <p class="bullet-label">HCFiler</p>
+          <p class="bullet-text">A lean SDHC filesystem library for embedded systems. Small footprint, straightforward API, designed for the resource constraints of microcontroller environments.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
 
-    <!-- Services -->
-    <section class="services fade-in">
-        <div class="container">
-            <h2 class="section-heading">CFB Software Products</h2>
-            <ul class="service-list">
-                <li class="service-item">
-                    <p class="service-label">Astrobe for RP2040 &amp; RP2350</p>
-                    <p class="service-text">Full Oberon IDE and compiler targeting the Raspberry Pi RP2040 and RP2350 microcontrollers — enabling professional embedded development on the Pi platform with native Oberon code.</p>
-                </li>
-                <li class="service-item">
-                    <p class="service-label">Astrobe for Arm Cortex-M</p>
-                    <p class="service-text">Oberon development tools for ARM Cortex-M0, M3, M4, and M7 microcontrollers — a complete IDE and compiler suite covering the most widely deployed embedded processor families.</p>
-                </li>
-                <li class="service-item">
-                    <p class="service-label">Astrobe for RISC5 FPGA</p>
-                    <p class="service-text">Oberon-based tooling targeting the RISC5 FPGA processor — enabling Oberon development on soft-core FPGA implementations of the RISC5 architecture.</p>
-                </li>
-                <li class="service-item">
-                    <p class="service-label">HCFiler &mdash; SDHC Filesystem for Embedded Systems</p>
-                    <p class="service-text">A complete, lightweight SDHC/SD card filesystem implementation designed for embedded Oberon systems — providing reliable file storage on microcontrollers without an OS dependency.</p>
-                </li>
-            </ul>
-        </div>
-    </section>
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="cta-heading">Get started with Astrobe</h2>
+      <p class="cta-sub">Download the Astrobe IDE and start writing Oberon for your embedded target. Documentation, examples, and licence information are available on the CFB Software website.</p>
+      <a href="https://www.cfbsoftware.com" class="cta-button">Visit CFB Software</a>
+    </div>
+  </section>
 
-    <!-- Values -->
-    <section class="values fade-in">
-        <div class="container">
-            <h2 class="section-heading" style="text-align:center; margin-bottom: 36px;">The CFB Software philosophy</h2>
-            <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-icon">&#9670;</div>
-                    <div class="value-title">Reliability</div>
-                    <div class="value-desc">Oberon's strong type system reduces entire classes of embedded bugs — safer code by construction, not by convention.</div>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">&#9671;</div>
-                    <div class="value-title">Simplicity</div>
-                    <div class="value-desc">A self-contained toolchain with no sprawling dependencies — install and build without fighting your environment.</div>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">&#9669;</div>
-                    <div class="value-title">Precision</div>
-                    <div class="value-desc">Designed for embedded targets where every byte and cycle matters — compact code, predictable performance.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Credentials -->
-    <section class="credentials fade-in">
-        <div class="container">
-            <p class="trust-intro">Platforms &amp; technologies</p>
-            <div class="badge-grid">
-                <span class="badge">Oberon Language</span>
-                <span class="badge">ARM Cortex-M0</span>
-                <span class="badge">ARM Cortex-M3</span>
-                <span class="badge">ARM Cortex-M4</span>
-                <span class="badge">ARM Cortex-M7</span>
-                <span class="badge">Raspberry Pi RP2040</span>
-                <span class="badge">Raspberry Pi RP2350</span>
-                <span class="badge">RISC5 FPGA</span>
-                <span class="badge">SDHC Filesystem</span>
-                <span class="badge">Windows 10/11</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta-section fade-in">
-        <div class="cta-blob"></div>
-        <div class="container cta-inner">
-            <h2 class="cta-heading">Ready to build with Astrobe?</h2>
-            <p class="cta-sub">Whether you're targeting ARM Cortex-M, Raspberry Pi RP2040/RP2350, or RISC5 FPGA — CFB Software has the Oberon toolchain you need to get productive fast.</p>
-            <a href="https://cfbsoftware.com" class="cta-button">View Products</a>
-            <p class="cta-note">cfbsoftware.com &mdash; Professional embedded Oberon development tools</p>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>Rebuilt by J&amp;G Operations as a preview. Not yet live on cfbsoftware.com.</p>
-        </div>
-    </footer>
-
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.12 });
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-    </script>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; CFB Software. Embedded Oberon development tools for Windows 10/11 64-bit.</p>
+    </div>
+  </footer>
 
 </body>
 </html>

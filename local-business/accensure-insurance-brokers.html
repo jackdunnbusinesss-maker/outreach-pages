@@ -1,691 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-ZA">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Accensure Insurance Brokers</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accensure – Insurance Made Simple</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
   <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --bg: #0e0e12;
-      --surface: #16161d;
-      --surface-light: #1e1e28;
-      --border: #2a2a36;
-      --white: #f0eff4;
-      --text: #c5c4ce;
-      --text-muted: #7e7d8a;
-      --accent: #71262b;
-      --accent-light: #9c3540;
+      --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28;
+      --border: #2a2a36; --accent: #71262b; --accent-light: #9b4a50;
+      --accent-glow: rgba(113,38,43,0.15); --white: #f0eff4;
+      --text: #c5c4ce; --text-muted: #7e7d8a;
     }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    /* ── TOPBAR ── */
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(14, 14, 18, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 5%;
-      height: 68px;
-    }
-
-    .topbar-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .topbar-logo .logo-mark {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      background: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--white);
-    }
-
-    .topbar-logo .logo-text {
-      font-family: 'Playfair Display', serif;
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--white);
-    }
-
-    .btn-primary {
-      display: inline-block;
-      background: var(--accent);
-      color: var(--white);
-      padding: 10px 22px;
-      border-radius: 6px;
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      transition: background 0.2s, transform 0.15s;
-      cursor: pointer;
-      border: none;
-    }
-
-    .btn-primary:hover {
-      background: var(--accent-light);
-      transform: translateY(-1px);
-    }
-
-    .btn-outline {
-      display: inline-block;
-      border: 1.5px solid var(--accent);
-      color: var(--white);
-      padding: 10px 22px;
-      border-radius: 6px;
-      font-size: 14px;
-      font-weight: 600;
-      transition: background 0.2s, transform 0.15s;
-    }
-
-    .btn-outline:hover {
-      background: var(--accent);
-      transform: translateY(-1px);
-    }
-
-    /* ── HERO ── */
-    .hero {
-      min-height: 88vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 80px 5%;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -200px;
-      right: -200px;
-      width: 700px;
-      height: 700px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(113,38,43,0.18) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: -100px;
-      left: 30%;
-      width: 400px;
-      height: 400px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(113,38,43,0.08) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-inner { max-width: 760px; position: relative; z-index: 1; }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(113,38,43,0.15);
-      border: 1px solid rgba(113,38,43,0.4);
-      color: #e07a80;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 6px 14px;
-      border-radius: 100px;
-      margin-bottom: 24px;
-    }
-
-    .eyebrow::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #e07a80;
-      display: inline-block;
-    }
-
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(38px, 5.5vw, 64px);
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.15;
-      margin-bottom: 24px;
-    }
-
-    .hero h1 span { color: var(--accent-light); }
-
-    .hero-sub {
-      font-size: 18px;
-      color: var(--text);
-      max-width: 560px;
-      margin-bottom: 40px;
-      line-height: 1.7;
-    }
-
-    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
-
-    .hero-stats {
-      display: flex;
-      gap: 48px;
-      margin-top: 64px;
-      flex-wrap: wrap;
-    }
-
-    .hero-stat {}
-    .hero-stat .num {
-      font-family: 'Playfair Display', serif;
-      font-size: 36px;
-      font-weight: 700;
-      color: var(--white);
-    }
-    .hero-stat .label {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
-
-    /* ── SECTION SHARED ── */
-    section { padding: 96px 5%; }
-
-    .section-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent-light);
-      margin-bottom: 12px;
-    }
-
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(28px, 3.5vw, 44px);
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.2;
-      margin-bottom: 16px;
-    }
-
-    .section-sub {
-      font-size: 16px;
-      color: var(--text-muted);
-      max-width: 560px;
-      line-height: 1.7;
-    }
-
-    /* ── SERVICES ── */
-    .services { background: var(--surface); }
-
-    .services-header { margin-bottom: 56px; }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 24px;
-    }
-
-    .service-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 32px 28px;
-      transition: border-color 0.2s, transform 0.2s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--accent);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s;
-    }
-
-    .service-card:hover { border-color: rgba(113,38,43,0.5); transform: translateY(-4px); }
-    .service-card:hover::before { transform: scaleX(1); }
-
-    .service-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 10px;
-      background: rgba(113,38,43,0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-      font-size: 22px;
-    }
-
-    .service-card h3 {
-      font-size: 17px;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 10px;
-    }
-
-    .service-card p {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    /* ── ABOUT ── */
-    .about { background: var(--bg); }
-
-    .about-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .about-badge-row {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 32px;
-    }
-
-    .about-badge {
-      background: var(--surface-light);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 10px 16px;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text);
-    }
-
-    .about-visual {
-      position: relative;
-    }
-
-    .about-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 40px;
-    }
-
-    .about-card-stat {
-      margin-bottom: 32px;
-    }
-
-    .about-card-stat .big {
-      font-family: 'Playfair Display', serif;
-      font-size: 48px;
-      font-weight: 700;
-      color: var(--accent-light);
-    }
-
-    .about-card-stat .desc {
-      font-size: 15px;
-      color: var(--text-muted);
-      margin-top: 6px;
-    }
-
-    .about-divider {
-      height: 1px;
-      background: var(--border);
-      margin: 28px 0;
-    }
-
-    /* ── CONTACT ── */
-    .contact { background: var(--surface); }
-
-    .contact-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
-    }
-
-    .contact-info { display: flex; flex-direction: column; gap: 24px; margin-top: 32px; }
-
-    .contact-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-    }
-
-    .contact-item-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      background: rgba(113,38,43,0.15);
-      border: 1px solid rgba(113,38,43,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      flex-shrink: 0;
-    }
-
-    .contact-item-text .label {
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-      margin-bottom: 4px;
-    }
-
-    .contact-item-text .value {
-      font-size: 15px;
-      color: var(--white);
-      font-weight: 500;
-    }
-
-    .contact-item-text a.value {
-      transition: color 0.2s;
-    }
-
-    .contact-item-text a.value:hover { color: var(--accent-light); }
-
-    .contact-form {
-      background: var(--surface-light);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 40px;
-    }
-
-    .contact-form h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 24px;
-    }
-
-    .form-row { display: flex; gap: 16px; }
-    .form-group { display: flex; flex-direction: column; gap: 8px; flex: 1; margin-bottom: 16px; }
-
-    .form-group label {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text-muted);
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 12px 14px;
-      color: var(--white);
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      outline: none;
-      transition: border-color 0.2s;
-      resize: vertical;
-    }
-
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: var(--text-muted); }
-
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus { border-color: var(--accent); }
-
-    .form-group select option { background: var(--surface); }
-
-    .form-submit { width: 100%; margin-top: 8px; padding: 14px; font-size: 15px; }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--bg);
-      border-top: 1px solid var(--border);
-      padding: 40px 5%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .footer-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--white);
-    }
-
-    .footer-note {
-      font-size: 13px;
-      color: var(--text-muted);
-      text-align: center;
-      flex: 1;
-    }
-
-    .footer-note em { color: var(--text); font-style: normal; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      .about-inner, .contact-inner { grid-template-columns: 1fr; gap: 48px; }
-      .form-row { flex-direction: column; }
-      footer { flex-direction: column; text-align: center; }
-      .footer-note { text-align: center; }
-      .hero-stats { gap: 28px; }
-    }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    .topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+    .topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+    .topbar-contact { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+    .hero { padding: 80px 0 48px; text-align: center; }
+    .hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent-light); margin-bottom: 20px; font-weight: 600; }
+    .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+    .hero h1 em { color: var(--accent-light); font-style: italic; }
+    .hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+    .context { padding: 64px 0; border-top: 1px solid var(--border); }
+    .context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+    .context p:last-child { margin-bottom: 0; }
+    .highlight { color: var(--accent-light); font-weight: 600; }
+    .bullets { padding: 64px 0; border-top: 1px solid var(--border); }
+    .bullets-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+    .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+    .bullet-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+    .bullet-item:hover { border-color: var(--accent-light); }
+    .bullet-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-light); margin-bottom: 8px; font-weight: 600; }
+    .bullet-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+    .cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+    .cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+    .cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-button { display: inline-block; background: var(--accent-light); color: var(--white); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+    .cta-button:hover { background: #b55d64; transform: translateY(-1px); }
+    .contact-details { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; }
+    .contact-item { font-size: 0.9rem; color: var(--text-muted); }
+    .contact-item a { color: var(--accent-light); text-decoration: none; }
+    .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+    .footer p { font-size: 0.75rem; color: var(--text-muted); }
+    @media (max-width: 600px) { .hero { padding: 56px 0 36px; } .bullet-item { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
   </style>
 </head>
 <body>
 
-  <!-- TOPBAR -->
-  <header class="topbar">
-    <div class="topbar-logo">
-      <div class="logo-mark">A</div>
-      <span class="logo-text">Accensure</span>
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span class="topbar-label">Accensure Insurance Brokers</span>
+      <span class="topbar-contact"><a href="tel:0215920122" style="color: inherit; text-decoration: none;">021 592 0122</a></span>
     </div>
-    <a href="#contact" class="btn-primary">Get a Quote</a>
-  </header>
+  </div>
 
-  <!-- HERO -->
+  <!-- Hero -->
   <section class="hero">
-    <div class="hero-inner">
-      <div class="eyebrow">South Africa's Trusted Broker</div>
-      <h1>Insurance made <span>simple</span>,<br>for everyone &amp; everything</h1>
-      <p class="hero-sub">
-        Over 100 years of collective experience crafting tailored insurance packages for commercial and domestic clients — delivering service excellence and innovative products at competitive rates.
-      </p>
-      <div class="hero-ctas">
-        <a href="#contact" class="btn-primary">Get a Quote</a>
-        <a href="#services" class="btn-outline">Our Coverage</a>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="num">100+</div>
-          <div class="label">Years Collective Experience</div>
-        </div>
-        <div class="hero-stat">
-          <div class="num">4</div>
-          <div class="label">Coverage Categories</div>
-        </div>
-        <div class="hero-stat">
-          <div class="num">1</div>
-          <div class="label">Dedicated Point of Contact</div>
-        </div>
+    <div class="container">
+      <p class="hero-eyebrow">Insurance Brokers &bull; South Africa</p>
+      <h1>Insurance made simple, for <em>everyone and everything</em></h1>
+      <p class="hero-sub">Accensure brings over 100 years of collective experience to finding the right cover for individuals, families, and businesses. Personalised packages, straightforward advice, and service that doesn't stop at the sale.</p>
+    </div>
+  </section>
+
+  <!-- Context -->
+  <section class="context">
+    <div class="container">
+      <p><span class="highlight">Accensure</span> is an independent insurance brokerage with more than a century of combined experience across its team. That depth means clients get brokers who have seen enough claims, policies, and edge cases to give genuinely useful advice, not just a quote comparison.</p>
+      <p>Working with both commercial and domestic clients, Accensure builds tailored insurance packages rather than selling off-the-shelf products. The difference shows when something goes wrong. Clients who are properly covered, and properly understood by their broker, have a very different claims experience to those who bought on price alone.</p>
+      <p>From a sole trader needing basic business cover to a family protecting their home, vehicle, and life, <span class="highlight">Accensure's</span> approach is the same: listen first, advise honestly, and make the process as straightforward as possible.</p>
+    </div>
+  </section>
+
+  <!-- Bullets -->
+  <section class="bullets">
+    <div class="container">
+      <h2 class="bullets-heading">Cover for every situation</h2>
+      <ul class="bullet-list">
+        <li class="bullet-item">
+          <p class="bullet-label">Car Insurance</p>
+          <p class="bullet-text">Comprehensive, third-party fire and theft, and third-party cover options for personal and commercial vehicles. The right policy depends on your circumstances, not a generic recommendation.</p>
+        </li>
+        <li class="bullet-item">
+          <p class="bullet-label">Home Insurance</p>
+          <p class="bullet-text">Buildings and contents cover for homeowners and tenants. We assess what you actually need to protect, and make sure the sums insured reflect current replacement values.</p>
+        </li>
+        <li class="bullet-item">
+          <p class="bullet-label">Business Insurance</p>
+          <p class="bullet-text">Tailored commercial packages covering liability, assets, business interruption, and more. Built around your specific industry and risk profile, not a standard SME template.</p>
+        </li>
+        <li class="bullet-item">
+          <p class="bullet-label">Life &amp; Personal Insurance</p>
+          <p class="bullet-text">Life cover, disability, critical illness, and income protection. Structured to give your family and your finances real security if the unexpected happens.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="cta-heading">Talk to a broker today</h2>
+      <p class="cta-sub">Get in touch with the Accensure team for an honest conversation about your cover. No pressure, no jargon, just clear advice from experienced brokers.</p>
+      <a href="tel:0215920122" class="cta-button">Call 021 592 0122</a>
+      <div class="contact-details">
+        <p class="contact-item">Email: <a href="mailto:info@accensure.co.za">info@accensure.co.za</a></p>
       </div>
     </div>
   </section>
 
-  <!-- SERVICES -->
-  <section class="services" id="services">
-    <div class="services-header">
-      <div class="section-label">What We Cover</div>
-      <h2 class="section-title">Complete Protection,<br>Every Category</h2>
-      <p class="section-sub">From your car to your business, we structure packages that fit your unique situation — not a generic policy off the shelf.</p>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; Accensure Insurance Brokers. 100+ years collective experience. South Africa.</p>
     </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">🚗</div>
-        <h3>Car Insurance</h3>
-        <p>Comprehensive and third-party vehicle cover tailored to your driving profile and budget.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🏡</div>
-        <h3>Home &amp; Contents Insurance</h3>
-        <p>Protect your property and the belongings inside — whether you own or rent your home.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🏢</div>
-        <h3>Business Insurance</h3>
-        <p>Commercial packages covering liability, assets, interruption, and more for businesses of all sizes.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🛡️</div>
-        <h3>Life &amp; Personal Insurance</h3>
-        <p>Personal risk cover including life, disability, and critical illness to protect what matters most.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="about-inner">
-      <div class="about-content">
-        <div class="section-label">About Accensure</div>
-        <h2 class="section-title">A Century of Experience Behind Every Policy</h2>
-        <p style="color: var(--text); line-height: 1.75; margin-bottom: 16px;">
-          Accensure Insurance Brokers has over 100 years of collective experience in insurance. We structure tailored packages for commercial and domestic clients, with a commitment to service excellence and innovative products at competitive rates.
-        </p>
-        <p style="color: var(--text-muted); line-height: 1.75;">
-          We work with leading underwriters to find the right fit for you — not the most convenient one for us. Every client gets a dedicated broker who understands their risks.
-        </p>
-        <div class="about-badge-row">
-          <div class="about-badge">100+ Years Experience</div>
-          <div class="about-badge">Commercial &amp; Domestic</div>
-          <div class="about-badge">Competitive Rates</div>
-          <div class="about-badge">Service Excellence</div>
-        </div>
-      </div>
-      <div class="about-visual">
-        <div class="about-card">
-          <div class="about-card-stat">
-            <div class="big">100+</div>
-            <div class="desc">Years of collective insurance expertise across our brokerage team</div>
-          </div>
-          <div class="about-divider"></div>
-          <div class="about-card-stat">
-            <div class="big" style="font-size:32px;">Tailored</div>
-            <div class="desc">Packages structured for your specific commercial or domestic needs</div>
-          </div>
-          <div class="about-divider"></div>
-          <div class="about-card-stat">
-            <div class="big" style="font-size:32px;">Innovative</div>
-            <div class="desc">Products at competitive rates — not cookie-cutter cover</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-    <div class="contact-inner">
-      <div>
-        <div class="section-label">Get in Touch</div>
-        <h2 class="section-title">Request a<br>Free Quote</h2>
-        <p class="section-sub">Tell us what you need covered and we'll put together a package that works for you.</p>
-        <div class="contact-info">
-          <div class="contact-item">
-            <div class="contact-item-icon">📞</div>
-            <div class="contact-item-text">
-              <div class="label">Phone</div>
-              <a href="tel:0215920122" class="value">021 592 0122</a>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon">✉️</div>
-            <div class="contact-item-text">
-              <div class="label">Email</div>
-              <a href="mailto:info@accensure.co.za" class="value">info@accensure.co.za</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="contact-form">
-        <h3>Get a Quote</h3>
-        <div class="form-row">
-          <div class="form-group">
-            <label>First Name</label>
-            <input type="text" placeholder="Jane" />
-          </div>
-          <div class="form-group">
-            <label>Last Name</label>
-            <input type="text" placeholder="Smith" />
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Email Address</label>
-          <input type="email" placeholder="jane@example.com" />
-        </div>
-        <div class="form-group">
-          <label>Phone Number</label>
-          <input type="tel" placeholder="0XX XXX XXXX" />
-        </div>
-        <div class="form-group">
-          <label>Type of Cover Needed</label>
-          <select>
-            <option value="">Select a category...</option>
-            <option>Car Insurance</option>
-            <option>Home &amp; Contents Insurance</option>
-            <option>Business Insurance</option>
-            <option>Life &amp; Personal Insurance</option>
-            <option>Multiple / Not Sure</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Tell us more (optional)</label>
-          <textarea rows="3" placeholder="Brief description of what you'd like to cover..."></textarea>
-        </div>
-        <button class="btn-primary form-submit">Submit Quote Request</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-logo">Accensure Insurance Brokers</div>
-    <div class="footer-note">Rebuilt by <em>J&amp;G Operations</em> as a preview. Not yet live on accensure.co.za.</div>
-    <div style="font-size:13px; color: var(--text-muted);">© 2026 Accensure</div>
   </footer>
 
 </body>

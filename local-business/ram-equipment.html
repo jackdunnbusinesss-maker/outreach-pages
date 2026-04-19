@@ -1,430 +1,124 @@
 <!DOCTYPE html>
 <html lang="en-AU">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RAM Equipment — Adelaide's Dry Hire Equipment Specialist</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg: #0e0e12;
-            --surface: #16161d;
-            --surface-light: #1e1e28;
-            --border: #2a2a36;
-            --accent: #cc2200;
-            --accent-light: #e03a1e;
-            --accent-glow: rgba(204, 34, 0, 0.15);
-            --white: #f0eff4;
-            --text: #c5c4ce;
-            --text-muted: #7e7d8a;
-        }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .container {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* ---- TOPBAR ---- */
-        .topbar {
-            padding: 18px 0;
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(14, 14, 18, 0.96);
-            backdrop-filter: blur(14px);
-        }
-        .topbar-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .topbar-logo {
-            height: 34px;
-            width: auto;
-        }
-        .topbar-right {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        .topbar-nav {
-            display: flex;
-            gap: 20px;
-        }
-        .topbar-nav a {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 500;
-            letter-spacing: 0.3px;
-            transition: color 0.2s;
-        }
-        .topbar-nav a:hover { color: var(--accent-light); }
-        .topbar-cta {
-            font-size: 0.8rem;
-            color: var(--accent-light);
-            font-weight: 600;
-            text-decoration: none;
-            transition: color 0.2s;
-            white-space: nowrap;
-        }
-        .topbar-cta:hover { color: var(--white); }
-
-        /* ---- HERO ---- */
-        .hero {
-            padding: 88px 0 60px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -80px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 800px;
-            height: 500px;
-            background:
-                radial-gradient(ellipse 420px 280px at 50% 30%, rgba(204, 34, 0, 0.1) 0%, transparent 70%),
-                radial-gradient(ellipse 280px 200px at 30% 60%, rgba(204, 34, 0, 0.06) 0%, transparent 65%);
-            pointer-events: none;
-            z-index: 0;
-        }
-        .hero-inner { position: relative; z-index: 1; }
-        .hero-eyebrow {
-            font-size: 0.72rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--accent);
-            margin-bottom: 20px;
-            font-weight: 600;
-            display: inline-block;
-            border: 1px solid rgba(204, 34, 0, 0.4);
-            padding: 6px 18px;
-            border-radius: 100px;
-            background: rgba(204, 34, 0, 0.07);
-        }
-        .hero h1 {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(2rem, 5vw, 2.8rem);
-            color: var(--white);
-            line-height: 1.25;
-            margin-bottom: 24px;
-            font-weight: 600;
-        }
-        .hero h1 em {
-            color: var(--accent-light);
-            font-style: italic;
-        }
-        .hero-sub {
-            font-size: 1.05rem;
-            color: var(--text);
-            max-width: 560px;
-            margin: 0 auto 36px;
-            line-height: 1.85;
-        }
-        .hero-cta {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--white);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 700;
-            padding: 16px 44px;
-            border-radius: 8px;
-            text-decoration: none;
-            letter-spacing: 0.3px;
-            transition: background 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 0 20px rgba(204, 34, 0, 0.35), 0 8px 24px rgba(204, 34, 0, 0.2);
-        }
-        .hero-cta:hover {
-            background: var(--accent-light);
-            transform: translateY(-2px);
-        }
-
-        /* ---- SERVICES ---- */
-        .services {
-            padding: 72px 0;
-            border-top: 1px solid var(--border);
-        }
-        .section-heading {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.6rem;
-            color: var(--white);
-            margin-bottom: 40px;
-            text-align: center;
-            font-weight: 600;
-        }
-        .bullet-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .bullet-item {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 28px 32px;
-            transition: border-color 0.3s ease, transform 0.2s ease;
-        }
-        .bullet-item:hover {
-            border-color: var(--accent);
-            transform: translateY(-2px);
-        }
-        .bullet-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        .bullet-text {
-            font-size: 1rem;
-            color: var(--text);
-            line-height: 1.7;
-        }
-
-        /* ---- ABOUT ---- */
-        .about {
-            padding: 72px 0;
-            border-top: 1px solid var(--border);
-        }
-        .about p {
-            font-size: 1.02rem;
-            line-height: 1.9;
-            margin-bottom: 20px;
-            color: var(--text);
-        }
-        .about p:last-child { margin-bottom: 0; }
-        .highlight { color: var(--accent-light); font-weight: 600; }
-
-        /* ---- CONTACT ---- */
-        .contact {
-            padding: 72px 0;
-            border-top: 1px solid var(--border);
-        }
-        .contact-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-top: 32px;
-        }
-        .contact-item {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 20px 28px;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            transition: border-color 0.3s;
-        }
-        .contact-item:hover { border-color: var(--accent); }
-        .contact-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
-            font-weight: 600;
-        }
-        .contact-value {
-            font-size: 1rem;
-            color: var(--white);
-        }
-        .contact-value a {
-            color: var(--white);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .contact-value a:hover { color: var(--accent-light); }
-
-        /* ---- CTA ---- */
-        .cta-section {
-            padding: 80px 0;
-            border-top: 1px solid var(--border);
-            text-align: center;
-        }
-        .cta-heading {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.8rem;
-            color: var(--white);
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-        .cta-sub {
-            font-size: 1rem;
-            color: var(--text);
-            margin-bottom: 36px;
-            max-width: 480px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .cta-button {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--white);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 700;
-            padding: 16px 48px;
-            border-radius: 8px;
-            text-decoration: none;
-            letter-spacing: 0.5px;
-            box-shadow: 0 0 20px rgba(204, 34, 0, 0.35), 0 8px 24px rgba(204, 34, 0, 0.2);
-            transition: background 0.3s ease, transform 0.2s ease;
-        }
-        .cta-button:hover {
-            background: var(--accent-light);
-            transform: translateY(-1px);
-        }
-        .cta-note {
-            margin-top: 16px;
-            font-size: 0.78rem;
-            color: var(--text-muted);
-        }
-
-        /* ---- FOOTER ---- */
-        .footer {
-            padding: 40px 0;
-            border-top: 1px solid var(--border);
-            text-align: center;
-        }
-        .footer p {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        /* ---- RESPONSIVE ---- */
-        @media (max-width: 600px) {
-            .hero { padding: 64px 0 48px; }
-            .bullet-item { padding: 22px 20px; }
-            .cta-section { padding: 56px 0; }
-            .topbar-nav { display: none; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RAM Equipment | Dry Hire Equipment Specialist Adelaide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28;
+      --border: #2a2a36; --accent: #c0392b; --accent-light: #e74c3c;
+      --accent-glow: rgba(192,57,43,0.15); --white: #f0eff4;
+      --text: #c5c4ce; --text-muted: #7e7d8a;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    .topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+    .topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+    .topbar-contact { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+    .hero { padding: 80px 0 48px; text-align: center; }
+    .hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+    .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+    .hero h1 em { color: var(--accent-light); font-style: italic; }
+    .hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+    .context { padding: 64px 0; border-top: 1px solid var(--border); }
+    .context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+    .context p:last-child { margin-bottom: 0; }
+    .highlight { color: var(--accent-light); font-weight: 600; }
+    .bullets { padding: 64px 0; border-top: 1px solid var(--border); }
+    .bullets-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+    .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+    .bullet-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+    .bullet-item:hover { border-color: var(--accent); }
+    .bullet-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+    .bullet-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+    .cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+    .cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+    .cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-button { display: inline-block; background: var(--accent); color: var(--white); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+    .cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+    .contact-details { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; }
+    .contact-item { font-size: 0.9rem; color: var(--text-muted); }
+    .contact-item a { color: var(--accent-light); text-decoration: none; }
+    .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+    .footer p { font-size: 0.75rem; color: var(--text-muted); }
+    @media (max-width: 600px) { .hero { padding: 56px 0 36px; } .bullet-item { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+  </style>
 </head>
 <body>
 
-    <!-- Topbar -->
-    <div class="topbar">
-        <div class="container topbar-inner">
-            <img src="https://ramequipment.com.au/wp-content/uploads/2020/06/ram-logo-red.svg" alt="RAM Equipment" class="topbar-logo">
-            <div class="topbar-right">
-                <nav class="topbar-nav">
-                    <a href="#services">Services</a>
-                    <a href="#about">About</a>
-                    <a href="#contact">Contact</a>
-                </nav>
-                <a href="tel:1300726000" class="topbar-cta">1300 726 000</a>
-            </div>
-        </div>
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <span class="topbar-label">RAM Equipment</span>
+        <span class="topbar-contact">1300 726 000</span>
+      </div>
     </div>
+  </div>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="container hero-inner">
-            <p class="hero-eyebrow">Construction Equipment Dry Hire — South Australia</p>
-            <h1>Adelaide's dry hire equipment specialist.<br>To hire or buy, experience the <em>RAM difference.</em></h1>
-            <p class="hero-sub">RAM Equipment supplies builders and contractors across South Australia with ISO-certified construction equipment on a dry hire basis. No operator required. Transparent pricing. Equipment that performs.</p>
-            <a href="tel:1300726000" class="hero-cta">Get a Quote</a>
-        </div>
-    </section>
+  <section class="hero">
+    <div class="container">
+      <p class="hero-eyebrow">Dry Hire Equipment Specialist &mdash; Adelaide</p>
+      <h1>The right machine for the job, <em>when you need it</em></h1>
+      <p class="hero-sub">Excavators, skid steers, tipper trucks, compaction rollers and more. RAM Equipment supplies dry hire and sales to construction crews across South Australia, from Adelaide to Whyalla and Olympic Dam.</p>
+    </div>
+  </section>
 
-    <!-- Services -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2 class="section-heading">What we do</h2>
-            <ul class="bullet-list">
-                <li class="bullet-item">
-                    <p class="bullet-label">Dry Hire</p>
-                    <p class="bullet-text">Equipment supplied without an operator. You control the machine, the schedule, and the cost. Flexible hire periods for short-term jobs and long-term projects across South Australia.</p>
-                </li>
-                <li class="bullet-item">
-                    <p class="bullet-label">Equipment Sales</p>
-                    <p class="bullet-text">Looking to own rather than hire? RAM Equipment offers a range of construction equipment for sale. Talk to our team about what suits your business and budget.</p>
-                </li>
-                <li class="bullet-item">
-                    <p class="bullet-label">ISO-Certified Fleet</p>
-                    <p class="bullet-text">Every piece of equipment in our fleet is maintained to ISO standards. Inspected, serviced, and compliant before it leaves our yard so your site stays safe and your schedule stays on track.</p>
-                </li>
-                <li class="bullet-item">
-                    <p class="bullet-label">SA Equipment Directory</p>
-                    <p class="bullet-text">RAM Equipment is the go-to resource for construction equipment in South Australia. Whether you need a specific machine or general hire advice, we can point you in the right direction.</p>
-                </li>
-            </ul>
-        </div>
-    </section>
+  <section class="context">
+    <div class="container">
+      <p>RAM Equipment is Adelaide's dry hire specialist for construction and civil works. With depots at <span class="highlight">Richmond SA, Whyalla, and Olympic Dam</span>, the fleet is positioned to service projects across the state without the delays that come with sourcing from interstate. Every machine goes out clean, serviced, and ready to work.</p>
+      <p>The hire range covers the full spread of plant and equipment a construction site demands. From compact skid steers for tight access work through to graders and wheel loaders for large civil projects, the fleet is broad enough that most jobs can be sorted with a single call. A large range of attachments for excavators and skid steers means you can configure machines for specific tasks on site rather than hiring multiple units.</p>
+      <p>RAM Equipment is <span class="highlight">ISO certified</span> and a member of the SA Product and Service Directory. For contractors who need to purchase rather than hire, a used equipment inventory is also available alongside the hire fleet.</p>
+    </div>
+  </section>
 
-    <!-- About -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-heading">About RAM Equipment</h2>
-            <p><span class="highlight">RAM Equipment</span> is Adelaide's specialist in dry hire construction equipment. We supply machinery without an operator, giving builders and contractors full control over how and when they work.</p>
-            <p>Our ISO-certified fleet covers a broad range of construction applications. Whether you are a sole trader on a small residential job or a large contractor managing a commercial development, we have the right equipment and the experience to match.</p>
-            <p>Based in South Australia and focused on the local market, RAM Equipment understands the demands of construction in this region. Straightforward to deal with. Clear pricing. Equipment ready to work.</p>
-        </div>
-    </section>
+  <section class="bullets">
+    <div class="container">
+      <h2 class="bullets-heading">Plant and equipment available</h2>
+      <ul class="bullet-list">
+        <li class="bullet-item">
+          <div class="bullet-label">Hire Fleet</div>
+          <div class="bullet-text">Excavators, skid steers, site dumpers, compaction rollers, wheel loaders, dozers, graders, and tipper trucks available on dry hire. Short and long-term hire to suit your project schedule.</div>
+        </li>
+        <li class="bullet-item">
+          <div class="bullet-label">Attachments</div>
+          <div class="bullet-text">A large selection of attachments for excavators and skid steers, including buckets, augers, rippers, and more. Configure the right setup for your specific task without hiring additional machines.</div>
+        </li>
+        <li class="bullet-item">
+          <div class="bullet-label">Equipment Sales</div>
+          <div class="bullet-text">Buy quality construction equipment outright. The sales team can advise on plant suited to your fleet requirements and budget.</div>
+        </li>
+        <li class="bullet-item">
+          <div class="bullet-label">Used Equipment</div>
+          <div class="bullet-text">Quality used equipment available for purchase. All machines are inspected and presented in known condition, giving you confidence in what you're buying.</div>
+        </li>
+      </ul>
+    </div>
+  </section>
 
-    <!-- Contact -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-heading">Get in touch</h2>
-            <div class="contact-grid">
-                <div class="contact-item">
-                    <span class="contact-label">Phone</span>
-                    <span class="contact-value"><a href="tel:1300726000">1300 726 000</a></span>
-                </div>
-                <div class="contact-item">
-                    <span class="contact-label">Email</span>
-                    <span class="contact-value"><a href="mailto:mario.piro@ramequipment.com.au">mario.piro@ramequipment.com.au</a></span>
-                </div>
-                <div class="contact-item">
-                    <span class="contact-label">Website</span>
-                    <span class="contact-value"><a href="https://ramequipment.com.au" target="_blank" rel="noopener">ramequipment.com.au</a></span>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="cta-heading">Need plant on your next job?</h2>
+      <p class="cta-sub">Call the team or send through an enquiry. RAM Equipment is based in Richmond SA and services projects across South Australia.</p>
+      <a href="tel:1300726000" class="cta-button">Call 1300 726 000</a>
+      <div class="contact-details">
+        <span class="contact-item">Email: <a href="mailto:sales@ramequipment.com.au">sales@ramequipment.com.au</a></span>
+        <span class="contact-item">181 Richmond Rd, Richmond SA 5033</span>
+      </div>
+    </div>
+  </section>
 
-    <!-- CTA -->
-    <section class="cta-section">
-        <div class="container">
-            <h2 class="cta-heading">Ready to hire?</h2>
-            <p class="cta-sub">Call our team to discuss your project requirements and get a quote. We will match you with the right equipment at a price that works.</p>
-            <a href="tel:1300726000" class="cta-button">Get a Quote</a>
-            <p class="cta-note">Call 1300 726 000 during business hours</p>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>Rebuilt by J&amp;G Operations as a preview. Not yet live on ramequipment.com.au</p>
-        </div>
-    </footer>
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 RAM Equipment. All rights reserved. ISO Certified.</p>
+    </div>
+  </footer>
 
 </body>
 </html>
