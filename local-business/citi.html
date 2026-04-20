@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citi — Global Banking for Institutions, Wealth & Consumers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0e0e12;
+            --surface: #0f1632;
+            --surface-light: #162040;
+            --border: #1e2d50;
+            --accent: #1e6db5;
+            --accent-light: #4a9dd6;
+            --accent-glow: rgba(30, 109, 181, 0.15);
+            --white: #f0eff4;
+            --text: #c5c4ce;
+            --text-muted: #6e7d9a;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* TOPBAR */
+        .topbar {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+            background: var(--surface);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-brand {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .topbar-cta {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 8px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            transition: background 0.3s ease;
+        }
+        .topbar-cta:hover { background: var(--accent-light); }
+
+        /* HERO */
+        .hero {
+            padding: 96px 0 64px;
+            text-align: center;
+            background: linear-gradient(180deg, #0f1632 0%, var(--bg) 100%);
+        }
+        .hero-eyebrow {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-light);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            color: var(--white);
+            line-height: 1.25;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+        .hero h1 em {
+            color: var(--accent-light);
+            font-style: italic;
+        }
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 580px;
+            margin: 0 auto 44px;
+            line-height: 1.8;
+        }
+        .hero-cta {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .hero-cta:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+        }
+
+        /* SERVICES */
+        .services {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+        }
+        .section-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-light);
+            margin-bottom: 12px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .section-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.7rem;
+            color: var(--white);
+            margin-bottom: 48px;
+            text-align: center;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        .services-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .service-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 32px;
+            transition: border-color 0.3s ease;
+        }
+        .service-item:hover { border-color: var(--accent-light); }
+        .service-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .service-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        .service-tag {
+            display: inline-block;
+            font-size: 0.68rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent-light);
+            margin-bottom: 10px;
+        }
+
+        /* ABOUT */
+        .about {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+        }
+        .about p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+        .about p:last-child { margin-bottom: 0; }
+        .highlight { color: var(--accent-light); font-weight: 600; }
+
+        /* PILLARS */
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-top: 36px;
+        }
+        .pillar {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px 22px;
+        }
+        .pillar-title {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+        .pillar-sub {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* CTA */
+        .cta-section {
+            padding: 96px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.9rem;
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 36px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .cta-button:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+        }
+        .cta-note {
+            margin-top: 16px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            background: var(--surface);
+        }
+        .footer p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        @media (max-width: 600px) {
+            .hero { padding: 60px 0 40px; }
+            .pillars { grid-template-columns: 1fr; }
+            .topbar-inner { flex-direction: column; gap: 12px; }
+            .cta-section { padding: 60px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Topbar -->
+    <nav class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-brand">Citi</span>
+            <a href="#contact" class="topbar-cta">Contact Citi</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <p class="hero-eyebrow">Global Banking · Wealth · Markets</p>
+            <h1>The bank built for institutions that operate <em>across borders</em> and adapt to a digital world</h1>
+            <p class="hero-sub">A leading global bank for institutions with cross-border needs, a global provider in wealth management, and a U.S. personal bank — with the experience and capabilities to meet your banking needs wherever you grow.</p>
+            <a href="#contact" class="hero-cta">Contact Citi</a>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services">
+        <div class="container">
+            <p class="section-label">Our Five Businesses</p>
+            <h2 class="section-heading">Comprehensive capabilities across every dimension of global banking</h2>
+            <ul class="services-list">
+                <li class="service-item">
+                    <p class="service-tag">Services</p>
+                    <p class="service-name">Digital Assets, Trade Finance, Securities &amp; Custody</p>
+                    <p class="service-desc">End-to-end transaction banking, securities services, and custody solutions for the world's most complex institutional needs — including digital asset infrastructure.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-tag">Markets</p>
+                    <p class="service-name">Markets</p>
+                    <p class="service-desc">Fixed income, equities, foreign exchange, and commodities — delivered through a globally integrated trading and distribution platform.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-tag">Banking &amp; International</p>
+                    <p class="service-name">Banking &amp; International</p>
+                    <p class="service-desc">Corporate and investment banking solutions that serve clients as they expand across geographies and navigate complex cross-border transactions.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-tag">Wealth</p>
+                    <p class="service-name">Wealth Management</p>
+                    <p class="service-desc">Personalised wealth management for high-net-worth individuals, families, and institutions — with global reach and local expertise.</p>
+                </li>
+                <li class="service-item">
+                    <p class="service-tag">U.S. Personal Banking</p>
+                    <p class="service-name">U.S. Consumer Banking &amp; Cards</p>
+                    <p class="service-desc">Retail banking and credit card products for U.S. consumers, backed by Citi's global infrastructure and digital-first approach.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about">
+        <div class="container">
+            <p class="section-label">About Citi</p>
+            <h2 class="section-heading" style="text-align:left; margin-bottom:32px;">200 years of cross-border banking expertise</h2>
+            <p><span class="highlight">Citi</span> is a leading global bank serving institutions with cross-border needs, a global provider in wealth management, and a U.S. personal bank. Through five distinct businesses, Citi brings together the experience and capabilities to meet clients' banking needs as they grow across borders and adapt to the digital age.</p>
+            <p>From trade finance and digital assets to wealth management and U.S. consumer banking, Citi's globally integrated model means clients have a single partner for their most complex and consequential financial decisions.</p>
+            <div class="pillars">
+                <div class="pillar">
+                    <p class="pillar-title">Cross-Border Reach</p>
+                    <p class="pillar-sub">Operations across more countries than any other bank</p>
+                </div>
+                <div class="pillar">
+                    <p class="pillar-title">Digital Innovation</p>
+                    <p class="pillar-sub">Leading infrastructure for digital assets and transaction banking</p>
+                </div>
+                <div class="pillar">
+                    <p class="pillar-title">Institutional Depth</p>
+                    <p class="pillar-sub">Serving the world's largest corporations and governments</p>
+                </div>
+                <div class="pillar">
+                    <p class="pillar-title">Wealth Expertise</p>
+                    <p class="pillar-sub">Global wealth management with personalised advisory</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2 class="cta-heading">Ready to explore what Citi can do for your organisation?</h2>
+            <p class="cta-sub">Speak with a Citi specialist about your cross-border banking, institutional, or wealth management needs.</p>
+            <a href="#contact" class="cta-button">Contact Citi</a>
+            <p class="cta-note">A dedicated team member will be in touch to discuss your requirements.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Rebuilt by J&amp;G Operations as a preview. Not yet live on citigroup.com.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

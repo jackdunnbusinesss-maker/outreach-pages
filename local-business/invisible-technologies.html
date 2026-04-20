@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invisible Technologies — AI Agent Workflows & Data Infrastructure</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0e0e12;
+            --surface: #13131a;
+            --surface-light: #1a1a24;
+            --border: #22223a;
+            --accent: #0c76fe;
+            --accent-light: #4097ff;
+            --accent-glow: rgba(12, 118, 254, 0.15);
+            --accent-purple: #6d6dd4;
+            --accent-red: #cb6a60;
+            --white: #f0eff4;
+            --text: #c5c4ce;
+            --text-muted: #7e7d8a;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* TOPBAR */
+        .topbar {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-brand {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 0.5px;
+        }
+        .topbar-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            font-weight: 600;
+        }
+        .topbar-cta {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 8px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            transition: background 0.3s ease;
+        }
+        .topbar-cta:hover { background: var(--accent-light); }
+
+        /* HERO */
+        .hero {
+            padding: 96px 0 64px;
+            text-align: center;
+        }
+        .hero-eyebrow {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            color: var(--white);
+            line-height: 1.25;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+        .hero h1 em {
+            color: var(--accent-light);
+            font-style: italic;
+        }
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 580px;
+            margin: 0 auto 44px;
+            line-height: 1.8;
+        }
+        .hero-cta {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .hero-cta:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+        }
+
+        /* STAT STRIP */
+        .stats {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .stats-inner {
+            display: flex;
+            justify-content: center;
+            gap: 64px;
+            text-align: center;
+        }
+        .stat-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-light);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+        .stat-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        /* SERVICES */
+        .services {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+        }
+        .section-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 12px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .section-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.7rem;
+            color: var(--white);
+            margin-bottom: 48px;
+            text-align: center;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        .services-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .service-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 32px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            transition: border-color 0.3s ease;
+        }
+        .service-item:hover { border-color: var(--accent); }
+        .service-badge {
+            flex-shrink: 0;
+            background: var(--accent-glow);
+            border: 1px solid var(--accent);
+            color: var(--accent-light);
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-top: 2px;
+        }
+        .service-text h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 6px;
+        }
+        .service-text p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* INDUSTRIES */
+        .industries {
+            padding: 72px 0;
+            border-top: 1px solid var(--border);
+        }
+        .industry-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 36px;
+        }
+        .industry-pill {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-size: 0.83rem;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        /* ABOUT */
+        .about {
+            padding: 72px 0;
+            border-top: 1px solid var(--border);
+        }
+        .about p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+        .about p:last-child { margin-bottom: 0; }
+        .highlight { color: var(--accent-light); font-weight: 600; }
+
+        /* CTA */
+        .cta-section {
+            padding: 96px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .cta-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.9rem;
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 36px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .cta-button:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+        }
+        .cta-note {
+            margin-top: 16px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        @media (max-width: 600px) {
+            .hero { padding: 60px 0 40px; }
+            .stats-inner { gap: 32px; }
+            .service-item { flex-direction: column; gap: 12px; }
+            .topbar-inner { flex-direction: column; gap: 12px; }
+            .cta-section { padding: 60px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Topbar -->
+    <nav class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-brand">Invisible Technologies</span>
+            <a href="#demo" class="topbar-cta">Book a Demo</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <p class="hero-eyebrow">AI Agent Infrastructure</p>
+            <h1>Deploy AI agents that handle <em>complex, multi-step</em> work at enterprise scale</h1>
+            <p class="hero-sub">Invisible has trained over 80% of the world's leading AI models. Our modular system transforms raw data and manual processes into agent-ready workflows — so your teams can focus on what humans do best.</p>
+            <a href="#demo" class="hero-cta">Book a Demo</a>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats">
+        <div class="container">
+            <div class="stats-inner">
+                <div>
+                    <p class="stat-number">&gt;80%</p>
+                    <p class="stat-label">of leading AI models trained</p>
+                </div>
+                <div>
+                    <p class="stat-number">6</p>
+                    <p class="stat-label">modular platform products</p>
+                </div>
+                <div>
+                    <p class="stat-number">8+</p>
+                    <p class="stat-label">industries served</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services -->
+    <section class="services">
+        <div class="container">
+            <p class="section-label">Platform Products</p>
+            <h2 class="section-heading">Six modules. One unified system.</h2>
+            <ul class="services-list">
+                <li class="service-item">
+                    <span class="service-badge">Neuron</span>
+                    <div class="service-text">
+                        <h3>Data Labelling</h3>
+                        <p>High-quality, structured data labelling pipelines that produce the training sets AI models actually need to perform.</p>
+                    </div>
+                </li>
+                <li class="service-item">
+                    <span class="service-badge">Atomic</span>
+                    <div class="service-text">
+                        <h3>Task Automation</h3>
+                        <p>Break complex workflows into discrete, automatable tasks — eliminating manual bottlenecks across your operations.</p>
+                    </div>
+                </li>
+                <li class="service-item">
+                    <span class="service-badge">Meridial</span>
+                    <div class="service-text">
+                        <h3>Expert Marketplace</h3>
+                        <p>Access a curated network of domain experts for specialised annotation, review, and knowledge-intensive tasks.</p>
+                    </div>
+                </li>
+                <li class="service-item">
+                    <span class="service-badge">Synapse</span>
+                    <div class="service-text">
+                        <h3>Workflow Orchestration</h3>
+                        <p>Connect data, agents, and human review steps into orchestrated workflows that scale without friction.</p>
+                    </div>
+                </li>
+                <li class="service-item">
+                    <span class="service-badge">Axon</span>
+                    <div class="service-text">
+                        <h3>Model Evaluation</h3>
+                        <p>Rigorous evaluation frameworks that benchmark model performance against real-world task requirements.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Industries -->
+    <section class="industries">
+        <div class="container">
+            <p class="section-label">Industries</p>
+            <h2 class="section-heading" style="text-align:left; margin-bottom:0;">Built for the sectors where precision matters most</h2>
+            <div class="industry-pills">
+                <span class="industry-pill">Asset Management</span>
+                <span class="industry-pill">Banking</span>
+                <span class="industry-pill">Consumer Goods</span>
+                <span class="industry-pill">Energy</span>
+                <span class="industry-pill">Healthcare</span>
+                <span class="industry-pill">Insurance</span>
+                <span class="industry-pill">Public Sector</span>
+                <span class="industry-pill">Sports</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about">
+        <div class="container">
+            <p class="section-label">About</p>
+            <h2 class="section-heading" style="text-align:left; margin-bottom:32px;">The infrastructure layer behind the world's AI</h2>
+            <p><span class="highlight">Invisible Technologies</span> has trained more than 80% of the world's leading AI models. Our modular platform transforms data and manual processes into agent-ready workflows — giving enterprises the foundation to deploy AI that can think through complex, multi-step work, use tools, and write code when needed.</p>
+            <p>From asset management to public sector to sports analytics, Invisible operates at the intersection of human expertise and machine capability — ensuring every AI deployment is grounded in accurate, well-structured data and robust evaluation.</p>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="demo">
+        <div class="container">
+            <h2 class="cta-heading">See what agent-ready infrastructure looks like for your organisation</h2>
+            <p class="cta-sub">Book a demo and we'll walk through exactly how Invisible's platform maps to your workflows and data environment.</p>
+            <a href="#demo" class="cta-button">Book a Demo</a>
+            <p class="cta-note">No commitment. A focused conversation about your use case.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Rebuilt by J&amp;G Operations as a preview. Not yet live on invisible.email.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

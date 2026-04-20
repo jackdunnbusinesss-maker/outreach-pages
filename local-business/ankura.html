@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nikulski Financial, Inc. — Certified Financial Planners, Bettendorf IA</title>
+    <title>Ankura — Where Others Advise, We Solve</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
@@ -15,9 +15,9 @@
             --surface: #16161d;
             --surface-light: #1e1e28;
             --border: #2a2a36;
-            --accent: #d4959b;
-            --accent-light: #e8b4b8;
-            --accent-glow: rgba(212, 149, 155, 0.15);
+            --accent: #e5b922;
+            --accent-light: #f0cc55;
+            --accent-glow: rgba(229, 185, 34, 0.15);
             --white: #f0eff4;
             --text: #c5c4ce;
             --text-muted: #7e7d8a;
@@ -50,30 +50,16 @@
             align-items: center;
             gap: 16px;
         }
-        .topbar-logo-wrap {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
         .topbar-logo-img {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 1px solid var(--border);
-        }
-        .topbar-name {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--white);
+            height: 28px;
+            width: auto;
+            filter: brightness(1);
         }
         .topbar-meta {
             font-size: 0.72rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--text-muted);
-            white-space: nowrap;
         }
 
         /* HERO */
@@ -111,7 +97,7 @@
             color: var(--bg);
             font-family: 'Inter', sans-serif;
             font-size: 0.95rem;
-            font-weight: 600;
+            font-weight: 700;
             padding: 16px 44px;
             border-radius: 8px;
             text-decoration: none;
@@ -146,20 +132,20 @@
             border-top: 1px solid var(--border);
         }
         .services-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
         }
         .service-card {
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 10px;
-            padding: 28px 32px;
+            padding: 24px 24px;
             transition: border-color 0.3s ease;
         }
         .service-card:hover { border-color: var(--accent); }
         .service-tag {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--accent);
@@ -167,15 +153,30 @@
             font-weight: 600;
         }
         .service-title {
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             color: var(--white);
             font-weight: 600;
-            margin-bottom: 8px;
+            line-height: 1.4;
         }
-        .service-desc {
-            font-size: 0.95rem;
+
+        /* INDUSTRIES */
+        .industries {
+            padding: 48px 0;
+            border-top: 1px solid var(--border);
+        }
+        .industry-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .industry-pill {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 6px 16px;
+            font-size: 0.82rem;
             color: var(--text);
-            line-height: 1.7;
         }
 
         /* ABOUT */
@@ -199,20 +200,23 @@
         .about p:last-child { margin-bottom: 0; }
         .highlight { color: var(--accent-light); font-weight: 600; }
 
-        /* FIDUCIARY BADGE */
-        .fiduciary-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+        /* TAGLINE BLOCK */
+        .tagline-block {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 10px 16px;
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            margin-top: 24px;
+            border-left: 3px solid var(--accent);
+            border-radius: 8px;
+            padding: 24px 28px;
+            margin: 32px 0;
         }
-        .fiduciary-badge strong { color: var(--accent-light); font-weight: 600; }
+        .tagline-block p {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.15rem;
+            color: var(--white);
+            font-style: italic;
+            margin: 0;
+            line-height: 1.6;
+        }
 
         /* CONTACT */
         .contact {
@@ -235,19 +239,6 @@
             margin-left: auto;
             margin-right: auto;
         }
-        .contact-info {
-            margin-top: 28px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            align-items: center;
-        }
-        .contact-info a, .contact-info span {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            text-decoration: none;
-        }
-        .contact-info a:hover { color: var(--accent-light); }
         .cta-note {
             margin-top: 16px;
             font-size: 0.78rem;
@@ -268,7 +259,8 @@
 
         @media (max-width: 600px) {
             .hero { padding: 56px 0 36px; }
-            .service-card { padding: 22px 20px; }
+            .services-grid { grid-template-columns: 1fr; }
+            .service-card { padding: 20px 20px; }
             .contact { padding: 56px 0; }
             .topbar-meta { display: none; }
         }
@@ -279,50 +271,91 @@
     <!-- Topbar -->
     <div class="topbar">
         <div class="container topbar-inner">
-            <div class="topbar-logo-wrap">
-                <img src="https://nikulskifinancial.com/wp-content/uploads/2024/11/nikulski-logo-circle-no-background-with-white-letters.png" alt="Nikulski Financial Logo" class="topbar-logo-img">
-                <span class="topbar-name">Nikulski Financial, Inc.</span>
-            </div>
-            <span class="topbar-meta">Bettendorf, Iowa &mdash; Since 2009</span>
+            <img src="https://cms.ankura.com/app/uploads/2023/11/ANKURA_Logo_R_RGB_ColorReverse.svg" alt="Ankura" class="topbar-logo-img">
+            <span class="topbar-meta">Global Advisory &amp; Consulting</span>
         </div>
     </div>
 
     <!-- Hero -->
     <section class="hero">
         <div class="container">
-            <p class="hero-eyebrow">Certified Financial Planners &mdash; Fiduciary</p>
-            <h1>A financial plan built around your <em>purpose, passion, and joy</em></h1>
-            <p class="hero-sub">Nikulski Financial is a team of Certified Financial Planners committed to always acting in your best interests. Since 2009, we've helped individuals, families, and small businesses in Bettendorf and beyond build comprehensive plans that reflect who they are — not just what they own.</p>
-            <a href="#contact" class="btn-primary">Start Your Journey</a>
+            <p class="hero-eyebrow">Expert Advisory &mdash; Global Reach</p>
+            <h1>Where others advise, we <em>solve</em>. Where others consult, we partner.</h1>
+            <p class="hero-sub">Ankura brings together subject matter experts and seasoned advisors with hard-earned industry knowledge to solve the most complex business problems organisations face. From forensic investigations to transformational change, we don't just tell you what to do — we work alongside you to get it done.</p>
+            <a href="#contact" class="btn-primary">Contact Ankura</a>
         </div>
     </section>
 
     <!-- Services -->
     <section class="services" id="services">
         <div class="container">
-            <p class="section-eyebrow">What We Do</p>
-            <h2 class="section-heading">Comprehensive planning across every dimension of your financial life</h2>
+            <p class="section-eyebrow">Practice Areas</p>
+            <h2 class="section-heading">Deep expertise across every challenge your business faces</h2>
             <div class="services-grid">
                 <div class="service-card">
-                    <p class="service-tag">Core Service</p>
-                    <p class="service-title">Financial Planning</p>
-                    <p class="service-desc">We create customised financial plans that cover retirement, education, estate planning, insurance, and cash flow — built around your unique goals and circumstances, not a one-size-fits-all template.</p>
+                    <p class="service-tag">Technology</p>
+                    <p class="service-title">Ankura AI</p>
                 </div>
                 <div class="service-card">
-                    <p class="service-tag">Core Service</p>
-                    <p class="service-title">Investment Management</p>
-                    <p class="service-desc">Disciplined, fiduciary investment management aligned with your financial plan. We design and manage portfolios with your time horizon, risk tolerance, and life goals at the centre of every decision.</p>
+                    <p class="service-tag">Risk</p>
+                    <p class="service-title">Cybersecurity &amp; Data Privacy</p>
                 </div>
                 <div class="service-card">
-                    <p class="service-tag">Added Value</p>
-                    <p class="service-title">Concierge Services</p>
-                    <p class="service-desc">For clients who want more than investment management and a plan — our concierge offering provides deeper, ongoing advisory support across the full scope of your financial life.</p>
+                    <p class="service-tag">Disputes</p>
+                    <p class="service-title">Digital Disputes</p>
                 </div>
                 <div class="service-card">
-                    <p class="service-tag">Business Owners</p>
-                    <p class="service-title">Small Business Planning</p>
-                    <p class="service-desc">Dedicated planning for small business owners covering business structure, owner compensation, retirement plans, succession, and the intersection of your business finances with your personal financial goals.</p>
+                    <p class="service-tag">Advisory</p>
+                    <p class="service-title">Finance</p>
                 </div>
+                <div class="service-card">
+                    <p class="service-tag">Investigations</p>
+                    <p class="service-title">Forensics &amp; Investigations</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-tag">Strategy</p>
+                    <p class="service-title">Global Strategic Advisory</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-tag">Compliance</p>
+                    <p class="service-title">Governance, Risk &amp; Compliance</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-tag">Operations</p>
+                    <p class="service-title">Operations</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-tag">People</p>
+                    <p class="service-title">Talent &amp; Culture</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-tag">M&amp;A</p>
+                    <p class="service-title">Transactions</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-tag">Change</p>
+                    <p class="service-title">Transformation</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-tag">Recovery</p>
+                    <p class="service-title">Turnaround &amp; Restructuring</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries -->
+    <section class="industries">
+        <div class="container">
+            <p class="section-eyebrow" style="margin-bottom: 24px;">Industries We Serve</p>
+            <div class="industry-list">
+                <span class="industry-pill">Aerospace</span>
+                <span class="industry-pill">Construction</span>
+                <span class="industry-pill">Financial Services</span>
+                <span class="industry-pill">Healthcare</span>
+                <span class="industry-pill">Real Estate</span>
+                <span class="industry-pill">Sports</span>
+                <span class="industry-pill">Technology</span>
             </div>
         </div>
     </section>
@@ -330,34 +363,33 @@
     <!-- About -->
     <section class="about" id="about">
         <div class="container">
-            <p class="about-eyebrow">About Nikulski Financial</p>
-            <p>Nikulski Financial, Inc. was founded in <span class="highlight">2009</span> with a clear purpose: to provide comprehensive, fiduciary financial planning that genuinely serves clients' best interests. Based in Bettendorf, Iowa, the firm has grown to a team of more than 10 professionals holding CFP, CFA, and JD designations.</p>
-            <p>Where many financial firms lead with products, Nikulski leads with planning. The process starts with understanding your <span class="highlight">purpose, passion, and joy</span> — what you're working toward and why it matters — and builds a plan that works in service of that vision.</p>
-            <p>As fiduciary advisors, every member of the Nikulski team is legally and ethically obligated to put your interests first. No hidden commissions. No product-driven recommendations. Just honest, expert guidance from professionals who are on your side.</p>
-            <span class="fiduciary-badge"><strong>Fiduciary</strong> &mdash; Always acting in your best interests, since 2009</span>
+            <p class="about-eyebrow">About Ankura</p>
+
+            <div class="tagline-block">
+                <p>"We have built a global team of subject matter experts and seasoned advisors with hard-earned industry knowledge."</p>
+            </div>
+
+            <p>Ankura was founded to do something different. While traditional consulting firms deliver reports and recommendations, <span class="highlight">Ankura partners with clients to actually solve problems</span> — bringing operational depth, specialist expertise, and a genuine commitment to outcomes that go beyond the slide deck.</p>
+            <p>The firm's global team spans practice areas from <span class="highlight">forensic investigations and cybersecurity</span> to <span class="highlight">turnaround and restructuring, AI advisory, and transactions</span> — giving clients a single trusted partner capable of handling their most complex and sensitive challenges.</p>
+            <p>Across Aerospace, Construction, Financial Services, Healthcare, Real Estate, Sports, and Technology, Ankura's advisors bring the kind of industry-specific, hard-earned expertise that generic consulting firms simply can't replicate.</p>
         </div>
     </section>
 
     <!-- Contact -->
     <section class="contact" id="contact">
         <div class="container">
-            <h2 class="contact-heading">Start your journey</h2>
-            <p class="contact-sub">Ready to build a financial plan that reflects your life? Get in touch with the Nikulski Financial team to start the conversation.</p>
-            <a href="mailto:info@nikulskifinancial.com" class="btn-primary">Start Your Journey</a>
-            <div class="contact-info">
-                <a href="tel:+15633440118">563-344-0118</a>
-                <a href="mailto:info@nikulskifinancial.com">info@nikulskifinancial.com</a>
-                <span>Bettendorf, IA</span>
-            </div>
-            <p class="cta-note">No obligation. Just a conversation about where you are and where you want to go.</p>
+            <h2 class="contact-heading">Partner with Ankura</h2>
+            <p class="contact-sub">Facing a complex challenge? Whether it's a dispute, a transformation, a cybersecurity incident, or a transaction — Ankura has the experts to help you move forward with confidence.</p>
+            <a href="https://ankura.com/contact" class="btn-primary">Contact Ankura</a>
+            <p class="cta-note">Visit ankura.com to connect with the right expert for your situation.</p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>Nikulski Financial, Inc. &mdash; Bettendorf, Iowa &mdash; 563-344-0118 &mdash; info@nikulskifinancial.com</p>
-            <p style="margin-top: 8px;">Rebuilt by J&amp;G Operations as a preview. Not yet live on nikulskifinancial.com.</p>
+            <p>Ankura &mdash; Global Advisory &amp; Consulting</p>
+            <p style="margin-top: 8px;">Rebuilt by J&amp;G Operations as a preview. Not yet live on ankura.com.</p>
         </div>
     </footer>
 

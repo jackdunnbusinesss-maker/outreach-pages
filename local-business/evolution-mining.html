@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evolution Mining</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0e0e12;
+            --surface: #16161d;
+            --surface-light: #1e1e28;
+            --border: #2a2a36;
+            --accent: #743929;
+            --accent-light: #9e5540;
+            --accent-glow: rgba(116, 57, 41, 0.18);
+            --white: #f0eff4;
+            --text: #c5c4ce;
+            --text-muted: #7e7d8a;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* TOPBAR */
+        .topbar {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-logo {
+            height: 32px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+        .topbar-contact {
+            font-size: 0.82rem;
+            color: var(--accent-light);
+            font-weight: 500;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+        }
+        .topbar-contact:hover { color: var(--white); }
+
+        /* HERO */
+        .hero {
+            padding: 80px 0 56px;
+            text-align: center;
+        }
+        .hero-eyebrow {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-light);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            color: var(--white);
+            line-height: 1.25;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+        .hero h1 em {
+            color: var(--accent-light);
+            font-style: italic;
+        }
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 560px;
+            margin: 0 auto 36px;
+            line-height: 1.8;
+        }
+        .hero-cta {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .hero-cta:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+        }
+
+        /* STAT ROW */
+        .stat-row {
+            padding: 48px 0;
+            border-top: 1px solid var(--border);
+        }
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            text-align: center;
+        }
+        .stat-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 16px;
+        }
+        .stat-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2rem;
+            color: var(--accent-light);
+            font-weight: 600;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* SERVICES */
+        .services {
+            padding: 72px 0;
+            border-top: 1px solid var(--border);
+        }
+        .section-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-light);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .section-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.7rem;
+            color: var(--white);
+            margin-bottom: 40px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        .services-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .service-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 32px;
+            transition: border-color 0.3s ease;
+        }
+        .service-card:hover { border-color: var(--accent-light); }
+        .service-name {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-light);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .service-desc {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ABOUT */
+        .about {
+            padding: 72px 0;
+            border-top: 1px solid var(--border);
+        }
+        .about p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+        .about p:last-child { margin-bottom: 0; }
+        .highlight {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* CONTACT */
+        .contact {
+            padding: 72px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .contact-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .contact-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 36px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .contact-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .contact-btn:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+        }
+        .contact-detail {
+            margin-top: 32px;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.9;
+        }
+        .contact-detail a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        .contact-detail a:hover { color: var(--white); }
+
+        /* FOOTER */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        @media (max-width: 600px) {
+            .hero { padding: 56px 0 36px; }
+            .stat-grid { grid-template-columns: 1fr; }
+            .service-card { padding: 22px 20px; }
+            .contact { padding: 56px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Topbar -->
+    <header class="topbar">
+        <div class="container topbar-inner">
+            <img src="https://evolutionmining.com/wp-content/uploads/2025/09/logo-black.png" alt="Evolution Mining" class="topbar-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span style="display:none; font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--white); font-weight:600; letter-spacing:0.5px;">Evolution Mining</span>
+            <a href="tel:+61296962900" class="topbar-contact">+61 2 9696 2900</a>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <p class="hero-eyebrow">ASX: EVN — Leading Australian Gold Miner</p>
+            <h1>We say. We do. <em>We deliver.</em></h1>
+            <p class="hero-sub">Evolution Mining is a leading, globally relevant gold miner operating six mines across Australia and Canada. Inspired people. Responsible operations. A clear path to building a premier global gold company.</p>
+            <a href="https://evolutionmining.com" class="hero-cta" target="_blank" rel="noopener">View Investor Centre</a>
+        </div>
+    </section>
+
+    <!-- Stat Row -->
+    <section class="stat-row">
+        <div class="container">
+            <div class="stat-grid">
+                <div class="stat-item">
+                    <p class="stat-number">6</p>
+                    <p class="stat-label">Operating Mines</p>
+                </div>
+                <div class="stat-item">
+                    <p class="stat-number">2</p>
+                    <p class="stat-label">Countries</p>
+                </div>
+                <div class="stat-item">
+                    <p class="stat-number">Au</p>
+                    <p class="stat-label">Gold Focus</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services">
+        <div class="container">
+            <p class="section-label">Operations &amp; Capabilities</p>
+            <h2 class="section-heading">From ore body to market — end-to-end gold mining excellence</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <p class="service-name">Gold Mining Operations</p>
+                    <p class="service-desc">Six operating mines across Australia and Canada, combining open-cut and underground methods to extract gold safely, efficiently, and responsibly at scale.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-name">Exploration Programs</p>
+                    <p class="service-desc">Ongoing near-mine and greenfields exploration programs designed to grow the resource base, extend mine life, and underpin the next chapter of Evolution's global expansion.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-name">Investor Relations &amp; Quarterly Reporting</p>
+                    <p class="service-desc">Transparent, timely reporting for shareholders and analysts — quarterly production reports, financial results, and direct access to the Evolution leadership team.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-name">Interactive Analyst Centre</p>
+                    <p class="service-desc">A dedicated financial and operational data platform giving institutional and retail investors real-time access to mine-by-mine performance data, financial metrics, and historical reporting.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-name">Corporate Affairs &amp; Community Engagement</p>
+                    <p class="service-desc">Active investment in the communities surrounding our operations — including emergency services support in North West Queensland — reflecting our commitment to responsible and long-term regional stewardship.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about">
+        <div class="container">
+            <p class="section-label">About Evolution Mining</p>
+            <h2 class="section-heading" style="margin-bottom:28px;">Inspired people creating a premier global gold company</h2>
+            <p>Evolution Mining is one of Australia's leading gold producers, with <span class="highlight">six mines operating across Australia and Canada</span>. We mine gold responsibly — prioritising the safety of our people, the integrity of our operations, and the wellbeing of the communities we work alongside.</p>
+            <p>Our approach is grounded in the principle that what we say, we do. And what we do, we deliver. That commitment runs from the mine floor to the boardroom — informing how we manage our assets, how we communicate with shareholders, and how we engage with the broader communities that host our operations.</p>
+            <p>Headquartered in Brisbane with offices in Sydney, Evolution is building for the long term — growing our resource base through exploration and disciplined acquisition while maintaining the financial strength to fund continued growth.</p>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact">
+        <div class="container">
+            <h2 class="contact-heading">Connect with our investor relations team</h2>
+            <p class="contact-sub">Whether you're an institutional investor, analyst, or shareholder, our team is ready to discuss Evolution's operational performance and strategic direction.</p>
+            <a href="https://evolutionmining.com" class="contact-btn" target="_blank" rel="noopener">View Investor Centre</a>
+            <div class="contact-detail">
+                <p>Brisbane (Head Office): <a href="tel:+61296962900">+61 2 9696 2900</a></p>
+                <p>Sydney Office: <a href="tel:+61296962901">+61 2 9696 2901</a></p>
+                <p>Level 18, 120 Edward Street, Brisbane QLD 4000</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Evolution Mining — Six mines. Two countries. One clear direction.</p>
+            <p style="margin-top:8px;">Rebuilt by J&amp;G Operations as a preview. Not yet live on evolutionmining.com.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

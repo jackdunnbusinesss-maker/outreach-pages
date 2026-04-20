@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CFB Software — Embedded Oberon Development Tools</title>
+    <title>Swarthmore College — Leaders for the Common Good</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
@@ -54,10 +54,8 @@
             font-size: 1.1rem;
             font-weight: 600;
             color: var(--white);
-            letter-spacing: 0.5px;
         }
-        .topbar-logo span { color: var(--accent); }
-        .topbar-badge {
+        .topbar-meta {
             font-size: 0.72rem;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -186,15 +184,36 @@
         }
         .about p:last-child { margin-bottom: 0; }
         .highlight { color: var(--accent-light); font-weight: 600; }
-        .platform-note {
-            display: inline-block;
+
+        /* STATS ROW */
+        .stats {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 36px;
+        }
+        .stat-block {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 10px 16px;
-            font-size: 0.82rem;
+            border-radius: 8px;
+            padding: 20px 24px;
+            flex: 1;
+            min-width: 140px;
+            text-align: center;
+        }
+        .stat-value {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.6rem;
+            color: var(--accent-light);
+            font-weight: 600;
+            display: block;
+        }
+        .stat-label {
+            font-size: 0.75rem;
             color: var(--text-muted);
-            margin-top: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
         }
 
         /* CONTACT */
@@ -218,6 +237,19 @@
             margin-left: auto;
             margin-right: auto;
         }
+        .contact-info {
+            margin-top: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: center;
+        }
+        .contact-info a, .contact-info span {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+        .contact-info a:hover { color: var(--accent-light); }
         .cta-note {
             margin-top: 16px;
             font-size: 0.78rem;
@@ -240,6 +272,7 @@
             .hero { padding: 56px 0 36px; }
             .service-card { padding: 22px 20px; }
             .contact { padding: 56px 0; }
+            .stats { flex-direction: column; }
         }
     </style>
 </head>
@@ -248,46 +281,61 @@
     <!-- Topbar -->
     <div class="topbar">
         <div class="container topbar-inner">
-            <span class="topbar-logo">CFB <span>Software</span></span>
-            <span class="topbar-badge">Australia</span>
+            <span class="topbar-logo">Swarthmore College</span>
+            <span class="topbar-meta">Est. 1864 &mdash; Swarthmore, PA</span>
         </div>
     </div>
 
     <!-- Hero -->
     <section class="hero">
         <div class="container">
-            <p class="hero-eyebrow">Embedded Oberon Development Tools</p>
-            <h1>Professional tools for <em>Oberon</em> developers targeting Arm, RISC-V &amp; FPGA hardware</h1>
-            <p class="hero-sub">CFB Software builds the Astrobe toolchain — a complete Oberon language development environment for Raspberry Pi microcontrollers, Arm Cortex-M devices, and GateMate FPGA hardware. Lean, precise, and built for embedded systems professionals.</p>
-            <a href="#download" class="btn-primary">Download Astrobe</a>
+            <p class="hero-eyebrow">Liberal Arts &amp; Engineering &mdash; Since 1864</p>
+            <h1>Where <em>good ideas</em> meet the people committed to making them great</h1>
+            <p class="hero-sub">Since 1864, Swarthmore has given students the knowledge and experience to become leaders for the common good. A residential liberal arts college in suburban Philadelphia with a rigorous academic culture and a deep commitment to access.</p>
+            <a href="#apply" class="btn-primary">Apply to Swarthmore</a>
         </div>
     </section>
 
-    <!-- Services -->
-    <section class="services" id="products">
+    <!-- Services / Offerings -->
+    <section class="services" id="academics">
         <div class="container">
-            <p class="section-eyebrow">Products</p>
-            <h2 class="section-heading">Everything you need to build with Oberon</h2>
+            <p class="section-eyebrow">Academic Offerings</p>
+            <h2 class="section-heading">A complete education, built around your curiosity</h2>
             <div class="services-grid">
                 <div class="service-card">
-                    <p class="service-tag">Microcontroller</p>
-                    <p class="service-title">Astrobe for RP2040 / RP2350</p>
-                    <p class="service-desc">A complete Oberon development system for Raspberry Pi microcontrollers. Write, compile, and deploy Oberon programs directly to RP2040 and RP2350 hardware from a 64-bit Windows environment.</p>
+                    <p class="service-tag">Curriculum</p>
+                    <p class="service-title">Liberal Arts</p>
+                    <p class="service-desc">A broad, rigorous curriculum spanning the humanities, social sciences, and natural sciences — designed to develop critical thinkers who can move across disciplines and lead in any field.</p>
                 </div>
                 <div class="service-card">
-                    <p class="service-tag">Arm Cortex-M</p>
-                    <p class="service-title">Astrobe for Arm Cortex-M0 / M3 / M4 / M7</p>
-                    <p class="service-desc">A full Oberon development system targeting the Arm Cortex-M family. Supports M0, M3, M4, and M7 cores — giving embedded engineers a productive, type-safe language for bare-metal development.</p>
+                    <p class="service-tag">Curriculum</p>
+                    <p class="service-title">Engineering</p>
+                    <p class="service-desc">A fully accredited engineering programme embedded within a liberal arts college — combining technical depth with the broader perspective that defines a Swarthmore education.</p>
                 </div>
                 <div class="service-card">
-                    <p class="service-tag">FPGA</p>
-                    <p class="service-title">Astrobe for RISC5 FPGA</p>
-                    <p class="service-desc">An Oberon development environment targeting the Cologne Chip GateMate FPGA. Brings the full Astrobe workflow to FPGA-based RISC5 hardware for engineers working with custom silicon.</p>
+                    <p class="service-tag">Academic Distinction</p>
+                    <p class="service-title">Honors Program</p>
+                    <p class="service-desc">Swarthmore's signature seminar-based Honors Program offers a rigorous two-year programme of intensive study, culminating in external examination — one of the most challenging and distinctive academic paths available at any American college.</p>
                 </div>
                 <div class="service-card">
-                    <p class="service-tag">Filesystem</p>
-                    <p class="service-title">HCFiler</p>
-                    <p class="service-desc">A lean SDHC filesystem library purpose-built for embedded systems. HCFiler gives constrained hardware reliable, lightweight file I/O without the overhead of general-purpose filesystem stacks.</p>
+                    <p class="service-tag">Collaboration</p>
+                    <p class="service-title">Tri-College Consortium</p>
+                    <p class="service-desc">Students can cross-register for courses at Bryn Mawr College and Haverford College, expanding academic options and creating a richer intellectual community across three campuses.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-tag">Campus Life</p>
+                    <p class="service-title">Residential Campus</p>
+                    <p class="service-desc">A tightly knit residential campus in suburban Philadelphia where students live and learn together — fostering the close faculty relationships and collaborative spirit that make a Swarthmore education distinctive.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-tag">Access &amp; Opportunity</p>
+                    <p class="service-title">QuestBridge Partnership</p>
+                    <p class="service-desc">As a QuestBridge partner college, Swarthmore actively recruits and supports high-achieving students from low-income backgrounds — ensuring that financial circumstances are never a barrier to an exceptional education.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-tag">International</p>
+                    <p class="service-title">Global Engagement</p>
+                    <p class="service-desc">Robust international programmes, study abroad opportunities, and a globally minded curriculum prepare Swarthmore students to engage meaningfully with the world beyond campus.</p>
                 </div>
             </div>
         </div>
@@ -296,29 +344,46 @@
     <!-- About -->
     <section class="about" id="about">
         <div class="container">
-            <p class="about-eyebrow">About CFB Software</p>
-            <p>CFB Software develops professional <span class="highlight">Oberon language tools</span> for embedded systems engineers. The Astrobe toolchain is the result of years of focused work on making Oberon a productive, first-class language for resource-constrained hardware — from Raspberry Pi microcontrollers to Arm Cortex-M devices to custom FPGA designs.</p>
-            <p>Oberon's clean design, strict typing, and lean runtime make it well-suited to embedded development. Astrobe brings that language to modern hardware with a complete IDE, compiler, and deployment workflow — all running natively on 64-bit Windows 10 and Windows 11.</p>
-            <p>Whether you're building firmware for an Arm Cortex-M7, experimenting with the RP2350, or pushing into FPGA territory with the GateMate, Astrobe gives you a precise, reliable development environment designed specifically for the task.</p>
-            <span class="platform-note">&#9432;&nbsp; All CFB Software products require 64-bit Windows 10 or Windows 11.</span>
+            <p class="about-eyebrow">About Swarthmore</p>
+            <p>Swarthmore College is a place where people with good ideas come together to make great ones. Founded in <span class="highlight">1864</span> by members of the Religious Society of Friends, the college has spent more than 160 years preparing graduates to lead with purpose, rigour, and integrity.</p>
+            <p>Located on a beautifully landscaped campus just outside Philadelphia, Swarthmore offers the academic intensity of a research university within the close-knit environment of a small liberal arts college. Faculty teach their own classes. Students engage in real research. Conversations don't end when class does.</p>
+            <p>As a <span class="highlight">QuestBridge partner</span>, Swarthmore is committed to ensuring that access is not determined by income — meeting 100% of demonstrated financial need for all admitted students.</p>
+            <div class="stats">
+                <div class="stat-block">
+                    <span class="stat-value">1864</span>
+                    <span class="stat-label">Founded</span>
+                </div>
+                <div class="stat-block">
+                    <span class="stat-value">1,700+</span>
+                    <span class="stat-label">Undergraduates</span>
+                </div>
+                <div class="stat-block">
+                    <span class="stat-value">3</span>
+                    <span class="stat-label">Tri-College Campuses</span>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Contact -->
-    <section class="contact" id="download">
+    <section class="contact" id="apply">
         <div class="container">
-            <h2 class="contact-heading">Ready to start building?</h2>
-            <p class="contact-sub">Download Astrobe and get your Oberon development environment running on your hardware today. Evaluation versions available for all products.</p>
-            <a href="https://cfbsoftware.com" class="btn-primary">Download Astrobe</a>
-            <p class="cta-note">Visit cfbsoftware.com for documentation, downloads, and licensing.</p>
+            <h2 class="contact-heading">Begin your application</h2>
+            <p class="contact-sub">Swarthmore is looking for curious, committed students who want to do more than earn a degree. If that's you, we want to hear from you.</p>
+            <a href="https://swarthmore.edu/admissions" class="btn-primary">Apply to Swarthmore</a>
+            <div class="contact-info">
+                <a href="tel:+16103288000">(610) 328-8000</a>
+                <span>500 College Avenue, Swarthmore, PA 19081</span>
+            </div>
+            <p class="cta-note">Visit swarthmore.edu for admissions deadlines, financial aid, and campus visit information.</p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>CFB Software &mdash; Embedded Oberon Software Development Tools &mdash; Australia</p>
-            <p style="margin-top: 8px;">Rebuilt by J&amp;G Operations as a preview. Not yet live on cfbsoftware.com.</p>
+            <p>Swarthmore College &mdash; 500 College Avenue, Swarthmore, PA 19081 &mdash; (610) 328-8000</p>
+            <p style="margin-top: 8px;">Rebuilt by J&amp;G Operations as a preview. Not yet live on swarthmore.edu.</p>
         </div>
     </footer>
 

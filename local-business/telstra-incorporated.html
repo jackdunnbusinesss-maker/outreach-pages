@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telstra — Australia's Largest Mobile Network</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0e0e12;
+            --surface: #16161d;
+            --surface-light: #1e1e28;
+            --border: #2a2a36;
+            --accent: #d3af37;
+            --accent-light: #e8ca6a;
+            --accent-glow: rgba(211, 175, 55, 0.15);
+            --white: #f0eff4;
+            --text: #c5c4ce;
+            --text-muted: #7e7d8a;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* TOPBAR */
+        .topbar {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-name {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.4rem;
+            color: var(--white);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .topbar-contact {
+            font-size: 0.82rem;
+            color: var(--accent-light);
+            font-weight: 500;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+        }
+        .topbar-contact:hover { color: var(--white); }
+
+        /* HERO */
+        .hero {
+            padding: 80px 0 56px;
+            text-align: center;
+        }
+        .hero-eyebrow {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            color: var(--white);
+            line-height: 1.25;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+        .hero h1 em {
+            color: var(--accent-light);
+            font-style: italic;
+        }
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 560px;
+            margin: 0 auto 36px;
+            line-height: 1.8;
+        }
+        .hero-cta {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .hero-cta:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+        }
+
+        /* NETWORK BADGE */
+        .network-badge {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+        }
+        .badge-inner {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 32px;
+            text-align: center;
+        }
+        .badge-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.3rem;
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .badge-sub {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .badge-sub span {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* SERVICES */
+        .services {
+            padding: 72px 0;
+            border-top: 1px solid var(--border);
+        }
+        .section-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .section-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.7rem;
+            color: var(--white);
+            margin-bottom: 40px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        .services-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .service-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 32px;
+            transition: border-color 0.3s ease;
+        }
+        .service-card:hover { border-color: var(--accent); }
+        .service-name {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .service-desc {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ABOUT */
+        .about {
+            padding: 72px 0;
+            border-top: 1px solid var(--border);
+        }
+        .about p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+        .about p:last-child { margin-bottom: 0; }
+        .highlight {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* CONTACT */
+        .contact {
+            padding: 72px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .contact-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .contact-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 36px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .contact-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .contact-btn:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+        }
+        .contact-detail {
+            margin-top: 32px;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 2;
+        }
+        .contact-detail a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        .contact-detail a:hover { color: var(--white); }
+        .financial-note {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px 20px;
+            text-align: left;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        @media (max-width: 600px) {
+            .hero { padding: 56px 0 36px; }
+            .service-card { padding: 22px 20px; }
+            .contact { padding: 56px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Topbar -->
+    <header class="topbar">
+        <div class="container topbar-inner">
+            <span class="topbar-name">Telstra</span>
+            <a href="tel:1800007007" class="topbar-contact">1800 007 007</a>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <p class="hero-eyebrow">Australia's Largest Mobile Network</p>
+            <h1>Stay connected on the network <em>Australia relies on</em></h1>
+            <p class="hero-sub">Telstra connects Australians with 5G and 4G mobile plans, NBN broadband, Home 5G internet, pre-paid mobile, and on-demand streaming. One network. Nationwide coverage. Plans built for every household and business.</p>
+            <a href="tel:1800007007" class="hero-cta">Explore Plans</a>
+        </div>
+    </section>
+
+    <!-- Network Badge -->
+    <section class="network-badge">
+        <div class="container">
+            <div class="badge-inner">
+                <p class="badge-title">Australia's Largest Mobile Network</p>
+                <p class="badge-sub">Covering <span>99% of the Australian population</span> — more 5G, more 4G, more reach.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services">
+        <div class="container">
+            <p class="section-label">Plans &amp; Services</p>
+            <h2 class="section-heading">Mobile, broadband, 5G, and streaming — all on one network</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <p class="service-name">Mobile Plans — 5G &amp; 4G</p>
+                    <p class="service-desc">Post-paid mobile plans on Australia's largest 5G and 4G network. Choose the data allowance, device, and extras that fit how you use your phone — with Telstra Plus rewards included.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-name">NBN Home Internet</p>
+                    <p class="service-desc">Fast, reliable NBN broadband for your home. Telstra's NBN plans come with no lock-in options, Wi-Fi modem included, and network monitoring so we can spot issues before you do.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-name">Home 5G Internet</p>
+                    <p class="service-desc">No NBN connection? No problem. Telstra Home 5G delivers high-speed wireless internet using the 5G network — simple setup, no technician required, and competitive speeds for streaming and working from home.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-name">Pre-Paid Mobile</p>
+                    <p class="service-desc">Flexible pre-paid plans on the same Telstra network — no contracts, no surprises. Recharge as you go or lock in a monthly expiry that works for your lifestyle.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-name">Telstra Plus — Loyalty Rewards</p>
+                    <p class="service-desc">Earn points on your Telstra services and redeem them for devices, accessories, entertainment, and more. The longer you stay, the more you earn — rewarding loyalty from day one.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-name">Streaming &amp; Entertainment</p>
+                    <p class="service-desc">On-demand streaming services bundled with select Telstra plans — giving you access to premium entertainment content without needing multiple subscriptions.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-name">Device Trade-In</p>
+                    <p class="service-desc">Trade in your existing device toward the latest phone or tablet. Telstra's trade-in program makes upgrading more affordable while responsibly handling your old device.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about">
+        <div class="container">
+            <p class="section-label">About Telstra</p>
+            <h2 class="section-heading" style="margin-bottom:28px;">Connecting Australians — wherever they are</h2>
+            <p>Telstra is <span class="highlight">Australia's largest telecommunications company</span> — operating the nation's biggest mobile network to keep Australians connected at home, at work, and everywhere in between. From major cities to remote communities, the Telstra network reaches further than any other provider in the country.</p>
+            <p>Our product range covers every connectivity need: <span class="highlight">5G and 4G mobile plans</span> for individuals and families, NBN broadband and Home 5G for household internet, pre-paid mobile for flexible users, and streaming services bundled for entertainment at home. Every plan is backed by our network and supported by our team.</p>
+            <p>We also understand that circumstances change. Our financial assistance team is available to help customers experiencing hardship — because staying connected shouldn't depend on your circumstances.</p>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact">
+        <div class="container">
+            <h2 class="contact-heading">Find the right plan for you</h2>
+            <p class="contact-sub">Call our team to compare mobile, NBN, and 5G home internet plans — or get help with your existing Telstra services.</p>
+            <a href="tel:1800007007" class="contact-btn">Explore Plans</a>
+            <div class="contact-detail">
+                <p>General Enquiries: <a href="tel:1800007007">1800 007 007</a></p>
+            </div>
+            <div class="financial-note">
+                <strong style="color: var(--text); font-size: 0.82rem;">Financial Assistance</strong><br>
+                If you're experiencing financial hardship and need support with your Telstra account, contact our dedicated team at <a href="mailto:FinancialAssistance@team.telstra.com">FinancialAssistance@team.telstra.com</a>.
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Telstra — Mobile, broadband, 5G, and streaming services across Australia.</p>
+            <p style="margin-top:8px;">Rebuilt by J&amp;G Operations as a preview. Not yet live on telstra.com.au.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

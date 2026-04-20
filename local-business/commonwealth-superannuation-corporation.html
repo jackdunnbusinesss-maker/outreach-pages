@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commonwealth Superannuation Corporation (CSC)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0e0e12;
+            --surface: #16161d;
+            --surface-light: #1e1e28;
+            --border: #2a2a36;
+            --accent: #d4959b;
+            --accent-light: #e8b4b8;
+            --accent-glow: rgba(212, 149, 155, 0.15);
+            --white: #f0eff4;
+            --text: #c5c4ce;
+            --text-muted: #7e7d8a;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* TOPBAR */
+        .topbar {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar-logo {
+            height: 36px;
+            width: auto;
+        }
+        .topbar-contact {
+            font-size: 0.82rem;
+            color: var(--accent-light);
+            font-weight: 500;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+        }
+        .topbar-contact:hover { color: var(--white); }
+
+        /* HERO */
+        .hero {
+            padding: 80px 0 56px;
+            text-align: center;
+        }
+        .hero-eyebrow {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            color: var(--white);
+            line-height: 1.25;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+        .hero h1 em {
+            color: var(--accent-light);
+            font-style: italic;
+        }
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 560px;
+            margin: 0 auto 36px;
+            line-height: 1.8;
+        }
+        .hero-cta {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .hero-cta:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+        }
+
+        /* SERVICES */
+        .services {
+            padding: 72px 0;
+            border-top: 1px solid var(--border);
+        }
+        .section-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .section-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.7rem;
+            color: var(--white);
+            margin-bottom: 40px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        .services-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .service-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 32px;
+            transition: border-color 0.3s ease;
+        }
+        .service-card:hover { border-color: var(--accent); }
+        .service-name {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .service-desc {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ABOUT */
+        .about {
+            padding: 72px 0;
+            border-top: 1px solid var(--border);
+        }
+        .about p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+        .about p:last-child { margin-bottom: 0; }
+        .highlight {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* CONTACT */
+        .contact {
+            padding: 72px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .contact-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .contact-sub {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 36px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .contact-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .contact-btn:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+        }
+        .contact-note {
+            margin-top: 16px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        .contact-detail {
+            margin-top: 32px;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+        .contact-detail a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        .contact-detail a:hover { color: var(--white); }
+
+        /* FOOTER */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        @media (max-width: 600px) {
+            .hero { padding: 56px 0 36px; }
+            .service-card { padding: 22px 20px; }
+            .contact { padding: 56px 0; }
+            .topbar-logo { height: 28px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Topbar -->
+    <header class="topbar">
+        <div class="container topbar-inner">
+            <img src="https://csc.gov.au/assets/images/csc-logo-lockup.svg" alt="CSC" class="topbar-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span style="display:none; font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--white); font-weight:600;">CSC</span>
+            <a href="tel:1300338240" class="topbar-contact">1300 338 240</a>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <p class="hero-eyebrow">Australian Government &amp; ADF Superannuation</p>
+            <h1>Retirement decisions that work <em>for you</em> — at every stage of your career</h1>
+            <p class="hero-sub">Commonwealth Superannuation Corporation is the dedicated super fund for current and former Australian Government employees and ADF members. Get expert guidance tailored to your age, life stage, and scheme.</p>
+            <a href="tel:1300338240" class="hero-cta">Speak with a Super Specialist</a>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services">
+        <div class="container">
+            <p class="section-label">Our Schemes &amp; Products</p>
+            <h2 class="section-heading">Superannuation solutions built around government service</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <p class="service-name">PSSap</p>
+                    <p class="service-desc">Public Sector Superannuation accumulation plan — a flexible, low-cost super fund for current Australian Government employees building their retirement savings.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-name">PSS</p>
+                    <p class="service-desc">Public Sector Superannuation Scheme — a defined benefit fund for eligible Australian Government employees with long-term career commitments to the public sector.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-name">CSS</p>
+                    <p class="service-desc">Commonwealth Superannuation Scheme — Australia's original public sector super scheme, supporting members who have served the government for decades.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-name">MilitarySuper &amp; DFRDB</p>
+                    <p class="service-desc">Tailored retirement schemes for ADF members — MilitarySuper for accumulation-phase members and the Defence Force Retirement and Death Benefits scheme for long-serving personnel.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-name">CSCri — Retirement Income Stream</p>
+                    <p class="service-desc">Turn your super savings into a regular, tax-effective income in retirement. CSCri is designed to support your financial wellbeing through every year of your post-work life.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-name">ADF Cover &amp; lifePLUS Insurance</p>
+                    <p class="service-desc">ADF Cover and ADF lifePLUS Protect provide death, total and permanent disability, and income protection cover purpose-built for the unique risks of ADF service.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about">
+        <div class="container">
+            <p class="section-label">About CSC</p>
+            <h2 class="section-heading" style="margin-bottom:28px;">Dedicated to those who serve Australia</h2>
+            <p>Commonwealth Superannuation Corporation exists for one purpose: to help <span class="highlight">current and former Australian Government employees and ADF members</span> make better retirement decisions. We don't serve the general public — we serve the people who serve the nation.</p>
+            <p>That focus means every product, every piece of guidance, and every specialist on our team understands the unique career paths, entitlements, and schemes that apply to government and defence service. Whether you're early in your career with PSSap, approaching retirement with CSS, or transitioning out of the ADF, CSC has the expertise to support you at every stage.</p>
+            <p>Our goal is straightforward: give you the information you need — according to your age and life stage — to build the retirement you deserve.</p>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact">
+        <div class="container">
+            <h2 class="contact-heading">Ready to plan your retirement?</h2>
+            <p class="contact-sub">Our super specialists understand every government and ADF scheme. Call us to get advice tailored to where you are in your career right now.</p>
+            <a href="tel:1300338240" class="contact-btn">Speak with a Super Specialist</a>
+            <p class="contact-note">Available for current and former Australian Government employees and ADF members.</p>
+            <p class="contact-detail">Call us directly: <a href="tel:1300338240">1300 338 240</a></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Commonwealth Superannuation Corporation (CSC) — serving Australian Government employees and ADF members.</p>
+            <p style="margin-top:8px;">Rebuilt by J&amp;G Operations as a preview. Not yet live on csc.gov.au.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
