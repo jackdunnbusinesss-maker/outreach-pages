@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morgan Stanley — Growth Strategy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root { --bg: #0e0e12; --surface: #16161d; --border: #2a2a36; --accent: #1a5c8a; --accent-light: #2a7ab0; --white: #f0eff4; --text: #c5c4ce; --text-muted: #7e7d8a; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+.container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+.topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+.topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+.topbar-for { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+.hero { padding: 80px 0 48px; text-align: center; }
+.hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+.hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+.hero h1 em { color: var(--accent-light); font-style: italic; }
+.hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+.video-section { padding: 0 0 64px; }
+.video-wrapper { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,0.4); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; }
+.video-placeholder { text-align: center; color: var(--text-muted); }
+.video-placeholder p { font-size: 0.9rem; margin-top: 12px; }
+.video-caption { text-align: center; margin-top: 16px; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+.context { padding: 64px 0; border-top: 1px solid var(--border); }
+.context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+.context p:last-child { margin-bottom: 0; }
+.highlight-name { color: var(--accent-light); font-weight: 600; }
+.bullets { padding: 64px 0; border-top: 1px solid var(--border); }
+.bullets-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+.bullet-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+.bullet-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+.bullet-item:hover { border-color: var(--accent); }
+.bullet-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+.bullet-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+.cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+.cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+.cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+.cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+.cta-note { margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); }
+.footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+.footer p { font-size: 0.75rem; color: var(--text-muted); }
+</style>
+</head>
+<body>
+<div style="background-color: #0e0e12; min-height: 100vh;">
+
+<div class="topbar">
+  <div class="container topbar-inner">
+    <span class="topbar-label">Custom Growth Strategy</span>
+    <span class="topbar-for">Morgan Stanley — Global Financial Services</span>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Built for Morgan Stanley</p>
+    <h1>How <em>Morgan Stanley</em> can capture every HNW investor evaluating wealth management — before Merrill Lynch and UBS do</h1>
+    <p class="hero-sub">We built a walkthrough showing the demand generation strategy we'd run for Morgan Stanley Wealth Management — across mass affluent, high net worth, and business owner segments globally, with specific focus on the adviser inquiry pipeline.</p>
+  </div>
+</section>
+
+<section class="video-section">
+  <div class="container">
+    <div class="video-wrapper">
+      <div class="video-placeholder">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
+        <p>Strategy walkthrough — recorded for Morgan Stanley</p>
+      </div>
+    </div>
+    <p class="video-caption">5-minute strategy walkthrough — wealth management pipeline approach</p>
+  </div>
+</section>
+
+<section class="context">
+  <div class="container">
+    <p><span class="highlight-name">Morgan Stanley</span> is one of the world's leading financial services firms — operating across wealth management, institutional securities, and investment management globally. The wealth management division serves individuals and families from the Access Investing digital platform ($5,000 minimum) through to the full Financial Adviser relationship ($250,000+). The scale of Morgan Stanley's investment banking operation creates a research and alternative investment access advantage that no boutique or regional wealth manager can match.</p>
+    <p>The challenge is that HNW prospects evaluating wealth managers conduct extensive research before engaging an adviser — they're reading comparison content, evaluating platforms, and assessing which institution's research capabilities and investment access best match their needs. Morgan Stanley's differentiation — institutional intelligence, alternative investment access, coordinated financial planning — needs to be visible in that research phase. The strategy we've built covers how to generate qualified Financial Adviser inquiries from the HNW and business owner segments most likely to convert.</p>
+  </div>
+</section>
+
+<section class="bullets">
+  <div class="container">
+    <h2 class="bullets-heading">What we'd build for Morgan Stanley</h2>
+    <ul class="bullet-list">
+      <li class="bullet-item">
+        <div class="bullet-label">HNW Audience Architecture</div>
+        <div class="bullet-text">LinkedIn and Facebook targeting across HNW wealth segments — mass affluent ($250K+), HNW ($2M+), and business owner pre-liquidity — with segment-specific content for each buyer journey stage. Global reach with specific weighting for US and Asia-Pacific markets.</div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-label">Thought Leadership Pipeline</div>
+        <div class="bullet-text">LinkedIn Sponsored Content distributing Morgan Stanley research and market perspectives to C-suite executives, PE partners, and senior finance professionals globally — building adviser inquiry intent before it surfaces as a search.</div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-label">Business Owner Pre-Liquidity</div>
+        <div class="bullet-text">LinkedIn targeting business owners and founders at scale-up stage — pre-liquidity planning content: "What happens to your wealth when you sell your business?" — a track that Merrill Lynch and UBS are not consistently running.</div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-label">Access Investing Growth</div>
+        <div class="bullet-text">Google and Facebook for the mass affluent segment — Access Investing digital platform acquisition at the $5,000–$100,000 investable range. Building the pipeline of clients who grow into full Financial Adviser relationships over time.</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2 class="cta-heading">Ready to see the full strategy?</h2>
+    <p class="cta-sub">We can walk through the complete 90-day growth playbook in 30 minutes. No commitment — built for Morgan Stanley Wealth Management's adviser inquiry pipeline.</p>
+    <a href="mailto:alan.romero@morganstanley.com" class="cta-button">Book a 30-Minute Call</a>
+    <p class="cta-note">Or reply to the email that brought you here.</p>
+  </div>
+</section>
+
+<div class="footer">
+  <div class="container">
+    <p>This strategy was built specifically for Morgan Stanley. Not a template.</p>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

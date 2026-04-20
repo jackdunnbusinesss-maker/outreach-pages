@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TIME MICE Events — Growth Strategy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root { --bg: #0e0e12; --surface: #16161d; --border: #2a2a36; --accent: #37a0a8; --accent-light: #50bcc5; --white: #f0eff4; --text: #c5c4ce; --text-muted: #7e7d8a; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+.container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+.topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+.topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+.topbar-for { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+.hero { padding: 80px 0 48px; text-align: center; }
+.hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+.hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+.hero h1 em { color: var(--accent-light); font-style: italic; }
+.hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+.video-section { padding: 0 0 64px; }
+.video-wrapper { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,0.4); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; }
+.video-placeholder { text-align: center; color: var(--text-muted); }
+.video-placeholder p { font-size: 0.9rem; margin-top: 12px; }
+.video-caption { text-align: center; margin-top: 16px; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+.context { padding: 64px 0; border-top: 1px solid var(--border); }
+.context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+.context p:last-child { margin-bottom: 0; }
+.highlight-name { color: var(--accent-light); font-weight: 600; }
+.bullets { padding: 64px 0; border-top: 1px solid var(--border); }
+.bullets-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+.bullet-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+.bullet-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+.bullet-item:hover { border-color: var(--accent); }
+.bullet-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+.bullet-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+.cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+.cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+.cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+.cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+.cta-note { margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); }
+.footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+.footer p { font-size: 0.75rem; color: var(--text-muted); }
+</style>
+</head>
+<body>
+<div style="background-color: #0e0e12; min-height: 100vh;">
+
+<div class="topbar">
+  <div class="container topbar-inner">
+    <span class="topbar-label">Custom Growth Strategy</span>
+    <span class="topbar-for">TIME — MICE Events, South Africa</span>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Built for TIME MICE Events</p>
+    <h1>How <em>TIME</em> can fill its MICE enquiry pipeline from SA corporates and international incentive buyers who don't know where to start</h1>
+    <p class="hero-sub">We built a walkthrough showing the B2B digital strategy we'd run for TIME's conference management, incentive travel, and exhibition services — targeting both South African corporate event planners and international buyers sourcing South Africa as a destination.</p>
+  </div>
+</section>
+
+<section class="video-section">
+  <div class="container">
+    <div class="video-wrapper">
+      <div class="video-placeholder">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
+        <p>Strategy walkthrough — recorded for TIME MICE Events</p>
+      </div>
+    </div>
+    <p class="video-caption">5-minute strategy walkthrough — SA and international MICE market</p>
+  </div>
+</section>
+
+<section class="context">
+  <div class="container">
+    <p><span class="highlight-name">TIME</span> is a South Africa-based full-service MICE event management company — handling meetings, incentives, conferences, and exhibitions across South Africa's world-class event destinations. Cape Town, the Winelands, the Kruger, and Johannesburg give TIME access to a MICE product that international corporate buyers consistently rate as among the best value and most experientially differentiated in the world. The challenge is getting in front of those buyers before they default to a European or Asian destination out of habit.</p>
+    <p>International corporate event planners in the UK, Australia, and UAE are actively evaluating South Africa as an incentive destination — but they need a local partner they trust before they commit the programme. South African corporate event managers are sourcing MICE partners for conferences and exhibitions and often defaulting to whoever they've used before. The strategy we've built for TIME covers both markets — with LinkedIn for B2B outreach, Google for search capture, and destination content that does the hard work of putting South Africa at the top of the shortlist.</p>
+    <p>Talk to the TIME team: +27 82 748 0801.</p>
+  </div>
+</section>
+
+<section class="bullets">
+  <div class="container">
+    <h2 class="bullets-heading">What we'd build for TIME</h2>
+    <ul class="bullet-list">
+      <li class="bullet-item">
+        <div class="bullet-label">B2B LinkedIn Outreach</div>
+        <div class="bullet-text">LinkedIn campaigns targeting SA corporate event managers, HRDs, and international event agency principals in the UK and Australia — "South Africa MICE events", "corporate incentive travel South Africa", positioning TIME as the trusted local partner for every South Africa event conversation.</div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-label">Destination Content</div>
+        <div class="bullet-text">Visual-first Meta and LinkedIn content: Cape Town conference setups, Winelands incentive dinners, Kruger game reserve delegate experiences — the content that puts South Africa at the top of the destination shortlist before the tender opens.</div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-label">Google Search Capture</div>
+        <div class="bullet-text">Search campaigns for "MICE events South Africa", "conference organiser Cape Town", "incentive travel South Africa" — capturing planners who are already searching for a South Africa MICE partner and aren't finding TIME yet.</div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-label">International Agency Outreach</div>
+        <div class="bullet-text">LinkedIn outreach to UK and AU event agency account managers who source internationally — positioning TIME as the preferred South Africa in-destination execution partner, not competing for the end client relationship.</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2 class="cta-heading">Ready to see the full strategy?</h2>
+    <p class="cta-sub">We can walk through the complete 90-day enquiry pipeline playbook in 30 minutes. No commitment — built for TIME's SA and international MICE markets.</p>
+    <a href="tel:+27827480801" class="cta-button">Call +27 82 748 0801</a>
+    <p class="cta-note">Or reply to the email that brought you here.</p>
+  </div>
+</section>
+
+<div class="footer">
+  <div class="container">
+    <p>TIME MICE Events — South Africa — +27 82 748 0801</p>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
