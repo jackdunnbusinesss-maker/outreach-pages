@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gelfand, Rennert &amp; Feldman LLP – Business Management for Entertainment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28;
+      --border: #2a2a36; --accent: #1a1a2e; --accent-light: #8080c0;
+      --white: #f0eff4; --text: #c5c4ce; --text-muted: #7e7d8a;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    .topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+    .topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+    .topbar-contact { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+    .hero { padding: 80px 0 48px; text-align: center; }
+    .hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent-light); margin-bottom: 20px; font-weight: 600; }
+    .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+    .hero h1 em { color: var(--accent-light); font-style: italic; }
+    .hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+    .context { padding: 64px 0; border-top: 1px solid var(--border); }
+    .context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+    .context p:last-child { margin-bottom: 0; }
+    .highlight { color: var(--accent-light); font-weight: 600; }
+    .bullets { padding: 64px 0; border-top: 1px solid var(--border); }
+    .bullets-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+    .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+    .bullet-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+    .bullet-item:hover { border-color: var(--accent-light); }
+    .bullet-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-light); margin-bottom: 8px; font-weight: 600; }
+    .bullet-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+    .cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+    .cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+    .cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-button { display: inline-block; background: var(--accent-light); color: var(--white); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+    .cta-button:hover { transform: translateY(-1px); }
+    .contact-details { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; }
+    .contact-item { font-size: 0.9rem; color: var(--text-muted); }
+    .contact-item a { color: var(--accent-light); text-decoration: none; }
+    .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+    .footer p { font-size: 0.75rem; color: var(--text-muted); }
+    @media (max-width: 600px) { .hero { padding: 56px 0 36px; } .bullet-item { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+  </style>
+</head>
+<body>
+  <div class="topbar"><div class="container topbar-inner">
+    <span class="topbar-label">Gelfand, Rennert &amp; Feldman LLP</span>
+    <span class="topbar-contact"><a href="mailto:info@grfllp.com" style="color: inherit; text-decoration: none;">info@grfllp.com</a></span>
+  </div></div>
+
+  <section class="hero"><div class="container">
+    <p class="hero-eyebrow">Entertainment Business Management &amp; Financial Services &bull; Los Angeles &amp; New York</p>
+    <h1>Trusted financial counsel for <em>leaders in entertainment</em></h1>
+    <p class="hero-sub">Since 1967, Gelfand, Rennert &amp; Feldman has provided a trusted perspective to leaders in music, film, television, sports, and entertainment.</p>
+  </div></section>
+
+  <section class="context"><div class="container">
+    <p>The business of entertainment is not like other industries. Income arrives in irregular waves. Royalties flow through complex multi-party agreements. Tax obligations cross state and international lines. The financial decisions made during peak earning years have consequences that extend decades beyond them. <span class="highlight">Gelfand, Rennert &amp; Feldman</span> was built specifically for this reality.</p>
+    <p>Established in 1967, GRF has spent more than five decades serving musicians, actors, athletes, producers, directors and the estates and families that surround them. The firm operates across offices in Los Angeles and New York, placing it at the centre of the industries it serves. Clients work with senior practitioners who understand both the financial mechanics and the human dimensions of careers at the highest level.</p>
+    <p>From day-to-day business management through to royalty administration, tax planning and family office services, GRF provides an integrated advisory relationship rather than a collection of disconnected transactions. The firm's longevity reflects the trust placed in it by successive generations of entertainment industry talent.</p>
+  </div></section>
+
+  <section class="bullets"><div class="container">
+    <h2 class="bullets-heading">Services</h2>
+    <ul class="bullet-list">
+      <li class="bullet-item">
+        <p class="bullet-label">Business Management</p>
+        <p class="bullet-text">Comprehensive day-to-day financial management for entertainment professionals, covering cash flow, bill payment, budgeting and financial reporting tailored to the rhythms of a career in the arts or sport.</p>
+      </li>
+      <li class="bullet-item">
+        <p class="bullet-label">Tax Services</p>
+        <p class="bullet-text">Tax planning and compliance for individuals, entities and estates operating across multiple states and, where applicable, international jurisdictions, with strategies suited to irregular income structures.</p>
+      </li>
+      <li class="bullet-item">
+        <p class="bullet-label">Royalty Administration &amp; Examinations</p>
+        <p class="bullet-text">Administration of royalty income streams and participation examinations to verify that clients receive accurate and complete payments under their recording, publishing, film and other entertainment agreements.</p>
+      </li>
+      <li class="bullet-item">
+        <p class="bullet-label">Family Office Services</p>
+        <p class="bullet-text">Wealth stewardship, estate planning support and financial coordination for high-net-worth entertainment families, bringing institutional rigour to the management of multigenerational assets.</p>
+      </li>
+    </ul>
+  </div></section>
+
+  <section class="cta-section"><div class="container">
+    <h2 class="cta-heading">Speak with the team</h2>
+    <p class="cta-sub">GRF works with clients at the top of their fields. If you are looking for advisors who understand the entertainment industry from the inside, get in touch.</p>
+    <a href="mailto:info@grfllp.com" class="cta-button">Contact GRF</a>
+    <div class="contact-details">
+      <p class="contact-item">Email: <a href="mailto:info@grfllp.com">info@grfllp.com</a></p>
+      <p class="contact-item"><a href="https://www.grfllp.com">www.grfllp.com</a></p>
+    </div>
+  </div></section>
+
+  <footer class="footer"><div class="container">
+    <p>Rebuilt by J&amp;G Operations as a preview. Not yet live on grfllp.com.</p>
+  </div></footer>
+</body>
+</html>

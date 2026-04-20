@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uber – Move the Way You Want</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28;
+      --border: #2a2a36; --accent: #000000; --accent-light: #d4d4d4;
+      --white: #f0eff4; --text: #c5c4ce; --text-muted: #7e7d8a;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    .topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+    .topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+    .topbar-contact { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+    .hero { padding: 80px 0 48px; text-align: center; }
+    .hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent-light); margin-bottom: 20px; font-weight: 600; }
+    .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+    .hero h1 em { color: var(--accent-light); font-style: italic; }
+    .hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+    .context { padding: 64px 0; border-top: 1px solid var(--border); }
+    .context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+    .context p:last-child { margin-bottom: 0; }
+    .highlight { color: var(--accent-light); font-weight: 600; }
+    .bullets { padding: 64px 0; border-top: 1px solid var(--border); }
+    .bullets-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+    .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+    .bullet-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+    .bullet-item:hover { border-color: var(--accent-light); }
+    .bullet-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-light); margin-bottom: 8px; font-weight: 600; }
+    .bullet-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+    .cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+    .cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+    .cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-button { display: inline-block; background: var(--white); color: #0e0e12; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+    .cta-button:hover { transform: translateY(-1px); background: #e0e0e0; }
+    .contact-details { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; }
+    .contact-item { font-size: 0.9rem; color: var(--text-muted); }
+    .contact-item a { color: var(--accent-light); text-decoration: none; }
+    .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+    .footer p { font-size: 0.75rem; color: var(--text-muted); }
+    @media (max-width: 600px) { .hero { padding: 56px 0 36px; } .bullet-item { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+  </style>
+</head>
+<body>
+  <div class="topbar"><div class="container topbar-inner">
+    <span class="topbar-label">Uber</span>
+    <span class="topbar-contact"><a href="https://www.uber.com" style="color: inherit; text-decoration: none;">uber.com</a></span>
+  </div></div>
+
+  <section class="hero"><div class="container">
+    <p class="hero-eyebrow">Ride-sharing, Food Delivery &amp; Freight &bull; Global (Australia: Sydney, Melbourne, Brisbane, Perth)</p>
+    <h1>Move people, food and freight <em>on demand</em></h1>
+    <p class="hero-sub">Uber connects riders, drivers, restaurants and businesses across 70 or more countries through a single platform built for reliability, speed and scale.</p>
+  </div></section>
+
+  <section class="context"><div class="container">
+    <p>Getting from A to B, or getting dinner from a favourite restaurant to your door, should be straightforward. <span class="highlight">Uber</span> has spent over a decade building the infrastructure, technology and driver networks to make that happen at city scale, in real time, across Australia and around the world.</p>
+    <p>In Australia, Uber operates in every major metro market. Sydney, Melbourne, Brisbane and Perth each have mature driver networks running around the clock. Whether that is a standard UberX trip across the city, a premium ride via Uber Black, or a scheduled airport transfer through Uber Reserve, the platform is built to handle the full range of passenger needs.</p>
+    <p>Beyond passenger transport, Uber Eats has become one of Australia's most-used food delivery platforms, connecting thousands of restaurants to customers at home or at work. Uber Freight extends the same on-demand model to logistics, while Uber for Business gives companies a managed travel and meals solution that replaces fragmented expense processes.</p>
+  </div></section>
+
+  <section class="bullets"><div class="container">
+    <h2 class="bullets-heading">What the platform offers</h2>
+    <ul class="bullet-list">
+      <li class="bullet-item">
+        <p class="bullet-label">Uber Rides</p>
+        <p class="bullet-text">On-demand passenger transport across UberX, Uber Comfort, Uber Black and more. Available in Australian capital cities with real-time driver matching and upfront pricing.</p>
+      </li>
+      <li class="bullet-item">
+        <p class="bullet-label">Uber Reserve</p>
+        <p class="bullet-text">Scheduled rides booked in advance, with a confirmed driver assigned ahead of time. Ideal for airport transfers, early departures and time-sensitive commitments.</p>
+      </li>
+      <li class="bullet-item">
+        <p class="bullet-label">Uber Eats</p>
+        <p class="bullet-text">Food and grocery delivery from thousands of local restaurants and stores, tracked in real time from order confirmation to your door.</p>
+      </li>
+      <li class="bullet-item">
+        <p class="bullet-label">Uber for Business &amp; Freight</p>
+        <p class="bullet-text">Centralised travel and meals management for organisations, plus on-demand freight matching for carriers and shippers moving goods at scale.</p>
+      </li>
+    </ul>
+  </div></section>
+
+  <section class="cta-section"><div class="container">
+    <h2 class="cta-heading">Open the app or sign up to drive</h2>
+    <p class="cta-sub">Whether you need a ride, want to order food, or are interested in driving with Uber, everything starts at uber.com.</p>
+    <a href="https://www.uber.com" class="cta-button">Get started at Uber</a>
+    <div class="contact-details">
+      <p class="contact-item"><a href="https://www.uber.com">www.uber.com</a></p>
+    </div>
+  </div></section>
+
+  <footer class="footer"><div class="container">
+    <p>Rebuilt by J&amp;G Operations as a preview. Not yet live on uber.com.</p>
+  </div></footer>
+</body>
+</html>

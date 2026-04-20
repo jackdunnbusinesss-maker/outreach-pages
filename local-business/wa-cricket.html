@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WA Cricket – Governing Cricket Across Western Australia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28;
+      --border: #2a2a36; --accent: #003087; --accent-light: #4a7fd4;
+      --accent-glow: rgba(0,48,135,0.15); --white: #f0eff4;
+      --text: #c5c4ce; --text-muted: #7e7d8a;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    .topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+    .topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+    .topbar-contact { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+    .hero { padding: 80px 0 48px; text-align: center; }
+    .hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent-light); margin-bottom: 20px; font-weight: 600; }
+    .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+    .hero h1 em { color: var(--accent-light); font-style: italic; }
+    .hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+    .context { padding: 64px 0; border-top: 1px solid var(--border); }
+    .context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+    .context p:last-child { margin-bottom: 0; }
+    .highlight { color: var(--accent-light); font-weight: 600; }
+    .bullets { padding: 64px 0; border-top: 1px solid var(--border); }
+    .bullets-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+    .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+    .bullet-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+    .bullet-item:hover { border-color: var(--accent-light); }
+    .bullet-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-light); margin-bottom: 8px; font-weight: 600; }
+    .bullet-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+    .cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+    .cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+    .cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-button { display: inline-block; background: var(--accent-light); color: var(--white); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+    .cta-button:hover { transform: translateY(-1px); }
+    .contact-details { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; }
+    .contact-item { font-size: 0.9rem; color: var(--text-muted); }
+    .contact-item a { color: var(--accent-light); text-decoration: none; }
+    .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+    .footer p { font-size: 0.75rem; color: var(--text-muted); }
+    @media (max-width: 600px) { .hero { padding: 56px 0 36px; } .bullet-item { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar"><div class="container topbar-inner">
+    <span class="topbar-label">WA Cricket</span>
+    <span class="topbar-contact"><a href="mailto:reception@wacricket.com.au" style="color:inherit;text-decoration:none;">reception@wacricket.com.au</a></span>
+  </div></div>
+
+  <!-- Hero -->
+  <section class="hero"><div class="container">
+    <p class="hero-eyebrow">Cricket Governing Body &bull; Perth, Western Australia</p>
+    <h1>Governing and growing cricket <em>across Western Australia</em></h1>
+    <p class="hero-sub">WA Cricket, the Western Australian Cricket Association, is the governing body of cricket in Western Australia. The organisation oversees elite squads, club cricket, membership, and the development of the game at every level across the state.</p>
+  </div></section>
+
+  <!-- Context -->
+  <section class="context"><div class="container">
+    <p>The Western Australian Cricket Association has long served as the <span class="highlight">governing body for cricket in Western Australia</span>, responsible for the sport from elite competition through to grassroots participation. As the organisation overseeing WA's pathway into national cricket, WACA plays a central role in how the game is structured, supported, and grown across the state.</p>
+    <p>WA Cricket fields both men's and women's representative squads competing at the national level, as well as the <span class="highlight">WA Women's Aboriginal Team</span>, which reflects the organisation's commitment to broad participation and the recognition of cricket's place in diverse communities across the state. Alongside elite competition, the association supports club cricket throughout Western Australia, providing the infrastructure that community clubs rely on to operate.</p>
+    <p>Cricket development sits at the heart of what WA Cricket does, connecting aspiring players and coaches to pathways that can take them from local clubs through to state and national representation. Memberships are available to supporters who want to follow the WA squads throughout the season. The reception team is available on weekdays between 9am and 4:30pm, and during match days.</p>
+  </div></section>
+
+  <!-- Bullets -->
+  <section class="bullets"><div class="container">
+    <h2 class="bullets-heading">What WA Cricket oversees</h2>
+    <ul class="bullet-list">
+      <li class="bullet-item">
+        <p class="bullet-label">Elite Squads</p>
+        <p class="bullet-text">WA Cricket fields the WA Men's Squad and WA Women's Squad in national competition, as well as the WA Women's Aboriginal Team, providing elite pathways for Western Australian cricketers at every level.</p>
+      </li>
+      <li class="bullet-item">
+        <p class="bullet-label">Membership</p>
+        <p class="bullet-text">WA Cricket memberships give supporters access to matches and connect them directly to the state's cricketing community throughout the season.</p>
+      </li>
+      <li class="bullet-item">
+        <p class="bullet-label">Cricket Development</p>
+        <p class="bullet-text">Development programmes create structured pathways from junior and community cricket through to representative and elite levels, building the pipeline of players and coaches that WA cricket depends on.</p>
+      </li>
+      <li class="bullet-item">
+        <p class="bullet-label">Club Cricket</p>
+        <p class="bullet-text">WA Cricket supports and oversees club cricket across Western Australia, providing the governance, competitions, and resources that keep community clubs active and thriving throughout the state.</p>
+      </li>
+    </ul>
+  </div></section>
+
+  <!-- CTA -->
+  <section class="cta-section"><div class="container">
+    <h2 class="cta-heading">Get in touch with WA Cricket</h2>
+    <p class="cta-sub">The WA Cricket reception team is available on weekdays from 9am to 4:30pm and during match days. Reach out for membership, development, or general enquiries.</p>
+    <a href="mailto:reception@wacricket.com.au" class="cta-button">Email WA Cricket</a>
+    <div class="contact-details">
+      <p class="contact-item"><a href="mailto:reception@wacricket.com.au">reception@wacricket.com.au</a></p>
+    </div>
+  </div></section>
+
+  <!-- Footer -->
+  <footer class="footer"><div class="container">
+    <p>Rebuilt by J&amp;G Operations as a preview. Not yet live on wacricket.com.au.</p>
+  </div></footer>
+
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CM Consulting – Professional Training &amp; Coaching</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28;
+      --border: #2a2a36; --accent: #2d6a4f; --accent-light: #40a071;
+      --white: #f0eff4; --text: #c5c4ce; --text-muted: #7e7d8a;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    .topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+    .topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+    .topbar-contact { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+    .hero { padding: 80px 0 48px; text-align: center; }
+    .hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent-light); margin-bottom: 20px; font-weight: 600; }
+    .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+    .hero h1 em { color: var(--accent-light); font-style: italic; }
+    .hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+    .context { padding: 64px 0; border-top: 1px solid var(--border); }
+    .context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+    .context p:last-child { margin-bottom: 0; }
+    .highlight { color: var(--accent-light); font-weight: 600; }
+    .bullets { padding: 64px 0; border-top: 1px solid var(--border); }
+    .bullets-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+    .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+    .bullet-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+    .bullet-item:hover { border-color: var(--accent-light); }
+    .bullet-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-light); margin-bottom: 8px; font-weight: 600; }
+    .bullet-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+    .cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+    .cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+    .cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-button { display: inline-block; background: var(--accent-light); color: var(--white); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+    .cta-button:hover { background: var(--accent); transform: translateY(-1px); }
+    .contact-details { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; }
+    .contact-item { font-size: 0.9rem; color: var(--text-muted); }
+    .contact-item a { color: var(--accent-light); text-decoration: none; }
+    .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+    .footer p { font-size: 0.75rem; color: var(--text-muted); }
+    @media (max-width: 600px) { .hero { padding: 56px 0 36px; } .bullet-item { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span class="topbar-label">CM Consulting</span>
+      <span class="topbar-contact">cmconsulting.ca</span>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="container">
+      <p class="hero-eyebrow">Professional Training &amp; Coaching &bull; Australia</p>
+      <h1>Training and coaching that builds <em>capable organisations</em></h1>
+      <p class="hero-sub">CM Consulting is an Australian professional training and coaching practice. The team works with organisations and individuals to strengthen workplace capability through coaching, leadership development, and professional training engagements.</p>
+    </div>
+  </section>
+
+  <section class="context">
+    <div class="container">
+      <p>CM Consulting operates in the professional training and coaching space, supporting organisations that want to develop the capability of their people. The practice works with clients across a range of industries, delivering <span class="highlight">training and coaching engagements</span> tailored to the needs of the business and the individuals within it.</p>
+      <p>The consulting approach is grounded in practical outcomes. Rather than off-the-shelf programs, CM Consulting focuses on understanding the specific context and objectives of each client before designing an appropriate engagement, whether that involves individual coaching, team-based training, or a broader workplace consulting scope.</p>
+      <p>CM Consulting serves clients across Australia, working with businesses, teams, and individual professionals who are looking to build the skills and behaviours that lead to better workplace outcomes.</p>
+    </div>
+  </section>
+
+  <section class="bullets">
+    <div class="container">
+      <h2 class="bullets-heading">How CM Consulting works with clients</h2>
+      <ul class="bullet-list">
+        <li class="bullet-item">
+          <p class="bullet-label">Professional Training</p>
+          <p class="bullet-text">Structured training engagements delivered to teams and organisations, designed to build specific professional skills and capabilities relevant to the client's industry and context.</p>
+        </li>
+        <li class="bullet-item">
+          <p class="bullet-label">Coaching</p>
+          <p class="bullet-text">One-on-one and group coaching for professionals and leaders, focused on helping individuals develop their effectiveness, decision-making, and professional presence.</p>
+        </li>
+        <li class="bullet-item">
+          <p class="bullet-label">Leadership Development</p>
+          <p class="bullet-text">Engagements focused on building leadership capability within organisations, supporting managers and leaders to perform more effectively in their roles.</p>
+        </li>
+        <li class="bullet-item">
+          <p class="bullet-label">Workplace Consulting</p>
+          <p class="bullet-text">Broader consulting support for organisations navigating workplace challenges, culture considerations, or capability gaps that require a structured consulting approach.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="cta-heading">Get in touch</h2>
+      <p class="cta-sub">To discuss a training, coaching, or consulting engagement for your organisation, reach out via the CM Consulting website.</p>
+      <a href="https://cmconsulting.ca" class="cta-button">Visit cmconsulting.ca</a>
+      <div class="contact-details">
+        <p class="contact-item"><a href="https://cmconsulting.ca" target="_blank" rel="noopener">cmconsulting.ca</a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Rebuilt by J&amp;G Operations as a preview. Not yet live on cmconsulting.ca.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
