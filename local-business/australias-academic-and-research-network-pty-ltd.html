@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AARNet | Australia's National Research and Education Network</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28;
+      --border: #2a2a36; --accent: #fba919; --accent-light: #ffcc55;
+      --accent-glow: rgba(251,169,25,0.15); --white: #f0eff4;
+      --text: #c5c4ce; --text-muted: #7e7d8a;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    .topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+    .topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+    .topbar-contact { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; text-decoration: none; }
+    .hero { padding: 80px 0 48px; text-align: center; }
+    .hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+    .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+    .hero h1 em { color: var(--accent-light); font-style: italic; }
+    .hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+    .context { padding: 64px 0; border-top: 1px solid var(--border); }
+    .context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+    .context p:last-child { margin-bottom: 0; }
+    .highlight { color: var(--accent-light); font-weight: 600; }
+    .bullets { padding: 64px 0; border-top: 1px solid var(--border); }
+    .bullets-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+    .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+    .bullet-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+    .bullet-item:hover { border-color: var(--accent); }
+    .bullet-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+    .bullet-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+    .cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+    .cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+    .cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+    .cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+    .contact-details { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; }
+    .contact-item { font-size: 0.9rem; color: var(--text-muted); }
+    .contact-item a { color: var(--accent-light); text-decoration: none; }
+    .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+    .footer p { font-size: 0.75rem; color: var(--text-muted); }
+    @media (max-width: 600px) { .hero { padding: 56px 0 36px; } .bullet-item { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <span class="topbar-label">AARNet</span>
+        <span class="topbar-contact">Australia's Research Network</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="container">
+      <p class="hero-eyebrow">Australia's National Research &amp; Education Network</p>
+      <h1>Fast, reliable connectivity for <em>research and education</em></h1>
+      <p class="hero-sub">AARNet is Australia's national research and education network — delivering advanced internet connectivity, cyber security, data services, and collaboration tools to the Australian research and education community.</p>
+    </div>
+  </section>
+
+  <section class="context">
+    <div class="container">
+      <p>AARNet operates <span class="highlight">Australia's national research and education network</span>, providing the high-performance connectivity and services that universities, research institutions, and schools need to do their best work. The network is purpose-built for the demands of research — handling large data transfers, enabling real-time collaboration, and supporting cloud-based research platforms.</p>
+      <p>Beyond raw connectivity, AARNet delivers a suite of services designed specifically for the research and education sector — from cyber security and cloud services through to data management and collaboration tools. These services are designed to support the unique requirements of institutions that generate, store, and share large volumes of research data.</p>
+      <p>AARNet's work underpins some of Australia's most significant research endeavours. The network enables <span class="highlight">astronomy at scale</span>, supports international research collaborations, and provides the infrastructure backbone that allows Australian researchers to work with partners around the world.</p>
+    </div>
+  </section>
+
+  <section class="bullets">
+    <div class="container">
+      <h2 class="bullets-heading">What AARNet provides</h2>
+      <ul class="bullet-list">
+        <li class="bullet-item">
+          <div class="bullet-label">Research Network</div>
+          <div class="bullet-text">Australia's advanced research and education network, providing high-performance internet connectivity purpose-built for the data-intensive needs of universities, research institutions, and schools.</div>
+        </li>
+        <li class="bullet-item">
+          <div class="bullet-label">Cyber Security</div>
+          <div class="bullet-text">Security services designed for the research and education sector — protecting institutions and their data while enabling the open collaboration that research depends on.</div>
+        </li>
+        <li class="bullet-item">
+          <div class="bullet-label">Data Services</div>
+          <div class="bullet-text">Data management and storage solutions that support the large-scale data requirements of modern research — including tools for data sharing, transfer, and long-term preservation.</div>
+        </li>
+        <li class="bullet-item">
+          <div class="bullet-label">Collaboration Tools</div>
+          <div class="bullet-text">Collaboration services that enable researchers, educators, and students to work together effectively — whether on campus, across institutions, or with international partners.</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="cta-heading">Connect with AARNet</h2>
+      <p class="cta-sub">Find out how AARNet's network and services can support your institution's research and education mission.</p>
+      <a href="https://aarnet.edu.au/contact" class="cta-button">Get in Touch</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Rebuilt by J&amp;G Operations as a preview. Not yet live on aarnet.edu.au.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

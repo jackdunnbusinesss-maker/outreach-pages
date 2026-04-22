@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eraneos | Strategy, Transformation &amp; Technology Consulting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28;
+      --border: #2a2a36; --accent: #6c7ee1; --accent-light: #8a99e8;
+      --accent-glow: rgba(108,126,225,0.15); --white: #f0eff4;
+      --text: #c5c4ce; --text-muted: #7e7d8a;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    .topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+    .topbar-logo { height: 28px; }
+    .topbar-contact { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; }
+    .hero { padding: 80px 0 48px; text-align: center; }
+    .hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+    .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+    .hero h1 em { color: var(--accent-light); font-style: italic; }
+    .hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+    .context { padding: 64px 0; border-top: 1px solid var(--border); }
+    .context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+    .context p:last-child { margin-bottom: 0; }
+    .highlight { color: var(--accent-light); font-weight: 600; }
+    .bullets { padding: 64px 0; border-top: 1px solid var(--border); }
+    .bullets-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+    .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+    .bullet-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+    .bullet-item:hover { border-color: var(--accent); }
+    .bullet-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+    .bullet-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+    .cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+    .cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+    .cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-button { display: inline-block; background: var(--accent); color: var(--white); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+    .cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+    .contact-details { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; }
+    .contact-item { font-size: 0.9rem; color: var(--text-muted); }
+    .contact-item a { color: var(--accent-light); text-decoration: none; }
+    .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+    .footer p { font-size: 0.75rem; color: var(--text-muted); }
+    @media (max-width: 600px) { .hero { padding: 56px 0 36px; } .bullet-item { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <img src="https://www.eraneos.com/wp-content/themes/expedition-theme/images/eraneos-logo-white.svg" alt="Eraneos" class="topbar-logo" />
+        <a href="mailto:info@eraneos.com" class="topbar-contact">info@eraneos.com</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="container">
+      <p class="hero-eyebrow">International Strategy &amp; Technology Consulting</p>
+      <h1>From strategy to <em>implementation</em></h1>
+      <p class="hero-sub">Eraneos is an international strategy, transformation, and technology consulting group. We combine deep industry expertise with an in-depth knowledge of technology to help organisations achieve their goals — from high-level strategy through to full delivery.</p>
+    </div>
+  </section>
+
+  <section class="context">
+    <div class="container">
+      <p>Eraneos works across financial services, transportation and logistics, energy and utilities, life sciences, public sector, and automotive defence. The group understands the challenges each industry faces and ensures organisations make the most of opportunities created by digitalisation — whether that's building a new data platform, executing a transformation programme, or defining a long-term corporate strategy.</p>
+      <p>The firm's strength lies in combining <span class="highlight">fundamental industry knowledge with technical capability</span>. Eraneos doesn't hand over a strategy deck and walk away. The group supports clients from the initial diagnostic all the way through to change that sticks — with specialist practices across corporate strategy, customer excellence, organisational transformation, data and AI, sourcing and IT advisory, and cybersecurity.</p>
+      <p>Operating internationally across Europe and beyond, Eraneos brings <span class="highlight">diverse perspectives and cross-sector experience</span> to every engagement, ensuring clients benefit from thinking that goes beyond their own industry.</p>
+    </div>
+  </section>
+
+  <section class="bullets">
+    <div class="container">
+      <h2 class="bullets-heading">What Eraneos delivers</h2>
+      <ul class="bullet-list">
+        <li class="bullet-item">
+          <div class="bullet-label">Corporate &amp; Business Strategy</div>
+          <div class="bullet-text">Purpose, vision and value-creation work through to strategy execution, market and portfolio strategy, and enterprise transformation strategy. Built to be actionable, not aspirational.</div>
+        </li>
+        <li class="bullet-item">
+          <div class="bullet-label">Customer &amp; Commercial Excellence</div>
+          <div class="bullet-text">Building deeper brand connections, shaping customer and commercial vision, improving customer interaction and experience, driving portfolio innovation, and optimising sales and go-to-market approaches.</div>
+        </li>
+        <li class="bullet-item">
+          <div class="bullet-label">Organisational Excellence &amp; Transformation</div>
+          <div class="bullet-text">Organisational and people excellence combined with transformation and operational excellence programmes — designed to make change last beyond the engagement.</div>
+        </li>
+        <li class="bullet-item">
+          <div class="bullet-label">Data &amp; AI</div>
+          <div class="bullet-text">Data and AI strategy, data management, data platforms, AI solutions, and AI transformation. Practical capability-building that generates value from the data organisations already hold.</div>
+        </li>
+        <li class="bullet-item">
+          <div class="bullet-label">Cybersecurity</div>
+          <div class="bullet-text">Security strategy and governance, risk and compliance, security by design, security execution, and security innovation — across industries where data protection and operational resilience are non-negotiable.</div>
+        </li>
+        <li class="bullet-item">
+          <div class="bullet-label">Financial Services</div>
+          <div class="bullet-text">Dedicated practice serving insurance and banking clients with the industry-specific expertise required to navigate regulatory, digital, and competitive pressures in financial services.</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="cta-heading">Get in touch with Eraneos</h2>
+      <p class="cta-sub">Whether you're scoping a transformation programme or looking for specialist advisory on a specific challenge, the Eraneos team can help.</p>
+      <a href="mailto:info@eraneos.com" class="cta-button">Contact Eraneos</a>
+      <div class="contact-details">
+        <span class="contact-item">Email: <a href="mailto:info@eraneos.com">info@eraneos.com</a></span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Rebuilt by J&amp;G Operations as a preview. Not yet live on eraneos.com.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

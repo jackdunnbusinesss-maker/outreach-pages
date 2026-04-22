@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>APA Group | Australia's Energy Infrastructure</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0e0e12; --surface: #16161d; --surface-light: #1e1e28;
+      --border: #2a2a36; --accent: #e05c1a; --accent-light: #f07a3a;
+      --accent-glow: rgba(224,92,26,0.15); --white: #f0eff4;
+      --text: #c5c4ce; --text-muted: #7e7d8a;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    .topbar { padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .topbar-inner { display: flex; justify-content: space-between; align-items: center; }
+    .topbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+    .topbar-contact { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; text-decoration: none; }
+    .hero { padding: 80px 0 48px; text-align: center; }
+    .hero-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+    .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.25; margin-bottom: 24px; font-weight: 600; }
+    .hero h1 em { color: var(--accent-light); font-style: italic; }
+    .hero-sub { font-size: 1.05rem; color: var(--text); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+    .context { padding: 64px 0; border-top: 1px solid var(--border); }
+    .context p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px; }
+    .context p:last-child { margin-bottom: 0; }
+    .highlight { color: var(--accent-light); font-weight: 600; }
+    .bullets { padding: 64px 0; border-top: 1px solid var(--border); }
+    .bullets-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: 40px; text-align: center; font-weight: 600; }
+    .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+    .bullet-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; transition: border-color 0.3s ease; }
+    .bullet-item:hover { border-color: var(--accent); }
+    .bullet-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+    .bullet-text { font-size: 1rem; color: var(--text); line-height: 1.7; }
+    .cta-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+    .cta-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; font-weight: 600; }
+    .cta-sub { font-size: 1rem; color: var(--text); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-button { display: inline-block; background: var(--accent); color: var(--bg); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 16px 48px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: background 0.3s ease, transform 0.2s ease; }
+    .cta-button:hover { background: var(--accent-light); transform: translateY(-1px); }
+    .contact-details { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; }
+    .contact-item { font-size: 0.9rem; color: var(--text-muted); }
+    .contact-item a { color: var(--accent-light); text-decoration: none; }
+    .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+    .footer p { font-size: 0.75rem; color: var(--text-muted); }
+    @media (max-width: 600px) { .hero { padding: 56px 0 36px; } .bullet-item { padding: 22px 20px; } .cta-section { padding: 56px 0; } }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <span class="topbar-label">APA Group</span>
+        <a href="tel:1800992312" class="topbar-contact">1800 992 312</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="container">
+      <p class="hero-eyebrow">Australia's Energy Infrastructure</p>
+      <h1>Connecting Australia with <em>energy infrastructure</em></h1>
+      <p class="hero-sub">APA Group is one of Australia's leading energy infrastructure businesses, owning and operating a diverse portfolio of gas transmission pipelines, gas storage and processing facilities, and renewable energy assets across the country.</p>
+    </div>
+  </section>
+
+  <section class="context">
+    <div class="container">
+      <p>APA Group is a critical part of Australia's energy infrastructure, operating the pipelines and facilities that move and store energy across the continent. The group's transmission network connects <span class="highlight">producers to markets and industries</span>, underpinning the energy supply chains that households and businesses depend on.</p>
+      <p>Beyond gas transmission, APA is an active participant in Australia's energy transition — investing in and operating renewable energy assets that complement the existing infrastructure portfolio. The business is positioned to support Australia's shift to a lower-carbon energy system while continuing to deliver the reliable energy supply the economy needs today.</p>
+      <p>APA operates offices across NSW, QLD, VIC, WA, and the NT, with a national team focused on <span class="highlight">safe, reliable, and responsible</span> operation of energy infrastructure that matters to every Australian.</p>
+    </div>
+  </section>
+
+  <section class="bullets">
+    <div class="container">
+      <h2 class="bullets-heading">What APA Group operates</h2>
+      <ul class="bullet-list">
+        <li class="bullet-item">
+          <div class="bullet-label">Gas Transmission</div>
+          <div class="bullet-text">A national network of gas transmission pipelines that connect gas producers to downstream markets, industrial customers, and gas-fired power generation across Australia.</div>
+        </li>
+        <li class="bullet-item">
+          <div class="bullet-label">Gas Storage &amp; Processing</div>
+          <div class="bullet-text">Gas storage and processing facilities that provide flexibility and security in Australia's gas supply system — ensuring reliable delivery even as production profiles and demand fluctuate.</div>
+        </li>
+        <li class="bullet-item">
+          <div class="bullet-label">Renewable Energy</div>
+          <div class="bullet-text">Renewable energy assets that form a growing part of APA's portfolio, supporting Australia's energy transition and providing the clean energy capacity the grid will increasingly require.</div>
+        </li>
+        <li class="bullet-item">
+          <div class="bullet-label">National Operations</div>
+          <div class="bullet-text">Operations teams across NSW, QLD, VIC, WA, and the NT maintaining and operating infrastructure safely and reliably — backed by APA's commitment to responsible energy delivery.</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="cta-heading">Connect with APA Group</h2>
+      <p class="cta-sub">For enquiries about APA Group's infrastructure, services, or operations, contact the team.</p>
+      <a href="tel:1800992312" class="cta-button">Call 1800 992 312</a>
+      <div class="contact-details">
+        <span class="contact-item">National: <a href="tel:1800992312">1800 992 312</a></span>
+        <span class="contact-item">NSW: <a href="tel:+61296930000">+61 2 9693 0000</a></span>
+        <span class="contact-item">QLD: <a href="tel:+61733236100">+61 7 3323 6100</a></span>
+        <span class="contact-item">VIC: <a href="tel:+61386268400">+61 3 8626 8400</a></span>
+        <span class="contact-item">WA: <a href="tel:+61861894300">+61 8 6189 4300</a></span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Rebuilt by J&amp;G Operations as a preview. Not yet live on apa.com.au.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
