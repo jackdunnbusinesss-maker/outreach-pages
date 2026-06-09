@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>From Invisible to Undeniable — A Music Marketing System by Grif</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0b0b0e;
+      --surface: #13131a;
+      --surface-2: #1a1a24;
+      --border: #25253a;
+      --accent: #8b7cf8;
+      --accent-soft: rgba(139, 124, 248, 0.10);
+      --accent-mid: rgba(139, 124, 248, 0.25);
+      --accent-glow: rgba(139, 124, 248, 0.06);
+      --text-primary: #eeedf5;
+      --text-secondary: #8e8da0;
+      --text-muted: #4e4d5c;
+      --radius: 12px;
+      --font: 'Inter', -apple-system, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: var(--font);
+      line-height: 1.6;
+    }
+
+    /* LAYOUT */
+    .container { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+
+    /* TOP BAR */
+    .topbar {
+      border-bottom: 1px solid var(--border);
+      padding: 18px 0;
+    }
+    .topbar-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .topbar-name {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .topbar-handle {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* HERO */
+    .hero { padding: 88px 0 72px; text-align: center; }
+    .hero-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-mid);
+      border-radius: 20px;
+      padding: 5px 16px;
+      margin-bottom: 32px;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5.5vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 22px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 540px;
+      margin: 0 auto 44px;
+      line-height: 1.75;
+    }
+
+    /* PROOF STRIP */
+    .proof-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+      justify-content: center;
+      margin-bottom: 52px;
+    }
+    .proof-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .proof-dot { width: 5px; height: 5px; background: var(--accent); border-radius: 50%; }
+
+    /* CTA */
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent);
+      color: #0b0b0e;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 17px 40px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+      letter-spacing: -0.01em;
+    }
+    .cta-btn:hover { opacity: 0.88; transform: translateY(-2px); }
+    .cta-sub { font-size: 0.76rem; color: var(--text-muted); margin-top: 12px; }
+
+    /* VSL SECTION */
+    .vsl-section { padding: 72px 0; border-top: 1px solid var(--border); }
+    .vsl-label {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+    .video-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      max-width: 720px;
+      margin: 0 auto;
+      box-shadow: 0 0 60px var(--accent-glow);
+    }
+    .video-inner {
+      background: #0f0f14;
+      aspect-ratio: 16/9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      position: relative;
+    }
+    .play-btn {
+      width: 76px; height: 76px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 32px rgba(139,124,248,0.4);
+      transition: transform 0.2s;
+      cursor: pointer;
+    }
+    .play-btn:hover { transform: scale(1.06); }
+    .play-btn svg { fill: #0b0b0e; margin-left: 5px; }
+    .video-inner p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .vsl-note {
+      padding: 16px 24px;
+      border-top: 1px solid var(--border);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* DIVIDER */
+    .section-divider { border: none; border-top: 1px solid var(--border); }
+
+    /* PROBLEMS */
+    .problems-section { padding: 80px 0; }
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+      display: block;
+    }
+    .section-title {
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .section-body {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 540px;
+      margin-bottom: 44px;
+      line-height: 1.75;
+    }
+    .pain-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 600px) { .pain-grid { grid-template-columns: 1fr; } }
+    .pain-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .pain-card strong {
+      color: var(--text-primary);
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+    }
+    .pain-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.65; }
+
+    /* SOLUTION */
+    .solution-section { padding: 80px 0; border-top: 1px solid var(--border); }
+    .pillars { list-style: none; counter-reset: pillar; margin-top: 36px; display: flex; flex-direction: column; gap: 16px; }
+    .pillar {
+      counter-increment: pillar;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px 28px;
+      transition: border-color 0.2s;
+    }
+    .pillar:hover { border-color: var(--accent-mid); }
+    .pillar-num {
+      flex-shrink: 0;
+      width: 36px; height: 36px;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-mid);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .pillar-num::before { content: counter(pillar, decimal-leading-zero); }
+    .pillar-content {}
+    .pillar-title { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+    .pillar-desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.65; }
+
+    /* WHAT'S INSIDE / OFFER STACK */
+    .offer-section { padding: 80px 0; border-top: 1px solid var(--border); }
+    .offer-grid { display: flex; flex-direction: column; gap: 12px; margin-top: 36px; }
+    .offer-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 26px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+    .offer-item-left { flex: 1; }
+    .offer-item-name { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
+    .offer-item-desc { font-size: 0.83rem; color: var(--text-secondary); }
+    .offer-item-value {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .offer-total {
+      margin-top: 20px;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-mid);
+      border-radius: var(--radius);
+      padding: 20px 26px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .offer-total-label { font-size: 0.85rem; font-weight: 600; color: var(--accent); }
+    .offer-total-val { font-size: 1.1rem; font-weight: 800; color: var(--accent); }
+
+    /* FUNNEL MAP */
+    .funnel-section { padding: 80px 0; border-top: 1px solid var(--border); }
+    .funnel-steps { display: flex; flex-direction: column; gap: 12px; margin-top: 36px; }
+    .funnel-step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 26px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .funnel-arrow { text-align: center; color: var(--text-muted); font-size: 1.2rem; padding: 2px 0; }
+    .funnel-step-icon {
+      width: 42px; height: 42px;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-mid);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .funnel-step-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 3px; }
+    .funnel-step-desc { font-size: 0.83rem; color: var(--text-secondary); }
+    .funnel-branch {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 560px) { .funnel-branch { grid-template-columns: 1fr; } }
+    .branch-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+    .branch-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-mid);
+      border-radius: 20px;
+      padding: 3px 10px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+    .branch-title { font-size: 0.92rem; font-weight: 700; margin-bottom: 6px; }
+    .branch-desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6; }
+
+    /* CTA SECTION */
+    .cta-section {
+      padding: 96px 0 80px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .cta-section h2 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+    .cta-section h2 em { font-style: normal; color: var(--accent); }
+    .cta-section p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 500px;
+      margin: 0 auto 40px;
+      line-height: 1.75;
+    }
+    .cta-dual {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .cta-btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 16px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .cta-btn-secondary:hover { border-color: var(--accent-mid); background: var(--accent-soft); }
+
+    /* FOOTER */
+    .footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .footer p { font-size: 0.72rem; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <span class="topbar-name">Grif</span>
+      <span class="topbar-handle">@by.grif · Toronto</span>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <span class="hero-tag">Music Marketing System</span>
+      <h1>Turn your music into a<br/><em>movement that pays.</em></h1>
+      <p class="hero-sub">
+        Independent artists are building real fanbases, landing licensing deals, and generating consistent income from their music. Not by going viral — by running a system.
+      </p>
+      <div class="proof-strip">
+        <span class="proof-item"><span class="proof-dot"></span>40M+ views generated</span>
+        <span class="proof-item"><span class="proof-dot"></span>Toronto-based</span>
+        <span class="proof-item"><span class="proof-dot"></span>For independent artists &amp; creators</span>
+      </div>
+      <a href="#apply" class="cta-btn">
+        Watch the Video Below ↓
+      </a>
+      <p class="cta-sub">No labels. No luck. A repeatable system.</p>
+    </div>
+  </section>
+
+  <!-- VSL -->
+  <section class="vsl-section">
+    <div class="container">
+      <p class="vsl-label">Watch this first</p>
+      <div class="video-wrap">
+        <div class="video-inner">
+          <div class="play-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+          <p>VSL — Coming Soon</p>
+        </div>
+        <div class="vsl-note">
+          Watch until the end — the most important part is at minute 8.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEMS -->
+  <section class="problems-section">
+    <div class="container">
+      <span class="section-label">The Real Problem</span>
+      <h2 class="section-title">Great music. Zero strategy.<br/>That's the gap.</h2>
+      <p class="section-body">
+        Most independent artists are doing everything right — the music is quality, the visuals are there, the consistency is real. But the growth isn't matching the effort. Here's why.
+      </p>
+      <div class="pain-grid">
+        <div class="pain-card">
+          <strong>Posting without a system</strong>
+          <p>Creating content based on inspiration instead of a framework that drives discovery, retention, and conversion.</p>
+        </div>
+        <div class="pain-card">
+          <strong>Platform dependency</strong>
+          <p>Every algorithm update resets the reach. No owned audience means starting from scratch every time.</p>
+        </div>
+        <div class="pain-card">
+          <strong>Listeners but no fans</strong>
+          <p>Streams don't pay. Fans pay. The gap between a casual listener and a buyer is a conversion system — which most artists don't have.</p>
+        </div>
+        <div class="pain-card">
+          <strong>No monetization framework</strong>
+          <p>Waiting for playlists, labels, or viral moments to generate revenue — instead of building income streams that work at any audience size.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section class="solution-section">
+    <div class="container">
+      <span class="section-label">The System</span>
+      <h2 class="section-title">What changes when you<br/>run the right framework.</h2>
+      <p class="section-body">
+        Built from 40M+ views of real-world data, the Artist Growth System is a four-pillar framework designed for independent artists who are serious about building an audience and making money from music.
+      </p>
+      <ul class="pillars">
+        <li class="pillar">
+          <div class="pillar-num"></div>
+          <div class="pillar-content">
+            <div class="pillar-title">Content Architecture</div>
+            <p class="pillar-desc">Every piece of content has a job — discovery, retention, or conversion. Stop posting and hoping. Start producing with a framework that tells the algorithm exactly who to send your music to.</p>
+          </div>
+        </li>
+        <li class="pillar">
+          <div class="pillar-num"></div>
+          <div class="pillar-content">
+            <div class="pillar-title">Audience Conversion</div>
+            <p class="pillar-desc">Turn casual listeners into loyal fans — then into buyers. Your bio, your link-in-bio, your lead magnet, your welcome sequence. A conversion system that deepens relationships automatically.</p>
+          </div>
+        </li>
+        <li class="pillar">
+          <div class="pillar-num"></div>
+          <div class="pillar-content">
+            <div class="pillar-title">Distribution Strategy</div>
+            <p class="pillar-desc">Get in front of the right people without paying for ads or praying for a playlist feature. Platform-specific formats, collaboration architecture, and organic distribution that compounds over time.</p>
+          </div>
+        </li>
+        <li class="pillar">
+          <div class="pillar-num"></div>
+          <div class="pillar-content">
+            <div class="pillar-title">Monetization</div>
+            <p class="pillar-desc">You don't need a million followers to make real money from music. Digital products, licensing, brand partnerships, community — multiple revenue streams that work even with a small, loyal audience.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FUNNEL MAP -->
+  <section class="funnel-section">
+    <div class="container">
+      <span class="section-label">How It Works</span>
+      <h2 class="section-title">From this video to your<br/>first (or next) revenue stream.</h2>
+      <p class="section-body">
+        Simple. No sales calls unless you want one.
+      </p>
+      <div class="funnel-steps">
+        <div class="funnel-step">
+          <div class="funnel-step-icon">▶</div>
+          <div>
+            <div class="funnel-step-title">Watch the Video</div>
+            <p class="funnel-step-desc">The full breakdown of the system and what it could look like for your music career specifically.</p>
+          </div>
+        </div>
+        <div class="funnel-arrow">↓</div>
+        <div class="funnel-step">
+          <div class="funnel-step-icon">✦</div>
+          <div>
+            <div class="funnel-step-title">Answer 4 Quick Questions</div>
+            <p class="funnel-step-desc">Tell us where you're at with your music right now. Takes under 2 minutes.</p>
+          </div>
+        </div>
+        <div class="funnel-arrow">↓</div>
+        <div class="funnel-branch">
+          <div class="branch-card">
+            <span class="branch-tag">Path A</span>
+            <div class="branch-title">Get Instant Access</div>
+            <p class="branch-desc">Jump straight in and start building your system today. Everything you need is inside.</p>
+          </div>
+          <div class="branch-card">
+            <span class="branch-tag">Path B</span>
+            <div class="branch-title">Book a Strategy Call</div>
+            <p class="branch-desc">Prefer to talk it through first? Book a free 30-min session to map out exactly what this looks like for your situation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFER STACK -->
+  <section class="offer-section">
+    <div class="container">
+      <span class="section-label">What's Inside</span>
+      <h2 class="section-title">Everything you need to build<br/>an audience that buys.</h2>
+      <p class="section-body">
+        Not a course you consume and forget. A system you run.
+      </p>
+      <div class="offer-grid">
+        <div class="offer-item">
+          <div class="offer-item-left">
+            <div class="offer-item-name">The Artist Growth System — Core Program</div>
+            <p class="offer-item-desc">4 pillars. [X] modules. Step-by-step implementation for every stage of your artist journey.</p>
+          </div>
+          <span class="offer-item-value">Value: $XXX</span>
+        </div>
+        <div class="offer-item">
+          <div class="offer-item-left">
+            <div class="offer-item-name">Music Marketing Content Templates</div>
+            <p class="offer-item-desc">Hooks, captions, and descriptions that drive discovery — tested across every major platform.</p>
+          </div>
+          <span class="offer-item-value">Value: $XXX</span>
+        </div>
+        <div class="offer-item">
+          <div class="offer-item-left">
+            <div class="offer-item-name">90-Day Artist Growth Roadmap</div>
+            <p class="offer-item-desc">A clear, sequenced action plan so you always know what to do next — and in what order.</p>
+          </div>
+          <span class="offer-item-value">Value: $XXX</span>
+        </div>
+        <div class="offer-item">
+          <div class="offer-item-left">
+            <div class="offer-item-name">Private Community Access (Discord)</div>
+            <p class="offer-item-desc">Direct access to Grif + a community of serious independent artists. Weekly accountability and feedback.</p>
+          </div>
+          <span class="offer-item-value">Value: $XXX/mo</span>
+        </div>
+        <div class="offer-item">
+          <div class="offer-item-left">
+            <div class="offer-item-name">[Bonus: Live Q&amp;A / Coaching Add-On]</div>
+            <p class="offer-item-desc">Monthly live session to answer your specific questions and review your content in real time.</p>
+          </div>
+          <span class="offer-item-value">Value: $XXX</span>
+        </div>
+      </div>
+      <div class="offer-total">
+        <span class="offer-total-label">Total Value</span>
+        <span class="offer-total-val">$X,XXX+</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="apply">
+    <div class="container">
+      <h2>Your music deserves<br/>to be <em>heard.</em></h2>
+      <p>
+        The artists who are winning right now didn't wait for the algorithm to figure it out. They built a system. This is yours.
+      </p>
+      <div class="cta-dual">
+        <a href="https://tally.so" class="cta-btn">
+          Get Instant Access →
+        </a>
+        <a href="https://tally.so" class="cta-btn-secondary">
+          Book a Strategy Call
+        </a>
+      </div>
+      <p class="cta-sub">Answer 4 questions → choose your path. Takes 90 seconds.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p>Built for independent artists who are serious. · @by.grif · Toronto</p>
+    </div>
+  </footer>
+
+</body>
+</html>
